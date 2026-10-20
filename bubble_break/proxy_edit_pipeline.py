@@ -129,13 +129,15 @@ def build_svg(kind, projection, final_weapon="RADIAL"):
     hy = int(h2["head_center"]["y"])
     face_y = int(h2["top_face_y"])
     handle = (690, 920)
+    if kind == "t_to_t":
+        return build_t_to_t_geometry_svg(projection)
     if kind == "mask":
         # White = the complete target bubble footprint plus rim; black = protect everything else.
         parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
                  f'<rect width="{width}" height="{height}" fill="#000000"/>',
                  f'<circle cx="{cx}" cy="{cy}" r="{r+16}" fill="#ffffff" stroke="#ffffff" stroke-width="18"/>']
         import re
-        protected = attacker_plus(hx, face_y, hy, handle)
+        protected = attacker_for_weapon(final_weapon,hx,face_y,hy,handle)
         protected = re.sub(r'fill="[^"]+"', 'fill="#000000"', protected)
         protected = re.sub(r'stroke="[^"]+"', 'stroke="#000000"', protected)
         protected = re.sub(r'stroke-width="[^"]+"', 'stroke-width="34"', protected)
@@ -143,14 +145,14 @@ def build_svg(kind, projection, final_weapon="RADIAL"):
         parts.append("</svg>")
         return "\n".join(parts)
     if kind == "attacker_mask":
-        # White = the attacker to edit; black = preserve the target bubble and scene.
+        # White = the complete selected weapon; black = preserve all other pixels.
+        import re
+        weapon = attacker_for_weapon(final_weapon,hx,face_y,hy,handle)
+        weapon = re.sub(r'fill="[^"]+"', 'fill="#ffffff"', weapon)
+        weapon = re.sub(r'stroke="[^"]+"', 'stroke="#ffffff"', weapon)
+        weapon = re.sub(r'stroke-width="[^"]+"', 'stroke-width="34"', weapon)
         parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-                 f'<rect width="{width}" height="{height}" fill="#000000"/>',
-                 line(handle[0], handle[1], hx, hy, "#ffffff", 42),
-                 rect(hx-30, face_y, 60, hy+95-face_y, "#ffffff", "#ffffff", 3),
-                 rect(hx-100, hy-30, 200, 60, "#ffffff", "#ffffff", 3),
-                 rect(hx-30, face_y-2, 60, 5, "#ffffff", "#ffffff", 2),
-                 "</svg>"]
+                 f'<rect width="{width}" height="{height}" fill="#000000"/>', weapon, "</svg>"]
         return "\n".join(parts)
     parts = svg_base(width, height)
     for x in range(80, width, 160):
@@ -168,7 +170,7 @@ def build_svg(kind, projection, final_weapon="RADIAL"):
         ]
     else:
         raise ValueError("kind must be cross, sphere, or mask")
-    if kind == "final_weapon":
+    if kind == "final_weapon" or (kind == "sphere" and final_weapon == "T"):
         parts.append(attacker_for_weapon(final_weapon,hx,face_y,hy,handle))
     else:
         parts.append(attacker_plus(hx, face_y, hy, handle))
