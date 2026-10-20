@@ -97,6 +97,10 @@ class BubbleBreakEngineTests(unittest.TestCase):
         self.assertEqual(t_shape["weapon_topology"], "WEAPON_T")
         self.assertIn("T 字輪廓", t_shape["contact_prompt"])
         self.assertIn("WEAPON_T", t_shape["contact_prompt"])
+        self.assertIn("長柄本身就是 T 的主幹", t_shape["contact_prompt"])
+        positive_t = t_shape["contact_prompt"].split("禁止：", 1)[0]
+        self.assertNotIn("多向徑向密鋪", positive_t)
+        self.assertNotIn("近球形槌頭", positive_t)
         self.assertNotIn("多向圓頭變成普通長方形單頭錘", t_shape["negative_prompt"])
         self.assertEqual(cross["weapon_topology"], "WEAPON_PROXY_CROSS")
         self.assertIn("加號形十字代理頭", cross["contact_prompt"])
