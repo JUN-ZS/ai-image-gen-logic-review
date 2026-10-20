@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Bridge bulk story JSONL to a small, auditable geometry/edit batch. Does not render images."""
+"""Bridge bulk story JSONL to one shared T-weapon master and story-specific scene prompt packets. Does not render images."""
 from __future__ import annotations
 import argparse, json, re, sys
 from collections import Counter
@@ -61,6 +61,51 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             "image_realization":"NOT_RUN",
             "edited_pixel_audit":"NOT_RUN",
         })
+    shared_master_dir=None
+    if final_weapon=="T":
+        # One shape master is shared across the whole batch; do not redraw an identical master per story.
+        shared_master_dir=outdir/"_shared_T_weapon_master"
+        shared_master_dir.mkdir(parents=True,exist_ok=True)
+        first_proxy=Path(packages[0]["proxy_directory"])
+        shared_names=("00_T_weapon_master_geometry.svg","00_generate_T_weapon_master.txt",
+                      "05_T_silhouette_reference.svg","stage_gate.json")
+        for name in shared_names:
+            src=first_proxy/name
+            if not src.exists():
+                raise ValueError(f"shared T master source missing: {src}")
+            (shared_master_dir/name).write_text(src.read_text(encoding="utf-8"),encoding="utf-8")
+        shared_gate_path=shared_master_dir/"stage_gate.json"
+        shared_gate=json.loads(shared_gate_path.read_text(encoding="utf-8"))
+        shared_gate["required_stage_a_artifact"]="A_T_weapon_master.png"
+        shared_gate["required_stage_a_review"]="A_T_weapon_master_review.json"
+        shared_gate["scope"]="SHARED_ACROSS_BATCH"
+        shared_gate_path.write_text(json.dumps(shared_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        for package in packages:
+            proxy=Path(package["proxy_directory"])
+            plan_path=proxy/"edit_plan.json"
+            plan=json.loads(plan_path.read_text(encoding="utf-8"))
+            plan["master_scope"]="SHARED_ACROSS_BATCH"
+            plan["shared_weapon_master_directory"]=str(shared_master_dir)
+            plan["required_artifacts"]["stage_a_image"]=str(shared_master_dir/"A_T_weapon_master.png")
+            plan["required_artifacts"]["stage_a_review"]=str(shared_master_dir/"A_T_weapon_master_review.json")
+            plan["stage_gate_file"]=str(shared_master_dir/"stage_gate.json")
+            plan["files"]["proxy"]=str(shared_master_dir/"00_T_weapon_master_geometry.svg")
+            plan["files"]["t_shape_reference"]=str(shared_master_dir/"05_T_silhouette_reference.svg")
+            plan["files"]["t_weapon_master_generation_prompt"]=str(shared_master_dir/"00_generate_T_weapon_master.txt")
+            plan_path.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+            local_gate=proxy/"stage_gate.json"
+            gate=json.loads(local_gate.read_text(encoding="utf-8"))
+            gate["required_stage_a_artifact"]=str(shared_master_dir/"A_T_weapon_master.png")
+            gate["required_stage_a_review"]=str(shared_master_dir/"A_T_weapon_master_review.json")
+            gate["shared_master_directory"]=str(shared_master_dir)
+            local_gate.write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+            for name in ("00_T_weapon_master_geometry.svg","00_generate_T_weapon_master.txt","05_T_silhouette_reference.svg"):
+                candidate=proxy/name
+                if candidate.exists():
+                    candidate.unlink()
+            package["required_first_stage_artifact"]=str(shared_master_dir/"A_T_weapon_master.png")
+            package["shared_weapon_master_directory"]=str(shared_master_dir)
+            package["selected_edit_prompt"]=str(proxy/"generate_scene_with_T_master.txt")
     batch={
         "pipeline_version":"1.0.0",
         "input":str(input_path),
@@ -69,10 +114,11 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
         "selected_stories":len(packages),
         "distinct_causal_kernels":len({p["causal_kernel_id"] for p in packages}),
         "final_weapon":final_weapon,
-        "method":("bulk JSONL -> per-story T-to-T anchor -> mandatory image approval gate -> target T-to-bubble edit" if final_weapon=="T"
+        "method":("bulk JSONL -> one shared T-weapon master -> approval gate -> story-specific H0/H2/H3 scene prompts" if final_weapon=="T"
                   else "bulk JSONL -> per-story frame packet -> cross proxy -> target-only sphere edit plan -> final weapon edit plan"),
-        "stage_gate_status":("BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED" if final_weapon=="T" else "NO_T_TO_T_GATE"),
-        "required_first_stage":("A_T_TO_T_ANCHOR" if final_weapon=="T" else None),
+        "stage_gate_status":("BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED" if final_weapon=="T" else "NO_T_TO_T_GATE"),
+        "required_first_stage":("A_T_WEAPON_MASTER" if final_weapon=="T" else None),
+        "shared_weapon_master_directory":(str(shared_master_dir) if shared_master_dir else None),
         "image_realization":"NOT_RUN",
         "pixel_audit_status":"NOT_RUN",
         "packages":packages,
