@@ -95,7 +95,7 @@ jobs:
           batch = json.loads((root / "batch_manifest.json").read_text(encoding="utf-8"))
           layout = Path(batch["packets"][0]["directory"]) / "layout.json"
           subprocess.run([sys.executable, "bubble_break/proxy_edit_pipeline.py",
-                          "--input-layout", str(layout), "--outdir", "/tmp/wushuang_proxy_edit"],
+                          "--input-layout", str(layout), "--outdir", "/tmp/wushuang_proxy_edit", "--final-weapon", "RADIAL"],
                          check=True)
           out = Path("/tmp/wushuang_proxy_edit")
           plan = json.loads((out / "edit_plan.json").read_text(encoding="utf-8"))
@@ -108,4 +108,29 @@ jobs:
               assert (out / name).exists(), name
           print(json.dumps({"proxy": "PASS", "terminal_face_gap_px": 0,
                             "external_edit_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Bridge bulk stories to per-kernel T realization packets
+        run: |
+          python bubble_break/realize_batch.py --input /tmp/wushuang_1000.jsonl --outdir /tmp/wushuang_realize_T --per-kernel 1 --limit 20 --final-weapon T
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/wushuang_realize_T")
+          result = json.loads((root / "realize_batch_manifest.json").read_text(encoding="utf-8"))
+          assert result["selected_stories"] == 20, result
+          assert result["distinct_causal_kernels"] == 20, result
+          assert result["final_weapon"] == "T", result
+          assert result["image_realization"] == "NOT_RUN", result
+          assert result["pixel_audit_status"] == "NOT_RUN", result
+          for item in result["packages"]:
+              proxy = Path(item["proxy_directory"])
+              plan = json.loads((proxy / "edit_plan.json").read_text(encoding="utf-8"))
+              assert plan["final_weapon"] == "T", plan
+              assert plan["terminal_face_gap_px"] == 0, plan
+              assert plan["selected_edit_prompt"] == "edit_attacker_to_T.txt", plan
+              assert (proxy / "04_final_weapon_preview.svg").exists()
+          print(json.dumps({"selected_stories": 20, "distinct_kernels": 20,
+                            "final_weapon": "T", "vector_proxy": "PASS",
+                            "edited_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
           PY

@@ -83,4 +83,19 @@ class FramePipelineTests(unittest.TestCase):
             self.assertEqual(result["written_story_packets"],1)
             self.assertTrue((out/"batch_manifest.json").exists())
 
+
+    def test_t_topology_replaces_radial_lock_in_prompt_and_geometry(self):
+        p=compile_frame_set(sample_record(),weapon_topology="T")
+        self.assertEqual(p["canonical_weapon"],"WEAPON_T")
+        for prompt in p["prompts"].values():
+            self.assertIn("WEAPON_TOPOLOGY_ID=WEAPON_T",prompt)
+            self.assertIn("T-shaped hammer head",prompt)
+        with tempfile.TemporaryDirectory() as temp:
+            summary=write_packet(p,Path(temp))
+            d=Path(summary["directory"])
+            manifest=json.loads((d/"manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["weapon_topology"],"T")
+            svg=(d/"H2_first_contact_anchor_geometry.svg").read_text(encoding="utf-8")
+            self.assertIn("1090,610",svg)
+
 if __name__=="__main__": unittest.main()

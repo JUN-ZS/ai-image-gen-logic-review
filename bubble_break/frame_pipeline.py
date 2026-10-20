@@ -36,6 +36,34 @@ COMMON = (
     "arm extension, hair/clothing trailing the swing. Do not substitute raised arms or blur for force. Keep contact "
     "geometry sharp. The target is the containment membrane, never the residents; city and residents remain intact."
 )
+
+WEAPON_TEXT = {
+    "RADIAL": (
+        "WEAPON_TOPOLOGY_ID=WEAPON_C_RADIAL_SPHERE. ONE long rigid handle and ONE compact near-spherical dense steel hammer head. "
+        "The head looks spherical because many broad, flat polygonal sledgehammer striking faces tile its surface and point radially outward. "
+        "These are broad flat faces, not spikes, studs, blades, a halo, chain, or separate hammers. At impact, only the single upper-facing flat polygon contacts the shell."
+    ),
+    "T": (
+        "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE long rigid handle and ONE T-shaped hammer head: a broad, thick horizontal crossbar with a wide, flat upper striking face, "
+        "plus a single central stem joined to the underside of that crossbar. The T silhouette must be unmistakable. This is not a plus-sign/cross head, "
+        "not a radial sphere, not a mace and not a spiked ball. At impact, only the broad top plane of the horizontal crossbar contacts the exact bottom point P; "
+        "the center of that top plane is pinned to P and the handle exits diagonally down-left."
+    ),
+    "CROSS": (
+        "WEAPON_TOPOLOGY_ID=WEAPON_PROXY_CROSS. ONE long rigid handle and ONE thick plus-sign/cross-shaped hammer head. "
+        "The upper terminal face of the vertical arm is flat and is the only contact surface; its center is pinned to P. "
+        "This is a geometry proxy only, not the final radial hammer."
+    ),
+}
+
+def common_for_weapon(topology: str) -> str:
+    topology = topology.upper()
+    if topology not in WEAPON_TEXT:
+        raise ValueError("weapon_topology must be RADIAL, T, or CROSS")
+    start = COMMON.index("CANONICAL WEAPON:")
+    end = COMMON.index("POWER CUES:", start)
+    return COMMON[:start] + WEAPON_TEXT[topology] + " The handle runs diagonally down-left toward the heroine. " + COMMON[end:]
+
 STATE = {
 "H0": (
     "PRE-IMPACT START FRAME. Bubble membrane perfectly intact: zero cracks, holes, fragments or explosion. Hammer "
@@ -103,7 +131,7 @@ def _polygon(points: List[tuple], fill: str, stroke: str = "#182b42", width: int
 def _line(x1: int, y1: int, x2: int, y2: int, color: str, width: int = 8) -> str:
     return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="{width}" stroke-linecap="round"/>'
 
-def _svg_frame(frame_id: str) -> str:
+def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
     """Draw a deterministic, label-free 2D camera blockout. It is not a final artwork."""
     width, height = 1920, 1080
     cx, cy, radius = 1090, 330, 280
@@ -185,18 +213,33 @@ def _svg_frame(frame_id: str) -> str:
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"url(#shaft)",21))
     for gx,gy in [(760,890),(820,866)]:
         parts.append(f'<ellipse cx="{gx}" cy="{gy}" rx="18" ry="13" transform="rotate(-20 {gx} {gy})" fill="#c89c69" stroke="#ffe0a6" stroke-width="4"/>')
-    # A single faceted sphere-shaped hammer head with a visible upward-facing flat face.
-    head_outline=[(hx,hy-80),(hx+48,hy-68),(hx+77,hy-25),(hx+70,hy+34),(hx+32,hy+75),(hx-32,hy+75),(hx-70,hy+34),(hx-77,hy-25),(hx-48,hy-68)]
-    parts.append(_polygon(head_outline,"#15283b","#d7b478",7))
-    center=(hx,hy+2)
-    ring=[(hx,hy-80),(hx+48,hy-68),(hx+77,hy-25),(hx+70,hy+34),(hx+32,hy+75),(hx-32,hy+75),(hx-70,hy+34),(hx-77,hy-25),(hx-48,hy-68)]
-    for i in range(len(ring)):
-        a,b=ring[i],ring[(i+1)%len(ring)]
-        fill=["#294d6b","#101d30","#34536a","#172638"][i%4]
-        parts.append(_polygon([a,b,center],fill,"#7ba3bd",2))
-    top_face=[(hx-36,top_y),(hx+36,top_y),(hx+52,top_y+20),(hx+27,top_y+38),(hx-27,top_y+38),(hx-52,top_y+20)]
-    parts.append(_polygon(top_face,"#5e8eaf","#fff0bf",5))
-    parts.append(_polygon([(hx-21,top_y+5),(hx+21,top_y+5),(hx+31,top_y+19),(hx,top_y+29),(hx-31,top_y+19)],"#2c5b83","#97e7ff",2))
+    weapon_topology=weapon_topology.upper()
+    if weapon_topology == "T":
+        # Wide horizontal bar, flat top plane fixed to P, and one centered stem.
+        parts.append(_polygon([(hx-112,top_y),(hx+112,top_y),(hx+112,top_y+58),(hx+34,top_y+58),
+                               (hx+34,hy+48),(hx-34,hy+48),(hx-34,top_y+58),(hx-112,top_y+58)],
+                              "#203d56","#e0c18a",6))
+        parts.append(_polygon([(hx-112,top_y),(hx+112,top_y),(hx+96,top_y+10),(hx-96,top_y+10)],
+                              "#6b9cbd","#fff0bf",4))
+    elif weapon_topology == "CROSS":
+        parts.append(_polygon([(hx-30,top_y),(hx+30,top_y),(hx+30,hy+85),(hx-30,hy+85)],
+                              "#203d56","#e0c18a",5))
+        parts.append(_polygon([(hx-100,hy-30),(hx+100,hy-30),(hx+100,hy+30),(hx-100,hy+30)],
+                              "#203d56","#e0c18a",5))
+        parts.append(_line(hx-28,top_y,hx+28,top_y,"#fff0bf",5))
+    elif weapon_topology == "RADIAL":
+        # Approximate a many-flat-face radial head while retaining one broad top contact face.
+        ring=[(hx-34,top_y),(hx+34,top_y),(hx+68,top_y+24),(hx+80,hy+6),
+              (hx+52,hy+61),(hx,hy+80),(hx-52,hy+61),(hx-80,hy+6),(hx-68,top_y+24)]
+        center=(hx,hy+6)
+        parts.append(_polygon(ring,"#15283b","#d7b478",7))
+        fills=["#294d6b","#101d30","#34536a","#172638"]
+        for i in range(len(ring)):
+            parts.append(_polygon([ring[i],ring[(i+1)%len(ring)],center],fills[i%len(fills)],"#7ba3bd",2))
+        parts.append(_polygon([(hx-34,top_y),(hx+34,top_y),(hx+28,top_y+18),(hx,top_y+24),(hx-28,top_y+18)],
+                              "#5e8eaf","#fff0bf",5))
+    else:
+        raise ValueError("weapon_topology must be RADIAL, T, or CROSS")
     # Simple heroine blockout; pose changes slightly with the event, but camera/landmarks stay fixed.
     if frame_id=="H0":
         headx,heady,shoulderx,shouldery,hipx,hipy=560,704,616,757,646,830
@@ -228,7 +271,9 @@ def _svg_frame(frame_id: str) -> str:
 def projection_lock() -> Dict[str, Any]:
     return json.loads(json.dumps(FRAME_PROJECTION))
 
-def compile_frame_set(record: Dict[str, Any]) -> Dict[str, Any]:
+def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -> Dict[str, Any]:
+    weapon_topology = weapon_topology.upper()
+    common = common_for_weapon(weapon_topology)
     story_id = str(record.get("story_id") or "STORY-UNKNOWN")
     scene = axis_text(record, "environment", "a monumental surreal city plaza")
     scale = axis_text(record, "scale", "a giant bubble enclosing a floating city")
@@ -236,7 +281,7 @@ def compile_frame_set(record: Dict[str, Any]) -> Dict[str, Any]:
     palette = axis_text(record, "palette", "cold silver, electric cyan, restrained amber")
     lock = {
         "version": VERSION, "story_id": story_id, "scene": scene, "scale": scale, "shell": shell,
-        "palette": palette, "weapon": "WEAPON_C_RADIAL_SPHERE", "camera": "locked low 3/4 35mm",
+        "palette": palette, "weapon": {"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology], "camera": "locked low 3/4 35mm",
         "contact": "exact six-o'clock bottom pole P"
     }
     shot_id = "SHOT-" + hashlib.sha256(json.dumps(lock,sort_keys=True,ensure_ascii=False).encode()).hexdigest()[:12].upper()
@@ -246,7 +291,7 @@ def compile_frame_set(record: Dict[str, Any]) -> Dict[str, Any]:
         f"Human cost: {record.get('human_cost','loss of meaningful choice')}. "
         f"Scene: {scene}. Scale: {scale}. Shell: {shell}. Palette: {palette}. "
     )
-    prompts = {fid: COMMON + "\n\nSHOT LOCK ID (metadata only; do not render as text): " + shot_id + ".\n"
+    prompts = {fid: common + "\n\nSHOT LOCK ID (metadata only; do not render as text): " + shot_id + ".\n"
                + narrative + STATE[fid] + "\nUse visible silhouette, position, overlap, gap/contact and fragment direction; "
                "no labels, arrows, formulas or diagrams.\nNEGATIVE PROMPT: " + NEGATIVE for fid in FRAME_IDS}
     errors=[]
@@ -273,7 +318,8 @@ def compile_frame_set(record: Dict[str, Any]) -> Dict[str, Any]:
     ]
     return {
         "pipeline_version":VERSION,"story_id":story_id,"shot_lock_id":shot_id,
-        "canonical_weapon":"WEAPON_C_RADIAL_SPHERE","frame_order":list(FRAME_IDS),
+        "canonical_weapon":{"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology],
+        "weapon_topology":weapon_topology,"frame_order":list(FRAME_IDS),
         "projection_lock":projection_lock(),
         "workflow":{"endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
@@ -291,7 +337,7 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
     geometry_names={}
     for fid in FRAME_IDS:
         svg_name=FRAME_NAMES[fid]+"_geometry.svg"
-        (story_dir/svg_name).write_text(_svg_frame(fid)+"\n",encoding="utf-8")
+        (story_dir/svg_name).write_text(_svg_frame(fid,packet.get("weapon_topology","RADIAL"))+"\n",encoding="utf-8")
         geometry_names[fid]=svg_name
     layout={"shot_lock_id":packet["shot_lock_id"],"projection_lock":packet["projection_lock"],
             "frame_order":list(FRAME_IDS),"geometry_files":geometry_names,
@@ -310,7 +356,8 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
             "prompt_contract_status":packet["prompt_contract_status"],"image_realization":"NOT_RUN",
             "pixel_audit_status":"NOT_RUN","directory":str(story_dir)}
 
-def build_packets(input_path: Path, outdir: Path, limit: int=1, story_id_filter: str|None=None) -> Dict[str, Any]:
+def build_packets(input_path: Path, outdir: Path, limit: int=1, story_id_filter: str|None=None,
+                  weapon_topology: str = "RADIAL") -> Dict[str, Any]:
     if limit < 1: raise ValueError("--limit must be >= 1")
     summaries=[]
     with input_path.open("r",encoding="utf-8") as handle:
@@ -318,10 +365,11 @@ def build_packets(input_path: Path, outdir: Path, limit: int=1, story_id_filter:
             if not line.strip(): continue
             record=json.loads(line)
             if story_id_filter and record.get("story_id") != story_id_filter: continue
-            summaries.append(write_packet(compile_frame_set(record),outdir))
+            summaries.append(write_packet(compile_frame_set(record,weapon_topology),outdir))
             if len(summaries)>=limit: break
     if not summaries: raise ValueError("no story records selected from input JSONL")
     batch={"pipeline_version":VERSION,"input":str(input_path),"requested_limit":limit,
+           "weapon_topology":weapon_topology.upper(),
            "written_story_packets":len(summaries),"image_realization":"NOT_RUN",
            "pixel_audit_status":"NOT_RUN","packets":summaries}
     outdir.mkdir(parents=True,exist_ok=True)
@@ -334,8 +382,9 @@ def main(argv: List[str]|None=None) -> int:
     parser.add_argument("--outdir",required=True,help="directory for prompts and pixel-audit packet")
     parser.add_argument("--limit",type=int,default=1,help="maximum story packets; default 1")
     parser.add_argument("--story-id",default=None,help="select one exact story_id")
+    parser.add_argument("--weapon-topology",choices=("RADIAL","T","CROSS"),default="RADIAL")
     args=parser.parse_args(argv)
-    try: batch=build_packets(Path(args.input),Path(args.outdir),args.limit,args.story_id)
+    try: batch=build_packets(Path(args.input),Path(args.outdir),args.limit,args.story_id,args.weapon_topology)
     except (OSError,ValueError,json.JSONDecodeError) as exc:
         print(f"BLOCK: {exc}",file=sys.stderr); return 2
     print(json.dumps({"written_story_packets":batch["written_story_packets"],

@@ -41,7 +41,9 @@ class CrossProxyTests(unittest.TestCase):
             result=write_packet(source,out)
             for name in ("00_cross_to_cross_proxy.svg","01_target_cross_replaced_by_sphere.svg",
                          "02_target_cross_edit_mask.svg","03_attacker_edit_mask.svg",
-                         "edit_target_plus_to_bubble.txt","edit_attacker_plus_to_radial_hammer.txt","edit_plan.json"):
+                         "04_final_weapon_preview.svg","edit_target_plus_to_bubble.txt",
+                         "edit_attacker_plus_to_radial_hammer.txt","edit_attacker_to_T.txt",
+                         "edit_attacker_keep_cross.txt","edit_plan.json"):
                 self.assertTrue((out/name).exists(),name)
             plan=json.loads((out/"edit_plan.json").read_text(encoding="utf-8"))
             self.assertEqual(plan["terminal_face_gap_px"],0)
@@ -58,5 +60,26 @@ class CrossProxyTests(unittest.TestCase):
             self.assertIn('fill="#000000"',target_mask)
             self.assertIn('fill="#ffffff"',attacker_mask)
             self.assertIn('fill="#000000"',attacker_mask)
+
+
+    def test_t_final_weapon_is_selectable_and_keeps_P_locked(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); source=root/"layout.json"
+            source.write_text(json.dumps(sample_layout()),encoding="utf-8")
+            out=root/"packet"
+            write_packet(source,out,final_weapon="T")
+            plan=json.loads((out/"edit_plan.json").read_text(encoding="utf-8"))
+            preview=(out/"04_final_weapon_preview.svg").read_text(encoding="utf-8")
+            self.assertEqual(plan["final_weapon"],"T")
+            self.assertEqual(plan["selected_edit_prompt"],"edit_attacker_to_T.txt")
+            self.assertIn('x="978" y="610" width="224" height="58"',preview)
+            self.assertIn("T-shaped hammer", (out/"edit_attacker_to_T.txt").read_text(encoding="utf-8"))
+
+    def test_invalid_final_weapon_blocks(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); source=root/"layout.json"
+            source.write_text(json.dumps(sample_layout()),encoding="utf-8")
+            with self.assertRaisesRegex(ValueError,"final_weapon"):
+                write_packet(source,root/"out",final_weapon="STAR")
 
 if __name__=="__main__": unittest.main()

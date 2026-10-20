@@ -35,7 +35,6 @@ def target_plus(cx, cy, r, thickness=44):
     ])
 
 def attacker_plus(cx, face_y, center_y, handle_end):
-    # Upper terminal striking face is fixed exactly to P.
     shaft = line(handle_end[0], handle_end[1], cx, center_y, "#02060a", 34)
     shaft += line(handle_end[0], handle_end[1], cx, center_y, "url(#metal)", 23)
     head = rect(cx-30, face_y, 60, center_y+95-face_y, "#234761", "#e0bd82", 5)
@@ -44,7 +43,38 @@ def attacker_plus(cx, face_y, center_y, handle_end):
     head += line(cx-25, face_y+9, cx+25, face_y+9, "#8be7ff", 3)
     return shaft + head
 
-def build_svg(kind, projection):
+def attacker_t(cx, face_y, center_y, handle_end):
+    shaft = line(handle_end[0], handle_end[1], cx, center_y, "#02060a", 34)
+    shaft += line(handle_end[0], handle_end[1], cx, center_y, "url(#metal)", 23)
+    head = rect(cx-112, face_y, 224, 58, "#234761", "#e0bd82", 5)
+    head += rect(cx-34, face_y+58, 68, max(8,center_y+75-(face_y+58)), "#234761", "#e0bd82", 5)
+    head += rect(cx-108, face_y-2, 216, 5, "#fff1c7", "#ffffff", 2)
+    return shaft + head
+
+def attacker_radial(cx, face_y, center_y, handle_end):
+    shaft = line(handle_end[0], handle_end[1], cx, center_y, "#02060a", 34)
+    shaft += line(handle_end[0], handle_end[1], cx, center_y, "url(#metal)", 23)
+    # A compact, faceted head with a broad flat upper face—not spikes or a mace.
+    points=[(cx-34,face_y),(cx+34,face_y),(cx+68,face_y+24),(cx+80,center_y+6),
+            (cx+52,center_y+61),(cx,center_y+80),(cx-52,center_y+61),
+            (cx-80,center_y+6),(cx-68,face_y+24)]
+    p=" ".join(f"{x},{y}" for x,y in points)
+    head=f'<polygon points="{p}" fill="#234761" stroke="#e0bd82" stroke-width="5" stroke-linejoin="round"/>'
+    head+=rect(cx-34,face_y,68,5,"#fff1c7","#ffffff",2)
+    for x1,y1,x2,y2 in [(cx-34,face_y,cx,center_y+6),(cx+34,face_y,cx,center_y+6),
+                         (cx+68,face_y+24,cx,center_y+6),(cx+52,center_y+61,cx,center_y+6),
+                         (cx-52,center_y+61,cx,center_y+6),(cx-68,face_y+24,cx,center_y+6)]:
+        head+=line(x1,y1,x2,y2,"#81a9c4",2)
+    return shaft+head
+
+def attacker_for_weapon(topology, cx, face_y, center_y, handle_end):
+    topology=topology.upper()
+    if topology=="CROSS": return attacker_plus(cx,face_y,center_y,handle_end)
+    if topology=="T": return attacker_t(cx,face_y,center_y,handle_end)
+    if topology=="RADIAL": return attacker_radial(cx,face_y,center_y,handle_end)
+    raise ValueError("final_weapon must be CROSS, T, or RADIAL")
+
+def build_svg(kind, projection, final_weapon="RADIAL"):
     width = int(projection["canvas"]["width"])
     height = int(projection["canvas"]["height"])
     cx = int(projection["sphere_center"]["x"])
@@ -58,12 +88,10 @@ def build_svg(kind, projection):
     face_y = int(h2["top_face_y"])
     handle = (690, 920)
     if kind == "mask":
-        # White = target geometry to replace; black = protect the attacker.
+        # White = the complete target bubble footprint plus rim; black = protect everything else.
         parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
                  f'<rect width="{width}" height="{height}" fill="#000000"/>',
-                 rect(cx-22, cy-r, 44, 2*r, "#ffffff", "#ffffff", 0),
-                 rect(cx-r, cy-22, 2*r, 44, "#ffffff", "#ffffff", 0),
-                 f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#ffffff" stroke-width="18"/>']
+                 f'<circle cx="{cx}" cy="{cy}" r="{r+16}" fill="#ffffff" stroke="#ffffff" stroke-width="18"/>']
         import re
         protected = attacker_plus(hx, face_y, hy, handle)
         protected = re.sub(r'fill="[^"]+"', 'fill="#000000"', protected)
@@ -89,7 +117,7 @@ def build_svg(kind, projection):
         parts.append(line(0, y, width, y, "#35536d", 1))
     if kind == "cross":
         parts.append(target_plus(cx, cy, r))
-    elif kind == "sphere":
+    elif kind in ("sphere","final_weapon"):
         parts += [
             f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="url(#membrane)" stroke="#a4f2ff" stroke-width="8"/>',
             f'<circle cx="{cx}" cy="{cy}" r="{r-12}" fill="none" stroke="#7bdfff" stroke-opacity=".45" stroke-width="2"/>',
@@ -98,7 +126,10 @@ def build_svg(kind, projection):
         ]
     else:
         raise ValueError("kind must be cross, sphere, or mask")
-    parts.append(attacker_plus(hx, face_y, hy, handle))
+    if kind == "final_weapon":
+        parts.append(attacker_for_weapon(final_weapon,hx,face_y,hy,handle))
+    else:
+        parts.append(attacker_plus(hx, face_y, hy, handle))
     parts.append(line(px-30, py, px+30, py, "#ffffff", 4))
     parts.append(f'<circle cx="{px}" cy="{py}" r="5" fill="#ffffff"/>')
     parts.append("</svg>")
@@ -117,21 +148,26 @@ def validate_geometry(layout):
         raise ValueError("geometry mismatch: attack cross face is not aligned with target cross face")
     return p
 
-def write_packet(layout_path: Path, outdir: Path):
+def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     layout = json.loads(layout_path.read_text(encoding="utf-8"))
     projection = validate_geometry(layout)
+    final_weapon = final_weapon.upper()
+    if final_weapon not in ("CROSS","T","RADIAL"):
+        raise ValueError("final_weapon must be CROSS, T, or RADIAL")
     outdir.mkdir(parents=True, exist_ok=True)
     files = {
         "proxy": "00_cross_to_cross_proxy.svg",
         "target_replaced": "01_target_cross_replaced_by_sphere.svg",
+        "final_weapon_preview": "04_final_weapon_preview.svg",
         "mask": "02_target_cross_edit_mask.svg",
         "attacker_mask": "03_attacker_edit_mask.svg",
         "target_edit_prompt": "edit_target_plus_to_bubble.txt",
         "weapon_edit_prompt": "edit_attacker_plus_to_radial_hammer.txt",
     }
     for name, kind in [(files["proxy"], "cross"), (files["target_replaced"], "sphere"),
+                       (files["final_weapon_preview"], "final_weapon"),
                        (files["mask"], "mask"), (files["attacker_mask"], "attacker_mask")]:
-        (outdir/name).write_text(build_svg(kind, projection)+"\n", encoding="utf-8")
+        (outdir/name).write_text(build_svg(kind, projection, final_weapon)+"\n", encoding="utf-8")
     c, point, radius = projection["sphere_center"], projection["P_six_oclock"], projection["sphere_radius"]
     target_prompt = (
         "EDIT ONLY THE TARGET PLUS-SIGN in the provided cross-to-cross proxy. "
@@ -151,16 +187,32 @@ def write_packet(layout_path: Path, outdir: Path):
     )
     (outdir/files["target_edit_prompt"]).write_text(target_prompt+"\n",encoding="utf-8")
     (outdir/files["weapon_edit_prompt"]).write_text(weapon_prompt+"\n",encoding="utf-8")
+    weapon_prompt_t = (
+        "EDIT ONLY THE ATTACKING PLUS-SIGN after the target bubble edit has passed pixel review. "
+        "Convert only the head into one unmistakable T-shaped hammer: a broad, thick horizontal bar with a wide flat upper striking face "
+        "and one central stem attached beneath the bar. Keep one rigid long handle attached to the same head. "
+        f"Pin the top-face center at P=({point['x']},{point['y']}); the top face's y coordinate must not move. "
+        "Preserve the bubble outline, city, contact point, handle direction, camera, background and all pixels outside the attacker mask. "
+        "No plus-sign/cross head, radial ball, spikes, studs, mace or extra weapon."
+    )
+    weapon_prompt_cross = (
+        "EDIT ONLY THE ATTACKING PLUS-SIGN. Keep the cross proxy unchanged; do not edit the bubble, contact point, handle, camera or background."
+    )
+    (outdir/"edit_attacker_to_T.txt").write_text(weapon_prompt_t+"\n",encoding="utf-8")
+    (outdir/"edit_attacker_keep_cross.txt").write_text(weapon_prompt_cross+"\n",encoding="utf-8")
+    selected_prompt={"RADIAL":files["weapon_edit_prompt"],"T":"edit_attacker_to_T.txt","CROSS":"edit_attacker_keep_cross.txt"}[final_weapon]
     plan = {
         "method":"CROSS_TO_CROSS_THEN_TARGET_ONLY_SPHERE_EDIT",
         "status":"GEOMETRY_PROXY_VALID",
+        "final_weapon":final_weapon,
+        "selected_edit_prompt":selected_prompt,
         "projection_lock":projection,
         "terminal_face_gap_px":0,
         "face_normals":{"attacker":"UP (+Y)","target":"DOWN (-Y)"},
         "sequence":[
             "A: verify both plus-sign terminal faces meet at exactly P in the vector proxy",
             "B: edit only the target plus into a sphere centered at C with radius R; preserve the attacker and camera",
-            "C: after B passes pixel review, edit only the attacker into the radial multi-face sphere hammer",
+            f"C: after B passes pixel review, edit only the attacker into {final_weapon}; use the selected edit prompt and keep target P/camera locked",
         ],
         "pixel_truth":{"vector_proxy":"GEOMETRY_VALID","edited_images":"NOT_RUN",
                        "warning":"The zero-gap guarantee applies to vector coordinates, not to pixels produced by an external image editor."},
@@ -179,9 +231,10 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description="Generate cross-to-cross anchor SVGs and target-only bubble-edit instructions.")
     parser.add_argument("--input-layout",required=True)
     parser.add_argument("--outdir",required=True)
+    parser.add_argument("--final-weapon",choices=("CROSS","T","RADIAL"),default="RADIAL")
     args=parser.parse_args(argv)
     try:
-        result=write_packet(Path(args.input_layout),Path(args.outdir))
+        result=write_packet(Path(args.input_layout),Path(args.outdir),args.final_weapon)
     except (OSError,ValueError,json.JSONDecodeError) as exc:
         print("BLOCK: "+str(exc),file=sys.stderr)
         return 2
