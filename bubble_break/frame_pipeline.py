@@ -140,7 +140,7 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
     hx, hy = geo["head_center"]["x"], geo["head_center"]["y"]
     top_y = geo["top_face_y"]
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-contact-p="{FRAME_PROJECTION["P_six_oclock"]["x"]},{FRAME_PROJECTION["P_six_oclock"]["y"]}" data-frame="{frame_id}">',
         '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102b4a"/><stop offset="1" stop-color="#050b18"/></linearGradient>',
         '<radialGradient id="membrane"><stop offset="0" stop-color="#9eeaff" stop-opacity=".08"/><stop offset=".8" stop-color="#5ad7ff" stop-opacity=".10"/><stop offset="1" stop-color="#d5faff" stop-opacity=".28"/></radialGradient>',
         '<linearGradient id="shaft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b0c3d4"/><stop offset=".45" stop-color="#23334c"/><stop offset="1" stop-color="#d4a75e"/></linearGradient>',
