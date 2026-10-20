@@ -67,6 +67,13 @@ class FramePipelineTests(unittest.TestCase):
             self.assertEqual(projection["frames"]["H0"]["gap_px"],50)
             self.assertEqual(projection["frames"]["H2"]["gap_px"],0)
             self.assertEqual(projection["frames"]["H3"]["gap_px"],-15)
+            h0_svg=(d/"H0_pre_impact_geometry.svg").read_text(encoding="utf-8")
+            h2_svg=(d/"H2_first_contact_anchor_geometry.svg").read_text(encoding="utf-8")
+            h3_svg=(d/"H3_post_impact_geometry.svg").read_text(encoding="utf-8")
+            impact_glint='r="9" fill="#ffffff"'
+            self.assertNotIn(impact_glint,h0_svg)
+            self.assertIn(impact_glint,h2_svg)
+            self.assertNotIn(impact_glint,h3_svg)
             self.assertTrue(all(Path(d/name).exists() for name in layout["geometry_files"].values()))
     def test_batch_reads_jsonl(self):
         with tempfile.TemporaryDirectory() as td:

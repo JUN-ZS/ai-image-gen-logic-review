@@ -218,9 +218,10 @@ def _svg_frame(frame_id: str) -> str:
     parts.append(_line(hipx+18,hipy+6,headx+100,966,"#101722",30))
     parts.append(_line(headx-53,977,headx-11,977,"#b6c8d8",17))
     parts.append(_line(headx+76,966,headx+123,966,"#b6c8d8",17))
-    # Contact pole marker is rendered as a tiny physical glow, not a label or diagram.
-    parts.append(f'<circle cx="{px}" cy="{py}" r="9" fill="#ffffff" fill-opacity=".95"/>')
-    parts.append(f'<circle cx="{px}" cy="{py}" r="22" fill="none" stroke="#9deaff" stroke-width="3" stroke-opacity=".7"/>')
+    # Only the contact frame gets an impact glint; H0 must remain visually pre-contact.
+    if frame_id == "H2":
+        parts.append(f'<circle cx="{px}" cy="{py}" r="9" fill="#ffffff" fill-opacity=".95"/>')
+        parts.append(f'<circle cx="{px}" cy="{py}" r="22" fill="none" stroke="#9deaff" stroke-width="3" stroke-opacity=".7"/>')
     parts.append("</svg>")
     return "\n".join(parts)
 
