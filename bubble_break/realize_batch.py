@@ -45,6 +45,7 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
         layout_path=Path(frame_summary["directory"])/"layout.json"
         proxy_dir=story_dir/"proxy_edit"
         proxy_summary=write_proxy_packet(layout_path,proxy_dir,final_weapon=final_weapon)
+        edit_plan=json.loads((proxy_dir/"edit_plan.json").read_text(encoding="utf-8"))
         packages.append({
             "story_id":story_id,
             "causal_kernel_id":record.get("causal_kernel_id") or record.get("root_sin") or "UNASSIGNED",
@@ -53,6 +54,9 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             "frame_directory":frame_summary["directory"],
             "proxy_directory":proxy_summary["outdir"],
             "proxy_status":proxy_summary["status"],
+            "stage_gate_status":edit_plan.get("stage_gate_status","NO_T_TO_T_GATE"),
+            "required_first_stage_artifact":edit_plan.get("required_artifacts",{}).get("stage_a_image"),
+            "selected_edit_prompt":edit_plan.get("selected_edit_prompt"),
             "terminal_face_gap_px":proxy_summary["terminal_face_gap_px"],
             "image_realization":"NOT_RUN",
             "edited_pixel_audit":"NOT_RUN",
@@ -65,7 +69,12 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
         "selected_stories":len(packages),
         "distinct_causal_kernels":len({p["causal_kernel_id"] for p in packages}),
         "final_weapon":final_weapon,
-        "method":"bulk JSONL -> per-story frame packet -> cross proxy -> target-only sphere edit plan -> final weapon edit plan",
+        "method":("bulk JSONL -> per-story T-to-T anchor -> mandatory image approval gate -> target T-to-bubble edit" if final_weapon=="T"
+                  else "bulk JSONL -> per-story frame packet -> cross proxy -> target-only sphere edit plan -> final weapon edit plan"),
+        "stage_gate_status":("BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED" if final_weapon=="T" else "NO_T_TO_T_GATE"),
+        "required_first_stage":("A_T_TO_T_ANCHOR" if final_weapon=="T" else None),
+        "image_realization":"NOT_RUN",
+        "pixel_audit_status":"NOT_RUN",
         "image_realization":"NOT_RUN",
         "pixel_audit_status":"NOT_RUN",
         "packages":packages,
