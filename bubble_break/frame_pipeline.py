@@ -44,10 +44,12 @@ WEAPON_TEXT = {
         "These are broad flat faces, not spikes, studs, blades, a halo, chain, or separate hammers. At impact, only the single upper-facing flat polygon contacts the shell."
     ),
     "T": (
-        "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE long rigid handle and ONE T-shaped hammer head: a broad, thick horizontal crossbar with a wide, flat upper striking face, "
-        "plus a single central stem joined to the underside of that crossbar. The T silhouette must be unmistakable. This is not a plus-sign/cross head, "
-        "not a radial sphere, not a mace and not a spiked ball. At impact, only the broad top plane of the horizontal crossbar contacts the exact bottom point P; "
-        "the center of that top plane is pinned to P and the handle exits diagonally down-left."
+        "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE rigid hammer made from one straight horizontal rectangular crossbar and ONE long handle joined "
+        "directly at the exact midpoint of the crossbar's underside. The handle itself is the only stem of the capital-T silhouette; "
+        "there is no separate short post between head and handle. Crossbar width is about 3.8 times its thickness, with equal left/right ends; "
+        "the handle joint is centered. The T silhouette must remain unmistakable. This is not a plus-sign/cross head, radial sphere, mace or spiked ball. "
+        "At impact, only the broad upper plane of the horizontal crossbar contacts the exact bottom point P; its center is pinned to P. "
+        "The handle can project diagonally down-left through 3D perspective, but its attachment must remain at the exact crossbar midpoint."
     ),
     "CROSS": (
         "WEAPON_TOPOLOGY_ID=WEAPON_PROXY_CROSS. ONE long rigid handle and ONE thick plus-sign/cross-shaped hammer head. "
