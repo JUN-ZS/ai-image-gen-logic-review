@@ -58,20 +58,12 @@ def build_svg(kind, projection):
     face_y = int(h2["top_face_y"])
     handle = (690, 920)
     if kind == "mask":
+        # White = target geometry to replace; black = protect the attacker.
         parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
                  f'<rect width="{width}" height="{height}" fill="#000000"/>',
                  rect(cx-22, cy-r, 44, 2*r, "#ffffff", "#ffffff", 0),
                  rect(cx-r, cy-22, 2*r, 44, "#ffffff", "#ffffff", 0),
                  f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#ffffff" stroke-width="18"/>']
-    elif kind == "attacker_mask":
-        # White = editable attacker; black = protected target/camera/background.
-        parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-                 f'<rect width="{width}" height="{height}" fill="#000000"/>',
-                 line(handle[0], handle[1], hx, hy, "#ffffff", 42),
-                 rect(hx-30, face_y, 60, hy+95-face_y, "#ffffff", "#ffffff", 3),
-                 rect(hx-100, hy-30, 200, 60, "#ffffff", "#ffffff", 3),
-                 rect(hx-30, face_y-2, 60, 5, "#ffffff", "#ffffff", 2)]
-        # Black shapes protect the attacking object, especially its contact face.
         import re
         protected = attacker_plus(hx, face_y, hy, handle)
         protected = re.sub(r'fill="[^"]+"', 'fill="#000000"', protected)
@@ -79,6 +71,16 @@ def build_svg(kind, projection):
         protected = re.sub(r'stroke-width="[^"]+"', 'stroke-width="34"', protected)
         parts.append(protected)
         parts.append("</svg>")
+        return "\n".join(parts)
+    if kind == "attacker_mask":
+        # White = the attacker to edit; black = preserve the target bubble and scene.
+        parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+                 f'<rect width="{width}" height="{height}" fill="#000000"/>',
+                 line(handle[0], handle[1], hx, hy, "#ffffff", 42),
+                 rect(hx-30, face_y, 60, hy+95-face_y, "#ffffff", "#ffffff", 3),
+                 rect(hx-100, hy-30, 200, 60, "#ffffff", "#ffffff", 3),
+                 rect(hx-30, face_y-2, 60, 5, "#ffffff", "#ffffff", 2),
+                 "</svg>"]
         return "\n".join(parts)
     parts = svg_base(width, height)
     for x in range(80, width, 160):
