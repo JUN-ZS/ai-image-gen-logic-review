@@ -75,8 +75,6 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
         "required_first_stage":("A_T_TO_T_ANCHOR" if final_weapon=="T" else None),
         "image_realization":"NOT_RUN",
         "pixel_audit_status":"NOT_RUN",
-        "image_realization":"NOT_RUN",
-        "pixel_audit_status":"NOT_RUN",
         "packages":packages,
     }
     (outdir/"realize_batch_manifest.json").write_text(json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
