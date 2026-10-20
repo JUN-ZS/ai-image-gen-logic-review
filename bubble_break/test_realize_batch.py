@@ -34,7 +34,7 @@ class RealizeBatchTests(unittest.TestCase):
             self.assertEqual(result["pixel_audit_status"],"NOT_RUN")
             for p in result["packages"]:
                 d=Path(p["proxy_directory"])
-                self.assertTrue((d/"04_final_weapon_preview.svg").exists())
+                self.assertTrue((d/"04_T_final_weapon_preview.svg").exists())
                 plan=json.loads((d/"edit_plan.json").read_text(encoding="utf-8"))
                 self.assertEqual(plan["final_weapon"],"T")
                 self.assertEqual(plan["terminal_face_gap_px"],0)
