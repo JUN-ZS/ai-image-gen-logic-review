@@ -84,5 +84,21 @@ class BubbleBreakEngineTests(unittest.TestCase):
             self.assertNotIn("四頭十字戰錘", prompt)
 
 
+    def test_weapon_topology_changes_realization_prompt_not_story_identity(self):
+        index = next(iter_diverse_indices(1, 20261020))
+        radial = build_record(index, "heroine", "RADIAL")
+        t_shape = build_record(index, "heroine", "T")
+        cross = build_record(index, "heroine", "CROSS")
+        self.assertEqual(radial["story_id"], t_shape["story_id"])
+        self.assertEqual(radial["causal_signature"], t_shape["causal_signature"])
+        self.assertEqual(t_shape["weapon_topology"], "WEAPON_T")
+        self.assertIn("T 字輪廓", t_shape["contact_prompt"])
+        self.assertIn("WEAPON_T", t_shape["contact_prompt"])
+        self.assertNotIn("多向圓頭變成普通長方形單頭錘", t_shape["negative_prompt"])
+        self.assertEqual(cross["weapon_topology"], "WEAPON_PROXY_CROSS")
+        self.assertIn("加號形十字代理頭", cross["contact_prompt"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
