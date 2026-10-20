@@ -70,6 +70,14 @@ jobs:
               assert (folder / "H0_pre_impact.txt").exists()
               assert (folder / "H2_first_contact_anchor.txt").exists()
               assert (folder / "H3_post_impact.txt").exists()
+              assert (folder / "H0_pre_impact_geometry.svg").exists()
+              assert (folder / "H2_first_contact_anchor_geometry.svg").exists()
+              assert (folder / "H3_post_impact_geometry.svg").exists()
+              layout = json.loads((folder / "layout.json").read_text(encoding="utf-8"))
+              assert layout["projection_lock"]["P_six_oclock"] == {"x": 1090, "y": 610}
+              assert layout["projection_lock"]["frames"]["H0"]["gap_px"] == 50
+              assert layout["projection_lock"]["frames"]["H2"]["gap_px"] == 0
+              assert layout["projection_lock"]["frames"]["H3"]["gap_px"] == -15
               manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
               assert manifest["canonical_weapon"] == "WEAPON_C_RADIAL_SPHERE"
               assert manifest["pixel_audit_status"] == "NOT_RUN"

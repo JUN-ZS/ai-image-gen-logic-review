@@ -78,6 +78,155 @@ def axis_text(record: Dict[str, Any], key: str, fallback: str) -> str:
 def safe_name(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", value).strip("._")[:100] or "story"
 
+FRAME_PROJECTION = {
+    "canvas": {"width": 1920, "height": 1080},
+    "camera_id": "LOCKED_LOW_THREE_QUARTER_35MM",
+    "sphere_center": {"x": 1090, "y": 330},
+    "sphere_radius": 280,
+    "P_six_oclock": {"x": 1090, "y": 610},
+    "heroine_anchor": {"x": 610, "y": 790},
+    "hammer_head_radius": 80,
+    "frames": {
+        "H0": {"head_center": {"x": 1090, "y": 740}, "top_face_y": 660,
+               "gap_px": 50, "state": "intact_preimpact"},
+        "H2": {"head_center": {"x": 1090, "y": 690}, "top_face_y": 610,
+               "gap_px": 0, "state": "first_contact"},
+        "H3": {"head_center": {"x": 1090, "y": 675}, "top_face_y": 595,
+               "gap_px": -15, "state": "postimpact_followthrough"},
+    },
+}
+
+def _polygon(points: List[tuple], fill: str, stroke: str = "#182b42", width: int = 4) -> str:
+    pts = " ".join(f"{x},{y}" for x, y in points)
+    return f'<polygon points="{pts}" fill="{fill}" stroke="{stroke}" stroke-width="{width}" stroke-linejoin="round"/>'
+
+def _line(x1: int, y1: int, x2: int, y2: int, color: str, width: int = 8) -> str:
+    return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="{width}" stroke-linecap="round"/>'
+
+def _svg_frame(frame_id: str) -> str:
+    """Draw a deterministic, label-free 2D camera blockout. It is not a final artwork."""
+    width, height = 1920, 1080
+    cx, cy, radius = 1090, 330, 280
+    px, py = 1090, 610
+    geo = FRAME_PROJECTION["frames"][frame_id]
+    hx, hy = geo["head_center"]["x"], geo["head_center"]["y"]
+    top_y = geo["top_face_y"]
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102b4a"/><stop offset="1" stop-color="#050b18"/></linearGradient>',
+        '<radialGradient id="membrane"><stop offset="0" stop-color="#9eeaff" stop-opacity=".08"/><stop offset=".8" stop-color="#5ad7ff" stop-opacity=".10"/><stop offset="1" stop-color="#d5faff" stop-opacity=".28"/></radialGradient>',
+        '<linearGradient id="shaft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b0c3d4"/><stop offset=".45" stop-color="#23334c"/><stop offset="1" stop-color="#d4a75e"/></linearGradient>',
+        f'<clipPath id="bubbleClip"><circle cx="{cx}" cy="{cy}" r="{radius}"/></clipPath></defs>',
+        '<rect width="1920" height="1080" fill="url(#sky)"/>',
+        '<path d="M0 860 L170 790 L260 832 L390 760 L520 845 L700 795 L860 860 L1080 800 L1260 842 L1440 760 L1630 825 L1780 780 L1920 830 L1920 1080 L0 1080 Z" fill="#0c1727" stroke="#203a55" stroke-width="4"/>',
+        '<path d="M0 1000 L1920 1000" stroke="#25425c" stroke-width="4"/>',
+    ]
+    # Stable distant skyline outside the bubble.
+    for x, y, bw, bh in [(40,760,80,190),(150,720,95,230),(275,795,70,155),(1360,770,90,180),(1480,710,110,240),(1635,780,70,170),(1745,735,110,215)]:
+        parts.append(f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" fill="#17283b" stroke="#39516a" stroke-width="3"/>')
+        for wy in range(y+20,y+bh-15,35):
+            parts.append(f'<path d="M{x+14} {wy} h{bw-28}" stroke="#5e8ba4" stroke-opacity=".55" stroke-width="3"/>')
+    # City remains in the same spherical volume for all three states.
+    parts += [
+        '<g clip-path="url(#bubbleClip)">',
+        f'<circle cx="{cx}" cy="{cy}" r="{radius}" fill="url(#membrane)"/>',
+        '<path d="M790 520 L850 450 L900 500 L970 390 L1030 475 L1105 410 L1160 470 L1220 390 L1300 500 L1380 455 L1400 650 L780 650 Z" fill="#294761" fill-opacity=".82" stroke="#83d9ed" stroke-opacity=".45" stroke-width="3"/>',
+        '<path d="M800 560 L880 530 L920 570 L980 515 L1050 560 L1120 500 L1180 555 L1260 510 L1360 570 L1390 650 L790 650 Z" fill="#0d2b44" fill-opacity=".80"/>',
+    ]
+    for x,y,bw,bh in [(845,470,46,165),(915,505,58,130),(1000,435,50,205),(1060,486,55,155),(1142,452,48,190),(1205,490,60,150),(1290,430,48,210)]:
+        parts.append(f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" fill="#365b75" stroke="#a1d9e6" stroke-opacity=".7" stroke-width="3"/>')
+        for wy in range(y+25,y+bh-12,31):
+            parts.append(f'<rect x="{x+12}" y="{wy}" width="{bw-24}" height="8" fill="#ffdca0" fill-opacity=".75"/>')
+    # Residents: simple intact human silhouettes, fixed well away from P.
+    for x,y in [(930,555),(985,570),(1168,560),(1224,548),(1032,595)]:
+        parts.append(f'<circle cx="{x}" cy="{y}" r="7" fill="#ffe3a6"/>')
+        parts.append(_line(x,y+8,x,y+25,"#ffe3a6",5))
+        parts.append(_line(x,y+14,x-8,y+20,"#ffe3a6",3))
+        parts.append(_line(x,y+14,x+8,y+20,"#ffe3a6",3))
+    parts.append('</g>')
+    if frame_id in ("H0","H2"):
+        parts.append(f'<circle cx="{cx}" cy="{cy}" r="{radius}" fill="none" stroke="#b5f3ff" stroke-width="9"/>')
+        parts.append(f'<circle cx="{cx}" cy="{cy}" r="{radius-11}" fill="none" stroke="#7bd7ff" stroke-opacity=".55" stroke-width="2"/>')
+    else:
+        # Only broken fragments remain; a faint broken arc indicates the previous envelope.
+        parts.append(f'<path d="M{cx-radius+30} {cy-70} A{radius} {radius} 0 0 1 {cx+radius-15} {cy-35}" fill="none" stroke="#91e9ff" stroke-opacity=".35" stroke-width="8" stroke-dasharray="36 28"/>')
+        parts.append(f'<path d="M{cx-radius+50} {cy+50} A{radius} {radius} 0 0 0 {cx-50} {py-8}" fill="none" stroke="#91e9ff" stroke-opacity=".30" stroke-width="8" stroke-dasharray="22 25"/>')
+    if frame_id == "H2":
+        # Every crack begins at the exact P coordinate.
+        parts += [
+            f'<path d="M{px} {py} Q1050 565 1025 520 Q1000 482 970 458" fill="none" stroke="#ffffff" stroke-width="6"/>',
+            f'<path d="M{px} {py} Q1125 566 1155 525 Q1180 490 1215 467" fill="none" stroke="#ffffff" stroke-width="6"/>',
+            f'<path d="M{px} {py} Q1085 560 1072 515 Q1065 475 1068 445" fill="none" stroke="#b7f2ff" stroke-width="4"/>',
+            f'<path d="M{px} {py} Q1140 575 1190 560 Q1235 550 1260 520" fill="none" stroke="#b7f2ff" stroke-width="4"/>',
+        ]
+    if frame_id == "H3":
+        # Fragments travel away from P; no fragment intersects the residents' region.
+        fragments = [
+            [(1042,590),(1060,555),(1080,577),(1070,610)],
+            [(1102,578),(1120,545),(1140,565),(1128,600)],
+            [(1010,572),(1025,535),(1043,555),(1034,586)],
+            [(1150,570),(1172,530),(1193,550),(1177,582)],
+            [(990,545),(1002,515),(1022,530),(1018,557)],
+            [(1196,535),(1212,500),(1236,518),(1220,548)],
+            [(1058,518),(1070,485),(1087,500),(1080,535)],
+            [(1134,500),(1155,470),(1172,488),(1156,518)],
+            [(970,500),(985,470),(1003,486),(990,510)],
+            [(1230,488),(1250,455),(1268,475),(1250,500)],
+        ]
+        colors=["#8de9ff","#f7c9ff","#ffd58a","#a9caff"]
+        for i,poly in enumerate(fragments):
+            parts.append(_polygon(poly,colors[i%len(colors)],"#e4fbff",3))
+        parts.append(f'<path d="M{px} {py} L1065 573 L1040 545" stroke="#ffffff" stroke-opacity=".8" stroke-width="3" fill="none"/>')
+        parts.append(f'<path d="M{px} {py} L1122 570 L1150 540" stroke="#ffffff" stroke-opacity=".8" stroke-width="3" fill="none"/>')
+    # Hammer shaft: one diagonal, rigid handle, never a spear through the sphere centre.
+    handle_end=(690,920)
+    head_attach=(hx-42,hy+40)
+    parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"#050a11",32))
+    parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"url(#shaft)",21))
+    for gx,gy in [(760,890),(820,866)]:
+        parts.append(f'<ellipse cx="{gx}" cy="{gy}" rx="18" ry="13" transform="rotate(-20 {gx} {gy})" fill="#c89c69" stroke="#ffe0a6" stroke-width="4"/>')
+    # A single faceted sphere-shaped hammer head with a visible upward-facing flat face.
+    head_outline=[(hx,hy-80),(hx+48,hy-68),(hx+77,hy-25),(hx+70,hy+34),(hx+32,hy+75),(hx-32,hy+75),(hx-70,hy+34),(hx-77,hy-25),(hx-48,hy-68)]
+    parts.append(_polygon(head_outline,"#15283b","#d7b478",7))
+    center=(hx,hy+2)
+    ring=[(hx,hy-80),(hx+48,hy-68),(hx+77,hy-25),(hx+70,hy+34),(hx+32,hy+75),(hx-32,hy+75),(hx-70,hy+34),(hx-77,hy-25),(hx-48,hy-68)]
+    for i in range(len(ring)):
+        a,b=ring[i],ring[(i+1)%len(ring)]
+        fill=["#294d6b","#101d30","#34536a","#172638"][i%4]
+        parts.append(_polygon([a,b,center],fill,"#7ba3bd",2))
+    top_face=[(hx-36,top_y),(hx+36,top_y),(hx+52,top_y+20),(hx+27,top_y+38),(hx-27,top_y+38),(hx-52,top_y+20)]
+    parts.append(_polygon(top_face,"#5e8eaf","#fff0bf",5))
+    parts.append(_polygon([(hx-21,top_y+5),(hx+21,top_y+5),(hx+31,top_y+19),(hx,top_y+29),(hx-31,top_y+19)],"#2c5b83","#97e7ff",2))
+    # Simple heroine blockout; pose changes slightly with the event, but camera/landmarks stay fixed.
+    if frame_id=="H0":
+        headx,heady,shoulderx,shouldery,hipx,hipy=560,704,616,757,646,830
+    elif frame_id=="H2":
+        headx,heady,shoulderx,shouldery,hipx,hipy=575,700,638,755,665,826
+    else:
+        headx,heady,shoulderx,shouldery,hipx,hipy=590,698,658,752,684,818
+    parts.append(f'<path d="M{headx-27} {heady-5} Q{headx-44} {heady-48} {headx-10} {heady-54} Q{headx+31} {heady-58} {headx+30} {heady-7} L{headx+17} {heady+24} L{headx-27} {heady+15} Z" fill="#111a29" stroke="#6f97ae" stroke-width="4"/>')
+    parts.append(f'<ellipse cx="{headx}" cy="{heady}" rx="25" ry="31" fill="#e0b48f" stroke="#ffd8b0" stroke-width="3"/>')
+    parts.append(f'<path d="M{headx-24} {heady-12} Q{headx-8} {heady-52} {headx+23} {heady-25} L{headx+30} {heady+30} L{headx+13} {heady+48} L{headx+7} {heady+10} Z" fill="#171a26"/>')
+    torso=[(shoulderx-24,shouldery-8),(shoulderx+25,shouldery-12),(hipx+25,hipy+10),(hipx-23,hipy+12)]
+    parts.append(_polygon(torso,"#151d2b","#8393a3",5))
+    parts.append(_line(shoulderx-13,shouldery,hipx-10,hipy,"#c8a066",4))
+    # arms extend to two grip points on the same handle
+    parts.append(_line(shoulderx+12,shouldery+5,760,890,"#e0b48f",18))
+    parts.append(_line(shoulderx+18,shouldery+12,820,866,"#e0b48f",18))
+    # legs and boots in an offset, braced stance
+    parts.append(_line(hipx-12,hipy+6,headx-35,976,"#101722",30))
+    parts.append(_line(hipx+18,hipy+6,headx+100,966,"#101722",30))
+    parts.append(_line(headx-53,977,headx-11,977,"#b6c8d8",17))
+    parts.append(_line(headx+76,966,headx+123,966,"#b6c8d8",17))
+    # Contact pole marker is rendered as a tiny physical glow, not a label or diagram.
+    parts.append(f'<circle cx="{px}" cy="{py}" r="9" fill="#ffffff" fill-opacity=".95"/>')
+    parts.append(f'<circle cx="{px}" cy="{py}" r="22" fill="none" stroke="#9deaff" stroke-width="3" stroke-opacity=".7"/>')
+    parts.append("</svg>")
+    return "\n".join(parts)
+
+def projection_lock() -> Dict[str, Any]:
+    return json.loads(json.dumps(FRAME_PROJECTION))
+
 def compile_frame_set(record: Dict[str, Any]) -> Dict[str, Any]:
     story_id = str(record.get("story_id") or "STORY-UNKNOWN")
     scene = axis_text(record, "environment", "a monumental surreal city plaza")
@@ -124,6 +273,7 @@ def compile_frame_set(record: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "pipeline_version":VERSION,"story_id":story_id,"shot_lock_id":shot_id,
         "canonical_weapon":"WEAPON_C_RADIAL_SPHERE","frame_order":list(FRAME_IDS),
+        "projection_lock":projection_lock(),
         "workflow":{"endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
           "continuity_warning":"Shared prompts do not guarantee identical pixels; independently generated endpoints can drift. Review actual images before interpolation."},
@@ -137,7 +287,17 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
     names={}
     for fid in FRAME_IDS:
         name=FRAME_NAMES[fid]+".txt"; (story_dir/name).write_text(packet["prompts"][fid]+"\n",encoding="utf-8"); names[fid]=name
-    manifest=dict(packet); manifest["prompt_files"]=names
+    geometry_names={}
+    for fid in FRAME_IDS:
+        svg_name=FRAME_NAMES[fid]+"_geometry.svg"
+        (story_dir/svg_name).write_text(_svg_frame(fid)+"\n",encoding="utf-8")
+        geometry_names[fid]=svg_name
+    layout={"shot_lock_id":packet["shot_lock_id"],"projection_lock":packet["projection_lock"],
+            "frame_order":list(FRAME_IDS),"geometry_files":geometry_names,
+            "note":"Deterministic 2D geometry blockout/reference only; not a photorealistic rendered frame."}
+    (story_dir/"layout.json").write_text(json.dumps(layout,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    manifest=dict(packet); manifest["prompt_files"]=names; manifest["geometry_files"]=geometry_names
+    manifest["layout_file"]="layout.json"
     (story_dir/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     lines=[f"# Pixel audit — {packet['story_id']}","",f"Shot lock: {packet['shot_lock_id']}",
            f"Prompt contract: {packet['prompt_contract_status']}","Image realization: NOT_RUN","Pixel audit: NOT_RUN","",

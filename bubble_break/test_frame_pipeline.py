@@ -58,6 +58,16 @@ class FramePipelineTests(unittest.TestCase):
             self.assertTrue((d/"H3_post_impact.txt").exists())
             self.assertTrue((d/"manifest.json").exists())
             self.assertTrue((d/"pixel_audit.md").exists())
+            self.assertTrue((d/"H0_pre_impact_geometry.svg").exists())
+            self.assertTrue((d/"H2_first_contact_anchor_geometry.svg").exists())
+            self.assertTrue((d/"H3_post_impact_geometry.svg").exists())
+            layout=json.loads((d/"layout.json").read_text(encoding="utf-8"))
+            projection=layout["projection_lock"]
+            self.assertEqual(projection["P_six_oclock"],{"x":1090,"y":610})
+            self.assertEqual(projection["frames"]["H0"]["gap_px"],50)
+            self.assertEqual(projection["frames"]["H2"]["gap_px"],0)
+            self.assertEqual(projection["frames"]["H3"]["gap_px"],-15)
+            self.assertTrue(all(Path(d/name).exists() for name in layout["geometry_files"].values()))
     def test_batch_reads_jsonl(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td); source=root/"stories.jsonl"
