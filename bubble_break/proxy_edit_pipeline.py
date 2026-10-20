@@ -256,22 +256,40 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         }
         (outdir/files["stage_gate"]).write_text(json.dumps(stage_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     c, point, radius = projection["sphere_center"], projection["P_six_oclock"], projection["sphere_radius"]
-    target_prompt = (
-        "EDIT ONLY THE TARGET PLUS-SIGN in the provided cross-to-cross proxy. "
-        f"Pin sphere center C=({c['x']},{c['y']}) and radius R={radius} px; "
-        f"pin the sphere's six-o'clock bottom P=({point['x']},{point['y']}). "
-        "Replace the large target plus with a transparent iridescent bubble centered exactly at C. "
-        "The target cross's lower terminal face becomes the bubble's six-o'clock point P. "
-        "Preserve the attacking plus-sign, its upward-facing flat terminal face, handle, background, camera, horizon and all coordinates. "
-        "Do not repaint or move the attacking object. No writing, labels, guides, added cracks or effects."
-    )
-    weapon_prompt = (
-        "EDIT ONLY THE ATTACKING PLUS-SIGN after the target bubble edit has passed review. "
-        "Replace the attacking plus head with ONE compact near-spherical hammer head tiled with broad, flat striking faces "
-        "pointing radially outward in many directions. Retain ONE rigid long handle. Preserve the upward-facing flat terminal "
-        f"striking face at P=({point['x']},{point['y']}), head center, handle joint, handle direction, bubble, contact patch, camera and background. "
-        "Do not edit the bubble. Do not change the weapon into spikes, a mace, chain, halo or multiple hammers."
-    )
+    if final_weapon == "T":
+        target_prompt = (
+            "STAGE B — ONLY AFTER STAGE A IS MANUALLY APPROVED. Use the actual approved A_T_to_T_anchor.png as the input image, "
+            "not the vector proxy alone. Edit ONLY the UPPER INVERTED TARGET T (the hammer above the shared contact plane). "
+            f"Replace that upper target T with ONE intact transparent iridescent bubble whose center is C=({c['x']},{c['y']}) "
+            f"and radius R={radius}px, so its exact six-o'clock bottom pole is P=({point['x']},{point['y']}). "
+            "The bubble's bottom pole must stay on the same contact point as the lower attacking T's broad upper crossbar face. "
+            "Preserve the LOWER ATTACKING T pixel-for-pixel: straight horizontal crossbar, equal left/right ends, one long handle attached "
+            "at the exact underside midpoint, no extra post. Preserve the camera, background and perspective. The bubble is whole: no cracks, "
+            "no shards, no explosion. Do not add a heroine or cinematic scene yet. If the upper T cannot be replaced without moving the lower "
+            "T's contact face or shifting P, reject the edit and return to Stage A."
+        )
+        weapon_prompt = (
+            "STAGE B LOCK: do not edit the lower attacking T. It is already the approved final T weapon. "
+            "Keep the crossbar straight and horizontal, the single long handle joined at the exact underside midpoint, and preserve P. "
+            "No extra post, no sphere head, no plus/X/L/Y shape. No weapon edit is allowed in this stage."
+        )
+    else:
+        target_prompt = (
+            "EDIT ONLY THE TARGET PLUS-SIGN in the provided cross-to-cross proxy. "
+            f"Pin sphere center C=({c['x']},{c['y']}) and radius R={radius} px; "
+            f"pin the sphere's six-o'clock bottom P=({point['x']},{point['y']}). "
+            "Replace the large target plus with a transparent iridescent bubble centered exactly at C. "
+            "The target cross's lower terminal face becomes the bubble's six-o'clock point P. "
+            "Preserve the attacking plus-sign, its upward-facing flat terminal face, handle, background, camera, horizon and all coordinates. "
+            "Do not repaint or move the attacking object. No writing, labels, guides, added cracks or effects."
+        )
+        weapon_prompt = (
+            "EDIT ONLY THE ATTACKING PLUS-SIGN after the target bubble edit has passed review. "
+            "Replace the attacking plus head with ONE compact near-spherical hammer head tiled with broad, flat striking faces "
+            "pointing radially outward in many directions. Retain ONE rigid long handle. Preserve the upward-facing flat terminal "
+            f"striking face at P=({point['x']},{point['y']}), head center, handle joint, handle direction, bubble, contact patch, camera and background. "
+            "Do not edit the bubble. Do not change the weapon into spikes, a mace, chain, halo or multiple hammers."
+        )
     (outdir/files["target_edit_prompt"]).write_text(target_prompt+"\n",encoding="utf-8")
     (outdir/files["weapon_edit_prompt"]).write_text(weapon_prompt+"\n",encoding="utf-8")
     weapon_prompt_t = (
@@ -293,35 +311,65 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     )
     (outdir/"edit_attacker_to_T.txt").write_text(weapon_prompt_t+"\n",encoding="utf-8")
     (outdir/"edit_attacker_keep_cross.txt").write_text(weapon_prompt_cross+"\n",encoding="utf-8")
-    selected_prompt={"RADIAL":files["weapon_edit_prompt"],"T":"edit_attacker_to_T.txt","CROSS":"edit_attacker_keep_cross.txt"}[final_weapon]
+    (outdir/"edit_attacker_keep_T.txt").write_text(weapon_prompt+"\\n",encoding="utf-8")
+    selected_prompt=files["target_edit_prompt"] if final_weapon=="T" else {"RADIAL":files["weapon_edit_prompt"],"CROSS":"edit_attacker_keep_cross.txt"}[final_weapon]
     shape_contract = {
         "RADIAL":"one long handle + one near-spherical head tiled with outward flat faces",
         "T":"one straight horizontal crossbar + one long handle joined exactly at the crossbar underside midpoint; the handle itself forms the single stem of the T; no separate short post",
         "CROSS":"one long handle + one connected plus-sign head with vertical and horizontal arms",
     }[final_weapon]
-    plan = {
-        "method":"CROSS_TO_CROSS_THEN_TARGET_ONLY_SPHERE_EDIT",
-        "status":"GEOMETRY_PROXY_VALID",
-        "final_weapon":final_weapon,
-        "shape_contract":shape_contract,
-        "active_striking_surface":{
-            "RADIAL":"one upward-facing flat polygon on the radial head",
-            "T":"the broad upper plane of the horizontal crossbar",
-            "CROSS":"the upper terminal face of the vertical arm",
-        }[final_weapon],
-        "selected_edit_prompt":selected_prompt,
-        "projection_lock":projection,
-        "terminal_face_gap_px":0,
-        "face_normals":{"attacker":"UP (+Y)","target":"DOWN (-Y)"},
-        "sequence":[
-            "A: verify both plus-sign terminal faces meet at exactly P in the vector proxy",
-            "B: edit only the target plus into a sphere centered at C with radius R; preserve the attacker and camera",
-            f"C: after B passes pixel review, edit only the attacker into {final_weapon}; use the selected edit prompt and keep target P/camera locked",
-        ],
-        "pixel_truth":{"vector_proxy":"GEOMETRY_VALID","edited_images":"NOT_RUN",
-                       "warning":"The zero-gap guarantee applies to vector coordinates, not to pixels produced by an external image editor."},
-        "files":files,
-    }
+    if final_weapon == "T":
+        plan = {
+            "method":"T_TO_T_THEN_TARGET_T_ONLY_SPHERE_EDIT",
+            "status":"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
+            "vector_proxy_status":"GEOMETRY_PROXY_VALID",
+            "stage_gate_status":"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
+            "final_weapon":final_weapon,
+            "shape_contract":shape_contract,
+            "active_striking_surface":"the broad upper plane of the lower T crossbar, facing the lower plane of the upper inverted T crossbar in Stage A; after Stage B it touches the bubble's bottom pole P",
+            "selected_edit_prompt":selected_prompt,
+            "projection_lock":projection,
+            "terminal_face_gap_px":0,
+            "face_normals":{"attacker":"UP (+Y)","target":"DOWN (-Y)"},
+            "required_order":[
+                "A: generate a photorealistic T-to-T anchor using 00_generate_T_to_T_anchor.txt and the geometry references",
+                "A_GATE: manually inspect and approve the actual A_T_to_T_anchor.png; do not infer approval from the prompt or SVG",
+                "B: only after A_GATE passes, edit only the upper inverted target T into one intact bubble; keep lower T and P fixed",
+                "C: create real-scene H0/H2/H3 as separate branches from the approved geometry, and audit actual pixels",
+            ],
+            "required_artifacts":{
+                "stage_a_image":"A_T_to_T_anchor.png",
+                "stage_a_review":"A_T_to_T_review.json",
+                "stage_b_image":"B_target_T_replaced_by_bubble.png",
+            },
+            "stage_gate_file":files["stage_gate"],
+            "pixel_truth":{"vector_proxy":"GEOMETRY_VALID","edited_images":"NOT_RUN",
+                           "warning":"The pipeline cannot certify external generated pixels. Stage A remains BLOCKED until its real image and manual review record exist."},
+            "files":files,
+        }
+    else:
+        plan = {
+            "method":"CROSS_TO_CROSS_THEN_TARGET_ONLY_SPHERE_EDIT",
+            "status":"GEOMETRY_PROXY_VALID",
+            "final_weapon":final_weapon,
+            "shape_contract":shape_contract,
+            "active_striking_surface":{
+                "RADIAL":"one upward-facing flat polygon on the radial head",
+                "CROSS":"the upper terminal face of the vertical arm",
+            }[final_weapon],
+            "selected_edit_prompt":selected_prompt,
+            "projection_lock":projection,
+            "terminal_face_gap_px":0,
+            "face_normals":{"attacker":"UP (+Y)","target":"DOWN (-Y)"},
+            "sequence":[
+                "A: verify both plus-sign terminal faces meet at exactly P in the vector proxy",
+                "B: edit only the target plus into a sphere centered at C with radius R; preserve the attacker and camera",
+                f"C: after B passes pixel review, edit only the attacker into {final_weapon}; use the selected edit prompt and keep target P/camera locked",
+            ],
+            "pixel_truth":{"vector_proxy":"GEOMETRY_VALID","edited_images":"NOT_RUN",
+                           "warning":"The zero-gap guarantee applies to vector coordinates, not to pixels produced by an external image editor."},
+            "files":files,
+        }
     (outdir/"edit_plan.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (outdir/"README.md").write_text(
         "Cross-to-cross geometry proxy. First validate the two flat terminal faces. Then edit only the target plus into a bubble. "
