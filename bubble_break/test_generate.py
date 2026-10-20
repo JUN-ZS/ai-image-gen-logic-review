@@ -75,5 +75,14 @@ class BubbleBreakEngineTests(unittest.TestCase):
         self.assertNotEqual(record["prompts"]["heroine"]["H0"], record["prompts"]["abstract"]["H0"])
 
 
+    def test_prompt_uses_canonical_radial_multi_face_head(self):
+        record = build_record(next(iter_diverse_indices(1, 777)), "heroine")
+        for beat in ("H0", "H1", "H2", "H3"):
+            prompt = record["prompts"]["heroine"][beat]
+            self.assertIn("多向扁平槌面圓頭", prompt)
+            self.assertIn("一條長而剛性的柄", prompt)
+            self.assertNotIn("四頭十字戰錘", prompt)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -52,3 +52,28 @@ jobs:
               "audit": "PROMPT_CONTRACT_PASS", "image_realization": "NOT_RUN"
           }, ensure_ascii=False, indent=2))
           PY
+
+      - name: Compile separate before/contact/after frame prompts
+        run: |
+          python bubble_break/frame_pipeline.py --input /tmp/wushuang_1000.jsonl --outdir /tmp/wushuang_frames --limit 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/wushuang_frames")
+          batch = json.loads((root / "batch_manifest.json").read_text(encoding="utf-8"))
+          assert batch["written_story_packets"] == 3, batch
+          assert batch["image_realization"] == "NOT_RUN", batch
+          assert batch["pixel_audit_status"] == "NOT_RUN", batch
+          for item in batch["packets"]:
+              folder = Path(item["directory"])
+              assert item["prompt_contract_status"] == "PROMPT_CONTRACT_PASS", item
+              assert (folder / "H0_pre_impact.txt").exists()
+              assert (folder / "H2_first_contact_anchor.txt").exists()
+              assert (folder / "H3_post_impact.txt").exists()
+              manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
+              assert manifest["canonical_weapon"] == "WEAPON_C_RADIAL_SPHERE"
+              assert manifest["pixel_audit_status"] == "NOT_RUN"
+          print(json.dumps({"frame_packets": 3, "frames_per_packet": 3,
+                            "prompt_contract": "PASS", "pixel_audit": "NOT_RUN"},
+                           ensure_ascii=False, indent=2))
+          PY

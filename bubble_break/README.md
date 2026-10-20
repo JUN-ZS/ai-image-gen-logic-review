@@ -51,6 +51,31 @@ Formats: json, jsonl, csv, and md. One run is capped at 250,000 concepts. Valid 
 - abstract: removes the foreground heroine while retaining clear resident silhouettes and the hammer/shell geometry, so survival cannot disappear from the story.
 - dual: emits separately addressable heroine and abstract variants. Do not feed the two variants as one combined prompt.
 
+
+## Front/end-frame workflow (visual compiler)
+
+Do not ask the image model to place H0–H3 on one infographic. The frame compiler emits **three independent, standalone prompts** for the same shot: H0 (pre-impact endpoint), H2 (single-contact validation anchor), and H3 (post-impact endpoint). The primary before/after pair is H0 + H3; H2 exists to validate the contact geometry.
+
+Windows CMD:
+
+~~~cmd
+python bubble_break\generate.py --count 1 --seed 20261020 --mode heroine --format jsonl --out out\one_story.jsonl
+python bubble_break\frame_pipeline.py --input out\one_story.jsonl --outdir out\frame_packet --limit 1
+python -m unittest discover -s bubble_break -p "test_*.py"
+~~~
+
+Linux/macOS:
+
+~~~bash
+python3 bubble_break/generate.py --count 1 --seed 20261020 --mode heroine --format jsonl --out out/one_story.jsonl
+python3 bubble_break/frame_pipeline.py --input out/one_story.jsonl --outdir out/frame_packet --limit 1
+python3 -m unittest discover -s bubble_break -p 'test_*.py'
+~~~
+
+Each story directory contains separate H0, H2 and H3 prompt files, a JSON manifest and a pixel-audit checklist. The compiler expresses geometry as visible primitives: silhouette, position, overlap, empty gap, contact patch, striking-face outline, fracture origin and fragment direction. The canonical weapon now follows `WEAPON_C_RADIAL_SPHERE`: one handle and one near-spherical head tiled with broad, flat, radially oriented striking faces, not the previous four-headed cross hammer.
+
+Important boundary: shared prompts do not guarantee identical pixels. `PROMPT_CONTRACT_PASS` is text-only; the packet deliberately keeps `image_realization=NOT_RUN` and `pixel_audit_status=NOT_RUN` until real images are generated and checked side by side. Independent text-to-image endpoints can drift, so no software-only guarantee of perfect continuity is possible.
+
 ## Self-audit boundary
 
 Each record contains an audit status and explicitly separates:
