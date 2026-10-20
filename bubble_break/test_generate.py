@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import collections
+import json
+import tempfile
 import unittest
+from pathlib import Path
 from generate import (
     AXES, AFTERGLOWS, CAMERAS, COMPATIBLE_PAIRS, COMPATIBLE_FRACTURES,
     ENVIRONMENTS, FRACTURES, HAMMER_FINISHES, PALETTES, RAW_COMBINATIONS,
     SCALES, SHELL_FORMS, SIN_PROFILES, TOTAL_COMBINATIONS,
     _decode_index, _encode_index, _is_compatible, _select_by_index,
-    build_record, iter_diverse_indices,
+    build_record, generate, iter_diverse_indices,
 )
 
 
@@ -97,6 +100,20 @@ class BubbleBreakEngineTests(unittest.TestCase):
         self.assertNotIn("多向圓頭變成普通長方形單頭錘", t_shape["negative_prompt"])
         self.assertEqual(cross["weapon_topology"], "WEAPON_PROXY_CROSS")
         self.assertIn("加號形十字代理頭", cross["contact_prompt"])
+
+
+
+    def test_generate_jsonl_persists_selected_weapon_topology(self):
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "t_stories.jsonl"
+            summary = generate(20, 20261020, "heroine", "jsonl", str(output), "T")
+            rows = [json.loads(line) for line in output.read_text(encoding="utf-8").splitlines()]
+            self.assertEqual(summary["weapon_topology"], "WEAPON_T")
+            self.assertEqual(summary["realization_path"], "proxy_edit")
+            self.assertEqual(len(rows), 20)
+            self.assertTrue(all(row["weapon_topology"] == "WEAPON_T" for row in rows))
+            self.assertTrue(all(row["realization_path"] == "proxy_edit" for row in rows))
+            self.assertEqual(len({row["causal_kernel_id"] for row in rows}), 20)
 
 
 
