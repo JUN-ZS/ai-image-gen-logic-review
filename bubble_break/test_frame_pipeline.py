@@ -96,6 +96,6 @@ class FramePipelineTests(unittest.TestCase):
             manifest=json.loads((d/"manifest.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest["weapon_topology"],"T")
             svg=(d/"H2_first_contact_anchor_geometry.svg").read_text(encoding="utf-8")
-            self.assertIn("1090,610",svg)
+            self.assertIn('cx="1090" cy="610"',svg)
 
 if __name__=="__main__": unittest.main()
