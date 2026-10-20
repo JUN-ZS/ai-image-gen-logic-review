@@ -1,0 +1,54 @@
+name: Original Sin Bubble-Break tests
+
+on:
+  push:
+    branches:
+      - feat/original-sin-bubble-break-engine
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prompt-engine-contract:
+    runs-on: [self-hosted, linux, x64]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Run unit tests
+        run: python -m unittest discover -s bubble_break -p "test_*.py"
+      - name: Generate and validate 1,000 dual-mode records
+        shell: bash
+        run: |
+          python bubble_break/generate.py --count 1000 --seed 20261020 --mode dual --format jsonl --out /tmp/wushuang_1000.jsonl
+          python - <<'PY'
+          import collections, json
+          counts = collections.Counter()
+          causal = set()
+          story_ids = set()
+          total = 0
+          with open("/tmp/wushuang_1000.jsonl", encoding="utf-8") as handle:
+              for line in handle:
+                  row = json.loads(line)
+                  total += 1
+                  story_ids.add(row["story_id"])
+                  counts[row["root_sin"]] += 1
+                  causal.add(row["causal_signature"])
+                  assert row["audit"]["status"] == "PROMPT_CONTRACT_PASS", row["story_id"]
+                  assert row["audit"]["image_realization"] == "NOT_RUN", row["story_id"]
+                  assert set(row["prompts"]) == {"heroine", "abstract"}, row["story_id"]
+          assert total == 1000, total
+          assert len(story_ids) == 1000, len(story_ids)
+          assert len(counts) == 20, sorted(counts)
+          assert max(counts.values()) - min(counts.values()) <= 1, counts
+          assert len(causal) == 20, len(causal)
+          print(json.dumps({
+              "rows": total, "unique_story_ids": len(story_ids),
+              "root_cause_kernels": len(counts), "causal_signatures": len(causal),
+              "per_cause_min": min(counts.values()), "per_cause_max": max(counts.values()),
+              "audit": "PROMPT_CONTRACT_PASS", "image_realization": "NOT_RUN"
+          }, ensure_ascii=False, indent=2))
+          PY

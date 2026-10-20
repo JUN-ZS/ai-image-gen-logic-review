@@ -222,6 +222,24 @@ for axis_index, (_, choices) in enumerate(AXES):
     if axis_index not in (1, 5):
         _nonpaired_axes *= len(choices)
 TOTAL_COMBINATIONS = _nonpaired_axes * sum(len(v) for v in COMPATIBLE_FRACTURES.values())
+COMPATIBLE_PAIRS = tuple(
+    (shell_index, fracture_index)
+    for shell_index, (shell_id, _) in enumerate(SHELL_FORMS)
+    for fracture_index, (fracture_id, _) in enumerate(FRACTURES)
+    if fracture_id in COMPATIBLE_FRACTURES[shell_id]
+)
+
+
+def _encode_index(digits: Sequence[int]) -> int:
+    """Encode axis coordinates into the raw Cartesian mixed-radix index."""
+    if len(digits) != len(AXES):
+        raise ValueError("one coordinate is required for every generation axis")
+    index = 0
+    for digit, (_, choices) in zip(digits, AXES):
+        if digit < 0 or digit >= len(choices):
+            raise ValueError("axis coordinate out of range")
+        index = index * len(choices) + digit
+    return index
 
 
 def _decode_index(index: int) -> Tuple[int, ...]:
@@ -252,29 +270,55 @@ def _is_compatible(digits: Sequence[int]) -> bool:
 
 
 def iter_diverse_indices(count: int, seed: int, min_distance: int = 3) -> Iterable[int]:
-    """Deterministic sampling without duplicate combinations, with a local diversity check."""
+    """Sample valid tuples without duplicates, balanced across all root-cause profiles.
+
+    TOTAL_COMBINATIONS is the compatibility-filtered space, while _decode_index uses
+    RAW_COMBINATIONS. Using TOTAL_COMBINATIONS as a RAW index bound truncates the
+    high-order SIN axis. Sample valid coordinates directly, then encode in RAW space.
+    """
     if count < 1:
         raise ValueError("count must be >= 1")
     if count > TOTAL_COMBINATIONS:
-        raise ValueError(f"count exceeds combination space ({TOTAL_COMBINATIONS})")
+        raise ValueError(f"count exceeds compatible combination space ({TOTAL_COMBINATIONS})")
+
     rng = random.Random(seed)
-    seen = set()
+    used = set()
     accepted: List[Tuple[int, ...]] = []
-    distance = min_distance if count < TOTAL_COMBINATIONS * 0.4 else 0
-    while len(accepted) < count:
-        index = rng.randrange(TOTAL_COMBINATIONS)
-        if index in seen:
-            continue
-        seen.add(index)
-        digits = _decode_index(index)
-        if not _is_compatible(digits):
-            continue
-        if distance and any(_hamming(digits, old) < distance for old in accepted[-24:]):
-            if len(seen) < min(TOTAL_COMBINATIONS, count * 60):
+    sin_order = list(range(len(SIN_PROFILES)))
+    rng.shuffle(sin_order)
+    distance = max(0, min_distance)
+
+    for position in range(count):
+        if position and position % len(sin_order) == 0:
+            rng.shuffle(sin_order)
+        sin_digit = sin_order[position % len(sin_order)]
+        attempts = 0
+        while True:
+            shell_digit, fracture_digit = rng.choice(COMPATIBLE_PAIRS)
+            digits = (
+                sin_digit,
+                shell_digit,
+                rng.randrange(len(ENVIRONMENTS)),
+                rng.randrange(len(SCALES)),
+                rng.randrange(len(HAMMER_FINISHES)),
+                fracture_digit,
+                rng.randrange(len(CAMERAS)),
+                rng.randrange(len(PALETTES)),
+                rng.randrange(len(AFTERGLOWS)),
+            )
+            index = _encode_index(digits)
+            if index in used or (distance and any(
+                _hamming(digits, old) < distance for old in accepted[-24:]
+            )):
+                attempts += 1
+                if attempts >= 200:
+                    distance = max(0, distance - 1)
+                    attempts = 0
                 continue
-            distance = max(0, distance - 1)
-        accepted.append(digits)
-        yield index
+            used.add(index)
+            accepted.append(digits)
+            yield index
+            break
 
 
 def _stable_id(selected: Dict[str, Tuple[str, str]]) -> str:
@@ -463,9 +507,22 @@ def build_record(index: int, mode: str = "heroine") -> Dict[str, Any]:
     primary = prompts[modes[0]]
     sin = selected["sin"][1]
     story_id = _stable_id(selected)
+    causal_payload = json.dumps(
+        {
+            "root_sin_id": selected["sin"][0],
+            "mechanism": sin["mechanism"],
+            "cost": sin["cost"],
+            "choice": sin["choice"],
+        },
+        ensure_ascii=False,
+        sort_keys=True,
+    )
+    causal_signature = "CAUSE-" + hashlib.sha256(causal_payload.encode("utf-8")).hexdigest()[:12].upper()
     record: Dict[str, Any] = {
         "engine_version": ENGINE_VERSION,
         "story_id": story_id,
+        "causal_kernel_id": selected["sin"][0],
+        "causal_signature": causal_signature,
         "combination_index": index,
         "title": f"{sin['name']}｜{selected['shell'][0]}｜{selected['environment'][0]}",
         "mode": mode,
@@ -525,7 +582,7 @@ def _write_jsonl(path: Path, records: Iterable[Dict[str, Any]]) -> int:
 
 def _write_csv(path: Path, records: Iterable[Dict[str, Any]]) -> int:
     fields = [
-        "story_id","title","mode","root_sin","root_mechanism","human_cost","agency_restored",
+        "story_id","causal_kernel_id","causal_signature","title","mode","root_sin","root_mechanism","human_cost","agency_restored",
         "start_prompt","reveal_prompt","contact_prompt","end_prompt","negative_prompt",
         "prompt_variants_json","storyboard_9_json","audit_status","audit_errors_json","image_realization"
     ]
@@ -535,7 +592,7 @@ def _write_csv(path: Path, records: Iterable[Dict[str, Any]]) -> int:
         writer.writeheader()
         for r in records:
             writer.writerow({
-                "story_id":r["story_id"],"title":r["title"],"mode":r["mode"],
+                "story_id":r["story_id"],"causal_kernel_id":r["causal_kernel_id"],"causal_signature":r["causal_signature"],"title":r["title"],"mode":r["mode"],
                 "root_sin":r["root_sin"],"root_mechanism":r["root_mechanism"],
                 "human_cost":r["human_cost"],"agency_restored":r["agency_restored"],
                 "start_prompt":r["start_prompt"],"reveal_prompt":r["reveal_prompt"],

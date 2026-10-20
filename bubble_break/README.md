@@ -43,7 +43,7 @@ python3 bubble_break/generate.py --count 1000 --seed 20261021 --mode heroine --f
 python3 -m unittest discover -s bubble_break -p 'test_*.py'
 ~~~
 
-Formats: json (array), jsonl (best for large batches), csv (spreadsheet and batch-runner friendly), md (human review). One run is capped at 250,000 story concepts to keep files manageable. Use different seeds for additional batches. The combination space is computed from the defined axes and is much larger than a single run.
+Formats: json, jsonl, csv, and md. One run is capped at 250,000 concepts. Valid combination count includes only permitted shell/fracture pairs. Sampling is stratified by SIN in shuffled rounds: any batch of at least 20 covers all 20 root-cause kernels, and counts per kernel differ by at most one. RAW Cartesian index space and filtered compatible-space count are separate; never use the latter as the decoder's raw-index upper bound.
 
 ### Modes
 
@@ -57,6 +57,7 @@ Each record contains an audit status and explicitly separates:
 
 - PROMPT_CONTRACT_PASS: required geometry/state/survival clauses exist in the generated prompt text.
 - image_realization: NOT_RUN: no image has been rendered or visually audited by this script.
+- causal_kernel_id / causal_signature: root mechanism/cost/choice signature, distinct from visual-variant story_id.
 
 That difference is intentional. A prompt checker cannot prove that an image model obeyed a prompt. The real acceptance loop is: generate H0/H1/H2/H3, compare shared geometry, reject any frame with early cracks or wrong contact, then re-render or correct only the failed frame.
 
