@@ -85,7 +85,7 @@ class FramePipelineTests(unittest.TestCase):
 
 
     def test_t_topology_replaces_radial_lock_in_prompt_and_geometry(self):
-        p=compile_frame_set(sample_record(),weapon_topology="T")
+        p=compile_frame_set(sample(),weapon_topology="T")
         self.assertEqual(p["canonical_weapon"],"WEAPON_T")
         for prompt in p["prompts"].values():
             self.assertIn("WEAPON_TOPOLOGY_ID=WEAPON_T",prompt)
