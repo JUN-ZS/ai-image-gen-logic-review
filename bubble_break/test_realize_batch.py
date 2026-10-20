@@ -21,7 +21,7 @@ class RealizeBatchTests(unittest.TestCase):
             path.write_text("".join(json.dumps(x)+"\n" for x in rows),encoding="utf-8")
             chosen=select_records(path,per_kernel=1,limit=10)
             self.assertEqual([x["story_id"] for x in chosen],["S1","S3","S5"])
-    def test_builds_one_complete_T_packet_per_kernel_and_does_not_claim_render(self):
+    def test_builds_story_variants_with_one_shared_T_master_and_does_not_claim_render(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td); source=root/"rows.jsonl"
             rows=[sample_row(1,"A"),sample_row(2,"A"),sample_row(3,"B")]
@@ -30,25 +30,35 @@ class RealizeBatchTests(unittest.TestCase):
             self.assertEqual(result["selected_stories"],2)
             self.assertEqual(result["distinct_causal_kernels"],2)
             self.assertEqual(result["final_weapon"],"T")
-            self.assertEqual(result["stage_gate_status"],"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED")
-            self.assertEqual(result["required_first_stage"],"A_T_TO_T_ANCHOR")
+            self.assertEqual(result["stage_gate_status"],"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED")
+            self.assertEqual(result["required_first_stage"],"A_T_WEAPON_MASTER")
             self.assertEqual(result["image_realization"],"NOT_RUN")
             self.assertEqual(result["pixel_audit_status"],"NOT_RUN")
+            shared=Path(result["shared_weapon_master_directory"])
+            self.assertTrue((shared/"00_generate_T_weapon_master.txt").exists())
+            self.assertTrue((shared/"05_T_silhouette_reference.svg").exists())
+            self.assertTrue((shared/"stage_gate.json").exists())
+            self.assertEqual(len({p["shared_weapon_master_directory"] for p in result["packages"]}),1)
+            self.assertEqual(len({p["required_first_stage_artifact"] for p in result["packages"]}),1)
             for p in result["packages"]:
                 d=Path(p["proxy_directory"])
-                self.assertTrue((d/"00_T_to_T_geometry_proxy.svg").exists())
-                self.assertTrue((d/"00_generate_T_to_T_anchor.txt").exists())
                 self.assertTrue((d/"04_T_final_weapon_preview.svg").exists())
-                self.assertEqual(p["stage_gate_status"],"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED")
-                self.assertEqual(p["required_first_stage_artifact"],"A_T_to_T_anchor.png")
+                self.assertTrue((d/"generate_scene_with_T_master.txt").exists())
+                self.assertFalse((d/"00_generate_T_weapon_master.txt").exists())
+                self.assertFalse((d/"05_T_silhouette_reference.svg").exists())
+                self.assertEqual(p["stage_gate_status"],"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED")
+                self.assertEqual(p["required_first_stage_artifact"],str(shared/"A_T_weapon_master.png"))
                 plan=json.loads((d/"edit_plan.json").read_text(encoding="utf-8"))
                 self.assertEqual(plan["final_weapon"],"T")
-                self.assertEqual(plan["method"],"T_TO_T_THEN_TARGET_T_ONLY_SPHERE_EDIT")
-                self.assertEqual(plan["status"],"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED")
-                self.assertEqual(plan["selected_edit_prompt"],"edit_target_T_to_bubble.txt")
+                self.assertEqual(plan["method"],"T_MASTER_THEN_STORY_VARIANT_SCENE_GENERATION")
+                self.assertEqual(plan["status"],"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED")
+                self.assertEqual(plan["master_scope"],"SHARED_ACROSS_BATCH")
+                self.assertEqual(plan["required_artifacts"]["stage_a_image"],str(shared/"A_T_weapon_master.png"))
+                self.assertEqual(plan["selected_edit_prompt"],"generate_scene_with_T_master.txt")
                 self.assertEqual(plan["terminal_face_gap_px"],0)
                 self.assertEqual(plan["pixel_truth"]["edited_images"],"NOT_RUN")
             self.assertTrue((out/"realize_batch_manifest.json").exists())
+
     def test_invalid_final_weapon_blocks(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td); source=root/"rows.jsonl"
