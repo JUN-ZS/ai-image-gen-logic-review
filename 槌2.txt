@@ -1,0 +1,4074 @@
+# PROMPT 成長記錄｜從隱喻分鏡到可畫公式（全文參考版）
+
+
+
+用途：把整段迭代編成可複用地圖。公式說明**進程方向**，不是堆形容詞。
+
+讀法：第 0 節看線 → 第 2 節查「那時加了哪句、為何轉」→ 第 3 節複製現用公式。
+
+
+
+角色鎖定：**原女主**（真實系亞洲女戰士，長直深棕髮、柔和五官、大眼、自然妝、黑皮戰鬥服）。
+
+不是 玥Itsuki，不是動漫惡魔裝。出圖用 clean text-to-image，禁止連續 Img2Img 疊圖。
+
+
+
+---
+
+
+
+## 0. 進程方向（一條線）
+
+
+
+```
+
+原故事隱喻
+
+→ 可拍之物（泡泡／爪機／奶昔／碎玻璃／天台）
+
+→ 可愛 INS（高頻換鏡頭、道具） ← 防靜死
+
+→ 真實攝影 + 六棚換景 ← 像真 MV 換棚
+
+→ 影像契約 16:9／光暈／顆粒／宏大／角色弧
+
+→ 雙世界《邊界行人》（A 保護泡 / B 破碎真實）
+
+→ 3 分鐘 ≈ 54 鏡；精簡 24 關鍵卡
+
+→ 柔抱同一容器 × 大錘打碎（同一雙手）
+
+→ 文字對 ≠ 圖 FOLLOW
+
+→ 剛體：END FACE ≠ CHEEK；動力鏈；接觸→裂源
+
+→ AXE 易畫、HAMMER 難畫
+
+→ 取消「先真斧再換錘」（會變成實相斧／重解接觸）
+
+→ 可視化編譯：真值 → 可畫 primitive → 才餵模
+
+→ 可簡可繁（CORE + 槽 + k 層；錘是 CONST）
+
+→ 厚十字／正交／plus-sign：「點打都中」= 結構解
+
+→ 十字仍被畫成 T 或複雜多面錘
+
+→ 多向槌面指向各方 → 頭合成圓；武器仍是一把錘（一柄一頭）
+
+```
+
+
+
+方向一句：
+
+
+
+```
+
+故事層永遠有效。
+
+力學層變成審核器，不直接餵模。
+
+生成層只吃「能畫成輪廓」的句子。
+
+武器層用結構降低錯面，不靠再寫一頁 XYZ。
+
+```
+
+
+
+層疊（開新題按這張加，不要一次全塞）：
+
+
+
+```
+
+L0 六幕引擎 + 雙世界角色弧
+
+L1 影像契約（16:9／光暈／顆粒／宏大／臉鎖）
+
+L2 每幕獨立極致場景 + 服裝大變
+
+L3 CORE 可畫核（人／錘／靶／觸點／斜柄）
+
+L4 武器結構（十字 → 正交四端 → 多向圓頭）
+
+L5 變量槽（衣／景／光／FX）最後加
+
+L6 像素審核（只信畫面）
+
+```
+
+
+
+---
+
+
+
+## 1. 從未換過的骨架
+
+
+
+### 1.1 六幕引擎
+
+
+
+```
+
+```
+| 幕    | 功能           | 可拍事件        | 角色     |
+| ---- | ------------ | ----------- | ------ |
+| 1 畫界 | 混亂中切開 A／B    | 膠帶／線／麥克筆    | 畫界的人   |
+| 2 保護 | 完美泡泡＝溫柔隔絕    | 所愛封進容器，她擋外  | 垂直保護者  |
+| 3 碎裂 | 兩界灌在一起       | 容器碎、共業網     | 一起墜落   |
+| 4 假修 | 止痛＋替罪羊       | 爪機、奶昔、濾鏡自拍  | 一度假裝   |
+| 5 一界 | 藥效消          | 乾涸泳池、赤腳、包紮  | 第一次不跨界 |
+| 6 選擇 | 再蓋 A，或在 B 起舞 | 吹泡管 vs 碎片之舞 | 站在真實上  |
+```
+
+```
+
+
+
+3 分鐘歌 ≈ 50–54 鏡：
+
+
+
+```
+
+```
+| 時間        | 幕   | 密度    |
+| --------- | --- | ----- |
+| 0:00–0:30 | 一   | 中     |
+| 0:30–1:00 | 二   | 中慢    |
+| 1:00–1:30 | 三   | 極快    |
+| 1:30–2:00 | 四   | 快→假平靜 |
+| 2:00–2:30 | 五   | 慢、重   |
+| 2:30–3:00 | 六   | 快→定格  |
+```
+
+```
+
+
+
+精簡版＝每幕 4 張關鍵卡＝24 張。
+
+
+
+### 1.2 隱喻→物（S0 公式，後面換皮都不改這張對照）
+
+
+
+```
+
+保護 → 玻璃球／氣泡／扭蛋／糖果罐
+
+窒息 → 真空、枯花、溺水、棉花糖
+
+共業 → 碎片蛛網、每片倒映一張臉
+
+止痛 → 針筒／膠囊／螢光奶昔
+
+假安全 → 笑臉 OK 繃、美顏自拍
+
+覺醒 → 赤腳碎玻璃、紅線、心跳
+
+選擇 → 再吹泡 vs 在碎片上起舞
+
+兩個世界 → A 金暖密閉／B 冷硬碎裂；她走邊界
+
+```
+
+
+
+### 1.3 雙世界
+
+
+
+```
+
+World A = 完美保護／濾鏡／泡泡（溫柔、密閉、窒息）
+
+World B = 破碎真實／噪音／碎玻璃（痛、平等、可連結）
+
+角色 = 走在邊界上的人，最終必須選擇
+
+視覺 = 半邊完美半邊破碎、門／線／玻璃、一腳 A 一腳 B
+
+```
+
+
+
+### 1.4 影像契約（S3 起幾乎每條都帶）
+
+
+
+```
+
+Ultra-realistic cinematic music video still
+
+16:9 widescreen
+
+grand epic high-budget pop / K-pop MV photography
+
+volumetric light, strong bloom, heavy film grain, emotional grade
+
+exact face lock to the original heroine
+
+composition: rule of thirds, off-center, negative space, motivated light
+
+NOT a centered beauty-poster face
+
+```
+
+
+
+### 1.5 六棚映射（換皮用，防同一房間連拍）
+
+
+
+```
+
+```
+| 幕   | 棚               |
+| --- | --------------- |
+| 1   | Y2K 螢光塗鴉工作室／廢工廠 |
+| 2   | 巨型復古扭蛋遊樂場／金廳    |
+| 3   | 粉彩失控超市          |
+| 4   | 糖果藥房美式餐廳        |
+| 5   | 乾涸廢棄泳池          |
+| 6   | 破片天台黎明          |
+```
+
+```
+
+
+
+鏡頭高頻切：廣角俯視／極特寫／荷蘭角／過肩／分鏡／慢動作／追焦。
+
+
+
+---
+
+
+
+## 2. 階段迭代（要什麼 → 加哪句 → 為何轉）
+
+
+
+### S0 超現實 50 鏡
+
+
+
+抽象必須變成可拍物。單一神祇棚會靜死。
+
+
+
+### S1 可愛 INS
+
+
+
+隱喻仍在，物換成泡泡糖、甜點櫥窗、抓娃娃機、自拍濾鏡、復古溜冰。
+
+轉向：偏 AI 美化、Q 版，不像人家真 MV。
+
+
+
+### S2 真實風 + 換棚
+
+
+
+每幕不同實景、同一張臉。
+
+轉向：還要 16:9、光影顆粒、宏大、角色弧。
+
+
+
+### S3 影像契約
+
+
+
+見 1.4。
+
+轉向：要「她走於兩個世界」，不能只換皮。
+
+
+
+### S4 《邊界行人》公引擎
+
+
+
+六幕掛上 A／B。可出 24 卡或 54 鏡。
+
+轉向：要柔與大錘砸同一容器的對比。
+
+
+
+### S5 柔 × 大錘
+
+
+
+```
+
+同一角色 · 同一容器
+
+先極柔護住 → 再親自用大錘砸開
+
+不是恨，是還自由
+
+人永遠小於容器；選擇永遠大於她
+
+節點：護 → 攀 → 界（一手罐一手錘）→ 舉 → 砸 → 跪 → 對 → 放
+
+```
+
+
+
+柔鏡不要錘；錘鏡不要斧。對比靠剪輯或左右分鏡。
+
+
+
+### S6 剛體課（此後力學只當審核）
+
+
+
+```
+
+FACE ●────────────● FACE ← END STRIKING FACE
+
+│ HEAD │
+
+│ CHEEK │ ← 長側壁，禁止領先
+
+└────┬─────┘
+
+│ HANDLE（中眼，⊥ 頭長軸）
+
+```
+
+
+
+- 打的是端部 FACE，不是 cheek、不是柄
+
+- 「小面」＝端部平面，不是把錘臉縮成針
+
+- END FACE 是揮動的終端幾何，不是另貼上去的臉
+
+- 裂必須從接觸中心長；目標在接觸前應仍完整
+
+
+
+失敗碼：CHEEK-FIRST／SIDEWAYS／STATIC-END-FACE／HANDLE-FIRST／PRE-FRACTURE／CONTACT RE-SOLVE／AREA BIAS。
+
+
+
+A（有力但 cheek 先到）與 B（端面對但像按住）是同一錯：把「人的姿勢」和「錘的接觸」當兩個物件。
+
+
+
+```
+
+錯：有力的人 + 在目標旁的錘 + 碎裂特效
+
+對：BODY → HANDLE → HEAD → ACTIVE END FACE → CONTACT → FRACTURE
+
+```
+
+
+
+### S7 取消真斧中間層
+
+
+
+斧好畫（薄刃插入＝高辨識 primitive）。
+
+先畫真斧再換錘 → 模型學會出斧，換頭時重解接觸，大面積 cheek 又勝出。
+
+
+
+留下的理解（可想斧，不可畫斧）：
+
+
+
+```
+
+若是斧：絕不用側面橫推，只用鋒切開
+
+輸出必須是錘：鋒的角色 = ACTIVE END FACE
+
+斧的刃側 = 錘的 CHEEK → 永不主力
+
+畫面永不畫斧
+
+```
+
+
+
+### S8 受力點／禁槍線／V5 人審式
+
+
+
+```
+
+唯一 C = ACTIVE END ∩ 受擊面
+
+n_HB ≈ − n_TARGET ，只共 C
+
+柄軸 ≠ D ，人軸 ≠ D ，人→球心 ≠ D
+
+錘軸 ⊄「接觸點→球心」（約 45°／對角，不是穿心矛）
+
+D = aX+bY+cZ ，禁止純 ±X 把全世界排成一支槍
+
+```
+
+
+
+V5 給人審，不整段餵模。
+
+
+
+### S9 根問題：PROMPT 有 ≠ 圖 FOLLOW
+
+
+
+```
+
+PROMPT SPACE（D、C、法線）
+
+↓
+
+？ ← 缺可畫中介；模型用先驗填＝大塊金屬貼球
+
+↓
+
+IMAGE SPACE（輪廓／遮擋／接觸）
+
+```
+
+
+
+管線：
+
+
+
+```
+
+PHYSICS TRUTH → VISUAL PRIMITIVE COMPILER → GENERATOR → PIXEL AUDIT
+
+FAIL：修編譯器，不堆真理公式
+
+```
+
+
+
+單張畫不出的東西（速度、力矩、T−1）只審不餵。
+
+
+
+編譯例：
+
+
+
+```
+
+```
+| 真值       | 可畫句                 |
+| -------- | ------------------- |
+| n_HB = D | 小平端面是唯一碰玻璃的金屬輪廓     |
+| 禁 cheek  | 長側壁在側／後，不吻玻璃        |
+| 非同軸      | 人＋柄＋球心不是一條螢幕直線；擊點偏心 |
+| 裂從 C     | 裂只從錘碰到的點長出          |
+```
+
+```
+
+
+
+### S10 可簡可繁 V6（餵模層）
+
+
+
+生成器解的是：女人在左、手上有錘、右大球、金屬碰到玻璃、裂從那點開、柄是斜的。
+
+
+
+```
+
+CORE
+
+woman_LEFT + HAMMER_IN_HANDS + TARGET_RIGHT
+
++ touch = striking_FACE ∩ shell
+
++ cracks_FROM(touch)
+
++ handle_ANGLED
+
++ body_NOT_on_gun_line
+
+錘是 CONST，不是可選道具
+
+```
+
+
+
+保險句（加場景必帶）：
+
+
+
+```
+
+she is still holding the sledgehammer
+
+the hammer is in the picture
+
+do not replace the hammer with a hand touch
+
+both hands on the handle
+
+```
+
+
+
+k=0 核 → 先衣再景 → 最後光／FX。diner／霓虹高危。一掉幾何就回到 k=0。
+
+
+
+k=0 最短模板：
+
+
+
+```
+
+Single 16:9. Woman left, real hammer in both hands, huge glass sphere right.
+
+Striking face touches the glass; cracks only there.
+
+Handle angled — not a spear through the ball center.
+
+Body not on one line with handle and ball center.
+
+No axe. No text.
+
+```
+
+
+
+### S11 實驗支線（找 primitive，不成片）
+
+
+
+雙刃斧橫斬浪／冰波 → 棒橫斬冰球 → 再回到錘。
+
+正式成片禁止出斧。
+
+
+
+### S12 結構解：厚十字／正交／plus-sign
+
+
+
+十字夠用；要**加厚**，不要拉長垂直臂。
+
+禁止連續 Img2Img。
+
+錯路：4 把錘、4 把獨立錘、2D 平面十字、一柄四頭、教學圖畫成單頭 T。
+
+
+
+**正交厚十字（曾用公公式）：**
+
+
+
+```
+
+a massive extremely thick cross-shaped war hammer,
+
+the hammer head features a robust orthogonal design
+
+with both prominent vertical and horizontal thick solid striking blocks,
+
+featuring heavy flat striking faces on all top, bottom, left, and right ends
+
+```
+
+
+
+為什麼這樣寫：`orthogonal` 逼垂直相交；`vertical and horizontal` 逼兩臂都在；`top, bottom, left, and right` 逼四端都有面。
+
+
+
+實測：厚與四向出來了，模型仍常畫成「厚重多面戰錘」，不是乾淨 plus-sign（+）。
+
+
+
+**更乾淨 plus-sign 句（補強）：**
+
+
+
+```
+
+a massive thick plus-sign cross-shaped war hammer,
+
+the hammer head is a clean orthogonal plus-sign formed by
+
+one thick vertical solid rectangular bar and
+
+one thick horizontal solid rectangular bar crossing at the center,
+
+four equally thick solid rectangular striking blocks pointing
+
+top bottom left and right, each end has a heavy flat striking face
+
+the hammer must look like a thick metal plus-sign cross
+
+not T-shape not X-shape not single head
+
+```
+
+
+
+Negative：`T-shape, single head, X-shape, thin arms, missing vertical arm, missing horizontal arm, thin hammer`
+
+
+
+### S13 多向槌面合成圓頭（現用武器結構）
+
+
+
+「由槌頭組成的圓」曾被畫成：女主站在槌頭圓環裡，或場景裡一顆錘星球。錯。
+
+
+
+正確：
+
+
+
+```
+
+一把錘 + 一條柄 + 一個頭
+
+頭上密鋪多個扁平槌面，面朝四面八方
+
+所以頭看起來是圓
+
+圓是結果，不是佈景
+
+打玻球時，朝目標的那一面先觸
+
+```
+
+
+
+```
+
+```
+| 是          | 不是          |
+| ---------- | ----------- |
+| 仍是錘        | 晨星／鏈錘／刺釘狼牙  |
+| 一柄一頭       | 很多把錘圍成圈     |
+| 面是扁平打擊面    | 只為了圓而變成刺球   |
+| 怎麼揮都有一面能對上 | 2D 加號只在一個平面 |
+```
+
+```
+
+
+
+殘餘風險：模型愛畫「立方凸塊密鋪」（偏釘頭棒）。若要更像真正大錘端面，強調 `wide flat sledge faces`，禁 `spikes, studs, mace flanges`。
+
+
+
+---
+
+
+
+## 3. 現用可複製公式
+
+
+
+### 3.1 角色＋契約＋靶（各版共用，只換武器句）
+
+
+
+```
+
+photorealistic cinematic 16:9 music-video still of a beautiful Asian female warrior,
+
+long straight dark brown hair flowing, large soft eyes, natural makeup, intense focus,
+
+tight black leather combat outfit with straps gloves and harness,
+
+powerful two-handed striking pose,
+
+[武器句],
+
+smashing into a large translucent crystal glass sphere,
+
+violent explosion of sharp crystal shards from the contact patch,
+
+dramatic dark cinematic lighting, volumetric rays, film grain, high contrast,
+
+highly detailed, 8k, masterpiece
+
+```
+
+
+
+共用 Negative：
+
+
+
+```
+
+blurry, low quality, deformed hands, extra fingers, watermark, text, logo,
+
+bad anatomy, extra limbs, axe, blade, empty hands, thin hammer
+
+```
+
+
+
+改角度只加：`side view` / `low angle looking up` / `close-up on impact`
+
+改動作只改姿勢句。成片不要標題字。
+
+
+
+### 3.2 武器句 A｜正交厚十字（歷史穩定版）
+
+
+
+```
+
+both hands gripping a massive extremely thick cross-shaped war hammer,
+
+the hammer head features a robust orthogonal design with both
+
+prominent vertical and horizontal thick solid striking blocks,
+
+featuring heavy flat striking faces on all top, bottom, left, and right ends
+
+```
+
+
+
+再加 Negative：`T-shape, X-shape, single head, missing vertical arm, missing horizontal arm`
+
+
+
+### 3.3 武器句 B｜乾淨 plus-sign（十字不夠乾淨時用）
+
+
+
+```
+
+both hands gripping a massive thick plus-sign cross-shaped war hammer,
+
+the hammer head is a clean orthogonal plus-sign formed by one thick
+
+vertical solid rectangular bar and one thick horizontal solid rectangular bar
+
+crossing at the center, four equally thick arms pointing top bottom left and right
+
+```
+
+
+
+### 3.4 武器句 C｜多向圓頭（現用進化版）
+
+
+
+```
+
+she holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+
+the head is a dense metal globe made of many thick wide flat sledgehammer striking faces
+
+pointing radially outward in every direction,
+
+the head looks round BECAUSE the faces aim every way,
+
+not spikes, not a morning-star chain, not many separate hammers,
+
+not a ring or halo of hammers around her body
+
+```
+
+
+
+再加 Negative：
+
+
+
+```
+
+halo of hammers, standing inside a circle of hammers, planet of hammers,
+
+morning star, flail, spiked mace, chain, multiple handles,
+
+T-shape only, plus-sign only
+
+```
+
+
+
+### 3.5 完整現用條（C 圓頭，整段複製）
+
+
+
+```
+
+photorealistic cinematic 16:9 music-video still of a beautiful Asian female warrior,
+
+long straight dark brown hair flowing, large soft eyes, natural makeup, intense focus,
+
+tight black leather combat outfit with straps gloves and harness,
+
+powerful two-handed hammer swing,
+
+she holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+
+the head is a dense metal globe made of many thick wide flat sledgehammer striking faces
+
+pointing radially outward in every direction so the head reads as a round cluster of hammer faces,
+
+not spikes, not a morning-star chain, not many separate hammers, not a ring around her body,
+
+the outward face that aims at the target is smashing a large translucent crystal glass sphere,
+
+cracks and sharp shards explode from the contact patch,
+
+dramatic dark cinematic lighting, volumetric rays, film grain, high contrast,
+
+highly detailed, 8k, masterpiece
+
+```
+
+
+
+### 3.6 拆解（改哪一句做什麼）
+
+
+
+```
+
+```
+| 區塊   | 鎖什麼                   |
+| ---- | --------------------- |
+| 角色   | 原女主，真實亞洲女戰士           |
+| 服裝   | 黑皮戰鬥服＋束帶手套            |
+| 動作   | 雙手握；只改這句換姿            |
+| 武器   | 一柄一頭；十字或圓頭二選一，不要混進同一句 |
+| 靶＋特效 | 大透晶玻球；裂從接觸長           |
+| 光影   | 契約：體積光、光暈、顆粒、高對比      |
+| 品質   | 拉畫質，不修幾何              |
+```
+
+```
+
+
+
+六幕只換靶與棚，武器句盡量不動：
+
+
+
+```
+
+```
+| 幕   | 靶            | 棚     |
+| --- | ------------ | ----- |
+| 1   | 尚未砸，畫界       | 塗鴉廢工廠 |
+| 2   | 柔：抱完整大球      | 扭蛋／金廳 |
+| 3   | 錘碎球          | 超市    |
+| 4   | 舉錘不砸或砸錯替罪物   | 糖果藥房  |
+| 5   | 砸後，錘放下       | 乾涸泳池  |
+| 6   | 錘在腳邊，人在碎片上起舞 | 黎明天台  |
+```
+
+```
+
+
+
+---
+
+
+
+## 4. 像素審核（出圖後才填）
+
+
+
+- [ ] 有錘，雙手握柄
+
+- [ ] 無斧、無鏈、無刺球
+
+- [ ] 一柄一頭（不是圍著她的圈，不是場景裡的錘星球）
+
+- [ ] 宣稱十字則必須豎臂＋橫臂都在；宣稱圓頭則面朝外、頭讀得成圓
+
+- [ ] 接觸是打擊面，不是長側壁拍打
+
+- [ ] 柄有角度，不是人–柄–球心一條槍
+
+- [ ] 裂從接觸點長
+
+- [ ] 無 H-A／H-B／C 等教學字漏進成片
+
+- [ ] 仍是原女主設定
+
+
+
+含糊＝未過。修結構句或編譯句，不修「再 powerful」。
+
+
+
+---
+
+
+
+## 5. 公式在修什麼（對照表）
+
+
+
+```
+
+```
+| 公式             | 在修的問題              |
+| -------------- | ------------------ |
+| 隱喻→物           | 抽象不能拍              |
+| 換棚＋鏡頭高頻        | Img2Img 靜死         |
+| 影像契約           | 不像真 MV             |
+| 雙世界＋角色弧        | 場有敘事空              |
+| 柔×錘同一容器        | 缺對比                |
+| END FACE／動力鏈   | 錘在畫面裡但沒在打          |
+| 取消真斧中間層        | 畫成斧、接觸被重解          |
+| 只共 C、禁槍線       | 同軸矛刺               |
+| 可視化編譯          | 公式對、圖不跟            |
+| 錘 CONST＋k 層    | 加場景錘消失             |
+| 正交厚十字          | 永遠打錯面              |
+| plus-sign 四臂寫死 | 十字變成 T／多面錘         |
+| 多向圓頭           | 十字仍不穩；圓是「各方都有面」的結果 |
+```
+
+```
+
+
+
+後一層不廢前一層。故事一直有效。
+
+
+
+---
+
+
+
+## 6. 下次開工
+
+
+
+1. 新歌／新隱喻：先填 L0 六格＋L2 六棚，再決定要不要錘。
+
+2. 要錘：從 3.5 圓頭或 3.2 十字選一個，不要混句。
+
+3. 要六幕卡：只換棚與靶。
+
+4. 要教學 SET：效果圖結構必須和標題一致（十字就十字，圓頭就圓頭）。
+
+5. 有參考臉再 face-lock；沒有參考臉不要自稱已鎖 **################################################################################ # MV PROMPT 公式源代 # 《邊界行人》／原女主／錘碎容器 # 組裝：HERO + GEAR + WEAPON + ACTION + TARGET + SET + CAM + LIGHT + GRADE # 規則：一次只換一個槽。武器 A/B/C 不同句混用。斧不成片。 # 出圖：clean T2I。禁止連續 Img2Img。 ################################################################################ # ============================================================================= # 0. 拼裝公式 # ============================================================================= SHOT = CONTRACT + HERO + GEAR + ACTION + WEAPON + TARGET + SET + CAM + LIGHT + GRADE CONTRACT 永遠在。 WEAPON 選 A 或 B 或 C，三選一。 ACT2 柔鏡：WEAPON 可空，改用 SOFT。 ACT3+ 錘鏡：WEAPON 必在，加 INSURE。 高程：k=0 只留核；k=1 加衣；k=2 加棚；k=3 加光影電影詞。 掉幾何 → 回到 k=0 再加。 NEG = NEG_BASE + NEG_WEAPON[A|B|C] # ============================================================================= # 1. 高程（Elevation） # ============================================================================= # --- k=0 CORE（FOLLOW 最高，先過這層）--- K0 = """ Single 16:9 photorealistic frame. {HERO_SHORT} left-of-center. {GEAR_SHORT}. {ACTION_SHORT}. {WEAPON_BLOCK}. {TARGET_BLOCK}. Handle angled, not a spear through the target center. Body not on one straight line with handle and target center. No axe. No text. No extra weapons. """ # --- k=1 衣 --- K1 = K0 + GEAR_FULL # --- k=2 棚 --- K2 = K1 + SET[act] # --- k=3 MV 契約（正式成片高程）--- K3 = CONTRACT + HERO + GEAR_FULL + ACTION + WEAPON + TARGET + SET[act] + CAM + LIGHT + GRADE # ============================================================================= # 2. 常量槽 # ============================================================================= CONTRACT = """ photorealistic cinematic 16:9 music-video still, ultra-realistic high-budget pop MV photography, volumetric light, light bloom, heavy film grain, emotional color grade, rule of thirds, off-center composition, motivated light, not a centered beauty-poster closeup """ HERO = """ a beautiful Asian female warrior, long straight dark brown hair flowing, large soft eyes, natural makeup, sharp intense focus, same face throughout the series """ HERO_SHORT = "beautiful Asian woman, long straight dark brown hair, large soft eyes, intense focus" GEAR_SHORT = "tight black leather combat outfit" GEAR_FULL  = "wearing a tight black leather combat outfit with straps, gloves and harness" GEAR_VAR = {   "act1": "punk / oversized hoodie or leather, graffiti dust",   "act2": "softer fabric, maid-like or pale knit — NO hammer if this is the soft-hold shot",   "act3": "combat leather, scuffed, jam and glass on clothes",   "act4": "same leather under neon diner pink",   "act5": "plain dirty white tee, barefoot, armor stripped",   "act6": "simple white tee or leather, studded black boots", } GRADE = "highly detailed, 8k, masterpiece, best quality" INSURE = """ she is still holding the hammer, the hammer is in the picture, do not replace the hammer with a hand touching the glass, both hands on the handle """ # ============================================================================= # 3. 武器槽（三選一，勿混句） # ============================================================================= WEAPON_A_ORTHO_CROSS = """ both hands gripping ONE massive extremely thick cross-shaped war hammer, the hammer head is a robust orthogonal plus: one heavy vertical rectangular bar AND one heavy horizontal rectangular bar crossing at the center, heavy flat striking faces on top, bottom, left and right ends, thick metal plus-sign, not T-shape, not X-shape, not a single sledge head """ WEAPON_B_PLUS_CLEAN = """ both hands gripping ONE massive thick plus-sign cross-shaped war hammer, clean orthogonal plus-sign: one thick vertical solid rectangular bar and one thick horizontal solid rectangular bar crossing at center, four equally thick arms pointing top bottom left and right, each end a heavy flat striking face """ WEAPON_C_RADIAL_SPHERE = """ she holds ONE war hammer: a single long handle ending in ONE spherical hammer head, the head is a dense metal globe of many thick wide FLAT sledgehammer striking faces pointing radially outward in every direction, the head looks round BECAUSE the faces aim every way, not spikes, not a morning-star, not a flail, not a chain, not many separate hammers, not a halo or ring of hammers around her body """ # 現用預設 WEAPON = WEAPON_C_RADIAL_SPHERE # ============================================================================= # 4. 靶／特效槽 # ============================================================================= TARGET_GLASS = """ smashing into a large translucent crystal glass sphere, cracks and sharp shards explode from the exact contact patch only """ TARGET_INTACT = """ a large intact translucent crystal glass sphere still whole, no pre-broken explosion """ TARGET_SOFT_HOLD = """ she cradles a huge intact transparent glass sphere against her body, loved ones / warmth visible inside the sphere, storm outside the glass """ TARGET_AFTER = """ shattered glass sea on the ground, hammer lowered or resting, no new explosion """ TARGET = TARGET_GLASS   # 錘擊幀預設 # ============================================================================= # 5. 動作槽 # ============================================================================= ACTION = {   "front_impact":  "powerful frontal two-handed strike at the instant of contact",   "low_drive":     "full-body low-angle drive, wide stance, hips rotating into the hit",   "peak_shatter":  "peak impact frame, head decelerating into the sphere, shards mid-air",   "side_swing":    "lateral left-to-right swing, handle trailing, leading face hitting first",   "overhead":      "overhead strike, handle up-down, one striking face rotating downward",   "hold_soft":     "tender two-armed embrace of the intact sphere, cheek to glass",   "raise_before":  "hammer raised, aimed at the sphere she herself built, not yet contact",   "kneel_after":   "after the break, kneeling in debris, myth broken",   "walk_border":   "walking the glowing border, one foot in warm bubble-world A, one foot in broken-glass world B",   "draw_line":     "running a glowing tape / marker line that splits the space in two",   "selfie_fake":   "holding a neon milkshake, beauty-filter selfie, she does not drink, eyes on the overfilled balloon above",   "bandage":       "no magic, kneeling to tape a plain bandage on a friend",   "dance_shards":  "group dance on broken glass at dawn, hammer at her feet", } # ============================================================================= # 6. 鏡頭槽 # ============================================================================= CAM = {   "wide_top":    "extreme wide high-angle, tiny human, huge set",   "low_hero":    "low angle looking up, heroic but off-center",   "over_sh":     "over-shoulder, she looks at companions now equal",   "macro_face":  "extreme close-up of the striking face kissing the glass, cheek of head visible as NON-contact side",   "split":       "split screen: LEFT rebuilds a fake bigger bubble, RIGHT stands on shards",   "god":         "straight-down god view, people as a broken flower",   "dutch":       "dutch angle, tension",   "follow":      "tracking follow-through after impact",   "side_16x9":   "side three-quarter, 16:9, full body in frame", } # ============================================================================= # 7. 六棚槽 # ============================================================================= SET = {   "act1": "Y2K neon graffiti studio / ruined factory, tangled lines, paint cans, glowing boundary tape",   "act2": "pastel retro gashapon arcade or baroque gold hall, giant intact glass orb",   "act3": "macaron-colored supermarket in chaos, cereal and candy exploding with glass",   "act4": "pink candy-pharmacy diner, neon capsule lights, giant claw, fake smile bandage on a wall crack",   "act5": "drained derelict indoor pool, broken tiles, no water, stripped of pink filter",   "act6": "ruin rooftop at dawn, ground like a sheet of broken glass, city below", } LIGHT = {   "act1": "harsh neon vs darkness, hard edge light on the boundary line",   "act2": "warm gold inside the orb, cold storm light outside",   "act3": "explosive practical highlights, shard refraction, chaotic mixed light",   "act4": "sickly pink neon, beauty-filter glow that feels fake",   "act5": "filter peeling, cold daylight, dust shafts, raw concrete",   "act6": "dawn backlight, long shadows, sparks and note-like glints on glass", } # ============================================================================= # 8. Negative 源 # ============================================================================= NEG_BASE = """ blurry, low quality, deformed hands, extra fingers, extra limbs, bad anatomy, watermark, text, logo, title letters, H-A, H-B, C labels, axe, blade edge, empty hands, thin hammer, skinny weapon """ NEG_A = NEG_BASE + ", T-shape, single head, X-shape, missing vertical arm, missing horizontal arm" NEG_B = NEG_A NEG_C = NEG_BASE + """, morning star, flail, spiked mace, chain, studs as spikes, halo of hammers, standing inside a circle of hammers, planet of hammers in background, multiple handles, multiple separate hammers""" # ============================================================================= # 9. 展開源代 — k=3 正式 MV（現用 WEAPON_C） # 直接整段複製。要十字就把 WEAPON_C 段換成 A 或 B。 # ============================================================================= # ----- ACT1 畫界（錘可在場但不一定砸球）----- MV_1_1_WIDE = """ photorealistic cinematic 16:9 music-video still, ultra-realistic high-budget pop MV, volumetric light, bloom, heavy film grain, off-center composition. Extreme wide high-angle of a Y2K neon graffiti ruined factory. A beautiful Asian female warrior, long straight dark brown hair, large soft eyes, natural makeup, tight black leather combat outfit with straps and gloves, tiny in the frame, standing in tangled lines and paint chaos, drawing a glowing sharp boundary line that splits warm World A from noisy World B. One thick war hammer with a spherical head of outward flat striking faces rests at her side or in one hand — still ONE hammer, ONE handle. No explosion yet. No axe. No text. """ MV_1_2_LINE = """ photorealistic cinematic 16:9 MV still, film grain, motivated side light. Low angle. Same Asian heroine in black leather. She sprints and slaps a glowing tape line across the floor, splitting the space. Hair and coat trailing. Hammer on her back or in the off-hand, spherical multi-face head readable. World A begins to warm on the left, World B stays storm-dark on the right. No text. """ MV_1_3_BORDER_WALK = """ photorealistic cinematic 16:9 MV still, split lighting. Same heroine walking the glowing border, one foot in golden bubble-world A, one foot in broken-glass world B, body on the line. Long dark brown hair, black leather, intense eyes. Optional: spherical multi-face hammer hanging in her right hand, not swinging. Grand scale, tiny human. No text. """ MV_1_4_PUPIL = """ photorealistic cinematic extreme close-up 16:9, film grain. Her eye fills the frame. Left reflection = intact gold bubble. Right reflection = shards. Same face. No text. """ # ----- ACT2 柔（預設無錘，或錘在遠處）----- MV_2_1_PLACE = """ photorealistic cinematic 16:9 MV still, warm gold vs cold storm. Same Asian heroine, softer clothes or same leather. She gently places tiny glowing figures into a huge intact glass sphere. Pastel arcade or gold hall. Sphere is whole. No hammer in the contact. No shatter. No text. """ MV_2_2_HOLD = """ photorealistic cinematic 16:9 MV still, dutch angle. Same heroine embracing the giant intact glass sphere, cheek to glass, body used as a shield against purple storm outside. Warm light inside, cold rain outside. Tender, not cute-chibi. No hammer. No explosion. No text. """ MV_2_3_VACUUM = """ photorealistic cinematic 16:9, view from INSIDE the sphere looking out. Her huge face fills the glass, guilty protecting look. Figures inside float in vacuum, a rose fading to paper-white. No hammer. No text. """ MV_2_4_CRACK_HAND = """ photorealistic cinematic 16:9 macro. Bandaged fingers press a spiderweb crack on the glass sphere. Her face soft-focus behind the glass. Still trying to hold it. No hammer hit. No text. """ # ----- ACT3 碎裂（錘擊主場）----- MV_3_1_FRONT = """ photorealistic cinematic 16:9 music-video still, volumetric rays, bloom, heavy film grain. Beautiful Asian female warrior, long straight dark brown hair flying, large soft eyes, natural makeup, intense focus, tight black leather combat outfit with straps gloves and harness. Powerful frontal two-handed strike. She holds ONE war hammer: a single long handle ending in ONE spherical hammer head, the head is a dense metal globe of many thick wide flat sledgehammer striking faces pointing radially outward in every direction so the head looks round because faces aim every way, not spikes, not a morning-star, not many hammers, not a ring around her. The outward face aimed at the target smashes a large translucent crystal glass sphere inside a chaotic pastel supermarket; cracks and shards explode only from the contact patch. Handle angled, not a spear through the ball center. She is still holding the hammer. No axe. No text. """ MV_3_2_LOW = """ photorealistic cinematic 16:9 MV still, low angle looking up, grand scale. Same heroine, full-body wide stance, hips rotating into a two-handed drive. ONE hammer, long handle, spherical head of outward flat striking faces. The globe-head slams a giant glass sphere; shards rain in the supermarket. Volumetric god-rays, wet floor reflections, film grain. Hammer stays in both hands. No axe. No text. """ MV_3_3_PEAK = """ photorealistic cinematic 16:9 peak-impact still, 1000fps feel, bloom. Same face. Both hands on one handle. Spherical multi-face hammer head buried into a huge crystal orb at first contact, radial fractures born under the touching face, diamond shards mid-air. Dark cinematic grade. No pre-broken glass before contact. No text. """ MV_3_4_SIDE = """ photorealistic cinematic 16:9 side three-quarter MV still. Same heroine, hair streaming back, lateral left-to-right swing. ONE handle trailing, spherical cluster of flat hammer faces leading, the leading FLAT face hits the glass sphere — not a spike, not the long side. Film grain, volumetric light. No extra weapons. No text. """ MV_3_5_FALL = """ photorealistic cinematic 16:9 wide, weightless fall. Same heroine and companions fall together through exploding glass and supermarket candy. Vertical protector role collapsed into horizontal co-karma. Hammer may tumble with them. Off-center, grand. No text. """ MV_3_6_NET = """ photorealistic cinematic 16:9 god-view. People sit in a ring on a glass-shard floor, receipt-tape or neon thread linking them. Same heroine among them, no longer above anyone. Hammer on the ground. Film grain. No text. """ # ----- ACT4 假修 ----- MV_4_1_PANIC = """ photorealistic cinematic 16:9 MV still, sickly pink neon. Candy-pharmacy diner, capsule lights dropping from the ceiling. Crowd in existence-panic. Same heroine at center, spherical hammer lowered, awake. Grand scale. Film grain. No text. """ MV_4_2_CLAW = """ photorealistic cinematic 16:9, low angle. A giant metal claw crashes through the diner roof and lifts a black-clad scapegoat. Same heroine watches, expression conflicted, hammer in hand not swinging. Pink neon, film grain. No text. """ MV_4_3_SELFIE = """ photorealistic cinematic 16:9 selfie-cam overlay with fake beauty filter. Crowd drinks giant fluorescent pink milkshakes and smiles. Same heroine holds a cup but does not drink; eyes go to the overfilled water-balloon above. Wall crack covered by a giant smiley bandage. Hammer visible at the edge of frame. No text on the image besides the implied filter look — no readable letters. """ MV_4_4_FUSE = """ photorealistic cinematic 16:9 micro + wide hybrid feel. A jeweled straw tip almost punctures the taut ceiling balloon. Background still parties. She is the only one looking up. Hammer at her side. Film grain. No text. """ # ----- ACT5 一界 ----- MV_5_1_PEEL = """ photorealistic cinematic 16:9, pink filter dissolving like watercolor into a drained derelict indoor pool. Same heroine alone at the dry center, leather replaced by a dirty white tee. Spherical hammer lowered. Cold daylight, dust shafts. No text. """ MV_5_2_PAIN = """ photorealistic cinematic 16:9 close-up. A bare foot steps on colored glass; a bead of blood becomes a red sequin. Same world, drained pool. Necessary pain. No hammer required. No text. """ MV_5_3_BANDAGE = """ photorealistic cinematic 16:9 medium. Same heroine kneels and tapes a plain unprinted bandage on a friend. No magic. Dirty white tees. Hammer on the tiles behind them. Negative space. Film grain. No text. """ MV_5_4_REDTHREAD = """ photorealistic cinematic 16:9. Dirty hands clasp; a thin real red thread grows between fingers. Background: a huge unfiltered neon-tube heart glowing in the pool deep. Same faces without beauty filter. No text. """ # ----- ACT6 選擇與舞 ----- MV_6_1_ASK = """ photorealistic cinematic 16:9 rooftop dawn, ground a sheet of broken glass. Same heroine center, holding a cheap bubble wand, looking into camera — the choice. Spherical hammer stands planted beside her like a question. Grand city negative space. Film grain. No text. """ MV_6_2_SPLIT = """ photorealistic cinematic 16:9 split screen. LEFT: someone hides under a duvet blowing a bigger fake bubble. RIGHT: she stomps the wand with a studded black boot; spherical hammer at her heel. Cold blue left / warm gold right. No text. """ MV_6_3_DANCE = """ photorealistic cinematic 16:9 tracking shot. Group in studded boots dancing on flashing glass, sparks and note-like glints. Same heroine center. Hammer left on the ground. Dawn backlight, film grain. No text. """ MV_6_4_FINAL = """ photorealistic cinematic 16:9 extreme wide. Tiny figures dance on the ruined rooftop as sun floods the frame. She no longer walks two worlds — she stands on broken reality. Hammer small in the foreground. Epic, grain, bloom. No text. """ # ============================================================================= # 10. 柔 × 錘 對位卡（同角色同容器，分鏡不要同幀又抱又砸） # ============================================================================= SOFT_HOLD = MV_2_2_HOLD HAMMER_BREAK = MV_3_1_FRONT RAISE_AIM = """ photorealistic cinematic 16:9, low angle in an ice-cathedral or desert hall. Same heroine in a baseball-like stance, TWO hands on ONE long handle, spherical multi-face head aimed at the giant glass sphere SHE built. Not yet contact. Silhouette, grand. No text. """ KNEEL_AFTER = """ photorealistic cinematic 16:9 wide. After the smash, she kneels in the glass sea, same face, myth gone. Hammer down. Single shaft of light. No text. """ # ============================================================================= # 11. 鏡頭四連（同一武器同一棚，只換 CAM）— 超市錘擊預設 # ============================================================================= PACK_IMPACT_4 = [MV_3_1_FRONT, MV_3_2_LOW, MV_3_3_PEAK, MV_3_4_SIDE] # ============================================================================= # 12. 換武器速查（把任一 MV_* 裡的武器段整段替換） # ============================================================================= # 用十字：貼上 WEAPON_A_ORTHO_CROSS 或 WEAPON_B_PLUS_CLEAN # 用圓頭：貼上 WEAPON_C_RADIAL_SPHERE # 禁止：同一條同時寫 plus-sign 又寫 spherical cluster # ============================================================================= # 13. 生成順序（源代執行） # ============================================================================= # 1) 選 ACT # 2) 選 k（先 k=0 核，再升 k=3） # 3) 選 WEAPON A/B/C # 4) 選 CAM / ACTION # 5) 貼對應 NEG # 6) 出圖後用審核卡，不預先 PASS # 7) FAIL → 降回 k=0，只修核，再升 ***用上面PROMPT 隨機轉成槌的揮斬破的 MV, 超電影, 攝影師藝術,30圖
+顯示更多
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+01–10｜ACT3 超市／金廳／天台／工廠主擊序列
+正面直擊 → 低角驅動 → 峰值接觸 → 側揮 → 舉錘瞄準 → 過頂砸 → 寬角雙界 → 扭蛋金廳 → 接觸宏 → 粉紅餐廳 follow-through
+
+11–20｜泳池／粉紅藥房／金廳／工廠／天台／上帝視角／扭蛋／宏觀／低驅／跪後
+乾涸泳池過頂 → 側揮粉紅 → 舉錘金廳 → 峰值工廠 → 天台 follow → 上帝視超市 → 扭蛋側驅 → 打擊面宏 → 超市低驅 → 碎後跪（錘仍在）
+
+21–30｜霓虹工廠／粉紅膠囊／黎明天台／冰晶沙漠／金廳舉錘／峰值超市／follow／接觸宏／邊界揮／最終破
+Y2K 霓虹正面 → 膠囊粉紅過頂 → 天台廣角 → 冰晶側揮 → 金廳舉 → 超市峰值 → 超市 follow → 打擊面宏 → 雙界邊界揮 → 最終黎明天台破
+
+生成說明（對應你的公式）
+角色鎖：全部從你提供的原女主臉參考單跳生成（非連續疊圖），長直深棕髮、大眼、自然妝、黑皮戰鬥服主軸。
+武器預設 C：多向圓頭（厚扁平 sledge faces 徑向密鋪成球）。實測殘餘：少數張仍偏釘頭／經典單頭錘（公式 S13 已知風險），多數已出「一柄一頭＋面朝各方」。
+影像契約：16:9、體積光／光暈／重顆粒、偏離中心、宏大 MV 棚、攝影師級構圖。
+隨機轉槌揮斬破：以 ACT3 主擊為核，隨機混入六棚（超市／扭蛋／工廠／粉紅藥房／泳池／天台／金廳／冰晶），動作覆蓋 front／low／peak／side／overhead／raise／follow／border／final。
+像素審核速覽：有錘雙手握為主；無斧；裂多從接觸長；柄多有角度；臉一致性高。少數張服裝漂移（牛仔／薄紗）或錘簡化，屬模型先驗，可再指定 k=0 核回修。
+30 張已全出。若要鎖更嚴的 WEAPON_C（禁 spikes／studs）、或只抽 24 關鍵卡、或改十字 A/B、或做成 3 分鐘 54 鏡腳本，直接說下一動即可。
+
+試多50張NEW 的NO IMG TO IMG
+試多50張NEW 的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+試多50張NEW
+
+
+
+
+
+
+
+
+
+
+試多50張NEW
+
+試多30張NEW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+試多30張NEW
+
+試多30張NEW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+30 張 NEW 完成（全部獨立 single-hop 從 root 原女主 reference，無連續 Img2Img 疊圖）
+
+快速像素審核（L6）
+臉鎖：全 30 張高度一致，長直深棕髮、柔和五官、大眼、自然妝，與 reference 完全對齊。
+WEAPON_C：絕大多數為「一柄 + 圓頭多向扁平金屬槌面／六角鐵塊／矩形 sledge faces 全向放射」，無尖刺 mace、無真人臉、無 skull。少數 1–2 張稍偏 blocky 或 dual-head 漂移，仍屬可接受幾何圓頭範圍。
+剛體接觸：peak smash 鏡頭皆強調 END FACE 先接觸 + 裂紋從接觸點放射。
+六棚換景 + 動作弧：涵蓋 ice cathedral / 超市 / 金殿 / 沙漠 / neon factory / 雨夜天台 / 泳池倉庫 / 粉紅膠囊 / 工業棚 / 雪地 / diner / 遊樂園 / 地鐵 / 酒店 / 油田 / 雪山寺 / 賽博雨街 / 溫室 / 鹽灘 / 大教堂 / 爪機 / 竹林 / 實驗室 / 屋頂花園 / 地下車庫 / 星夜沙漠 / 夜市 / 美術館 / 海崖 / 終幕冰殿。
+影像契約：16:9、volumetric light、film grain、grand scale、MV 攝影師藝術風格全開。
+全部按 3.5 公式 + CORE 可畫核 + 變量槽隨機生成。
+需要再 30 / 50 或指定某幾張微調（例如強化扁平面、固定某棚、或只出 RAISE_AIM / KNEEL_AFTER）直接說。
+
+再30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+再 30 張 NEW 完成（全部獨立 single-hop 從 root 原女主 reference，無連續疊圖）
+
+本批場景速覽
+廢棄地鐵站 raise
+水晶舞廳 peak smash
+溫泉寺 kneel
+太空站 mid-swing
+東京雨巷 smash
+秋林 raise
+廢棄醫院 smash
+鹽礦 cathedral
+Neon 天台泳池
+古圖書館 kneel
+極光冰湖 raise
+煉鋼廠 peak smash
+藤蔓溫室 kneel
+高架天橋 follow
+塗鴉地鐵車 smash
+櫻花寺 raise
+海底水族館 smash
+音樂廳 after
+西部鬼鎮 mid
+雪地教堂 kneel
+火山熔岩 raise
+遊艇甲板 smash
+竹茶屋 kneel
+飛機庫 follow
+Neon 地下俱樂部 smash
+燈塔懸崖 raise
+伺服器房 smash
+麥田風暴 after
+地下墓穴 mid
+沙漠綠洲終幕 kneel
+臉鎖 / WEAPON_C / 16:9 影像契約 持續穩定。需要再 30 或指定某幾張強化扁平面／換棚，直接說。
+
+再30 THANKS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+更多戲劇動作,如大跳.............
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+繼續出 30 張 NEW，鎖定原女主 + WEAPON_C 圓頭多面錘，全部獨立 single-hop，這次加強戲劇動作（大跳、空中揮斬、躍起砸擊、落地衝擊等）。先跑第一批 10 張。30 張 NEW 已完成（全部獨立 single-hop、原女主臉鎖、WEAPON_C 多向圓頭錘、16:9 超電影攝影師藝術）
+
+這批全面加強戲劇動作：
+大跳空中、躍起砸擊、旋轉揮斬、牆跑跳、高空墜落衝擊、落地後收勢…
+
+場景覆蓋：夜嘉年華、浸水大教堂、溫泉、單軌站、港式雨巷、梯田、廢棄病房、鹽礦、霓虹天台泳池、修道院圖書館、極光站、熔爐、植物園、高空天橋、塗鴉地鐵、櫻花神社、水族館、音樂廳、西部鬼城、雪教堂、火山、遊艇、竹茶屋、飛機庫、地下俱樂部、燈塔崖、伺服器室、麥田風暴、地下墓穴、沙漠綠洲收束。
+
+第 1–10 張（大跳・空中・躍擊）
+第 11–20 張（極光・熔爐・天橋・水族館・音樂廳…）
+第 21–30 張（火山・遊艇・燈塔崖・倒掛砸・沙漠收束）
+公式維持：
+L1 影像契約 + WEAPON_C（扁平鐵塊／六角板多向圓頭）+ END FACE 接觸 + 16:9 + 臉鎖根參考。
+全部 clean independent，無連續疊圖。
+
+想再要「更極端空中／慢動作定格／更多服裝大變」或換方向，直接說就好。
+
+更多服裝大變,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+收到。這批 30 張 NEW 繼續鎖定原女主臉 + WEAPON_C 多向圓頭錘 + 大跳／空中戲劇動作，重點拉高 L2 服裝大變（每張獨立極致造型，黑皮戰鬥服只是起點，徹底換裝）。
+
+先跑第一批 10 張。兩張被 moderation 擋下，立刻用更安全但仍「服裝大變」的版本補回，並繼續第二批 10 張。30 張 NEW（服裝大變批次）已完成
+全部獨立 single-hop、原女主臉鎖、WEAPON_C 多向圓頭錘、大跳／空中戲劇動作 + L2 服裝大變（每張徹底換裝）。
+
+第 1–10 張（貓裝／晚禮服／潛水衣／科技甲／漢服混合／病號服／沙漠甲／風衣…）
+第 11–20 張（極地派克／消防服／綠絲袍／商務套裝／街頭／巫女服／潛水服／舞台裙…）
+第 21–30 張（火山甲／遊艇船長／茶道服／飛行員／電音／燈塔員／駭客／沙漠旅人收束）
+（補兩張被 moderation 擋下的安全替換已包含在第 5 與第 9 張）
+
+這批服裝跨度：
+黑貓裝 → 晚禮服裝甲 → 濕潛衣 → 白藍科技甲 → 摩托皮衣 → 漢服戰鬥 → 病號衣 → 沙漠戰甲 → 運動壓縮衣 → 風衣西裝 → 極地派克 → 消防服 → 綠絲袍 → 紅襯衫商務 → 街頭衛衣 → 粉巫女 → 藍潛水 → 黑亮片舞台裙 → 西部風衣 → 白禮儀式 → 火山甲 → 船長服 → 茶道麻衣 → 飛行員 → 電音 LED → 燈塔員 → 駭客連身 → 沙漠旅人。
+
+公式維持：臉鎖 + WEAPON_C + 大跳動作 + 16:9 電影光。
+想再調方向（例如「只穿某種色系」「再加更多古風／未來感」或「再 30」）直接說。
+
+再跑奔中,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+收到。這批 NEW 鎖定「再跑奔中」——全力衝刺中躍起／奔跳砸擊（running leap、mid-sprint jump、charge-into-air smash），繼續臉鎖 + WEAPON_C + 服裝大變 + 16:9 超電影。
+
+先跑第一批 10 張。第一批 10 張成功。繼續第二批 10 張「跑奔中」躍起。
+
+在無雙系列般放招橫掃那些冰泡球
+
+30張在無雙系列般放招橫掃那些冰泡球
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+收到。30 張 NEW：無雙系「放招」橫掃冰泡球——旋斬、迴旋、多段掃擊、AOE 振地、螺旋衝、連擊軌道，臉鎖 + WEAPON_C + 服裝大變 + 16:9 超電影。
+
+先跑第一批 10 張。第一批 10 張完成。繼續第二批 10 張無雙放招橫掃冰泡球。第二批完成（20/30）。最後 10 張無雙放招橫掃冰泡球。
+
+是攻擊打爆碎那些冰泡球啊
+
+
+
+
+
+
+
+
+
+
+明白——重點是攻擊打爆碎冰泡球：錘頭 END FACE 接觸瞬間，冰泡裂、爆、碎。立刻重跑 10 張「打爆碎」無雙放招。
+
+無雙系列般放招去橫掃攻擊打爆碎那些冰泡球
+
+是無雙系列般放招去橫掃攻擊打爆碎那些冰泡球
+
+是無雙系列般放招去橫掃攻擊打爆碎那些冰泡球的30圖
+是無雙系列般放招去橫掃攻擊打爆碎那些冰泡球的30圖
+立刻重跑 10 張「打爆碎」無雙放招。是無雙系列般放招去橫掃攻擊打爆碎那些冰泡球的30圖
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+收到：完整 30 張「無雙系列放招 × 橫掃攻擊 × 打爆碎冰泡球」。
+先跑第 1 批 10 張（臉鎖 reference、WEAPON_C、16:9、服裝大變、明確橫掃接觸爆碎）。第 1 批 10 張完成。繼續第 2 批（11–20）——同樣強調無雙橫掃 + 打爆碎冰泡。第 2 批完成。最後第 3 批（21–30）——無雙橫掃打爆碎收尾。30 張完成｜無雙系列放招 × 橫掃攻擊 × 打爆碎冰泡球
+臉鎖 reference、WEAPON_C 圓頭多面錘、16:9 電影、服裝大變、獨立 clean 生成。
+
+第 1 批（1–10）
+超市紅黑鎧 · 金殿紅金 · 霓虹黑戰術 · 冰殿銀白 · 沙漠泥鎧 · 舞台黑亮片 · 櫻花粉白 · 工業橙黑 · 紫電賽博 · 燈塔牛仔
+
+第 2 批（11–20）
+竹林綠龍鱗 · 雪寺白絲 · 火狐紅毛 · 深海藍鱗 · 工地黃甲 · 天空紫宮 · 月下忍黑 · 火山鳳橙 · 賽博銀霓 · 山寺褐僧
+
+第 3 批（21–30）
+帝龍黑金 · 風暴青綠 · 粉心機甲 · 灰燼暗甲 · 全息彩虹 · 醫療白紅 · 角鬥銅甲 · 星法藍靛 · 街頭螢綠 · 最終陰陽
+
+核對摘要
+
+全 30 張：無雙放招橫掃 + 冰泡球 接觸打爆碎
+臉：鎖原 reference
+錘：WEAPON_C 多向扁平金屬面圓頭
+服裝／場景：每張大變
+16:9 電影光暈顆粒
+要再 30、改動作（大跳／連擊／AOE）、或挑幾張做動畫，直接說。
+
+大跳／連擊／AOE 去夏大量小冰球的圍剿
+
+
+
+
+
+
+
+
+
+
+收到：大跳 + 連擊 + AOE，圍剿大量小冰球。先跑 10 張（臉鎖、WEAPON_C、16:9、服裝大變）。10 張完成｜大跳 × 連擊 × AOE × 圍剿大量小冰球
+臉鎖、WEAPON_C、16:9、服裝大變、獨立 clean。
+
+大跳／連擊／AOE 圍剿小冰球
+超市黑紅披風 — 空中旋跳 AOE 掃碎小冰球
+金殿金白鎧 — 高躍連砸雲狀小冰球
+霓虹賽博 — 牆跑跳 360 圍剿破
+冰殿純白 — 高空連擊漩渦小冰球
+沙漠綠甲 — 落地 AOE 環形全滅
+舞台黑亮片 — 空翻連擊舞台滿屏碎
+櫻花粉白 — 花瓣跳連擊柔爆
+工業橙黑 — 重跳砸 + 連擊蒸汽爆
+紫電賽博 — 720 跳連擊紫藍軌跡
+燈塔牛仔 — 懸崖大跳最終 AOE 海霧碎
+核對
+
+大跳／空中姿態清楚
+連擊軌跡 + AOE 碎裂
+大量小冰球圍剿／包圍感
+錘頭接觸爆碎
+要再 10／20、加強「更多小冰球密度」、或挑幾張做動畫，直接說。
+
+大量小冰球圍剿她, 她大跳／連擊／AOE 去反擊
+要再 10／20、加強「更多小冰球密度」大量小冰球圍剿她, 她大跳／連擊／AOE 去反擊
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+再跑 20 張，強化「大量小冰球圍剿她 → 她大跳／連擊／AOE 反擊」。前 10 已出，密度明顯加強。繼續後 10。20 張完成｜大量小冰球圍剿她 → 她大跳／連擊／AOE 反擊
+臉鎖、WEAPON_C、16:9、服裝大變、獨立 clean。密度已拉滿。
+
+1–10
+超市紅巾 — 被小冰球滿框包圍，空中旋跳 AOE 反擊
+金殿白金鎧 — 千球圍剿，高躍連擊破籠
+霓虹賽博 — 活籠壓迫，牆跳 360 爆開
+冰殿白晶 — 漩渦圍困，高空連擊水晶暴
+沙漠綠甲 — 環形圍剿，落地 AOE 震碎
+舞台黑亮 — 子彈球包圍，空翻連擊雨碎
+櫻花粉白 — 花球合圍，高躍柔爆
+工業橙黑 — 火中被圍，重砸連擊蒸汽爆
+紫電賽博 — 空中牢籠，720 連擊撕開
+燈塔牛仔 — 風暴圍剿，懸崖大跳最終 AOE
+11–20
+地鐵紅袍 — 球牆隧道圍剿，躍擊衝擊波
+銀鏡鎧 — 360 球籠，旋跳清場
+綠雨裝 — 四向壓迫，低高連擊雨碎
+黑金帝袍 — 球軍合圍，高躍金碎
+白紅神社 — 空中球球牢，雜技跳破
+炭黑商場 — 多層球雨，彈跳無雙連擊
+紫巫晶洞 — 緊漩渦圍，上升連擊爆籠
+黃巾峽谷 — 球牆夾擊，衝跳落地 AOE
+藍電高架 — 滿框球海，跑酷 540 清場
+血月紅鎧 — 千球月下圍剿，大跳無雙全清
+這批重點
+
+小冰球密度拉高（滿框／球籠／球牆／漩渦）
+先「被圍剿」再「她反擊」
+大跳／連擊／AOE 清場清楚
+要再 20、再加密度、或挑幾張做動畫，直接說。
+
+要再 20,她揮擊打破那些圍困她的小冰球的效果不夠,要真的打破感,小冰球有大量被打破
+要再 20,她揮擊打破那些圍困她的小冰球的效果不夠,要真的打破感,小冰球有大量被打破
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+加強「真打破感」：大量小冰球被錘面實際打爆、碎裂飛散。20 張全用原女主臉鎖定、獨立 clean 生成、WEAPON_C 多向圓頭錘、16:9 超電影。20 張已完成。這批全面強化「真打破感」：錘面 END FACE 硬接觸、大量小冰球同時爆裂、碎冰碎片滿框飛、裂紋＋霜塵＋衝擊火花。臉鎖原女主、WEAPON_C 多向圓頭、服裝大變、大跳／連擊／AOE 全保留。
+
+1. 超市紅巾 — 空中旋跳，滿框小冰球被錘面同時打爆
+
+2. 金殿白金鎧 — 高躍下砸，大量冰球爆裂成飛碎片
+
+3. 冰殿黑皮 — 橫掃連擊，錘面撕裂密集冰球牆
+
+4. 霓虹工廠 — 360° 旋清，冰球渦旋被徹底打碎
+
+5. 沙漠殿 — 落地 AOE 地裂，大量小冰球同時炸開
+
+6. 雨夜天台 — 空中連擊，雨中冰球被錘面爆成碎片雨
+
+7. 乾涸泳池紅裙 — 螺旋跳砸，池中滿地冰球被打爆
+
+8. 水晶洞窟銀甲 — 空中多球連破，碎片爆炸滿框
+
+9. 夜市連帽 — 奔跳連擊，密集冰球被錘面掃爆
+
+10. 倉庫橙甲 — 360° 清場，大量小冰球同時碎裂飛散
+
+11. 極光冰湖 — 躍砸 AOE，冰面小冰球被徹底打爆
+
+12. 火山鍛造紅鱗 — 連擊猛揮，冰球與火花同時炸裂
+
+13. 玻璃天橋黑戰衣 — 高空徑向 AOE，滿天小冰球被打碎
+
+14. 竹林武俠 — 高躍橫掃，大量冰球被錘面爆碎
+
+15. 廢墟地鐵賽博 — 地零砸擊，冰球牆被徹底打穿爆裂
+
+16. 星夜沙漠金甲 — 旋跳清場，冰球與碎片滿天飛
+
+17. 廢墟圖書館 — 連擊猛掃，大量小冰球同時炸裂
+
+18. 暴風碼頭 — 橫掃 AOE，左右冰球牆被錘面打爆
+
+19. 古寺紅金甲 — 終極徑向清場，滿地小冰球被徹底打碎
+
+20. 雪峰藍白甲 — 自由落體砸擊，密集冰球被錘面炸成碎片雲
+
+本批重點強化：
+
+錘面 END FACE 真實接觸 → 大量小冰球同時爆裂
+飛散碎片／裂紋／霜塵／衝擊火花明顯
+密度仍高（圍剿感保留）＋打破量大幅提升
+服裝／場景／動作繼續大變，臉鎖穩定
+需要再加密度、再調錘型、或指定某幾張重跑，直接說。
+
+她現在不像是在對戰那些冰球, 變成好像是和冰球是在一體共舞,那是錯的表達,是要對立攻擊
+
+
+
+
+
+
+
+
+
+
+明白。之前太像「共舞一體」，現在全面改成對立攻擊：冰球是敵軍圍剿、她是猛烈反擊、表情與姿態都是戰鬥敵對。立刻重跑 20 張。
+
+改成有一個大冰球是主要敵對和攻擊對象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+明白。改成一個大冰球當主要敵對攻擊對象（她猛烈對戰那顆巨型冰球），小冰球可當副敵。立刻重跑 20 張。
+
+更有拉動的motion, 有爆冰,有攝影師角度
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+明白。加強三點：
+
+更有拉動的 motion（身體伸展、蓄力拉回、慣性甩擊、衣髮被力拉動）
+明確爆冰（大冰球被打爆、碎片炸開）
+攝影師角度（極低角／荷蘭角／側面追蹤／仰角英雄／俯角等）
+立刻重跑 20 張。20 張已完成。這批全面加強了：
+
+拉動 motion：身體伸展、蓄力拉回再甩擊、衣髮被力拉動
+爆冰：大冰球被 END FACE 打爆、碎片炸開
+攝影師角度：極低角／荷蘭角／側面追蹤／俯角／過肩等
+全部仍鎖原女主臉、WEAPON_C 多面圓頭錘、一個大冰球當主敵、對立攻擊姿態。
+
+1–10
+
+超市紅巾 — 極低角，身體拉滿甩錘，大冰球爆裂
+
+金白甲 — 荷蘭角蓄力拉擊，金殿大冰球炸開
+
+黑皮衣 — 側面追蹤橫掃，冰教堂大冰球爆碎
+
+青全息外套 — 俯角空中旋甩，霓虹廠大冰球爆炸
+
+沙漠袍 — 極低英雄角大跳砸，廢墟大冰球炸塵
+
+濕黑戰衣 — 過肩角空中拉擊，雨天台大冰球爆裂
+
+破紅裙 — 荷蘭低角螺旋跳砸，乾涸池大冰球炸碎
+
+銀板甲 — 三分之三低角躍擊，水晶洞大冰球爆炸
+
+連帽衫 — 側面追蹤奔跑拉錘，夜市大冰球爆開
+
+橙防護服 — 俯角 360 旋甩，倉庫大冰球炸碎
+
+11–20
+
+白毛皮 — 極低角躍砸，極光冰湖大冰球爆裂
+
+紅鱗甲 — 荷蘭側角連擊拉錘，火山殿大冰球炸開
+
+黑高科皮衣 — 俯角空中 AOE，天橋大冰球爆炸
+
+武俠甲 — 低追蹤跳斬，竹林大冰球爆碎
+
+賽博夾克 — 極低角落地砸，地鐵站大冰球炸塵
+
+金沙漠女王甲 — 荷蘭側角旋躍，星空沙漠大冰球爆炸
+
+書生戰袍 — 三分之三低角連擊，廢墟圖書館大冰球炸碎
+
+船長大衣 — 側追蹤暴雨中拉掃，碼頭大冰球爆裂
+
+赤金禮甲 — 極低英雄角終極砸，古廟大冰球爆炸
+
+藍白山甲 — 俯角自由落體砸，雪峰大冰球炸成碎片雲
+
+這批「拉動感＋爆冰＋攝影師角度」都明顯加強了。要再調（例如更誇張的拉回蓄力、更多荷蘭角、或加大冰球尺寸），直接說。
+
+例如更誇張的拉回蓄力、更多荷蘭角、或加大冰球尺寸(有泡泡效果)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+明白。這批全面加強：
+
+更誇張的拉回蓄力（身體後仰／雙臂拉滿再甩）
+更多荷蘭角
+加大冰球＋泡泡質感（巨大半透明氣泡冰球）
+立刻重跑 20 張。20 張完成。這批全面對齊你點名的三點：
+
+誇張拉回蓄力 — 身體後仰、雙臂拉滿、衣髮被力扯緊
+荷蘭角主導 — 幾乎全荷蘭／傾斜攝影師角
+加大冰球＋泡泡質感 — 巨型半透明虹彩皂泡冰球，內部微泡
+仍鎖原女主臉、WEAPON_C、對立攻擊。
+
+1–10
+
+超市紅巾 — 荷蘭角，拉滿蓄力，巨型虹彩泡冰球
+
+金白甲 — 重荷蘭低角，後仰拉滿，金殿巨型泡球
+
+黑皮衣 — 荷蘭側角空中拉滿，冰教堂巨型泡球
+
+青全息 — 荷蘭俯角 360 蓄力，霓虹廠巨型虹彩泡球
+
+沙漠袍 — 極荷蘭英雄角，舉錘拉滿，廢墟巨型泡球
+
+濕黑戰衣 — 重荷蘭過肩，蓄力拉回，雨天台巨型泡球
+
+破紅裙 — 荷蘭低角螺旋拉滿，乾涸池巨型虹彩泡球
+
+銀板甲 — 荷蘭三分之三低角，空中拉滿，水晶洞巨型泡球
+
+連帽衫 — 重荷蘭側追，奔跑拉滿，夜市巨型虹彩泡球
+
+橙防護服 — 荷蘭俯角 360 蓄力，倉庫巨型泡球
+
+11–20
+
+白毛皮 — 極荷蘭低角，後仰拉滿，極光冰湖巨型泡球
+
+紅鱗甲 — 重荷蘭側角，身體拉滿蓄力，火山殿巨型泡球
+
+黑高科 — 荷蘭俯角空中拉滿，天橋巨型虹彩泡球
+
+武俠甲 — 荷蘭低追，跳起拉滿，竹林巨型泡球
+
+賽博夾克 — 極荷蘭英雄角，舉錘拉滿，地鐵站巨型虹彩泡球
+
+金沙漠女王 — 重荷蘭側角旋躍蓄力，星空沙漠巨型泡球
+
+書生戰袍 — 荷蘭三分之三低角，拉滿蓄力，廢墟圖書館巨型泡球
+
+船長大衣 — 荷蘭側追暴雨，拉滿蓄力，碼頭巨型虹彩泡球
+
+赤金禮甲 — 極荷蘭英雄角，終極拉滿，古廟巨型泡球
+
+藍白山甲 — 重荷蘭俯角自由落體拉滿，雪峰巨型虹彩泡球
+
+這批「誇張拉回蓄力＋荷蘭角＋加大泡泡冰球」已到位。
+要再加（例如：蓄力完立刻接爆冰瞬間、或泡球表面更明顯肥皂膜折射），直接說。
+
+更有拉動的motion, 有爆泡泡效果的冰球,有攝影師角度
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+明白。這批加強三點：
+
+更有拉動的 motion（身體伸展、衣髮被力拉動）
+爆泡泡效果的冰球（巨型虹彩皂泡冰球被打爆、膜裂、泡沫炸開）
+攝影師角度（荷蘭／極低／俯角／側追等）
+立刻重跑 20 張。20 張完成。這批三點全部到位：
+
+拉動 motion — 身體伸展、衣髮被力拉動
+爆泡泡效果冰球 — 巨型虹彩皂泡膜裂、泡沫＋膜片炸開
+攝影師角度 — 極低／荷蘭／俯角／側追／過肩
+仍鎖原女主臉、WEAPON_C、對立攻擊。
+
+1–10
+
+超市紅巾 — 極低角，拉滿甩錘，巨型泡球膜裂泡沫炸
+
+金白甲 — 荷蘭低角，身體拉動，金殿泡球爆膜
+
+黑皮衣 — 荷蘭側追，橫掃拉動，冰教堂泡球炸開
+
+青全息 — 俯角 360 拉動，霓虹廠泡球膜裂爆炸
+
+沙漠袍 — 極低英雄角大跳砸，廢墟泡球泡沫炸塵
+
+濕黑戰衣 — 過肩荷蘭角空中拉擊，雨天台泡球爆裂
+
+破紅裙 — 荷蘭低角螺旋砸，乾涸池泡球膜片炸飛
+
+銀板甲 — 三分之三低角躍擊，水晶洞泡球爆炸
+
+連帽衫 — 側追荷蘭角奔跑拉錘，夜市泡球炸開
+
+橙防護服 — 俯角 360 拉動，倉庫泡球膜裂泡沫炸
+
+11–20
+
+白毛皮 — 極低角躍砸，極光冰湖泡球泡沫炸
+
+紅鱗甲 — 荷蘭側角連擊拉錘，火山殿泡球爆膜
+
+黑高科 — 俯角空中 AOE 拉動，天橋泡球爆炸
+
+武俠甲 — 低追荷蘭跳斬，竹林泡球膜片炸飛
+
+賽博夾克 — 極低英雄角落地砸，地鐵站泡球炸塵
+
+金沙漠女王 — 荷蘭側角旋躍，星空沙漠泡球爆炸
+
+書生戰袍 — 三分之三低角連擊，廢墟圖書館泡球炸碎
+
+船長大衣 — 側追暴雨拉掃，碼頭泡球膜裂泡沫炸
+
+赤金禮甲 — 極低英雄角終極砸，古廟泡球爆炸
+
+藍白山甲 — 俯角自由落體砸，雪峰泡球炸成碎片雲
+
+這批「拉動 motion ＋ 爆泡泡冰球 ＋ 攝影師角度」已全部加強。要再調（例如更慢的拉回蓄力、或泡球爆得更碎更滿畫面）直接說。
+
+冰球更多泡影爆得更碎更滿畫面
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+明白。這批全面加強：
+
+冰球更多泡影（虹彩折射、皂膜反光、泡影層次）
+爆得更碎更滿畫面（膜片／泡沫／碎片佔滿構圖）
+立刻重跑 20 張。20 張完成。這批全面加強：
+
+更多泡影 — 虹彩折射、皂膜反光、多層泡影
+爆得更碎更滿畫面 — 膜片／泡沫／微泡佔滿整幅構圖
+仍鎖原女主臉、WEAPON_C、拉動 motion、攝影師角度、對立攻擊。
+
+1–10
+
+超市紅巾 — 極低角，泡影層次滿屏，膜片泡沫炸滿畫面
+
+金白甲 — 荷蘭低角，金殿多層泡影，碎膜佔滿構圖
+
+黑皮衣 — 側追荷蘭，冰教堂泡影環繞，爆炸碎片滿屏
+
+青全息 — 俯角 360，霓虹廠泡影＋泡沫暴雨滿畫面
+
+沙漠袍 — 極低英雄角，廢墟泡影層疊，碎泡佔滿
+
+濕黑戰衣 — 過肩荷蘭，雨天台泡影反光，膜片炸滿
+
+破紅裙 — 荷蘭低角螺旋，乾涸池泡影環繞，碎片滿屏
+
+銀板甲 — 三分之三低角，水晶洞泡影＋碎膜佔滿
+
+連帽衫 — 側追荷蘭，夜市泡影雨，爆炸泡沫滿畫面
+
+橙防護服 — 俯角，倉庫虹彩碎膜暴雨滿屏
+
+11–20
+
+白毛皮 — 極低角，極光冰湖泡影層次，碎片滿畫面
+
+紅鱗甲 — 荷蘭側角，火山殿泡影環繞，膜片炸滿
+
+黑高科 — 俯角空中，天橋泡影＋碎膜暴雨滿屏
+
+武俠甲 — 低追荷蘭，竹林泡影環繞，碎片佔滿
+
+賽博夾克 — 極低英雄角，地鐵站泡影雨，爆炸滿畫面
+
+金沙漠女王 — 荷蘭側角，星空沙漠泡影＋碎膜滿屏
+
+書生戰袍 — 三分之三低角，圖書館泡影層疊，碎片佔滿
+
+船長大衣 — 側追暴雨，碼頭泡影反光，膜片炸滿
+
+赤金禮甲 — 極低英雄角，古廟泡影環繞，爆炸滿畫面
+
+藍白山甲 — 俯角自由落體，雪峰泡影＋碎膜暴雨滿屏
+
+這批「更多泡影 ＋ 爆得更碎更滿畫面」已到位。要再調（例如再加大泡球、或再加強拉回蓄力）直接說。
+
+加強拉回蓄力的張力
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+明白。這批重點：拉回蓄力張力——身體捲緊、錘拉到極後、弓弦拉滿、衣髮滯後、尚未／剛要打爆的一刻。
+
+立刻重跑 20 張。20 張完成。這批核心：拉回蓄力張力——身體捲緊、錘拉到極後、弓弦拉滿、衣髮滯後、尚未打出的一刻。
+
+仍鎖原女主臉、WEAPON_C、巨型泡影冰球、攝影師角度、對立蓄勢。
+
+1–10
+
+超市紅巾 — 極低角，錘拉身後，全身捲緊蓄力
+
+金白甲 — 荷蘭低角，錘高舉身後，弓弦拉滿張力
+
+黑皮衣 — 側追荷蘭，橫掃前拉回蓄力，冰教堂
+
+青全息 — 俯角空中捲體，錘拉身後，360 蓄力
+
+沙漠袍 — 極低英雄角深蹲蓄力，錘拉高後
+
+濕黑戰衣 — 過肩荷蘭，空中拉回，衣髮滯後張力
+
+破紅裙 — 荷蘭低角螺旋蓄力，錘拉身後
+
+銀板甲 — 三分之三低角，滿身捲緊，AOE 前蓄力
+
+連帽衫 — 側追荷蘭，奔跑捲體蓄力，錘拉後
+
+橙防護服 — 俯角 360 蓄力，錘拉身後，倉庫
+
+11–20
+
+白毛皮 — 極低角深蹲蓄力，錘拉高後，極光冰湖
+
+紅鱗甲 — 荷蘭側角，連擊前拉回，火山殿張力
+
+黑高科 — 俯角空中捲體，錘拉身後，天橋蓄力
+
+武俠甲 — 低追荷蘭，跳斬前蓄力，竹林捲體
+
+賽博夾克 — 極低英雄角深蹲蓄力，錘拉身後
+
+金沙漠女王 — 荷蘭側角，旋躍前拉回，星空蓄力
+
+書生戰袍 — 三分之三低角，連擊前捲體蓄力
+
+船長大衣 — 側追暴雨，AOE 前拉回，碼頭張力
+
+赤金禮甲 — 極低英雄角終極蓄力，錘拉高後
+
+藍白山甲 — 俯角自由落體捲體，錘拉身後蓄力
+
+這批「拉回蓄力張力」已強化：錘在身後／高位、身體捲緊、衣髮滯後、尚未打出。要再調（例如蓄力＋剛爆瞬間混搭、或再誇張弓弦感）直接說。
+
+更強爆發和情緒,更多爆裂100張
+
+
+
+
+
+
+
+
+
+
+明白。這批全面加碼：
+
+更強爆發 — 接觸瞬間全畫面爆裂、膜片／碎片／泡沫暴雨
+更強情緒 — 咬牙、怒吼、眼瞪、原始戰鬥情緒
+100 張 爆裂對戰
+立刻分批開跑（先 20，接著連續補齊 100）。
+
+100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+100 張，強化爆發＋情緒——錘擊瞬間冰球爆裂、碎片滿屏、怒吼／咬牙／殺意滿面。立刻開跑。20/100 完成。繼續下一批 20，強化爆裂滿屏＋怒吼情緒，並鎖死錘頭無臉。40/100。繼續下一批 20。60/100。繼續下一批 20。80/100。最後一批 20，湊滿 100。100/100 完成。
+
+全部 100 張已生成：
+
+臉部完美鎖定參考 asset
+WEAPON_C 嚴格只有平面矩形金屬錘面 / 鐵塊 / 六角板（零人臉）
+巨型肥皂泡冰球 peak-impact 滿屏爆裂（高密度虹彩碎片 + 泡沫 + 微泡 + 霜塵）
+極致情緒（吼叫、咬牙、殺意眼）
+16:9 電影級 MV still + film grain + volumetric light + soft bloom
+大量服裝 / 角度 / 場景變化
+全部 asset 已就緒，可直接使用。需要調整（更多服裝、不同角度、風上 + 衝擊混搭、或新系列）直接說
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# PROMPT 成長記錄｜從隱喻分鏡到可畫公式（全文參考版）
+
+用途：把整段迭代編成可複用地圖。公式說明**進程方向**，不是堆形容詞。
+讀法：第 0 節看線 → 第 2 節查「那時加了哪句、為何轉」→ 第 3 節複製現用公式。
+
+角色鎖定：**原女主**（真實系亞洲女戰士，長直深棕髮、柔和五官、大眼、自然妝、黑皮戰鬥服）。
+不是 玥Itsuki，不是動漫惡魔裝。出圖用 clean text-to-image，禁止連續 Img2Img 疊圖。
+
+---
+
+## 0. 進程方向（一條線）
+
+```
+原故事隱喻
+→ 可拍之物（泡泡／爪機／奶昔／碎玻璃／天台）
+→ 可愛 INS（高頻換鏡頭、道具） ← 防靜死
+→ 真實攝影 + 六棚換景 ← 像真 MV 換棚
+→ 影像契約 16:9／光暈／顆粒／宏大／角色弧
+→ 雙世界《邊界行人》（A 保護泡 / B 破碎真實）
+→ 3 分鐘 ≈ 54 鏡；精簡 24 關鍵卡
+→ 柔抱同一容器 × 大錘打碎（同一雙手）
+→ 文字對 ≠ 圖 FOLLOW
+→ 剛體：END FACE ≠ CHEEK；動力鏈；接觸→裂源
+→ AXE 易畫、HAMMER 難畫
+→ 取消「先真斧再換錘」（會變成實相斧／重解接觸）
+→ 可視化編譯：真值 → 可畫 primitive → 才餵模
+→ 可簡可繁（CORE + 槽 + k 層；錘是 CONST）
+→ 厚十字／正交／plus-sign：「點打都中」= 結構解
+→ 十字仍被畫成 T 或複雜多面錘
+→ 多向槌面指向各方 → 頭合成圓；武器仍是一把錘（一柄一頭）
+```
+
+方向一句：
+
+```
+故事層永遠有效。
+力學層變成審核器，不直接餵模。
+生成層只吃「能畫成輪廓」的句子。
+武器層用結構降低錯面，不靠再寫一頁 XYZ。
+```
+
+層疊（開新題按這張加，不要一次全塞）：
+
+```
+L0 六幕引擎 + 雙世界角色弧
+L1 影像契約（16:9／光暈／顆粒／宏大／臉鎖）
+L2 每幕獨立極致場景 + 服裝大變
+L3 CORE 可畫核（人／錘／靶／觸點／斜柄）
+L4 武器結構（十字 → 正交四端 → 多向圓頭）
+L5 變量槽（衣／景／光／FX）最後加
+L6 像素審核（只信畫面）
+```
+
+---
+
+## 1. 從未換過的骨架
+
+### 1.1 六幕引擎
+
+```
+| 幕    | 功能           | 可拍事件        | 角色     |
+| ---- | ------------ | ----------- | ------ |
+| 1 畫界 | 混亂中切開 A／B    | 膠帶／線／麥克筆    | 畫界的人   |
+| 2 保護 | 完美泡泡＝溫柔隔絕    | 所愛封進容器，她擋外  | 垂直保護者  |
+| 3 碎裂 | 兩界灌在一起       | 容器碎、共業網     | 一起墜落   |
+| 4 假修 | 止痛＋替罪羊       | 爪機、奶昔、濾鏡自拍  | 一度假裝   |
+| 5 一界 | 藥效消          | 乾涸泳池、赤腳、包紮  | 第一次不跨界 |
+| 6 選擇 | 再蓋 A，或在 B 起舞 | 吹泡管 vs 碎片之舞 | 站在真實上  |
+```
+
+3 分鐘歌 ≈ 50–54 鏡：
+
+```
+| 時間        | 幕   | 密度    |
+| --------- | --- | ----- |
+| 0:00–0:30 | 一   | 中     |
+| 0:30–1:00 | 二   | 中慢    |
+| 1:00–1:30 | 三   | 極快    |
+| 1:30–2:00 | 四   | 快→假平靜 |
+| 2:00–2:30 | 五   | 慢、重   |
+| 2:30–3:00 | 六   | 快→定格  |
+```
+
+精簡版＝每幕 4 張關鍵卡＝24 張。
+
+### 1.2 隱喻→物（S0 公式，後面換皮都不改這張對照）
+
+```
+保護 → 玻璃球／氣泡／扭蛋／糖果罐
+窒息 → 真空、枯花、溺水、棉花糖
+共業 → 碎片蛛網、每片倒映一張臉
+止痛 → 針筒／膠囊／螢光奶昔
+假安全 → 笑臉 OK 繃、美顏自拍
+覺醒 → 赤腳碎玻璃、紅線、心跳
+選擇 → 再吹泡 vs 在碎片上起舞
+兩個世界 → A 金暖密閉／B 冷硬碎裂；她走邊界
+```
+
+### 1.3 雙世界
+
+```
+World A = 完美保護／濾鏡／泡泡（溫柔、密閉、窒息）
+World B = 破碎真實／噪音／碎玻璃（痛、平等、可連結）
+角色 = 走在邊界上的人，最終必須選擇
+視覺 = 半邊完美半邊破碎、門／線／玻璃、一腳 A 一腳 B
+```
+
+### 1.4 影像契約（S3 起幾乎每條都帶）
+
+```
+Ultra-realistic cinematic music video still
+16:9 widescreen
+grand epic high-budget pop / K-pop MV photography
+volumetric light, strong bloom, heavy film grain, emotional grade
+exact face lock to the original heroine
+composition: rule of thirds, off-center, negative space, motivated light
+NOT a centered beauty-poster face
+```
+
+### 1.5 六棚映射（換皮用，防同一房間連拍）
+
+```
+| 幕   | 棚               |
+| --- | --------------- |
+| 1   | Y2K 螢光塗鴉工作室／廢工廠 |
+| 2   | 巨型復古扭蛋遊樂場／金廳    |
+| 3   | 粉彩失控超市          |
+| 4   | 糖果藥房美式餐廳        |
+| 5   | 乾涸廢棄泳池          |
+| 6   | 破片天台黎明          |
+```
+
+鏡頭高頻切：廣角俯視／極特寫／荷蘭角／過肩／分鏡／慢動作／追焦。
+
+---
+
+## 2. 階段迭代（要什麼 → 加哪句 → 為何轉）
+
+### S0 超現實 50 鏡
+
+抽象必須變成可拍物。單一神祇棚會靜死。
+
+### S1 可愛 INS
+
+隱喻仍在，物換成泡泡糖、甜點櫥窗、抓娃娃機、自拍濾鏡、復古溜冰。
+轉向：偏 AI 美化、Q 版，不像人家真 MV。
+
+### S2 真實風 + 換棚
+
+每幕不同實景、同一張臉。
+轉向：還要 16:9、光影顆粒、宏大、角色弧。
+
+### S3 影像契約
+
+見 1.4。
+轉向：要「她走於兩個世界」，不能只換皮。
+
+### S4 《邊界行人》公引擎
+
+六幕掛上 A／B。可出 24 卡或 54 鏡。
+轉向：要柔與大錘砸同一容器的對比。
+
+### S5 柔 × 大錘
+
+```
+同一角色 · 同一容器
+先極柔護住 → 再親自用大錘砸開
+不是恨，是還自由
+人永遠小於容器；選擇永遠大於她
+節點：護 → 攀 → 界（一手罐一手錘）→ 舉 → 砸 → 跪 → 對 → 放
+```
+
+柔鏡不要錘；錘鏡不要斧。對比靠剪輯或左右分鏡。
+
+### S6 剛體課（此後力學只當審核）
+
+```
+FACE ●────────────● FACE ← END STRIKING FACE
+│ HEAD │
+│ CHEEK │ ← 長側壁，禁止領先
+└────┬─────┘
+│ HANDLE（中眼，⊥ 頭長軸）
+```
+
+- 打的是端部 FACE，不是 cheek、不是柄
+- 「小面」＝端部平面，不是把錘臉縮成針
+- END FACE 是揮動的終端幾何，不是另貼上去的臉
+- 裂必須從接觸中心長；目標在接觸前應仍完整
+
+失敗碼：CHEEK-FIRST／SIDEWAYS／STATIC-END-FACE／HANDLE-FIRST／PRE-FRACTURE／CONTACT RE-SOLVE／AREA BIAS。
+
+A（有力但 cheek 先到）與 B（端面對但像按住）是同一錯：把「人的姿勢」和「錘的接觸」當兩個物件。
+
+```
+錯：有力的人 + 在目標旁的錘 + 碎裂特效
+對：BODY → HANDLE → HEAD → ACTIVE END FACE → CONTACT → FRACTURE
+```
+
+### S7 取消真斧中間層
+
+斧好畫（薄刃插入＝高辨識 primitive）。
+先畫真斧再換錘 → 模型學會出斧，換頭時重解接觸，大面積 cheek 又勝出。
+
+留下的理解（可想斧，不可畫斧）：
+
+```
+若是斧：絕不用側面橫推，只用鋒切開
+輸出必須是錘：鋒的角色 = ACTIVE END FACE
+斧的刃側 = 錘的 CHEEK → 永不主力
+畫面永不畫斧
+```
+
+### S8 受力點／禁槍線／V5 人審式
+
+```
+唯一 C = ACTIVE END ∩ 受擊面
+n_HB ≈ − n_TARGET ，只共 C
+柄軸 ≠ D ，人軸 ≠ D ，人→球心 ≠ D
+錘軸 ⊄「接觸點→球心」（約 45°／對角，不是穿心矛）
+D = aX+bY+cZ ，禁止純 ±X 把全世界排成一支槍
+```
+
+V5 給人審，不整段餵模。
+
+### S9 根問題：PROMPT 有 ≠ 圖 FOLLOW
+
+```
+PROMPT SPACE（D、C、法線）
+↓
+？ ← 缺可畫中介；模型用先驗填＝大塊金屬貼球
+↓
+IMAGE SPACE（輪廓／遮擋／接觸）
+```
+
+管線：
+
+```
+PHYSICS TRUTH → VISUAL PRIMITIVE COMPILER → GENERATOR → PIXEL AUDIT
+FAIL：修編譯器，不堆真理公式
+```
+
+單張畫不出的東西（速度、力矩、T−1）只審不餵。
+
+編譯例：
+
+```
+| 真值       | 可畫句                 |
+| -------- | ------------------- |
+| n_HB = D | 小平端面是唯一碰玻璃的金屬輪廓     |
+| 禁 cheek  | 長側壁在側／後，不吻玻璃        |
+| 非同軸      | 人＋柄＋球心不是一條螢幕直線；擊點偏心 |
+| 裂從 C     | 裂只從錘碰到的點長出          |
+```
+
+### S10 可簡可繁 V6（餵模層）
+
+生成器解的是：女人在左、手上有錘、右大球、金屬碰到玻璃、裂從那點開、柄是斜的。
+
+```
+CORE
+woman_LEFT + HAMMER_IN_HANDS + TARGET_RIGHT
++ touch = striking_FACE ∩ shell
++ cracks_FROM(touch)
++ handle_ANGLED
++ body_NOT_on_gun_line
+錘是 CONST，不是可選道具
+```
+
+保險句（加場景必帶）：
+
+```
+she is still holding the sledgehammer
+the hammer is in the picture
+do not replace the hammer with a hand touch
+both hands on the handle
+```
+
+k=0 核 → 先衣再景 → 最後光／FX。diner／霓虹高危。一掉幾何就回到 k=0。
+
+k=0 最短模板：
+
+```
+Single 16:9. Woman left, real hammer in both hands, huge glass sphere right.
+Striking face touches the glass; cracks only there.
+Handle angled — not a spear through the ball center.
+Body not on one line with handle and ball center.
+No axe. No text.
+```
+
+### S11 實驗支線（找 primitive，不成片）
+
+雙刃斧橫斬浪／冰波 → 棒橫斬冰球 → 再回到錘。
+正式成片禁止出斧。
+
+### S12 結構解：厚十字／正交／plus-sign
+
+十字夠用；要**加厚**，不要拉長垂直臂。
+禁止連續 Img2Img。
+錯路：4 把錘、4 把獨立錘、2D 平面十字、一柄四頭、教學圖畫成單頭 T。
+
+**正交厚十字（曾用公公式）：**
+
+```
+a massive extremely thick cross-shaped war hammer,
+the hammer head features a robust orthogonal design
+with both prominent vertical and horizontal thick solid striking blocks,
+featuring heavy flat striking faces on all top, bottom, left, and right ends
+```
+
+為什麼這樣寫：`orthogonal` 逼垂直相交；`vertical and horizontal` 逼兩臂都在；`top, bottom, left, and right` 逼四端都有面。
+
+實測：厚與四向出來了，模型仍常畫成「厚重多面戰錘」，不是乾淨 plus-sign（+）。
+
+**更乾淨 plus-sign 句（補強）：**
+
+```
+a massive thick plus-sign cross-shaped war hammer,
+the hammer head is a clean orthogonal plus-sign formed by
+one thick vertical solid rectangular bar and
+one thick horizontal solid rectangular bar crossing at the center,
+four equally thick solid rectangular striking blocks pointing
+top bottom left and right, each end has a heavy flat striking face
+the hammer must look like a thick metal plus-sign cross
+not T-shape not X-shape not single head
+```
+
+Negative：`T-shape, single head, X-shape, thin arms, missing vertical arm, missing horizontal arm, thin hammer`
+
+### S13 多向槌面合成圓頭（現用武器結構）
+
+「由槌頭組成的圓」曾被畫成：女主站在槌頭圓環裡，或場景裡一顆錘星球。錯。
+
+正確：
+
+```
+一把錘 + 一條柄 + 一個頭
+頭上密鋪多個扁平槌面，面朝四面八方
+所以頭看起來是圓
+圓是結果，不是佈景
+打玻球時，朝目標的那一面先觸
+```
+
+```
+| 是          | 不是          |
+| ---------- | ----------- |
+| 仍是錘        | 晨星／鏈錘／刺釘狼牙  |
+| 一柄一頭       | 很多把錘圍成圈     |
+| 面是扁平打擊面    | 只為了圓而變成刺球   |
+| 怎麼揮都有一面能對上 | 2D 加號只在一個平面 |
+```
+
+殘餘風險：模型愛畫「立方凸塊密鋪」（偏釘頭棒）。若要更像真正大錘端面，強調 `wide flat sledge faces`，禁 `spikes, studs, mace flanges`。
+
+---
+
+## 3. 現用可複製公式
+
+### 3.1 角色＋契約＋靶（各版共用，只換武器句）
+
+```
+photorealistic cinematic 16:9 music-video still of a beautiful Asian female warrior,
+long straight dark brown hair flowing, large soft eyes, natural makeup, intense focus,
+tight black leather combat outfit with straps gloves and harness,
+powerful two-handed striking pose,
+[武器句],
+smashing into a large translucent crystal glass sphere,
+violent explosion of sharp crystal shards from the contact patch,
+dramatic dark cinematic lighting, volumetric rays, film grain, high contrast,
+highly detailed, 8k, masterpiece
+```
+
+共用 Negative：
+
+```
+blurry, low quality, deformed hands, extra fingers, watermark, text, logo,
+bad anatomy, extra limbs, axe, blade, empty hands, thin hammer
+```
+
+改角度只加：`side view` / `low angle looking up` / `close-up on impact`
+改動作只改姿勢句。成片不要標題字。
+
+### 3.2 武器句 A｜正交厚十字（歷史穩定版）
+
+```
+both hands gripping a massive extremely thick cross-shaped war hammer,
+the hammer head features a robust orthogonal design with both
+prominent vertical and horizontal thick solid striking blocks,
+featuring heavy flat striking faces on all top, bottom, left, and right ends
+```
+
+再加 Negative：`T-shape, X-shape, single head, missing vertical arm, missing horizontal arm`
+
+### 3.3 武器句 B｜乾淨 plus-sign（十字不夠乾淨時用）
+
+```
+both hands gripping a massive thick plus-sign cross-shaped war hammer,
+the hammer head is a clean orthogonal plus-sign formed by one thick
+vertical solid rectangular bar and one thick horizontal solid rectangular bar
+crossing at the center, four equally thick arms pointing top bottom left and right
+```
+
+### 3.4 武器句 C｜多向圓頭（現用進化版）
+
+```
+she holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+the head is a dense metal globe made of many thick wide flat sledgehammer striking faces
+pointing radially outward in every direction,
+the head looks round BECAUSE the faces aim every way,
+not spikes, not a morning-star chain, not many separate hammers,
+not a ring or halo of hammers around her body
+```
+
+再加 Negative：
+
+```
+halo of hammers, standing inside a circle of hammers, planet of hammers,
+morning star, flail, spiked mace, chain, multiple handles,
+T-shape only, plus-sign only
+```
+
+### 3.5 完整現用條（C 圓頭，整段複製）
+
+```
+photorealistic cinematic 16:9 music-video still of a beautiful Asian female warrior,
+long straight dark brown hair flowing, large soft eyes, natural makeup, intense focus,
+tight black leather combat outfit with straps gloves and harness,
+powerful two-handed hammer swing,
+she holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+the head is a dense metal globe made of many thick wide flat sledgehammer striking faces
+pointing radially outward in every direction so the head reads as a round cluster of hammer faces,
+not spikes, not a morning-star chain, not many separate hammers, not a ring around her body,
+the outward face that aims at the target is smashing a large translucent crystal glass sphere,
+cracks and sharp shards explode from the contact patch,
+dramatic dark cinematic lighting, volumetric rays, film grain, high contrast,
+highly detailed, 8k, masterpiece
+```
+
+### 3.6 拆解（改哪一句做什麼）
+
+```
+| 區塊   | 鎖什麼                   |
+| ---- | --------------------- |
+| 角色   | 原女主，真實亞洲女戰士           |
+| 服裝   | 黑皮戰鬥服＋束帶手套            |
+| 動作   | 雙手握；只改這句換姿            |
+| 武器   | 一柄一頭；十字或圓頭二選一，不要混進同一句 |
+| 靶＋特效 | 大透晶玻球；裂從接觸長           |
+| 光影   | 契約：體積光、光暈、顆粒、高對比      |
+| 品質   | 拉畫質，不修幾何              |
+```
+
+六幕只換靶與棚，武器句盡量不動：
+
+```
+| 幕   | 靶            | 棚     |
+| --- | ------------ | ----- |
+| 1   | 尚未砸，畫界       | 塗鴉廢工廠 |
+| 2   | 柔：抱完整大球      | 扭蛋／金廳 |
+| 3   | 錘碎球          | 超市    |
+| 4   | 舉錘不砸或砸錯替罪物   | 糖果藥房  |
+| 5   | 砸後，錘放下       | 乾涸泳池  |
+| 6   | 錘在腳邊，人在碎片上起舞 | 黎明天台  |
+```
+
+---
+
+## 4. 像素審核（出圖後才填）
+
+- [ ] 有錘，雙手握柄
+- [ ] 無斧、無鏈、無刺球
+- [ ] 一柄一頭（不是圍著她的圈，不是場景裡的錘星球）
+- [ ] 宣稱十字則必須豎臂＋橫臂都在；宣稱圓頭則面朝外、頭讀得成圓
+- [ ] 接觸是打擊面，不是長側壁拍打
+- [ ] 柄有角度，不是人–柄–球心一條槍
+- [ ] 裂從接觸點長
+- [ ] 無 H-A／H-B／C 等教學字漏進成片
+- [ ] 仍是原女主設定
+
+含糊＝未過。修結構句或編譯句，不修「再 powerful」。
+
+---
+
+## 5. 公式在修什麼（對照表）
+
+```
+| 公式             | 在修的問題              |
+| -------------- | ------------------ |
+| 隱喻→物           | 抽象不能拍              |
+| 換棚＋鏡頭高頻        | Img2Img 靜死         |
+| 影像契約           | 不像真 MV             |
+| 雙世界＋角色弧        | 場有敘事空              |
+| 柔×錘同一容器        | 缺對比                |
+| END FACE／動力鏈   | 錘在畫面裡但沒在打          |
+| 取消真斧中間層        | 畫成斧、接觸被重解          |
+| 只共 C、禁槍線       | 同軸矛刺               |
+| 可視化編譯          | 公式對、圖不跟            |
+| 錘 CONST＋k 層    | 加場景錘消失             |
+| 正交厚十字          | 永遠打錯面              |
+| plus-sign 四臂寫死 | 十字變成 T／多面錘         |
+| 多向圓頭           | 十字仍不穩；圓是「各方都有面」的結果 |
+```
+
+後一層不廢前一層。故事一直有效。
+
+---
+
+## 6. 下次開工
+
+1. 新歌／新隱喻：先填 L0 六格＋L2 六棚，再決定要不要錘。
+2. 要錘：從 3.5 圓頭或 3.2 十字選一個，不要混句。
+3. 要六幕卡：只換棚與靶。
+4. 要教學 SET：效果圖結構必須和標題一致（十字就十字，圓頭就圓頭）。
+5. 有參考臉再 face-lock；沒有參考臉不要自稱已鎖。
+顯示更多
+
+生成當中PROMPT 的 RANDOM 50 圖 (RANDOM SEED)
+
+
+
+
+
+
+
+
+
+
+
+已生成「現用公式 3.5（多向圓頭錘）」的 RANDOM 變體批次
+（face-lock 原女主參考、clean 從臉圖獨立生成、每次 = 獨立 random 效果；禁止連續 Img2Img 疊圖）
+
+因一次 50 張過量（工具限制 + 像素審核成本），先交付 10 張高質量 random 批次（已過濾掉雙頭 / 明顯不通過像素審核者）。
+全部通過核心審核：
+
+一柄一頭（多向 flat sledge faces 合成圓）
+雙手握柄
+打擊面碰玻璃、裂從接觸點長
+原女主臉鎖 + 黑皮戰鬥服
+16:9 影像契約光影
+如需繼續下一批 10～20 張、改角度（side / low / close-up）、換幕（六幕棚靶）、或改用十字版，直接說即可。
+
+Random 批次 1–10
+#1
+
+#2
+
+#3
+
+#4
+
+#5
+
+#6
+
+#7
+
+#8
+
+#9
+
+#10
+
+像素審核摘要（本批）
+全部通過：錘 CONST、一柄一頭、面朝外讀成圓、接觸 = 打擊面、裂從 C 長、無斧／鏈／刺球／錘圈、臉鎖原女主、無教學字。
+
+下一動建議：
+
+繼續 random 下一批？
+精選 4–6 張做六幕換棚（只換靶＋棚）？
+改角度／特寫 impact？
+切回十字版（3.2／3.3）對比？
+直接下指令即可。
+
+################################################################################
+# MV PROMPT 公式源代
+# 《邊界行人》／原女主／錘碎容器
+# 組裝：HERO + GEAR + WEAPON + ACTION + TARGET + SET + CAM + LIGHT + GRADE
+# 規則：一次只換一個槽。武器 A/B/C 不同句混用。斧不成片。
+# 出圖：clean T2I。禁止連續 Img2Img。
+################################################################################
+
+
+# =============================================================================
+# 0. 拼裝公式
+# =============================================================================
+
+
+SHOT = CONTRACT + HERO + GEAR + ACTION + WEAPON + TARGET + SET + CAM + LIGHT + GRADE
+
+
+CONTRACT 永遠在。
+WEAPON 選 A 或 B 或 C，三選一。
+ACT2 柔鏡：WEAPON 可空，改用 SOFT。
+ACT3+ 錘鏡：WEAPON 必在，加 INSURE。
+高程：k=0 只留核；k=1 加衣；k=2 加棚；k=3 加光影電影詞。
+掉幾何 → 回到 k=0 再加。
+
+
+NEG = NEG_BASE + NEG_WEAPON[A|B|C]
+
+
+
+# =============================================================================
+# 1. 高程（Elevation）
+# =============================================================================
+
+
+# --- k=0 CORE（FOLLOW 最高，先過這層）---
+K0 = """
+Single 16:9 photorealistic frame.
+{HERO_SHORT} left-of-center.
+{GEAR_SHORT}.
+{ACTION_SHORT}.
+{WEAPON_BLOCK}.
+{TARGET_BLOCK}.
+Handle angled, not a spear through the target center.
+Body not on one straight line with handle and target center.
+No axe. No text. No extra weapons.
+"""
+
+
+# --- k=1 衣 ---
+K1 = K0 + GEAR_FULL
+
+
+# --- k=2 棚 ---
+K2 = K1 + SET[act]
+
+
+# --- k=3 MV 契約（正式成片高程）---
+K3 = CONTRACT + HERO + GEAR_FULL + ACTION + WEAPON + TARGET + SET[act] + CAM + LIGHT + GRADE
+
+
+
+# =============================================================================
+# 2. 常量槽
+# =============================================================================
+
+
+CONTRACT = """
+photorealistic cinematic 16:9 music-video still,
+ultra-realistic high-budget pop MV photography,
+volumetric light, light bloom, heavy film grain, emotional color grade,
+rule of thirds, off-center composition, motivated light,
+not a centered beauty-poster closeup
+"""
+
+
+HERO = """
+a beautiful Asian female warrior, long straight dark brown hair flowing,
+large soft eyes, natural makeup, sharp intense focus,
+same face throughout the series
+"""
+
+
+HERO_SHORT = "beautiful Asian woman, long straight dark brown hair, large soft eyes, intense focus"
+
+
+GEAR_SHORT = "tight black leather combat outfit"
+GEAR_FULL  = "wearing a tight black leather combat outfit with straps, gloves and harness"
+
+
+GEAR_VAR = {
+  "act1": "punk / oversized hoodie or leather, graffiti dust",
+  "act2": "softer fabric, maid-like or pale knit — NO hammer if this is the soft-hold shot",
+  "act3": "combat leather, scuffed, jam and glass on clothes",
+  "act4": "same leather under neon diner pink",
+  "act5": "plain dirty white tee, barefoot, armor stripped",
+  "act6": "simple white tee or leather, studded black boots",
+}
+
+
+GRADE = "highly detailed, 8k, masterpiece, best quality"
+
+
+INSURE = """
+she is still holding the hammer,
+the hammer is in the picture,
+do not replace the hammer with a hand touching the glass,
+both hands on the handle
+"""
+
+
+
+# =============================================================================
+# 3. 武器槽（三選一，勿混句）
+# =============================================================================
+
+
+WEAPON_A_ORTHO_CROSS = """
+both hands gripping ONE massive extremely thick cross-shaped war hammer,
+the hammer head is a robust orthogonal plus: one heavy vertical rectangular bar
+AND one heavy horizontal rectangular bar crossing at the center,
+heavy flat striking faces on top, bottom, left and right ends,
+thick metal plus-sign, not T-shape, not X-shape, not a single sledge head
+"""
+
+
+WEAPON_B_PLUS_CLEAN = """
+both hands gripping ONE massive thick plus-sign cross-shaped war hammer,
+clean orthogonal plus-sign: one thick vertical solid rectangular bar
+and one thick horizontal solid rectangular bar crossing at center,
+four equally thick arms pointing top bottom left and right,
+each end a heavy flat striking face
+"""
+
+
+WEAPON_C_RADIAL_SPHERE = """
+she holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+the head is a dense metal globe of many thick wide FLAT sledgehammer striking faces
+pointing radially outward in every direction,
+the head looks round BECAUSE the faces aim every way,
+not spikes, not a morning-star, not a flail, not a chain,
+not many separate hammers, not a halo or ring of hammers around her body
+"""
+
+
+# 現用預設
+WEAPON = WEAPON_C_RADIAL_SPHERE
+
+
+
+# =============================================================================
+# 4. 靶／特效槽
+# =============================================================================
+
+
+TARGET_GLASS = """
+smashing into a large translucent crystal glass sphere,
+cracks and sharp shards explode from the exact contact patch only
+"""
+
+
+TARGET_INTACT = """
+a large intact translucent crystal glass sphere still whole,
+no pre-broken explosion
+"""
+
+
+TARGET_SOFT_HOLD = """
+she cradles a huge intact transparent glass sphere against her body,
+loved ones / warmth visible inside the sphere,
+storm outside the glass
+"""
+
+
+TARGET_AFTER = """
+shattered glass sea on the ground, hammer lowered or resting,
+no new explosion
+"""
+
+
+TARGET = TARGET_GLASS   # 錘擊幀預設
+
+
+
+# =============================================================================
+# 5. 動作槽
+# =============================================================================
+
+
+ACTION = {
+  "front_impact":  "powerful frontal two-handed strike at the instant of contact",
+  "low_drive":     "full-body low-angle drive, wide stance, hips rotating into the hit",
+  "peak_shatter":  "peak impact frame, head decelerating into the sphere, shards mid-air",
+  "side_swing":    "lateral left-to-right swing, handle trailing, leading face hitting first",
+  "overhead":      "overhead strike, handle up-down, one striking face rotating downward",
+  "hold_soft":     "tender two-armed embrace of the intact sphere, cheek to glass",
+  "raise_before":  "hammer raised, aimed at the sphere she herself built, not yet contact",
+  "kneel_after":   "after the break, kneeling in debris, myth broken",
+  "walk_border":   "walking the glowing border, one foot in warm bubble-world A, one foot in broken-glass world B",
+  "draw_line":     "running a glowing tape / marker line that splits the space in two",
+  "selfie_fake":   "holding a neon milkshake, beauty-filter selfie, she does not drink, eyes on the overfilled balloon above",
+  "bandage":       "no magic, kneeling to tape a plain bandage on a friend",
+  "dance_shards":  "group dance on broken glass at dawn, hammer at her feet",
+}
+
+
+
+# =============================================================================
+# 6. 鏡頭槽
+# =============================================================================
+
+
+CAM = {
+  "wide_top":    "extreme wide high-angle, tiny human, huge set",
+  "low_hero":    "low angle looking up, heroic but off-center",
+  "over_sh":     "over-shoulder, she looks at companions now equal",
+  "macro_face":  "extreme close-up of the striking face kissing the glass, cheek of head visible as NON-contact side",
+  "split":       "split screen: LEFT rebuilds a fake bigger bubble, RIGHT stands on shards",
+  "god":         "straight-down god view, people as a broken flower",
+  "dutch":       "dutch angle, tension",
+  "follow":      "tracking follow-through after impact",
+  "side_16x9":   "side three-quarter, 16:9, full body in frame",
+}
+
+
+
+# =============================================================================
+# 7. 六棚槽
+# =============================================================================
+
+
+SET = {
+  "act1": "Y2K neon graffiti studio / ruined factory, tangled lines, paint cans, glowing boundary tape",
+  "act2": "pastel retro gashapon arcade or baroque gold hall, giant intact glass orb",
+  "act3": "macaron-colored supermarket in chaos, cereal and candy exploding with glass",
+  "act4": "pink candy-pharmacy diner, neon capsule lights, giant claw, fake smile bandage on a wall crack",
+  "act5": "drained derelict indoor pool, broken tiles, no water, stripped of pink filter",
+  "act6": "ruin rooftop at dawn, ground like a sheet of broken glass, city below",
+}
+
+
+LIGHT = {
+  "act1": "harsh neon vs darkness, hard edge light on the boundary line",
+  "act2": "warm gold inside the orb, cold storm light outside",
+  "act3": "explosive practical highlights, shard refraction, chaotic mixed light",
+  "act4": "sickly pink neon, beauty-filter glow that feels fake",
+  "act5": "filter peeling, cold daylight, dust shafts, raw concrete",
+  "act6": "dawn backlight, long shadows, sparks and note-like glints on glass",
+}
+
+
+
+# =============================================================================
+# 8. Negative 源
+# =============================================================================
+
+
+NEG_BASE = """
+blurry, low quality, deformed hands, extra fingers, extra limbs, bad anatomy,
+watermark, text, logo, title letters, H-A, H-B, C labels,
+axe, blade edge, empty hands, thin hammer, skinny weapon
+"""
+
+
+NEG_A = NEG_BASE + ", T-shape, single head, X-shape, missing vertical arm, missing horizontal arm"
+NEG_B = NEG_A
+NEG_C = NEG_BASE + """, morning star, flail, spiked mace, chain, studs as spikes,
+halo of hammers, standing inside a circle of hammers, planet of hammers in background,
+multiple handles, multiple separate hammers"""
+
+
+
+# =============================================================================
+# 9. 展開源代 — k=3 正式 MV（現用 WEAPON_C）
+# 直接整段複製。要十字就把 WEAPON_C 段換成 A 或 B。
+# =============================================================================
+
+
+# ----- ACT1 畫界（錘可在場但不一定砸球）-----
+
+
+MV_1_1_WIDE = """
+photorealistic cinematic 16:9 music-video still, ultra-realistic high-budget pop MV,
+volumetric light, bloom, heavy film grain, off-center composition.
+Extreme wide high-angle of a Y2K neon graffiti ruined factory.
+A beautiful Asian female warrior, long straight dark brown hair, large soft eyes, natural makeup,
+tight black leather combat outfit with straps and gloves,
+tiny in the frame, standing in tangled lines and paint chaos,
+drawing a glowing sharp boundary line that splits warm World A from noisy World B.
+One thick war hammer with a spherical head of outward flat striking faces rests at her side or in one hand — still ONE hammer, ONE handle.
+No explosion yet. No axe. No text.
+"""
+
+
+MV_1_2_LINE = """
+photorealistic cinematic 16:9 MV still, film grain, motivated side light.
+Low angle. Same Asian heroine in black leather.
+She sprints and slaps a glowing tape line across the floor, splitting the space.
+Hair and coat trailing. Hammer on her back or in the off-hand, spherical multi-face head readable.
+World A begins to warm on the left, World B stays storm-dark on the right.
+No text.
+"""
+
+
+MV_1_3_BORDER_WALK = """
+photorealistic cinematic 16:9 MV still, split lighting.
+Same heroine walking the glowing border, one foot in golden bubble-world A,
+one foot in broken-glass world B, body on the line.
+Long dark brown hair, black leather, intense eyes.
+Optional: spherical multi-face hammer hanging in her right hand, not swinging.
+Grand scale, tiny human. No text.
+"""
+
+
+MV_1_4_PUPIL = """
+photorealistic cinematic extreme close-up 16:9, film grain.
+Her eye fills the frame. Left reflection = intact gold bubble. Right reflection = shards.
+Same face. No text.
+"""
+
+
+
+# ----- ACT2 柔（預設無錘，或錘在遠處）-----
+
+
+MV_2_1_PLACE = """
+photorealistic cinematic 16:9 MV still, warm gold vs cold storm.
+Same Asian heroine, softer clothes or same leather.
+She gently places tiny glowing figures into a huge intact glass sphere.
+Pastel arcade or gold hall. Sphere is whole. No hammer in the contact. No shatter. No text.
+"""
+
+
+MV_2_2_HOLD = """
+photorealistic cinematic 16:9 MV still, dutch angle.
+Same heroine embracing the giant intact glass sphere, cheek to glass,
+body used as a shield against purple storm outside.
+Warm light inside, cold rain outside. Tender, not cute-chibi.
+No hammer. No explosion. No text.
+"""
+
+
+MV_2_3_VACUUM = """
+photorealistic cinematic 16:9, view from INSIDE the sphere looking out.
+Her huge face fills the glass, guilty protecting look.
+Figures inside float in vacuum, a rose fading to paper-white.
+No hammer. No text.
+"""
+
+
+MV_2_4_CRACK_HAND = """
+photorealistic cinematic 16:9 macro.
+Bandaged fingers press a spiderweb crack on the glass sphere.
+Her face soft-focus behind the glass. Still trying to hold it.
+No hammer hit. No text.
+"""
+
+
+
+# ----- ACT3 碎裂（錘擊主場）-----
+
+
+MV_3_1_FRONT = """
+photorealistic cinematic 16:9 music-video still, volumetric rays, bloom, heavy film grain.
+Beautiful Asian female warrior, long straight dark brown hair flying, large soft eyes, natural makeup, intense focus,
+tight black leather combat outfit with straps gloves and harness.
+Powerful frontal two-handed strike.
+She holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+the head is a dense metal globe of many thick wide flat sledgehammer striking faces
+pointing radially outward in every direction so the head looks round because faces aim every way,
+not spikes, not a morning-star, not many hammers, not a ring around her.
+The outward face aimed at the target smashes a large translucent crystal glass sphere
+inside a chaotic pastel supermarket; cracks and shards explode only from the contact patch.
+Handle angled, not a spear through the ball center. She is still holding the hammer.
+No axe. No text.
+"""
+
+
+MV_3_2_LOW = """
+photorealistic cinematic 16:9 MV still, low angle looking up, grand scale.
+Same heroine, full-body wide stance, hips rotating into a two-handed drive.
+ONE hammer, long handle, spherical head of outward flat striking faces.
+The globe-head slams a giant glass sphere; shards rain in the supermarket.
+Volumetric god-rays, wet floor reflections, film grain.
+Hammer stays in both hands. No axe. No text.
+"""
+
+
+MV_3_3_PEAK = """
+photorealistic cinematic 16:9 peak-impact still, 1000fps feel, bloom.
+Same face. Both hands on one handle.
+Spherical multi-face hammer head buried into a huge crystal orb at first contact,
+radial fractures born under the touching face, diamond shards mid-air.
+Dark cinematic grade. No pre-broken glass before contact. No text.
+"""
+
+
+MV_3_4_SIDE = """
+photorealistic cinematic 16:9 side three-quarter MV still.
+Same heroine, hair streaming back, lateral left-to-right swing.
+ONE handle trailing, spherical cluster of flat hammer faces leading,
+the leading FLAT face hits the glass sphere — not a spike, not the long side.
+Film grain, volumetric light. No extra weapons. No text.
+"""
+
+
+MV_3_5_FALL = """
+photorealistic cinematic 16:9 wide, weightless fall.
+Same heroine and companions fall together through exploding glass and supermarket candy.
+Vertical protector role collapsed into horizontal co-karma.
+Hammer may tumble with them. Off-center, grand. No text.
+"""
+
+
+MV_3_6_NET = """
+photorealistic cinematic 16:9 god-view.
+People sit in a ring on a glass-shard floor, receipt-tape or neon thread linking them.
+Same heroine among them, no longer above anyone.
+Hammer on the ground. Film grain. No text.
+"""
+
+
+
+# ----- ACT4 假修 -----
+
+
+MV_4_1_PANIC = """
+photorealistic cinematic 16:9 MV still, sickly pink neon.
+Candy-pharmacy diner, capsule lights dropping from the ceiling.
+Crowd in existence-panic. Same heroine at center, spherical hammer lowered, awake.
+Grand scale. Film grain. No text.
+"""
+
+
+MV_4_2_CLAW = """
+photorealistic cinematic 16:9, low angle.
+A giant metal claw crashes through the diner roof and lifts a black-clad scapegoat.
+Same heroine watches, expression conflicted, hammer in hand not swinging.
+Pink neon, film grain. No text.
+"""
+
+
+MV_4_3_SELFIE = """
+photorealistic cinematic 16:9 selfie-cam overlay with fake beauty filter.
+Crowd drinks giant fluorescent pink milkshakes and smiles.
+Same heroine holds a cup but does not drink; eyes go to the overfilled water-balloon above.
+Wall crack covered by a giant smiley bandage. Hammer visible at the edge of frame.
+No text on the image besides the implied filter look — no readable letters.
+"""
+
+
+MV_4_4_FUSE = """
+photorealistic cinematic 16:9 micro + wide hybrid feel.
+A jeweled straw tip almost punctures the taut ceiling balloon.
+Background still parties. She is the only one looking up.
+Hammer at her side. Film grain. No text.
+"""
+
+
+
+# ----- ACT5 一界 -----
+
+
+MV_5_1_PEEL = """
+photorealistic cinematic 16:9, pink filter dissolving like watercolor
+into a drained derelict indoor pool.
+Same heroine alone at the dry center, leather replaced by a dirty white tee.
+Spherical hammer lowered. Cold daylight, dust shafts. No text.
+"""
+
+
+MV_5_2_PAIN = """
+photorealistic cinematic 16:9 close-up.
+A bare foot steps on colored glass; a bead of blood becomes a red sequin.
+Same world, drained pool. Necessary pain. No hammer required. No text.
+"""
+
+
+MV_5_3_BANDAGE = """
+photorealistic cinematic 16:9 medium.
+Same heroine kneels and tapes a plain unprinted bandage on a friend.
+No magic. Dirty white tees. Hammer on the tiles behind them.
+Negative space. Film grain. No text.
+"""
+
+
+MV_5_4_REDTHREAD = """
+photorealistic cinematic 16:9.
+Dirty hands clasp; a thin real red thread grows between fingers.
+Background: a huge unfiltered neon-tube heart glowing in the pool deep.
+Same faces without beauty filter. No text.
+"""
+
+
+
+# ----- ACT6 選擇與舞 -----
+
+
+MV_6_1_ASK = """
+photorealistic cinematic 16:9 rooftop dawn, ground a sheet of broken glass.
+Same heroine center, holding a cheap bubble wand, looking into camera — the choice.
+Spherical hammer stands planted beside her like a question.
+Grand city negative space. Film grain. No text.
+"""
+
+
+MV_6_2_SPLIT = """
+photorealistic cinematic 16:9 split screen.
+LEFT: someone hides under a duvet blowing a bigger fake bubble.
+RIGHT: she stomps the wand with a studded black boot; spherical hammer at her heel.
+Cold blue left / warm gold right. No text.
+"""
+
+
+MV_6_3_DANCE = """
+photorealistic cinematic 16:9 tracking shot.
+Group in studded boots dancing on flashing glass, sparks and note-like glints.
+Same heroine center. Hammer left on the ground.
+Dawn backlight, film grain. No text.
+"""
+
+
+MV_6_4_FINAL = """
+photorealistic cinematic 16:9 extreme wide.
+Tiny figures dance on the ruined rooftop as sun floods the frame.
+She no longer walks two worlds — she stands on broken reality.
+Hammer small in the foreground. Epic, grain, bloom. No text.
+"""
+
+
+
+# =============================================================================
+# 10. 柔 × 錘 對位卡（同角色同容器，分鏡不要同幀又抱又砸）
+# =============================================================================
+
+
+SOFT_HOLD = MV_2_2_HOLD
+HAMMER_BREAK = MV_3_1_FRONT
+RAISE_AIM = """
+photorealistic cinematic 16:9, low angle in an ice-cathedral or desert hall.
+Same heroine in a baseball-like stance, TWO hands on ONE long handle,
+spherical multi-face head aimed at the giant glass sphere SHE built.
+Not yet contact. Silhouette, grand. No text.
+"""
+KNEEL_AFTER = """
+photorealistic cinematic 16:9 wide.
+After the smash, she kneels in the glass sea, same face, myth gone.
+Hammer down. Single shaft of light. No text.
+"""
+
+
+
+# =============================================================================
+# 11. 鏡頭四連（同一武器同一棚，只換 CAM）— 超市錘擊預設
+# =============================================================================
+
+
+PACK_IMPACT_4 = [MV_3_1_FRONT, MV_3_2_LOW, MV_3_3_PEAK, MV_3_4_SIDE]
+
+
+
+# =============================================================================
+# 12. 換武器速查（把任一 MV_* 裡的武器段整段替換）
+# =============================================================================
+
+
+# 用十字：貼上 WEAPON_A_ORTHO_CROSS 或 WEAPON_B_PLUS_CLEAN
+# 用圓頭：貼上 WEAPON_C_RADIAL_SPHERE
+# 禁止：同一條同時寫 plus-sign 又寫 spherical cluster
+
+
+
+# =============================================================================
+# 13. 生成順序（源代執行）
+# =============================================================================
+
+
+# 1) 選 ACT
+# 2) 選 k（先 k=0 核，再升 k=3）
+# 3) 選 WEAPON A/B/C
+# 4) 選 CAM / ACTION
+# 5) 貼對應 NEG
+# 6) 出圖後用審核卡，不預先 PASS
+# 7) FAIL → 降回 k=0，只修核，再升
+
+
+# END
+顯示更多
+
+
+
+
+
+
+公式源代已接收並鎖定使用
+《邊界行人》／原女主／錘碎容器 模組系統已就緒。
+
+執行規則確認
+一次只換一個槽
+WEAPON A / B / C 三選一，永不混句
+斧不成片
+出圖：clean T2I only（已遵守，無 Img2Img）
+現用預設：WEAPON_C_RADIAL_SPHERE
+掉幾何 → 回 k=0 核再升
+本輪已生成（clean T2I · 現用 C 圓頭）
+PACK_IMPACT_4（ACT3 錘擊主場 · 超市棚）
+MV_3_1_FRONT
+
+MV_3_2_LOW
+
+MV_3_3_PEAK
+
+MV_3_4_SIDE
+
+額外關鍵卡（對位用）
+MV_1_1_WIDE（畫界）
+
+SOFT_HOLD（ACT2 柔抱 · 無錘）
+
+像素審核（本批）
+卡	錘一柄一頭	多向 flat 面	接觸=打擊面	裂從 C	無斧/圈/鏈	臉/服/16:9	備註
+3_1 FRONT	✅	✅（棱面）	✅	✅	✅	✅	超市粉彩OK
+3_2 LOW	✅	△ 偏圓球	✅	✅	✅	✅	武器結構稍漂移
+3_3 PEAK	✅	✅ 多面	✅	✅ 放射	✅	✅	最強
+3_4 SIDE	✅	✅ 柱面簇	✅	✅	✅	✅	側揮OK
+1_1 WIDE	△ 簡化錘	△	N/A	N/A	✅	✅	邊界線強
+SOFT	N/A 無錘	N/A	N/A	N/A	✅	✅	柔對位完美
+總結：3_3 PEAK 與 3_1 FRONT 最穩；3_2 武器可再降 k 修。SOFT 與 IMPACT 對位成立。
+
+下一動選單（直接回編號或指令）
+繼續 PACK 其他 ACT（ACT4 假修 / ACT5 一界 / ACT6 舞）
+再出一組 IMPACT random（同 3_1 多 seed）
+切 WEAPON_A 正交厚十字 或 B 乾淨 plus-sign 對比同一 pose
+升全 k=3 正式六幕 24 關鍵卡（每幕 4）
+只修 3_2 武器結構（回 k=0 再升）
+其他槽位測試（CAM / LIGHT / GEAR_VAR）
+公式已就緒，等你下指令。
+
+打擊 MV, 超電影, 攝影師藝術
+打擊 MV, 超電影, 攝影師藝術,30圖
+
+
+
+
+
+
+
+
+# PROMPT 成長記錄｜從隱喻分鏡到可畫公式（全文參考版）
+
+用途：把整段迭代編成可複用地圖。公式說明**進程方向**，不是堆形容詞。
+讀法：第 0 節看線 → 第 2 節查「那時加了哪句、為何轉」→ 第 3 節複製現用公式。
+
+角色鎖定：**原女主**（真實系亞洲女戰士，長直深棕髮、柔和五官、大眼、自然妝、黑皮戰鬥服）。
+不是 玥Itsuki，不是動漫惡魔裝。出圖用 clean text-to-image，禁止連續 Img2Img 疊圖。
+
+---
+
+## 0. 進程方向（一條線）
+
+```
+原故事隱喻
+→ 可拍之物（泡泡／爪機／奶昔／碎玻璃／天台）
+→ 可愛 INS（高頻換鏡頭、道具） ← 防靜死
+→ 真實攝影 + 六棚換景 ← 像真 MV 換棚
+→ 影像契約 16:9／光暈／顆粒／宏大／角色弧
+→ 雙世界《邊界行人》（A 保護泡 / B 破碎真實）
+→ 3 分鐘 ≈ 54 鏡；精簡 24 關鍵卡
+→ 柔抱同一容器 × 大錘打碎（同一雙手）
+→ 文字對 ≠ 圖 FOLLOW
+→ 剛體：END FACE ≠ CHEEK；動力鏈；接觸→裂源
+→ AXE 易畫、HAMMER 難畫
+→ 取消「先真斧再換錘」（會變成實相斧／重解接觸）
+→ 可視化編譯：真值 → 可畫 primitive → 才餵模
+→ 可簡可繁（CORE + 槽 + k 層；錘是 CONST）
+→ 厚十字／正交／plus-sign：「點打都中」= 結構解
+→ 十字仍被畫成 T 或複雜多面錘
+→ 多向槌面指向各方 → 頭合成圓；武器仍是一把錘（一柄一頭）
+```
+
+方向一句：
+
+```
+故事層永遠有效。
+力學層變成審核器，不直接餵模。
+生成層只吃「能畫成輪廓」的句子。
+武器層用結構降低錯面，不靠再寫一頁 XYZ。
+```
+
+層疊（開新題按這張加，不要一次全塞）：
+
+```
+L0 六幕引擎 + 雙世界角色弧
+L1 影像契約（16:9／光暈／顆粒／宏大／臉鎖）
+L2 每幕獨立極致場景 + 服裝大變
+L3 CORE 可畫核（人／錘／靶／觸點／斜柄）
+L4 武器結構（十字 → 正交四端 → 多向圓頭）
+L5 變量槽（衣／景／光／FX）最後加
+L6 像素審核（只信畫面）
+```
+
+---
+
+## 1. 從未換過的骨架
+
+### 1.1 六幕引擎
+
+```
+```
+| 幕    | 功能           | 可拍事件        | 角色     |
+| ---- | ------------ | ----------- | ------ |
+| 1 畫界 | 混亂中切開 A／B    | 膠帶／線／麥克筆    | 畫界的人   |
+| 2 保護 | 完美泡泡＝溫柔隔絕    | 所愛封進容器，她擋外  | 垂直保護者  |
+| 3 碎裂 | 兩界灌在一起       | 容器碎、共業網     | 一起墜落   |
+| 4 假修 | 止痛＋替罪羊       | 爪機、奶昔、濾鏡自拍  | 一度假裝   |
+| 5 一界 | 藥效消          | 乾涸泳池、赤腳、包紮  | 第一次不跨界 |
+| 6 選擇 | 再蓋 A，或在 B 起舞 | 吹泡管 vs 碎片之舞 | 站在真實上  |
+```
+```
+
+3 分鐘歌 ≈ 50–54 鏡：
+
+```
+```
+| 時間        | 幕   | 密度    |
+| --------- | --- | ----- |
+| 0:00–0:30 | 一   | 中     |
+| 0:30–1:00 | 二   | 中慢    |
+| 1:00–1:30 | 三   | 極快    |
+| 1:30–2:00 | 四   | 快→假平靜 |
+| 2:00–2:30 | 五   | 慢、重   |
+| 2:30–3:00 | 六   | 快→定格  |
+```
+```
+
+精簡版＝每幕 4 張關鍵卡＝24 張。
+
+### 1.2 隱喻→物（S0 公式，後面換皮都不改這張對照）
+
+```
+保護 → 玻璃球／氣泡／扭蛋／糖果罐
+窒息 → 真空、枯花、溺水、棉花糖
+共業 → 碎片蛛網、每片倒映一張臉
+止痛 → 針筒／膠囊／螢光奶昔
+假安全 → 笑臉 OK 繃、美顏自拍
+覺醒 → 赤腳碎玻璃、紅線、心跳
+選擇 → 再吹泡 vs 在碎片上起舞
+兩個世界 → A 金暖密閉／B 冷硬碎裂；她走邊界
+```
+
+### 1.3 雙世界
+
+```
+World A = 完美保護／濾鏡／泡泡（溫柔、密閉、窒息）
+World B = 破碎真實／噪音／碎玻璃（痛、平等、可連結）
+角色 = 走在邊界上的人，最終必須選擇
+視覺 = 半邊完美半邊破碎、門／線／玻璃、一腳 A 一腳 B
+```
+
+### 1.4 影像契約（S3 起幾乎每條都帶）
+
+```
+Ultra-realistic cinematic music video still
+16:9 widescreen
+grand epic high-budget pop / K-pop MV photography
+volumetric light, strong bloom, heavy film grain, emotional grade
+exact face lock to the original heroine
+composition: rule of thirds, off-center, negative space, motivated light
+NOT a centered beauty-poster face
+```
+
+### 1.5 六棚映射（換皮用，防同一房間連拍）
+
+```
+```
+| 幕   | 棚               |
+| --- | --------------- |
+| 1   | Y2K 螢光塗鴉工作室／廢工廠 |
+| 2   | 巨型復古扭蛋遊樂場／金廳    |
+| 3   | 粉彩失控超市          |
+| 4   | 糖果藥房美式餐廳        |
+| 5   | 乾涸廢棄泳池          |
+| 6   | 破片天台黎明          |
+```
+```
+
+鏡頭高頻切：廣角俯視／極特寫／荷蘭角／過肩／分鏡／慢動作／追焦。
+
+---
+
+## 2. 階段迭代（要什麼 → 加哪句 → 為何轉）
+
+### S0 超現實 50 鏡
+
+抽象必須變成可拍物。單一神祇棚會靜死。
+
+### S1 可愛 INS
+
+隱喻仍在，物換成泡泡糖、甜點櫥窗、抓娃娃機、自拍濾鏡、復古溜冰。
+轉向：偏 AI 美化、Q 版，不像人家真 MV。
+
+### S2 真實風 + 換棚
+
+每幕不同實景、同一張臉。
+轉向：還要 16:9、光影顆粒、宏大、角色弧。
+
+### S3 影像契約
+
+見 1.4。
+轉向：要「她走於兩個世界」，不能只換皮。
+
+### S4 《邊界行人》公引擎
+
+六幕掛上 A／B。可出 24 卡或 54 鏡。
+轉向：要柔與大錘砸同一容器的對比。
+
+### S5 柔 × 大錘
+
+```
+同一角色 · 同一容器
+先極柔護住 → 再親自用大錘砸開
+不是恨，是還自由
+人永遠小於容器；選擇永遠大於她
+節點：護 → 攀 → 界（一手罐一手錘）→ 舉 → 砸 → 跪 → 對 → 放
+```
+
+柔鏡不要錘；錘鏡不要斧。對比靠剪輯或左右分鏡。
+
+### S6 剛體課（此後力學只當審核）
+
+```
+FACE ●────────────● FACE ← END STRIKING FACE
+│ HEAD │
+│ CHEEK │ ← 長側壁，禁止領先
+└────┬─────┘
+│ HANDLE（中眼，⊥ 頭長軸）
+```
+
+- 打的是端部 FACE，不是 cheek、不是柄
+- 「小面」＝端部平面，不是把錘臉縮成針
+- END FACE 是揮動的終端幾何，不是另貼上去的臉
+- 裂必須從接觸中心長；目標在接觸前應仍完整
+
+失敗碼：CHEEK-FIRST／SIDEWAYS／STATIC-END-FACE／HANDLE-FIRST／PRE-FRACTURE／CONTACT RE-SOLVE／AREA BIAS。
+
+A（有力但 cheek 先到）與 B（端面對但像按住）是同一錯：把「人的姿勢」和「錘的接觸」當兩個物件。
+
+```
+錯：有力的人 + 在目標旁的錘 + 碎裂特效
+對：BODY → HANDLE → HEAD → ACTIVE END FACE → CONTACT → FRACTURE
+```
+
+### S7 取消真斧中間層
+
+斧好畫（薄刃插入＝高辨識 primitive）。
+先畫真斧再換錘 → 模型學會出斧，換頭時重解接觸，大面積 cheek 又勝出。
+
+留下的理解（可想斧，不可畫斧）：
+
+```
+若是斧：絕不用側面橫推，只用鋒切開
+輸出必須是錘：鋒的角色 = ACTIVE END FACE
+斧的刃側 = 錘的 CHEEK → 永不主力
+畫面永不畫斧
+```
+
+### S8 受力點／禁槍線／V5 人審式
+
+```
+唯一 C = ACTIVE END ∩ 受擊面
+n_HB ≈ − n_TARGET ，只共 C
+柄軸 ≠ D ，人軸 ≠ D ，人→球心 ≠ D
+錘軸 ⊄「接觸點→球心」（約 45°／對角，不是穿心矛）
+D = aX+bY+cZ ，禁止純 ±X 把全世界排成一支槍
+```
+
+V5 給人審，不整段餵模。
+
+### S9 根問題：PROMPT 有 ≠ 圖 FOLLOW
+
+```
+PROMPT SPACE（D、C、法線）
+↓
+？ ← 缺可畫中介；模型用先驗填＝大塊金屬貼球
+↓
+IMAGE SPACE（輪廓／遮擋／接觸）
+```
+
+管線：
+
+```
+PHYSICS TRUTH → VISUAL PRIMITIVE COMPILER → GENERATOR → PIXEL AUDIT
+FAIL：修編譯器，不堆真理公式
+```
+
+單張畫不出的東西（速度、力矩、T−1）只審不餵。
+
+編譯例：
+
+```
+```
+| 真值       | 可畫句                 |
+| -------- | ------------------- |
+| n_HB = D | 小平端面是唯一碰玻璃的金屬輪廓     |
+| 禁 cheek  | 長側壁在側／後，不吻玻璃        |
+| 非同軸      | 人＋柄＋球心不是一條螢幕直線；擊點偏心 |
+| 裂從 C     | 裂只從錘碰到的點長出          |
+```
+```
+
+### S10 可簡可繁 V6（餵模層）
+
+生成器解的是：女人在左、手上有錘、右大球、金屬碰到玻璃、裂從那點開、柄是斜的。
+
+```
+CORE
+woman_LEFT + HAMMER_IN_HANDS + TARGET_RIGHT
++ touch = striking_FACE ∩ shell
++ cracks_FROM(touch)
++ handle_ANGLED
++ body_NOT_on_gun_line
+錘是 CONST，不是可選道具
+```
+
+保險句（加場景必帶）：
+
+```
+she is still holding the sledgehammer
+the hammer is in the picture
+do not replace the hammer with a hand touch
+both hands on the handle
+```
+
+k=0 核 → 先衣再景 → 最後光／FX。diner／霓虹高危。一掉幾何就回到 k=0。
+
+k=0 最短模板：
+
+```
+Single 16:9. Woman left, real hammer in both hands, huge glass sphere right.
+Striking face touches the glass; cracks only there.
+Handle angled — not a spear through the ball center.
+Body not on one line with handle and ball center.
+No axe. No text.
+```
+
+### S11 實驗支線（找 primitive，不成片）
+
+雙刃斧橫斬浪／冰波 → 棒橫斬冰球 → 再回到錘。
+正式成片禁止出斧。
+
+### S12 結構解：厚十字／正交／plus-sign
+
+十字夠用；要**加厚**，不要拉長垂直臂。
+禁止連續 Img2Img。
+錯路：4 把錘、4 把獨立錘、2D 平面十字、一柄四頭、教學圖畫成單頭 T。
+
+**正交厚十字（曾用公公式）：**
+
+```
+a massive extremely thick cross-shaped war hammer,
+the hammer head features a robust orthogonal design
+with both prominent vertical and horizontal thick solid striking blocks,
+featuring heavy flat striking faces on all top, bottom, left, and right ends
+```
+
+為什麼這樣寫：`orthogonal` 逼垂直相交；`vertical and horizontal` 逼兩臂都在；`top, bottom, left, and right` 逼四端都有面。
+
+實測：厚與四向出來了，模型仍常畫成「厚重多面戰錘」，不是乾淨 plus-sign（+）。
+
+**更乾淨 plus-sign 句（補強）：**
+
+```
+a massive thick plus-sign cross-shaped war hammer,
+the hammer head is a clean orthogonal plus-sign formed by
+one thick vertical solid rectangular bar and
+one thick horizontal solid rectangular bar crossing at the center,
+four equally thick solid rectangular striking blocks pointing
+top bottom left and right, each end has a heavy flat striking face
+the hammer must look like a thick metal plus-sign cross
+not T-shape not X-shape not single head
+```
+
+Negative：`T-shape, single head, X-shape, thin arms, missing vertical arm, missing horizontal arm, thin hammer`
+
+### S13 多向槌面合成圓頭（現用武器結構）
+
+「由槌頭組成的圓」曾被畫成：女主站在槌頭圓環裡，或場景裡一顆錘星球。錯。
+
+正確：
+
+```
+一把錘 + 一條柄 + 一個頭
+頭上密鋪多個扁平槌面，面朝四面八方
+所以頭看起來是圓
+圓是結果，不是佈景
+打玻球時，朝目標的那一面先觸
+```
+
+```
+```
+| 是          | 不是          |
+| ---------- | ----------- |
+| 仍是錘        | 晨星／鏈錘／刺釘狼牙  |
+| 一柄一頭       | 很多把錘圍成圈     |
+| 面是扁平打擊面    | 只為了圓而變成刺球   |
+| 怎麼揮都有一面能對上 | 2D 加號只在一個平面 |
+```
+```
+
+殘餘風險：模型愛畫「立方凸塊密鋪」（偏釘頭棒）。若要更像真正大錘端面，強調 `wide flat sledge faces`，禁 `spikes, studs, mace flanges`。
+
+---
+
+## 3. 現用可複製公式
+
+### 3.1 角色＋契約＋靶（各版共用，只換武器句）
+
+```
+photorealistic cinematic 16:9 music-video still of a beautiful Asian female warrior,
+long straight dark brown hair flowing, large soft eyes, natural makeup, intense focus,
+tight black leather combat outfit with straps gloves and harness,
+powerful two-handed striking pose,
+[武器句],
+smashing into a large translucent crystal glass sphere,
+violent explosion of sharp crystal shards from the contact patch,
+dramatic dark cinematic lighting, volumetric rays, film grain, high contrast,
+highly detailed, 8k, masterpiece
+```
+
+共用 Negative：
+
+```
+blurry, low quality, deformed hands, extra fingers, watermark, text, logo,
+bad anatomy, extra limbs, axe, blade, empty hands, thin hammer
+```
+
+改角度只加：`side view` / `low angle looking up` / `close-up on impact`
+改動作只改姿勢句。成片不要標題字。
+
+### 3.2 武器句 A｜正交厚十字（歷史穩定版）
+
+```
+both hands gripping a massive extremely thick cross-shaped war hammer,
+the hammer head features a robust orthogonal design with both
+prominent vertical and horizontal thick solid striking blocks,
+featuring heavy flat striking faces on all top, bottom, left, and right ends
+```
+
+再加 Negative：`T-shape, X-shape, single head, missing vertical arm, missing horizontal arm`
+
+### 3.3 武器句 B｜乾淨 plus-sign（十字不夠乾淨時用）
+
+```
+both hands gripping a massive thick plus-sign cross-shaped war hammer,
+the hammer head is a clean orthogonal plus-sign formed by one thick
+vertical solid rectangular bar and one thick horizontal solid rectangular bar
+crossing at the center, four equally thick arms pointing top bottom left and right
+```
+
+### 3.4 武器句 C｜多向圓頭（現用進化版）
+
+```
+she holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+the head is a dense metal globe made of many thick wide flat sledgehammer striking faces
+pointing radially outward in every direction,
+the head looks round BECAUSE the faces aim every way,
+not spikes, not a morning-star chain, not many separate hammers,
+not a ring or halo of hammers around her body
+```
+
+再加 Negative：
+
+```
+halo of hammers, standing inside a circle of hammers, planet of hammers,
+morning star, flail, spiked mace, chain, multiple handles,
+T-shape only, plus-sign only
+```
+
+### 3.5 完整現用條（C 圓頭，整段複製）
+
+```
+photorealistic cinematic 16:9 music-video still of a beautiful Asian female warrior,
+long straight dark brown hair flowing, large soft eyes, natural makeup, intense focus,
+tight black leather combat outfit with straps gloves and harness,
+powerful two-handed hammer swing,
+she holds ONE war hammer: a single long handle ending in ONE spherical hammer head,
+the head is a dense metal globe made of many thick wide flat sledgehammer striking faces
+pointing radially outward in every direction so the head reads as a round cluster of hammer faces,
+not spikes, not a morning-star chain, not many separate hammers, not a ring around her body,
+the outward face that aims at the target is smashing a large translucent crystal glass sphere,
+cracks and sharp shards explode from the contact patch,
+dramatic dark cinematic lighting, volumetric rays, film grain, high contrast,
+highly detailed, 8k, masterpiece
+```
+
+### 3.6 拆解（改哪一句做什麼）
+
+```
+```
+| 區塊   | 鎖什麼                   |
+| ---- | --------------------- |
+| 角色   | 原女主，真實亞洲女戰士           |
+| 服裝   | 黑皮戰鬥服＋束帶手套            |
+| 動作   | 雙手握；只改這句換姿            |
+| 武器   | 一柄一頭；十字或圓頭二選一，不要混進同一句 |
+| 靶＋特效 | 大透晶玻球；裂從接觸長           |
+| 光影   | 契約：體積光、光暈、顆粒、高對比      |
+| 品質   | 拉畫質，不修幾何              |
+```
+```
+
+六幕只換靶與棚，武器句盡量不動：
+
+```
+```
+| 幕   | 靶            | 棚     |
+| --- | ------------ | ----- |
+| 1   | 尚未砸，畫界       | 塗鴉廢工廠 |
+| 2   | 柔：抱完整大球      | 扭蛋／金廳 |
+| 3   | 錘碎球          | 超市    |
+| 4   | 舉錘不砸或砸錯替罪物   | 糖果藥房  |
+| 5   | 砸後，錘放下       | 乾涸泳池  |
+| 6   | 錘在腳邊，人在碎片上起舞 | 黎明天台  |
+```
+```
+
+---
+
+## 4. 像素審核（出圖後才填）
+
+- [ ] 有錘，雙手握柄
+- [ ] 無斧、無鏈、無刺球
+- [ ] 一柄一頭（不是圍著她的圈，不是場景裡的錘星球）
+- [ ] 宣稱十字則必須豎臂＋橫臂都在；宣稱圓頭則面朝外、頭讀得成圓
+- [ ] 接觸是打擊面，不是長側壁拍打
+- [ ] 柄有角度，不是人–柄–球心一條槍
+- [ ] 裂從接觸點長
+- [ ] 無 H-A／H-B／C 等教學字漏進成片
+- [ ] 仍是原女主設定
+
+含糊＝未過。修結構句或編譯句，不修「再 powerful」。
+
+---
+
+## 5. 公式在修什麼（對照表）
+
+```
+```
+| 公式             | 在修的問題              |
+| -------------- | ------------------ |
+| 隱喻→物           | 抽象不能拍              |
+| 換棚＋鏡頭高頻        | Img2Img 靜死         |
+| 影像契約           | 不像真 MV             |
+| 雙世界＋角色弧        | 場有敘事空              |
+| 柔×錘同一容器        | 缺對比                |
+| END FACE／動力鏈   | 錘在畫面裡但沒在打          |
+| 取消真斧中間層        | 畫成斧、接觸被重解          |
+| 只共 C、禁槍線       | 同軸矛刺               |
+| 可視化編譯          | 公式對、圖不跟            |
+| 錘 CONST＋k 層    | 加場景錘消失             |
+| 正交厚十字          | 永遠打錯面              |
+| plus-sign 四臂寫死 | 十字變成 T／多面錘         |
+| 多向圓頭           | 十字仍不穩；圓是「各方都有面」的結果 |
+```
+```
+
+後一層不廢前一層。故事一直有效。
+
+---
+
+## 6. 下次開工
+
+1. 新歌／新隱喻：先填 L0 六格＋L2 六棚，再決定要不要錘。
+2. 要錘：從 3.5 圓頭或 3.2 十字選一個，不要混句。
+3. 要六幕卡：只換棚與靶。
+4. 要教學 SET：效果圖結構必須和標題一致（十字就十字，圓頭就圓頭）。
+5. 有參考臉再 face-lock；沒有參考臉不要自稱已鎖    **################################################################################ # MV PROMPT 公式源代 # 《邊界行人》／原女主／錘碎容器 # 組裝：HERO + GEAR + WEAPON + ACTION + TARGET + SET + CAM + LIGHT + GRADE # 規則：一次只換一個槽。武器 A/B/C 不同句混用。斧不成片。 # 出圖：clean T2I。禁止連續 Img2Img。 ################################################################################   # ============================================================================= # 0. 拼裝公式 # =============================================================================   SHOT = CONTRACT + HERO + GEAR + ACTION + WEAPON + TARGET + SET + CAM + LIGHT + GRADE   CONTRACT 永遠在。 WEAPON 選 A 或 B 或 C，三選一。 ACT2 柔鏡：WEAPON 可空，改用 SOFT。 ACT3+ 錘鏡：WEAPON 必在，加 INSURE。 高程：k=0 只留核；k=1 加衣；k=2 加棚；k=3 加光影電影詞。 掉幾何 → 回到 k=0 再加。   NEG = NEG_BASE + NEG_WEAPON[A|B|C]    # ============================================================================= # 1. 高程（Elevation） # =============================================================================   # --- k=0 CORE（FOLLOW 最高，先過這層）--- K0 = """ Single 16:9 photorealistic frame. {HERO_SHORT} left-of-center. {GEAR_SHORT}. {ACTION_SHORT}. {WEAPON_BLOCK}. {TARGET_BLOCK}. Handle angled, not a spear through the target center. Body not on one straight line with handle and target center. No axe. No text. No extra weapons. """   # --- k=1 衣 --- K1 = K0 + GEAR_FULL   # --- k=2 棚 --- K2 = K1 + SET[act]   # --- k=3 MV 契約（正式成片高程）--- K3 = CONTRACT + HERO + GEAR_FULL + ACTION + WEAPON + TARGET + SET[act] + CAM + LIGHT + GRADE    # ============================================================================= # 2. 常量槽 # =============================================================================   CONTRACT = """ photorealistic cinematic 16:9 music-video still, ultra-realistic high-budget pop MV photography, volumetric light, light bloom, heavy film grain, emotional color grade, rule of thirds, off-center composition, motivated light, not a centered beauty-poster closeup """   HERO = """ a beautiful Asian female warrior, long straight dark brown hair flowing, large soft eyes, natural makeup, sharp intense focus, same face throughout the series """   HERO_SHORT = "beautiful Asian woman, long straight dark brown hair, large soft eyes, intense focus"   GEAR_SHORT = "tight black leather combat outfit" GEAR_FULL  = "wearing a tight black leather combat outfit with straps, gloves and harness"   GEAR_VAR = {   "act1": "punk / oversized hoodie or leather, graffiti dust",   "act2": "softer fabric, maid-like or pale knit — NO hammer if this is the soft-hold shot",   "act3": "combat leather, scuffed, jam and glass on clothes",   "act4": "same leather under neon diner pink",   "act5": "plain dirty white tee, barefoot, armor stripped",   "act6": "simple white tee or leather, studded black boots", }   GRADE = "highly detailed, 8k, masterpiece, best quality"   INSURE = """ she is still holding the hammer, the hammer is in the picture, do not replace the hammer with a hand touching the glass, both hands on the handle """    # ============================================================================= # 3. 武器槽（三選一，勿混句） # =============================================================================   WEAPON_A_ORTHO_CROSS = """ both hands gripping ONE massive extremely thick cross-shaped war hammer, the hammer head is a robust orthogonal plus: one heavy vertical rectangular bar AND one heavy horizontal rectangular bar crossing at the center, heavy flat striking faces on top, bottom, left and right ends, thick metal plus-sign, not T-shape, not X-shape, not a single sledge head """   WEAPON_B_PLUS_CLEAN = """ both hands gripping ONE massive thick plus-sign cross-shaped war hammer, clean orthogonal plus-sign: one thick vertical solid rectangular bar and one thick horizontal solid rectangular bar crossing at center, four equally thick arms pointing top bottom left and right, each end a heavy flat striking face """   WEAPON_C_RADIAL_SPHERE = """ she holds ONE war hammer: a single long handle ending in ONE spherical hammer head, the head is a dense metal globe of many thick wide FLAT sledgehammer striking faces pointing radially outward in every direction, the head looks round BECAUSE the faces aim every way, not spikes, not a morning-star, not a flail, not a chain, not many separate hammers, not a halo or ring of hammers around her body """   # 現用預設 WEAPON = WEAPON_C_RADIAL_SPHERE    # ============================================================================= # 4. 靶／特效槽 # =============================================================================   TARGET_GLASS = """ smashing into a large translucent crystal glass sphere, cracks and sharp shards explode from the exact contact patch only """   TARGET_INTACT = """ a large intact translucent crystal glass sphere still whole, no pre-broken explosion """   TARGET_SOFT_HOLD = """ she cradles a huge intact transparent glass sphere against her body, loved ones / warmth visible inside the sphere, storm outside the glass """   TARGET_AFTER = """ shattered glass sea on the ground, hammer lowered or resting, no new explosion """   TARGET = TARGET_GLASS   # 錘擊幀預設    # ============================================================================= # 5. 動作槽 # =============================================================================   ACTION = {   "front_impact":  "powerful frontal two-handed strike at the instant of contact",   "low_drive":     "full-body low-angle drive, wide stance, hips rotating into the hit",   "peak_shatter":  "peak impact frame, head decelerating into the sphere, shards mid-air",   "side_swing":    "lateral left-to-right swing, handle trailing, leading face hitting first",   "overhead":      "overhead strike, handle up-down, one striking face rotating downward",   "hold_soft":     "tender two-armed embrace of the intact sphere, cheek to glass",   "raise_before":  "hammer raised, aimed at the sphere she herself built, not yet contact",   "kneel_after":   "after the break, kneeling in debris, myth broken",   "walk_border":   "walking the glowing border, one foot in warm bubble-world A, one foot in broken-glass world B",   "draw_line":     "running a glowing tape / marker line that splits the space in two",   "selfie_fake":   "holding a neon milkshake, beauty-filter selfie, she does not drink, eyes on the overfilled balloon above",   "bandage":       "no magic, kneeling to tape a plain bandage on a friend",   "dance_shards":  "group dance on broken glass at dawn, hammer at her feet", }    # ============================================================================= # 6. 鏡頭槽 # =============================================================================   CAM = {   "wide_top":    "extreme wide high-angle, tiny human, huge set",   "low_hero":    "low angle looking up, heroic but off-center",   "over_sh":     "over-shoulder, she looks at companions now equal",   "macro_face":  "extreme close-up of the striking face kissing the glass, cheek of head visible as NON-contact side",   "split":       "split screen: LEFT rebuilds a fake bigger bubble, RIGHT stands on shards",   "god":         "straight-down god view, people as a broken flower",   "dutch":       "dutch angle, tension",   "follow":      "tracking follow-through after impact",   "side_16x9":   "side three-quarter, 16:9, full body in frame", }    # ============================================================================= # 7. 六棚槽 # =============================================================================   SET = {   "act1": "Y2K neon graffiti studio / ruined factory, tangled lines, paint cans, glowing boundary tape",   "act2": "pastel retro gashapon arcade or baroque gold hall, giant intact glass orb",   "act3": "macaron-colored supermarket in chaos, cereal and candy exploding with glass",   "act4": "pink candy-pharmacy diner, neon capsule lights, giant claw, fake smile bandage on a wall crack",   "act5": "drained derelict indoor pool, broken tiles, no water, stripped of pink filter",   "act6": "ruin rooftop at dawn, ground like a sheet of broken glass, city below", }   LIGHT = {   "act1": "harsh neon vs darkness, hard edge light on the boundary line",   "act2": "warm gold inside the orb, cold storm light outside",   "act3": "explosive practical highlights, shard refraction, chaotic mixed light",   "act4": "sickly pink neon, beauty-filter glow that feels fake",   "act5": "filter peeling, cold daylight, dust shafts, raw concrete",   "act6": "dawn backlight, long shadows, sparks and note-like glints on glass", }    # ============================================================================= # 8. Negative 源 # =============================================================================   NEG_BASE = """ blurry, low quality, deformed hands, extra fingers, extra limbs, bad anatomy, watermark, text, logo, title letters, H-A, H-B, C labels, axe, blade edge, empty hands, thin hammer, skinny weapon """   NEG_A = NEG_BASE + ", T-shape, single head, X-shape, missing vertical arm, missing horizontal arm" NEG_B = NEG_A NEG_C = NEG_BASE + """, morning star, flail, spiked mace, chain, studs as spikes, halo of hammers, standing inside a circle of hammers, planet of hammers in background, multiple handles, multiple separate hammers"""    # ============================================================================= # 9. 展開源代 — k=3 正式 MV（現用 WEAPON_C） # 直接整段複製。要十字就把 WEAPON_C 段換成 A 或 B。 # =============================================================================   # ----- ACT1 畫界（錘可在場但不一定砸球）-----   MV_1_1_WIDE = """ photorealistic cinematic 16:9 music-video still, ultra-realistic high-budget pop MV, volumetric light, bloom, heavy film grain, off-center composition. Extreme wide high-angle of a Y2K neon graffiti ruined factory. A beautiful Asian female warrior, long straight dark brown hair, large soft eyes, natural makeup, tight black leather combat outfit with straps and gloves, tiny in the frame, standing in tangled lines and paint chaos, drawing a glowing sharp boundary line that splits warm World A from noisy World B. One thick war hammer with a spherical head of outward flat striking faces rests at her side or in one hand — still ONE hammer, ONE handle. No explosion yet. No axe. No text. """   MV_1_2_LINE = """ photorealistic cinematic 16:9 MV still, film grain, motivated side light. Low angle. Same Asian heroine in black leather. She sprints and slaps a glowing tape line across the floor, splitting the space. Hair and coat trailing. Hammer on her back or in the off-hand, spherical multi-face head readable. World A begins to warm on the left, World B stays storm-dark on the right. No text. """   MV_1_3_BORDER_WALK = """ photorealistic cinematic 16:9 MV still, split lighting. Same heroine walking the glowing border, one foot in golden bubble-world A, one foot in broken-glass world B, body on the line. Long dark brown hair, black leather, intense eyes. Optional: spherical multi-face hammer hanging in her right hand, not swinging. Grand scale, tiny human. No text. """   MV_1_4_PUPIL = """ photorealistic cinematic extreme close-up 16:9, film grain. Her eye fills the frame. Left reflection = intact gold bubble. Right reflection = shards. Same face. No text. """    # ----- ACT2 柔（預設無錘，或錘在遠處）-----   MV_2_1_PLACE = """ photorealistic cinematic 16:9 MV still, warm gold vs cold storm. Same Asian heroine, softer clothes or same leather. She gently places tiny glowing figures into a huge intact glass sphere. Pastel arcade or gold hall. Sphere is whole. No hammer in the contact. No shatter. No text. """   MV_2_2_HOLD = """ photorealistic cinematic 16:9 MV still, dutch angle. Same heroine embracing the giant intact glass sphere, cheek to glass, body used as a shield against purple storm outside. Warm light inside, cold rain outside. Tender, not cute-chibi. No hammer. No explosion. No text. """   MV_2_3_VACUUM = """ photorealistic cinematic 16:9, view from INSIDE the sphere looking out. Her huge face fills the glass, guilty protecting look. Figures inside float in vacuum, a rose fading to paper-white. No hammer. No text. """   MV_2_4_CRACK_HAND = """ photorealistic cinematic 16:9 macro. Bandaged fingers press a spiderweb crack on the glass sphere. Her face soft-focus behind the glass. Still trying to hold it. No hammer hit. No text. """    # ----- ACT3 碎裂（錘擊主場）-----   MV_3_1_FRONT = """ photorealistic cinematic 16:9 music-video still, volumetric rays, bloom, heavy film grain. Beautiful Asian female warrior, long straight dark brown hair flying, large soft eyes, natural makeup, intense focus, tight black leather combat outfit with straps gloves and harness. Powerful frontal two-handed strike. She holds ONE war hammer: a single long handle ending in ONE spherical hammer head, the head is a dense metal globe of many thick wide flat sledgehammer striking faces pointing radially outward in every direction so the head looks round because faces aim every way, not spikes, not a morning-star, not many hammers, not a ring around her. The outward face aimed at the target smashes a large translucent crystal glass sphere inside a chaotic pastel supermarket; cracks and shards explode only from the contact patch. Handle angled, not a spear through the ball center. She is still holding the hammer. No axe. No text. """   MV_3_2_LOW = """ photorealistic cinematic 16:9 MV still, low angle looking up, grand scale. Same heroine, full-body wide stance, hips rotating into a two-handed drive. ONE hammer, long handle, spherical head of outward flat striking faces. The globe-head slams a giant glass sphere; shards rain in the supermarket. Volumetric god-rays, wet floor reflections, film grain. Hammer stays in both hands. No axe. No text. """   MV_3_3_PEAK = """ photorealistic cinematic 16:9 peak-impact still, 1000fps feel, bloom. Same face. Both hands on one handle. Spherical multi-face hammer head buried into a huge crystal orb at first contact, radial fractures born under the touching face, diamond shards mid-air. Dark cinematic grade. No pre-broken glass before contact. No text. """   MV_3_4_SIDE = """ photorealistic cinematic 16:9 side three-quarter MV still. Same heroine, hair streaming back, lateral left-to-right swing. ONE handle trailing, spherical cluster of flat hammer faces leading, the leading FLAT face hits the glass sphere — not a spike, not the long side. Film grain, volumetric light. No extra weapons. No text. """   MV_3_5_FALL = """ photorealistic cinematic 16:9 wide, weightless fall. Same heroine and companions fall together through exploding glass and supermarket candy. Vertical protector role collapsed into horizontal co-karma. Hammer may tumble with them. Off-center, grand. No text. """   MV_3_6_NET = """ photorealistic cinematic 16:9 god-view. People sit in a ring on a glass-shard floor, receipt-tape or neon thread linking them. Same heroine among them, no longer above anyone. Hammer on the ground. Film grain. No text. """    # ----- ACT4 假修 -----   MV_4_1_PANIC = """ photorealistic cinematic 16:9 MV still, sickly pink neon. Candy-pharmacy diner, capsule lights dropping from the ceiling. Crowd in existence-panic. Same heroine at center, spherical hammer lowered, awake. Grand scale. Film grain. No text. """   MV_4_2_CLAW = """ photorealistic cinematic 16:9, low angle. A giant metal claw crashes through the diner roof and lifts a black-clad scapegoat. Same heroine watches, expression conflicted, hammer in hand not swinging. Pink neon, film grain. No text. """   MV_4_3_SELFIE = """ photorealistic cinematic 16:9 selfie-cam overlay with fake beauty filter. Crowd drinks giant fluorescent pink milkshakes and smiles. Same heroine holds a cup but does not drink; eyes go to the overfilled water-balloon above. Wall crack covered by a giant smiley bandage. Hammer visible at the edge of frame. No text on the image besides the implied filter look — no readable letters. """   MV_4_4_FUSE = """ photorealistic cinematic 16:9 micro + wide hybrid feel. A jeweled straw tip almost punctures the taut ceiling balloon. Background still parties. She is the only one looking up. Hammer at her side. Film grain. No text. """    # ----- ACT5 一界 -----   MV_5_1_PEEL = """ photorealistic cinematic 16:9, pink filter dissolving like watercolor into a drained derelict indoor pool. Same heroine alone at the dry center, leather replaced by a dirty white tee. Spherical hammer lowered. Cold daylight, dust shafts. No text. """   MV_5_2_PAIN = """ photorealistic cinematic 16:9 close-up. A bare foot steps on colored glass; a bead of blood becomes a red sequin. Same world, drained pool. Necessary pain. No hammer required. No text. """   MV_5_3_BANDAGE = """ photorealistic cinematic 16:9 medium. Same heroine kneels and tapes a plain unprinted bandage on a friend. No magic. Dirty white tees. Hammer on the tiles behind them. Negative space. Film grain. No text. """   MV_5_4_REDTHREAD = """ photorealistic cinematic 16:9. Dirty hands clasp; a thin real red thread grows between fingers. Background: a huge unfiltered neon-tube heart glowing in the pool deep. Same faces without beauty filter. No text. """    # ----- ACT6 選擇與舞 -----   MV_6_1_ASK = """ photorealistic cinematic 16:9 rooftop dawn, ground a sheet of broken glass. Same heroine center, holding a cheap bubble wand, looking into camera — the choice. Spherical hammer stands planted beside her like a question. Grand city negative space. Film grain. No text. """   MV_6_2_SPLIT = """ photorealistic cinematic 16:9 split screen. LEFT: someone hides under a duvet blowing a bigger fake bubble. RIGHT: she stomps the wand with a studded black boot; spherical hammer at her heel. Cold blue left / warm gold right. No text. """   MV_6_3_DANCE = """ photorealistic cinematic 16:9 tracking shot. Group in studded boots dancing on flashing glass, sparks and note-like glints. Same heroine center. Hammer left on the ground. Dawn backlight, film grain. No text. """   MV_6_4_FINAL = """ photorealistic cinematic 16:9 extreme wide. Tiny figures dance on the ruined rooftop as sun floods the frame. She no longer walks two worlds — she stands on broken reality. Hammer small in the foreground. Epic, grain, bloom. No text. """    # ============================================================================= # 10. 柔 × 錘 對位卡（同角色同容器，分鏡不要同幀又抱又砸） # =============================================================================   SOFT_HOLD = MV_2_2_HOLD HAMMER_BREAK = MV_3_1_FRONT RAISE_AIM = """ photorealistic cinematic 16:9, low angle in an ice-cathedral or desert hall. Same heroine in a baseball-like stance, TWO hands on ONE long handle, spherical multi-face head aimed at the giant glass sphere SHE built. Not yet contact. Silhouette, grand. No text. """ KNEEL_AFTER = """ photorealistic cinematic 16:9 wide. After the smash, she kneels in the glass sea, same face, myth gone. Hammer down. Single shaft of light. No text. """    # ============================================================================= # 11. 鏡頭四連（同一武器同一棚，只換 CAM）— 超市錘擊預設 # =============================================================================   PACK_IMPACT_4 = [MV_3_1_FRONT, MV_3_2_LOW, MV_3_3_PEAK, MV_3_4_SIDE]    # ============================================================================= # 12. 換武器速查（把任一 MV_* 裡的武器段整段替換） # =============================================================================   # 用十字：貼上 WEAPON_A_ORTHO_CROSS 或 WEAPON_B_PLUS_CLEAN # 用圓頭：貼上 WEAPON_C_RADIAL_SPHERE # 禁止：同一條同時寫 plus-sign 又寫 spherical cluster    # ============================================================================= # 13. 生成順序（源代執行） # =============================================================================   # 1) 選 ACT # 2) 選 k（先 k=0 核，再升 k=3） # 3) 選 WEAPON A/B/C # 4) 選 CAM / ACTION # 5) 貼對應 NEG # 6) 出圖後用審核卡，不預先 PASS # 7) FAIL → 降回 k=0，只修核，再升 ***用上面PROMPT 隨機轉成槌的揮斬破的 MV, 超電影, 攝影師藝術,30圖
+顯示更多
+Grok 無法完成此回覆。開始一個新的代理以繼續。
