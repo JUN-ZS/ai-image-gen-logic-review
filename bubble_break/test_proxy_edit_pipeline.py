@@ -101,7 +101,7 @@ class CrossProxyTests(unittest.TestCase):
             silhouette=(out/"05_T_silhouette_reference.svg").read_text(encoding="utf-8")
             self.assertIn('x="300" y="150" width="400" height="105"',silhouette)
             self.assertIn('x="465" y="255" width="70" height="520"',silhouette)
-            self.assertIn("handle itself forms the single stem of the capital T",plan["shape_contract"])
+            self.assertIn("handle itself forms the single stem of the T",plan["shape_contract"])
             self.assertEqual(plan["pixel_truth"]["edited_images"],"NOT_RUN")
 
     def test_invalid_final_weapon_blocks(self):
