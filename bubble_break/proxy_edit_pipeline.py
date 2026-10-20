@@ -107,8 +107,8 @@ def build_t_to_t_geometry_svg(projection):
         f'<rect x="{stem_x}" y="{target_stem_top}" width="{stem_width}" height="{target_bar_y-target_stem_top}" fill="#647f95" stroke="#182b38" stroke-width="5"/>',
         f'<rect x="{x0}" y="{target_bar_y}" width="{bar_width}" height="{bar_height}" fill="#647f95" stroke="#182b38" stroke-width="5"/>',
         # Lower attacking T: one straight handle joins the center underside of its crossbar.
-        _line(handle_end[0],handle_end[1],cx,py+bar_height,"#18232d",34),
-        _line(handle_end[0],handle_end[1],cx,py+bar_height,"#b3c3ce",21),
+        line(handle_end[0],handle_end[1],cx,py+bar_height,"#18232d",34),
+        line(handle_end[0],handle_end[1],cx,py+bar_height,"#b3c3ce",21),
         f'<rect x="{x0}" y="{py}" width="{bar_width}" height="{bar_height}" fill="#334f65" stroke="#182b38" stroke-width="5"/>',
         f'<path d="M{x0+5} {py+5} H{cx+bar_width//2-5}" stroke="#b3d7e9" stroke-width="5"/>',
         '</svg>',
