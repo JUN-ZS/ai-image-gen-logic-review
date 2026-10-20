@@ -1,6 +1,6 @@
 # 由 Repo 現有 Prompt 到「真人女主在真實場景擊破泡泡」的逐關流程
 
-> 目的：沿用 `槌2.txt` 的角色鎖定、可畫核心、武器端面和像素審核規則；先驗證 T 字槌接觸幾何，再做寫實場景，最後交付 H0（未碰）、H2（首次碰撞）、H3（泡殼爆裂）三張相互連貫的完成圖。
+> 目的：沿用 `槌2.txt` 的角色鎖定、可畫核心、武器端面和像素審核規則；先驗證單一 T 字槌的形狀母版，再做各故事的寫實場景，最後交付 H0（未碰）、H2（首次碰撞）、H3（泡殼爆裂）三張相互連貫的完成圖。
 >
 > **重要界線：** `bubble_break/` 會生成 Prompt、JSON、SVG 幾何參考和局部編輯規格；它不會呼叫圖片模型。只有實際出圖並檢查像素，才能宣稱真人完成圖驗收通過。
 
@@ -26,32 +26,32 @@
 第一個真實場景建議用**寬闊的廢棄工業大廳／舊發電廠**：地面和背景有真實比例、光線有方向、可看清人物全身與泡泡；暫時不要用大量小冰球、密集粒子或過度繁複的室內裝飾。第一輪只有**一個主要透明泡泡**。
 
 固定以下內容直到通過驗收：
-- 畫幅 16:9；同一女主參考圖、同一服裝、同一鏡頭及背景。
+- 畫幅 16:9；同一故事的 H0/H2/H3 共用女主、服裝、鏡頭及背景；不同故事保留各自的環境、規模、泡殼、色彩與因果隱喻變化。
 - 女主位於畫面左下方，巨大泡泡位於右側；女主雙手握住一柄錘。
 - 第一版用清楚、厚實、單一手柄的 T 字槌作低複雜度基準；不要在同一條 Prompt 混入十字槌和多向圓頭槌的句子。
 - 泡泡保持完整直到 H2；裂紋只在接觸後出現。
 
-## 2. A：先做 T 槌對 T 槌的幾何錨點
+## 2. A：先建立唯一一把 T 槌形狀母版
 
-在簡單中性背景，先生成一張**只有兩把大型 T 頭槌**的結構參考，不要人物、不要泡泡、不要電影特效。兩把槌只用指定的厚實平端面相對；手柄、槌頭側壁不可搶先接觸。這一步只驗證「哪個端面會碰哪裡」，不追求成片美感。
+第一關只驗證**武器拓撲**，不是兩把槌互撞，也不是最終電影構圖。只生成一把完整 T 字槌：一條直的水平矩形橫杠；一條長柄直接接在橫杠底面正中央。長柄本身就是 T 的主幹，不能多一截短柱。整把武器必須在畫面內完整可見。
 
-### 幾何錨點 Prompt
+### T 槌母版 Prompt
 
-> A clean photorealistic industrial-design reference, 16:9 side-three-quarter view. Two enormous solid-steel T-headed war hammers face each other. Each is one hammer with one handle and one robust T-shaped head. Align only the two designated broad, flat terminal striking faces on one exact contact plane; no cheek, side wall, shaft or handle touches first. Keep both T silhouettes readable, head scale and face thickness consistent, no extra weapons, no people, no bubble, no debris, no text, neutral studio lighting. This is a geometry reference, not poster art.
+> Create ONE photorealistic 16:9 product-reference image of exactly ONE T-headed hammer on a neutral studio background. Show the complete weapon. Its head is one straight rigid horizontal rectangular crossbar with equal left/right ends. Exactly one long handle attaches directly to the exact underside midpoint of that crossbar; the handle itself forms the only stem of the capital T. Use a level near-front view so the crossbar stays straight and horizontal. No second hammer, no inverted T, no bubble, no heroine, no city, no debris, no text, no extra shaft or short post. This is a weapon-shape reference only, not the composition for later cinematic scenes.
 
-**先決定接觸點規則再生圖：**目前專案原有契約把目標點鎖在泡泡的六點鐘底極點 (P)。所以兩個 T 頭必須沿著最終那個端面法線對正，接觸位置要代表未來的 (P)。如果把兩把槌簡單地左右水平互撞，之後接觸點自然會落在泡泡的側面，而不是底極點；那會違反舊契約。不要把這兩種擊球方向混成一種。除非你明確決定改規格，第一版先保留六點鐘 (P)。
+**A 關通過條件：**只有一把槌；橫杠平直、水平、左右端對稱；長柄與橫杠底面中點直接相連；全柄完整可見。把真正產出的圖片存成 A_T_weapon_master.png，再由人類檢查並建立 A_T_weapon_master_review.json。Prompt 和 SVG 只能驗證程式契約，不能代替實際圖片審核。
 
-**A 關通過條件：**T 頭形狀可辨、兩把槌各一柄一頭、只有指定端面接觸，且接觸法線和預定的 (P) 方向一致。失敗就只改槌的朝向／相機，不加人物或場景。
+## 3. B：共用同一把 T 槌，生成有變化的故事場景
 
-## 3. B：把「目標方 T 頭」局部替換成泡泡
+整個批次只需一張通過審核的武器母版，放在 _shared_T_weapon_master/，不要每個 story 都重新產一張一模一樣的母版。每個故事繼續使用自己那組 H0/H2/H3 Prompt：母版只控制槌子的形狀，**不控制場景、人物姿勢、背景、光線或構圖**。
 
-將 A 的已通過圖存成不可覆寫的 `A_anchor.png`。用具遮罩的局部編輯，把**目標方** T 頭替換成一個巨大、完整、透明的肥皂泡／晶玻璃泡；只遮罩目標方，攻擊方 T 槌、手柄、相機及背景盡量原樣保留。把目標 T 頭原先指定的接觸端面對應成泡泡的六點鐘接觸點 (P)。
+- H0：同一把 T 槌尚未碰到泡泡，槌面與泡膜之間保留明顯空隙。
+- H2：同一把 T 槌的指定上平面首次接觸泡泡底部 P，裂紋只從該處開始。
+- H3：同一泡泡從同一個 P 破裂，槌仍然是同一把 T 槌，人物與泡內居民無傷。
 
-### B 局部編輯 Prompt
+每一張圖分開生成；不要把 H0/H2/H3 做成拼貼。不同 story ID 要保留各自的場景、泡泡規模、泡殼、色彩、象徵和故事因果；同一 story 的三幀才鎖定連貫性。**絕不能再畫上方倒置 T 來充當泡泡，也不能做「先兩把 T 對接，再把其中一把換成泡泡」這個錯誤步驟。**
 
-> Edit only the masked target-hammer region. Replace the target T-head with one huge intact transparent iridescent soap-glass sphere. Preserve the attacking T hammer, its selected striking face, handle, perspective, lighting and camera composition. The sphere must remain whole: no cracks, no chips, no shatter, no extra spheres. Register the sphere so the preselected terminal-face contact location becomes its exact six-o'clock bottom pole P. Do not move or redesign anything outside the mask.
-
-**B 關通過條件：**泡泡完整；只有一個泡泡；攻擊方槌及指定端面沒有漂移；接觸位置仍對到泡泡底極點。模型有可能改動未遮罩區域，故不能單憑 Prompt 自稱對準，必須看輸出像素。
+Stage B 使用 generate_scene_with_T_master.txt，並同時提供該故事的 H0/H2/H3 prompt 檔。場景生成完成後，才逐張進行真實像素審核。
 
 ## 4. C：產生真實場景的 H0 主畫面
 
@@ -108,39 +108,20 @@ T 的結構只定義為以下三件事：
 - 生成／編輯時，場景母版控制人物與相機；`05_T_silhouette_reference` 控制 T 橫杠和柄的拓撲；只遮罩武器區域做局部編輯。不要每次全圖重畫。
 - 任一關只要橫杠彎曲／斜轉、柄離開橫杠中點、出現額外短柱、頭部變圓球或加號，就標記形狀失敗，回到武器遮罩重編；不要靠「more powerful」等風格詞補救。
 
-## 6.6 為什麼不能再把「T_TOPOLOGY_PASS」當成整條流程 PASS
+## 6.6 為什麼「T 對 T」不是正確的首關
 
-上一輪的外部紀錄把 T 輪廓圖、泡泡＋T 的 H0/H2/H3 放在同一張審計表，然後宣稱 `T_TOPOLOGY_PASS`。這最多支持「那些成圖看起來有 T 形」，**不能證明要求的 T 對 T 首關曾執行，更不能證明真實接觸點像素等於幾何代理的 P**。
+上一版把「T 字槌不能走形」誤解成「必須先畫兩把 T 槌上下合軸」。程式因而將上方倒置 T 當成泡泡的替身，並用舊的兩把槌閘門將整批停在同一種上下合軸構圖。這不但多造出一把錯誤目標物，也令批次無法展示各故事的實際場景變化。正確流程應是「單一武器母版 → 故事場景變化」。
 
 新 T 路徑會產生：
-- `00_T_to_T_geometry_proxy.svg`：兩個 T 攻面相對的向量幾何參考。
-- `00_generate_T_to_T_anchor.txt`：首關必須執行的真實圖片生成 Prompt；畫面只能有兩把 T 槌，不可有泡泡或女主。
-- `stage_gate.json`：預設狀態為 `BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED`。
-- `edit_target_T_to_bubble.txt`：只有實際 T-to-T 圖被人工檢視通過後，才可執行的第二關局部編輯指令。
+- 00_T_weapon_master_geometry.svg：只有一把 T 字槌的向量形狀參考。
+- 00_generate_T_weapon_master.txt：生成唯一 T 槌母版的 Prompt。
+- _shared_T_weapon_master/：批次共用一份母版 Prompt、形狀參考與審核閘門；不再讓每個故事各產一張重複的 T 母版。
+- generate_scene_with_T_master.txt：告訴模型將母版只用作槌形參考，並依各故事 prompt 生成 H0/H2/H3。
+- stage_gate.json：在實際母版經人工審核前維持 BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED。
 
-人工審核後才建立 `A_T_to_T_review.json`，例如：
+人工審核後建立 _shared_T_weapon_master/A_T_weapon_master_review.json。這是人工記錄，不是自動認證。CI 綠燈只代表 Prompt／資料包規格一致；沒有真正的 A_T_weapon_master.png、人工審核紀錄和 H0/H2/H3 真實圖片時，不能宣稱圖片生成或像素審核 PASS。
 
-```json
-{
-  "stage_id": "A_T_TO_T_ANCHOR",
-  "status": "PASS",
-  "image": "A_T_to_T_anchor.png",
-  "checks": {
-    "exactly_two_T_hammers": true,
-    "upper_target_T_inverted": true,
-    "lower_attacker_T_upright": true,
-    "opposing_faces_meet_at_same_P": true,
-    "no_bubble_or_heroine": true,
-    "crossbars_straight_and_handles_centered": true
-  },
-  "manual_pixel_review": true,
-  "notes": "記錄實際畫面中攻面相遇的位置，不能只引用 Prompt。"
-}
-```
-
-此 JSON 是**人工檢視紀錄**，唔係圖片模型自動驗證。沒有真正的 `A_T_to_T_anchor.png` 和通過檢視的紀錄時，整個 T-to-T 真實圖片階段仍然是 BLOCKED；不得由 T 輪廓 PNG、泡泡＋T 圖、檔案存在或 Prompt 文字推定 PASS。
-
-對 H2 的接觸位置，要在實際出圖上標出／量度泡泡輪廓的六點鐘底極點，以及槌頭實際接觸的像素區域。若兩者不同，H2 就是 FAIL，即使畫面有裂紋、看似猛烈或審計文字寫了「底極點」。向量座標 `P=(1090,610)` 只定義 1920×1080 代理畫布；外部圖片生成可能使用其他解析度、透視和構圖，不能直接拿這組數字當成實際圖片已符合的證明。
+對 H2 的接觸位置，仍須在實際出圖中檢查泡泡六點鐘底極點與槌頭接觸區。向量座標 P=(1090,610) 只定義 1920×1080 代理畫布，不是外部生成圖片已符合的證據。
 
 ## 7. 程式只負責把 Prompt 和幾何包整理好
 
