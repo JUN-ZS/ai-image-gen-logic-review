@@ -371,16 +371,23 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "files":files,
         }
     (outdir/"edit_plan.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    (outdir/"README.md").write_text(
+    readme_text = (
+        "T-to-T geometry proxy. REQUIRED ORDER: generate and manually approve the real A_T_to_T_anchor.png first; "
+        "only then use edit_target_T_to_bubble.txt to replace the upper inverted target T with a bubble. "
+        "The current packet remains BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED. Do not claim a real-image PASS from these SVGs or prompts. "
+        "Preserve the lower attacking T and verify the true contact pixel location."
+        if final_weapon == "T" else
         "Cross-to-cross geometry proxy. First validate the two flat terminal faces. Then edit only the target plus into a bubble. "
-        "Only after reviewing that result, edit only the attacking plus into the radial multi-face hammer. "
+        "Only after reviewing that result, edit only the attacking object into the selected final weapon. "
         "Do not edit both objects in the same pass. SVGs are deterministic geometry references, not final cinematic artwork. "
-        "AI edit pixel fidelity is not guaranteed; measure the actual edited output.\n", encoding="utf-8")
+        "AI edit pixel fidelity is not guaranteed; measure the actual edited output."
+    )
+    (outdir/"README.md").write_text(readme_text+"\n",encoding="utf-8")
     return {"status":plan["status"],"terminal_face_gap_px":0,"files":list(files.values())+["edit_plan.json","README.md"],
             "edited_images":"NOT_RUN","outdir":str(outdir)}
 
 def main(argv=None):
-    parser=argparse.ArgumentParser(description="Generate cross-to-cross anchor SVGs and target-only bubble-edit instructions.")
+    parser=argparse.ArgumentParser(description="Generate geometry/edit packets; T mode requires an approved T-to-T anchor before bubble editing.")
     parser.add_argument("--input-layout",required=True)
     parser.add_argument("--outdir",required=True)
     parser.add_argument("--final-weapon",choices=("CROSS","T","RADIAL"),default="RADIAL")
