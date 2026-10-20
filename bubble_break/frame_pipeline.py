@@ -123,7 +123,7 @@ T_STATE = {
     "H0": (
         "PRE-IMPACT START FRAME. Bubble membrane perfectly intact: zero cracks, holes, fragments or explosion. "
         "The weapon MUST have one unmistakable capital-T silhouette: exactly one straight horizontal rectangular crossbar "
-        "and exactly one long rigid handle joined directly to the midpoint of its underside; the same handle forms the "
+        "and exactly one long rigid handle joined directly to the midpoint of its underside; the handle itself forms the "
         "single stem of the T. Do not add a separate short post between the crossbar and handle. The left and right bar ends "
         "are symmetric, equal and remain in one straight line. The head is a T, not a round object with facets and not a cross. "
         "The broad flat TOP PLANE "
@@ -135,7 +135,7 @@ T_STATE = {
     "H2": (
         "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer in the same shape as H0: one straight horizontal "
         "rectangular crossbar and the same single long handle joined directly beneath its midpoint; the handle itself forms "
-        "the only stem of the T, with no separate short post or extra shaft. "
+        "the single stem of the T, with no separate short post or extra shaft. "
         "The broad flat TOP PLANE on the crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
         "The center of that upper plane is pinned to P; its normal points upward into the bubble. This topology uses the "
         "crossbar's upper plane as its active striking surface; do not rotate the head, substitute an end-side face, or "
@@ -438,7 +438,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
         "weapon_topology":weapon_topology,
         "weapon_shape_contract":{
             "RADIAL":"one handle + one near-spherical multi-face head",
-            "T":"one straight horizontal crossbar + one centered stem beneath it; symmetric ends; no spherical or cross-head substitution",
+            "T":"one straight horizontal crossbar + one long handle joined at its underside midpoint; the handle itself is the only stem; no separate post, spherical head or cross-head substitution",
             "CROSS":"one connected plus-sign head with one horizontal and one vertical rectangular arm",
         }[weapon_topology],
         "active_striking_surface":{
