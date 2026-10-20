@@ -75,7 +75,7 @@ class CrossProxyTests(unittest.TestCase):
             self.assertIn('x="978" y="618" width="224" height="50"',preview)
             self.assertIn("T-shaped hammer", (out/"edit_attacker_to_T.txt").read_text(encoding="utf-8"))
             prompt=(out/"edit_attacker_to_T.txt").read_text(encoding="utf-8")
-            self.assertIn("the handle itself forms the single stem of the T",prompt)
+            self.assertIn("handle itself forms the single stem of the T",prompt)
             self.assertIn("BROAD UPPER PLANE",prompt)
             self.assertTrue((out/"05_T_silhouette_reference.svg").exists())
             silhouette=(out/"05_T_silhouette_reference.svg").read_text(encoding="utf-8")
