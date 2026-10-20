@@ -55,9 +55,9 @@ jobs:
           }, ensure_ascii=False, indent=2))
           PY
 
-      - name: Compile separate before/contact/after frame prompts
+      - name: Compile T-topology before/contact/after frame prompts
         run: |
-          python bubble_break/frame_pipeline.py --input /tmp/wushuang_1000.jsonl --outdir /tmp/wushuang_frames --limit 3
+          python bubble_break/frame_pipeline.py --input /tmp/wushuang_1000.jsonl --outdir /tmp/wushuang_frames --limit 3 --weapon-topology T
           python - <<'PY'
           import json
           from pathlib import Path
@@ -81,14 +81,16 @@ jobs:
               assert layout["projection_lock"]["frames"]["H2"]["gap_px"] == 0
               assert layout["projection_lock"]["frames"]["H3"]["gap_px"] == -15
               manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
-              assert manifest["canonical_weapon"] == "WEAPON_C_RADIAL_SPHERE"
+              assert manifest["canonical_weapon"] == "WEAPON_T"
+              assert manifest["weapon_topology"] == "T"
+              assert "horizontal crossbar" in manifest["weapon_shape_contract"]
               assert manifest["pixel_audit_status"] == "NOT_RUN"
           print(json.dumps({"frame_packets": 3, "frames_per_packet": 3,
-                            "prompt_contract": "PASS", "pixel_audit": "NOT_RUN"},
+                            "weapon_topology": "T", "prompt_contract": "PASS", "pixel_audit": "NOT_RUN"},
                            ensure_ascii=False, indent=2))
           PY
 
-      - name: Build cross-to-cross proxy and local edit packet
+      - name: Build T-to-T anchor and gate target-to-bubble edit
         run: |
           python - <<'PY'
           import json, subprocess, sys
@@ -97,18 +99,26 @@ jobs:
           batch = json.loads((root / "batch_manifest.json").read_text(encoding="utf-8"))
           layout = Path(batch["packets"][0]["directory"]) / "layout.json"
           subprocess.run([sys.executable, "bubble_break/proxy_edit_pipeline.py",
-                          "--input-layout", str(layout), "--outdir", "/tmp/wushuang_proxy_edit", "--final-weapon", "RADIAL"],
+                          "--input-layout", str(layout), "--outdir", "/tmp/wushuang_proxy_edit", "--final-weapon", "T"],
                          check=True)
           out = Path("/tmp/wushuang_proxy_edit")
           plan = json.loads((out / "edit_plan.json").read_text(encoding="utf-8"))
-          assert plan["status"] == "GEOMETRY_PROXY_VALID", plan
+          assert plan["method"] == "T_TO_T_THEN_TARGET_T_ONLY_SPHERE_EDIT", plan
+          assert plan["status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED", plan
+          assert plan["vector_proxy_status"] == "GEOMETRY_PROXY_VALID", plan
+          assert plan["stage_gate_status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED", plan
           assert plan["terminal_face_gap_px"] == 0, plan
+          assert plan["selected_edit_prompt"] == "edit_target_T_to_bubble.txt", plan
           assert plan["pixel_truth"]["edited_images"] == "NOT_RUN"
-          for name in ("00_cross_to_cross_proxy.svg", "01_target_cross_replaced_by_sphere.svg",
-                       "02_target_cross_edit_mask.svg", "03_attacker_edit_mask.svg",
-                       "edit_target_plus_to_bubble.txt", "edit_attacker_plus_to_radial_hammer.txt"):
+          for name in ("00_T_to_T_geometry_proxy.svg", "00_generate_T_to_T_anchor.txt",
+                       "01_target_T_replaced_by_sphere.svg", "02_target_bubble_edit_mask.svg",
+                       "03_attacker_T_protect_mask.svg", "05_T_silhouette_reference.svg",
+                       "edit_target_T_to_bubble.txt", "stage_gate.json"):
               assert (out / name).exists(), name
-          print(json.dumps({"proxy": "PASS", "terminal_face_gap_px": 0,
+          gate = json.loads((out / "stage_gate.json").read_text(encoding="utf-8"))
+          assert gate["do_not_mark_pass_from_prompt_or_svg_alone"] is True
+          print(json.dumps({"vector_proxy": "PASS", "required_first_stage": "T_TO_T",
+                            "downstream_gate": "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
                             "external_edit_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
           PY
 
@@ -129,10 +139,17 @@ jobs:
               proxy = Path(item["proxy_directory"])
               plan = json.loads((proxy / "edit_plan.json").read_text(encoding="utf-8"))
               assert plan["final_weapon"] == "T", plan
+              assert plan["method"] == "T_TO_T_THEN_TARGET_T_ONLY_SPHERE_EDIT", plan
+              assert plan["status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED", plan
               assert plan["terminal_face_gap_px"] == 0, plan
-              assert plan["selected_edit_prompt"] == "edit_attacker_to_T.txt", plan
-              assert (proxy / "04_final_weapon_preview.svg").exists()
+              assert plan["selected_edit_prompt"] == "edit_target_T_to_bubble.txt", plan
+              assert plan["stage_gate_status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED", plan
+              assert (proxy / "00_T_to_T_geometry_proxy.svg").exists()
+              assert (proxy / "00_generate_T_to_T_anchor.txt").exists()
+              assert (proxy / "stage_gate.json").exists()
+              assert (proxy / "04_T_final_weapon_preview.svg").exists()
           print(json.dumps({"selected_stories": 20, "distinct_kernels": 20,
                             "final_weapon": "T", "vector_proxy": "PASS",
+                            "real_image_stage_gate": "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
                             "edited_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
           PY
