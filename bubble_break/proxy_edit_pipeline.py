@@ -208,13 +208,53 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         "target_edit_prompt": "edit_target_plus_to_bubble.txt",
         "weapon_edit_prompt": "edit_attacker_plus_to_radial_hammer.txt",
     }
-    for name, kind in [(files["proxy"], "cross"), (files["target_replaced"], "sphere"),
+    if final_weapon == "T":
+        files.update({
+            "proxy": "00_T_to_T_geometry_proxy.svg",
+            "target_replaced": "01_target_T_replaced_by_sphere.svg",
+            "final_weapon_preview": "04_T_final_weapon_preview.svg",
+            "mask": "02_target_bubble_edit_mask.svg",
+            "attacker_mask": "03_attacker_T_protect_mask.svg",
+            "target_edit_prompt": "edit_target_T_to_bubble.txt",
+            "weapon_edit_prompt": "edit_attacker_keep_T.txt",
+        })
+    proxy_kind = "t_to_t" if final_weapon == "T" else "cross"
+    for name, kind in [(files["proxy"], proxy_kind), (files["target_replaced"], "sphere"),
                        (files["final_weapon_preview"], "final_weapon"),
                        (files["mask"], "mask"), (files["attacker_mask"], "attacker_mask")]:
         (outdir/name).write_text(build_svg(kind, projection, final_weapon)+"\n", encoding="utf-8")
     if final_weapon == "T":
         files["t_shape_reference"] = "05_T_silhouette_reference.svg"
         (outdir/files["t_shape_reference"]).write_text(build_t_silhouette_reference_svg()+"\n", encoding="utf-8")
+        files["t_to_t_generation_prompt"] = "00_generate_T_to_T_anchor.txt"
+        (outdir/files["t_to_t_generation_prompt"]).write_text(
+            "STAGE A — REQUIRED BEFORE ANY BUBBLE OR HEROINE IMAGE. Generate ONE standalone photorealistic 16:9 industrial-design image "
+            "of exactly TWO enormous T-headed hammers facing each other on the same vertical contact plane. The lower attacker T is upright: "
+            "one straight horizontal rectangular crossbar and one long rigid handle joined directly at its underside midpoint, the handle itself "
+            "forms its only stem and extends down-left. The upper target T is inverted: one straight horizontal rectangular crossbar, with one centered "
+            "rigid stem extending upward from the crossbar. Their broad flat faces oppose each other vertically and meet at exactly the same center P; "
+            "the lower T's upper crossbar face touches only the upper T's lower crossbar face. Both T silhouettes must be fully visible and unmistakable. "
+            "Match the supplied 00_T_to_T_geometry_proxy.svg and 05_T_silhouette_reference.svg for geometry. Neutral simple background only: NO bubble, "
+            "NO person, NO city, NO debris, NO cracks, NO text, NO collage, NO extra weapon. This image is the mandatory geometry gate; do not proceed "
+            "to a bubble replacement unless the actual generated image is manually reviewed and approved.\n", encoding="utf-8")
+        files["stage_gate"] = "stage_gate.json"
+        stage_gate = {
+            "required_order": ["A_T_TO_T_ANCHOR", "B_REPLACE_TARGET_T_WITH_BUBBLE", "C_BUILD_REAL_SCENE_FRAMES"],
+            "current_stage": "A_T_TO_T_ANCHOR_REQUIRED",
+            "status": "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
+            "required_stage_a_artifact": "A_T_to_T_anchor.png",
+            "manual_visual_approval_required": True,
+            "stage_a_checks": [
+                "two and only two T-shaped hammers are present",
+                "lower attacker and upper inverted target are both clearly T-shaped",
+                "their broad faces oppose and meet at the same center P",
+                "there is no bubble, heroine, city, debris or text",
+                "crossbars remain straight/horizontal and each handle is centered",
+            ],
+            "not_proven_by_this_proxy": ["actual generated pixels", "correct real-image contact location", "scene/hero continuity"],
+            "do_not_mark_pass_from_prompt_or_svg_alone": True,
+        }
+        (outdir/files["stage_gate"]).write_text(json.dumps(stage_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     c, point, radius = projection["sphere_center"], projection["P_six_oclock"], projection["sphere_radius"]
     target_prompt = (
         "EDIT ONLY THE TARGET PLUS-SIGN in the provided cross-to-cross proxy. "
