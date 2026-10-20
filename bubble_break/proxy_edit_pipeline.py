@@ -44,11 +44,13 @@ def attacker_plus(cx, face_y, center_y, handle_end):
     return shaft + head
 
 def attacker_t(cx, face_y, center_y, handle_end):
-    shaft = line(handle_end[0], handle_end[1], cx, center_y, "#02060a", 34)
-    shaft += line(handle_end[0], handle_end[1], cx, center_y, "url(#metal)", 23)
-    head = rect(cx-112, face_y, 224, 58, "#234761", "#e0bd82", 5)
-    head += rect(cx-34, face_y+58, 68, max(8,center_y+75-(face_y+58)), "#234761", "#e0bd82", 5)
-    head += rect(cx-108, face_y-2, 216, 5, "#fff1c7", "#ffffff", 2)
+    # The long handle itself forms the T stem; do not draw a second short post.
+    crossbar_bottom = face_y + 58
+    shaft = line(handle_end[0], handle_end[1], cx, crossbar_bottom, "#02060a", 34)
+    shaft += line(handle_end[0], handle_end[1], cx, crossbar_bottom, "url(#metal)", 23)
+    head = rect(cx-112, face_y+8, 224, 50, "#234761", "#e0bd82", 5)
+    # Narrow top-plane bevel; its upper edge stays pinned to the impact coordinate.
+    head += f'<polygon points="{cx-112},{face_y+8} {cx+112},{face_y+8} {cx+96},{face_y} {cx-96},{face_y}" fill="#6b9cbd" stroke="#fff0bf" stroke-width="4" stroke-linejoin="round"/>'
     return shaft + head
 
 def attacker_radial(cx, face_y, center_y, handle_end):
@@ -66,6 +68,21 @@ def attacker_radial(cx, face_y, center_y, handle_end):
                          (cx-52,center_y+61,cx,center_y+6),(cx-68,face_y+24,cx,center_y+6)]:
         head+=line(x1,y1,x2,y2,"#81a9c4",2)
     return shaft+head
+
+def build_t_silhouette_reference_svg():
+    """Clean, label-free silhouette reference: one crossbar and the same single handle as its stem."""
+    width, height = 1000, 900
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        '<rect width="1000" height="900" fill="#f3f5f7"/>',
+        '<rect x="300" y="150" width="400" height="105" fill="#263746" stroke="#111a23" stroke-width="8"/>',
+        # This is the single handle, directly centered on and attached to the underside of the crossbar.
+        '<rect x="465" y="255" width="70" height="520" fill="#334f65" stroke="#111a23" stroke-width="8"/>',
+        '<rect x="307" y="158" width="386" height="16" fill="#91b9d2"/>',
+        '</svg>',
+    ]
+    return "\\n".join(parts)
+
 
 def attacker_for_weapon(topology, cx, face_y, center_y, handle_end):
     topology=topology.upper()
@@ -168,6 +185,9 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
                        (files["final_weapon_preview"], "final_weapon"),
                        (files["mask"], "mask"), (files["attacker_mask"], "attacker_mask")]:
         (outdir/name).write_text(build_svg(kind, projection, final_weapon)+"\n", encoding="utf-8")
+    if final_weapon == "T":
+        files["t_shape_reference"] = "05_T_silhouette_reference.svg"
+        (outdir/files["t_shape_reference"]).write_text(build_t_silhouette_reference_svg()+"\n", encoding="utf-8")
     c, point, radius = projection["sphere_center"], projection["P_six_oclock"], projection["sphere_radius"]
     target_prompt = (
         "EDIT ONLY THE TARGET PLUS-SIGN in the provided cross-to-cross proxy. "
@@ -189,11 +209,17 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     (outdir/files["weapon_edit_prompt"]).write_text(weapon_prompt+"\n",encoding="utf-8")
     weapon_prompt_t = (
         "EDIT ONLY THE ATTACKING PLUS-SIGN after the target bubble edit has passed pixel review. "
-        "Convert only the head into one unmistakable T-shaped hammer: a broad, thick horizontal bar with a wide flat upper striking face "
-        "and one central stem attached beneath the bar. Keep one rigid long handle attached to the same head. "
-        f"Pin the top-face center at P=({point['x']},{point['y']}); the top face's y coordinate must not move. "
-        "Preserve the bubble outline, city, contact point, handle direction, camera, background and all pixels outside the attacker mask. "
-        "No plus-sign/cross head, radial ball, spikes, studs, mace or extra weapon."
+        "Use 05_T_silhouette_reference.svg as the authoritative T-shape guide; it defines topology only, not camera pose. "
+        "Convert only the masked weapon into ONE unmistakable capital-T hammer: exactly one straight, horizontal, rigid rectangular crossbar "
+        "with equal left/right ends, and exactly ONE long handle joined to the exact midpoint of the crossbar's underside. "
+        "The long handle itself forms the single stem of the T; do NOT add a second short vertical post between head and handle. "
+        "Keep the crossbar width about 3.8 times its thickness and the handle joint centered. The bar remains a straight line; "
+        "do not round it into a globe, rotate it into a diagonal bar, turn it into a plus/X/L/Y shape, or invent extra head parts. "
+        "For this topology, the active striking surface is the BROAD UPPER PLANE of the crossbar, not a side wall or a pretend spherical face. "
+        f"Pin the center of that upper plane at P=({point['x']},{point['y']}); its upper edge/contact coordinate must not move. "
+        "The single handle must remain rigid and connected at the center; its apparent diagonal is only 3D perspective toward the heroine. "
+        "Preserve the bubble outline, city, contact point, camera, background and every pixel outside the attacker mask. "
+        "No radial/faceted ball head, plus-sign/cross head, X head, spikes, studs, mace, extra bar, extra shaft, disconnected handle or extra weapon."
     )
     weapon_prompt_cross = (
         "EDIT ONLY THE ATTACKING PLUS-SIGN. Keep the cross proxy unchanged; do not edit the bubble, contact point, handle, camera or background."
@@ -201,10 +227,21 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     (outdir/"edit_attacker_to_T.txt").write_text(weapon_prompt_t+"\n",encoding="utf-8")
     (outdir/"edit_attacker_keep_cross.txt").write_text(weapon_prompt_cross+"\n",encoding="utf-8")
     selected_prompt={"RADIAL":files["weapon_edit_prompt"],"T":"edit_attacker_to_T.txt","CROSS":"edit_attacker_keep_cross.txt"}[final_weapon]
+    shape_contract = {
+        "RADIAL":"one long handle + one near-spherical head tiled with outward flat faces",
+        "T":"one straight horizontal crossbar + one long handle joined exactly at the crossbar underside midpoint; the handle itself is the T stem; no separate short post",
+        "CROSS":"one long handle + one connected plus-sign head with vertical and horizontal arms",
+    }[final_weapon]
     plan = {
         "method":"CROSS_TO_CROSS_THEN_TARGET_ONLY_SPHERE_EDIT",
         "status":"GEOMETRY_PROXY_VALID",
         "final_weapon":final_weapon,
+        "shape_contract":shape_contract,
+        "active_striking_surface":{
+            "RADIAL":"one upward-facing flat polygon on the radial head",
+            "T":"the broad upper plane of the horizontal crossbar",
+            "CROSS":"the upper terminal face of the vertical arm",
+        }[final_weapon],
         "selected_edit_prompt":selected_prompt,
         "projection_lock":projection,
         "terminal_face_gap_px":0,
