@@ -9,12 +9,12 @@ from typing import Any, Dict, List
 VERSION = "1.0.0"
 FRAME_IDS = ("H0", "H2", "H3")
 FRAME_NAMES = {"H0":"H0_pre_impact", "H2":"H2_first_contact_anchor", "H3":"H3_post_impact"}
-NEGATIVE = (
+NEGATIVE_BASE = (
     "collage, diptych, triptych, storyboard sheet, contact sheet, multi-panel layout, infographic, "
     "labels, captions, typography, watermark, logo, diagram, weapon turntable, duplicate heroine, extra limbs, "
-    "spear through sphere center, shaft touching shell, broad cheek touching target, conventional rectangular hammer, "
-    "spikes, studs, mace, flail, chain, separate hammers in a ring, four-headed cross hammer, premature cracks, "
-    "cracks away from contact point, explosion replacing shell, shards piercing residents, injured residents, destroyed city"
+    "spear through sphere center, shaft touching shell, unintended side-wall contact, spikes, studs, mace, flail, chain, "
+    "separate hammers in a ring, premature cracks, cracks away from contact point, explosion replacing shell, "
+    "shards piercing residents, injured residents, destroyed city"
 )
 COMMON = (
     "ONE standalone cinematic frame, 16:9 widescreen, photorealistic live-action fantasy still. "
@@ -56,6 +56,29 @@ WEAPON_TEXT = {
     ),
 }
 
+NEGATIVE_BY_TOPOLOGY = {
+    "RADIAL": (
+        "T-shaped head, plus-sign/cross head, conventional plain rectangular single-bar hammer head, "
+        "missing radial faces, rounded featureless ball"
+    ),
+    "T": (
+        "radial spherical hammer head, near-spherical faceted globe head, plus-sign/cross head, X-shaped head, "
+        "extra crossbar, missing horizontal crossbar, missing centered stem, off-center stem, bent or diagonal crossbar, "
+        "L-shaped head, Y-shaped head, rounded head, separate head pieces"
+    ),
+    "CROSS": (
+        "T-shaped head, radial spherical hammer head, near-spherical faceted globe head, conventional plain rectangular "
+        "single-bar hammer head, missing horizontal arm, missing vertical arm"
+    ),
+}
+
+def negative_for_weapon(topology: str) -> str:
+    topology = topology.upper()
+    if topology not in NEGATIVE_BY_TOPOLOGY:
+        raise ValueError("weapon_topology must be RADIAL, T, or CROSS")
+    return NEGATIVE_BASE + ", " + NEGATIVE_BY_TOPOLOGY[topology]
+
+
 def common_for_weapon(topology: str) -> str:
     topology = topology.upper()
     if topology not in WEAPON_TEXT:
@@ -93,6 +116,78 @@ STATE = {
     "remain alive and uninjured; city and supporting surfaces stay intact. No second explosion source, new crack "
     "origin, changed camera or text."
 )}
+
+T_STATE = {
+    "H0": (
+        "PRE-IMPACT START FRAME. Bubble membrane perfectly intact: zero cracks, holes, fragments or explosion. "
+        "The weapon MUST have one unmistakable capital-T silhouette: exactly one straight horizontal rectangular crossbar "
+        "and exactly one centered rectangular stem joined to the midpoint of its underside; the left and right bar ends "
+        "are symmetric, equal and remain in one straight line. One rigid long handle continues from the central joint "
+        "toward the heroine. The head is a T, not a round object with facets and not a cross. The broad flat TOP PLANE "
+        "of the horizontal crossbar is the designated striking surface; do not reinterpret a side wall as the striking face. "
+        "This top plane aims at P but remains separated from the bubble's six-o'clock bottom point by a clearly visible "
+        "continuous band of empty air. No contact, spark or pre-impact crack. Heroine's feet are grounded, knees flexed, "
+        "hips and torso coiled, both hands gripping the handle at separated positions. The gap must not be hidden."
+    ),
+    "H2": (
+        "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer head in the same shape as H0: one straight "
+        "horizontal rectangular crossbar, one centered stem visibly joined beneath its midpoint, and one rigid handle. "
+        "The broad flat TOP PLANE on the crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
+        "The center of that upper plane is pinned to P; its normal points upward into the bubble. This topology uses the "
+        "crossbar's upper plane as its active striking surface; do not rotate the head, substitute an end-side face, or "
+        "change the T into a sphere. The left and right crossbar ends remain symmetric and visibly horizontal; the centered "
+        "stem remains attached and readable. The contact patch is unmistakable and unobstructed; the handle and side walls "
+        "do not touch first. The membrane was intact immediately before contact. Only first tiny fractures now begin at P "
+        "and radiate outward from that one contact center; no cracks elsewhere and the sphere is not yet fully exploded. "
+        "Show hip/torso rotation, both hands on the handle, and lower-body response. No light effect may hide the face or P."
+    ),
+    "H3": (
+        "POST-IMPACT END FRAME, SAME CAMERA AND SCENE. No continuous unbroken membrane remains. Large iridescent film "
+        "fragments and fine light-shards expand outward from the original six-o'clock point P along the original sphere "
+        "envelope. Preserve sphere-center projection, P screen position, horizon, city landmarks, heroine identity, costume, "
+        "handle length, camera and lighting. Preserve the EXACT same T topology: a straight horizontal rectangular crossbar "
+        "with two symmetric ends and one centered stem attached beneath its midpoint; one handle remains connected at that "
+        "central joint. The hammer head must not become spherical, radial-faceted, cross-shaped, L-shaped or multi-headed "
+        "during follow-through. The same T head has passed only slightly beyond P and visibly decelerated; handle, arms and "
+        "torso continue in believable follow-through along the same swing path, feet/hips absorbing the reaction. Fragments "
+        "flow away from residents, not through them. All residents remain alive and uninjured; city and supporting surfaces "
+        "stay intact. No second explosion source, new crack origin, changed camera or text."
+    ),
+}
+
+CROSS_STATE = {
+    "H0": (
+        "PRE-IMPACT START FRAME. Bubble membrane perfectly intact: zero cracks, holes, fragments or explosion. "
+        "The weapon head is one rigid plus-sign cross made from one vertical rectangular arm and one horizontal rectangular "
+        "arm crossing at their centers; all four arms are connected and clearly visible. One long handle is attached to "
+        "the center. The upper terminal face of the vertical arm aims at P but remains separated from the bubble by a "
+        "clearly visible band of empty air. No contact, spark or pre-impact crack. Heroine's feet are grounded, knees flexed, "
+        "hips and torso coiled, both hands gripping the handle at separated positions. The gap must not be hidden."
+    ),
+    "H2": (
+        "EXACT FIRST-CONTACT ANCHOR. The same single rigid plus-sign cross head FIRST touches the exact six-o'clock bottom "
+        "point P using only the flat upper terminal face at the top of its vertical arm. The arm's face center is pinned to P "
+        "and its normal points upward into the bubble. The horizontal crossbar remains centered and visibly connected; the "
+        "head must not become a sphere or an ordinary single rectangular hammer. No other arm, side wall or shaft touches first. "
+        "The membrane was intact immediately before contact. Only first tiny fractures now begin at P and radiate outward from "
+        "that one contact center; no cracks elsewhere and the sphere is not yet fully exploded. Show hip/torso rotation and "
+        "both hands on the handle. No effect may hide the contact face or P."
+    ),
+    "H3": (
+        "POST-IMPACT END FRAME, SAME CAMERA AND SCENE. No continuous unbroken membrane remains. Fragments expand outward "
+        "from the original six-o'clock point P. Preserve camera, scene, heroine, handle, and the same connected plus-sign head: "
+        "one vertical rectangular arm and one horizontal rectangular arm crossing at their centers. The hammer head must not "
+        "become spherical, a T, or a conventional single rectangular block. Same swing path and believable deceleration. "
+        "All residents remain alive and uninjured; city and supporting surfaces stay intact. No second explosion source, "
+        "new crack origin, changed camera or text."
+    ),
+}
+
+STATE_BY_TOPOLOGY = {
+    "RADIAL": STATE,
+    "T": T_STATE,
+    "CROSS": CROSS_STATE,
+}
 
 def axis_text(record: Dict[str, Any], key: str, fallback: str) -> str:
     axes = record.get("axes", {})
@@ -292,8 +387,8 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
         f"Scene: {scene}. Scale: {scale}. Shell: {shell}. Palette: {palette}. "
     )
     prompts = {fid: common + "\n\nSHOT LOCK ID (metadata only; do not render as text): " + shot_id + ".\n"
-               + narrative + STATE[fid] + "\nUse visible silhouette, position, overlap, gap/contact and fragment direction; "
-               "no labels, arrows, formulas or diagrams.\nNEGATIVE PROMPT: " + NEGATIVE for fid in FRAME_IDS}
+               + narrative + STATE_BY_TOPOLOGY[weapon_topology][fid] + "\nUse visible silhouette, position, overlap, gap/contact and fragment direction; "
+               "no labels, arrows, formulas or diagrams.\nNEGATIVE PROMPT: " + negative_for_weapon(weapon_topology) for fid in FRAME_IDS}
     errors=[]
     checks = [
         ("H0","clearly visible continuous band of empty air"),
@@ -304,13 +399,30 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
     ]
     for fid,token in checks:
         if token not in prompts[fid]: errors.append(f"{fid}: missing {token}")
+    if weapon_topology == "T":
+        for fid in FRAME_IDS:
+            positive = prompts[fid].split("NEGATIVE PROMPT:", 1)[0]
+            if "spherical multi-face hammer head" in positive or "polygonal sledgehammer" in positive:
+                errors.append(f"{fid}: T topology conflicts with radial-head wording")
+            if "horizontal rectangular crossbar" not in positive or "centered" not in positive:
+                errors.append(f"{fid}: T silhouette lock is incomplete")
+    shape_check = {
+        "RADIAL": "一柄一頭；近球形槌頭由多向寬扁平槌面構成，不是刺球或普通長方槌",
+        "T": "一柄一頭；單一水平直橫杠 + 橫杠中點下方唯一中央直柄／短頸，兩端對稱，禁止球形／十字／L形漂移",
+        "CROSS": "一柄一頭；單一連體加號頭，水平臂與垂直臂穿過同一中心，不是 T 或球形槌頭",
+    }[weapon_topology]
+    face_check = {
+        "RADIAL": "H0 保持間隙；H2 只有一塊向上的扁平多面槌面首次接觸 P",
+        "T": "H0 保持間隙；H2 只有 T 橫杠的寬扁平上平面首次接觸 P，橫杠及中央柄保持 T 輪廓",
+        "CROSS": "H0 保持間隙；H2 只有加號頭垂直臂最上端的平面首次接觸 P",
+    }[weapon_topology]
     visual_checks=[
         ("V01","每張都是單張成片，不是拼貼／分格／資訊圖"),
         ("V02","H0/H2/H3 鏡位、地平線、地標、球心及 P 投影位置一致"),
         ("V03","女主臉、服裝一致，且只有一位女主"),
-        ("V04","一柄一頭；球頭由多向寬扁平槌面構成，不是刺球或普通長方槌"),
-        ("V05","H0 球膜完整無裂，指定扁平面與 P 之間有空隙"),
-        ("V06","H2 只有一塊扁平槌面首次接觸六點鐘 P；柄與側壁均未先碰球"),
+        ("V04",shape_check),
+        ("V05","H0 球膜完整無裂，指定接觸面與 P 之間有空隙"),
+        ("V06",face_check),
         ("V07","首裂只從 P 起始向外傳播"),
         ("V08","H3 球膜已解體，碎片對應原球面並從 P 向外分佈"),
         ("V09","雙手、寬站、腿、髖、軀幹、肩臂形成可讀動力鏈與跟進"),
@@ -319,7 +431,18 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
     return {
         "pipeline_version":VERSION,"story_id":story_id,"shot_lock_id":shot_id,
         "canonical_weapon":{"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology],
-        "weapon_topology":weapon_topology,"frame_order":list(FRAME_IDS),
+        "weapon_topology":weapon_topology,
+        "weapon_shape_contract":{
+            "RADIAL":"one handle + one near-spherical multi-face head",
+            "T":"one straight horizontal crossbar + one centered stem beneath it; symmetric ends; no spherical or cross-head substitution",
+            "CROSS":"one connected plus-sign head with one horizontal and one vertical rectangular arm",
+        }[weapon_topology],
+        "active_striking_surface":{
+            "RADIAL":"one upward-facing flat polygon on the radial head",
+            "T":"the broad upper plane of the horizontal crossbar",
+            "CROSS":"the upper terminal face of the vertical arm",
+        }[weapon_topology],
+        "frame_order":list(FRAME_IDS),
         "projection_lock":projection_lock(),
         "workflow":{"endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
