@@ -229,7 +229,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     selected_prompt={"RADIAL":files["weapon_edit_prompt"],"T":"edit_attacker_to_T.txt","CROSS":"edit_attacker_keep_cross.txt"}[final_weapon]
     shape_contract = {
         "RADIAL":"one long handle + one near-spherical head tiled with outward flat faces",
-        "T":"one straight horizontal crossbar + one long handle joined exactly at the crossbar underside midpoint; the handle itself is the T stem; no separate short post",
+        "T":"one straight horizontal crossbar + one long handle joined exactly at the crossbar underside midpoint; the handle itself forms the single stem of the T; no separate short post",
         "CROSS":"one long handle + one connected plus-sign head with vertical and horizontal arms",
     }[final_weapon]
     plan = {
