@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import json, tempfile, unittest
+from pathlib import Path
+from frame_pipeline import FRAME_IDS, build_packets, compile_frame_set, write_packet
+
+def sample():
+    return {"story_id":"TEST-001","root_sin":"Identity Ownership",
+      "root_mechanism":"The shell suppresses self-chosen names.","human_cost":"Residents lose autonomy.",
+      "axes":{"environment":{"id":"ENV01","description":"a drowned archive"},
+      "scale":{"id":"SCALE03","description":"a giant bubble in a chamber"},
+      "shell":{"id":"SHELL01","description":"an iridescent membrane"},
+      "palette":{"id":"PAL01","description":"cold silver, cyan and amber"},
+      "fracture":{"id":"FRAC01","description":"radial cracks from one impact point"}}}
+
+class FramePipelineTests(unittest.TestCase):
+    def test_three_separate_single_frame_prompts(self):
+        p=compile_frame_set(sample())
+        self.assertEqual(p["frame_order"],["H0","H2","H3"])
+        for prompt in p["prompts"].values():
+            self.assertIn("ONE standalone cinematic frame",prompt)
+            self.assertIn("not a collage",prompt.lower())
+            self.assertIn("No writing",prompt)
+            self.assertIn("WEAPON_C_RADIAL_SPHERE",prompt)
+    def test_h0_has_gap_and_no_cracks(self):
+        p=compile_frame_set(sample())["prompts"]["H0"]
+        self.assertIn("zero cracks",p)
+        self.assertIn("clearly visible continuous band of empty air",p)
+        self.assertNotIn("FIRST touches",p)
+    def test_h2_flat_face_contacts_exact_bottom_point(self):
+        p=compile_frame_set(sample())["prompts"]["H2"]
+        self.assertIn("FIRST touches the exact six-o'clock bottom point P",p)
+        self.assertIn("only the single upper-facing flat polygon",p)
+        self.assertIn("radiate outward from that one contact center",p)
+        self.assertIn("shaft does not touch shell",p)
+    def test_h3_preserves_residents_and_scene(self):
+        p=compile_frame_set(sample())["prompts"]["H3"]
+        self.assertIn("No continuous unbroken membrane remains",p)
+        self.assertIn("All residents remain alive and uninjured",p)
+        self.assertIn("same swing path",p)
+    def test_same_shot_lock_is_deterministic(self):
+        a,b=compile_frame_set(sample()),compile_frame_set(sample())
+        self.assertEqual(a["shot_lock_id"],b["shot_lock_id"])
+        self.assertIn("same horizon",a["prompts"]["H0"])
+        for fid in FRAME_IDS: self.assertIn("same visual template",a["prompts"][fid])
+    def test_prompt_pass_never_claims_pixel_pass(self):
+        p=compile_frame_set(sample())
+        self.assertEqual(p["prompt_contract_status"],"PROMPT_CONTRACT_PASS")
+        self.assertEqual(p["image_realization"],"NOT_RUN")
+        self.assertEqual(p["pixel_audit_status"],"NOT_RUN")
+        self.assertTrue(all(x["result"]=="UNASSESSED" for x in p["pixel_audit_checks"]))
+    def test_writes_three_prompts_manifest_and_audit(self):
+        with tempfile.TemporaryDirectory() as td:
+            summary=write_packet(compile_frame_set(sample()),Path(td))
+            d=Path(summary["directory"])
+            self.assertTrue((d/"H0_pre_impact.txt").exists())
+            self.assertTrue((d/"H2_first_contact_anchor.txt").exists())
+            self.assertTrue((d/"H3_post_impact.txt").exists())
+            self.assertTrue((d/"manifest.json").exists())
+            self.assertTrue((d/"pixel_audit.md").exists())
+    def test_batch_reads_jsonl(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); source=root/"stories.jsonl"
+            source.write_text(json.dumps(sample())+"\n",encoding="utf-8")
+            out= root/"out"; result=build_packets(source,out,limit=1)
+            self.assertEqual(result["written_story_packets"],1)
+            self.assertTrue((out/"batch_manifest.json").exists())
+
+if __name__=="__main__": unittest.main()
