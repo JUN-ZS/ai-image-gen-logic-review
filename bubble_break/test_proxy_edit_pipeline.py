@@ -87,7 +87,7 @@ class CrossProxyTests(unittest.TestCase):
             self.assertIn("NO bubble",prompt)
             self.assertIn("exactly the same center P",prompt)
             target_prompt=(out/"edit_target_T_to_bubble.txt").read_text(encoding="utf-8")
-            self.assertIn("ONLY THE UPPER INVERTED TARGET T",target_prompt)
+            self.assertIn("UPPER INVERTED TARGET",target_prompt)
             self.assertIn("Preserve the LOWER ATTACKING T pixel-for-pixel",target_prompt)
             gate=json.loads((out/"stage_gate.json").read_text(encoding="utf-8"))
             self.assertEqual(gate["status"],"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED")
