@@ -81,7 +81,7 @@ def build_t_silhouette_reference_svg():
         '<rect x="307" y="158" width="386" height="16" fill="#91b9d2"/>',
         '</svg>',
     ]
-    return "\\n".join(parts)
+    return "\n".join(parts)
 
 
 def attacker_for_weapon(topology, cx, face_y, center_y, handle_end):
