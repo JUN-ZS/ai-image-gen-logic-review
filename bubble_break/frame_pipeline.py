@@ -45,7 +45,7 @@ WEAPON_TEXT = {
     ),
     "T": (
         "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE rigid hammer made from one straight horizontal rectangular crossbar and ONE long handle joined "
-        "directly at the exact midpoint of the crossbar's underside. The handle itself is the only stem of the capital-T silhouette; "
+        "directly at the exact midpoint of the crossbar's underside. The handle itself forms the single stem of the capital-T silhouette; "
         "there is no separate short post between head and handle. Crossbar width is about 3.8 times its thickness, with equal left/right ends; "
         "the handle joint is centered. The T silhouette must remain unmistakable. This is not a plus-sign/cross head, radial sphere, mace or spiked ball. "
         "At impact, only the broad upper plane of the horizontal crossbar contacts the exact bottom point P; its center is pinned to P. "
@@ -151,7 +151,7 @@ T_STATE = {
         "envelope. Preserve sphere-center projection, P screen position, horizon, city landmarks, heroine identity, costume, "
         "handle length, camera and lighting. Preserve the EXACT same T topology: a straight horizontal rectangular crossbar "
         "with two symmetric ends and the same single long handle attached directly at the underside midpoint; the handle is the T's "
-        "only stem. Do not introduce a separate stub or second shaft. The hammer head must not become spherical, radial-faceted, "
+        "only stem; the handle itself forms the single stem of the T. Do not introduce a separate stub or second shaft. The hammer head must not become spherical, radial-faceted, "
         "cross-shaped, L-shaped or multi-headed "
         "during follow-through. The same T head has passed only slightly beyond P and visibly decelerated; handle, arms and "
         "torso continue in believable follow-through along the same swing path, feet/hips absorbing the reaction. Fragments "
@@ -408,7 +408,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
             positive = prompts[fid].split("NEGATIVE PROMPT:", 1)[0]
             if "spherical multi-face hammer head" in positive or "polygonal sledgehammer" in positive:
                 errors.append(f"{fid}: T topology conflicts with radial-head wording")
-            if "horizontal rectangular crossbar" not in positive or "centered" not in positive:
+            if "horizontal rectangular crossbar" not in positive or "midpoint" not in positive:
                 errors.append(f"{fid}: T silhouette lock is incomplete")
     shape_check = {
         "RADIAL": "一柄一頭；近球形槌頭由多向寬扁平槌面構成，不是刺球或普通長方槌",
