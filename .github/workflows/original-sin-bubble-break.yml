@@ -3,7 +3,7 @@ name: Original Sin Bubble-Break tests
 on:
   push:
     branches:
-      - feat/original-sin-bubble-break-engine
+      - __temporarily_paused_for_final_contract_reconciliation__
   workflow_dispatch:
 
 permissions:
