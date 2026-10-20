@@ -451,11 +451,13 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
         "workflow":{
           "endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
-          "required_stage_order": (["A_T_TO_T_ANCHOR","B_REPLACE_UPPER_TARGET_T_WITH_BUBBLE","C_REAL_SCENE_H0_H2_H3"] if weapon_topology=="T" else ["H0","H2","H3"]),
-          "realization_stage_gate": ("BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED" if weapon_topology=="T" else "NO_T_TO_T_GATE"),
-          "required_stage_a_artifact": ("A_T_to_T_anchor.png" if weapon_topology=="T" else None),
+          "required_stage_order": (["A_T_WEAPON_MASTER","B_STORY_SPECIFIC_SCENE_FRAMES_H0_H2_H3"] if weapon_topology=="T" else ["H0","H2","H3"]),
+          "realization_stage_gate": ("BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED" if weapon_topology=="T" else "NO_T_TO_T_GATE"),
+          "required_stage_a_artifact": ("A_T_weapon_master.png" if weapon_topology=="T" else None),
           "manual_pixel_review_required_before_stage_b": (True if weapon_topology=="T" else False),
-          "do_not_claim_t_to_t_pass_from_t_silhouette_or_bubble_frames": (True if weapon_topology=="T" else False),
+          "do_not_claim_scene_pass_from_master_or_svg": (True if weapon_topology=="T" else False),
+          "weapon_reference_scope": ("topology only; never copy the neutral master composition" if weapon_topology=="T" else None),
+          "cross_story_variation_policy": ("retain story-specific scene, scale, shell, palette and symbolism while preserving H0/H2/H3 continuity within each story" if weapon_topology=="T" else None),
           "continuity_warning":"Shared prompts do not guarantee identical pixels; independently generated endpoints can drift. Review actual images before interpolation."
         },
         "prompts":prompts,"prompt_contract_status":"PROMPT_CONTRACT_PASS" if not errors else "BLOCK",
@@ -481,20 +483,21 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
     manifest["layout_file"]="layout.json"
     if packet.get("weapon_topology") == "T":
         gate={
-            "status":"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
-            "required_first_stage":"A_T_TO_T_ANCHOR",
-            "required_artifact":"A_T_to_T_anchor.png",
+            "status":"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
+            "required_first_stage":"A_T_WEAPON_MASTER",
+            "required_artifact":"A_T_weapon_master.png",
             "manual_review_required":True,
-            "forbidden_shortcuts":["generate H0/H2/H3 directly from a T silhouette reference","replace a bubble before an actual T-to-T image exists","mark a hit point correct from prompt wording alone"],
-            "approval_checks":["two T hammers present","upper target T inverted","lower attacking T upright","opposing faces meet at the same P","no bubble or heroine in Stage A"],
-            "note":"This manifest gate is workflow evidence only; it does not see external generated image pixels."
+            "forbidden_shortcuts":["make H0/H2/H3 from the neutral master composition instead of the story prompts","invent a second or inverted target T","mark a scene or contact point correct from prompt wording alone"],
+            "approval_checks":["exactly one T hammer","one straight horizontal crossbar","one handle attached at its underside midpoint","entire weapon visible with unmistakable capital-T topology","no bubble, heroine, city, debris or text in the master"],
+            "reference_scope":"weapon topology only; scene composition must come from each story's own prompt packet",
+            "note":"This manifest gate is workflow evidence only; it does not inspect external generated image pixels."
         }
         manifest["realization_stage_gate"]=gate
         (story_dir/"stage_gate.json").write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (story_dir/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     lines=[f"# Pixel audit — {packet['story_id']}","",f"Shot lock: {packet['shot_lock_id']}",
            f"Prompt contract: {packet['prompt_contract_status']}","Image realization: NOT_RUN","Pixel audit: NOT_RUN","",
-           ("**BLOCKED:** T-topology real-image work must start with an actual T-to-T anchor and manual approval before bubble/H0/H2/H3 generation. A T silhouette sheet or a bubble-plus-T frame is not Stage A." if packet.get("weapon_topology")=="T" else ""),
+           ("**BLOCKED:** T-topology real-image work must start with an actual isolated single-T weapon master and manual approval. The master locks weapon shape only; it is not a two-hammer composition or a final scene. Use each story-specific H0/H2/H3 prompt to restore its distinct setting and action." if packet.get("weapon_topology")=="T" else ""),
            "Only mark PASS/FAIL after reviewing actual images side by side. Prompt text and vector SVG are not pixel evidence.","",
            "| ID | Visual criterion | Result |","|---|---|---|"]
     lines.extend(f"| {x['id']} | {x['criterion']} | UNASSESSED |" for x in packet["pixel_audit_checks"])
