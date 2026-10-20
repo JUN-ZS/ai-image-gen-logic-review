@@ -72,8 +72,16 @@ class CrossProxyTests(unittest.TestCase):
             preview=(out/"04_final_weapon_preview.svg").read_text(encoding="utf-8")
             self.assertEqual(plan["final_weapon"],"T")
             self.assertEqual(plan["selected_edit_prompt"],"edit_attacker_to_T.txt")
-            self.assertIn('x="978" y="610" width="224" height="58"',preview)
+            self.assertIn('x="978" y="618" width="224" height="50"',preview)
             self.assertIn("T-shaped hammer", (out/"edit_attacker_to_T.txt").read_text(encoding="utf-8"))
+            prompt=(out/"edit_attacker_to_T.txt").read_text(encoding="utf-8")
+            self.assertIn("the handle itself forms the single stem of the T",prompt)
+            self.assertIn("BROAD UPPER PLANE",prompt)
+            self.assertTrue((out/"05_T_silhouette_reference.svg").exists())
+            silhouette=(out/"05_T_silhouette_reference.svg").read_text(encoding="utf-8")
+            self.assertIn('x="300" y="150" width="400" height="105"',silhouette)
+            self.assertIn('x="465" y="255" width="70" height="520"',silhouette)
+            self.assertIn("the handle itself is the only stem",plan["shape_contract"])
 
     def test_invalid_final_weapon_blocks(self):
         with tempfile.TemporaryDirectory() as td:
