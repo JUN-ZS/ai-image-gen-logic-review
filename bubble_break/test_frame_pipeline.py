@@ -21,7 +21,7 @@ class FramePipelineTests(unittest.TestCase):
             self.assertIn("ONE standalone cinematic frame",prompt)
             self.assertIn("not a collage",prompt.lower())
             self.assertIn("No writing",prompt)
-            self.assertIn("WEAPON_C_RADIAL_SPHERE",prompt)
+            self.assertIn("broad, flat polygonal sledgehammer striking faces",prompt)
     def test_h0_has_gap_and_no_cracks(self):
         p=compile_frame_set(sample())["prompts"]["H0"]
         self.assertIn("zero cracks",p)

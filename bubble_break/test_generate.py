@@ -79,7 +79,7 @@ class BubbleBreakEngineTests(unittest.TestCase):
         record = build_record(next(iter_diverse_indices(1, 777)), "heroine")
         for beat in ("H0", "H1", "H2", "H3"):
             prompt = record["prompts"]["heroine"][beat]
-            self.assertIn("多向扁平槌面圓頭", prompt)
+            self.assertIn("WEAPON_C_RADIAL_SPHERE", prompt)
             self.assertIn("一條長而剛性的柄", prompt)
             self.assertNotIn("四頭十字戰錘", prompt)
 
