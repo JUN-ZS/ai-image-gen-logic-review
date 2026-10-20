@@ -87,9 +87,20 @@ class FramePipelineTests(unittest.TestCase):
     def test_t_topology_replaces_radial_lock_in_prompt_and_geometry(self):
         p=compile_frame_set(sample(),weapon_topology="T")
         self.assertEqual(p["canonical_weapon"],"WEAPON_T")
+        self.assertEqual(p["prompt_contract_status"],"PROMPT_CONTRACT_PASS")
+        self.assertIn("broad upper plane of the horizontal crossbar",p["active_striking_surface"])
+        self.assertIn("handle itself is the only stem",p["weapon_shape_contract"])
         for prompt in p["prompts"].values():
             self.assertIn("WEAPON_TOPOLOGY_ID=WEAPON_T",prompt)
-            self.assertIn("T-shaped hammer head",prompt)
+            self.assertIn("T-shaped hammer",prompt)
+            positive=prompt.split("NEGATIVE PROMPT:",1)[0]
+            negative=prompt.split("NEGATIVE PROMPT:",1)[1]
+            self.assertIn("horizontal rectangular crossbar",positive)
+            self.assertIn("handle itself forms the single stem",positive)
+            self.assertNotIn("spherical multi-face hammer head",positive)
+            self.assertNotIn("polygonal sledgehammer striking face",positive)
+            self.assertIn("radial spherical hammer head",negative)
+            self.assertNotIn("conventional rectangular hammer",negative)
         with tempfile.TemporaryDirectory() as temp:
             summary=write_packet(p,Path(temp))
             d=Path(summary["directory"])
@@ -97,5 +108,8 @@ class FramePipelineTests(unittest.TestCase):
             self.assertEqual(manifest["weapon_topology"],"T")
             svg=(d/"H2_first_contact_anchor_geometry.svg").read_text(encoding="utf-8")
             self.assertIn('cx="1090" cy="610"',svg)
+            self.assertIn('data-contact-p="1090,610"',svg)
+            self.assertIn('x1="690" y1="920" x2="1090" y2="668"',svg)
+
 
 if __name__=="__main__": unittest.main()
