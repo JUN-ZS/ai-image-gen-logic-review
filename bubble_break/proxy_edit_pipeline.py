@@ -91,31 +91,26 @@ def attacker_for_weapon(topology, cx, face_y, center_y, handle_end):
     if topology=="RADIAL": return attacker_radial(cx,face_y,center_y,handle_end)
     raise ValueError("final_weapon must be CROSS, T, or RADIAL")
 
-def build_t_to_t_geometry_svg(projection):
-    """Neutral, label-free opposing-T anchor: inverted target T above, attacking T below."""
+def build_t_weapon_master_geometry_svg(projection):
+    """Neutral, label-free master geometry: exactly one upright T-headed hammer."""
     width=int(projection["canvas"]["width"]); height=int(projection["canvas"]["height"])
-    point=projection["P_six_oclock"]; cx=int(point["x"]); py=int(point["y"])
-    bar_width=224; bar_height=58; stem_width=68
-    x0=cx-bar_width//2; stem_x=cx-stem_width//2
-    target_bar_y=py-bar_height; target_stem_top=max(70,target_bar_y-250)
-    handle_end=(690,920)
-    parts=[
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-contact-p="{cx},{py}" data-stage="A_T_TO_T">',
+    cx=width//2
+    bar_width=int(width*0.29); bar_height=int(height*0.085); stem_width=int(width*0.043)
+    bar_x=cx-bar_width//2; bar_y=int(height*0.20)
+    stem_y=bar_y+bar_height; stem_bottom=int(height*0.82)
+    return "\n".join([
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-stage="A_T_WEAPON_MASTER">',
         '<rect width="100%" height="100%" fill="#e9edf0"/>',
         '<rect x="40" y="40" width="1840" height="1000" rx="12" fill="#f7f8f9" stroke="#aeb8c0" stroke-width="3"/>',
-        # Upper target T is inverted: its lower flat face opposes the attacker's upper flat face.
-        f'<rect x="{stem_x}" y="{target_stem_top}" width="{stem_width}" height="{target_bar_y-target_stem_top}" fill="#647f95" stroke="#182b38" stroke-width="5"/>',
-        f'<rect x="{x0}" y="{target_bar_y}" width="{bar_width}" height="{bar_height}" fill="#647f95" stroke="#182b38" stroke-width="5"/>',
-        # Lower attacking T: one straight handle joins the center underside of its crossbar.
-        line(handle_end[0],handle_end[1],cx,py+bar_height,"#18232d",34),
-        line(handle_end[0],handle_end[1],cx,py+bar_height,"#b3c3ce",21),
-        f'<rect x="{x0}" y="{py}" width="{bar_width}" height="{bar_height}" fill="#334f65" stroke="#182b38" stroke-width="5"/>',
-        f'<path d="M{x0+5} {py+5} H{cx+bar_width//2-5}" stroke="#b3d7e9" stroke-width="5"/>',
+        # One straight horizontal bar and one centered handle attached directly underneath.
+        f'<rect x="{bar_x}" y="{bar_y}" width="{bar_width}" height="{bar_height}" fill="#647f95" stroke="#182b38" stroke-width="7"/>',
+        f'<rect x="{cx-stem_width//2}" y="{stem_y}" width="{stem_width}" height="{stem_bottom-stem_y}" fill="#334f65" stroke="#182b38" stroke-width="7"/>',
+        f'<path d="M{bar_x+8} {bar_y+8} H{bar_x+bar_width-8}" stroke="#b3d7e9" stroke-width="6"/>',
         '</svg>',
-    ]
-    return "\n".join(parts)
+    ])
 
 
+def build_svg(kind, projection, final_weapon="RADIAL"):
 def build_svg(kind, projection, final_weapon="RADIAL"):
     width = int(projection["canvas"]["width"])
     height = int(projection["canvas"]["height"])
@@ -129,8 +124,8 @@ def build_svg(kind, projection, final_weapon="RADIAL"):
     hy = int(h2["head_center"]["y"])
     face_y = int(h2["top_face_y"])
     handle = (690, 920)
-    if kind == "t_to_t":
-        return build_t_to_t_geometry_svg(projection)
+    if kind == "t_weapon_master":
+        return build_t_weapon_master_geometry_svg(projection)
     if kind == "mask":
         # White = the complete target bubble footprint plus rim; black = protect everything else.
         parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
@@ -210,15 +205,15 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     }
     if final_weapon == "T":
         files.update({
-            "proxy": "00_T_to_T_geometry_proxy.svg",
-            "target_replaced": "01_target_T_replaced_by_sphere.svg",
+            "proxy": "00_T_weapon_master_geometry.svg",
+            "target_replaced": "01_T_weapon_bubble_contact_preview.svg",
             "final_weapon_preview": "04_T_final_weapon_preview.svg",
             "mask": "02_target_bubble_edit_mask.svg",
             "attacker_mask": "03_attacker_T_protect_mask.svg",
-            "target_edit_prompt": "edit_target_T_to_bubble.txt",
-            "weapon_edit_prompt": "edit_attacker_keep_T.txt",
+            "target_edit_prompt": "generate_scene_with_T_master.txt",
+            "weapon_edit_prompt": "T_weapon_shape_lock.txt",
         })
-    proxy_kind = "t_to_t" if final_weapon == "T" else "cross"
+    proxy_kind = "t_weapon_master" if final_weapon == "T" else "cross"
     for name, kind in [(files["proxy"], proxy_kind), (files["target_replaced"], "sphere"),
                        (files["final_weapon_preview"], "final_weapon"),
                        (files["mask"], "mask"), (files["attacker_mask"], "attacker_mask")]:
@@ -226,52 +221,53 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     if final_weapon == "T":
         files["t_shape_reference"] = "05_T_silhouette_reference.svg"
         (outdir/files["t_shape_reference"]).write_text(build_t_silhouette_reference_svg()+"\n", encoding="utf-8")
-        files["t_to_t_generation_prompt"] = "00_generate_T_to_T_anchor.txt"
-        (outdir/files["t_to_t_generation_prompt"]).write_text(
-            "STAGE A — REQUIRED BEFORE ANY BUBBLE OR HEROINE IMAGE. Generate ONE standalone photorealistic 16:9 industrial-design image "
-            "of exactly TWO enormous T-headed hammers facing each other on the same vertical contact plane. The lower attacker T is upright: "
-            "one straight horizontal rectangular crossbar and one long rigid handle joined directly at its underside midpoint, the handle itself "
-            "forms its only stem and extends down-left. The upper target T is inverted: one straight horizontal rectangular crossbar, with one centered "
-            "rigid stem extending upward from the crossbar. Their broad flat faces oppose each other vertically and meet at exactly the same center P; "
-            "the lower T's upper crossbar face touches only the upper T's lower crossbar face. Both T silhouettes must be fully visible and unmistakable. "
-            "Match the supplied 00_T_to_T_geometry_proxy.svg and 05_T_silhouette_reference.svg for geometry. Neutral simple background only: NO bubble, "
-            "NO person, NO city, NO debris, NO cracks, NO text, NO collage, NO extra weapon. This image is the mandatory geometry gate; do not proceed "
-            "to a bubble replacement unless the actual generated image is manually reviewed and approved.\n", encoding="utf-8")
+        files["t_weapon_master_generation_prompt"] = "00_generate_T_weapon_master.txt"
+        (outdir/files["t_weapon_master_generation_prompt"]).write_text(
+            "STAGE A — WEAPON-SHAPE MASTER ONLY. Generate ONE standalone photorealistic 16:9 product-reference image of exactly ONE T-headed hammer. "
+            "Show the complete hammer from the left end of its head to the end of its handle. The head is one straight rigid horizontal rectangular crossbar; "
+            "one single long handle attaches directly to the exact midpoint of the crossbar's underside and forms the only stem of the capital T. "
+            "Use a level, near-front product view so the crossbar remains straight and horizontal, its left/right ends are equal, and the centered joint is obvious. "
+            "A slight realistic metal bevel is fine, but do not bend, tilt, twist, round, split or duplicate the bar. Neutral studio background only. "
+            "NO second hammer, NO inverted/upper T, NO bubble, NO heroine, NO city, NO debris, NO cracks, NO text, NO collage, NO extra shaft or short post. "
+            "This is a weapon-geometry reference only, not the composition for the later cinematic scene. Save the reviewed real image as A_T_weapon_master.png.\n",
+            encoding="utf-8")
         files["stage_gate"] = "stage_gate.json"
         stage_gate = {
-            "required_order": ["A_T_TO_T_ANCHOR", "B_REPLACE_TARGET_T_WITH_BUBBLE", "C_BUILD_REAL_SCENE_FRAMES"],
-            "current_stage": "A_T_TO_T_ANCHOR_REQUIRED",
-            "status": "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
-            "required_stage_a_artifact": "A_T_to_T_anchor.png",
+            "required_order": ["A_T_WEAPON_MASTER", "B_STORY_SPECIFIC_SCENE_FRAMES"],
+            "current_stage": "A_T_WEAPON_MASTER_REQUIRED",
+            "status": "BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
+            "required_stage_a_artifact": "A_T_weapon_master.png",
             "manual_visual_approval_required": True,
             "stage_a_checks": [
-                "two and only two T-shaped hammers are present",
-                "lower attacker and upper inverted target are both clearly T-shaped",
-                "their broad faces oppose and meet at the same center P",
-                "there is no bubble, heroine, city, debris or text",
-                "crossbars remain straight/horizontal and each handle is centered",
+                "exactly one T-headed hammer is present",
+                "one straight horizontal crossbar with equal left and right ends",
+                "one handle attaches directly at the exact underside midpoint and is the only stem",
+                "the entire weapon is visible and unmistakably capital-T shaped",
+                "no second or inverted T, bubble, heroine, city, debris or text",
             ],
-            "not_proven_by_this_proxy": ["actual generated pixels", "correct real-image contact location", "scene/hero continuity"],
+            "not_proven_by_this_proxy": ["actual generated pixels", "cinematic scene quality", "real-image contact location", "story continuity"],
             "do_not_mark_pass_from_prompt_or_svg_alone": True,
+            "reference_scope": "weapon topology only; never copy this neutral background or composition into story scenes",
         }
         (outdir/files["stage_gate"]).write_text(json.dumps(stage_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     c, point, radius = projection["sphere_center"], projection["P_six_oclock"], projection["sphere_radius"]
     if final_weapon == "T":
         target_prompt = (
-            "STAGE B — ONLY AFTER STAGE A IS MANUALLY APPROVED. Use the actual approved A_T_to_T_anchor.png as the input image, "
-            "not the vector proxy alone. Edit ONLY the UPPER INVERTED TARGET T (the hammer above the shared contact plane). "
-            f"Replace that upper target T with ONE intact transparent iridescent bubble whose center is C=({c['x']},{c['y']}) "
-            f"and radius R={radius}px, so its exact six-o'clock bottom pole is P=({point['x']},{point['y']}). "
-            "The bubble's bottom pole must stay on the same contact point as the lower attacking T's broad upper crossbar face. "
-            "Preserve the LOWER ATTACKING T pixel-for-pixel: straight horizontal crossbar, equal left/right ends, one long handle attached "
-            "at the exact underside midpoint, no extra post. Preserve the camera, background and perspective. The bubble is whole: no cracks, "
-            "no shards, no explosion. Do not add a heroine or cinematic scene yet. If the upper T cannot be replaced without moving the lower "
-            "T's contact face or shifting P, reject the edit and return to Stage A."
+            "STAGE B — STORY-SPECIFIC CINEMATIC SCENE GENERATION, AFTER THE T MASTER IS REVIEWED. "
+            "Use A_T_weapon_master.png as a WEAPON-SHAPE reference only, never as a layout, camera, pose or background reference. "
+            "Generate H0, H2 and H3 as THREE separate full-bleed images using the corresponding prompt files in this story's frame packet. "
+            "Keep exactly ONE T-headed hammer held by the heroine and aim its designated broad upper crossbar plane at the bubble's six-o'clock point P. "
+            "The hammer handle may run diagonally down-left in the action pose; its joint must remain at the exact crossbar underside midpoint, "
+            "and the straight crossbar must not twist into an X, plus, L, sphere or diagonal bar. The BUBBLE is the target; never draw an upper inverted T "
+            "or a second hammer and never replace one hammer with a bubble. Preserve the story-specific environment, scale, shell, palette, symbolism, "
+            "motion and cinematic style from the provided frame prompts. Different story IDs should retain their distinct scene concepts; within one story, "
+            "H0/H2/H3 share continuity and camera. Do not copy the neutral studio composition of the weapon master."
         )
         weapon_prompt = (
-            "STAGE B LOCK: do not edit the lower attacking T. It is already the approved final T weapon. "
-            "Keep the crossbar straight and horizontal, the single long handle joined at the exact underside midpoint, and preserve P. "
-            "No extra post, no sphere head, no plus/X/L/Y shape. No weapon edit is allowed in this stage."
+            "T-WEAPON SHAPE LOCK: exactly one straight, rigid horizontal rectangular crossbar and one single long handle attached directly to the "
+            "crossbar's exact underside midpoint. The handle itself is the T stem; there is no separate short post. Keep equal left/right bar ends, "
+            "a centered joint and a clear capital-T silhouette in the weapon's own local orientation. Perspective may make the handle project diagonally "
+            "through the scene, but it must not twist the crossbar. No second or inverted T, no sphere head, no plus/X/L head, no extra bar, no extra shaft."
         )
     else:
         target_prompt = (
@@ -293,18 +289,9 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     (outdir/files["target_edit_prompt"]).write_text(target_prompt+"\n",encoding="utf-8")
     (outdir/files["weapon_edit_prompt"]).write_text(weapon_prompt+"\n",encoding="utf-8")
     weapon_prompt_t = (
-        "EDIT ONLY THE ATTACKING PLUS-SIGN after the target bubble edit has passed pixel review. "
-        "Use 05_T_silhouette_reference.svg as the authoritative T-shape guide; it defines topology only, not camera pose. "
-        "Convert only the masked weapon into ONE unmistakable T-shaped hammer with a capital-T silhouette: exactly one straight, horizontal, rigid rectangular crossbar "
-        "with equal left/right ends, and exactly ONE long handle joined to the exact midpoint of the crossbar's underside. "
-        "The long handle itself forms the single stem of the T; do NOT add a second short vertical post between head and handle. "
-        "Keep the crossbar width about 3.8 times its thickness and the handle joint centered. The bar remains a straight line; "
-        "do not round it into a globe, rotate it into a diagonal bar, turn it into a plus/X/L/Y shape, or invent extra head parts. "
-        "For this topology, the active striking surface is the BROAD UPPER PLANE of the crossbar, not a side wall or a pretend spherical face. "
-        f"Pin the center of that upper plane at P=({point['x']},{point['y']}); its upper edge/contact coordinate must not move. "
-        "The single handle must remain rigid and connected at the center; its apparent diagonal is only 3D perspective toward the heroine. "
-        "Preserve the bubble outline, city, contact point, camera, background and every pixel outside the attacker mask. "
-        "No radial/faceted ball head, plus-sign/cross head, X head, spikes, studs, mace, extra bar, extra shaft, disconnected handle or extra weapon."
+        "WEAPON SHAPE LOCK ONLY. One straight horizontal rigid rectangular crossbar, equal left/right ends, and one single long handle attached "
+        "directly to the exact underside midpoint. The handle itself is the T stem; do not add a short post. Preserve this capital-T topology while "
+        "allowing the complete weapon to rotate as a rigid object in perspective. No second/inverted T, sphere, plus/X/L shape, extra bar or extra shaft."
     )
     weapon_prompt_cross = (
         "EDIT ONLY THE ATTACKING PLUS-SIGN. Keep the cross proxy unchanged; do not edit the bubble, contact point, handle, camera or background."
@@ -320,31 +307,31 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     }[final_weapon]
     if final_weapon == "T":
         plan = {
-            "method":"T_TO_T_THEN_TARGET_T_ONLY_SPHERE_EDIT",
-            "status":"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
-            "vector_proxy_status":"GEOMETRY_PROXY_VALID",
-            "stage_gate_status":"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED",
+            "method":"T_MASTER_THEN_STORY_VARIANT_SCENE_GENERATION",
+            "status":"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
+            "vector_proxy_status":"T_WEAPON_MASTER_SHAPE_PROXY_VALID",
+            "stage_gate_status":"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
             "final_weapon":final_weapon,
             "shape_contract":shape_contract,
-            "active_striking_surface":"the broad upper plane of the lower T crossbar, facing the lower plane of the upper inverted T crossbar in Stage A; after Stage B it touches the bubble's bottom pole P",
+            "active_striking_surface":"the broad upper plane of the single T crossbar; the bubble is the target, never a second T",
             "selected_edit_prompt":selected_prompt,
             "projection_lock":projection,
             "terminal_face_gap_px":0,
-            "face_normals":{"attacker":"UP (+Y)","target":"DOWN (-Y)"},
+            "face_normals":{"attacker":"UP (+Y)","target":"BUBBLE_TANGENT_AT_BOTTOM_POLE"},
             "required_order":[
-                "A: generate a photorealistic T-to-T anchor using 00_generate_T_to_T_anchor.txt and the geometry references",
-                "A_GATE: manually inspect and approve the actual A_T_to_T_anchor.png; do not infer approval from the prompt or SVG",
-                "B: only after A_GATE passes, edit only the upper inverted target T into one intact bubble; keep lower T and P fixed",
-                "C: create real-scene H0/H2/H3 as separate branches from the approved geometry, and audit actual pixels",
+                "A: generate ONE isolated T weapon master using 00_generate_T_weapon_master.txt",
+                "A_GATE: manually review and approve A_T_weapon_master.png; do not infer approval from the prompt or SVG",
+                "B: generate story-specific H0/H2/H3 as separate cinematic frames, using the master only to lock weapon topology",
+                "C: keep scene concepts varied across story IDs, preserve continuity within each story, then audit actual image pixels",
             ],
             "required_artifacts":{
-                "stage_a_image":"A_T_to_T_anchor.png",
-                "stage_a_review":"A_T_to_T_review.json",
-                "stage_b_image":"B_target_T_replaced_by_bubble.png",
+                "stage_a_image":"A_T_weapon_master.png",
+                "stage_a_review":"A_T_weapon_master_review.json",
+                "scene_prompts":["H0_pre_impact.txt","H2_first_contact_anchor.txt","H3_post_impact.txt"],
             },
             "stage_gate_file":files["stage_gate"],
-            "pixel_truth":{"vector_proxy":"GEOMETRY_VALID","edited_images":"NOT_RUN",
-                           "warning":"The pipeline cannot certify external generated pixels. Stage A remains BLOCKED until its real image and manual review record exist."},
+            "pixel_truth":{"vector_proxy":"T_WEAPON_MASTER_SHAPE_PROXY_VALID","edited_images":"NOT_RUN",
+                           "warning":"This repository produces prompts and SVG references only. The isolated master must be reviewed; external scene renders and pixel audits remain NOT_RUN."},
             "files":files,
         }
     else:
@@ -372,10 +359,10 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         }
     (outdir/"edit_plan.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     readme_text = (
-        "T-to-T geometry proxy. REQUIRED ORDER: generate and manually approve the real A_T_to_T_anchor.png first; "
-        "only then use edit_target_T_to_bubble.txt to replace the upper inverted target T with a bubble. "
-        "The current packet remains BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED. Do not claim a real-image PASS from these SVGs or prompts. "
-        "Preserve the lower attacking T and verify the true contact pixel location."
+        "Single-T weapon master workflow. Generate and manually approve the isolated A_T_weapon_master.png once; "
+        "then use generate_scene_with_T_master.txt and the story-specific H0/H2/H3 prompts. The master controls weapon topology only, "
+        "not scene composition. The bubble is the target; never add an upside-down second T or replace a hammer with a bubble. "
+        "Do not claim an image PASS from these SVGs or prompts."
         if final_weapon == "T" else
         "Cross-to-cross geometry proxy. First validate the two flat terminal faces. Then edit only the target plus into a bubble. "
         "Only after reviewing that result, edit only the attacking object into the selected final weapon. "
@@ -387,7 +374,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "edited_images":"NOT_RUN","outdir":str(outdir)}
 
 def main(argv=None):
-    parser=argparse.ArgumentParser(description="Generate geometry/edit packets; T mode requires an approved T-to-T anchor before bubble editing.")
+    parser=argparse.ArgumentParser(description="Generate geometry/edit packets; T mode uses one approved T-weapon master for story-specific scene prompts.")
     parser.add_argument("--input-layout",required=True)
     parser.add_argument("--outdir",required=True)
     parser.add_argument("--final-weapon",choices=("CROSS","T","RADIAL"),default="RADIAL")
