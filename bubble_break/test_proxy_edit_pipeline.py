@@ -62,26 +62,43 @@ class CrossProxyTests(unittest.TestCase):
             self.assertIn('fill="#000000"',attacker_mask)
 
 
-    def test_t_final_weapon_is_selectable_and_keeps_P_locked(self):
+    def test_t_final_weapon_is_gated_by_t_to_t_anchor_before_bubble_edit(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td); source=root/"layout.json"
             source.write_text(json.dumps(sample_layout()),encoding="utf-8")
             out=root/"packet"
             write_packet(source,out,final_weapon="T")
             plan=json.loads((out/"edit_plan.json").read_text(encoding="utf-8"))
-            preview=(out/"04_final_weapon_preview.svg").read_text(encoding="utf-8")
+            preview=(out/"04_T_final_weapon_preview.svg").read_text(encoding="utf-8")
             self.assertEqual(plan["final_weapon"],"T")
-            self.assertEqual(plan["selected_edit_prompt"],"edit_attacker_to_T.txt")
+            self.assertEqual(plan["method"],"T_TO_T_THEN_TARGET_T_ONLY_SPHERE_EDIT")
+            self.assertEqual(plan["status"],"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED")
+            self.assertEqual(plan["stage_gate_status"],"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED")
+            self.assertEqual(plan["selected_edit_prompt"],"edit_target_T_to_bubble.txt")
+            self.assertEqual(plan["required_artifacts"]["stage_a_image"],"A_T_to_T_anchor.png")
             self.assertIn('x="978" y="618" width="224" height="50"',preview)
-            self.assertIn("T-shaped hammer", (out/"edit_attacker_to_T.txt").read_text(encoding="utf-8"))
-            prompt=(out/"edit_attacker_to_T.txt").read_text(encoding="utf-8")
-            self.assertIn("handle itself forms the single stem of the T",prompt)
-            self.assertIn("BROAD UPPER PLANE",prompt)
+            self.assertTrue((out/"00_T_to_T_geometry_proxy.svg").exists())
+            self.assertTrue((out/"00_generate_T_to_T_anchor.txt").exists())
+            self.assertTrue((out/"01_target_T_replaced_by_sphere.svg").exists())
+            self.assertTrue((out/"02_target_bubble_edit_mask.svg").exists())
+            self.assertTrue((out/"03_attacker_T_protect_mask.svg").exists())
+            prompt=(out/"00_generate_T_to_T_anchor.txt").read_text(encoding="utf-8")
+            self.assertIn("exactly TWO enormous T-headed hammers",prompt)
+            self.assertIn("NO bubble",prompt)
+            self.assertIn("exactly the same center P",prompt)
+            target_prompt=(out/"edit_target_T_to_bubble.txt").read_text(encoding="utf-8")
+            self.assertIn("ONLY THE UPPER INVERTED TARGET T",target_prompt)
+            self.assertIn("Preserve the LOWER ATTACKING T pixel-for-pixel",target_prompt)
+            gate=json.loads((out/"stage_gate.json").read_text(encoding="utf-8"))
+            self.assertEqual(gate["status"],"BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED")
+            self.assertTrue(gate["manual_visual_approval_required"])
+            self.assertTrue(gate["do_not_mark_pass_from_prompt_or_svg_alone"])
             self.assertTrue((out/"05_T_silhouette_reference.svg").exists())
             silhouette=(out/"05_T_silhouette_reference.svg").read_text(encoding="utf-8")
             self.assertIn('x="300" y="150" width="400" height="105"',silhouette)
             self.assertIn('x="465" y="255" width="70" height="520"',silhouette)
             self.assertIn("handle itself forms the single stem of the T",plan["shape_contract"])
+            self.assertEqual(plan["pixel_truth"]["edited_images"],"NOT_RUN")
 
     def test_invalid_final_weapon_blocks(self):
         with tempfile.TemporaryDirectory() as td:
