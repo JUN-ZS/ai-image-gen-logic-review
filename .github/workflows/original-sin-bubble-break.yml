@@ -84,6 +84,11 @@ jobs:
               assert manifest["canonical_weapon"] == "WEAPON_T"
               assert manifest["weapon_topology"] == "T"
               assert "horizontal crossbar" in manifest["weapon_shape_contract"]
+              assert manifest["workflow"]["realization_stage_gate"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED"
+              assert manifest["workflow"]["required_stage_a_artifact"] == "A_T_to_T_anchor.png"
+              assert (folder / "stage_gate.json").exists()
+              gate = json.loads((folder / "stage_gate.json").read_text(encoding="utf-8"))
+              assert gate["status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED"
               assert manifest["pixel_audit_status"] == "NOT_RUN"
           print(json.dumps({"frame_packets": 3, "frames_per_packet": 3,
                             "weapon_topology": "T", "prompt_contract": "PASS", "pixel_audit": "NOT_RUN"},
