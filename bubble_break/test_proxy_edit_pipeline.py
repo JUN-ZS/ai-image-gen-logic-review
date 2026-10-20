@@ -40,8 +40,8 @@ class CrossProxyTests(unittest.TestCase):
             out=root/"packet"
             result=write_packet(source,out)
             for name in ("00_cross_to_cross_proxy.svg","01_target_cross_replaced_by_sphere.svg",
-                         "02_target_cross_edit_mask.svg","edit_target_plus_to_bubble.txt",
-                         "edit_attacker_plus_to_radial_hammer.txt","edit_plan.json"):
+                         "02_target_cross_edit_mask.svg","03_attacker_edit_mask.svg",
+                         "edit_target_plus_to_bubble.txt","edit_attacker_plus_to_radial_hammer.txt","edit_plan.json"):
                 self.assertTrue((out/name).exists(),name)
             plan=json.loads((out/"edit_plan.json").read_text(encoding="utf-8"))
             self.assertEqual(plan["terminal_face_gap_px"],0)
@@ -52,5 +52,11 @@ class CrossProxyTests(unittest.TestCase):
             self.assertIn('x1="1060" y1="610" x2="1120" y2="610"',proxy)
             self.assertIn("EDIT ONLY THE TARGET PLUS-SIGN",(out/"edit_target_plus_to_bubble.txt").read_text(encoding="utf-8"))
             self.assertIn("EDIT ONLY THE ATTACKING PLUS-SIGN",(out/"edit_attacker_plus_to_radial_hammer.txt").read_text(encoding="utf-8"))
+            target_mask=(out/"02_target_cross_edit_mask.svg").read_text(encoding="utf-8")
+            attacker_mask=(out/"03_attacker_edit_mask.svg").read_text(encoding="utf-8")
+            self.assertIn('fill="#ffffff"',target_mask)
+            self.assertIn('fill="#000000"',target_mask)
+            self.assertIn('fill="#ffffff"',attacker_mask)
+            self.assertIn('fill="#000000"',attacker_mask)
 
 if __name__=="__main__": unittest.main()

@@ -54,7 +54,7 @@ Formats: json, jsonl, csv, and md. One run is capped at 250,000 concepts. Valid 
 
 ## Cross-to-cross anchor edit method
 
-New experimental method: first register two thick plus-sign bodies face-to-face at exactly the same terminal plane. The target cross origin C and lower terminal face define the future bubble center and six-o'clock point P. Then edit only the target cross into a transparent sphere while preserving the attacking cross, contact face, handle and camera. After that edit passes pixel review, edit only the attacking cross into the final radial multi-face hammer. Run the generated proxy pipeline against an emitted layout.json; it produces two SVG references, a target-edit mask and two separate edit prompts. The vector proxy mathematically fixes the terminal-face gap to zero; an external image editor can still shift pixels, so edited images must be reviewed and measured.
+New experimental method: first register two thick plus-sign bodies face-to-face at exactly the same terminal plane. The target cross origin C and lower terminal face define the future bubble center and six-o'clock point P. Then edit only the target cross into a transparent sphere while preserving the attacking cross, contact face, handle and camera. After that edit passes pixel review, edit only the attacking cross into the final radial multi-face hammer. Run the generated proxy pipeline against an emitted layout.json; it produces two SVG references, separate target and attacker masks, and two separate edit prompts. The vector proxy mathematically fixes the terminal-face gap to zero; an external image editor can still shift pixels, so edited images must be reviewed and measured.
 
 ## Front/end-frame workflow (visual compiler)
 

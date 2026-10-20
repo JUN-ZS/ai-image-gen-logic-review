@@ -63,6 +63,14 @@ def build_svg(kind, projection):
                  rect(cx-22, cy-r, 44, 2*r, "#ffffff", "#ffffff", 0),
                  rect(cx-r, cy-22, 2*r, 44, "#ffffff", "#ffffff", 0),
                  f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#ffffff" stroke-width="18"/>']
+    elif kind == "attacker_mask":
+        # White = editable attacker; black = protected target/camera/background.
+        parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+                 f'<rect width="{width}" height="{height}" fill="#000000"/>',
+                 line(handle[0], handle[1], hx, hy, "#ffffff", 42),
+                 rect(hx-30, face_y, 60, hy+95-face_y, "#ffffff", "#ffffff", 3),
+                 rect(hx-100, hy-30, 200, 60, "#ffffff", "#ffffff", 3),
+                 rect(hx-30, face_y-2, 60, 5, "#ffffff", "#ffffff", 2)]
         # Black shapes protect the attacking object, especially its contact face.
         import re
         protected = attacker_plus(hx, face_y, hy, handle)
@@ -115,10 +123,12 @@ def write_packet(layout_path: Path, outdir: Path):
         "proxy": "00_cross_to_cross_proxy.svg",
         "target_replaced": "01_target_cross_replaced_by_sphere.svg",
         "mask": "02_target_cross_edit_mask.svg",
+        "attacker_mask": "03_attacker_edit_mask.svg",
         "target_edit_prompt": "edit_target_plus_to_bubble.txt",
         "weapon_edit_prompt": "edit_attacker_plus_to_radial_hammer.txt",
     }
-    for name, kind in [(files["proxy"], "cross"), (files["target_replaced"], "sphere"), (files["mask"], "mask")]:
+    for name, kind in [(files["proxy"], "cross"), (files["target_replaced"], "sphere"),
+                       (files["mask"], "mask"), (files["attacker_mask"], "attacker_mask")]:
         (outdir/name).write_text(build_svg(kind, projection)+"\n", encoding="utf-8")
     c, point, radius = projection["sphere_center"], projection["P_six_oclock"], projection["sphere_radius"]
     target_prompt = (
