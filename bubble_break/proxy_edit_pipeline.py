@@ -91,6 +91,31 @@ def attacker_for_weapon(topology, cx, face_y, center_y, handle_end):
     if topology=="RADIAL": return attacker_radial(cx,face_y,center_y,handle_end)
     raise ValueError("final_weapon must be CROSS, T, or RADIAL")
 
+def build_t_to_t_geometry_svg(projection):
+    """Neutral, label-free opposing-T anchor: inverted target T above, attacking T below."""
+    width=int(projection["canvas"]["width"]); height=int(projection["canvas"]["height"])
+    point=projection["P_six_oclock"]; cx=int(point["x"]); py=int(point["y"])
+    bar_width=224; bar_height=58; stem_width=68
+    x0=cx-bar_width//2; stem_x=cx-stem_width//2
+    target_bar_y=py-bar_height; target_stem_top=max(70,target_bar_y-250)
+    handle_end=(690,920)
+    parts=[
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-contact-p="{cx},{py}" data-stage="A_T_TO_T">',
+        '<rect width="100%" height="100%" fill="#e9edf0"/>',
+        '<rect x="40" y="40" width="1840" height="1000" rx="12" fill="#f7f8f9" stroke="#aeb8c0" stroke-width="3"/>',
+        # Upper target T is inverted: its lower flat face opposes the attacker's upper flat face.
+        f'<rect x="{stem_x}" y="{target_stem_top}" width="{stem_width}" height="{target_bar_y-target_stem_top}" fill="#647f95" stroke="#182b38" stroke-width="5"/>',
+        f'<rect x="{x0}" y="{target_bar_y}" width="{bar_width}" height="{bar_height}" fill="#647f95" stroke="#182b38" stroke-width="5"/>',
+        # Lower attacking T: one straight handle joins the center underside of its crossbar.
+        _line(handle_end[0],handle_end[1],cx,py+bar_height,"#18232d",34),
+        _line(handle_end[0],handle_end[1],cx,py+bar_height,"#b3c3ce",21),
+        f'<rect x="{x0}" y="{py}" width="{bar_width}" height="{bar_height}" fill="#334f65" stroke="#182b38" stroke-width="5"/>',
+        f'<path d="M{x0+5} {py+5} H{cx+bar_width//2-5}" stroke="#b3d7e9" stroke-width="5"/>',
+        '</svg>',
+    ]
+    return "\\n".join(parts)
+
+
 def build_svg(kind, projection, final_weapon="RADIAL"):
     width = int(projection["canvas"]["width"])
     height = int(projection["canvas"]["height"])
