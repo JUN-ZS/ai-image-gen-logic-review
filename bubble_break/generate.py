@@ -335,8 +335,8 @@ WEAPON_TOPOLOGIES = {
     },
     "WEAPON_T": {
         "aliases": ("T", "WEAPON_T"),
-        "description": "一柄、一個清楚可辨的 T 字槌頭；厚實水平橫杠與中央長柄構成單一剛體。",
-        "contract": "所選拓撲為 WEAPON_T：清晰的大寫 T 字輪廓，一條長而剛性的柄連接厚實水平橫杠；只有橫杠最上方的寬扁平端面首先接觸球底 P。禁止放射球頭、刺釘、晨星、鏈錘及十字加號槌頭。",
+        "description": "一柄、一條厚實水平直橫杠；唯一長柄接在橫杠底部正中央，長柄本身就是 T 的單一主幹，不另加短柱。",
+        "contract": "所選拓撲為 WEAPON_T：必須是清晰的大寫 T 輪廓：一條水平直矩形橫杠、左右等長等厚；唯一長柄直接接在橫杠底面正中央，長柄本身就是 T 的主幹，不得另加短柱。橫杠寬度約為厚度 3.8 倍。只有橫杠最上方的寬扁平上平面首先接觸球底 P；該上平面是 T 拓撲的指定打擊面，不得改成槌頭側壁或球狀槌面。禁止放射球頭、刺釘、晨星、鏈錘及十字加號槌頭。",
     },
     "WEAPON_PROXY_CROSS": {
         "aliases": ("CROSS", "WEAPON_PROXY_CROSS"),
@@ -374,9 +374,9 @@ def _mode_anchor(mode: str) -> str:
 GEOMETRY_LOCK = (
     "【不可改寫的三維幾何契約】世界座標 Y 軸向上；球膜球心 C=(0,R,0)，半徑 R，球底唯一目標點 "
     "P=C+(0,-R,0)=(0,0,0)，即球體精確 6 點鐘位置。該點球膜外法線 n_target=(0,-1,0)；"
-    "指定打擊端面的法線 n_hammer=(0,+1,0)=-n_target；打擊速度 v=(0,+V,0), V>0。"
+    "指定打擊端面／打擊面（由所選武器拓撲明確定義）的法線 n_hammer=(0,+1,0)=-n_target；打擊速度 v=(0,+V,0), V>0。"
     "武器必須是單一完整剛體：一條長而剛性的柄連接一個依所選拓撲定義的槌頭；不得分離、複製、軟化或自行旋轉。"
-    "只有指定的向上平整打擊端面可以首先接觸球膜底點 P；槌頭側壁、柄／桿身、握柄、人物身體及其他物件均不得先碰球膜。"
+    "只有指定的向上平整打擊面可以首先接觸球膜底點 P；RADIAL 用單一向上多邊平面，T 用橫杠上平面，CROSS 用垂直臂頂端平面。槌頭側壁、柄／桿身、握柄、人物身體及其他物件均不得先碰球膜。"
     "女主必須以雙手握柄、寬站姿、腳部驅動、髖與軀幹旋轉、肩臂後段加速及撞擊後跟進呈現可見全身動力鏈，不可只畫高舉手臂。"
     "H0/H1 必須保留可見空隙與完整無裂球膜；H2 才能首次接觸；裂紋必須由 P 起始並沿球面向外傳播。"
     "被擊中的是封存球膜／拘束機制，不是居民；球內的人與承載面不得被錘擊、裂片、衝擊波或崩落物傷害。"
@@ -445,7 +445,7 @@ def _prompt_for_beat(
         )
     elif beat == "H2":
         state = (
-            "【H2 唯一首次接觸／物理高潮】指定的上端厚實平整打擊端面沿 +Y 垂直向上運動，"
+            "【H2 唯一首次接觸／物理高潮】所選武器拓撲定義的向上平整打擊面沿 +Y 垂直向上運動，"
             "在此瞬間第一次且只第一次接觸球膜精確底點 P（6 點鐘），端面法線與接觸法線反向共線；"
             "端面與局部球膜的接觸區清楚可見。接觸以前球殼一直完整無裂，所有第一道裂紋只在接觸發生之後"
             f"從 P 放射起始，沿球面向外擴散。破裂樣式為：{fracture}。"
@@ -596,7 +596,11 @@ def build_record(index: int, mode: str = "heroine",
             "target_outward_normal": "(0,-1,0)",
             "hammer_face_normal": "(0,+1,0)=-n_target",
             "hammer_velocity": "(0,+V,0), V>0",
-            "first_contact": "the thick upper terminal striking face only",
+            "first_contact": {
+                "WEAPON_C_RADIAL_SPHERE": "one upward-facing flat polygon on the radial head only",
+                "WEAPON_T": "the broad upper plane of the straight horizontal crossbar only; handle is the T stem",
+                "WEAPON_PROXY_CROSS": "the upper terminal face of the vertical arm only",
+            }[weapon_topology],
         },
         "prompts": prompts,
         "start_prompt": primary["H0"],
