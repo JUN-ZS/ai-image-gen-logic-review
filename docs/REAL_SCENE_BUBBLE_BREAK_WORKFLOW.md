@@ -108,6 +108,40 @@ T 的結構只定義為以下三件事：
 - 生成／編輯時，場景母版控制人物與相機；`05_T_silhouette_reference` 控制 T 橫杠和柄的拓撲；只遮罩武器區域做局部編輯。不要每次全圖重畫。
 - 任一關只要橫杠彎曲／斜轉、柄離開橫杠中點、出現額外短柱、頭部變圓球或加號，就標記形狀失敗，回到武器遮罩重編；不要靠「more powerful」等風格詞補救。
 
+## 6.6 為什麼不能再把「T_TOPOLOGY_PASS」當成整條流程 PASS
+
+上一輪的外部紀錄把 T 輪廓圖、泡泡＋T 的 H0/H2/H3 放在同一張審計表，然後宣稱 `T_TOPOLOGY_PASS`。這最多支持「那些成圖看起來有 T 形」，**不能證明要求的 T 對 T 首關曾執行，更不能證明真實接觸點像素等於幾何代理的 P**。
+
+新 T 路徑會產生：
+- `00_T_to_T_geometry_proxy.svg`：兩個 T 攻面相對的向量幾何參考。
+- `00_generate_T_to_T_anchor.txt`：首關必須執行的真實圖片生成 Prompt；畫面只能有兩把 T 槌，不可有泡泡或女主。
+- `stage_gate.json`：預設狀態為 `BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED`。
+- `edit_target_T_to_bubble.txt`：只有實際 T-to-T 圖被人工檢視通過後，才可執行的第二關局部編輯指令。
+
+人工審核後才建立 `A_T_to_T_review.json`，例如：
+
+```json
+{
+  "stage_id": "A_T_TO_T_ANCHOR",
+  "status": "PASS",
+  "image": "A_T_to_T_anchor.png",
+  "checks": {
+    "exactly_two_T_hammers": true,
+    "upper_target_T_inverted": true,
+    "lower_attacker_T_upright": true,
+    "opposing_faces_meet_at_same_P": true,
+    "no_bubble_or_heroine": true,
+    "crossbars_straight_and_handles_centered": true
+  },
+  "manual_pixel_review": true,
+  "notes": "記錄實際畫面中攻面相遇的位置，不能只引用 Prompt。"
+}
+```
+
+此 JSON 是**人工檢視紀錄**，唔係圖片模型自動驗證。沒有真正的 `A_T_to_T_anchor.png` 和通過檢視的紀錄時，整個 T-to-T 真實圖片階段仍然是 BLOCKED；不得由 T 輪廓 PNG、泡泡＋T 圖、檔案存在或 Prompt 文字推定 PASS。
+
+對 H2 的接觸位置，要在實際出圖上標出／量度泡泡輪廓的六點鐘底極點，以及槌頭實際接觸的像素區域。若兩者不同，H2 就是 FAIL，即使畫面有裂紋、看似猛烈或審計文字寫了「底極點」。向量座標 `P=(1090,610)` 只定義 1920×1080 代理畫布；外部圖片生成可能使用其他解析度、透視和構圖，不能直接拿這組數字當成實際圖片已符合的證明。
+
 ## 7. 程式只負責把 Prompt 和幾何包整理好
 
 在已 checkout 正確功能分支的工作區，單張試跑可以用：
