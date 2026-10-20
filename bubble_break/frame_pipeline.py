@@ -121,17 +121,19 @@ T_STATE = {
     "H0": (
         "PRE-IMPACT START FRAME. Bubble membrane perfectly intact: zero cracks, holes, fragments or explosion. "
         "The weapon MUST have one unmistakable capital-T silhouette: exactly one straight horizontal rectangular crossbar "
-        "and exactly one centered rectangular stem joined to the midpoint of its underside; the left and right bar ends "
-        "are symmetric, equal and remain in one straight line. One rigid long handle continues from the central joint "
-        "toward the heroine. The head is a T, not a round object with facets and not a cross. The broad flat TOP PLANE "
+        "and exactly one long rigid handle joined directly to the midpoint of its underside; the same handle forms the "
+        "single stem of the T. Do not add a separate short post between the crossbar and handle. The left and right bar ends "
+        "are symmetric, equal and remain in one straight line. The head is a T, not a round object with facets and not a cross. "
+        "The broad flat TOP PLANE "
         "of the horizontal crossbar is the designated striking surface; do not reinterpret a side wall as the striking face. "
         "This top plane aims at P but remains separated from the bubble's six-o'clock bottom point by a clearly visible "
         "continuous band of empty air. No contact, spark or pre-impact crack. Heroine's feet are grounded, knees flexed, "
         "hips and torso coiled, both hands gripping the handle at separated positions. The gap must not be hidden."
     ),
     "H2": (
-        "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer head in the same shape as H0: one straight "
-        "horizontal rectangular crossbar, one centered stem visibly joined beneath its midpoint, and one rigid handle. "
+        "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer in the same shape as H0: one straight horizontal "
+        "rectangular crossbar and the same single long handle joined directly beneath its midpoint; the handle itself forms "
+        "the only stem of the T, with no separate short post or extra shaft. "
         "The broad flat TOP PLANE on the crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
         "The center of that upper plane is pinned to P; its normal points upward into the bubble. This topology uses the "
         "crossbar's upper plane as its active striking surface; do not rotate the head, substitute an end-side face, or "
@@ -146,8 +148,9 @@ T_STATE = {
         "fragments and fine light-shards expand outward from the original six-o'clock point P along the original sphere "
         "envelope. Preserve sphere-center projection, P screen position, horizon, city landmarks, heroine identity, costume, "
         "handle length, camera and lighting. Preserve the EXACT same T topology: a straight horizontal rectangular crossbar "
-        "with two symmetric ends and one centered stem attached beneath its midpoint; one handle remains connected at that "
-        "central joint. The hammer head must not become spherical, radial-faceted, cross-shaped, L-shaped or multi-headed "
+        "with two symmetric ends and the same single long handle attached directly at the underside midpoint; the handle is the T's "
+        "only stem. Do not introduce a separate stub or second shaft. The hammer head must not become spherical, radial-faceted, "
+        "cross-shaped, L-shaped or multi-headed "
         "during follow-through. The same T head has passed only slightly beyond P and visibly decelerated; handle, arms and "
         "torso continue in believable follow-through along the same swing path, feet/hips absorbing the reaction. Fragments "
         "flow away from residents, not through them. All residents remain alive and uninjured; city and supporting surfaces "
@@ -303,18 +306,17 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
         parts.append(f'<path d="M{px} {py} L1122 570 L1150 540" stroke="#ffffff" stroke-opacity=".8" stroke-width="3" fill="none"/>')
     # Hammer shaft: one diagonal, rigid handle, never a spear through the sphere centre.
     handle_end=(690,920)
-    head_attach=(hx-42,hy+40)
+    weapon_topology=weapon_topology.upper()
+    head_attach=(hx,top_y+58) if weapon_topology=="T" else (hx-42,hy+40)
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"#050a11",32))
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"url(#shaft)",21))
     for gx,gy in [(760,890),(820,866)]:
         parts.append(f'<ellipse cx="{gx}" cy="{gy}" rx="18" ry="13" transform="rotate(-20 {gx} {gy})" fill="#c89c69" stroke="#ffe0a6" stroke-width="4"/>')
-    weapon_topology=weapon_topology.upper()
     if weapon_topology == "T":
-        # Wide horizontal bar, flat top plane fixed to P, and one centered stem.
-        parts.append(_polygon([(hx-112,top_y),(hx+112,top_y),(hx+112,top_y+58),(hx+34,top_y+58),
-                               (hx+34,hy+48),(hx-34,hy+48),(hx-34,top_y+58),(hx-112,top_y+58)],
+        # One straight crossbar; the single long handle attaches at its underside midpoint and forms the T stem.
+        parts.append(_polygon([(hx-112,top_y+8),(hx+112,top_y+8),(hx+112,top_y+58),(hx-112,top_y+58)],
                               "#203d56","#e0c18a",6))
-        parts.append(_polygon([(hx-112,top_y),(hx+112,top_y),(hx+96,top_y+10),(hx-96,top_y+10)],
+        parts.append(_polygon([(hx-112,top_y),(hx+112,top_y),(hx+96,top_y+8),(hx-96,top_y+8)],
                               "#6b9cbd","#fff0bf",4))
     elif weapon_topology == "CROSS":
         parts.append(_polygon([(hx-30,top_y),(hx+30,top_y),(hx+30,hy+85),(hx-30,hy+85)],
