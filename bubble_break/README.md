@@ -52,6 +52,10 @@ Formats: json, jsonl, csv, and md. One run is capped at 250,000 concepts. Valid 
 - dual: emits separately addressable heroine and abstract variants. Do not feed the two variants as one combined prompt.
 
 
+## Cross-to-cross anchor edit method
+
+New experimental method: first register two thick plus-sign bodies face-to-face at exactly the same terminal plane. The target cross origin C and lower terminal face define the future bubble center and six-o'clock point P. Then edit only the target cross into a transparent sphere while preserving the attacking cross, contact face, handle and camera. After that edit passes pixel review, edit only the attacking cross into the final radial multi-face hammer. Run the generated proxy pipeline against an emitted layout.json; it produces two SVG references, a target-edit mask and two separate edit prompts. The vector proxy mathematically fixes the terminal-face gap to zero; an external image editor can still shift pixels, so edited images must be reviewed and measured.
+
 ## Front/end-frame workflow (visual compiler)
 
 Do not ask the image model to place H0–H3 on one infographic. The frame compiler emits **three independent, standalone prompts** for the same shot: H0 (pre-impact endpoint), H2 (single-contact validation anchor), and H3 (post-impact endpoint). The primary before/after pair is H0 + H3; H2 exists to validate the contact geometry.

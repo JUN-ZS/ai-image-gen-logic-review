@@ -85,3 +85,27 @@ jobs:
                             "prompt_contract": "PASS", "pixel_audit": "NOT_RUN"},
                            ensure_ascii=False, indent=2))
           PY
+
+      - name: Build cross-to-cross proxy and local edit packet
+        run: |
+          python - <<'PY'
+          import json, subprocess, sys
+          from pathlib import Path
+          root = Path("/tmp/wushuang_frames")
+          batch = json.loads((root / "batch_manifest.json").read_text(encoding="utf-8"))
+          layout = Path(batch["packets"][0]["directory"]) / "layout.json"
+          subprocess.run([sys.executable, "bubble_break/proxy_edit_pipeline.py",
+                          "--input-layout", str(layout), "--outdir", "/tmp/wushuang_proxy_edit"],
+                         check=True)
+          out = Path("/tmp/wushuang_proxy_edit")
+          plan = json.loads((out / "edit_plan.json").read_text(encoding="utf-8"))
+          assert plan["status"] == "GEOMETRY_PROXY_VALID", plan
+          assert plan["terminal_face_gap_px"] == 0, plan
+          assert plan["pixel_truth"]["edited_images"] == "NOT_RUN"
+          for name in ("00_cross_to_cross_proxy.svg", "01_target_cross_replaced_by_sphere.svg",
+                       "02_target_cross_edit_mask.svg", "edit_target_plus_to_bubble.txt",
+                       "edit_attacker_plus_to_radial_hammer.txt"):
+              assert (out / name).exists(), name
+          print(json.dumps({"proxy": "PASS", "terminal_face_gap_px": 0,
+                            "external_edit_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
+          PY
