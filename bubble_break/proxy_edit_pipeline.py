@@ -113,7 +113,7 @@ def build_t_to_t_geometry_svg(projection):
         f'<path d="M{x0+5} {py+5} H{cx+bar_width//2-5}" stroke="#b3d7e9" stroke-width="5"/>',
         '</svg>',
     ]
-    return "\\n".join(parts)
+    return "\n".join(parts)
 
 
 def build_svg(kind, projection, final_weapon="RADIAL"):
@@ -311,7 +311,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     )
     (outdir/"edit_attacker_to_T.txt").write_text(weapon_prompt_t+"\n",encoding="utf-8")
     (outdir/"edit_attacker_keep_cross.txt").write_text(weapon_prompt_cross+"\n",encoding="utf-8")
-    (outdir/"edit_attacker_keep_T.txt").write_text(weapon_prompt+"\\n",encoding="utf-8")
+    (outdir/"edit_attacker_keep_T.txt").write_text(weapon_prompt+"\n",encoding="utf-8")
     selected_prompt=files["target_edit_prompt"] if final_weapon=="T" else {"RADIAL":files["weapon_edit_prompt"],"CROSS":"edit_attacker_keep_cross.txt"}[final_weapon]
     shape_contract = {
         "RADIAL":"one long handle + one near-spherical head tiled with outward flat faces",
