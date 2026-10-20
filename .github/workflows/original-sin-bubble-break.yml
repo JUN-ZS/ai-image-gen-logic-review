@@ -138,6 +138,8 @@ jobs:
           assert result["selected_stories"] == 20, result
           assert result["distinct_causal_kernels"] == 20, result
           assert result["final_weapon"] == "T", result
+          assert result["stage_gate_status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED", result
+          assert result["required_first_stage"] == "A_T_TO_T_ANCHOR", result
           assert result["image_realization"] == "NOT_RUN", result
           assert result["pixel_audit_status"] == "NOT_RUN", result
           for item in result["packages"]:
@@ -149,6 +151,9 @@ jobs:
               assert plan["terminal_face_gap_px"] == 0, plan
               assert plan["selected_edit_prompt"] == "edit_target_T_to_bubble.txt", plan
               assert plan["stage_gate_status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED", plan
+              assert item["stage_gate_status"] == "BLOCKED_UNTIL_T_TO_T_IMAGE_APPROVED", item
+              assert item["required_first_stage_artifact"] == "A_T_to_T_anchor.png", item
+              assert item["selected_edit_prompt"] == "edit_target_T_to_bubble.txt", item
               assert (proxy / "00_T_to_T_geometry_proxy.svg").exists()
               assert (proxy / "00_generate_T_to_T_anchor.txt").exists()
               assert (proxy / "stage_gate.json").exists()
