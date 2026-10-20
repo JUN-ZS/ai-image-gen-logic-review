@@ -210,7 +210,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     weapon_prompt_t = (
         "EDIT ONLY THE ATTACKING PLUS-SIGN after the target bubble edit has passed pixel review. "
         "Use 05_T_silhouette_reference.svg as the authoritative T-shape guide; it defines topology only, not camera pose. "
-        "Convert only the masked weapon into ONE unmistakable capital-T hammer: exactly one straight, horizontal, rigid rectangular crossbar "
+        "Convert only the masked weapon into ONE unmistakable T-shaped hammer with a capital-T silhouette: exactly one straight, horizontal, rigid rectangular crossbar "
         "with equal left/right ends, and exactly ONE long handle joined to the exact midpoint of the crossbar's underside. "
         "The long handle itself forms the single stem of the T; do NOT add a second short vertical post between head and handle. "
         "Keep the crossbar width about 3.8 times its thickness and the handle joint centered. The bar remains a straight line; "
