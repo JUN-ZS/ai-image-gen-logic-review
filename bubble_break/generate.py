@@ -326,6 +326,37 @@ def _stable_id(selected: Dict[str, Tuple[str, str]]) -> str:
     return "OSBB-" + hashlib.sha256(signature.encode("utf-8")).hexdigest()[:12].upper()
 
 
+
+WEAPON_TOPOLOGIES = {
+    "WEAPON_C_RADIAL_SPHERE": {
+        "aliases": ("RADIAL", "WEAPON_C_RADIAL_SPHERE"),
+        "description": "一柄、一個近球形槌頭；多塊寬扁平打擊面向不同方向徑向密鋪，外輪廓近似球形。",
+        "contract": "所選拓撲為 WEAPON_C_RADIAL_SPHERE：一條長而剛性的柄連接一個近球形槌頭；多塊寬扁平面構成同一剛性頭。只有位於球底 P 的向上扁平面首先接觸；禁止刺釘、晨星、鏈錘及多把獨立槌。",
+    },
+    "WEAPON_T": {
+        "aliases": ("T", "WEAPON_T"),
+        "description": "一柄、一個清楚可辨的 T 字槌頭；厚實水平橫杠與中央長柄構成單一剛體。",
+        "contract": "所選拓撲為 WEAPON_T：清晰的大寫 T 字輪廓，一條長而剛性的柄連接厚實水平橫杠；只有橫杠最上方的寬扁平端面首先接觸球底 P。禁止放射球頭、刺釘、晨星、鏈錘及十字加號槌頭。",
+    },
+    "WEAPON_PROXY_CROSS": {
+        "aliases": ("CROSS", "WEAPON_PROXY_CROSS"),
+        "description": "一柄、一個加號形幾何代理頭；四臂是同一剛性頭的一部分。",
+        "contract": "所選拓撲為 WEAPON_PROXY_CROSS：清晰加號形十字代理頭，四臂連成同一剛體；只有最上方臂的厚實平整端面首先接觸球底 P。這是幾何代理，不代表最終產品武器。",
+    },
+}
+WEAPON_ALIAS_MAP = {
+    alias: canonical
+    for canonical, item in WEAPON_TOPOLOGIES.items()
+    for alias in item["aliases"]
+}
+
+def normalize_weapon_topology(value: str) -> str:
+    key = str(value).strip().upper()
+    if key not in WEAPON_ALIAS_MAP:
+        raise ValueError("weapon topology must be T, RADIAL, or CROSS")
+    return WEAPON_ALIAS_MAP[key]
+
+
 def _mode_anchor(mode: str) -> str:
     if mode == "heroine":
         return (
@@ -334,8 +365,8 @@ def _mode_anchor(mode: str) -> str:
             "她打破的是封存規則，不是受困居民。"
         )
     return (
-        "角色鎖 λ_H=0：不出現前景女主或清晰主角臉；以一柄一頭的多向扁平槌面圓頭戰錘、球殼與居民作為主體，"
-        "仍須呈現可信的斜柄、雙手發力關係與清楚的接觸幾何。泡內居民以可辨的完整人物或剪影呈現，"
+        "角色鎖 λ_H=0：不出現前景女主或清晰主角臉；以所選武器拓撲、球殼與居民作為主體，"
+        "仍須呈現可信的長柄、接觸面方向與清楚的接觸幾何。泡內居民以可辨的完整人物或剪影呈現，"
         "確保其存活與選擇不能被純抽象畫面遮掉。"
     )
 
@@ -343,15 +374,14 @@ def _mode_anchor(mode: str) -> str:
 GEOMETRY_LOCK = (
     "【不可改寫的三維幾何契約】世界座標 Y 軸向上；球膜球心 C=(0,R,0)，半徑 R，球底唯一目標點 "
     "P=C+(0,-R,0)=(0,0,0)，即球體精確 6 點鐘位置。該點球膜外法線 n_target=(0,-1,0)；"
-    "戰錘向上打擊端面的法線 n_hammer=(0,+1,0)=-n_target；打擊速度 v=(0,+V,0), V>0。"
-    "武器拓撲鎖 WEAPON_C_RADIAL_SPHERE（多向扁平槌面圓頭）：一條長而剛性的柄連接一個緊密球狀金屬頭；球頭由多個寬而扁平的打擊面朝不同方向徑向密鋪，"
-    "外輪廓因多向扁平槌面而近似球形。它始終是一柄、一頭；不是四頭十字槌、普通長方形單頭槌、刺釘球、晨星、鏈錘或一圈獨立槌。"
-    "所有扁平面屬於同一剛性球頭；只有朝向球底 P 的可見扁平指定打擊端面可以首先接觸球膜，該端面的法線向上。"
-    "長柄／桿身可斜向延伸，不能把人體、柄軸、球心與接觸方向畫成一條槍線；錘頭長側壁與其他槌面不得先碰球膜。"
+    "指定武器打擊端面的法線 n_hammer=(0,+1,0)=-n_target；打擊速度 v=(0,+V,0), V>0。"
+    "武器必須是單一完整剛體：一條長而剛性的柄連接一個依所選拓撲定義的槌頭；不得分離、複製、軟化或自行旋轉。"
+    "只有指定的向上平整打擊端面可以首先接觸球膜底點 P；槌頭側壁、柄／桿身、握柄、人物身體及其他物件均不得先碰球膜。"
     "女主必須以雙手握柄、寬站姿、腳部驅動、髖與軀幹旋轉、肩臂後段加速及撞擊後跟進呈現可見全身動力鏈，不可只畫高舉手臂。"
     "H0/H1 必須保留可見空隙與完整無裂球膜；H2 才能首次接觸；裂紋必須由 P 起始並沿球面向外傳播。"
     "被擊中的是封存球膜／拘束機制，不是居民；球內的人與承載面不得被錘擊、裂片、衝擊波或崩落物傷害。"
 )
+
 SCENE_LOCK = (
     "【首尾幀同一場景鎖】16:9、1920×1080、單一完整電影畫面，不是拼貼、不含字幕/標籤/浮水印。"
     "配對 H0 與 H3 必須使用同一攝影機位置、同一鏡頭焦距、同一地平線、同一球心投影位置、"
@@ -374,8 +404,11 @@ def _alpha_beta(index: int) -> Tuple[str, str]:
 
 def _prompt_for_beat(
     beat: str, selected: Dict[str, Tuple[str, str]], mode: str,
-    alpha: str, beta: str, camera_line: str
+    alpha: str, beta: str, camera_line: str,
+    weapon_topology: str = "WEAPON_C_RADIAL_SPHERE"
 ) -> str:
+    weapon_topology = normalize_weapon_topology(weapon_topology)
+    weapon_spec = WEAPON_TOPOLOGIES[weapon_topology]
     sin = selected["sin"][1]
     shell = selected["shell"][1]
     fracture = selected["fracture"][1]
@@ -388,8 +421,8 @@ def _prompt_for_beat(
         f"16:9 1920×1080 電影級單幀，極致可讀的三維空間、真實光學、清晰前中後景。{camera_line}"
         f"{_mode_anchor(mode)}故事核：{sin['name']}。{sin['mechanism']}。"
         f"場景：{env}；尺度：{scale}；球殼：{shell}；色彩：{palette}。"
-        f"武器材質細節：{hammer}。武器拓撲固定為一條長剛性柄＋一個近球形金屬槌頭，頭面由多個朝不同方向的寬扁平打擊面徑向密鋪；只有朝向球底 P 的可見扁平面可接觸。"
-        f"{SCENE_LOCK}{GEOMETRY_LOCK}"
+        f"武器材質細節：{hammer}。{weapon_spec['description']} "
+        f"{SCENE_LOCK}{GEOMETRY_LOCK}{weapon_spec['contract']}"
         f"【55/30/15敘事資訊預算，不是像素權重】55%鎖定本幀主要狀態；30%只保留經鏡位轉換的前一狀態殘影；"
         f"15%預埋下一狀態伏筆 α={alpha}、β={beta}。不得因此複製人物、預先生成裂紋或改變實際接觸座標。"
     )
@@ -398,7 +431,7 @@ def _prompt_for_beat(
             "【H0 起始錨點：封存仍完整】球膜完整、封閉、乾淨，無預存裂紋、無爆裂、無缺口。"
             "所有居民仍在膜內，身體完整、沒有受傷；透過球膜可辨認他們被錯誤規則限制的日常。"
             "戰錘停在球底 P 正下方，指定向上打擊端面與 P 之間有清楚、連續、肉眼可見的空隙；"
-            "不得接觸球殼；槌頭朝向 P 的扁平打擊面必須與膜保持明確空隙。長柄／桿身斜向延伸至女主雙手；球狀槌頭上的多個寬扁平面清楚可辨。"
+            "不得接觸球殼；所選拓撲的指定扁平打擊面與 P 保持明確空隙。長柄／桿身斜向延伸至女主雙手；槌頭輪廓須符合拓撲鎖且清楚可辨。"
             "女主寬站、重心壓低、髖與軀幹預先扭轉，雙手沿長柄拉回蓄力，人體不與柄軸及球心共線。"
             f"以可見症狀暗示原罪：{sin['evidence']}。遠景預埋段內伏筆 α：{alpha}。"
             "情緒是即將作出選擇前的壓抑與清醒，而不是已經發生爆炸。"
@@ -416,7 +449,7 @@ def _prompt_for_beat(
             "在此瞬間第一次且只第一次接觸球膜精確底點 P（6 點鐘），端面法線與接觸法線反向共線；"
             "端面與局部球膜的接觸區清楚可見。接觸以前球殼一直完整無裂，所有第一道裂紋只在接觸發生之後"
             f"從 P 放射起始，沿球面向外擴散。破裂樣式為：{fracture}。"
-            "槌頭不穿進球內。只能由球狀槌頭上朝向 P 的一塊清楚可見扁平打擊面首次接觸；長柄斜向離開接觸法線，球頭側壁與其他槌面不得先碰球。"
+            "槌頭不穿進球內。只能由所選拓撲指定的向上扁平端面首次接觸 P；長柄斜向離開接觸法線，槌頭側壁與其他表面不得先碰球。"
             "女主以雙手握柄、腳部驅動、髖與軀幹旋轉、肩臂延伸形成可見全身動力鏈；不得用光效或動態模糊遮住扁平打擊面。"
             "衝擊被局限在封存球膜；球內居民仍完整、無傷，光粒避開人體。"
             f"詩眼反轉：『{sin['promise']}』被反證；真正要打破的是機制，不是人。α={alpha} 在接觸點被回收。"
@@ -426,15 +459,26 @@ def _prompt_for_beat(
             "【H3 終點錨點：球殼已解體，生命完整】沿球面傳播的裂紋全部可追溯至原底點 P；"
             f"球膜按指定樣式解體：{fracture}。殘片、光帶與折射沿遠離居民的方向溢散，沒有爆炸衝擊波，"
             "沒有碎片穿過人體，泡內承載面與居民均未被摧毀。"
-            "戰錘仍保持完整剛體；同一多向扁平槌面球頭與同一長柄不變，指定打擊面越過原 P 少許後因撞擊減速，軀幹與手臂沿原揮動方向跟進，雙腳與髖處理反作用。"
-            "桿身、球頭側壁與其他槌面不觸碰居民。"
+            "戰錘仍保持完整剛體；同一所選武器拓撲與同一長柄不變，指定打擊面越過原 P 少許後因撞擊減速，軀幹與手臂沿原揮動方向跟進，雙腳與髖處理反作用。"
+            "桿身、槌頭側壁與其他表面不觸碰居民。"
             f"居民已全部存活、沒有傷口；{after}。他們可以選擇離開、留下、哀悼、追問或拒絕原諒，"
             "任何選擇都不由 Boundary Walker 強迫。段內 α 已被回收；下一個故事伏筆 β="
             f"{beta} 只在遠景邊緣出現，不能遮蓋生還者或改變本次接觸幾何。"
         )
     else:
         raise ValueError(f"unknown beat: {beat}")
-    return base + state + "無文字、無標籤、無水印；材質與光效服務因果可讀性，不得覆蓋幾何。"
+    topology_negative = NEGATIVE_PROMPT
+    if weapon_topology == "WEAPON_T":
+        topology_negative = topology_negative.replace(
+            "多向圓頭變成普通長方形單頭錘、四頭十字槌、尖刺球、晨星、鏈錘、武器環、多把獨立錘",
+            "T 字頭變成放射球頭、十字加號槌頭、尖刺球、晨星、鏈錘、武器環、多把獨立錘",
+        )
+    elif weapon_topology == "WEAPON_PROXY_CROSS":
+        topology_negative = topology_negative.replace(
+            "多向圓頭變成普通長方形單頭錘、四頭十字槌、尖刺球、晨星、鏈錘、武器環、多把獨立錘",
+            "十字代理頭變成 T 字頭、放射球頭、尖刺球、晨星、鏈錘、武器環、多把獨立錘",
+        )
+    return base + state + "無文字、無標籤、無水印；材質與光效服務因果可讀性，不得覆蓋幾何。" + topology_negative
 
 
 def _storyboard_9(selected: Dict[str, Tuple[str, str]], alpha: str, beta: str, mode: str) -> List[Dict[str, str]]:
@@ -493,9 +537,11 @@ def _audit_prompts(prompts: Dict[str, Dict[str, str]]) -> Dict[str, Any]:
     }
 
 
-def build_record(index: int, mode: str = "heroine") -> Dict[str, Any]:
+def build_record(index: int, mode: str = "heroine",
+                 weapon_topology: str = "WEAPON_C_RADIAL_SPHERE") -> Dict[str, Any]:
     if mode not in ("heroine", "abstract", "dual"):
         raise ValueError("mode must be heroine, abstract, or dual")
+    weapon_topology = normalize_weapon_topology(weapon_topology)
     digits = _decode_index(index)
     if not _is_compatible(digits):
         raise ValueError("incompatible shell/fracture pair; use an index from iter_diverse_indices")
@@ -506,7 +552,7 @@ def build_record(index: int, mode: str = "heroine") -> Dict[str, Any]:
     prompts: Dict[str, Dict[str, str]] = {}
     for selected_mode in modes:
         prompts[selected_mode] = {
-            beat: _prompt_for_beat(beat, selected, selected_mode, alpha, beta, camera_line)
+            beat: _prompt_for_beat(beat, selected, selected_mode, alpha, beta, camera_line, weapon_topology)
             for beat in ("H0", "H1", "H2", "H3")
         }
     primary = prompts[modes[0]]
@@ -526,6 +572,8 @@ def build_record(index: int, mode: str = "heroine") -> Dict[str, Any]:
     record: Dict[str, Any] = {
         "engine_version": ENGINE_VERSION,
         "story_id": story_id,
+        "weapon_topology": weapon_topology,
+        "realization_path": "proxy_edit",
         "causal_kernel_id": selected["sin"][0],
         "causal_signature": causal_signature,
         "combination_index": index,
@@ -555,7 +603,12 @@ def build_record(index: int, mode: str = "heroine") -> Dict[str, Any]:
         "reveal_prompt": primary["H1"],
         "contact_prompt": primary["H2"],
         "end_prompt": primary["H3"],
-        "negative_prompt": NEGATIVE_PROMPT,
+        "negative_prompt": (NEGATIVE_PROMPT.replace("多向圓頭變成普通長方形單頭錘、四頭十字槌、尖刺球、晨星、鏈錘、武器環、多把獨立錘",
+            "T 字頭變成放射球頭、十字加號槌頭、尖刺球、晨星、鏈錘、武器環、多把獨立錘")
+            if weapon_topology == "WEAPON_T" else
+            NEGATIVE_PROMPT.replace("多向圓頭變成普通長方形單頭錘、四頭十字槌、尖刺球、晨星、鏈錘、武器環、多把獨立錘",
+            "十字代理頭變成 T 字頭、放射球頭、尖刺球、晨星、鏈錘、武器環、多把獨立錘")
+            if weapon_topology == "WEAPON_PROXY_CROSS" else NEGATIVE_PROMPT),
         "storyboard_9": _storyboard_9(selected, alpha, beta, modes[0]),
         "audit": None,
     }
@@ -587,7 +640,7 @@ def _write_jsonl(path: Path, records: Iterable[Dict[str, Any]]) -> int:
 
 def _write_csv(path: Path, records: Iterable[Dict[str, Any]]) -> int:
     fields = [
-        "story_id","causal_kernel_id","causal_signature","title","mode","root_sin","root_mechanism","human_cost","agency_restored",
+        "story_id","weapon_topology","realization_path","causal_kernel_id","causal_signature","title","mode","root_sin","root_mechanism","human_cost","agency_restored",
         "start_prompt","reveal_prompt","contact_prompt","end_prompt","negative_prompt",
         "prompt_variants_json","storyboard_9_json","audit_status","audit_errors_json","image_realization"
     ]
@@ -597,7 +650,7 @@ def _write_csv(path: Path, records: Iterable[Dict[str, Any]]) -> int:
         writer.writeheader()
         for r in records:
             writer.writerow({
-                "story_id":r["story_id"],"causal_kernel_id":r["causal_kernel_id"],"causal_signature":r["causal_signature"],"title":r["title"],"mode":r["mode"],
+                "story_id":r["story_id"],"weapon_topology":r["weapon_topology"],"realization_path":r["realization_path"],"causal_kernel_id":r["causal_kernel_id"],"causal_signature":r["causal_signature"],"title":r["title"],"mode":r["mode"],
                 "root_sin":r["root_sin"],"root_mechanism":r["root_mechanism"],
                 "human_cost":r["human_cost"],"agency_restored":r["agency_restored"],
                 "start_prompt":r["start_prompt"],"reveal_prompt":r["reveal_prompt"],
@@ -632,14 +685,16 @@ def _write_markdown(path: Path, records: Iterable[Dict[str, Any]]) -> int:
     return count
 
 
-def generate(count: int, seed: int, mode: str, fmt: str, output: str) -> Dict[str, Any]:
+def generate(count: int, seed: int, mode: str, fmt: str, output: str,
+             weapon_topology: str = "WEAPON_C_RADIAL_SPHERE") -> Dict[str, Any]:
+    weapon_topology = normalize_weapon_topology(weapon_topology)
     if count < 1:
         raise ValueError("--count must be >= 1")
     if count > 250_000:
         raise ValueError("--count is capped at 250000 per run to keep exports predictable; use multiple seeds for larger libraries")
     if count > TOTAL_COMBINATIONS:
         raise ValueError(f"only {TOTAL_COMBINATIONS} combinations exist")
-    records = (build_record(index, mode) for index in iter_diverse_indices(count, seed))
+    records = (build_record(index, mode, weapon_topology) for index in iter_diverse_indices(count, seed))
     if output == "-":
         if fmt == "jsonl":
             written = 0
@@ -671,7 +726,7 @@ def generate(count: int, seed: int, mode: str, fmt: str, output: str) -> Dict[st
     return {
         "engine_version":ENGINE_VERSION,"seed":seed,"requested_count":count,
         "written_count":written,"format":fmt,"output":output,
-        "combination_space":TOTAL_COMBINATIONS,"mode":mode,
+        "combination_space":TOTAL_COMBINATIONS,"mode":mode,"weapon_topology":weapon_topology,"realization_path":"proxy_edit",
         "text_contract_status":"PROMPT_CONTRACT_PASS checks required prompt text only",
         "image_realization":"NOT_RUN",
     }
@@ -682,13 +737,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--count",type=int,default=12,help="unique story concepts to generate (maximum 250000 per run)")
     parser.add_argument("--seed",type=int,default=20261020,help="deterministic seed")
     parser.add_argument("--mode",choices=("heroine","abstract","dual"),default="heroine",help="heroine ON, abstract foreground, or export both variants")
+    parser.add_argument("--weapon-topology",choices=("RADIAL","T","CROSS"),default="RADIAL",help="final weapon topology; does not alter story sampling")
     parser.add_argument("--format",choices=("json","jsonl","csv","md"),default="jsonl",help="stream-friendly output format")
     parser.add_argument("--out",default="out/original_sin_bubble_break.jsonl",help="output path; use - for stdout (json/jsonl only)")
     args = parser.parse_args(argv)
     if args.out == "-" and args.format not in ("json","jsonl"):
         parser.error("--out - supports only json or jsonl")
     try:
-        summary = generate(args.count,args.seed,args.mode,args.format,args.out)
+        summary = generate(args.count,args.seed,args.mode,args.format,args.out,args.weapon_topology)
     except (ValueError,OSError) as exc:
         print(f"BLOCK: {exc}",file=sys.stderr)
         return 2
