@@ -1,0 +1,75 @@
+# Original Sin / Wushuang Bubble-Break Prompt Engine
+
+This subproject turns the useful narrative/compiler ideas in EFV V6.4 and Gumen Rock V7.0 into a specialized story-image prompt compiler. It does not copy the songs' lyrics. It borrows semantic motifs and structure: three-order meaning extraction, QCTH-F nine-cell beats, alpha/beta foreshadowing, front/side/inversion operators, and 55/30/15 continuity as a prompt-design heuristic.
+
+## Why this is not just a prompt pile
+
+Every concept starts with a distinct systemic flaw ("original sin"), the containment mechanism that enforces it, the human cost, evidence that reveals it, and a voluntary choice after the shell breaks. Visual axes vary shell construction, environment, scale, hammer finish, fracture appearance, camera rig, palette, and aftermath.
+
+Each story exports four connected keyframes:
+
+- H0: intact shell, no cracks, hammer face visibly separated from the exact six-o'clock bottom point.
+- H1: reveal the containment mechanism; still no contact and no cracks.
+- H2: first contact only between the hammer's thick upper terminal face and the shell's bottom point; cracks start there and propagate outward.
+- H3: the shell is broken, residents remain alive and uninjured, and they regain the right to choose what happens next.
+
+H0 and H3 share a locked camera, horizon, sphere center, environment landmarks, character identity, hammer dimensions, and light direction. The prompts carry an explicit coordinate contract:
+
+- world up: +Y
+- sphere center: C=(0,R,0)
+- bottom contact: P=C+(0,-R,0)=(0,0,0)
+- shell outward normal: n_target=(0,-1,0)
+- hammer striking-face normal: n_hammer=(0,+1,0)=-n_target
+- hammer velocity: v=(0,+V,0), V>0
+
+The striking end-face is the only first contact. No shaft or side-head contact is allowed. The people are not targets; the containment mechanism is.
+
+## Run
+
+Python 3.10+; standard library only.
+
+Windows CMD:
+
+~~~cmd
+python bubble_break\generate.py --count 100 --seed 20261020 --mode heroine --format jsonl --out out\stories.jsonl
+python bubble_break\generate.py --count 1000 --seed 20261021 --mode dual --format csv --out out\stories.csv
+python -m unittest discover -s bubble_break -p "test_*.py"
+~~~
+
+Linux/macOS:
+
+~~~bash
+python3 bubble_break/generate.py --count 1000 --seed 20261021 --mode heroine --format jsonl --out out/stories.jsonl
+python3 -m unittest discover -s bubble_break -p 'test_*.py'
+~~~
+
+Formats: json (array), jsonl (best for large batches), csv (spreadsheet and batch-runner friendly), md (human review). One run is capped at 250,000 story concepts to keep files manageable. Use different seeds for additional batches. The combination space is computed from the defined axes and is much larger than a single run.
+
+### Modes
+
+- heroine: same East Asian female Boundary Walker, long center-parted dark-brown hair, one mole under the left eye.
+- abstract: removes the foreground heroine while retaining clear resident silhouettes and the hammer/shell geometry, so survival cannot disappear from the story.
+- dual: emits separately addressable heroine and abstract variants. Do not feed the two variants as one combined prompt.
+
+## Self-audit boundary
+
+Each record contains an audit status and explicitly separates:
+
+- PROMPT_CONTRACT_PASS: required geometry/state/survival clauses exist in the generated prompt text.
+- image_realization: NOT_RUN: no image has been rendered or visually audited by this script.
+
+That difference is intentional. A prompt checker cannot prove that an image model obeyed a prompt. The real acceptance loop is: generate H0/H1/H2/H3, compare shared geometry, reject any frame with early cracks or wrong contact, then re-render or correct only the failed frame.
+
+## What 55/30/15 means here
+
+It is used as a narrative attention budget (55% current subject, 30% transformed prior motif, 15% next-story foreshadowing), not as actual pixel compositing, calibrated model attention, or a physical constraint. The prompt compiler cannot enforce collision physics in the image model. For strict production, a 3D blockout/render, depth/normal/segmentation controls, or manual image correction can become the geometry source of truth, with the image model used for materials, atmosphere, and controlled detail.
+
+## Inspiration lineage
+
+- EFV V6.4: persistent electric pulse, broken signal, glassy traces, breath, tape-noise filaments, and a surviving flower-like light.
+- Gumen Rock V7.0: old gates, well mist, copper mirrors, jade lamps, iron feathers, cracked-moon light, soul-fire, bells, ash, and thresholds.
+- The new story engine repurposes these as alpha/beta visual seeds rather than copying lyric lines.
+
+See also:
+- https://github.com/JUN-ZS/efv-infinity-v6.4
+- https://github.com/JUN-ZS/efv-gumen-rock-v7.0
