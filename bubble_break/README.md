@@ -62,10 +62,13 @@ New experimental method: first register two thick plus-sign bodies face-to-face 
 The large JSONL generator remains story/cause sampling only. \`realize_batch.py\` selects a bounded number of records per causal kernel, then compiles topology-matched H0/H2/H3 prompts and geometry references, and builds the A/B/C proxy/edit packet. It defaults to T as the simple C test; pass \`--final-weapon RADIAL\` to test the canonical multi-face head or \`CROSS\` to preserve the plus proxy. No image service is called by this batch wrapper.
 
 ~~~cmd
-python bubble_break\generate.py --count 1000 --seed 20261020 --mode dual --format jsonl --out out\wushuang_1000.jsonl
-python bubble_break\realize_batch.py --input out\wushuang_1000.jsonl --outdir out\realize_T --per-kernel 1 --limit 20 --final-weapon T
+python bubble_break\generate.py --count 1000 --seed 20261020 --mode dual --weapon-topology T --format jsonl --out out\wushuang_1000_T.jsonl
+python bubble_break\realize_batch.py --input out\wushuang_1000_T.jsonl --outdir out\realize_T --per-kernel 1 --limit 20 --final-weapon T
 python bubble_break\realize_batch.py --input out\wushuang_1000.jsonl --outdir out\realize_RADIAL --per-kernel 1 --limit 20 --final-weapon RADIAL
 ~~~
+
+
+The story generator also accepts `--weapon-topology RADIAL|T|CROSS`. This writes `weapon_topology` and `realization_path=proxy_edit` into each JSONL/JSON record and changes only the weapon geometry clauses; it does not add a new story-combination axis or alter causal identity. Keep the generator option and `realize_batch --final-weapon` aligned when you want the initial prompts and the realization packets to describe the same topology. You may deliberately override the final weapon at the realization stage to compare alternate implementations of the same story.
 
 T and RADIAL are separate realization paths, not a claim they are equally faithful. The T head has a simpler silhouette and should be tested as a lower-complexity comparator. Every package retains \`image_realization=NOT_RUN\` and \`pixel_audit_status=NOT_RUN\` until real edited image files have been inspected. The pixel PASS claims from any external workspace are not accepted by this repository unless its image files and audit evidence are actually attached or reproducibly reachable.
 
