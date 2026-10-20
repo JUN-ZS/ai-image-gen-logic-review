@@ -23,7 +23,7 @@ jobs:
       - name: Generate and validate 1,000 dual-mode records
         shell: bash
         run: |
-          python bubble_break/generate.py --count 1000 --seed 20261020 --mode dual --format jsonl --out /tmp/wushuang_1000.jsonl
+          python bubble_break/generate.py --count 1000 --seed 20261020 --mode dual --weapon-topology T --format jsonl --out /tmp/wushuang_1000.jsonl
           python - <<'PY'
           import collections, json
           counts = collections.Counter()
@@ -35,6 +35,8 @@ jobs:
                   row = json.loads(line)
                   total += 1
                   story_ids.add(row["story_id"])
+                  assert row["weapon_topology"] == "WEAPON_T", row["story_id"]
+                  assert row["realization_path"] == "proxy_edit", row["story_id"]
                   counts[row["root_sin"]] += 1
                   causal.add(row["causal_signature"])
                   assert row["audit"]["status"] == "PROMPT_CONTRACT_PASS", row["story_id"]
