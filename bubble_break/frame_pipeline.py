@@ -6,7 +6,7 @@ import argparse, hashlib, json, re, sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 FRAME_IDS = ("H0", "H2", "H3")
 FRAME_NAMES = {"H0":"H0_pre_impact", "H2":"H2_first_contact_anchor", "H3":"H3_post_impact"}
 
@@ -37,7 +37,8 @@ COMMON = (
     "One full-bleed image, not a page, not a storyboard, not a comparison, not a collage. No writing, letters, "
     "labels, panel borders, inset images, diagrams or watermark. CAMERA_VARIANT_PLACEHOLDER. "
     "Use the specified camera's focal length and perspective. Within this H0/H2/H3 trio keep the chosen camera, horizon, landmarks, "
-    "sphere projection and scale coherent; across camera variant IDs, camera angle, perspective and framing must intentionally change." A giant transparent iridescent bubble encloses a visible floating city "
+    "sphere projection and scale coherent; across camera variant IDs, camera angle, perspective and framing must intentionally change. "
+    "A giant transparent iridescent bubble encloses a visible floating city "
     "and tiny residents; the lower pole is unobstructed. Heroine stays in the lower-left third, bubble occupies "
     "upper/central frame when using a wide shot; camera-specific framing may move or crop the heroine in close-ups. "
     "Keep the bubble's six-o'clock bottom pole P visible enough to judge gap/contact, and prioritize the active face plus pole in macro variants. "
@@ -67,6 +68,8 @@ WEAPON_TEXT = {
         "The handle itself forms the single stem; no separate short post. Crossbar width is about 3.8 times its thickness, with equal ends; "
         "the handle joint is centered. Never bend or rotate the head independently from the handle. This is not a plus-sign/cross head, radial sphere, mace or spiked ball. "
         "At impact, only the selected terminal END STRIKING FACE at one end of the crossbar contacts P; its normal is aligned to the local sphere normal. "
+        "Rigid-body projection rule: in the canonical bottom-pole view, the active face normal points upward on screen, so rotate the entire T as one body: the crossbar projects vertically and the centered handle/stem projects laterally from the midpoint. "
+        "The projected crossbar and stem must follow that one rigid transform; never keep the head vertical while independently drawing the handle diagonally down-left. Oblique camera variants may project both axes obliquely only through one coherent 3D transform. "
         "The broad upper/lower surfaces, long cheek, corners and handle are non-contact surfaces and cannot touch first."
     ),
     "CROSS": (
@@ -147,7 +150,8 @@ T_STATE = {
         "The weapon MUST have one unmistakable T topology in its OWN LOCAL COORDINATE FRAME: one straight rigid rectangular crossbar "
         "and exactly one long handle joined directly to the midpoint of its underside; the handle itself forms the single stem. "
         "The complete rigid hammer may rotate in 3D and appear sideways/oblique on screen so the chosen terminal end face can face P; "
-        "never twist the crossbar independently of the handle. Do not add a short post. Both bar ends remain symmetric in the object's local frame. "
+        "never twist the crossbar independently of the handle. In the canonical bottom-pole orthographic projection, the terminal-face normal and crossbar axis project upward/vertical while the centered handle projects laterally/horizontal. "
+        "Do not retain a down-left handle while projecting the crossbar vertically. Camera-specific perspective can make both axes oblique only through one coherent 3D transform. Do not add a short post. Both bar ends remain symmetric in the object's local frame. "
         "The head is T topology, not a sphere or plus-sign. "
         "The selected flat TERMINAL END FACE at one end of the crossbar "
         "is the designated striking surface. The broad upper/lower faces and long cheek are non-contact surfaces. "
@@ -160,7 +164,7 @@ T_STATE = {
         "crossbar in the hammer's local frame and the same single long handle joined directly beneath its midpoint; the entire hammer may be rotated as one rigid object to aim its terminal face. The handle itself forms "
         "the single stem of the T, with no separate short post or extra shaft. "
         "The selected flat TERMINAL END STRIKING FACE at the terminal end of the T crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
-        "The centre of that active end face is pinned to P, and its normal points into the bubble along the local sphere normal. "
+        "The centre of that active end face is pinned to P, and its normal points into the bubble along the local sphere normal. In the canonical orthographic projection, the complete rigid T is rotated as a unit: its crossbar projects vertically and its handle projects horizontally from the crossbar midpoint; never fake this with a diagonal handle independent of the head. "
         "The crossbar's broad upper/lower surfaces, cheek, corners and handle are non-contact surfaces; do not let any of them touch first, and do not "
         "change the T into a sphere. The crossbar remains straight, rigid and symmetric in its own local orientation; its screen angle may change with the selected camera. The centered "
         "handle joint remains attached and readable. The contact patch is unmistakable and unobstructed; the handle and side walls "
@@ -172,7 +176,7 @@ T_STATE = {
         "POST-IMPACT END FRAME, SAME CAMERA AND SCENE. No continuous unbroken membrane remains. Large iridescent film "
         "fragments and fine light-shards expand outward from the original six-o'clock point P along the original sphere "
         "envelope. Preserve sphere-center projection, P screen position, horizon, city landmarks, heroine identity, costume, "
-        "handle length, camera and lighting. Preserve the EXACT same T topology in the hammer's local frame: one straight rigid rectangular crossbar "
+        "handle length, camera and lighting. Preserve the EXACT same T topology and one rigid-body transform in the hammer's local frame: one straight rigid rectangular crossbar "
         "with two symmetric ends and the same single long handle attached directly at the underside midpoint; the handle itself "
         "forms the single stem of the T. Do not introduce a separate stub or second shaft. The hammer head must not become spherical, radial-faceted, "
         "cross-shaped, L-shaped or multi-headed "
@@ -331,23 +335,29 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL", projection: Dict[
             parts.append(_polygon(poly,colors[i%len(colors)],"#e4fbff",3))
         parts.append(f'<path d="M{px} {py} L1065 573 L1040 545" stroke="#ffffff" stroke-opacity=".8" stroke-width="3" fill="none"/>')
         parts.append(f'<path d="M{px} {py} L1122 570 L1150 540" stroke="#ffffff" stroke-opacity=".8" stroke-width="3" fill="none"/>')
-    # Hammer shaft: one diagonal, rigid handle, never a spear through the sphere centre.
-    handle_end=(690,920)
+    # Draw the weapon as one rigid projected object. At the bottom pole, an upward terminal-face
+    # normal means the T crossbar projects vertically and its centered stem projects laterally.
+    default_handle_end=(690,920)
     weapon_topology=weapon_topology.upper()
     if weapon_topology=="T":
-        # Orient the whole rigid T so its terminal end-face normal points up into the bubble's bottom pole.
-        # The head extends downward/outside the membrane; this 2D schematic cannot prove the real 3D normal.
+        # Schematic only: this orthographic projection is a coordinate proxy, not 3D/pixel proof.
         t_bar_top=int(geo.get("top_face_y",py))
         t_bar_width=58
         t_bar_length=224
         head_attach=(px,t_bar_top+t_bar_length//2)
+        handle_end=(px-440,head_attach[1])
+        hand_points=[(760,head_attach[1]),(820,head_attach[1])]
+        hand_rotation=0
     else:
         t_bar_top=top_y
         head_attach=(hx-42,hy+40)
+        handle_end=default_handle_end
+        hand_points=[(760,890),(820,866)]
+        hand_rotation=-20
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"#050a11",32))
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"url(#shaft)",21))
-    for gx,gy in [(760,890),(820,866)]:
-        parts.append(f'<ellipse cx="{gx}" cy="{gy}" rx="18" ry="13" transform="rotate(-20 {gx} {gy})" fill="#c89c69" stroke="#ffe0a6" stroke-width="4"/>')
+    for gx,gy in hand_points:
+        parts.append(f'<ellipse cx="{gx}" cy="{gy}" rx="18" ry="13" transform="rotate({hand_rotation} {gx} {gy})" fill="#c89c69" stroke="#ffe0a6" stroke-width="4"/>')
     if weapon_topology == "T":
         # The active terminal END FACE is the top end plane at P; head material extends down and away from the bubble.
         # The handle joins at the bar midpoint as one rigid, rotated T hammer.
@@ -414,16 +424,30 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
     projection["camera_id"] = camera_variant
     projection["camera_description"] = CAMERA_VARIANTS[camera_variant]
     if weapon_topology == "T":
-        # The active terminal end face is oriented upward at the bubble's bottom pole.
-        # The rigid T head extends 224 px downward from the end-face plane; its joint is at the midpoint.
+        # Canonical orthographic contact projection of one rigid T rotated 90 degrees:
+        # the end-face normal and crossbar axis point upward; the handle projects laterally.
+        # This is a 2D schematic lock, not proof that a generated image obeys the transform.
         contact = projection["P_six_oclock"]
         for frame_id in FRAME_IDS:
             frame = projection["frames"][frame_id]
             end_face_y = int(contact["y"]) + int(frame["gap_px"])
+            joint = {"x": int(contact["x"]), "y": end_face_y + 112}
             frame["top_face_y"] = end_face_y
-            frame["head_center"] = {"x": int(contact["x"]), "y": end_face_y + 112}
+            frame["head_center"] = dict(joint)
+            frame["handle_joint"] = dict(joint)
+            frame["handle_reference_point"] = {"x": int(contact["x"]) - 440, "y": joint["y"]}
             frame["active_surface"] = "TERMINAL_END_STRIKING_FACE"
             frame["active_surface_normal"] = "UPWARD_TOWARD_BUBBLE_AT_H2"
+            frame["rigid_T_projection"] = {
+                "model": "ORTHOGRAPHIC_2D_SCHEMATIC_ONLY",
+                "crossbar_axis_screen": {"x": 0, "y": -1},
+                "terminal_face_normal_screen": {"x": 0, "y": -1},
+                "handle_axis_screen": {"x": -1, "y": 0},
+                "joint_at_crossbar_midpoint": True,
+                "crossbar_projected_length_px": 224,
+                "crossbar_projected_thickness_px": 58,
+                "handle_centerline_passes_through_joint": True,
+            }
     story_id = str(record.get("story_id") or "STORY-UNKNOWN")
     scene = axis_text(record, "environment", "a monumental surreal city plaza")
     scale = axis_text(record, "scale", "a giant bubble enclosing a floating city")
