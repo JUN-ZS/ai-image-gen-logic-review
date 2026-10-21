@@ -282,6 +282,18 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "The complete weapon is a rigid body: never bend, kink, twist, telescope, detach, or rotate its head independently from its handle. "
             "This shape lock alone is not evidence that any generated H2 image achieved the required contact. Do not edit the bubble, P, camera, or background."
         )
+        files["stage_gate"] = "stage_gate.json"
+        cylinder_gate = {
+            "status":"BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED",
+            "topology":"CYLINDER_CROSS",
+            "required_order":["A_CYLINDER_CROSS_END_CAP_CONTACT_MATRIX","B_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS_H0_H2_H3"],
+            "required_contact_matrix_h2_images":48,
+            "required_contact_matrix_h2_reviews":"one manually reviewed JSON per variant",
+            "manual_visual_approval_required":True,
+            "do_not_transfer_old_T_evidence":True,
+            "do_not_mark_pass_from_prompt_or_svg_alone":True
+        }
+        (outdir/files["stage_gate"]).write_text(json.dumps(cylinder_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         (outdir/"edit_attacker_cylinder_cross.txt").write_text(cylinder_cross_prompt+"\n",encoding="utf-8")
     if final_weapon == "T":
         files["t_shape_reference"] = "05_T_silhouette_reference.svg"
@@ -417,6 +429,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             },
             "pixel_truth":{"vector_proxy":"SCHEMATIC_ONLY","contact_matrix_images":"NOT_RUN","edited_images":"NOT_RUN",
                 "warning":"No image generation or pixel contact audit is performed by this pipeline. The actual 48 H2 images must pass manual review; the previous T images are not evidence."},
+            "stage_gate_file":files["stage_gate"],
             "files":files,
         }
     elif final_weapon == "T":
