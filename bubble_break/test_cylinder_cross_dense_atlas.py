@@ -7,42 +7,51 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from cylinder_cross_dense_atlas import COLUMNS, ROWS, build_atlas, main
+from cylinder_cross_dense_atlas import TARGET_INTERACTIONS, build_atlas, main
 
 
 class CylinderCrossDenseAtlasTests(unittest.TestCase):
-    def test_builds_single_image_manifest_for_48_intended_local_pairs(self):
+    def test_builds_irregular_manifest_for_24_varied_local_pairs(self):
         manifest = build_atlas()
         self.assertEqual(manifest["artifact_type"], "SINGLE_IMAGE_DENSE_CANDIDATE_ATLAS")
         self.assertEqual(manifest["topology"], "CYLINDER_CROSS")
-        self.assertEqual(manifest["intended_local_collision_count"], 48)
-        self.assertEqual(manifest["intended_hammer_count"], 96)
-        self.assertEqual(manifest["canvas"]["target_layout_columns"], 8)
-        self.assertEqual(manifest["canvas"]["target_layout_rows"], 6)
-        self.assertEqual((COLUMNS, ROWS), (8, 6))
+        self.assertEqual(manifest["target_local_collision_count"], 24)
+        self.assertEqual(manifest["target_hammer_count"], 48)
+        self.assertEqual(manifest["required_visible_long_handles"], 48)
+        self.assertEqual(manifest["minimum_handle_to_head_width_ratio"], 2.5)
+        self.assertEqual(TARGET_INTERACTIONS, 24)
+        self.assertEqual(manifest["canvas"]["layout"], "IRREGULAR_SCATTER_NO_GRID")
         self.assertFalse(manifest["sampling_balance"]["rendered_instance_count_guaranteed"])
         self.assertEqual(manifest["generation_status"], "IMAGE_REALIZATION_NOT_RUN")
         self.assertEqual(manifest["pixel_audit_status"], "PIXEL_AUDIT_NOT_RUN")
+        self.assertTrue(manifest["variation_contract"]["independent_3d_pair_orientations_required"])
+        self.assertTrue(manifest["variation_contract"]["both_long_handles_visible_per_pair"])
+        self.assertFalse(manifest["variation_contract"]["uniform_grid_allowed"])
         instances = manifest["instances"]
-        self.assertEqual(len(instances), 48)
-        self.assertEqual(len({item["instance_id"] for item in instances}), 48)
-        self.assertEqual(len({(item["grid_row"], item["grid_column"]) for item in instances}), 48)
-        self.assertEqual({item["grid_row"] for item in instances}, set(range(1, 7)))
-        self.assertEqual({item["grid_column"] for item in instances}, set(range(1, 9)))
+        self.assertEqual(len(instances), 24)
+        self.assertEqual(len({item["instance_id"] for item in instances}), 24)
+        self.assertEqual(len({item["region_hint"] for item in instances}), 24)
+        self.assertEqual({v for v in manifest["sampling_balance"]["counts_by_collision_axis"].values()}, {6})
+        self.assertEqual(set(manifest["sampling_balance"]["counts_by_handle_roll"].values()) != {0}, True)
 
     def test_prompt_locks_cap_contact_rigid_body_and_crop_separation(self):
         prompt = build_atlas()["prompt_text"].lower()
         for phrase in (
             "ultra-dense",
             "16:9",
+            "24 distinct 3d hammer-pair collision studies",
             "flat circular end caps",
             "flat-face-to-flat-face",
-            "coincident cap planes",
-            "opposite outward normals",
-            "curved cylindrical barrel walls",
-            "never make first contact",
-            "no bending",
-            "for later visual scanning and cropping",
+            "coincident planes",
+            "opposite normals",
+            "curved-barrel-side collision",
+            "no short central peg",
+            "at least 2.5 times",
+            "both separate handles",
+            "impact sparks at the center joint",
+            "upper-left pocket",
+            "no neat rows or columns",
+            "for later human scanning and cropping",
             "neighboring pairs",
         ):
             self.assertIn(phrase, prompt)
