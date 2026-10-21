@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from t_contact_matrix import CAMERA_VIEWS, MASTER_REVIEW_CHECKS, REVIEW_CHECKS, STRIKE_AXES, build_matrix, make_prompt, master_review_payload_passes, review_payload_passes, validate_master_review, validate_matrix
+from t_contact_matrix import CAMERA_VIEWS, HANDLE_CLOCK_VARIANTS, MASTER_REVIEW_CHECKS, REVIEW_CHECKS, STRIKE_AXES, build_matrix, make_prompt, master_review_payload_passes, review_payload_passes, validate_master_review, validate_matrix
 
 
 class TContactMatrixTests(unittest.TestCase):
@@ -17,6 +17,12 @@ class TContactMatrixTests(unittest.TestCase):
             self.assertEqual(result["variant_count"],48)
             self.assertEqual(result["single_image_prompt_count"],144)
             self.assertEqual(result["required_H2_contact_proof_images"],48)
+            self.assertEqual(result["expected_prompt_count"],144)
+            pose_counts={pose_id: sum(v["handle_roll_variant_id"]==pose_id for v in result["variants"]) for pose_id,_ in HANDLE_CLOCK_VARIANTS}
+            self.assertEqual(pose_counts,{pose_id:12 for pose_id,_ in HANDLE_CLOCK_VARIANTS})
+            self.assertEqual(len({(v["camera_view_id"],v["collision_axis_id"]) for v in result["variants"]}),48)
+            for camera_id,_ in CAMERA_VIEWS:
+                self.assertEqual(sum(v["camera_view_id"]==camera_id for v in result["variants"]),4)
             rows=[json.loads(x) for x in (Path(td)/"t_contact_matrix.jsonl").read_text(encoding="utf-8").splitlines()]
             self.assertEqual(len(rows),144)
             self.assertEqual(sum(x["state"]=="H2" for x in rows),48)
@@ -26,7 +32,7 @@ class TContactMatrixTests(unittest.TestCase):
             self.assertEqual(result["pixel_audit"],"NOT_RUN")
 
     def test_h2_requires_two_terminal_end_faces_not_cheeks(self):
-        prompt=make_prompt("V001","FACE_ON","head-on view","HORIZONTAL","horizontal strike","H2")
+        prompt=make_prompt("V001","FACE_ON","slightly grazing view","HORIZONTAL","horizontal strike","H_LIKE_OPPOSED_HANDLES","opposed projected handles","H2")
         self.assertIn("terminal END STRIKING FACE of hammer A",prompt)
         self.assertIn("terminal END STRIKING FACE of hammer B",prompt)
         self.assertIn("face-to-face",prompt)
