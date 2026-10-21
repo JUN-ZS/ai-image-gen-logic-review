@@ -1,0 +1,57 @@
+name: T-Hammer Inverse-Contrast Pair Engine
+
+on:
+  push:
+    branches: [main, 'feat/**']
+    paths:
+      - 'bubble_break/t_hammer_inverse_contrast_engine.py'
+      - 'bubble_break/test_t_hammer_inverse_contrast_engine.py'
+      - 'bubble_break/T_HAMMER_INVERSE_CONTRAST_SPEC.md'
+      - '.github/workflows/t-hammer-inverse-contrast.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/t_hammer_inverse_contrast_engine.py'
+      - 'bubble_break/test_t_hammer_inverse_contrast_engine.py'
+      - 'bubble_break/T_HAMMER_INVERSE_CONTRAST_SPEC.md'
+      - '.github/workflows/t-hammer-inverse-contrast.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run inverse-contrast geometry tests
+        run: python -m unittest bubble_break/test_t_hammer_inverse_contrast_engine.py -v
+      - name: Compile 192 paired trials
+        run: python bubble_break/t_hammer_inverse_contrast_engine.py --outdir out/t_hammer_inverse_contrast
+      - name: Verify output counts and negative-control labeling
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('out/t_hammer_inverse_contrast')
+          payload = json.loads((root / 't_hammer_inverse_contrast_matrix.json').read_text(encoding='utf-8'))
+          assert payload['counts']['total_variants'] == 192
+          assert payload['acceptance_gate']['image_realization'] == 'NOT_RUN'
+          assert payload['acceptance_gate']['pixel_audit'] == 'NOT_RUN'
+          variants = payload['variants']
+          assert len(variants) == 192
+          assert all(v['expected_acceptance']['grounded_wrong_contact'] == 'EXPECTED_FAIL_NEGATIVE_CONTROL' for v in variants)
+          assert all(v['expected_acceptance']['airborne_correct_contact'] == 'REVIEW_FOR_PASS' for v in variants)
+          assert len(list((root / 'prompts').glob('*.json'))) == 192
+          assert len(list((root / 'svg_proxies').glob('*.svg'))) == 192
+          print('192 paired variants compiled; wrong-face cases remain negative controls; pixels NOT_RUN')
+          PY
+      - name: Upload contrast matrix and proxies
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-hammer-inverse-contrast-192-trial-bundle
+          path: out/t_hammer_inverse_contrast/
+          if-no-files-found: error
