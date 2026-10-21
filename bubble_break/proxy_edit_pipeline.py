@@ -232,10 +232,13 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             encoding="utf-8")
         files["stage_gate"] = "stage_gate.json"
         stage_gate = {
-            "required_order": ["A_T_WEAPON_MASTER", "B_STORY_SPECIFIC_SCENE_FRAMES"],
-            "current_stage": "A_T_WEAPON_MASTER_REQUIRED",
-            "status": "BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
+            "required_order": ["A_T_WEAPON_MASTER", "B_T_TO_T_END_FACE_CONTACT_MATRIX", "C_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS"],
+            "current_stage": "A_T_WEAPON_MASTER_AND_T_CONTACT_MATRIX_REQUIRED",
+            "status": "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED",
             "required_stage_a_artifact": "A_T_weapon_master.png",
+            "required_contact_matrix_manifest": "contact_matrix_manifest.json",
+            "required_contact_matrix_h2_images": 48,
+            "required_contact_matrix_h2_reviews": "one manual review JSON per camera/axis variant",
             "manual_visual_approval_required": True,
             "stage_a_checks": [
                 "exactly one T-headed hammer is present",
@@ -244,18 +247,18 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
                 "the entire weapon is visible and unmistakably capital-T shaped",
                 "no second or inverted T, bubble, heroine, city, debris or text",
             ],
-            "not_proven_by_this_proxy": ["actual generated pixels", "cinematic scene quality", "real-image contact location", "story continuity"],
+            "not_proven_by_this_proxy": ["actual generated pixels", "face-to-face contact on any actual image", "cinematic scene quality", "real-image contact location", "story continuity"],
             "do_not_mark_pass_from_prompt_or_svg_alone": True,
-            "reference_scope": "weapon topology only; never copy this neutral background or composition into story scenes",
+            "reference_scope": "weapon topology only; the contact matrix proves active-face geometry; never copy this neutral background or composition into story scenes",
         }
         (outdir/files["stage_gate"]).write_text(json.dumps(stage_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     c, point, radius = projection["sphere_center"], projection["P_six_oclock"], projection["sphere_radius"]
     if final_weapon == "T":
         target_prompt = (
-            "STAGE B — STORY-SPECIFIC CINEMATIC SCENE GENERATION, AFTER THE T MASTER IS REVIEWED. "
+            "STAGE C — STORY-SPECIFIC CINEMATIC SCENE GENERATION, ONLY AFTER THE T MASTER AND ALL 48 END-FACE CONTACT-MATRIX H2 IMAGES ARE VISUALLY APPROVED. "
             "Use A_T_weapon_master.png as a WEAPON-SHAPE reference only, never as a layout, camera, pose or background reference. "
             "Generate H0, H2 and H3 as THREE separate full-bleed images using the corresponding prompt files in this story's frame packet. "
-            "Keep exactly ONE T-headed hammer held by the heroine and aim its designated broad upper crossbar plane at the bubble's six-o'clock point P. "
+            "Keep exactly ONE T-headed hammer held by the heroine. Aim its designated TERMINAL END STRIKING FACE at the bubble's six-o'clock point P; never substitute the broad upper/lower crossbar surface, long cheek, corner or handle. The 48-view contact matrix defines which plane is active. "
             "The hammer handle may run diagonally down-left in the action pose; its joint must remain at the exact crossbar underside midpoint, "
             "and the straight crossbar must not twist into an X, plus, L, sphere or diagonal bar. The BUBBLE is the target; never draw an upper inverted T "
             "or a second hammer and never replace one hammer with a bubble. Preserve the story-specific environment, scale, shell, palette, symbolism, "
@@ -263,9 +266,9 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "H0/H2/H3 share continuity and camera. Do not copy the neutral studio composition of the weapon master."
         )
         weapon_prompt = (
-            "T-WEAPON SHAPE LOCK: exactly one straight, rigid horizontal rectangular crossbar and one single long handle attached directly to the "
-            "crossbar's exact underside midpoint. The handle itself is the T stem; there is no separate short post. Keep equal left/right bar ends, "
-            "a centered joint and a clear capital-T silhouette in the weapon's own local orientation. Perspective may make the handle project diagonally "
+            "T-WEAPON SHAPE LOCK: exactly one straight rigid rectangular crossbar and one single long handle attached at the "
+            "defined central underside joint. The handle itself is the T stem; there is no separate short post. Keep equal left/right bar ends, "
+            "a centered joint and clear T topology in the weapon's own local orientation. The active contact face is a terminal END FACE at one end of the crossbar, not its cheek or upper/lower surface. Perspective may rotate the whole rigid hammer but must not bend it; the handle may project diagonally "
             "through the scene, but it must not twist the crossbar. No second or inverted T, no sphere head, no plus/X/L head, no extra bar, no extra shaft."
         )
     else:
@@ -306,13 +309,13 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     }[final_weapon]
     if final_weapon == "T":
         plan = {
-            "method":"T_MASTER_THEN_STORY_VARIANT_SCENE_GENERATION",
-            "status":"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
+            "method":"T_MASTER_THEN_T_END_FACE_CONTACT_MATRIX_THEN_STORY_SCENE_GENERATION",
+            "status":"BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED",
             "vector_proxy_status":"T_WEAPON_MASTER_SHAPE_PROXY_VALID",
-            "stage_gate_status":"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
+            "stage_gate_status":"BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED",
             "final_weapon":final_weapon,
             "shape_contract":shape_contract,
-            "active_striking_surface":"the broad upper plane of the single T crossbar; the bubble is the target, never a second T",
+            "active_striking_surface":"the selected terminal END STRIKING FACE at one end of the rigid T crossbar; the bubble is the target, never a second T",
             "selected_edit_prompt":selected_prompt,
             "projection_lock":projection,
             "terminal_face_gap_px":0,
@@ -320,17 +323,23 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "required_order":[
                 "A: generate ONE isolated T weapon master using 00_generate_T_weapon_master.txt",
                 "A_GATE: manually review and approve A_T_weapon_master.png; do not infer approval from the prompt or SVG",
-                "B: generate story-specific H0/H2/H3 as separate cinematic frames, using the master only to lock weapon topology",
-                "C: keep scene concepts varied across story IDs, preserve continuity within each story, then audit actual image pixels",
+                "B: generate 144 T-to-T H0/H2/H3 contact-matrix prompts over 12 views x 4 collision axes",
+                "B_GATE: manually review all 48 H2 contact proofs; each must show terminal END FACE to END FACE, coincident planes and opposing normals",
+                "C: generate each story's H0/H2/H3 across the 12 camera variants; preserve continuity within each camera trio",
+                "C: keep scene concepts varied across story IDs, preserve continuity within each camera trio, then audit actual image pixels",
             ],
             "required_artifacts":{
                 "stage_a_image":"A_T_weapon_master.png",
                 "stage_a_review":"A_T_weapon_master_review.json",
+                "contact_matrix_manifest":"contact_matrix_manifest.json",
+                "contact_matrix_h2_image_count":48,
+                "contact_matrix_h2_review_pattern":"one manually reviewed JSON per variant",
+                "scene_camera_variant_count":12,
                 "scene_prompts":["H0_pre_impact.txt","H2_first_contact_anchor.txt","H3_post_impact.txt"],
             },
             "stage_gate_file":files["stage_gate"],
-            "pixel_truth":{"vector_proxy":"T_WEAPON_MASTER_SHAPE_PROXY_VALID","edited_images":"NOT_RUN",
-                           "warning":"This repository produces prompts and SVG references only. The isolated master must be reviewed; external scene renders and pixel audits remain NOT_RUN."},
+            "pixel_truth":{"vector_proxy":"T_WEAPON_MASTER_SHAPE_PROXY_VALID","contact_matrix_images":"NOT_RUN","edited_images":"NOT_RUN",
+                           "warning":"This repository compiles prompts and SVG references only. It does not generate images or certify end-face contact; the 48 actual H2 images must pass manual pixel review."},
             "files":files,
         }
     else:
