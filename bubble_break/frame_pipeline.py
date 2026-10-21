@@ -261,7 +261,7 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
     hx, hy = geo["head_center"]["x"], geo["head_center"]["y"]
     top_y = geo["top_face_y"]
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-contact-p="{FRAME_PROJECTION["P_six_oclock"]["x"]},{FRAME_PROJECTION["P_six_oclock"]["y"]}" data-frame="{frame_id}">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-contact-p="{FRAME_PROJECTION["P_six_oclock"]["x"]},{FRAME_PROJECTION["P_six_oclock"]["y"]}" data-frame="{frame_id}" data-active-surface="{"TERMINAL_END_FACE" if weapon_topology.upper()=="T" else "topology-specific"}" data-contact-plane-proof="schematic-only">',
         '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102b4a"/><stop offset="1" stop-color="#050b18"/></linearGradient>',
         '<radialGradient id="membrane"><stop offset="0" stop-color="#9eeaff" stop-opacity=".08"/><stop offset=".8" stop-color="#5ad7ff" stop-opacity=".10"/><stop offset="1" stop-color="#d5faff" stop-opacity=".28"/></radialGradient>',
         '<linearGradient id="shaft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b0c3d4"/><stop offset=".45" stop-color="#23334c"/><stop offset="1" stop-color="#d4a75e"/></linearGradient>',
@@ -330,17 +330,30 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
     # Hammer shaft: one diagonal, rigid handle, never a spear through the sphere centre.
     handle_end=(690,920)
     weapon_topology=weapon_topology.upper()
-    head_attach=(hx,top_y+58) if weapon_topology=="T" else (hx-42,hy+40)
+    if weapon_topology=="T":
+        # Show the terminal end face at P; this 2D proxy cannot prove its 3D normal.
+        contact_face_x=px-int(geo.get("gap_px",0))
+        t_head_cx=contact_face_x-112
+        t_bar_top=py-25
+        head_attach=(t_head_cx,t_bar_top+50)
+    else:
+        contact_face_x=px
+        t_head_cx=hx
+        t_bar_top=top_y
+        head_attach=(hx-42,hy+40)
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"#050a11",32))
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"url(#shaft)",21))
     for gx,gy in [(760,890),(820,866)]:
         parts.append(f'<ellipse cx="{gx}" cy="{gy}" rx="18" ry="13" transform="rotate(-20 {gx} {gy})" fill="#c89c69" stroke="#ffe0a6" stroke-width="4"/>')
     if weapon_topology == "T":
-        # One straight crossbar; the single long handle attaches at its underside midpoint and forms the T stem.
-        parts.append(_polygon([(hx-112,top_y+8),(hx+112,top_y+8),(hx+112,top_y+58),(hx-112,top_y+58)],
+        # The right terminal face is the selected END FACE and its centre is pinned to the projected P in H2.
+        # Do not interpret this schematic's 2D screen normal as proof of the true 3D contact normal.
+        parts.append(_polygon([(t_head_cx-112,t_bar_top),(t_head_cx+112,t_bar_top),
+                               (t_head_cx+112,t_bar_top+50),(t_head_cx-112,t_bar_top+50)],
                               "#203d56","#e0c18a",6))
-        parts.append(_polygon([(hx-112,top_y),(hx+112,top_y),(hx+96,top_y+8),(hx-96,top_y+8)],
-                              "#6b9cbd","#fff0bf",4))
+        parts.append(_polygon([(contact_face_x-8,t_bar_top+2),(contact_face_x,t_bar_top+2),
+                               (contact_face_x,t_bar_top+48),(contact_face_x-8,t_bar_top+48)],
+                              "#6b9cbd","#fff0bf",3))
     elif weapon_topology == "CROSS":
         parts.append(_polygon([(hx-30,top_y),(hx+30,top_y),(hx+30,hy+85),(hx-30,hy+85)],
                               "#203d56","#e0c18a",5))
@@ -498,9 +511,11 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
         svg_name=FRAME_NAMES[fid]+"_geometry.svg"
         (story_dir/svg_name).write_text(_svg_frame(fid,packet.get("weapon_topology","RADIAL"))+"\n",encoding="utf-8")
         geometry_names[fid]=svg_name
-    layout={"shot_lock_id":packet["shot_lock_id"],"projection_lock":packet["projection_lock"],
+    layout={"shot_lock_id":packet["shot_lock_id"],"camera_variant":packet.get("camera_variant","LOW_3Q_FRONTAL"),
+            "camera_description":packet.get("camera_description"),
+            "projection_lock":packet["projection_lock"],
             "frame_order":list(FRAME_IDS),"geometry_files":geometry_names,
-            "note":"Deterministic 2D geometry blockout/reference only; not a photorealistic rendered frame."}
+            "note":("T SVG shows the selected terminal end face at the projected P but cannot prove 3D face-normal alignment; use the 48-view real-image contact matrix." if packet.get("weapon_topology")=="T" else "Deterministic 2D geometry blockout/reference only; not a photorealistic rendered frame.")}
     (story_dir/"layout.json").write_text(json.dumps(layout,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     manifest=dict(packet); manifest["prompt_files"]=names; manifest["geometry_files"]=geometry_names
     manifest["layout_file"]="layout.json"
