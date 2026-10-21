@@ -13,7 +13,19 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
+
+REVIEW_CHECKS = (
+    "two_distinct_T_hammers",
+    "active_terminal_face_A_identified",
+    "active_terminal_face_B_identified",
+    "both_terminal_end_faces_coincident",
+    "face_normals_opposite",
+    "no_cheek_first",
+    "no_upper_lower_long_surface_first",
+    "no_corner_first",
+    "no_handle_first",
+)
 
 CAMERA_VIEWS: Tuple[Tuple[str, str], ...] = (
     ("FACE_ON", "near head-on along the collision axis, both rectangular terminal END FACES fully visible and the seam centered"),
@@ -104,6 +116,19 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
             variant_id = f"V{len(variants)+1:03d}_{camera_id}_{axis_id}"
             variant_dir = outdir / variant_id
             variant_dir.mkdir(parents=True, exist_ok=True)
+            image_path = variant_dir / f"{variant_id}_H2.png"
+            review_path = variant_dir / f"{variant_id}_H2_review.json"
+            review_template_path = variant_dir / f"{variant_id}_H2_review.template.json"
+            review_template = {
+                "variant_id": variant_id,
+                "status": "UNASSESSED",
+                "image": str(image_path),
+                "manual_pixel_review": False,
+                "checks": {name: False for name in REVIEW_CHECKS},
+                "notes": "",
+                "warning": "Do not set PASS unless a human has inspected the actual H2 PNG and every face-plane check is visibly true.",
+            }
+            review_template_path.write_text(json.dumps(review_template, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
             state_files = {}
             for state in ("H0", "H2", "H3"):
                 prompt = make_prompt(variant_id, camera_id, camera_text, axis_id, axis_text, state)
@@ -135,8 +160,10 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
                 "camera_view_id": camera_id,
                 "collision_axis_id": axis_id,
                 "state_prompt_files": state_files,
-                "required_H2_image": f"{variant_id}_H2.png",
-                "required_H2_review": f"{variant_id}_H2_review.json",
+                "required_H2_image": str(image_path),
+                "required_H2_review": str(review_path),
+                "review_template": str(review_template_path),
+                "required_review_checks": list(REVIEW_CHECKS),
                 "status": "UNASSESSED",
             })
     jsonl_path = outdir / "t_contact_matrix.jsonl"
@@ -144,6 +171,11 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
     manifest = {
         "pipeline_version": VERSION,
         "purpose": "Prove that the image model understands T-hammer terminal END-FACE-to-END-FACE first contact across camera and collision-axis variants.",
+        "manual_review_contract": {
+            "pass_requires": ["actual non-empty PNG image", "matching H2_review.json", "status PASS", "manual_pixel_review true", "non-empty notes", "every required review check true"],
+            "automatic_pixel_claims": False,
+            "blank_or_missing_evidence_status": "BLOCKED",
+        },
         "camera_view_count": len(CAMERA_VIEWS),
         "collision_axis_count": len(STRIKE_AXES),
         "variant_count": len(variants),
