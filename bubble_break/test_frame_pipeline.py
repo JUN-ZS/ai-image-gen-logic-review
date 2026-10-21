@@ -127,7 +127,7 @@ class FramePipelineTests(unittest.TestCase):
         for prompt in p["prompts"].values():
             self.assertIn("WEAPON_TOPOLOGY_ID=WEAPON_T",prompt)
             positive=prompt.split("NEGATIVE PROMPT:",1)[0]
-            self.assertIn("T silhouette",positive)
+            self.assertIn("T topology",positive)
             negative=prompt.split("NEGATIVE PROMPT:",1)[1]
             self.assertIn("horizontal rectangular crossbar",positive)
             self.assertIn("handle itself forms the single stem",positive)
