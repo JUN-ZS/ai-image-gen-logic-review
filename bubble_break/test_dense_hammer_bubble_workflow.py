@@ -165,6 +165,11 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
                 "stage_b_one_hammer_no_person.md",
                 "stage_c_scale_and_add_person.md",
                 "stage_d_action_refinement.md",
+                "stage_d_step_D0.md",
+                "stage_d_step_D1.md",
+                "stage_d_step_D2.md",
+                "stage_d_step_D3.md",
+                "stage_d_step_D4.md",
                 "stage_e_glow_bubble_break.md",
             ):
                 self.assertIn(name, result["outputs"])
