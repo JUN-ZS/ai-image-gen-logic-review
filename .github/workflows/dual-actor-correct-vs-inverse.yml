@@ -5,12 +5,14 @@ on:
     paths:
       - 'bubble_break/dual_actor_correct_vs_inverse_formula.py'
       - 'bubble_break/test_dual_actor_correct_vs_inverse_formula.py'
+      - 'bubble_break/dual_actor_right_angle_line_strike.py'
       - 'bubble_break/DUAL_ACTOR_CORRECT_VS_INVERSE_FORMULA.md'
       - '.github/workflows/dual-actor-correct-vs-inverse.yml'
   pull_request:
     paths:
       - 'bubble_break/dual_actor_correct_vs_inverse_formula.py'
       - 'bubble_break/test_dual_actor_correct_vs_inverse_formula.py'
+      - 'bubble_break/dual_actor_right_angle_line_strike.py'
       - 'bubble_break/DUAL_ACTOR_CORRECT_VS_INVERSE_FORMULA.md'
   workflow_dispatch:
 permissions:
@@ -23,6 +25,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Run right-angle line-strike geometry self-test
+        run: |
+          cd bubble_break
+          python dual_actor_right_angle_line_strike.py
       - name: Run formula unit tests
         run: |
           cd bubble_break
