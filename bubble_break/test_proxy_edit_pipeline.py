@@ -48,8 +48,6 @@ class CrossProxyTests(unittest.TestCase):
             plan=json.loads((out/"edit_plan.json").read_text(encoding="utf-8"))
             self.assertEqual(plan["terminal_face_gap_px"],0)
             self.assertEqual(plan["pixel_truth"]["edited_images"],"NOT_RUN")
-            self.assertEqual(plan["pixel_truth"]["contact_matrix_images"],"NOT_RUN")
-            self.assertIsNone(plan["terminal_face_gap_px"])
             proxy=(out/"00_cross_to_cross_proxy.svg").read_text(encoding="utf-8")
             sphere=(out/"01_target_cross_replaced_by_sphere.svg").read_text(encoding="utf-8")
             self.assertIn('cx="1090" cy="330" r="280"',sphere)
@@ -106,6 +104,8 @@ class CrossProxyTests(unittest.TestCase):
             self.assertIn('x="465" y="255" width="70" height="520"',silhouette)
             self.assertIn("handle itself forms the single stem of the T",plan["shape_contract"])
             self.assertEqual(plan["pixel_truth"]["edited_images"],"NOT_RUN")
+            self.assertEqual(plan["pixel_truth"]["contact_matrix_images"],"NOT_RUN")
+            self.assertIsNone(plan["terminal_face_gap_px"])
 
     def test_invalid_final_weapon_blocks(self):
         with tempfile.TemporaryDirectory() as td:
