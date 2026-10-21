@@ -32,7 +32,7 @@ class CylinderCrossDenseAtlasTests(unittest.TestCase):
         self.assertEqual(len({item["instance_id"] for item in instances}), 24)
         self.assertEqual(len({item["region_hint"] for item in instances}), 24)
         self.assertEqual({v for v in manifest["sampling_balance"]["counts_by_collision_axis"].values()}, {6})
-        self.assertEqual(set(manifest["sampling_balance"]["counts_by_handle_roll"].values()) != {0}, True)
+        self.assertEqual(set(manifest["sampling_balance"]["counts_by_handle_roll"].values()), {6})
 
     def test_prompt_locks_cap_contact_rigid_body_and_crop_separation(self):
         prompt = build_atlas()["prompt_text"].lower()
