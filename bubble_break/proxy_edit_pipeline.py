@@ -192,7 +192,9 @@ def validate_geometry(layout, final_weapon="RADIAL"):
     if str(final_weapon).upper() == "T":
         # Fail closed if the T projection shows a vertical head but a separately diagonal stem.
         for frame_id in ("H0", "H2", "H3"):
-            frame = p["frames"][frame_id]
+            frame = p["frames"].get(frame_id)
+            if not isinstance(frame, dict):
+                raise ValueError(f"geometry mismatch: missing {frame_id} projection frame for T")
             basis = frame.get("rigid_T_projection")
             if not isinstance(basis, dict):
                 raise ValueError(f"geometry mismatch: missing rigid_T_projection basis for {frame_id}")
@@ -208,7 +210,7 @@ def validate_geometry(layout, final_weapon="RADIAL"):
             joint = frame.get("handle_joint")
             head_center = frame.get("head_center")
             handle_ref = frame.get("handle_reference_point")
-            if joint != head_center or not isinstance(handle_ref, dict):
+            if not isinstance(joint, dict) or not isinstance(head_center, dict) or joint != head_center or not isinstance(handle_ref, dict):
                 raise ValueError(f"geometry mismatch: T handle joint is not at the crossbar midpoint for {frame_id}")
             if handle_ref.get("y") != joint.get("y") or handle_ref.get("x", point["x"]) >= joint.get("x", point["x"]):
                 raise ValueError(f"geometry mismatch: T handle reference is not lateral to the joint for {frame_id}")
