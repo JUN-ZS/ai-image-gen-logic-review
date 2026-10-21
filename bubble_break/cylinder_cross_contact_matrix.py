@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 import sys
+import zlib
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -272,12 +273,47 @@ def master_review_payload_passes(review: Dict[str, Any]) -> bool:
 
 
 def png_is_present_and_plausible(path: Path) -> bool:
-    """Fail closed on missing, empty or non-PNG placeholders; this is not a visual pixel audit."""
+    """Require a structurally complete PNG with valid chunk CRCs; this is not a visual pixel audit."""
     try:
         data = path.read_bytes()
     except OSError:
         return False
-    return len(data) >= 33 and data.startswith(bytes([137, 80, 78, 71, 13, 10, 26, 10])) and data[12:16] == b"IHDR"
+    if len(data) < 45 or data[:8] != bytes([137, 80, 78, 71, 13, 10, 26, 10]):
+        return False
+    cursor = 8
+    saw_ihdr = saw_idat = saw_iend = False
+    while cursor + 12 <= len(data):
+        length = int.from_bytes(data[cursor:cursor + 4], "big")
+        kind_start = cursor + 4
+        payload_start = cursor + 8
+        payload_end = payload_start + length
+        crc_end = payload_end + 4
+        if crc_end > len(data):
+            return False
+        kind = data[kind_start:payload_start]
+        chunk_crc = int.from_bytes(data[payload_end:crc_end], "big")
+        if (zlib.crc32(data[kind_start:payload_end]) & 0xFFFFFFFF) != chunk_crc:
+            return False
+        if not saw_ihdr:
+            if kind != b"IHDR" or length != 13:
+                return False
+            width = int.from_bytes(data[payload_start:payload_start + 4], "big")
+            height = int.from_bytes(data[payload_start + 4:payload_start + 8], "big")
+            if width <= 0 or height <= 0:
+                return False
+            saw_ihdr = True
+        elif kind == b"IHDR":
+            return False
+        if kind == b"IDAT":
+            saw_idat = True
+        if kind == b"IEND":
+            if length != 0 or crc_end != len(data):
+                return False
+            saw_iend = True
+            cursor = crc_end
+            break
+        cursor = crc_end
+    return saw_ihdr and saw_idat and saw_iend and cursor == len(data)
 
 
 def validate_master_review(image_path: Path, review_path: Path) -> Dict[str, Any]:
@@ -320,6 +356,8 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
         if review is not None:
             if review.get("variant_id") != variant["variant_id"]:
                 issues.append("REVIEW_VARIANT_ID_MISMATCH")
+            if review.get("image") != variant["required_H2_image"]:
+                issues.append("REVIEW_IMAGE_PATH_MISMATCH")
             if not review_payload_passes(review):
                 issues.append("REVIEW_NOT_COMPLETE_PASS")
         if not issues:
