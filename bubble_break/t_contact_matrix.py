@@ -200,6 +200,89 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
     (outdir / "contact_matrix_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return manifest
 
+def review_payload_passes(review: Dict[str, Any]) -> bool:
+    """Accept only a complete human review record; never infer PASS from prompts."""
+    checks = review.get("checks")
+    return (
+        review.get("status") == "PASS"
+        and review.get("manual_pixel_review") is True
+        and isinstance(review.get("notes"), str)
+        and bool(review["notes"].strip())
+        and isinstance(checks, dict)
+        and all(checks.get(name) is True for name in REVIEW_CHECKS)
+    )
+
+
+def png_is_present_and_plausible(path: Path) -> bool:
+    """Fail closed on missing, empty or non-PNG placeholders; this is not a visual pixel audit."""
+    try:
+        data = path.read_bytes()
+    except OSError:
+        return False
+    return len(data) >= 33 and data.startswith(bytes([137, 80, 78, 71, 13, 10, 26, 10])) and data[12:16] == b"IHDR"
+
+
+def validate_matrix(outdir: Path) -> Dict[str, Any]:
+    """Check actual H2 files and explicit human review JSONs; cannot inspect pixels itself."""
+    manifest_path = outdir / "contact_matrix_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    results = []
+    variants = manifest.get("variants", [])
+    for variant in variants:
+        image_path = Path(variant["required_H2_image"])
+        review_path = Path(variant["required_H2_review"])
+        issues = []
+        if not png_is_present_and_plausible(image_path):
+            issues.append("MISSING_OR_INVALID_H2_PNG")
+        review = None
+        try:
+            review = json.loads(review_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            issues.append("MISSING_OR_INVALID_REVIEW_JSON")
+        if review is not None:
+            if review.get("variant_id") != variant["variant_id"]:
+                issues.append("REVIEW_VARIANT_ID_MISMATCH")
+            if not review_payload_passes(review):
+                issues.append("REVIEW_NOT_COMPLETE_PASS")
+        if not issues:
+            status = "PASS_MANUAL_REVIEW_RECORDED"
+        elif review is not None and review.get("status") == "FAIL":
+            status = "FAIL_MANUAL_REVIEW"
+        else:
+            status = "BLOCKED"
+        results.append({
+            "variant_id": variant["variant_id"],
+            "status": status,
+            "image_path": str(image_path),
+            "review_path": str(review_path),
+            "issues": issues,
+        })
+    pass_count = sum(row["status"] == "PASS_MANUAL_REVIEW_RECORDED" for row in results)
+    fail_count = sum(row["status"] == "FAIL_MANUAL_REVIEW" for row in results)
+    blocked_count = sum(row["status"] == "BLOCKED" for row in results)
+    if pass_count == len(variants) and pass_count > 0:
+        overall = "PASS_MANUAL_REVIEW_RECORDED"
+    elif fail_count:
+        overall = "FAIL"
+    else:
+        overall = "BLOCKED"
+    report = {
+        "pipeline_version": VERSION,
+        "overall_status": overall,
+        "variant_count": len(results),
+        "reviewed_pass_count": pass_count,
+        "reviewed_fail_count": fail_count,
+        "blocked_count": blocked_count,
+        "automatic_pixel_claims": False,
+        "warning": "This report checks PNG presence and human review records only. The reviewer must inspect the pixels; this script does not prove which planes touch.",
+        "variants": results,
+    }
+    (outdir / "contact_matrix_audit_report.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    return report
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="Compile 48 T-to-T terminal-face variants (12 cameras x 4 collision axes), each with H0/H2/H3 prompts; does not render images.")
     parser.add_argument("--outdir", required=True)
