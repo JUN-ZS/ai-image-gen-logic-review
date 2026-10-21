@@ -74,7 +74,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         for expected in (
             "exactly 24",
             "single large",
-            "complete separate tool",
+            "complete, separate tool",
             "front circular terminal face",
             "no regular rings",
             "no humans",
