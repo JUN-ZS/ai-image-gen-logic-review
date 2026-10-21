@@ -103,11 +103,13 @@ def make_candidates() -> list[Candidate]:
             # Deliberate but modest tilts make candidate orientations distinguishable.
             tilt_deg = (0.0, 8.0, 14.0, 18.0)[ring_no]
             roll_deg = (azimuth_deg * 0.7 + ring_no * 13.0) % 360.0
+            # Build a true tangent basis at this anchor so tilt_deg is exact.
+            reference = WORLD_UP if abs(dot(radial, WORLD_UP)) < 0.92 else CAMERA_RIGHT
+            tangent_u = unit(cross(reference, radial))
+            tangent_v = unit(cross(radial, tangent_u))
+            roll = math.radians(roll_deg)
             local_tangent = unit(
-                add(
-                    mul(CAMERA_RIGHT, math.cos(math.radians(roll_deg))),
-                    mul(CAMERA_UP, math.sin(math.radians(roll_deg))),
-                )
+                add(mul(tangent_u, math.cos(roll)), mul(tangent_v, math.sin(roll)))
             )
             axis = unit(
                 add(
