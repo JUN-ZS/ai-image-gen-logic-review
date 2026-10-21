@@ -80,7 +80,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
             "side-middle",
             "local tangent plane",
             "no people",
-            "no regular rings",
+            "not a grid",
             "the contact footprint/base seam",
         ):
             self.assertIn(expected, prompt)
