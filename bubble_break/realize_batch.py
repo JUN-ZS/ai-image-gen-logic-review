@@ -174,14 +174,14 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             package["required_contact_matrix_h2_images"]=contact_manifest["required_H2_contact_proof_images"]
             package["selected_edit_prompt"]=str(proxy/"generate_scene_with_T_master.txt")
     batch={
-        "pipeline_version":"1.0.0",
+        "pipeline_version":"1.1.0",
         "input":str(input_path),
         "requested_per_kernel":per_kernel,
         "requested_limit":limit,
         "selected_stories":len(packages),
         "distinct_causal_kernels":len({p["causal_kernel_id"] for p in packages}),
         "final_weapon":final_weapon,
-        "method":("bulk JSONL -> one shared T-weapon master -> 48-variant T end-face contact matrix -> story-specific 12-camera H0/H2/H3 sweeps" if final_weapon=="T"
+        "method":("bulk JSONL -> one shared T-weapon master -> stratified 48-variant T-to-T terminal-end-face matrix (four handle-roll poses balanced) -> story-specific 12-camera H0/H2/H3 sweeps" if final_weapon=="T"
                   else "bulk JSONL -> per-story frame packet -> cross proxy -> target-only sphere edit plan -> final weapon edit plan"),
         "stage_gate_status":(contact_gate_status if final_weapon=="T" else "NO_T_TO_T_GATE"),
         "required_first_stage":("A_T_WEAPON_MASTER_AND_CONTACT_MATRIX" if final_weapon=="T" else None),
