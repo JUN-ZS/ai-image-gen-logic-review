@@ -89,7 +89,7 @@ class FramePipelineTests(unittest.TestCase):
     def test_camera_sweep_writes_12_distinct_H0_H2_H3_trios(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td); source=root/"stories.jsonl"
-            source.write_text(json.dumps(sample())+"\\n",encoding="utf-8")
+            source.write_text(json.dumps(sample())+"\n",encoding="utf-8")
             out=root/"out"
             batch=build_packets(source,out,limit=1,weapon_topology="T",camera_sweep=True)
             self.assertEqual(batch["written_story_packets"],1)
