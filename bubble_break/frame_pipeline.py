@@ -35,7 +35,7 @@ NEGATIVE_BASE = (
 COMMON = (
     "ONE standalone cinematic frame, 16:9 widescreen, photorealistic live-action fantasy still. "
     "One full-bleed image, not a page, not a storyboard, not a comparison, not a collage. No writing, letters, "
-    "labels, panel borders, inset images, diagrams or watermark. FIXED SHOT: low three-quarter frontal wide shot, "
+    "labels, panel borders, inset images, diagrams or watermark. CAMERA_VARIANT_PLACEHOLDER. "
     "35mm cinema lens, fixed tripod, same horizon, vanishing lines, architecture landmarks, camera distance, "
     "sphere center and scale in every frame. A giant transparent iridescent bubble encloses a visible floating city "
     "and tiny residents; the lower pole is unobstructed. Heroine stays in the lower-left third, bubble occupies "
@@ -64,8 +64,8 @@ WEAPON_TEXT = {
         "directly at the exact midpoint of the crossbar's underside. The handle itself forms the single stem of the capital-T silhouette; "
         "there is no separate short post between head and handle. Crossbar width is about 3.8 times its thickness, with equal left/right ends; "
         "the handle joint is centered. The T silhouette must remain unmistakable. This is not a plus-sign/cross head, radial sphere, mace or spiked ball. "
-        "At impact, only the broad upper plane of the horizontal crossbar contacts the exact bottom point P; its center is pinned to P. "
-        "The handle can project diagonally down-left through 3D perspective, but its attachment must remain at the exact crossbar midpoint."
+        "At impact, only the selected terminal END STRIKING FACE at one end of the rigid T crossbar contacts the exact bottom point P; "
+        "The active surface is the crossbar end face, never the broad upper/lower surface or long cheek. Orient the rigid 3D hammer so this end-face normal points into P; the handle stays rigidly attached at the head joint and cannot touch first."
     ),
     "CROSS": (
         "WEAPON_TOPOLOGY_ID=WEAPON_PROXY_CROSS. ONE long rigid handle and ONE thick plus-sign/cross-shaped hammer head. "
@@ -97,13 +97,17 @@ def negative_for_weapon(topology: str) -> str:
     return NEGATIVE_BASE + ", " + NEGATIVE_BY_TOPOLOGY[topology]
 
 
-def common_for_weapon(topology: str) -> str:
+def common_for_weapon(topology: str, camera_variant: str = "LOW_3Q_FRONTAL") -> str:
     topology = topology.upper()
     if topology not in WEAPON_TEXT:
         raise ValueError("weapon_topology must be RADIAL, T, or CROSS")
-    start = COMMON.index("CANONICAL WEAPON:")
-    end = COMMON.index("POWER CUES:", start)
-    return COMMON[:start] + WEAPON_TEXT[topology] + " The handle runs diagonally down-left toward the heroine. " + COMMON[end:]
+    if camera_variant not in CAMERA_VARIANTS:
+        raise ValueError("camera_variant must be one of CAMERA_VARIANTS")
+    camera_clause = "CAMERA VIEW: " + CAMERA_VARIANTS[camera_variant] + ". Keep this exact view within this H0/H2/H3 trio."
+    common = COMMON.replace("CAMERA_VARIANT_PLACEHOLDER.", camera_clause)
+    start = common.index("CANONICAL WEAPON:")
+    end = common.index("POWER CUES:", start)
+    return common[:start] + WEAPON_TEXT[topology] + " Keep the handle rigid and trail it naturally away from the impact; never aim it through the bubble center. " + common[end:]
 
 STATE = {
 "H0": (
@@ -142,9 +146,9 @@ T_STATE = {
         "and exactly one long rigid handle joined directly to the midpoint of its underside; the handle itself forms the "
         "single stem of the T. Do not add a separate short post between the crossbar and handle. The left and right bar ends "
         "are symmetric, equal and remain in one straight line. The head is a T, not a round object with facets and not a cross. "
-        "The broad flat TOP PLANE "
-        "of the horizontal crossbar is the designated striking surface; do not reinterpret a side wall as the striking face. "
-        "This top plane aims at P but remains separated from the bubble's six-o'clock bottom point by a clearly visible "
+        "The selected flat TERMINAL END FACE at one end of the crossbar "
+        "is the designated striking surface. The broad upper/lower faces and long cheek are non-contact surfaces. "
+        "Aim this end face at P with its normal aligned to the local sphere normal, but keep it separated from the bubble's six-o'clock bottom point by a clearly visible "
         "continuous band of empty air. No contact, spark or pre-impact crack. Heroine's feet are grounded, knees flexed, "
         "hips and torso coiled, both hands gripping the handle at separated positions. The gap must not be hidden."
     ),
@@ -152,9 +156,9 @@ T_STATE = {
         "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer in the same shape as H0: one straight horizontal "
         "rectangular crossbar and the same single long handle joined directly beneath its midpoint; the handle itself forms "
         "the single stem of the T, with no separate short post or extra shaft. "
-        "The broad flat TOP PLANE on the crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
-        "The center of that upper plane is pinned to P; its normal points upward into the bubble. This topology uses the "
-        "crossbar's upper plane as its active striking surface; do not rotate the head, substitute an end-side face, or "
+        "The selected flat TERMINAL END FACE at one end of the crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
+        "The centre of that end face is pinned to P, and its normal points into the bubble along the local sphere normal. "
+        "crossbar's broad upper/lower surfaces and long cheek are non-contact surfaces; do not let a side wall, corner or handle hit first, and do not "
         "change the T into a sphere. The left and right crossbar ends remain symmetric and visibly horizontal; the centered "
         "handle joint remains attached and readable. The contact patch is unmistakable and unobstructed; the handle and side walls "
         "do not touch first. The membrane was intact immediately before contact. Only first tiny fractures now begin at P "
@@ -386,9 +390,9 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
 def projection_lock() -> Dict[str, Any]:
     return json.loads(json.dumps(FRAME_PROJECTION))
 
-def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -> Dict[str, Any]:
+def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", camera_variant: str = "LOW_3Q_FRONTAL") -> Dict[str, Any]:
     weapon_topology = weapon_topology.upper()
-    common = common_for_weapon(weapon_topology)
+    common = common_for_weapon(weapon_topology, camera_variant)
     story_id = str(record.get("story_id") or "STORY-UNKNOWN")
     scene = axis_text(record, "environment", "a monumental surreal city plaza")
     scale = axis_text(record, "scale", "a giant bubble enclosing a floating city")
@@ -396,7 +400,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
     palette = axis_text(record, "palette", "cold silver, electric cyan, restrained amber")
     lock = {
         "version": VERSION, "story_id": story_id, "scene": scene, "scale": scale, "shell": shell,
-        "palette": palette, "weapon": {"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology], "camera": "locked low 3/4 35mm",
+        "palette": palette, "weapon": {"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology], "camera": camera_variant, "camera_description": CAMERA_VARIANTS[camera_variant],
         "contact": "exact six-o'clock bottom pole P"
     }
     shot_id = "SHOT-" + hashlib.sha256(json.dumps(lock,sort_keys=True,ensure_ascii=False).encode()).hexdigest()[:12].upper()
@@ -433,7 +437,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
     }[weapon_topology]
     face_check = {
         "RADIAL": "H0 保持間隙；H2 只有一塊向上的扁平多面槌面首次接觸 P",
-        "T": "H0 保持間隙；H2 只有 T 橫杠的寬扁平上平面首次接觸 P，橫杠及中央柄保持 T 輪廓",
+        "T": "H0 保持間隙；H2 只有 T 橫杠端部的指定 END STRIKING FACE 首次接觸 P；寬側壁、上下長面、角、柄均不得先碰",
         "CROSS": "H0 保持間隙；H2 只有加號頭垂直臂最上端的平面首次接觸 P",
     }[weapon_topology]
     visual_checks=[
@@ -459,7 +463,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL") -
         }[weapon_topology],
         "active_striking_surface":{
             "RADIAL":"one upward-facing flat polygon on the radial head",
-            "T":"the broad upper plane of the horizontal crossbar",
+            "T":"the selected terminal END STRIKING FACE at one end of the rigid T crossbar",
             "CROSS":"the upper terminal face of the vertical arm",
         }[weapon_topology],
         "frame_order":list(FRAME_IDS),
