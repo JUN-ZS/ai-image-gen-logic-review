@@ -320,8 +320,9 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "active_striking_surface":"the selected terminal END STRIKING FACE at one end of the rigid T crossbar; the bubble is the target, never a second T",
             "selected_edit_prompt":selected_prompt,
             "projection_lock":projection,
-            "terminal_face_gap_px":0,
-            "face_normals":{"attacker":"UP (+Y)","target":"BUBBLE_TANGENT_AT_BOTTOM_POLE"},
+            "vector_proxy_terminal_face_gap_px":0,
+            "terminal_face_gap_px":None,
+            "face_normals":{"attacker":"END_FACE_NORMAL_PINNED_TO_LOCAL_SPHERE_NORMAL","target":"OPPOSING_LOCAL_SURFACE_NORMAL"},
             "required_order":[
                 "A: generate ONE isolated T weapon master using 00_generate_T_weapon_master.txt",
                 "A_GATE: manually review and approve A_T_weapon_master.png; do not infer approval from the prompt or SVG",
@@ -380,7 +381,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         "AI edit pixel fidelity is not guaranteed; measure the actual edited output."
     )
     (outdir/"README.md").write_text(readme_text+"\n",encoding="utf-8")
-    return {"status":plan["status"],"terminal_face_gap_px":0,"files":list(files.values())+["edit_plan.json","README.md"],
+    return {"status":plan["status"],"terminal_face_gap_px":(None if final_weapon=="T" else 0),"files":list(files.values())+["edit_plan.json","README.md"],
             "edited_images":"NOT_RUN","outdir":str(outdir)}
 
 def main(argv=None):
