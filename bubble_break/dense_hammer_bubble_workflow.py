@@ -426,6 +426,8 @@ existing side-middle lateral rod pixels already in that D1 frame.
 Do not invent a new handle. Do not grow outer-end shaft. Outer cap empty.
 Keep mini 1:1 scale. Still-planted base.
 After IMG→IMG: run stage_d_gates (outer_end_empty + side_handle_present). FAIL → roll back to D1.
+PROVEN 2026-10-21 HARD LOCK: 跳過「握既有左柄」會長新柄；鎖左柄像素後可壓住。
+Grip the SAME left-pointing side-middle rod already in D1; outer end EMPTY; never a new outer-end stub.
 """,
         "D3": common + """
 # STEP D3 — 找／持槌氣勢＋動作

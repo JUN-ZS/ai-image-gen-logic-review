@@ -246,6 +246,8 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         self.assertIn("mini", d1.lower())
         d2 = make_stage_d_step_prompt(selected, "D2", prev_raster_sha256="d1sha" + "0" * 50)
         self.assertIn("FIRST GRIP", d2)
+        self.assertIn("PROVEN 2026-10-21", d2)
+        self.assertIn("左柄", d2)
         self.assertIn("d1sha", d2)
         self.assertIn("PIXEL LOCK", d2)
         with self.assertRaises(ValueError):

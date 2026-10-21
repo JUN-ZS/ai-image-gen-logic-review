@@ -25,6 +25,15 @@ STAGE_D_ORDER: tuple[str, ...] = ("D0", "D1", "D2", "D3", "D4")
 # Which step first introduces grip (must lock prev frame side-handle pixels).
 FIRST_GRIP_STEP = "D2"
 
+# Proven 2026-10-21: skipping grip-of-existing-left-handle grows a NEW outer-end handle;
+# locking left side-handle pixels from prev frame suppresses it. HARD LOCK.
+EXISTING_LEFT_SIDE_HANDLE_PIXEL_LOCK = True
+PROVEN_RULE = (
+    "跳過「握既有左柄」會長新柄；鎖左柄像素後可壓住。"
+    "D2 must grip the SAME left-pointing side-middle lateral rod already in D1; "
+    "outer end empty. Never place hands on a new outer-end stub."
+)
+
 # Steps that require a previous accepted raster SHA.
 REQUIRES_PREV_RASTER: frozenset[str] = frozenset({"D1", "D2", "D3", "D4"})
 
@@ -134,7 +143,8 @@ def grip_pixel_lock_clause(step: str, prev_raster_sha256: str | None) -> str:
             f"Source raster SHA-256={sha}. "
             f"Hands may move ONLY onto the side-handle pixels already present in that source. "
             f"Do not invent, extrude, or attach any rod at the outer end cap. "
-            f"If outer-end shaft appears, gate FAIL — roll back to D1."
+            f"If outer-end shaft appears, gate FAIL — roll back to D1. "
+            f"PROVEN: {PROVEN_RULE}"
         )
     sha = prev_raster_sha256 or "<REQUIRED_PREV_SHA256>"
     return (

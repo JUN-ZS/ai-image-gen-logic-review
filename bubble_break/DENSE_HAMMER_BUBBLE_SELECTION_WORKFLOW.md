@@ -89,6 +89,14 @@ Also:
 ### Chain (no skip)
 `D0 → D1 → D2 → D3 → D4` only. `validate_step_transition` rejects jumps.
 
+### Proven hard lock (2026-10-21) — never forget
+
+> **跳過「握既有左柄」會長新柄；鎖左柄像素後可壓住。**
+
+- D2 must grip the **same left-pointing** side-middle lateral rod already present in **D1** pixels.
+- Outer end cap stays **empty**. Hands must never hold a new outer-end stub while the left rod sits empty.
+- This is formula law, not a tip.
+
 ### First grip (D2)
 - `prev_raster_sha256` = accepted **D1** SHA
 - Hands move only onto **existing side-handle pixels** in that D1 raster
