@@ -71,7 +71,7 @@ class TestSphereCylinderSelectionWorkflow(unittest.TestCase):
             self.assertIn("unselected", prompt.lower())
         self.assertIn("exactly ONE full human figure", stage2)
         self.assertIn("long, straight, rigid handle", stage2)
-        self.assertIn("all unselected candidate cylinders", stage2.lower())
+        self.assertIn("remove every unselected candidate cylinder", stage2.lower())
         self.assertIn("weight transfer", stage3)
         self.assertIn("radial cracks", stage4)
         self.assertIn("shell rupture", stage4)
