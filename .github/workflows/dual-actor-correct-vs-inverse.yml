@@ -1,0 +1,48 @@
+name: Dual-Actor Correct vs Inverse Formula
+on:
+  push:
+    branches: [main, 'feat/**']
+    paths:
+      - 'bubble_break/dual_actor_correct_vs_inverse_formula.py'
+      - 'bubble_break/test_dual_actor_correct_vs_inverse_formula.py'
+      - 'bubble_break/DUAL_ACTOR_CORRECT_VS_INVERSE_FORMULA.md'
+      - '.github/workflows/dual-actor-correct-vs-inverse.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/dual_actor_correct_vs_inverse_formula.py'
+      - 'bubble_break/test_dual_actor_correct_vs_inverse_formula.py'
+      - 'bubble_break/DUAL_ACTOR_CORRECT_VS_INVERSE_FORMULA.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  formula-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run formula unit tests
+        run: |
+          cd bubble_break
+          python -m unittest test_dual_actor_correct_vs_inverse_formula -v
+      - name: Compile trial matrix sample
+        run: |
+          python bubble_break/dual_actor_correct_vs_inverse_formula.py --outdir out/dual_actor_correct_vs_inverse --limit 36
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('out/dual_actor_correct_vs_inverse/dual_actor_correct_vs_inverse_matrix.json').read_text())
+          assert m['demo']['CORRECT']['pass'] is True
+          assert m['demo']['INVERSE_NEGATIVE_CONTROL']['pass'] is False
+          assert m['acceptance_gate']['image_realization'] == 'NOT_RUN'
+          assert m['acceptance_gate']['pixel_audit'] == 'NOT_RUN'
+          print('formula OK; image/pixel NOT_RUN')
+          PY
+      - name: Upload formula sample
+        uses: actions/upload-artifact@v4
+        with:
+          name: dual-actor-correct-vs-inverse-formula-sample
+          path: out/dual_actor_correct_vs_inverse/
+          if-no-files-found: error
