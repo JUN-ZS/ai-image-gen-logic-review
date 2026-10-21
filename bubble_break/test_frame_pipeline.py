@@ -150,12 +150,21 @@ class FramePipelineTests(unittest.TestCase):
             self.assertIn('cx="1090" cy="610"',svg)
             self.assertIn('data-contact-p="1090,610"',svg)
             self.assertIn('x1="650" y1="722" x2="1090" y2="722"',svg)
+            layout=json.loads((d/"layout.json").read_text(encoding="utf-8"))
             basis=layout["projection_lock"]["frames"]["H2"]["rigid_T_projection"]
             self.assertEqual(basis["crossbar_axis_screen"],{"x":0,"y":-1})
             self.assertEqual(basis["terminal_face_normal_screen"],{"x":0,"y":-1})
             self.assertEqual(basis["handle_axis_screen"],{"x":-1,"y":0})
             self.assertTrue(basis["joint_at_crossbar_midpoint"])
             self.assertEqual(layout["projection_lock"]["frames"]["H2"]["handle_joint"],{"x":1090,"y":722})
+            # The downstream proxy must reject the old failure mode: vertical head + independently diagonal stem.
+            import copy
+            from proxy_edit_pipeline import validate_geometry as validate_proxy_geometry
+            self.assertTrue(validate_proxy_geometry(layout,"T"))
+            broken=copy.deepcopy(layout)
+            broken["projection_lock"]["frames"]["H2"]["rigid_T_projection"]["handle_axis_screen"]={"x":-1,"y":-1}
+            with self.assertRaisesRegex(ValueError,"T stem must project laterally"):
+                validate_proxy_geometry(broken,"T")
 
 
 if __name__=="__main__": unittest.main()
