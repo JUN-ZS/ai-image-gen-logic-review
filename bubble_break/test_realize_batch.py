@@ -69,7 +69,8 @@ class RealizeBatchTests(unittest.TestCase):
                 self.assertEqual(plan["required_artifacts"]["stage_a_image"],str(shared/"A_T_weapon_master.png"))
                 self.assertEqual(plan["selected_edit_prompt"],"generate_scene_with_T_master.txt")
                 self.assertEqual(plan["required_artifacts"]["contact_matrix_h2_images"],48)
-                self.assertEqual(plan["terminal_face_gap_px"],0)
+                self.assertIsNone(plan["terminal_face_gap_px"])
+                self.assertEqual(plan["pixel_truth"]["contact_matrix_images"],"NOT_RUN")
                 self.assertEqual(plan["pixel_truth"]["edited_images"],"NOT_RUN")
             self.assertTrue((out/"realize_batch_manifest.json").exists())
 
