@@ -159,7 +159,7 @@ T_STATE = {
         "The selected flat TERMINAL END STRIKING FACE at the terminal end of the T crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
         "The centre of that active end face is pinned to P, and its normal points into the bubble along the local sphere normal. "
         "The crossbar's broad upper/lower surfaces, cheek, corners and handle are non-contact surfaces; do not let any of them touch first, and do not "
-        "change the T into a sphere. The left and right crossbar ends remain symmetric and visibly horizontal; the centered "
+        "change the T into a sphere. The crossbar remains straight, rigid and symmetric in its own local orientation; its screen angle may change with the selected camera. The centered "
         "handle joint remains attached and readable. The contact patch is unmistakable and unobstructed; the handle and side walls "
         "do not touch first. The membrane was intact immediately before contact. Only first tiny fractures now begin at P "
         "and radiate outward from that one contact center; no cracks elsewhere and the sphere is not yet fully exploded. "
