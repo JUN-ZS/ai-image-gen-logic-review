@@ -13,22 +13,31 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-VERSION = "2.0.0"
+VERSION = "2.1.0"
 
 MASTER_REVIEW_CHECKS = (
     "two_distinct_cylinder_ended_cross_hammers",
-    "active_circular_end_cap_A_identified",
-    "active_circular_end_cap_B_identified",
-    "both_circular_end_caps_coincident",
-    "cap_normals_opposite",
-    "no_cylindrical_barrel_or_crossbar_side_first",
-    "no_cross_arm_or_corner_first",
+    "plus_shaped_cross_head_on_each_hammer",
+    "one_rigid_centered_handle_per_hammer",
+    "both_outer_cylinders_present",
+    "no_bent_twisted_or_detached_parts",
+)
+
+REVIEW_CHECKS = (
+    "two_distinct_cylinder_ended_cross_hammers",
+    "active_flat_circular_end_cap_A_identified",
+    "active_flat_circular_end_cap_B_identified",
+    "both_flat_circular_end_caps_coincident",
+    "cap_normals_opposite_along_collision_axis",
+    "no_curved_cylinder_barrel_first",
+    "no_crossbar_side_cross_arm_or_corner_first",
     "no_handle_first",
+    "both_handles_and_center_joints_rigid",
 )
 
 CAMERA_VIEWS: Tuple[Tuple[str, str], ...] = (
     ("FACE_ON", "slightly grazing face-oriented view, about 10–15 degrees off the collision axis; show the contact seam, end-face perimeter edges and nearby depth cues. Do not pretend the camera can see through two coincident contact faces from directly along their normals"),
-    ("SIDE_PROFILE", "true side profile perpendicular to the collision axis, both T profiles readable and the contact seam visible"),
+    ("SIDE_PROFILE", "true side profile perpendicular to the collision axis, both cylinder-ended cross-hammer profiles readable and the contact seam visible"),
     ("FRONT_THREE_QUARTER", "front three-quarter view about 35 degrees off the collision axis, showing each end-face plane and its cheek depth"),
     ("REVERSE_THREE_QUARTER", "reverse three-quarter view from the opposite side about 35 degrees off the collision axis, showing the same face-to-face joint"),
     ("LOW_ANGLE", "low camera angle slightly below the heads, looking up while retaining a clear view of both terminal faces"),
@@ -107,7 +116,7 @@ def make_prompt(variant_id: str, camera_id: str, camera_text: str,
         + f"COLLISION_AXIS={axis_id}: {axis_text}. "
         + f"HANDLE_ROLL_VARIANT={pose_id}: {pose_text}. "
         + state_clause + " "
-        + "Keep both T heads, both selected terminal face planes, both handle joints and both handles readable to the degree "
+        + "Keep both cylinder-ended cross heads, both selected flat circular end-cap planes, both handle joints and both handles readable to the degree "
         "appropriate for this camera. Use directional neutral studio light and realistic metal materials; a narrow contrasting "
         "rim on the active end faces may clarify the two planes, but no drawn labels, arrows, lines or instructional overlay. "
         + "NEGATIVE PROMPT: " + NEGATIVE
@@ -161,11 +170,11 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
                     "prompt_file": str(Path(variant_id) / prompt_path.name),
                     "prompt": prompt,
                     "expected_contact_contract": {
-                        "active_surface_A": "TERMINAL_END_STRIKING_FACE",
-                        "active_surface_B": "TERMINAL_END_STRIKING_FACE",
+                        "active_surface_A": "FLAT_CIRCULAR_END_CAP",
+                        "active_surface_B": "FLAT_CIRCULAR_END_CAP",
                         "plane_relation_H2": "COINCIDENT_FACE_TO_FACE",
                         "normal_relation_H2": "OPPOSITE_ALONG_COLLISION_AXIS",
-                        "forbidden_first_contacts": ["CHEEK", "UPPER_OR_LOWER_LONG_SURFACE", "CORNER", "STEM", "HANDLE"],
+                        "forbidden_first_contacts": ["CURVED_BARREL", "CROSSBAR_SIDE", "CROSS_ARM", "CORNER", "HANDLE"],
                     },
                     "image_realization": "NOT_RUN",
                     "pixel_audit": "NOT_RUN",
@@ -185,11 +194,11 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
                 "required_review_checks": list(REVIEW_CHECKS),
                 "status": "UNASSESSED",
             })
-    jsonl_path = outdir / "t_contact_matrix.jsonl"
+    jsonl_path = outdir / "cylinder_cross_contact_matrix.jsonl"
     jsonl_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
     manifest = {
         "pipeline_version": VERSION,
-        "purpose": "Prove that the image model understands rigid cross hammers whose ONLY first-contact surfaces are opposed flat circular cylinder end caps, across camera and collision-axis variants.",
+        "purpose": "Prove that the image model understands two rigid plus-headed cross hammers whose ONLY first-contact surfaces are opposed flat circular cylinder end caps, across camera and collision-axis variants.",
         "manual_review_contract": {
             "pass_requires": ["actual non-empty PNG image", "matching H2_review.json", "status PASS", "manual_pixel_review true", "non-empty notes", "every required review check true"],
             "automatic_pixel_claims": False,
@@ -250,7 +259,7 @@ def review_payload_passes(review: Dict[str, Any]) -> bool:
 
 
 def master_review_payload_passes(review: Dict[str, Any]) -> bool:
-    """Accept a complete human T-master review, not a prompt-derived PASS."""
+    """Accept a complete human cylinder-cross master review, not a prompt-derived PASS."""
     checks = review.get("checks")
     return (
         review.get("status") == "PASS"
@@ -353,7 +362,7 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description="Compile 48 T-to-T contact variants (12 cameras x 4 collision axes; four handle-roll poses are balanced across the matrix) or validate their actual H2 PNGs and human reviews. Never renders images.")
+    parser = argparse.ArgumentParser(description="Compile 48 cylinder-cross end-cap-to-end-cap contact variants (12 cameras x 4 collision axes; four handle-roll poses balanced across the matrix) or validate actual H2 PNGs and human reviews. Never renders images.")
     parser.add_argument("--outdir", help="destination for prompts, variants and review templates")
     parser.add_argument("--validate-dir", help="validate generated H2 PNGs and manual review JSONs in an existing matrix")
     args = parser.parse_args(argv)
