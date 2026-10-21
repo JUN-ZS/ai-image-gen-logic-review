@@ -399,9 +399,11 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL", projection: Dict[
     torso=[(shoulderx-24,shouldery-8),(shoulderx+25,shouldery-12),(hipx+25,hipy+10),(hipx-23,hipy+12)]
     parts.append(_polygon(torso,"#151d2b","#8393a3",5))
     parts.append(_line(shoulderx-13,shouldery,hipx-10,hipy,"#c8a066",4))
-    # arms extend to two grip points on the same handle
-    parts.append(_line(shoulderx+12,shouldery+5,760,890,"#e0b48f",18))
-    parts.append(_line(shoulderx+18,shouldery+12,820,866,"#e0b48f",18))
+    # Arms must terminate at the exact grip points derived from the weapon projection.
+    # For T mode these points move with the laterally projected rigid stem; never leave
+    # the arms attached to stale diagonal-hand coordinates from the radial-head version.
+    parts.append(_line(shoulderx+12,shouldery+5,hand_points[0][0],hand_points[0][1],"#e0b48f",18))
+    parts.append(_line(shoulderx+18,shouldery+12,hand_points[1][0],hand_points[1][1],"#e0b48f",18))
     # legs and boots in an offset, braced stance
     parts.append(_line(hipx-12,hipy+6,headx-35,976,"#101722",30))
     parts.append(_line(hipx+18,hipy+6,headx+100,966,"#101722",30))
