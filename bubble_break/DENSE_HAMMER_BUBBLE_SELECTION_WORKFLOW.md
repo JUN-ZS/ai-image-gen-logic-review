@@ -189,3 +189,8 @@ python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
 ```
 
 The compiler emits a Stage-A formula prompt, stable candidate metadata, an SVG proxy and, after a selection, Stage B–E formula prompts. It does not call an image-generation model. Until real rasters are generated and inspected, `image_realization=NOT_RUN` and `pixel_audit=NOT_RUN`.
+
+
+## Failure / success / rewrite log
+
+See [logs/STAGE_FAILURE_SUCCESS_REWRITE_LOG.md](logs/STAGE_FAILURE_SUCCESS_REWRITE_LOG.md).
