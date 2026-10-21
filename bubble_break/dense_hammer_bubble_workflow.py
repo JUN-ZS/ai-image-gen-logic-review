@@ -25,7 +25,10 @@ HEAD_DIAMETER_RATIO = 0.08
 HEAD_LENGTH_TO_DIAMETER = 1.5
 HANDLE_LENGTH_TO_HEAD_LENGTH = 3.0
 HANDLE_DIAMETER_TO_HEAD_DIAMETER = 0.10
-# Stage C hard locks (user 2026-10-21): never grow a new handle; person:hammer = 1:1
+# Stage C hard locks (user 2026-10-21):
+# - NO_NEW_HANDLE: B-master handle only; never grow a new shaft
+# - person:hammer = 1:1 means MINI person: full-body visual area ≈ hammer assembly
+#   visual area in frame (person is small, not life-size vs bubble). NOT person >> hammer.
 PERSON_TO_HAMMER_SCALE_DEFAULT = 1.0
 NO_NEW_HANDLE = True
 SEED = 20261021
@@ -329,13 +332,15 @@ hammer and its bubble contact point. Do not reconstruct the tool.
   the person — never grow a new shaft for convenience.
 - Outer circular end cap must stay free and empty. Base contact glow stays free.
 
-## HARD LOCK B — PERSON : HAMMER = {person_to_hammer_scale:.3f} : 1
-- Person standing height is matched 1:1 to the locked hammer assembly scale
-  (person size ≈ hammer size in the frame; NOT a tiny figure on a giant bubble,
-  NOT person height = k × bubble diameter).
-- Default and locked target: person_to_hammer_scale = 1.0 (one-to-one with hammer).
-- Do not enlarge or reshape the hammer to fit the person; scale the person to the
-  hammer, not the reverse.
+## HARD LOCK B — PERSON : HAMMER = {person_to_hammer_scale:.3f} : 1 (MINI PERSON)
+- person:hammer = 1:1 means the person's FULL BODY and the locked hammer assembly
+  occupy roughly the SAME visual area in the frame — the person is MINI next to the
+  large bubble (人變迷你：全身面積 ≈ 槌面積).
+- Default locked target: person_to_hammer_scale = 1.0.
+- REJECT if the person is life-size / much larger than the hammer (person >> hammer).
+- REJECT if the person is ant-sized speck much smaller than the hammer (person << hammer).
+- Do not enlarge or reshape the hammer; scale the MINI person to match the hammer area.
+- Still NOT person height = k × bubble diameter.
 
 Add exactly one complete person beside/outside the bubble where the existing
 sideways handle can be gripped. One or both hands visibly grip the SAME existing
@@ -500,7 +505,7 @@ def build_packet(
             "person_to_hammer_scale": person_to_hammer_scale,
             "person_height_over_bubble_diameter": None,
             "NO_NEW_HANDLE": True,
-            "person_scale_rule": "person standing height : hammer assembly = person_to_hammer_scale : 1 (hard lock default 1:1; NOT k*bubble)",
+            "person_scale_rule": "MINI person: full-body visual area : hammer assembly visual area = person_to_hammer_scale : 1 (default 1:1; 人變迷你; NOT person>>hammer; NOT k*bubble)",
         },
         "source_stage_a_raster": str(source_raster) if source_raster else None,
         "source_stage_a_sha256": raster_sha,
@@ -564,7 +569,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser.add_argument("--bubble-scale", type=float, default=1.0)
     parser.add_argument("--hammer-scale", type=float, default=1.0)
     parser.add_argument("--person-to-hammer-scale", type=float, default=PERSON_TO_HAMMER_SCALE_DEFAULT,
-                        help="Stage C hard lock: person standing height / hammer size (default 1.0 = 1:1)")
+                        help="Stage C hard lock: mini person full-body area / hammer area (default 1.0 = 1:1, 人變迷你)")
     parser.add_argument("--person-height-of-bubble", type=float, default=None,
                         help=argparse.SUPPRESS)  # removed; kept only to error if used
     parser.add_argument("--source-raster", type=Path, default=None)

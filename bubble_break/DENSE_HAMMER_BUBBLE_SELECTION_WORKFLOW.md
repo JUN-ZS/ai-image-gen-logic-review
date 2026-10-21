@@ -67,10 +67,12 @@ After Stage B is accepted:
 - Hands grip **that same existing** lateral handle only. If grip is hard, move the person — never grow a new shaft for convenience.
 - Growing a new handle or changing handle axis is **REJECT** (same error class as outer-end quasi-axial shaft).
 
-### HARD LOCK B — person : hammer = **1 : 1**
-- Person standing height matches the locked **hammer** assembly scale one-to-one (`person_to_hammer_scale = 1.0`).
-- **Not** `k × bubble diameter`. Not a tiny figure on a giant bubble.
-- Scale the person to the hammer; do not enlarge or reshape the hammer to fit the person.
+### HARD LOCK B — person : hammer = **1 : 1**（人變迷你）
+- `person:hammer = 1:1` means the person's **full body** and the locked **hammer assembly** occupy roughly the **same visual area** in the frame — the person is **mini** beside the large bubble（全身面積 ≈ 槌面積）.
+- `person_to_hammer_scale = 1.0` default hard lock.
+- **REJECT** if person is life-size / much larger than the hammer (`person >> hammer`).
+- **REJECT** if person is an ant-speck much smaller than the hammer (`person << hammer`).
+- **Not** `k × bubble diameter`. Scale the mini person to the hammer area; do not enlarge the hammer.
 
 Also:
 - Use the isolated Stage-B image as the reference. Record bubble/hammer/person ratios; do not silently move the anchor.
@@ -100,7 +102,7 @@ Start from the accepted Stage-D raster:
 | `RASTER_ANCHOR_LOCK` | Stage B uses the actual raster reference; no proxy-only claim of pixel alignment |
 | `SINGLE_HAMMER_ISOLATION` | One selected hammer remains; the other 23 fully disappear |
 | `RATIO_LOCK` | (H_h=1.5D_h), (L_g=3H_h), (D_g=D_h/10) unless explicitly revised |
-| `PERSON_ATTACHMENT` | Stage C adds one person gripping the **same existing** lateral handle; `NO_NEW_HANDLE`; person:hammer = 1:1 |
+| `PERSON_ATTACHMENT` | Stage C adds one mini person (full-body area ≈ hammer area) gripping the **same existing** lateral handle; `NO_NEW_HANDLE`; person:hammer = 1:1 |
 | `ACTION_LOCK` | Pose refinement does not silently detach the planted base or distort the rigid assembly |
 | `CONTACT_EFFECT` | Glow/cracks originate at the planted base contact; a clean seam frame is kept |
 | `PIXEL_AUDIT` | Human review of real generated rasters; prompt/unit tests alone never count as image PASS |
@@ -112,7 +114,7 @@ When a person is added, image models often rewrite the tool as `head + coaxial l
 
 Mitigation written into Stage-C prompts and gates:
 1. `NO_NEW_HANDLE` — only the existing side-middle lateral rod may be gripped.
-2. `person_to_hammer_scale = 1.0` — person size locks to hammer, not bubble.
+2. `person_to_hammer_scale = 1.0` — mini person: full-body visual area ≈ hammer area (人變迷你), not life-size vs bubble, not k×bubble.
 
 ## Topology repair note (Stage B)
 

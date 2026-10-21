@@ -107,6 +107,9 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         self.assertIn("exactly one complete person", stage_c.lower())
         self.assertIn("NO_NEW_HANDLE", stage_c)
         self.assertIn("1.000", stage_c)  # person:hammer 1:1
+        self.assertIn("MINI", stage_c.upper())
+        self.assertIn("same visual area", stage_c.lower())
+        self.assertIn("person >> hammer", stage_c.lower())
         self.assertIn("person:hammer", stage_c.lower().replace(" ", ""))
         self.assertIn("same existing lateral handle", stage_c.lower())
         self.assertNotIn("person height target", stage_c.lower())
@@ -210,6 +213,8 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         prompt = make_stage_c_prompt(selected)
         self.assertIn("1.000:1", prompt.replace(" ", ""))
         self.assertIn("NO_NEW_HANDLE", prompt)
+        self.assertIn("MINI", prompt.upper())
+        self.assertIn("same visual area", prompt.lower())
 
 
 if __name__ == "__main__":
