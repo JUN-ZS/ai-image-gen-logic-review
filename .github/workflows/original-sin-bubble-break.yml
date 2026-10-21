@@ -233,11 +233,11 @@ jobs:
                             "contact_matrix_images": "NOT_RUN", "edited_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
           PY
 
-      - name: Upload T contact matrix and 12-camera prompt sweeps
+      - name: Upload T contact matrix prompts and 12-camera scene prompt sweeps
         uses: actions/upload-artifact@v4
         continue-on-error: true
         with:
-          name: t-end-face-contact-matrix-and-camera-sweeps
+          name: t-end-face-contact-matrix-and-camera-sweep-prompts-review-templates
           path: |
             /tmp/wushuang_T_contact_matrix
             /tmp/wushuang_frames
