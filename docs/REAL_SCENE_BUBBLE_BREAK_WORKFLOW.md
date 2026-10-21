@@ -54,7 +54,7 @@
 
 ### 不是只做一張：48 組碰撞矩陣
 
-`bubble_break/t_contact_matrix.py` 將下列測試組合成 **12 個鏡頭角度 × 4 個碰撞軸向 = 48 個變體**。每個變體再各自輸出 H0、H2、H3 三張獨立圖片提示，因此總共是 **144 個單圖 Prompt**：
+`bubble_break/t_contact_matrix.py` 將測試組合成 **12 個鏡頭角度 × 4 個碰撞軸向 = 48 個變體**。四種柄向關係在這 48 組內以確定性輪轉均衡分配（每種 12 組）；這是可追溯的分層矩陣，不是把鏡頭、碰撞軸、柄向全部做成 12 × 4 × 4 的 192 組全交叉。每個變體各自輸出 H0、H2、H3 三張獨立圖片提示，總共 **144 個單圖 Prompt**：
 
 - 鏡頭：正看接觸面、側面、正／反三分之四、低角度、高斜角、Dutch roll、接觸微距、過肩、長焦、全景等。
 - 碰撞軸：水平、垂直、左下至右上的對角、前後景深方向。
@@ -70,7 +70,7 @@
 
 ### H0 可複製 Prompt（未接觸）
 
-> Photorealistic cinematic 16:9 live-action music-video still in a vast abandoned industrial power hall, practical concrete floor, rusted steel structures, believable atmospheric depth and motivated shafts of light. Use the supplied original heroine reference for the same Asian female warrior: long straight dark-brown hair, soft large eyes, natural makeup, focused determined expression. Keep her full body visible in the lower-left area, wearing the established dark combat outfit. She grips ONE enormous solid-steel T-headed hammer with BOTH hands; one handle, one clearly readable T-shaped head, no extra weapon. The hammer's designated broad flat terminal striking face is aimed at the exact six-o'clock bottom pole P of ONE giant intact transparent iridescent bubble on the right. Her body and handle form a dynamic diagonal, not a straight spear through the bubble's center. Leave a visible gap: no contact yet. The bubble has NO cracks. Grounded live-action cinematography, believable scale, real materials, strong but motivated light, film grain, off-center composition. No text, no labels, no extra limbs, no axe, no spikes, no extra bubbles.
+> Photorealistic cinematic 16:9 live-action music-video still in a vast abandoned industrial power hall, practical concrete floor, rusted steel structures, believable atmospheric depth and motivated shafts of light. Use the supplied original heroine reference for the same Asian female warrior: long straight dark-brown hair, soft large eyes, natural makeup, focused determined expression. Keep her full body visible in the lower-left area, wearing the established dark combat outfit. She grips ONE enormous solid-steel T-headed hammer with BOTH hands; one handle, one clearly readable T-shaped head, no extra weapon. The hammer's designated broad flat terminal striking face is aimed at the exact six-o'clock bottom pole P of ONE giant intact transparent iridescent bubble on the right. For the canonical bottom-pole view, the terminal-face normal points upward on screen, so the complete T rotates as one rigid body: the crossbar projects vertically and the centered handle projects laterally through the crossbar midpoint. Position her hands and body to follow that handle axis; do not keep the crossbar vertical while drawing the handle diagonally down-left. An oblique camera may make both axes oblique only through one coherent 3D transform, never by bending or independently rotating the head and handle. Leave a visible gap: no contact yet. The bubble has NO cracks. Grounded live-action cinematography, believable scale, real materials, strong but motivated light, film grain, off-center composition. No text, no labels, no extra limbs, no axe, no spikes, no extra bubbles.
 
 H0 的工作只是建立**可用的主場景母版**。第一輪先求人物、槌、泡泡三者都存在且位置正確，再逐步加光暈、碎屑或強烈動作。若加場景後槌消失、變斧或人物變成跟泡泡共舞，退回可畫核心，不要繼續堆形容詞。
 
@@ -95,7 +95,7 @@ H0 通過後，另外複製成兩條編輯分支。不要不斷把失敗的上�
 - **身份：**與原女主參考圖一致，髮型、臉型及五官沒有漂移。
 - **武器：**一柄一頭、T 頭清楚、雙手握柄；沒有變斧、刺球、多柄或多把槌。
 - **端面：**指定的厚實平端面先碰；長側壁、槌頭面頰、槌柄都不能先碰。
-- **方向：**保留六點鐘 (P) 契約；柄呈動態斜線，不是刺穿泡泡球心的矛。
+- **方向：**保留六點鐘 (P) 契約；柄的投影方向由整把剛體槌的姿態與攝影機決定，不固定為左下斜線。底點法線在畫面向上時，標準正投影下柄應橫向伸出；斜角必須來自一致的 3D 姿態，不可將柄單獨扭斜。
 - **H0：**泡泡完整，槌與泡泡仍有可見空隙，沒有預先裂紋。
 - **H2：**只有一個接觸點，位置在泡泡底極點；裂紋由該點起始。
 - **H3：**裂源與 H2 相同；泡殼確實碎裂，人物活著、無傷，背景與主角仍連貫。
