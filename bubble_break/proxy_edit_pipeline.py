@@ -525,7 +525,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         "AI edit pixel fidelity is not guaranteed; measure the actual edited output."
     )
     (outdir/"README.md").write_text(readme_text+"\n",encoding="utf-8")
-    return {"status":plan["status"],"terminal_face_gap_px":(None if final_weapon=="T" else 0),"files":list(files.values())+["edit_plan.json","README.md"],
+    return {"status":plan["status"],"terminal_face_gap_px":(None if final_weapon in ("T","CYLINDER_CROSS") else 0),"files":list(files.values())+["edit_plan.json","README.md"],
             "edited_images":"NOT_RUN","outdir":str(outdir)}
 
 def main(argv=None):
