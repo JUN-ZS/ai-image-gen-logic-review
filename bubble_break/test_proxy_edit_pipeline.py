@@ -6,13 +6,33 @@ import unittest
 from pathlib import Path
 from proxy_edit_pipeline import validate_geometry, write_packet
 
+def rigid_t_frame(top_face_y, gap_px):
+    joint_y=top_face_y+112
+    return {
+        "head_center":{"x":1090,"y":joint_y},
+        "top_face_y":top_face_y,
+        "gap_px":gap_px,
+        "handle_joint":{"x":1090,"y":joint_y},
+        "handle_reference_point":{"x":650,"y":joint_y},
+        "rigid_T_projection":{
+            "model":"ORTHOGRAPHIC_2D_SCHEMATIC_ONLY",
+            "crossbar_axis_screen":{"x":0,"y":-1},
+            "terminal_face_normal_screen":{"x":0,"y":-1},
+            "handle_axis_screen":{"x":-1,"y":0},
+            "joint_at_crossbar_midpoint":True,
+            "crossbar_projected_length_px":224,
+            "crossbar_projected_thickness_px":58,
+            "handle_centerline_passes_through_joint":True,
+        },
+    }
+
 def sample_layout():
     return {"projection_lock":{
         "canvas":{"width":1920,"height":1080},
         "sphere_center":{"x":1090,"y":330},
         "sphere_radius":280,
         "P_six_oclock":{"x":1090,"y":610},
-        "frames":{"H2":{"head_center":{"x":1090,"y":690},"top_face_y":610,"gap_px":0}}
+        "frames":{"H0":rigid_t_frame(660,50),"H2":rigid_t_frame(610,0),"H3":rigid_t_frame(595,-15)}
     }}
 
 class CrossProxyTests(unittest.TestCase):
@@ -108,6 +128,12 @@ class CrossProxyTests(unittest.TestCase):
             self.assertEqual(plan["pixel_truth"]["edited_images"],"NOT_RUN")
             self.assertEqual(plan["pixel_truth"]["contact_matrix_images"],"NOT_RUN")
             self.assertIsNone(plan["terminal_face_gap_px"])
+
+    def test_T_validation_blocks_if_H0_projection_is_missing(self):
+        bad=sample_layout()
+        del bad["projection_lock"]["frames"]["H0"]
+        with self.assertRaisesRegex(ValueError,"missing H0 projection frame"):
+            validate_geometry(bad,"T")
 
     def test_invalid_final_weapon_blocks(self):
         with tempfile.TemporaryDirectory() as td:
