@@ -184,9 +184,9 @@ def make_stage_a_prompt(candidates: Sequence[HammerCandidate]) -> str:
     return f"""# STAGE A — DENSE HAMMER-TO-ONE-BUBBLE SELECTION ATLAS
 
 Create ONE cinematic 16:9 image: a single large, pristine, translucent spherical
-bubble dominates a dark, controlled background. Around it, densely crowd exactly
-{len(candidates)} independent complete compact cylindrical-headed hammers, all
-aimed inward toward this same bubble from varied 3D positions and directions.
+bubble dominates a dark, controlled background. Around it, densely crowd exactly {len(candidates)}
+independent complete compact cylindrical-headed hammers, all aimed inward toward
+this same bubble from varied 3D positions and directions.
 This is a dense spatial swarm around one sphere, NOT a grid, tiled atlas, contact
 sheet, or repeated product-stamp pattern.
 
