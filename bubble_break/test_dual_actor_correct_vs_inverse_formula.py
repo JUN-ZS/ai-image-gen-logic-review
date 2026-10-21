@@ -50,6 +50,13 @@ class TestDualActorFormula(unittest.TestCase):
         self.assertEqual(t1.correct_actor, "A_AIR")
         self.assertEqual(t2.correct_actor, "B_GROUND")
 
+    def test_prompt_contains_impact_and_mega_scale(self):
+        t = make_trial((1.0, 0.0, 0.0), True, "low_hero_24mm", "dive_overhead", "ground_sweep", 0, mega_scale=True)
+        self.assertIn("THE IMPACT", t.prompt_lock)
+        self.assertIn("weapon-on-weapon", t.prompt_lock)
+        self.assertIn("human body size", t.prompt_lock)
+        self.assertIn("Forbidden", t.prompt_lock)
+
     def test_matrix_honest_gates(self):
         m = build_matrix(limit=12)
         self.assertEqual(m["acceptance_gate"]["image_realization"], "NOT_RUN")

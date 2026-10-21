@@ -22,7 +22,7 @@ def _len(a: V) -> float:
 def unit(a: V) -> V:
     d = _len(a)
     if d < 1e-12:
-        raise ValueError("zero vector")
+        raise ValueError("法線不可為零向量")
     return (a[0]/d, a[1]/d, a[2]/d)
 
 def check_contact(
@@ -30,7 +30,13 @@ def check_contact(
     f: Sequence[float],
     tolerance_deg: float = DEFAULT_TOL_DEG,
 ) -> Dict[str, object]:
-    """PASS iff f · (-n) >= cos(theta_tol) after unit-normalization."""
+    """PASS iff f · (-n) >= cos(theta_tol) after unit-normalization.
+
+    target_normal n: outward normal at the contact point.
+    face_normal f: outward normal of the hammer striking face.
+    CORRECT: f opposite n (faces meet plane-to-plane).
+    INVERSE_NEGATIVE_CONTROL: f same direction as n → must FAIL.
+    """
     nu = unit(tuple(float(x) for x in n))  # type: ignore[arg-type]
     fu = unit(tuple(float(x) for x in f))  # type: ignore[arg-type]
     alignment = _dot(fu, (-nu[0], -nu[1], -nu[2]))
@@ -101,6 +107,7 @@ def make_trial(
     air_swing: str,
     ground_swing: str,
     index: int,
+    mega_scale: bool = True,
 ) -> Trial:
     n = unit(n)
     if correct_is_airborne:
@@ -121,6 +128,16 @@ def make_trial(
     assert checks[inverse_actor]["pass"] is False
 
     tid = f"DACVI__n{index:02d}__{'AIR_OK' if correct_is_airborne else 'GND_OK'}__{camera}"
+    impact_lock = (
+        "THE IMPACT (mandatory): the two hammer heads meet mid-air with sparks; weapon-on-weapon only. "
+        "Forbidden: missing contact, hovering gap between heads, hitting bodies, hitting floor. "
+        "Correct terminal tip face and inverse reverse cheek face still TOUCH each other at the same seam."
+    )
+    scale_lock = (
+        "SCALE: massive sci-fi T-hammers nearly human body size — oversized rectangular heads almost torso-scale, long thick shafts."
+        if mega_scale else
+        "SCALE: large heavy T-hammers with clearly readable heads and long handles."
+    )
     prompt_lock = (
         "DUAL-ACTOR CORRECT-VS-INVERSE LOCK. Two independent T-hammers, full heads and long handles visible. "
         f"Target contact outward normal n={tuple(round(x,6) for x in n)}. "
@@ -128,6 +145,7 @@ def make_trial(
         f"Actor {inverse_actor}: face_mode=INVERSE_NEGATIVE_CONTROL, f=n, deliberate reverse/wrong wide face, must FAIL as control. "
         f"Heights: A airborne ({air_swing}), B ground_low ({ground_swing}) — poses must not mirror-copy. "
         f"CAMERA={camera} is view-only; camera must not reclassify inverse as correct. "
+        + impact_lock + " " + scale_lock + " "
         "contact_PASS_claimed=false for the paired scene as a whole (contains intentional FAIL control). "
         "Sparks must not hide the seam. Do not merge into one H-weapon."
     )
@@ -146,6 +164,8 @@ def make_trial(
             "pixel_audit": "NOT_RUN",
             "contact_PASS_claimed": "false",
             "wrong_face": "intentional",
+            "impact_event_required": "weapon_on_weapon_face_clash",
+            "mega_scale_default": "true",
         },
     )
 
@@ -157,7 +177,7 @@ def build_matrix(limit: int | None = None) -> Dict[str, object]:
             for cam in CAMERAS:
                 for sa, sg in zip(SWINGS_AIR, SWINGS_GROUND):
                     trials.append(
-                        make_trial(n, correct_air, cam, sa, sg, index=ni)
+                        make_trial(n, correct_air, cam, sa, sg, index=ni, mega_scale=True)
                     )
                     i += 1
                     if limit is not None and i >= limit:
