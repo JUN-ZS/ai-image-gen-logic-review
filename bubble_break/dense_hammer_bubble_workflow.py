@@ -444,6 +444,72 @@ Lighting/clothing polish only. No topology change. NO_NEW_HANDLE.
     return steps[step].strip() + "\n"
 
 
+
+def make_stage_d3_control_sheet_prompt(
+    candidate: HammerCandidate,
+    prev_raster_sha256: str,
+    cells: int = 20,
+    rows: int = 4,
+    cols: int = 5,
+) -> str:
+    """D3 multi-combination action wash on ONE contact sheet (ControlNet-style mother board).
+
+    Not freehand wipe: every cell inherits D2 left-handle pixel lock + outer empty.
+    User picks one cell as D3 master after full program RUN.
+    """
+    if cells < 1 or cells > 20:
+        raise ValueError("cells must be 1..20")
+    if rows * cols < cells:
+        raise ValueError("rows*cols must cover cells")
+    from bubble_break.stage_d_gates import PROVEN_RULE
+
+    pose_catalog = [
+        "3/4 back lean-pull",
+        "full back hard pull",
+        "side profile pull",
+        "crouch low grip",
+        "wide stance yank",
+        "one-knee brace",
+        "overhead-ready hold (still on left rod only)",
+        "twist torso pull",
+        "step-back lean",
+        "close grip short lever",
+        "long-arm full extension",
+        "hair-swing effort",
+        "shoulder-drive push-on-handle",
+        "low center squat",
+        "high elbow tension",
+        "looking at contact glow",
+        "looking along handle axis",
+        "micro-step footwork",
+        "double-hand choke-up",
+        "double-hand choke-down",
+    ][:cells]
+    lines = "\n".join(f"  cell {i+1:02d}: {p}" for i, p in enumerate(pose_catalog))
+    return f"""# D3 CONTROL SHEET — multi-combination action WASH (not freehand wipe)
+# Layout: {rows}x{cols} grid, {cells} cells max, ONE image mother board.
+# After full program RUN: user picks ONE cell → that cell becomes D3 master.
+
+SOURCE candidate: {candidate.candidate_id}
+PREV D2 SHA-256: {prev_raster_sha256}
+PROVEN HARD LOCK: {PROVEN_RULE}
+
+## EVERY CELL MUST SHARE (frozen)
+- Same planted double-ended cylinder on bubble; base cyan-white glow
+- Outer end cap EMPTY; NO_NEW_HANDLE
+- SAME left-pointing side-middle lateral rod; hands only on that rod
+- Mini she identity; intact bubble; no cracks
+
+## CELL VARIATION (action only)
+{lines}
+
+## OUTPUT
+Single photoreal 16:9 image as a clean {rows}x{cols} contact sheet / ControlNet-style board.
+Thin gutters between cells. No text labels required (optional tiny cell numbers OK).
+Do not redesign hammer topology in any cell.
+"""
+
+
 def make_stage_e_prompt(candidate: HammerCandidate) -> str:
     return f"""# STAGE E — GLOWING PLANTED BASE → BUBBLE BREAK SPECTACLE
 

@@ -22,6 +22,7 @@ from bubble_break.dense_hammer_bubble_workflow import (
     make_stage_c_prompt,
     make_stage_d_prompt,
     make_stage_d_step_prompt,
+    make_stage_d3_control_sheet_prompt,
     make_stage_e_prompt,
     make_svg,
     sub,
@@ -308,6 +309,18 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
                 side_handle_roi=rois["side_handle_roi"],
             )
             self.assertTrue(r3.chain_ok)
+
+
+    def test_d3_control_sheet_prompt_locks_and_twenty_cells(self):
+        selected = candidate_by_id(make_candidates(), "C13")
+        p = make_stage_d3_control_sheet_prompt(selected, "sha" * 16, cells=20)
+        self.assertIn("20", p)
+        self.assertIn("NO_NEW_HANDLE", p)
+        self.assertIn("LEFT", p.upper())
+        self.assertIn("cell 20", p)
+        self.assertIn("contact sheet", p.lower())
+        with self.assertRaises(ValueError):
+            make_stage_d3_control_sheet_prompt(selected, "x" * 32, cells=21)
 
 
 if __name__ == "__main__":

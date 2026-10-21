@@ -116,6 +116,14 @@ python -m bubble_break.stage_d_gates --step D2 --from D1 \
 
 Module: `bubble_break/stage_d_gates.py`.
 
+## D3 multi-wash / Control sheet (up to 20 cells)
+
+Protocol wash ≠ freehand wipe. After full RUN, D3 may emit a **single mother board**
+(`make_stage_d3_control_sheet_prompt`, default 4×5 = 20 cells) of action combinations
+(front/side/back, pull/crouch/lean, etc.). **Every cell** still locks:
+left side-handle pixels, outer end empty, `NO_NEW_HANDLE`. User picks **one cell** → D3 master.
+Then pixel gates on the chosen crop (or re-IMG that cell alone).
+
 ## Stage D stepwise protocol (mandatory — 一步步)
 
 Outer-end / coaxial **new handle must not appear** under the layered formula stack. If it appears, the step is **REJECT** and must be redone — do not proceed.
