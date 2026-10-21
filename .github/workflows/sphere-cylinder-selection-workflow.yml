@@ -1,0 +1,68 @@
+name: Sphere Cylinder Selection Workflow
+
+on:
+  push:
+    branches: [main, 'feat/**']
+    paths:
+      - 'bubble_break/SPHERE_CYLINDER_SELECTION_WORKFLOW.md'
+      - 'bubble_break/sphere_cylinder_selection_workflow.py'
+      - 'bubble_break/test_sphere_cylinder_selection_workflow.py'
+      - '.github/workflows/sphere-cylinder-selection-workflow.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/SPHERE_CYLINDER_SELECTION_WORKFLOW.md'
+      - 'bubble_break/sphere_cylinder_selection_workflow.py'
+      - 'bubble_break/test_sphere_cylinder_selection_workflow.py'
+      - '.github/workflows/sphere-cylinder-selection-workflow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selection-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run candidate geometry and stage-gate tests
+        run: python -m unittest bubble_break/test_sphere_cylinder_selection_workflow.py -v
+      - name: Compile unselected atlas packet
+        run: python bubble_break/sphere_cylinder_selection_workflow.py --outdir out/sphere_cylinder_atlas
+      - name: Compile selected candidate packet
+        run: python bubble_break/sphere_cylinder_selection_workflow.py --outdir out/sphere_cylinder_selected --select C07
+      - name: Verify stage files, selection lock, and honest image status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          atlas = Path('out/sphere_cylinder_atlas')
+          selected = Path('out/sphere_cylinder_selected')
+          atlas_data = json.loads((atlas / 'candidate_manifest.json').read_text(encoding='utf-8'))
+          selected_data = json.loads((selected / 'candidate_manifest.json').read_text(encoding='utf-8'))
+
+          assert atlas_data['candidate_count'] == 25
+          assert atlas_data['selected_candidate_id'] is None
+          assert atlas_data['selection_lock'] is False
+          assert not (atlas / 'stage2_attach_handle_person.md').exists()
+
+          assert selected_data['candidate_count'] == 25
+          assert selected_data['selected_candidate_id'] == 'C07'
+          assert selected_data['selection_lock'] is True
+          for name in ('stage2_attach_handle_person.md', 'stage3_action_refine.md', 'stage4_contact_bloom_break.md'):
+              assert (selected / name).is_file(), name
+
+          assert 'C25' in (atlas / 'candidate_atlas_proxy.svg').read_text(encoding='utf-8')
+          assert atlas_data['image_realization'] == selected_data['image_realization'] == 'NOT_RUN'
+          assert atlas_data['pixel_audit'] == selected_data['pixel_audit'] == 'NOT_RUN'
+          print('25 stable candidates; C07 selection lock; stages 2–4 emitted; image/pixel status remains NOT_RUN')
+          PY
+      - name: Upload candidate atlas and staged prompt packets
+        uses: actions/upload-artifact@v4
+        with:
+          name: sphere-cylinder-selection-prompt-packet
+          path: out/sphere_cylinder_*/
+          if-no-files-found: error
