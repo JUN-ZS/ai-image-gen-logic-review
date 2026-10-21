@@ -201,7 +201,7 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             "do_not_transfer_old_T_evidence":True,
             "note":"A prompt/SVG or the legacy T batch is not evidence. All 48 actual H2 images must be independently generated and manually reviewed."
         }
-        (shared_master_dir/"stage_gate.json").write_text(json.dumps(shared_gate,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+        (shared_master_dir/"stage_gate.json").write_text(json.dumps(shared_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         for package in packages:
             proxy=Path(package["proxy_directory"])
             plan_path=proxy/"edit_plan.json"
@@ -217,7 +217,7 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             plan.setdefault("pixel_truth",{})["contact_matrix_images"]="NOT_RUN"
             plan["pixel_truth"]["edited_images"]="NOT_RUN"
             plan["pixel_truth"]["warning"]="All 48 fresh cylinder-cross H2 images require human pixel review; legacy T images are explicitly excluded."
-            plan_path.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+            plan_path.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
             local_gate=proxy/"stage_gate.json"
             gate={
                 "status":contact_gate_status,
@@ -229,7 +229,7 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
                 "do_not_transfer_old_T_evidence":True,
                 "manual_visual_approval_required":True
             }
-            local_gate.write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+            local_gate.write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
             for frame_dir in package["frame_directories"]:
                 frame_path=Path(frame_dir)
                 manifest_path=frame_path/"manifest.json"
@@ -241,8 +241,8 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
                            "contact_matrix_audit_status":contact_audit["overall_status"],
                            "do_not_transfer_old_T_evidence":True})
                 fm["workflow"]["realization_stage_gate"]=contact_gate_status
-                manifest_path.write_text(json.dumps(fm,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
-                (frame_path/"stage_gate.json").write_text(json.dumps(fg,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+                manifest_path.write_text(json.dumps(fm,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+                (frame_path/"stage_gate.json").write_text(json.dumps(fg,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
             package["stage_gate_status"]=contact_gate_status
             package["contact_matrix_audit_status"]=contact_audit["overall_status"]
             package["shared_contact_matrix_directory"]=str(contact_dir)
