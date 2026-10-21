@@ -9,6 +9,22 @@ from typing import Any, Dict, List
 VERSION = "1.0.0"
 FRAME_IDS = ("H0", "H2", "H3")
 FRAME_NAMES = {"H0":"H0_pre_impact", "H2":"H2_first_contact_anchor", "H3":"H3_post_impact"}
+
+CAMERA_VARIANTS = {
+    "LOW_3Q_FRONTAL": "low three-quarter frontal wide shot, 35mm cinema lens, off-centre composition",
+    "SIDE_3Q": "side three-quarter profile from the heroine's weapon side, with active terminal end face and bubble pole readable",
+    "FRONT_FACE_PLANE": "frontal three-quarter view chosen to reveal the active terminal END FACE plane, not the broad cheek",
+    "REVERSE_3Q": "reverse three-quarter view from the opposite side of the swing, with active end-face alignment readable",
+    "LOW_HERO": "low angle looking up, full-body braced stance and contact region both readable",
+    "HIGH_OBLIQUE": "moderately elevated oblique view, not top-down; lower pole and active end face stay unobstructed",
+    "DUTCH": "controlled 15-degree Dutch camera roll; the camera rolls, never the rigid hammer head",
+    "MACRO_CONTACT": "impact-region close-up with the actual terminal end-face plane and bubble surface readable; enough head geometry remains to distinguish end face from cheek",
+    "OVER_SHOULDER": "over-the-shoulder view from behind the heroine along the trailing handle toward the active end face and bubble pole",
+    "WIDE_ESTABLISHING": "wide establishing view with complete heroine, handle, giant bubble, and lower-pole contact zone visible",
+    "FOLLOW_THROUGH": "tracking side view at the end of the swing, showing rigid head orientation and the same impact axis",
+    "TELEPHOTO_PROFILE": "compressed telephoto profile with clean silhouette separation and clear active-face alignment",
+}
+
 NEGATIVE_BASE = (
     "collage, diptych, triptych, storyboard sheet, contact sheet, multi-panel layout, infographic, "
     "labels, captions, typography, watermark, logo, diagram, weapon turntable, duplicate heroine, extra limbs, "
