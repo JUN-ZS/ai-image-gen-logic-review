@@ -20,6 +20,8 @@ class TContactMatrixTests(unittest.TestCase):
             self.assertEqual(result["expected_prompt_count"],144)
             pose_counts={pose_id: sum(v["handle_roll_variant_id"]==pose_id for v in result["variants"]) for pose_id,_ in HANDLE_CLOCK_VARIANTS}
             self.assertEqual(pose_counts,{pose_id:12 for pose_id,_ in HANDLE_CLOCK_VARIANTS})
+            self.assertEqual(result["handle_roll_by_camera"],{camera_id:{pose_id:1 for pose_id,_ in HANDLE_CLOCK_VARIANTS} for camera_id,_ in CAMERA_VIEWS})
+            self.assertEqual(result["handle_roll_by_collision_axis"],{axis_id:{pose_id:3 for pose_id,_ in HANDLE_CLOCK_VARIANTS} for axis_id,_ in STRIKE_AXES})
             self.assertEqual(len({(v["camera_view_id"],v["collision_axis_id"]) for v in result["variants"]}),48)
             for camera_id,_ in CAMERA_VIEWS:
                 camera_rows=[v for v in result["variants"] if v["camera_view_id"]==camera_id]
