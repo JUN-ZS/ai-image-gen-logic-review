@@ -384,6 +384,9 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             f"striking face at P=({point['x']},{point['y']}), head center, handle joint, handle direction, bubble, contact patch, camera and background. "
             "Do not edit the bubble. Do not change the weapon into spikes, a mace, chain, halo or multiple hammers."
         )
+    if final_weapon == "CYLINDER_CROSS":
+        # Override the generic non-T edit text before the common write; never overwrite this prompt with radial-head wording.
+        weapon_prompt = cylinder_cross_prompt
     (outdir/files["target_edit_prompt"]).write_text(target_prompt+"\n",encoding="utf-8")
     (outdir/files["weapon_edit_prompt"]).write_text(weapon_prompt+"\n",encoding="utf-8")
     weapon_prompt_t = (
