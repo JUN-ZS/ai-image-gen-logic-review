@@ -42,7 +42,7 @@ class CylinderCrossDenseAtlasTests(unittest.TestCase):
             "curved cylindrical barrel walls",
             "never make first contact",
             "no bending",
-            "for later cropping",
+            "for later visual scanning and cropping",
             "neighboring pairs",
         ):
             self.assertIn(phrase, prompt)
