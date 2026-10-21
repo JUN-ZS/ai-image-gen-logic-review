@@ -10,6 +10,7 @@ from typing import Any, Dict, List
 from frame_pipeline import CAMERA_VARIANTS, compile_frame_set, write_packet as write_frame_packet
 from proxy_edit_pipeline import write_packet as write_proxy_packet
 from t_contact_matrix import build_matrix, validate_matrix, validate_master_review
+from cylinder_cross_contact_matrix import build_matrix as build_cylinder_matrix, validate_matrix as validate_cylinder_matrix
 
 def safe_name(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+","_",value).strip("._")[:100] or "story"
@@ -32,8 +33,8 @@ def select_records(input_path: Path, per_kernel: int=1, limit: int=20) -> List[D
 def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20,
                 final_weapon: str="T") -> Dict[str,Any]:
     final_weapon=final_weapon.upper()
-    if final_weapon not in ("CROSS","T","RADIAL"):
-        raise ValueError("--final-weapon must be CROSS, T, or RADIAL")
+    if final_weapon not in ("CROSS","T","RADIAL","CYLINDER_CROSS"):
+        raise ValueError("--final-weapon must be CROSS, T, RADIAL, or CYLINDER_CROSS")
     records=select_records(input_path,per_kernel,limit)
     outdir.mkdir(parents=True,exist_ok=True)
     packages=[]
@@ -43,7 +44,7 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
         frame_out=story_dir/"frames"
         frame_summaries=[]
         # For T mode, emit a distinct H0/H2/H3 trio for every camera variant.
-        camera_ids=list(CAMERA_VARIANTS) if final_weapon=="T" else ["LOW_3Q_FRONTAL"]
+        camera_ids=list(CAMERA_VARIANTS) if final_weapon in ("T","CYLINDER_CROSS") else ["LOW_3Q_FRONTAL"]
         for camera_id in camera_ids:
             packet=compile_frame_set(record,weapon_topology=final_weapon,camera_variant=camera_id)
             frame_summary=write_frame_packet(packet,frame_out/camera_id)
@@ -173,26 +174,103 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             package["contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
             package["required_contact_matrix_h2_images"]=contact_manifest["required_H2_contact_proof_images"]
             package["selected_edit_prompt"]=str(proxy/"generate_scene_with_T_master.txt")
+
+    elif final_weapon=="CYLINDER_CROSS":
+        # A clean, independent 48-variant end-cap matrix. Old T evidence is never read or copied.
+        shared_master_dir=outdir/"_shared_CYLINDER_CROSS_contact"
+        shared_master_dir.mkdir(parents=True,exist_ok=True)
+        contact_dir=shared_master_dir/"contact_matrix"
+        contact_manifest=build_cylinder_matrix(contact_dir)
+        contact_audit=validate_cylinder_matrix(contact_dir)
+        contact_gate_status=(
+            "CYLINDER_CROSS_CONTACT_MATRIX_APPROVED"
+            if contact_audit["overall_status"]=="PASS_MANUAL_REVIEW_RECORDED"
+            else "BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED"
+        )
+        shared_gate={
+            "status":contact_gate_status,
+            "required_order":["A_CYLINDER_CROSS_END_CAP_CONTACT_MATRIX","B_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS_H0_H2_H3"],
+            "topology":"CYLINDER_CROSS",
+            "required_contact_matrix_manifest":str(contact_dir/"contact_matrix_manifest.json"),
+            "required_contact_matrix_h2_images":48,
+            "required_contact_matrix_h2_reviews":"one explicit manual pixel-review JSON per variant; all checks true",
+            "contact_matrix_audit_report":str(contact_dir/"contact_matrix_audit_report.json"),
+            "contact_matrix_audit_status":contact_audit["overall_status"],
+            "image_realization":"NOT_RUN",
+            "pixel_audit":"NOT_RUN",
+            "do_not_transfer_old_T_evidence":True,
+            "note":"A prompt/SVG or the legacy T batch is not evidence. All 48 actual H2 images must be independently generated and manually reviewed."
+        }
+        (shared_master_dir/"stage_gate.json").write_text(json.dumps(shared_gate,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+        for package in packages:
+            proxy=Path(package["proxy_directory"])
+            plan_path=proxy/"edit_plan.json"
+            plan=json.loads(plan_path.read_text(encoding="utf-8"))
+            plan["status"]=contact_gate_status
+            plan["stage_gate_status"]=contact_gate_status
+            plan["shared_contact_matrix_directory"]=str(contact_dir)
+            plan.setdefault("required_artifacts",{})["contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
+            plan["required_artifacts"]["contact_matrix_h2_image_count"]=48
+            plan["required_artifacts"]["contact_matrix_h2_reviews"]="one manually reviewed JSON per variant"
+            plan["contact_matrix_audit_status"]=contact_audit["overall_status"]
+            plan["stage_gate_file"]=str(shared_master_dir/"stage_gate.json")
+            plan.setdefault("pixel_truth",{})["contact_matrix_images"]="NOT_RUN"
+            plan["pixel_truth"]["edited_images"]="NOT_RUN"
+            plan["pixel_truth"]["warning"]="All 48 fresh cylinder-cross H2 images require human pixel review; legacy T images are explicitly excluded."
+            plan_path.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+            local_gate=proxy/"stage_gate.json"
+            gate={
+                "status":contact_gate_status,
+                "topology":"CYLINDER_CROSS",
+                "required_contact_matrix_manifest":str(contact_dir/"contact_matrix_manifest.json"),
+                "required_contact_matrix_h2_images":48,
+                "contact_matrix_audit_status":contact_audit["overall_status"],
+                "shared_contact_matrix_directory":str(contact_dir),
+                "do_not_transfer_old_T_evidence":True,
+                "manual_visual_approval_required":True
+            }
+            local_gate.write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+            for frame_dir in package["frame_directories"]:
+                frame_path=Path(frame_dir)
+                manifest_path=frame_path/"manifest.json"
+                fm=json.loads(manifest_path.read_text(encoding="utf-8"))
+                fg=fm.setdefault("realization_stage_gate",{})
+                fg.update({"status":contact_gate_status,
+                           "required_contact_matrix_manifest":str(contact_dir/"contact_matrix_manifest.json"),
+                           "required_contact_matrix_h2_images":48,
+                           "contact_matrix_audit_status":contact_audit["overall_status"],
+                           "do_not_transfer_old_T_evidence":True})
+                fm["workflow"]["realization_stage_gate"]=contact_gate_status
+                manifest_path.write_text(json.dumps(fm,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+                (frame_path/"stage_gate.json").write_text(json.dumps(fg,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+            package["stage_gate_status"]=contact_gate_status
+            package["contact_matrix_audit_status"]=contact_audit["overall_status"]
+            package["shared_contact_matrix_directory"]=str(contact_dir)
+            package["contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
+            package["required_contact_matrix_h2_images"]=48
+            package["selected_edit_prompt"]=str(proxy/"edit_attacker_cylinder_cross.txt")
+
     batch={
-        "pipeline_version":"1.1.0",
+        "pipeline_version":"1.2.0",
         "input":str(input_path),
         "requested_per_kernel":per_kernel,
         "requested_limit":limit,
         "selected_stories":len(packages),
         "distinct_causal_kernels":len({p["causal_kernel_id"] for p in packages}),
         "final_weapon":final_weapon,
-        "method":("bulk JSONL -> one shared T-weapon master -> stratified 48-variant T-to-T terminal-end-face matrix (four handle-roll poses balanced) -> story-specific 12-camera H0/H2/H3 sweeps" if final_weapon=="T"
+        "method":("bulk JSONL -> one shared T-weapon master -> stratified 48-variant T-to-T terminal-end-face matrix -> story-specific 12-camera sweeps" if final_weapon=="T"
+                  else "bulk JSONL -> fresh CYLINDER_CROSS 48-variant flat-end-cap matrix -> fail-closed approval gate -> story-specific 12-camera sweeps" if final_weapon=="CYLINDER_CROSS"
                   else "bulk JSONL -> per-story frame packet -> cross proxy -> target-only sphere edit plan -> final weapon edit plan"),
-        "stage_gate_status":(contact_gate_status if final_weapon=="T" else "NO_T_TO_T_GATE"),
-        "required_first_stage":("A_T_WEAPON_MASTER_AND_CONTACT_MATRIX" if final_weapon=="T" else None),
+        "stage_gate_status":(contact_gate_status if final_weapon in ("T","CYLINDER_CROSS") else "NO_T_TO_T_GATE"),
+        "required_first_stage":("A_T_WEAPON_MASTER_AND_CONTACT_MATRIX" if final_weapon=="T" else "A_CYLINDER_CROSS_END_CAP_CONTACT_MATRIX" if final_weapon=="CYLINDER_CROSS" else None),
         "shared_weapon_master_directory":(str(shared_master_dir) if shared_master_dir else None),
         "contact_matrix_manifest":(str(shared_master_dir/"contact_matrix"/"contact_matrix_manifest.json") if shared_master_dir else None),
         "contact_matrix_audit_report":(str(shared_master_dir/"contact_matrix"/"contact_matrix_audit_report.json") if shared_master_dir else None),
         "contact_matrix_audit_status":(contact_audit["overall_status"] if contact_audit else "NOT_APPLICABLE"),
         "master_review_status":(master_audit["status"] if master_audit else "NOT_APPLICABLE"),
-        "contact_matrix_variants":(48 if final_weapon=="T" else 0),
-        "contact_matrix_prompt_count":(144 if final_weapon=="T" else 0),
-        "scene_camera_variants_per_story":(len(CAMERA_VARIANTS) if final_weapon=="T" else 1),
+        "contact_matrix_variants":(48 if final_weapon in ("T","CYLINDER_CROSS") else 0),
+        "contact_matrix_prompt_count":(144 if final_weapon in ("T","CYLINDER_CROSS") else 0),
+        "scene_camera_variants_per_story":(len(CAMERA_VARIANTS) if final_weapon in ("T","CYLINDER_CROSS") else 1),
         "scene_frame_prompt_count":sum(p["frame_prompt_count"] for p in packages),
         "image_realization":"NOT_RUN",
         "pixel_audit_status":"NOT_RUN",
@@ -207,7 +285,7 @@ def main(argv=None):
     parser.add_argument("--outdir",required=True)
     parser.add_argument("--per-kernel",type=int,default=1)
     parser.add_argument("--limit",type=int,default=20)
-    parser.add_argument("--final-weapon",choices=("CROSS","T","RADIAL"),default="T")
+    parser.add_argument("--final-weapon",choices=("CROSS","T","RADIAL","CYLINDER_CROSS"),default="T")
     args=parser.parse_args(argv)
     try: result=build_batch(Path(args.input),Path(args.outdir),args.per_kernel,args.limit,args.final_weapon)
     except (OSError,ValueError,json.JSONDecodeError) as exc:
