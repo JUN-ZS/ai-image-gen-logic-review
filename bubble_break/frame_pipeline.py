@@ -77,6 +77,13 @@ WEAPON_TEXT = {
         "The upper terminal face of the vertical arm is flat and is the only contact surface; its center is pinned to P. "
         "This is a geometry proxy only, not the final radial hammer."
     ),
+    "CYLINDER_CROSS": (
+        "WEAPON_TOPOLOGY_ID=WEAPON_CYLINDER_ENDED_CROSS_HAMMER. ONE plus-shaped rigid cross hammer with a straight crossbar, a vertical cross arm, and ONE long straight handle fixed at the exact cross-center joint. "
+        "Both opposite ends of the horizontal crossbar terminate in short, solid cylinders aligned with the bar. Each cylinder has a flat circular end cap and a curved cylindrical barrel wall. "
+        "ONLY the two designated flat circular end caps at the OUTER ends may collide cap-to-cap. The curved cylindrical barrel walls, crossbar sides, cross arms, corners and handle MUST NOT make first contact. "
+        "Keep the entire cross head and handle as one rigid body under every camera view: no bending, kinking, twisting, telescoping, detaching, or independent rotation of head and handle. "
+        "The circular cap planes oppose with exactly opposite normals at H2; no side-surface contact may be substituted."
+    ),
 }
 
 NEGATIVE_BY_TOPOLOGY = {
@@ -93,19 +100,24 @@ NEGATIVE_BY_TOPOLOGY = {
         "T-shaped head, radial spherical hammer head, near-spherical faceted globe head, conventional plain rectangular "
         "single-bar hammer head, missing horizontal arm, missing vertical arm"
     ),
+    "CYLINDER_CROSS": (
+        "T-shaped head, spherical or radial head, spikes, flat rectangular pads replacing the circular caps, missing either cylinder, "
+        "cylinder caps replaced by curved sides, curved-cylinder-barrel-first contact, crossbar-side-first contact, cross-arm-first contact, "
+        "corner-first contact, handle-first contact, bent handle, twisted head, telescoping handle, detached handle, independently rotated head"
+    ),
 }
 
 def negative_for_weapon(topology: str) -> str:
     topology = topology.upper()
     if topology not in NEGATIVE_BY_TOPOLOGY:
-        raise ValueError("weapon_topology must be RADIAL, T, or CROSS")
+        raise ValueError("weapon_topology must be RADIAL, T, CROSS, or CYLINDER_CROSS")
     return NEGATIVE_BASE + ", " + NEGATIVE_BY_TOPOLOGY[topology]
 
 
 def common_for_weapon(topology: str, camera_variant: str = "LOW_3Q_FRONTAL") -> str:
     topology = topology.upper()
     if topology not in WEAPON_TEXT:
-        raise ValueError("weapon_topology must be RADIAL, T, or CROSS")
+        raise ValueError("weapon_topology must be RADIAL, T, CROSS, or CYLINDER_CROSS")
     if camera_variant not in CAMERA_VARIANTS:
         raise ValueError("camera_variant must be one of CAMERA_VARIANTS")
     camera_clause = "CAMERA VIEW: " + CAMERA_VARIANTS[camera_variant] + ". Keep this exact view within this H0/H2/H3 trio."
@@ -367,7 +379,7 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL", projection: Dict[
         parts.append(_polygon([(px-t_bar_width//2,t_bar_top),(px+t_bar_width//2,t_bar_top),
                                (px+t_bar_width//2,t_bar_top+8),(px-t_bar_width//2,t_bar_top+8)],
                               "#6b9cbd","#fff0bf",3))
-    elif weapon_topology == "CROSS":
+    elif weapon_topology in ("CROSS","CYLINDER_CROSS"):
         parts.append(_polygon([(hx-30,top_y),(hx+30,top_y),(hx+30,hy+85),(hx-30,hy+85)],
                               "#203d56","#e0c18a",5))
         parts.append(_polygon([(hx-100,hy-30),(hx+100,hy-30),(hx+100,hy+30),(hx-100,hy+30)],
@@ -385,7 +397,7 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL", projection: Dict[
         parts.append(_polygon([(hx-34,top_y),(hx+34,top_y),(hx+28,top_y+18),(hx,top_y+24),(hx-28,top_y+18)],
                               "#5e8eaf","#fff0bf",5))
     else:
-        raise ValueError("weapon_topology must be RADIAL, T, or CROSS")
+        raise ValueError("weapon_topology must be RADIAL, T, CROSS, or CYLINDER_CROSS")
     # Simple heroine blockout; pose changes slightly with the event, but camera/landmarks stay fixed.
     if frame_id=="H0":
         headx,heady,shoulderx,shouldery,hipx,hipy=560,704,616,757,646,830
@@ -457,7 +469,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
     palette = axis_text(record, "palette", "cold silver, electric cyan, restrained amber")
     lock = {
         "version": VERSION, "story_id": story_id, "scene": scene, "scale": scale, "shell": shell,
-        "palette": palette, "weapon": {"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology], "camera": camera_variant, "camera_description": CAMERA_VARIANTS[camera_variant],
+        "palette": palette, "weapon": {"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS","CYLINDER_CROSS":"WEAPON_CYLINDER_ENDED_CROSS_HAMMER"}[weapon_topology], "camera": camera_variant, "camera_description": CAMERA_VARIANTS[camera_variant],
         "contact": "exact six-o'clock bottom pole P"
     }
     shot_id = "SHOT-" + hashlib.sha256(json.dumps(lock,sort_keys=True,ensure_ascii=False).encode()).hexdigest()[:12].upper()
@@ -512,7 +524,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
     return {
         "pipeline_version":VERSION,"story_id":story_id,"shot_lock_id":shot_id,
         "camera_variant":camera_variant,"camera_description":CAMERA_VARIANTS[camera_variant],
-        "canonical_weapon":{"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology],
+        "canonical_weapon":{"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS","CYLINDER_CROSS":"WEAPON_CYLINDER_ENDED_CROSS_HAMMER"}[weapon_topology],
         "weapon_topology":weapon_topology,
         "weapon_shape_contract":{
             "RADIAL":"one handle + one near-spherical multi-face head",
@@ -620,7 +632,7 @@ def main(argv: List[str]|None=None) -> int:
     parser.add_argument("--outdir",required=True,help="directory for prompts and pixel-audit packet")
     parser.add_argument("--limit",type=int,default=1,help="maximum story packets; default 1")
     parser.add_argument("--story-id",default=None,help="select one exact story_id")
-    parser.add_argument("--weapon-topology",choices=("RADIAL","T","CROSS"),default="RADIAL")
+    parser.add_argument("--weapon-topology",choices=("RADIAL","T","CROSS","CYLINDER_CROSS"),default="RADIAL")
     parser.add_argument("--camera-sweep",action="store_true",help="emit a separate H0/H2/H3 trio for every camera variant")
     args=parser.parse_args(argv)
     try: batch=build_packets(Path(args.input),Path(args.outdir),args.limit,args.story_id,args.weapon_topology,args.camera_sweep)
