@@ -22,7 +22,14 @@ class TContactMatrixTests(unittest.TestCase):
             self.assertEqual(pose_counts,{pose_id:12 for pose_id,_ in HANDLE_CLOCK_VARIANTS})
             self.assertEqual(len({(v["camera_view_id"],v["collision_axis_id"]) for v in result["variants"]}),48)
             for camera_id,_ in CAMERA_VIEWS:
-                self.assertEqual(sum(v["camera_view_id"]==camera_id for v in result["variants"]),4)
+                camera_rows=[v for v in result["variants"] if v["camera_view_id"]==camera_id]
+                self.assertEqual(len(camera_rows),4)
+                self.assertEqual({v["handle_roll_variant_id"] for v in camera_rows},{pose_id for pose_id,_ in HANDLE_CLOCK_VARIANTS})
+            for axis_id,_ in STRIKE_AXES:
+                axis_rows=[v for v in result["variants"] if v["collision_axis_id"]==axis_id]
+                self.assertEqual(len(axis_rows),12)
+                axis_pose_counts={pose_id: sum(v["handle_roll_variant_id"]==pose_id for v in axis_rows) for pose_id,_ in HANDLE_CLOCK_VARIANTS}
+                self.assertEqual(axis_pose_counts,{pose_id:3 for pose_id,_ in HANDLE_CLOCK_VARIANTS})
             rows=[json.loads(x) for x in (Path(td)/"t_contact_matrix.jsonl").read_text(encoding="utf-8").splitlines()]
             self.assertEqual(len(rows),144)
             self.assertEqual(sum(x["state"]=="H2" for x in rows),48)
