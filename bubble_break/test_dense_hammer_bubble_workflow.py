@@ -23,6 +23,7 @@ from bubble_break.dense_hammer_bubble_workflow import (
     make_stage_d_prompt,
     make_stage_e_prompt,
     make_svg,
+    sub,
     unit,
 )
 
@@ -95,7 +96,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         self.assertIn("No human, hands", prompt)
         self.assertIn("side-middle", prompt)
         self.assertIn("tangent plane", prompt)
-        self.assertIn("PENDING", prompt.upper())
+        self.assertIn("BLOCK", prompt.upper())
 
     def test_stage_c_d_e_preserve_planted_contact_and_handle_attachment(self):
         selected = candidate_by_id(make_candidates(), "C17")
