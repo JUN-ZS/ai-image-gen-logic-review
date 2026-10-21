@@ -295,6 +295,8 @@ jobs:
               plan = json.loads((Path(item["proxy_directory"]) / "edit_plan.json").read_text(encoding="utf-8"))
               assert plan["final_weapon"] == "CYLINDER_CROSS", plan
               assert plan["status"] == "BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED", plan
+              assert item["terminal_face_gap_px"] is None, item
+              assert plan["terminal_face_gap_px"] is None, plan
               assert plan["pixel_truth"]["contact_matrix_images"] == "NOT_RUN", plan
               assert Path(item["selected_edit_prompt"]).exists(), item
               assert (Path(item["proxy_directory"]) / "stage_gate.json").exists()
