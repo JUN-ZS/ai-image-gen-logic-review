@@ -247,6 +247,16 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         "target_edit_prompt": "edit_target_plus_to_bubble.txt",
         "weapon_edit_prompt": "edit_attacker_plus_to_radial_hammer.txt",
     }
+    if final_weapon == "CYLINDER_CROSS":
+        files.update({
+            "proxy": "00_CYLINDER_CROSS_weapon_geometry.svg",
+            "target_replaced": "01_cylinder_cross_target_bubble.svg",
+            "final_weapon_preview": "04_CYLINDER_CROSS_final_weapon_preview.svg",
+            "mask": "02_target_bubble_edit_mask.svg",
+            "attacker_mask": "03_attacker_cylinder_cross_protect_mask.svg",
+            "target_edit_prompt": "edit_target_plus_to_bubble.txt",
+            "weapon_edit_prompt": "edit_attacker_cylinder_cross.txt",
+        })
     if final_weapon == "T":
         files.update({
             "proxy": "00_T_weapon_master_geometry.svg",
@@ -262,6 +272,17 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
                        (files["final_weapon_preview"], "final_weapon"),
                        (files["mask"], "mask"), (files["attacker_mask"], "attacker_mask")]:
         (outdir/name).write_text(build_svg(kind, projection, final_weapon)+"\n", encoding="utf-8")
+    if final_weapon == "CYLINDER_CROSS":
+        cylinder_cross_prompt = (
+            "CYLINDER-ENDED PLUS CROSS-HAMMER SHAPE LOCK. Exactly ONE rigid plus-shaped cross hammer: one straight horizontal crossbar, "
+            "one straight vertical cross arm, and one single long straight handle fixed at the exact center joint. The two opposite horizontal "
+            "ends terminate in short solid cylinders aligned with the crossbar. Each cylinder has a flat circular end cap and a curved barrel wall. "
+            "The ONLY permitted first-contact surfaces in the required two-hammer contact matrix are the two designated OUTER FLAT CIRCULAR END CAPS, "
+            "meeting cap-to-cap with opposing normals. A curved cylindrical barrel wall, crossbar side, cross arm, corner, or handle MUST NOT touch first. "
+            "The complete weapon is a rigid body: never bend, kink, twist, telescope, detach, or rotate its head independently from its handle. "
+            "This shape lock alone is not evidence that any generated H2 image achieved the required contact. Do not edit the bubble, P, camera, or background."
+        )
+        (outdir/"edit_attacker_cylinder_cross.txt").write_text(cylinder_cross_prompt+"\\n",encoding="utf-8")
     if final_weapon == "T":
         files["t_shape_reference"] = "05_T_silhouette_reference.svg"
         (outdir/files["t_shape_reference"]).write_text(build_t_silhouette_reference_svg()+"\n", encoding="utf-8")
@@ -369,8 +390,36 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         "RADIAL":"one long handle + one near-spherical head tiled with outward flat faces",
         "T":"one straight horizontal crossbar + one long handle joined exactly at the crossbar underside midpoint; the handle itself forms the single stem of the T; no separate short post",
         "CROSS":"one long handle + one connected plus-sign head with vertical and horizontal arms",
+        "CYLINDER_CROSS":"one rigid plus-shaped cross head; opposite horizontal arms terminate in solid cylinders; only their two outer flat circular end caps are eligible for cap-to-cap first contact; one rigid centered handle",
     }[final_weapon]
-    if final_weapon == "T":
+    if final_weapon == "CYLINDER_CROSS":
+        plan = {
+            "method":"CYLINDER_CROSS_CONTACT_MATRIX_THEN_STORY_SCENE_GENERATION",
+            "status":"BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED",
+            "stage_gate_status":"BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED",
+            "final_weapon":final_weapon,
+            "shape_contract":shape_contract,
+            "active_striking_surface":"ONLY the two opposed outer FLAT CIRCULAR END CAPS; curved cylindrical barrel walls are forbidden first-contact surfaces",
+            "selected_edit_prompt":selected_prompt,
+            "projection_lock":projection,
+            "terminal_face_gap_px":None,
+            "required_order":[
+                "A: compile the 48-variant cylinder-cross matrix (12 camera views x 4 collision axes), with H0/H2/H3 as separate prompts",
+                "A_GATE: generate all 48 real H2 images and manually review both circular cap planes, opposing normals, forbidden contacts and rigid handles",
+                "B: only after every H2 contact image and review record passes, continue to story-specific scene generation",
+                "C: review final edited image pixels independently; do not transfer approval from the old T batch",
+            ],
+            "required_artifacts":{
+                "contact_matrix_manifest":"contact_matrix_manifest.json",
+                "contact_matrix_h2_image_count":48,
+                "contact_matrix_h2_review_pattern":"one manually reviewed JSON per variant",
+                "scene_prompts":["H0_pre_impact.txt","H2_first_contact_anchor.txt","H3_post_impact.txt"],
+            },
+            "pixel_truth":{"vector_proxy":"SCHEMATIC_ONLY","contact_matrix_images":"NOT_RUN","edited_images":"NOT_RUN",
+                "warning":"No image generation or pixel contact audit is performed by this pipeline. The actual 48 H2 images must pass manual review; the previous T images are not evidence."},
+            "files":files,
+        }
+    elif final_weapon == "T":
         plan = {
             "method":"T_MASTER_THEN_T_END_FACE_CONTACT_MATRIX_THEN_STORY_SCENE_GENERATION",
             "status":"BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED",
@@ -416,6 +465,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "active_striking_surface":{
                 "RADIAL":"one upward-facing flat polygon on the radial head",
                 "CROSS":"the upper terminal face of the vertical arm",
+                "CYLINDER_CROSS":"the two outer flat circular end caps only; curved barrels are forbidden first-contact surfaces",
             }[final_weapon],
             "selected_edit_prompt":selected_prompt,
             "projection_lock":projection,
@@ -432,6 +482,8 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         }
     (outdir/"edit_plan.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     readme_text = (
+        "CYLINDER_CROSS workflow: the two outer flat circular end caps are the only permitted first-contact surfaces. Generate and manually review all 48 H2 contact images before scene generation. Curved barrel sides, crossbar sides, cross arms, corners and handles must not touch first; the full tool is rigid. Existing T images cannot satisfy this gate."
+        if final_weapon == "CYLINDER_CROSS" else
         "T weapon master plus end-face matrix workflow. Generate and manually approve A_T_weapon_master.png, then generate and manually review 48 T-to-T END-FACE collision variants before scenes; "
         "then use generate_scene_with_T_master.txt and each story's H0/H2/H3 camera-sweep prompts. The master controls weapon topology only, "
         "not scene composition. The bubble is the target; never add an upside-down second T or replace a hammer with a bubble. "
@@ -450,7 +502,7 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description="Generate geometry/edit packets; T mode uses one approved T-weapon master for story-specific scene prompts.")
     parser.add_argument("--input-layout",required=True)
     parser.add_argument("--outdir",required=True)
-    parser.add_argument("--final-weapon",choices=("CROSS","T","RADIAL"),default="RADIAL")
+    parser.add_argument("--final-weapon",choices=("CROSS","T","RADIAL","CYLINDER_CROSS"),default="RADIAL")
     args=parser.parse_args(argv)
     try:
         result=write_packet(Path(args.input_layout),Path(args.outdir),args.final_weapon)
