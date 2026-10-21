@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 MASTER_REVIEW_CHECKS = (
     "exactly_one_T_hammer",
@@ -36,7 +36,7 @@ REVIEW_CHECKS = (
 )
 
 CAMERA_VIEWS: Tuple[Tuple[str, str], ...] = (
-    ("FACE_ON", "near head-on along the collision axis, both rectangular terminal END FACES fully visible and the seam centered"),
+    ("FACE_ON", "slightly grazing face-oriented view, about 10–15 degrees off the collision axis; show the contact seam, end-face perimeter edges and nearby depth cues. Do not pretend the camera can see through two coincident contact faces from directly along their normals"),
     ("SIDE_PROFILE", "true side profile perpendicular to the collision axis, both T profiles readable and the contact seam visible"),
     ("FRONT_THREE_QUARTER", "front three-quarter view about 35 degrees off the collision axis, showing each end-face plane and its cheek depth"),
     ("REVERSE_THREE_QUARTER", "reverse three-quarter view from the opposite side about 35 degrees off the collision axis, showing the same face-to-face joint"),
@@ -129,60 +129,70 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
     variants: List[Dict[str, Any]] = []
     for cam_index, (camera_id, camera_text) in enumerate(CAMERA_VIEWS, start=1):
         for axis_index, (axis_id, axis_text) in enumerate(STRIKE_AXES, start=1):
-            for pose_index, (pose_id, pose_text) in enumerate(HANDLE_CLOCK_VARIANTS, start=1):
-                variant_id = f"V{len(variants)+1:03d}_{camera_id}_{axis_id}_{pose_id}"
-                variant_dir = outdir / variant_id
-                    variant_dir.mkdir(parents=True, exist_ok=True)
-                image_path = variant_dir / f"{variant_id}_H2.png"
-                review_path = variant_dir / f"{variant_id}_H2_review.json"
-                review_template_path = variant_dir / f"{variant_id}_H2_review.template.json"
-                review_template = {
-                    "variant_id": variant_id,
-                    "status": "UNASSESSED",
-                    "image": f"{variant_id}/{image_path.name}",
-                    "manual_pixel_review": False,
-                    "checks": {name: False for name in REVIEW_CHECKS},
-                    "notes": "",
-                    "warning": "Do not set PASS unless a human has inspected the actual H2 PNG and every face-plane check is visibly true.",
-                }
-                review_template_path.write_text(json.dumps(review_template, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-                state_files = {}
-                for state in ("H0", "H2", "H3"):
-                    prompt = make_prompt(variant_id, camera_id, camera_text, axis_id, axis_text, pose_id, pose_text, state)
-                    prompt_path = variant_dir / f"{state}.txt"
-                    prompt_path.write_text(prompt + "\n", encoding="utf-8")
-                    row = {
-                        "variant_id": variant_id,
-                        "camera_view_id": camera_id,
-                        "camera_view": camera_text,
-                        "collision_axis_id": axis_id,
-                        "collision_axis": axis_text,
-                        "state": state,
-                        "prompt_file": str(Path(variant_id) / prompt_path.name),
-                        "prompt": prompt,
-                        "expected_contact_contract": {
-                            "active_surface_A": "TERMINAL_END_STRIKING_FACE",
-                            "active_surface_B": "TERMINAL_END_STRIKING_FACE",
-                            "plane_relation_H2": "COINCIDENT_FACE_TO_FACE",
-                            "normal_relation_H2": "OPPOSITE_ALONG_COLLISION_AXIS",
-                            "forbidden_first_contacts": ["CHEEK", "UPPER_OR_LOWER_LONG_SURFACE", "CORNER", "STEM", "HANDLE"],
-                        },
-                        "image_realization": "NOT_RUN",
-                        "pixel_audit": "NOT_RUN",
-                    }
-                    rows.append(row)
-                    state_files[state] = str(Path(variant_id) / prompt_path.name)
-                variants.append({
+            # Keep the requested 12 x 4 matrix at 48 variants. Rotate through all
+            # four handle-roll relationships in a balanced, deterministic cycle.
+            # Each camera sees all four poses; each collision axis sees each pose
+            # three times across the twelve cameras.
+            variant_index = len(variants)
+            pose_index = variant_index % len(HANDLE_CLOCK_VARIANTS)
+            pose_id, pose_text = HANDLE_CLOCK_VARIANTS[pose_index]
+            variant_id = f"V{variant_index+1:03d}_{camera_id}_{axis_id}_{pose_id}"
+            variant_dir = outdir / variant_id
+            variant_dir.mkdir(parents=True, exist_ok=True)
+            image_path = variant_dir / f"{variant_id}_H2.png"
+            review_path = variant_dir / f"{variant_id}_H2_review.json"
+            review_template_path = variant_dir / f"{variant_id}_H2_review.template.json"
+            review_template = {
+                "variant_id": variant_id,
+                "status": "UNASSESSED",
+                "image": f"{variant_id}/{image_path.name}",
+                "manual_pixel_review": False,
+                "checks": {name: False for name in REVIEW_CHECKS},
+                "notes": "",
+                "warning": "Do not set PASS unless a human has inspected the actual H2 PNG and every face-plane check is visibly true.",
+            }
+            review_template_path.write_text(json.dumps(review_template, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+            state_files = {}
+            for state in ("H0", "H2", "H3"):
+                prompt = make_prompt(variant_id, camera_id, camera_text, axis_id, axis_text, pose_id, pose_text, state)
+                prompt_path = variant_dir / f"{state}.txt"
+                prompt_path.write_text(prompt + "\\n", encoding="utf-8")
+                row = {
                     "variant_id": variant_id,
                     "camera_view_id": camera_id,
+                    "camera_view": camera_text,
                     "collision_axis_id": axis_id,
-                    "state_prompt_files": state_files,
-                    "required_H2_image": str(Path(variant_id) / image_path.name),
-                    "required_H2_review": str(Path(variant_id) / review_path.name),
-                    "review_template": str(Path(variant_id) / review_template_path.name),
-                    "required_review_checks": list(REVIEW_CHECKS),
-                    "status": "UNASSESSED",
-                })
+                    "collision_axis": axis_text,
+                    "handle_roll_variant_id": pose_id,
+                    "handle_roll_variant": pose_text,
+                    "state": state,
+                    "prompt_file": str(Path(variant_id) / prompt_path.name),
+                    "prompt": prompt,
+                    "expected_contact_contract": {
+                        "active_surface_A": "TERMINAL_END_STRIKING_FACE",
+                        "active_surface_B": "TERMINAL_END_STRIKING_FACE",
+                        "plane_relation_H2": "COINCIDENT_FACE_TO_FACE",
+                        "normal_relation_H2": "OPPOSITE_ALONG_COLLISION_AXIS",
+                        "forbidden_first_contacts": ["CHEEK", "UPPER_OR_LOWER_LONG_SURFACE", "CORNER", "STEM", "HANDLE"],
+                    },
+                    "image_realization": "NOT_RUN",
+                    "pixel_audit": "NOT_RUN",
+                }
+                rows.append(row)
+                state_files[state] = str(Path(variant_id) / prompt_path.name)
+            variants.append({
+                "variant_id": variant_id,
+                "camera_view_id": camera_id,
+                "collision_axis_id": axis_id,
+                "handle_roll_variant_id": pose_id,
+                "handle_roll_variant": pose_text,
+                "state_prompt_files": state_files,
+                "required_H2_image": str(Path(variant_id) / image_path.name),
+                "required_H2_review": str(Path(variant_id) / review_path.name),
+                "review_template": str(Path(variant_id) / review_template_path.name),
+                "required_review_checks": list(REVIEW_CHECKS),
+                "status": "UNASSESSED",
+            })
     jsonl_path = outdir / "t_contact_matrix.jsonl"
     jsonl_path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
     manifest = {
@@ -200,8 +210,9 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
         "states_per_variant": 3,
         "single_image_prompt_count": len(rows),
         "required_H2_contact_proof_images": len(variants),
-        "expected_prompt_count": len(CAMERA_VIEWS) * len(STRIKE_AXES) * len(HANDLE_CLOCK_VARIANTS) * 3,
-        "variant_formula": "12 camera views x 4 collision axes x 4 handle-roll relationships = 192 variants; each has H0/H2/H3 = 576 separate image prompts",
+        "expected_prompt_count": len(CAMERA_VIEWS) * len(STRIKE_AXES) * 3,
+        "variant_formula": "12 camera views x 4 collision axes = 48 variants; the four handle-roll relationships are deterministically balanced across the matrix; each variant has H0/H2/H3 = 144 separate image prompts",
+        "handle_roll_variant_distribution": {pose_id: len(CAMERA_VIEWS) for pose_id, _ in HANDLE_CLOCK_VARIANTS},
         "topology_contract": "T_TO_T_TERMINAL_END_FACE_TO_TERMINAL_END_FACE",
         "contact_contract": {
             "surface_A": "TERMINAL_END_STRIKING_FACE",
@@ -336,7 +347,7 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description="Compile 192 T-to-T contact variants (12 cameras x 4 axes x 4 handle-roll poses) or validate their actual H2 PNGs and human reviews. Never renders images.")
+    parser = argparse.ArgumentParser(description="Compile 48 T-to-T contact variants (12 cameras x 4 collision axes; four handle-roll poses are balanced across the matrix) or validate their actual H2 PNGs and human reviews. Never renders images.")
     parser.add_argument("--outdir", help="destination for prompts, variants and review templates")
     parser.add_argument("--validate-dir", help="validate generated H2 PNGs and manual review JSONs in an existing matrix")
     args = parser.parse_args(argv)
