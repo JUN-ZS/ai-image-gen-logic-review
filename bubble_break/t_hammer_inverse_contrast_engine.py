@@ -38,8 +38,8 @@ H0_GAP=50.0
 H3_ADVANCE=15.0
 
 # Outward normals point from sphere center to each contact location.
-AIR_OUTWARD=unit((0.56,-0.08,0.825))
-GROUND_OUTWARD=unit((-0.67,-0.10,-0.736))
+AIR_OUTWARD=unit((0.56,-0.72,0.40))
+GROUND_OUTWARD=unit((-0.54,-0.74,-0.40))
 
 @dataclass(frozen=True)
 class Camera:
@@ -52,18 +52,18 @@ class GroundMove:
     move_id:str; name:str; body_action:str
 
 CAMERAS=(
- Camera("CAM01_GRAZING","端面掠射審計",25,8,0,85,"偏離接觸法線以看清打擊面邊界"),
- Camera("CAM02_LOW_HERO","貼地低仰角",35,-18,0,24,"從低處仰望飛身者與低位攻擊者"),
- Camera("CAM03_HIGH_CRANE","高空鶴臂俯視",140,48,0,35,"由高處看兩個不同球面接觸點"),
- Camera("CAM04_SIDE_PROFILE","側面輪廓",90,3,0,85,"清楚展示槌頭長軸與柄的正交關係"),
- Camera("CAM05_FRONT_THREE_QUARTER","前側三分之四",48,15,0,35,"同時保留圓球曲面、端面及槌頭厚度"),
- Camera("CAM06_REVERSE_THREE_QUARTER","反向三分之四",225,18,0,40,"從攻擊對側回看兩種接觸方式"),
- Camera("CAM07_DUTCH_25","25度荷蘭斜角",55,12,25,32,"只滾轉畫面，不改變世界接觸法線"),
- Camera("CAM08_OVER_SHOULDER_A","飛身者越肩",155,10,-5,28,"沿空中攻擊者的運動方向觀察"),
- Camera("CAM09_OVER_SHOULDER_G","低位者越肩",320,5,4,28,"從低位攻擊者後方看錯面接觸"),
- Camera("CAM10_MACRO_SPLIT_DEPTH","微距深度角",80,25,0,100,"保留兩端面/側面接縫與前後深度"),
- Camera("CAM11_ORBIT_LEFT","左側環繞",275,22,-7,40,"沿球殼環繞以改變可見輪廓"),
- Camera("CAM12_ORBIT_RIGHT","右側環繞",105,32,6,50,"反向環繞但保持接觸類型不變"),
+ Camera("CAM01_GRAZING","端面掠射審計",225,8,0,85,"偏離接觸法線以看清打擊面邊界"),
+ Camera("CAM02_LOW_HERO","貼地低仰角",235,-8,0,24,"從低處仰望飛身者與低位攻擊者"),
+ Camera("CAM03_HIGH_CRANE","高空鶴臂俯視",245,48,0,35,"由高處看兩個不同球面接觸點"),
+ Camera("CAM04_SIDE_PROFILE","側面輪廓",255,3,0,85,"清楚展示槌頭長軸與柄的正交關係"),
+ Camera("CAM05_FRONT_THREE_QUARTER","前側三分之四",265,15,0,35,"同時保留圓球曲面、端面及槌頭厚度"),
+ Camera("CAM06_REVERSE_THREE_QUARTER","反向三分之四",275,18,0,40,"從攻擊對側回看兩種接觸方式"),
+ Camera("CAM07_DUTCH_25","25度荷蘭斜角",285,12,25,32,"只滾轉畫面，不改變世界接觸法線"),
+ Camera("CAM08_OVER_SHOULDER_A","飛身者越肩",295,10,-5,28,"沿空中攻擊者的運動方向觀察"),
+ Camera("CAM09_OVER_SHOULDER_G","低位者越肩",305,5,4,28,"從低位攻擊者後方看錯面接觸"),
+ Camera("CAM10_MACRO_SPLIT_DEPTH","微距深度角",315,25,0,100,"保留兩端面/側面接縫與前後深度"),
+ Camera("CAM11_ORBIT_LEFT","左側環繞",325,22,-7,40,"沿球殼環繞以改變可見輪廓"),
+ Camera("CAM12_ORBIT_RIGHT","右側環繞",335,32,6,50,"反向環繞但保持接觸類型不變"),
 )
 AIR_MOVES=(
  AirMove("AIR_DIVE_DIAGONAL","騰空斜向俯擊","The airborne fighter is above the floor, knees tucked and torso rotated through a diagonal diving attack; the final 50 units of the tool path are straight toward the contact normal."),
