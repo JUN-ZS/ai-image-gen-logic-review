@@ -252,16 +252,18 @@ def _polygon(points: List[tuple], fill: str, stroke: str = "#182b42", width: int
 def _line(x1: int, y1: int, x2: int, y2: int, color: str, width: int = 8) -> str:
     return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="{width}" stroke-linecap="round"/>'
 
-def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
-    """Draw a deterministic, label-free 2D camera blockout. It is not a final artwork."""
-    width, height = 1920, 1080
-    cx, cy, radius = 1090, 330, 280
-    px, py = 1090, 610
-    geo = FRAME_PROJECTION["frames"][frame_id]
+def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL", projection: Dict[str, Any] | None = None) -> str:
+    """Draw a deterministic 2D blockout; T scenes show a rotated end-face-on-P schematic, not 3D proof."""
+    projection = projection or projection_lock()
+    width = int(projection["canvas"]["width"]); height = int(projection["canvas"]["height"])
+    cx = int(projection["sphere_center"]["x"]); cy = int(projection["sphere_center"]["y"])
+    radius = int(projection["sphere_radius"])
+    px = int(projection["P_six_oclock"]["x"]); py = int(projection["P_six_oclock"]["y"])
+    geo = projection["frames"][frame_id]
     hx, hy = geo["head_center"]["x"], geo["head_center"]["y"]
     top_y = geo["top_face_y"]
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-contact-p="{FRAME_PROJECTION["P_six_oclock"]["x"]},{FRAME_PROJECTION["P_six_oclock"]["y"]}" data-frame="{frame_id}" data-active-surface="{"TERMINAL_END_FACE" if weapon_topology.upper()=="T" else "topology-specific"}" data-contact-plane-proof="schematic-only">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" data-contact-p="{px},{py}" data-frame="{frame_id}" data-active-surface="{"TERMINAL_END_FACE" if weapon_topology.upper()=="T" else "topology-specific"}" data-contact-plane-proof="schematic-only">',
         '<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#102b4a"/><stop offset="1" stop-color="#050b18"/></linearGradient>',
         '<radialGradient id="membrane"><stop offset="0" stop-color="#9eeaff" stop-opacity=".08"/><stop offset=".8" stop-color="#5ad7ff" stop-opacity=".10"/><stop offset="1" stop-color="#d5faff" stop-opacity=".28"/></radialGradient>',
         '<linearGradient id="shaft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b0c3d4"/><stop offset=".45" stop-color="#23334c"/><stop offset="1" stop-color="#d4a75e"/></linearGradient>',
@@ -331,14 +333,13 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
     handle_end=(690,920)
     weapon_topology=weapon_topology.upper()
     if weapon_topology=="T":
-        # Show the terminal end face at P; this 2D proxy cannot prove its 3D normal.
-        contact_face_x=px-int(geo.get("gap_px",0))
-        t_head_cx=contact_face_x-112
-        t_bar_top=py-25
-        head_attach=(t_head_cx,t_bar_top+50)
+        # Orient the whole rigid T so its terminal end-face normal points up into the bubble's bottom pole.
+        # The head extends downward/outside the membrane; this 2D schematic cannot prove the real 3D normal.
+        t_bar_top=int(geo.get("top_face_y",py))
+        t_bar_width=58
+        t_bar_length=224
+        head_attach=(px,t_bar_top+t_bar_length//2)
     else:
-        contact_face_x=px
-        t_head_cx=hx
         t_bar_top=top_y
         head_attach=(hx-42,hy+40)
     parts.append(_line(handle_end[0],handle_end[1],head_attach[0],head_attach[1],"#050a11",32))
@@ -346,13 +347,13 @@ def _svg_frame(frame_id: str, weapon_topology: str = "RADIAL") -> str:
     for gx,gy in [(760,890),(820,866)]:
         parts.append(f'<ellipse cx="{gx}" cy="{gy}" rx="18" ry="13" transform="rotate(-20 {gx} {gy})" fill="#c89c69" stroke="#ffe0a6" stroke-width="4"/>')
     if weapon_topology == "T":
-        # The right terminal face is the selected END FACE and its centre is pinned to the projected P in H2.
-        # Do not interpret this schematic's 2D screen normal as proof of the true 3D contact normal.
-        parts.append(_polygon([(t_head_cx-112,t_bar_top),(t_head_cx+112,t_bar_top),
-                               (t_head_cx+112,t_bar_top+50),(t_head_cx-112,t_bar_top+50)],
+        # The active terminal END FACE is the top end plane at P; head material extends down and away from the bubble.
+        # The handle joins at the bar midpoint as one rigid, rotated T hammer.
+        parts.append(_polygon([(px-t_bar_width//2,t_bar_top),(px+t_bar_width//2,t_bar_top),
+                               (px+t_bar_width//2,t_bar_top+t_bar_length),(px-t_bar_width//2,t_bar_top+t_bar_length)],
                               "#203d56","#e0c18a",6))
-        parts.append(_polygon([(contact_face_x-8,t_bar_top+2),(contact_face_x,t_bar_top+2),
-                               (contact_face_x,t_bar_top+48),(contact_face_x-8,t_bar_top+48)],
+        parts.append(_polygon([(px-t_bar_width//2,t_bar_top),(px+t_bar_width//2,t_bar_top),
+                               (px+t_bar_width//2,t_bar_top+8),(px-t_bar_width//2,t_bar_top+8)],
                               "#6b9cbd","#fff0bf",3))
     elif weapon_topology == "CROSS":
         parts.append(_polygon([(hx-30,top_y),(hx+30,top_y),(hx+30,hy+85),(hx-30,hy+85)],
@@ -508,7 +509,7 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
     geometry_names={}
     for fid in FRAME_IDS:
         svg_name=FRAME_NAMES[fid]+"_geometry.svg"
-        (story_dir/svg_name).write_text(_svg_frame(fid,packet.get("weapon_topology","RADIAL"))+"\n",encoding="utf-8")
+        (story_dir/svg_name).write_text(_svg_frame(fid,packet.get("weapon_topology","RADIAL"),packet.get("projection_lock"))+"\n",encoding="utf-8")
         geometry_names[fid]=svg_name
     layout={"shot_lock_id":packet["shot_lock_id"],"camera_variant":packet.get("camera_variant","LOW_3Q_FRONTAL"),
             "camera_description":packet.get("camera_description"),
