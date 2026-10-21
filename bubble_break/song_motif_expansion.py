@@ -101,7 +101,7 @@ def _song_pair_sequence(count: int, seed: int) -> List[Tuple[int, int]]:
     """Cycle every flower × gate pair once per shuffled block (11 × 12 = 132)."""
     if count < 1:
         return []
-    rng = random.Random(seed ^ 0xEFV64 if False else seed ^ 0xEF064)
+    rng = random.Random(seed ^ 0xEF064)
     pairs = list(itertools.product(range(len(FLOWER_MOTIFS)), range(len(GUMEN_MOTIFS))))
     sequence: List[Tuple[int, int]] = []
     while len(sequence) < count:
@@ -188,6 +188,13 @@ def build_song_layered_record(
     for selected_mode, beats in record["prompts"].items():
         for beat in ("H0", "H1", "H2", "H3"):
             beats[beat] = _inject_before_state(beats[beat], beat, overlays[beat])
+
+    primary_mode = "abstract" if mode == "abstract" else "heroine"
+    primary_prompts = record["prompts"][primary_mode]
+    record["start_prompt"] = primary_prompts["H0"]
+    record["reveal_prompt"] = primary_prompts["H1"]
+    record["contact_prompt"] = primary_prompts["H2"]
+    record["end_prompt"] = primary_prompts["H3"]
 
     storyboard = record.get("storyboard_9", [])
     for cell in storyboard:
