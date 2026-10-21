@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Compile a dense hammer-around-one-bubble selection workflow.
+"""Compile formula prompts for double-ended cylindrical hammers planted on a bubble.
 
-This emits deterministic candidate metadata, an SVG geometry proxy, and staged
-image prompts. It does not generate a raster image or claim pixel acceptance.
+The handle sprouts sideways from each radial cylindrical head. The glowing,
+sphere-conforming contact interface is at the planted base. This compiler emits
+prompts/metadata/SVG only; it does not generate images or claim pixel acceptance.
 """
 from __future__ import annotations
 
@@ -24,7 +25,6 @@ HEAD_DIAMETER_RATIO = 0.08
 HEAD_LENGTH_TO_DIAMETER = 1.5
 HANDLE_LENGTH_TO_HEAD_LENGTH = 3.0
 HANDLE_DIAMETER_TO_HEAD_DIAMETER = 0.10
-FACE_GAP_TO_HEAD_DIAMETER = 0.025
 SEED = 20261021
 WORLD_UP: V3 = (0.0, 0.0, 1.0)
 VIEW_DIRECTION: V3 = (0.381, -0.762, 0.524)
@@ -77,39 +77,40 @@ HEAD_DIAMETER = BUBBLE_DIAMETER * HEAD_DIAMETER_RATIO
 HEAD_LENGTH = HEAD_DIAMETER * HEAD_LENGTH_TO_DIAMETER
 HANDLE_LENGTH = HEAD_LENGTH * HANDLE_LENGTH_TO_HEAD_LENGTH
 HANDLE_DIAMETER = HEAD_DIAMETER * HANDLE_DIAMETER_TO_HEAD_DIAMETER
-FACE_GAP = HEAD_DIAMETER * FACE_GAP_TO_HEAD_DIAMETER
 
 
 @dataclass(frozen=True)
 class HammerCandidate:
     candidate_id: str
     index: int
-    radial_normal: V3
-    front_face_normal: V3
-    handle_direction: V3
+    radial_head_axis: V3
     bubble_contact_anchor: V3
-    glowing_face_center: V3
+    head_outer_cap_center: V3
+    handle_tangent_direction: V3
+    handle_root: V3
     handle_end: V3
     polar_deg_to_camera: float
     azimuth_deg: float
+    handle_roll_deg: float
     projected_contact_x: float
     projected_contact_y: float
     projected_handle_x: float
     projected_handle_y: float
     head_diameter: float = HEAD_DIAMETER
-    head_stub_length: float = HEAD_LENGTH
+    head_axial_length: float = HEAD_LENGTH
     handle_length: float = HANDLE_LENGTH
     handle_diameter: float = HANDLE_DIAMETER
-    face_gap: float = FACE_GAP
+
+
+def tangent_basis(normal: V3) -> tuple[V3, V3]:
+    reference = WORLD_UP if abs(dot(normal, WORLD_UP)) < 0.92 else CAMERA_RIGHT
+    tangent_u = unit(cross(reference, normal))
+    tangent_v = unit(cross(normal, tangent_u))
+    return tangent_u, tangent_v
 
 
 def make_candidates(count: int = CANDIDATE_COUNT, seed: int = SEED) -> list[HammerCandidate]:
-    """Sample distinct, irregular points on the visible spherical cap.
-
-    Every candidate has an independent inward-facing circular end face; its
-    handle runs outward from the rear of the head. These are proxy coordinates,
-    not an image model's guaranteed pixel layout.
-    """
+    """Make stable irregular sphere anchors; handle directions stay tangent to the sphere."""
     if count < 1:
         raise ValueError("候選數量必須至少為 1")
     rng = random.Random(seed)
@@ -117,51 +118,57 @@ def make_candidates(count: int = CANDIDATE_COUNT, seed: int = SEED) -> list[Hamm
     right = CAMERA_RIGHT
     up = CAMERA_UP
     golden_angle = math.pi * (3.0 - math.sqrt(5.0))
-    # Keep every shaft sufficiently oblique to the camera to remain readable.
-    min_polar = math.radians(28.0)
-    max_polar = math.radians(76.0)
+    min_polar = math.radians(27.0)
+    max_polar = math.radians(77.0)
     cos_min = math.cos(min_polar)
     cos_max = math.cos(max_polar)
     candidates: list[HammerCandidate] = []
 
-    # Quasi-uniform but lightly jittered spherical-cap distribution. This is not
-    # a rectangular grid; angle and azimuth are independently perturbed.
     for i in range(count):
         fraction = (i + 0.5) / count
-        cos_polar = cos_min + fraction * (cos_max - cos_min)
-        cos_polar = clamp(cos_polar + rng.uniform(-0.012, 0.012), cos_max, cos_min)
+        cos_polar = clamp(
+            cos_min + fraction * (cos_max - cos_min) + rng.uniform(-0.014, 0.014),
+            cos_max,
+            cos_min,
+        )
         polar = math.acos(cos_polar)
-        azimuth = i * golden_angle + rng.uniform(-0.18, 0.18)
+        azimuth = i * golden_angle + rng.uniform(-0.20, 0.20)
         tangent = add(mul(right, math.cos(azimuth)), mul(up, math.sin(azimuth)))
         radial = unit(add(mul(camera, math.cos(polar)), mul(tangent, math.sin(polar))))
         contact = mul(radial, BUBBLE_RADIUS)
-        face_center = mul(radial, BUBBLE_RADIUS + FACE_GAP)
-        # The front face points inward. The rear handle continues outward.
-        front_face_normal = mul(radial, -1.0)
-        handle_end = mul(radial, BUBBLE_RADIUS + FACE_GAP + HEAD_LENGTH + HANDLE_LENGTH)
+        outer_cap = mul(radial, BUBBLE_RADIUS + HEAD_LENGTH)
+        head_center = mul(radial, BUBBLE_RADIUS + HEAD_LENGTH / 2.0)
+
+        tangent_u, tangent_v = tangent_basis(radial)
+        roll_deg = rng.uniform(0.0, 360.0)
+        roll = math.radians(roll_deg)
+        handle_axis = unit(add(mul(tangent_u, math.cos(roll)), mul(tangent_v, math.sin(roll))))
+        handle_root = head_center
+        handle_end = add(handle_root, mul(handle_axis, HANDLE_LENGTH))
+
         proxy_scale = 275.0 / BUBBLE_RADIUS
         projected_contact_x = 700.0 + proxy_scale * dot(contact, right)
         projected_contact_y = 600.0 - proxy_scale * dot(contact, up)
         projected_handle_x = 700.0 + proxy_scale * dot(handle_end, right)
         projected_handle_y = 600.0 - proxy_scale * dot(handle_end, up)
-        candidates.append(
-            HammerCandidate(
-                candidate_id=f"C{i + 1:02d}",
-                index=i,
-                radial_normal=tuple(round(x, 8) for x in radial),
-                front_face_normal=tuple(round(x, 8) for x in front_face_normal),
-                handle_direction=tuple(round(x, 8) for x in radial),
-                bubble_contact_anchor=tuple(round(x, 8) for x in contact),
-                glowing_face_center=tuple(round(x, 8) for x in face_center),
-                handle_end=tuple(round(x, 8) for x in handle_end),
-                polar_deg_to_camera=round(math.degrees(polar), 4),
-                azimuth_deg=round(math.degrees(azimuth) % 360.0, 4),
-                projected_contact_x=round(projected_contact_x, 3),
-                projected_contact_y=round(projected_contact_y, 3),
-                projected_handle_x=round(projected_handle_x, 3),
-                projected_handle_y=round(projected_handle_y, 3),
-            )
-        )
+
+        candidates.append(HammerCandidate(
+            candidate_id=f"C{i + 1:02d}",
+            index=i,
+            radial_head_axis=tuple(round(x, 8) for x in radial),
+            bubble_contact_anchor=tuple(round(x, 8) for x in contact),
+            head_outer_cap_center=tuple(round(x, 8) for x in outer_cap),
+            handle_tangent_direction=tuple(round(x, 8) for x in handle_axis),
+            handle_root=tuple(round(x, 8) for x in handle_root),
+            handle_end=tuple(round(x, 8) for x in handle_end),
+            polar_deg_to_camera=round(math.degrees(polar), 4),
+            azimuth_deg=round(math.degrees(azimuth) % 360.0, 4),
+            handle_roll_deg=round(roll_deg, 4),
+            projected_contact_x=round(projected_contact_x, 3),
+            projected_contact_y=round(projected_contact_y, 3),
+            projected_handle_x=round(projected_handle_x, 3),
+            projected_handle_y=round(projected_handle_y, 3),
+        ))
     return candidates
 
 
@@ -170,9 +177,7 @@ def candidate_by_id(candidates: Sequence[HammerCandidate], candidate_id: str) ->
     for candidate in candidates:
         if candidate.candidate_id == requested:
             return candidate
-    raise ValueError(
-        f"未知候選編號 {candidate_id!r}；可用範圍為 C01–C{len(candidates):02d}"
-    )
+    raise ValueError(f"未知候選編號 {candidate_id!r}；可用範圍為 C01–C{len(candidates):02d}")
 
 
 def fmt_vec(vector: Sequence[float]) -> str:
@@ -181,80 +186,79 @@ def fmt_vec(vector: Sequence[float]) -> str:
 
 def make_stage_a_prompt(candidates: Sequence[HammerCandidate]) -> str:
     ids = ", ".join(candidate.candidate_id for candidate in candidates)
-    return f"""# STAGE A — DENSE HAMMER-TO-ONE-BUBBLE SELECTION ATLAS
+    return f"""# STAGE A — DENSE DOUBLE-ENDED ROUND HAMMERS PLANTED ON ONE BUBBLE
 
-Create ONE cinematic 16:9 image: a single large, pristine, translucent spherical
-bubble dominates a dark, controlled background. Around it, densely crowd exactly {len(candidates)}
-independent complete compact cylindrical-headed hammers, all aimed inward toward
-this same bubble from varied 3D positions and directions.
-This is a dense spatial swarm around one sphere, NOT a grid, tiled atlas, contact
-sheet, or repeated product-stamp pattern.
+Create one cinematic 16:9 image with exactly ONE large, intact, translucent
+spherical bubble. Densely plant exactly {len(candidates)} complete double-ended
+round cylindrical hammers across irregular positions on its visible surface,
+like many trees planted on a sphere. This is one continuous spatial scene, not a
+grid, tile sheet, row/column layout, or repeated isometric product stamps.
 
-EACH HAMMER MUST BE A COMPLETE, SEPARATE TOOL:
-- One short solid cylindrical head, with a clean flat circular front striking
-  face aimed toward a distinct point on the bubble.
-- One thin, straight, long-enough handle attached concentrically to the REAR
-  cap of that head. It extends outward, away from the sphere. Head and handle
-  are one rigid axial assembly; no T-head, crossbar, extra arm, or side handle.
-- Every shaft is independently traceable from the rear head joint to its own end.
-  Never collapse several handles into one central post or hide them behind the
-  same diagonal motif.
-- The glowing surface is the front circular terminal face aimed at the bubble,
-  not the rear cap, not the shaft joint, and not a luminous ring that makes the
-  hammer appear grown out of the shell.
+CORRECT HAMMER TOPOLOGY — DO NOT REINTERPRET:
+- Each hammer head is a short, solid, straight circular cylinder with TWO axial
+  circular end caps: one bubble-facing base cap and one outer cap. It is not a
+  ball, spike, T-crossbar, single disk, or projectile aimed at the bubble.
+- The head's cylindrical axis follows the local outward normal of the sphere,
+  like a planted trunk. The bubble-facing base cap is seated flush against the
+  bubble with a small sphere-conforming contact seat/pad. The full circular
+  contact footprint touches the shell with NO hovering gap.
+- The contact footprint/base seam at the sphere is bright and legible: white-hot
+  or cyan-white core, restrained amber/cyan rim. This glow is at the PLANTED BASE
+  INTERFACE, not on the outer cap and not at the handle joint.
+- One long thin straight handle attaches to the SIDE-MIDDLE of the cylinder
+  head and sprouts SIDEWAYS in the local tangent plane, approximately 90 degrees
+  to the radial head axis. It is a lateral branch from the planted head, not an
+  axial extension, not rooted directly into the bubble, and not pointing through
+  the sphere.
+- Preserve the visible side attachment joint. One rigid cylindrical head, one
+  single continuous lateral handle per candidate; no duplicate handle.
 
-LOCKED STARTING PROPORTION GRAMMAR:
-head diameter ≈ 8% of bubble diameter; head axial stub length ≈ 1.5 × head
-diameter; handle length ≈ 3 × head stub length; handle diameter ≈ 1/10 of head
-diameter. Keep this ratio consistent across all {len(candidates)} candidates.
+COMMON PROPORTION FORMULA FOR ALL {len(candidates)} CANDIDATES:
+D_head = 0.08 * D_bubble
+H_head = 1.5 * D_head
+L_handle = 3 * H_head
+D_handle = D_head / 10 (approximately one fifth of the head radius).
+Use identical object proportions across all candidates. Candidate variety comes
+from different surface anchors, radial axes, tangent handle directions,
+perspective depth and projected slopes—not arbitrary size changes.
 
-All {len(candidates)} front faces glow with distinct readable white-hot or
-cyan-white circular face emission and a restrained coloured rim. Aim every face
-inward at the bubble surface from outside the shell. Faces may be just short of
-contact or at first touch, but their round boundaries must remain legible. Each
-hammer approaches the sphere; NO hammer grows out of the sphere and no handle
-points through the bubble. The bubble remains intact.
+DENSE BUT AUDITABLE:
+- Distribute all hammers irregularly around the visible curved surface in depth;
+  vary both the surface anchor and sideways handle direction. Make the handle
+  directions clearly diverse in the image. Do not align every handle the same way.
+- Every cylindrical head must read as double-ended, with the planted base
+  interface boundary, outer circular cap, side-middle handle joint, and whole
+  handle separately inspectable. Do not let tools fuse together.
+- Put labels {ids} next to OUTER HANDLE TIPS, never on the glowing base/contact
+  patch. One ID belongs to one visible hammer only; avoid duplicated labels.
+- Keep the whole sphere visible, filled with dense candidates but no tiny stamps.
+  Object readability is more important than squeezing the maximum count.
 
-DENSE BUT READABLE SPATIAL DESIGN:
-- Irregular 3D distribution around the visible spherical volume, with varied
-  depth, near/far perspective, radial angle, azimuth, projected shaft slope and
-  small handle-roll/material variation. Use overlapping depth layers, but not
-  2D overlaps that make a head or shaft ambiguous.
-- No identical isometric copies; no uniform orientation; no regular rings,
-  rows, columns, eight-by-six layout, tile grid, or cloned silhouettes.
-- Every candidate has a unique visible ID: {ids}. Place a small high-contrast
-  ID label beside its OUTER HANDLE END, never on the glowing face or head joint.
-  Labels are navigation aids; prioritize clear object identity over typography.
-- Fill the frame densely with the one sphere and its 24 tools, while leaving
-  enough margin to distinguish complete head/handle assemblies.
+STRICT EXCLUSIONS: no people, no hands, no bodies, no swing/action motion, no
+hammer-to-hammer collisions, no extra bubbles, no cracks, no shards, no explosion,
+no smoke, no giant sparks covering the contact patch, no T-heads shaped as one
+flat bar across the top. The bubble remains intact; every hammer is planted on
+the bubble surface by its base, as a tree is planted in soil.
 
-STRICT EXCLUSIONS: no humans, no hands, no bodies, no extra bubbles, no bubble
-cracks, no shards, no explosion, no huge spark spray, no motion blur hiding the
-face, no hammer-to-hammer collision, no T-shaped hammers, no tiny centre pegs,
-no detached or bent handles, no duplicate ID tags intentionally assigned to
-different tools.
-
-This image is only a candidate discovery atlas. Do not claim precise model-world
-coordinates from text or from the accompanying SVG proxy. The actual generated
-raster and its visible candidate are the authority for later selection.
+Candidate IDs guide user selection only. Do not claim model-world coordinates or
+proxy projection are exact raster truth. The actual generated Stage-A raster is
+the authority for choosing the hammer and its visible contact location.
 """
 
 
 def selected_geometry_note(candidate: HammerCandidate, bubble_scale: float, hammer_scale: float) -> str:
-    return f"""SELECTED ID: {candidate.candidate_id}
-PROXY METADATA ONLY — NOT A CLAIM OF PIXEL-EXACT ALIGNMENT:
-- approximate radial direction: {fmt_vec(candidate.radial_normal)}
-- approximate inward striking-face normal: {fmt_vec(candidate.front_face_normal)}
-- approximate outward handle direction: {fmt_vec(candidate.handle_direction)}
-- proxy face center: {fmt_vec(candidate.glowing_face_center)}
-Use the actual Stage-A raster's visible selected hammer as the geometric source,
-not these proxy values. Do not move/flip the raster-visible face to agree with a
-proxy vector. Only apply these user-authorized scale factors:
+    return f"""SELECTED CANDIDATE: {candidate.candidate_id}
+PROXY METADATA ONLY — NOT PIXEL-EXACT EVIDENCE:
+- radial head axis: {fmt_vec(candidate.radial_head_axis)}
+- bubble contact anchor: {fmt_vec(candidate.bubble_contact_anchor)}
+- lateral handle tangent axis: {fmt_vec(candidate.handle_tangent_direction)}
+- approximate outer head cap center: {fmt_vec(candidate.head_outer_cap_center)}
+- approximate side-handle root: {fmt_vec(candidate.handle_root)}
+Use the actual Stage-A raster-visible selected hammer as the geometry source.
+If raster and proxy differ, preserve the raster and do not move it to match JSON.
+Authorized scale factors:
 - bubble scale relative to Stage A: {bubble_scale:.3f}x
 - selected hammer scale relative to Stage A: {hammer_scale:.3f}x
-If either scale is not 1.0, preserve the selected contact's normalized location on
-the spherical surface and document the intentional scale transform. Keep the
-hammer's head and handle scale locked together.
 """
 
 
@@ -269,102 +273,90 @@ def make_stage_b_prompt(
     if raster_sha256:
         raster_info += f"Source Stage-A raster SHA-256: {raster_sha256}.\n"
     if roi:
-        raster_info += f"User-confirmed raster ROI (x,y,width,height): {roi}.\n"
-    raster_info += (
-        "If this source raster/reference is not actually supplied to the image-editing "
-        "model, STOP and request it; never make a fresh text-only reconstruction.\n"
-    )
-    return f"""# STAGE B — ISOLATE ONE REAL RASTER HAMMER, NO PERSON
+        raster_info += f"User-confirmed selected raster ROI (x,y,width,height): {roi}.\n"
+    raster_info += "If the real source raster is not supplied to the edit model, BLOCK; never reconstruct from text alone.\n"
+    return f"""# STAGE B — ISOLATE ONE PLANTED ROUND HAMMER, NO PERSON
 
-Use the exact accepted Stage-A image as the image-to-image / inpainting reference.
-Do not create a new bubble composition from text. Do not rebuild the selected
-hammer from a 3D coordinate guess.
+Use the exact accepted Stage-A raster as the image-reference/inpainting source.
+Do not compose a new bubble from text and do not use proxy coordinates as proof.
 
 {raster_info}
 {selected_geometry_note(candidate, bubble_scale, hammer_scale)}
-Select the actual visible hammer labelled {candidate.candidate_id} in the source
-raster. Keep its visible glowing FRONT CIRCULAR STRIKING FACE, head silhouette,
-head-to-handle joint, handle direction, perspective and contact location as seen
-in that raster. The raster wins over the proxy coordinate if they differ.
+Select the actual visible {candidate.candidate_id} hammer in the raster. Preserve
+its bubble anchor, glowing full-base contact interface, two-ended round cylinder,
+outer cap, side-middle handle joint, sideways/tangent handle direction and
+perspective as actually shown.
 
-Remove every other hammer completely: all 23 non-selected heads, handles, glows,
-labels, reflected ghosts and detached fragments disappear. Retain one bubble and
-exactly one selected hammer. No person, hands, action pose, extra prop, cracks,
-shards, or large explosion.
+Remove every other 23 hammer assemblies completely: no spare heads, handles,
+glows, labels, reflections, or ghost fragments. Keep one bubble and exactly one
+selected hammer. No human, hands, swing action, cracks, shards or explosion.
 
-The short cylinder's flat glowing front face aims toward the sphere; the handle
-attaches concentrically to the REAR cap and extends away from the sphere. No
-flipping the hammer end-for-end, no handle pointing into/through the bubble, no
-sideways handle, no detached ghost rod. Keep the face outline clear. Preserve the
-starting proportions unless the stated scale factors require a deliberate change:
-head stub Hs ≈ 1.5 × head diameter; handle L ≈ 3 × Hs; handle diameter ≈ 1/10
-head diameter. With both scale factors 1.0, do not change scale at all.
+The hammer head stays planted radially on the sphere. Its bubble-facing base
+remains fully seated with no gap; its base contact seam glows. Its one thin,
+straight handle must remain attached at the SIDE-MIDDLE of the head and extend
+sideways in the local tangent plane, roughly perpendicular to the head axis.
+Never put the handle on the contact base, never extend it axially from the outer
+cap, never aim it through the bubble, never break the side joint.
 
-Acceptance is judged against the source raster, not the SVG. If the chosen ID,
-visible face position, handle direction, or contact location is uncertain, mark
-the stage BLOCKED and ask for selection evidence; do not silently choose another.
+Unless overridden by the recorded scale factors, preserve H_head = 1.5 D_head,
+L_handle = 3 H_head, and D_handle = D_head / 10. A scale change must be deliberate
+and reported; it must not silently change topology or move the selected anchor.
 """
 
 
 def make_stage_c_prompt(candidate: HammerCandidate, person_height_of_bubble: float) -> str:
-    return f"""# STAGE C — ADD ONE PERSON AFTER THE TOOL IS LOCKED
+    return f"""# STAGE C — CHANGE RELATIVE SCALE AND ADD ONE PERSON
 
-Use the accepted Stage-B raster as the only image reference. The selected
-{candidate.candidate_id} hammer and bubble already exist and must not be rebuilt.
-Preserve the real raster-visible glowing face center, face direction, rear-cap
-handle joint, handle length/diameter, and normalized bubble-contact location.
+Use the approved Stage-B raster only. Preserve the actual selected {candidate.candidate_id}
+hammer and its bubble contact point. Do not reconstruct the tool.
 
-Add exactly one full human figure behind the rear end of the selected handle.
-Default human height ≈ {person_height_of_bubble:.3f} × bubble diameter (adjustable).
-Size the person's hands and body to the existing handle and bubble; do not enlarge
-the tool just to make it easier to grip. The person stands/leans naturally on the
-outside of the bubble, both hands visibly wrapping around the same existing
-handle with plausible wrist, elbow and shoulder alignment. Do not let the body,
-arms or hands hide the glowing face or replace any part of the handle.
+Person height target = {person_height_of_bubble:.3f} * bubble diameter (user-adjustable).
+Add exactly one complete person beside/outside the bubble where the same sideways
+handle can be gripped plausibly. One or both hands visibly grip the SAME existing
+lateral handle; fingers, wrists, elbows and shoulders connect naturally. The
+person must not block the luminous base interface or overwrite the side joint.
+Do not enlarge or reshape the hammer merely to make the person easier to draw.
 
-All other 23 hammers stay absent. Keep the bubble intact and keep effects minimal:
-no explosion, no shards, no major shell cracks yet. This is an attachment/scale
-proof, not a spectacle frame.
+Keep the planted double-ended cylinder, both circular ends, tangent side handle,
+full-base contact and contact glow. All 23 other candidate hammers remain absent.
+Bubble intact; no large break effect yet. Record bubble/hammer/person ratios.
 """
 
 
 def make_stage_d_prompt(candidate: HammerCandidate) -> str:
-    return f"""# STAGE D — ACTION REFINEMENT WITH RASTER GEOMETRY LOCK
+    return f"""# STAGE D — ACTION REFINEMENT WITH PLANTED-CONTACT LOCK
 
-Start from the accepted Stage-C image. Improve the person's action only:
-weight transfer, foot placement, shoulder/hip rotation, grip tension, controlled
-wind-up and believable follow-through. Make the pose dynamic and readable rather
-than a static stand.
+Start from the accepted Stage-C raster. Refine stance, weight transfer, torso and
+shoulder rotation, grip, and a readable wind-up/follow-through around the selected
+{candidate.candidate_id} hammer. Avoid a static mannequin pose.
 
-LOCK the selected {candidate.candidate_id} hammer as one rigid axial assembly.
-Do not move or flip the glowing front circular face, do not move its spherical
-contact point except for approved action travel, and do not break or bend the
-rear-cap handle joint. The handle remains behind the head and points away from
-the bubble; the face remains directed toward the bubble. Keep the person gripping
-that same handle. No other hammers return. Keep at least one clean readable frame
-with the full glowing face boundary and head-handle joint visible.
+Keep the double-ended cylindrical head rigid, with its planted base and glowing
+interface at the accepted anchor. Keep the handle attached to the head's side-middle
+joint and preserve its tangent direction/length. Do not detach or bend the handle,
+flip the two caps, silently shift the anchor, or restore any other hammers. If the
+action intentionally lifts the tool from the bubble, it is a separate state and
+must not be mislabeled as the still-planted contact state.
 """
 
 
 def make_stage_e_prompt(candidate: HammerCandidate) -> str:
-    return f"""# STAGE E — GLOWING FACE → BUBBLE BREAK EFFECT
+    return f"""# STAGE E — GLOWING PLANTED BASE → BUBBLE BREAK SPECTACLE
 
-Use the accepted Stage-D frame as the reference. Do not recompose or replace the
-chosen {candidate.candidate_id} hammer, person, or bubble. Preserve their actual
-raster geometry and relative proportions.
+Use the accepted Stage-D raster. Do not recreate the person, bubble or {candidate.candidate_id}
+hammer. Lock their approved relative ratios, selected surface anchor, radial head
+axis, circular planted base contact, and side-mounted lateral handle.
 
-Build the effect from the selected hammer's glowing FRONT CIRCULAR FACE and its
-specific bubble contact point: bright coherent face-core emission, a tight rim
-halo, localized energy transfer, concentric ripples along the translucent shell,
-then radial fractures that visibly originate at that point. For the peak spectacle
-frame, the bubble shell ruptures outward into curved luminous shards and a large
-shock ring, with cinematic depth and directional debris.
+The first bright energy source is the selected HAMMER BASE / BUBBLE INTERFACE.
+Intensify its rim and contact core, then send coherent luminous ripples along the
+translucent spherical shell. Radial cracks must originate at this selected planted
+anchor—not at the outer cap or side-handle joint. The peak frame shows the bubble
+shell bursting outward from that same point, with curved translucent shards,
+large luminous shock rings and dramatic depth.
 
-Provide at least one clean contact frame before maximum bloom. In the clean frame,
-the circular face edge, bubble contact point, intact rear-handle connection and
-the person's grip remain inspectable. Sparks and bloom must never obscure the
-contact seam in every frame. The shell must visibly break; sparks around an intact
-bubble alone are not enough. Remove every unselected hammer and every ghost copy.
+Provide a clean contact frame before the biggest bloom. At least one frame must
+keep the whole glowing base boundary, both cylindrical-head cap identity, side
+handle joint and the person's grip readable. Do not let sparks/bloom obscure the
+contact seam in every frame. All other 23 hammer assemblies remain absent.
 """
 
 
@@ -393,36 +385,33 @@ def make_svg(candidates: Sequence[HammerCandidate], selected_id: str | None = No
     elements = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#101720"/>',
-        '<text x="36" y="42" fill="#ffffff" font-family="sans-serif" font-size="25">Dense hammer / one-bubble candidate proxy — NOT raster evidence</text>',
+        '<text x="36" y="42" fill="#ffffff" font-family="sans-serif" font-size="25">Planted double-ended hammer / bubble — geometry proxy only</text>',
         f'<circle cx="{cx}" cy="{cy}" r="{sphere_px}" fill="#92ddf7" fill-opacity="0.13" stroke="#aeeeff" stroke-width="3"/>',
     ]
     for candidate in candidates:
-        radial = candidate.radial_normal
         anchor = candidate.bubble_contact_anchor
-        face = candidate.glowing_face_center
-        end = candidate.handle_end
-        px, py = project_point(anchor, cx, cy, sphere_px)
-        fx, fy = project_point(face, cx, cy, sphere_px)
-        ex, ey = project_point(end, cx, cy, sphere_px)
-        # Head axial segment connects face to its rear cap; handle leaves its rear.
-        face_to_rear = mul(radial, HEAD_LENGTH)
-        rear = add(face, face_to_rear)
-        rx, ry = project_point(rear, cx, cy, sphere_px)
+        head_top = candidate.head_outer_cap_center
+        handle_root = candidate.handle_root
+        handle_end = candidate.handle_end
+        ax, ay = project_point(anchor, cx, cy, sphere_px)
+        tx, ty = project_point(head_top, cx, cy, sphere_px)
+        hx, hy = project_point(handle_root, cx, cy, sphere_px)
+        ex, ey = project_point(handle_end, cx, cy, sphere_px)
         selected = candidate.candidate_id == selected_id
-        color = "#fff6ad" if selected else "#6df5ff"
-        width_face = 4 if selected else 2.2
-        # Distinct components: thin shaft first, short head second, face marker last.
+        color = "#fff3a6" if selected else "#69efff"
+        width_face = 4 if selected else 2.0
+        # Planted head axis: base at sphere, outer cap outside; lateral handle leaves side-middle.
         elements.extend([
-            f'<line x1="{rx:.2f}" y1="{ry:.2f}" x2="{ex:.2f}" y2="{ey:.2f}" stroke="#d5e3ed" stroke-width="{HANDLE_DIAMETER * scale:.2f}" stroke-linecap="round"/>',
-            f'<line x1="{fx:.2f}" y1="{fy:.2f}" x2="{rx:.2f}" y2="{ry:.2f}" stroke="#afc4d3" stroke-width="{HEAD_DIAMETER * scale:.2f}" stroke-linecap="round"/>',
-            f'<circle cx="{fx:.2f}" cy="{fy:.2f}" r="{HEAD_DIAMETER * scale * 0.28:.2f}" fill="{color}" fill-opacity="0.30"/>',
-            f'<circle cx="{fx:.2f}" cy="{fy:.2f}" r="{HEAD_DIAMETER * scale * 0.18:.2f}" fill="{color}" stroke="#ffffff" stroke-width="{width_face}"/>',
-            f'<text x="{ex + 7:.2f}" y="{ey - 3:.2f}" fill="{color}" font-family="sans-serif" font-size="16" font-weight="bold">{escape(candidate.candidate_id)}</text>',
+            f'<line x1="{ax:.2f}" y1="{ay:.2f}" x2="{tx:.2f}" y2="{ty:.2f}" stroke="#b8d0df" stroke-width="{HEAD_DIAMETER * scale:.2f}" stroke-linecap="round"/>',
+            f'<circle cx="{ax:.2f}" cy="{ay:.2f}" r="{HEAD_DIAMETER * scale * 0.34:.2f}" fill="{color}" fill-opacity="0.45" stroke="#ffffff" stroke-width="{width_face}"/>',
+            f'<circle cx="{tx:.2f}" cy="{ty:.2f}" r="{HEAD_DIAMETER * scale * 0.34:.2f}" fill="#b8d0df" stroke="#ffffff" stroke-width="1.5"/>',
+            f'<line x1="{hx:.2f}" y1="{hy:.2f}" x2="{ex:.2f}" y2="{ey:.2f}" stroke="#d5e3ed" stroke-width="{HANDLE_DIAMETER * scale:.2f}" stroke-linecap="round"/>',
+            f'<text x="{ex + 7:.2f}" y="{ey - 4:.2f}" fill="{color}" font-family="sans-serif" font-size="16" font-weight="bold">{escape(candidate.candidate_id)}</text>',
         ])
     if selected_id:
-        elements.append(f'<text x="36" y="1160" fill="#fff6ad" font-family="sans-serif" font-size="20">Selected {escape(selected_id)} — selected image raster remains authoritative</text>')
+        elements.append(f'<text x="36" y="1160" fill="#fff3a6" font-family="sans-serif" font-size="20">Selected {escape(selected_id)} — use actual raster as authority</text>')
     else:
-        elements.append('<text x="36" y="1160" fill="#ffffff" font-family="sans-serif" font-size="19">24 candidates — proxy only. Confirm selection from a real generated raster.</text>')
+        elements.append('<text x="36" y="1160" fill="#ffffff" font-family="sans-serif" font-size="19">24 candidate proxies only; actual raster is required for pixel selection.</text>')
     elements.append("</svg>")
     return "\n".join(elements) + "\n"
 
@@ -447,24 +436,26 @@ def build_packet(
         raise ValueError("--roi 必須與 --source-raster 一起使用")
     if source_raster and not source_raster.is_file():
         raise ValueError(f"找不到來源 Stage-A 圖片：{source_raster}")
+
     candidates = make_candidates()
     selected = candidate_by_id(candidates, selected_id) if selected_id else None
-    raster_sha = None
-    if source_raster:
-        raster_sha = hashlib.sha256(source_raster.read_bytes()).hexdigest()
-
+    raster_sha = hashlib.sha256(source_raster.read_bytes()).hexdigest() if source_raster else None
     outdir.mkdir(parents=True, exist_ok=True)
     manifest: dict[str, object] = {
-        "schema_version": 1,
-        "workflow": "dense-hammer-bubble-pick",
+        "schema_version": 2,
+        "workflow": "double-ended-round-hammer-planted-on-bubble",
+        "topology": {
+            "head": "double-ended cylindrical round head, radial axis",
+            "contact": "bubble-facing base cap with sphere-conforming full-seat interface",
+            "handle": "single lateral handle attached at head side-middle, tangent to sphere",
+        },
         "stage_a_candidate_count": len(candidates),
         "bubble_diameter_proxy_units": BUBBLE_DIAMETER,
         "hammer_proportions": {
             "head_diameter_over_bubble_diameter": HEAD_DIAMETER_RATIO,
-            "head_stub_length_over_head_diameter": HEAD_LENGTH_TO_DIAMETER,
-            "handle_length_over_head_stub_length": HANDLE_LENGTH_TO_HEAD_LENGTH,
+            "head_axial_length_over_head_diameter": HEAD_LENGTH_TO_DIAMETER,
+            "lateral_handle_length_over_head_axial_length": HANDLE_LENGTH_TO_HEAD_LENGTH,
             "handle_diameter_over_head_diameter": HANDLE_DIAMETER_TO_HEAD_DIAMETER,
-            "glowing_face_gap_over_head_diameter": FACE_GAP_TO_HEAD_DIAMETER,
         },
         "selected_candidate_id": selected.candidate_id if selected else None,
         "scale_changes": {
@@ -486,23 +477,18 @@ def build_packet(
     (outdir / "candidate_manifest.json").write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
-    (outdir / "dense_hammer_candidate_proxy.svg").write_text(
+    (outdir / "planted_round_hammer_proxy.svg").write_text(
         make_svg(candidates, selected.candidate_id if selected else None), encoding="utf-8"
     )
-    (outdir / "stage_a_dense_hammer_atlas.md").write_text(
+    (outdir / "stage_a_planted_round_hammer_atlas.md").write_text(
         make_stage_a_prompt(candidates), encoding="utf-8"
     )
-    outputs = [
-        "candidate_manifest.json",
-        "dense_hammer_candidate_proxy.svg",
-        "stage_a_dense_hammer_atlas.md",
-    ]
+    outputs = ["candidate_manifest.json", "planted_round_hammer_proxy.svg", "stage_a_planted_round_hammer_atlas.md"]
     if selected:
         (outdir / "stage_b_one_hammer_no_person.md").write_text(
-            make_stage_b_prompt(selected, bubble_scale, hammer_scale, raster_sha, roi),
-            encoding="utf-8",
+            make_stage_b_prompt(selected, bubble_scale, hammer_scale, raster_sha, roi), encoding="utf-8"
         )
-        (outdir / "stage_c_add_person.md").write_text(
+        (outdir / "stage_c_scale_and_add_person.md").write_text(
             make_stage_c_prompt(selected, person_height_of_bubble), encoding="utf-8"
         )
         (outdir / "stage_d_action_refinement.md").write_text(
@@ -513,7 +499,7 @@ def build_packet(
         )
         outputs.extend([
             "stage_b_one_hammer_no_person.md",
-            "stage_c_add_person.md",
+            "stage_c_scale_and_add_person.md",
             "stage_d_action_refinement.md",
             "stage_e_glow_bubble_break.md",
         ])
@@ -535,12 +521,12 @@ def build_packet(
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--outdir", type=Path, default=Path("out/dense_hammer_bubble"))
-    parser.add_argument("--select", type=str, default=None, help="Selected raster candidate, e.g. C17")
-    parser.add_argument("--bubble-scale", type=float, default=1.0, help="Bubble scale relative to Stage A")
-    parser.add_argument("--hammer-scale", type=float, default=1.0, help="Selected hammer scale relative to Stage A")
-    parser.add_argument("--person-height-of-bubble", type=float, default=0.65, help="Person height / bubble diameter")
-    parser.add_argument("--source-raster", type=Path, default=None, help="Actual Stage-A raster file used as reference")
-    parser.add_argument("--roi", type=parse_roi, default=None, help="User-checked selected hammer region: x,y,width,height")
+    parser.add_argument("--select", type=str, default=None, help="Selected visible raster ID, e.g. C17")
+    parser.add_argument("--bubble-scale", type=float, default=1.0)
+    parser.add_argument("--hammer-scale", type=float, default=1.0)
+    parser.add_argument("--person-height-of-bubble", type=float, default=0.65)
+    parser.add_argument("--source-raster", type=Path, default=None)
+    parser.add_argument("--roi", type=parse_roi, default=None, help="user-checked raster region x,y,width,height")
     args = parser.parse_args(list(argv) if argv is not None else None)
     try:
         result = build_packet(
