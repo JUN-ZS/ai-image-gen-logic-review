@@ -44,13 +44,15 @@ def attacker_plus(cx, face_y, center_y, handle_end):
     return shaft + head
 
 def attacker_t(cx, face_y, center_y, handle_end):
-    # The long handle itself forms the T stem; do not draw a second short post.
-    crossbar_bottom = face_y + 58
-    shaft = line(handle_end[0], handle_end[1], cx, crossbar_bottom, "#02060a", 34)
-    shaft += line(handle_end[0], handle_end[1], cx, crossbar_bottom, "url(#metal)", 23)
-    head = rect(cx-112, face_y+8, 224, 50, "#234761", "#e0bd82", 5)
-    # Narrow top-plane bevel; its upper edge stays pinned to the impact coordinate.
-    head += f'<polygon points="{cx-112},{face_y+8} {cx+112},{face_y+8} {cx+96},{face_y} {cx-96},{face_y}" fill="#6b9cbd" stroke="#fff0bf" stroke-width="4" stroke-linejoin="round"/>'
+    # The selected terminal END FACE is pinned at P; this is a 2D schematic, not a 3D normal proof.
+    head_cx = cx - 112
+    bar_top = face_y - 25
+    bar_bottom = bar_top + 50
+    shaft = line(handle_end[0], handle_end[1], head_cx, bar_bottom, "#02060a", 34)
+    shaft += line(handle_end[0], handle_end[1], head_cx, bar_bottom, "url(#metal)", 23)
+    head = rect(head_cx-112, bar_top, 224, 50, "#234761", "#e0bd82", 5)
+    # Highlight the crossbar's terminal END FACE at right edge x=cx, not its broad upper plane.
+    head += rect(cx-8, bar_top+2, 8, 46, "#6b9cbd", "#fff0bf", 3)
     return shaft + head
 
 def attacker_radial(cx, face_y, center_y, handle_end):
@@ -205,7 +207,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     if final_weapon == "T":
         files.update({
             "proxy": "00_T_weapon_master_geometry.svg",
-            "target_replaced": "01_T_weapon_bubble_contact_preview.svg",
+            "target_replaced": "01_T_terminal_end_face_contact_schematic.svg",
             "final_weapon_preview": "04_T_final_weapon_preview.svg",
             "mask": "02_target_bubble_edit_mask.svg",
             "attacker_mask": "03_attacker_T_protect_mask.svg",
@@ -256,7 +258,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     if final_weapon == "T":
         target_prompt = (
             "STAGE C — STORY-SPECIFIC CINEMATIC SCENE GENERATION, ONLY AFTER THE T MASTER AND ALL 48 END-FACE CONTACT-MATRIX H2 IMAGES ARE VISUALLY APPROVED. "
-            "Use A_T_weapon_master.png as a WEAPON-SHAPE reference only, never as a layout, camera, pose or background reference. "
+            "Use A_T_weapon_master.png as a WEAPON-SHAPE reference only, and the approved 48-view terminal-END-FACE contact matrix as the active-plane reference; never treat either as a layout, camera, pose or background reference. "
             "Generate H0, H2 and H3 as THREE separate full-bleed images using the corresponding prompt files in this story's frame packet. "
             "Keep exactly ONE T-headed hammer held by the heroine. Aim its designated TERMINAL END STRIKING FACE at the bubble's six-o'clock point P; never substitute the broad upper/lower crossbar surface, long cheek, corner or handle. The 48-view contact matrix defines which plane is active. "
             "The hammer handle may run diagonally down-left in the action pose; its joint must remain at the exact crossbar underside midpoint, "
@@ -367,8 +369,8 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         }
     (outdir/"edit_plan.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     readme_text = (
-        "Single-T weapon master workflow. Generate and manually approve the isolated A_T_weapon_master.png once; "
-        "then use generate_scene_with_T_master.txt and the story-specific H0/H2/H3 prompts. The master controls weapon topology only, "
+        "T weapon master plus end-face matrix workflow. Generate and manually approve A_T_weapon_master.png, then generate and manually review 48 T-to-T END-FACE collision variants before scenes; "
+        "then use generate_scene_with_T_master.txt and each story's H0/H2/H3 camera-sweep prompts. The master controls weapon topology only, "
         "not scene composition. The bubble is the target; never add an upside-down second T or replace a hammer with a bubble. "
         "Do not claim an image PASS from these SVGs or prompts."
         if final_weapon == "T" else
