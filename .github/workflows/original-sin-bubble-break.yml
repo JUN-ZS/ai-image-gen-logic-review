@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - feat/original-sin-bubble-break-engine
+      - feat/cylinder-cross-dense-atlas
   workflow_dispatch:
 
 permissions:
