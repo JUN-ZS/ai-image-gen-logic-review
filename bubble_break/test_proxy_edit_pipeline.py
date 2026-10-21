@@ -113,7 +113,7 @@ class CrossProxyTests(unittest.TestCase):
             scene_prompt=(out/"generate_scene_with_T_master.txt").read_text(encoding="utf-8")
             self.assertIn("weapon-shape reference only",scene_prompt.lower())
             self.assertIn("never draw an upper inverted T",scene_prompt)
-            self.assertIn("48-view contact matrix",scene_prompt)
+            self.assertIn("48-view terminal-END-FACE contact matrix",scene_prompt)
             shape_prompt=(out/"T_weapon_shape_lock.txt").read_text(encoding="utf-8")
             self.assertIn("one single long handle",shape_prompt)
             gate=json.loads((out/"stage_gate.json").read_text(encoding="utf-8"))
