@@ -123,6 +123,7 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             plan["shared_weapon_master_directory"]=str(shared_master_dir)
             plan["required_artifacts"]["stage_a_image"]=str(shared_master_dir/"A_T_weapon_master.png")
             plan["required_artifacts"]["stage_a_review"]=str(shared_master_dir/"A_T_weapon_master_review.json")
+            plan["required_artifacts"]["stage_a_review_template"]=str(shared_master_dir/"A_T_weapon_master_review.template.json")
             plan["required_artifacts"]["contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
             plan["required_artifacts"]["contact_matrix_h2_images"]=contact_manifest["required_H2_contact_proof_images"]
             plan["required_artifacts"]["contact_matrix_h2_reviews"]="one manual review JSON per variant"
@@ -157,9 +158,9 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
                 frame_gate["master_review_status"]=master_audit["status"]
                 frame_manifest["realization_stage_gate"]=frame_gate
                 frame_manifest.setdefault("workflow",{})["realization_stage_gate"]=contact_gate_status
-                frame_manifest_path.write_text(json.dumps(frame_manifest,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+                frame_manifest_path.write_text(json.dumps(frame_manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
                 frame_gate_path=frame_path/"stage_gate.json"
-                frame_gate_path.write_text(json.dumps(frame_gate,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+                frame_gate_path.write_text(json.dumps(frame_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
             for name in ("00_T_weapon_master_geometry.svg","00_generate_T_weapon_master.txt","05_T_silhouette_reference.svg","A_T_weapon_master_review.template.json"):
                 candidate=proxy/name
                 if candidate.exists():
