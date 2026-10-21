@@ -89,12 +89,25 @@ def build_t_silhouette_reference_svg():
     return "\n".join(parts)
 
 
+def attacker_cylinder_cross(cx, face_y, center_y, handle_end):
+    """Schematic cross hammer; cylindrical barrels are non-contact, flat circular caps are contact faces."""
+    shaft = line(handle_end[0], handle_end[1], cx, center_y, "#02060a", 34)
+    shaft += line(handle_end[0], handle_end[1], cx, center_y, "url(#metal)", 23)
+    head = rect(cx-30, face_y+12, 60, center_y+95-face_y-12, "#234761", "#e0bd82", 5)
+    head += rect(cx-100, center_y-30, 200, 60, "#234761", "#e0bd82", 5)
+    head += rect(cx-145, center_y-25, 45, 50, "#355d78", "#e0bd82", 4)
+    head += rect(cx+100, center_y-25, 45, 50, "#355d78", "#e0bd82", 4)
+    head += f'<ellipse cx="{cx-145}" cy="{center_y}" rx="8" ry="25" fill="#8fc7df" stroke="#fff0bf" stroke-width="3"/>'
+    head += f'<ellipse cx="{cx+145}" cy="{center_y}" rx="8" ry="25" fill="#8fc7df" stroke="#fff0bf" stroke-width="3"/>'
+    return shaft + head
+
 def attacker_for_weapon(topology, cx, face_y, center_y, handle_end):
     topology=topology.upper()
     if topology=="CROSS": return attacker_plus(cx,face_y,center_y,handle_end)
+    if topology=="CYLINDER_CROSS": return attacker_cylinder_cross(cx,face_y,center_y,handle_end)
     if topology=="T": return attacker_t(cx,face_y,center_y,handle_end)
     if topology=="RADIAL": return attacker_radial(cx,face_y,center_y,handle_end)
-    raise ValueError("final_weapon must be CROSS, T, or RADIAL")
+    raise ValueError("final_weapon must be CROSS, T, RADIAL, or CYLINDER_CROSS")
 
 def build_t_weapon_master_geometry_svg(projection):
     """Neutral, label-free master geometry: exactly one upright T-headed hammer."""
@@ -222,8 +235,8 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     layout = json.loads(layout_path.read_text(encoding="utf-8"))
     final_weapon = final_weapon.upper()
     projection = validate_geometry(layout, final_weapon)
-    if final_weapon not in ("CROSS","T","RADIAL"):
-        raise ValueError("final_weapon must be CROSS, T, or RADIAL")
+    if final_weapon not in ("CROSS","T","RADIAL","CYLINDER_CROSS"):
+        raise ValueError("final_weapon must be CROSS, T, RADIAL, or CYLINDER_CROSS")
     outdir.mkdir(parents=True, exist_ok=True)
     files = {
         "proxy": "00_cross_to_cross_proxy.svg",
@@ -351,7 +364,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     (outdir/"edit_attacker_to_T.txt").write_text(weapon_prompt_t+"\n",encoding="utf-8")
     (outdir/"edit_attacker_keep_cross.txt").write_text(weapon_prompt_cross+"\n",encoding="utf-8")
     (outdir/"edit_attacker_keep_T.txt").write_text(weapon_prompt+"\n",encoding="utf-8")
-    selected_prompt=files["target_edit_prompt"] if final_weapon=="T" else {"RADIAL":files["weapon_edit_prompt"],"CROSS":"edit_attacker_keep_cross.txt"}[final_weapon]
+    selected_prompt=files["target_edit_prompt"] if final_weapon=="T" else {"RADIAL":files["weapon_edit_prompt"],"CROSS":"edit_attacker_keep_cross.txt","CYLINDER_CROSS":"edit_attacker_cylinder_cross.txt"}[final_weapon]
     shape_contract = {
         "RADIAL":"one long handle + one near-spherical head tiled with outward flat faces",
         "T":"one straight horizontal crossbar + one long handle joined exactly at the crossbar underside midpoint; the handle itself forms the single stem of the T; no separate short post",
