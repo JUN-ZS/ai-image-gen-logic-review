@@ -139,11 +139,11 @@ jobs:
           assert plan["vector_proxy_status"] == "T_WEAPON_MASTER_SHAPE_PROXY_VALID", plan
           assert plan["stage_gate_status"] == "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED", plan
           assert plan["pixel_truth"]["contact_matrix_images"] == "NOT_RUN", plan
-              assert plan["required_artifacts"]["contact_matrix_h2_image_count"] == 48, plan
+          assert plan["required_artifacts"]["contact_matrix_h2_image_count"] == 48, plan
           assert plan["selected_edit_prompt"] == "generate_scene_with_T_master.txt", plan
           assert plan["pixel_truth"]["edited_images"] == "NOT_RUN"
           for name in ("00_T_weapon_master_geometry.svg", "00_generate_T_weapon_master.txt",
-                       "01_T_weapon_bubble_contact_preview.svg", "02_target_bubble_edit_mask.svg",
+                       "01_T_terminal_end_face_contact_schematic.svg", "02_target_bubble_edit_mask.svg",
                        "03_attacker_T_protect_mask.svg", "05_T_silhouette_reference.svg",
                        "generate_scene_with_T_master.txt", "stage_gate.json"):
               assert (out / name).exists(), name
@@ -189,7 +189,8 @@ jobs:
               assert plan["final_weapon"] == "T", plan
               assert plan["method"] == "T_MASTER_THEN_T_END_FACE_CONTACT_MATRIX_THEN_STORY_SCENE_GENERATION", plan
               assert plan["status"] == "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED", plan
-              assert plan["terminal_face_gap_px"] == 0, plan
+              assert plan["terminal_face_gap_px"] is None, plan
+              assert plan["pixel_truth"]["contact_matrix_images"] == "NOT_RUN", plan
               assert plan["selected_edit_prompt"] == "generate_scene_with_T_master.txt", plan
               assert plan["stage_gate_status"] == "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED", plan
               assert item["stage_gate_status"] == "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED", item
@@ -215,3 +216,15 @@ jobs:
                             "real_image_stage_gate": "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED",
                             "contact_matrix_images": "NOT_RUN", "edited_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
           PY
+
+      - name: Upload T contact matrix and 12-camera prompt sweeps
+        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: t-end-face-contact-matrix-and-camera-sweeps
+          path: |
+            /tmp/wushuang_T_contact_matrix
+            /tmp/wushuang_frames
+            /tmp/wushuang_realize_T
+          if-no-files-found: warn
+          retention-days: 7
