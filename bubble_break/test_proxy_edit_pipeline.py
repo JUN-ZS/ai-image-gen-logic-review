@@ -80,6 +80,8 @@ class CrossProxyTests(unittest.TestCase):
             self.assertIn('x="1061" y="610" width="58" height="8"',preview)
             self.assertTrue((out/"00_T_weapon_master_geometry.svg").exists())
             self.assertTrue((out/"00_generate_T_weapon_master.txt").exists())
+            self.assertTrue((out/"A_T_weapon_master_review.template.json").exists())
+            self.assertEqual(plan["required_artifacts"]["stage_a_review_template"],"A_T_weapon_master_review.template.json")
             self.assertTrue((out/"01_T_terminal_end_face_contact_schematic.svg").exists())
             self.assertTrue((out/"02_target_bubble_edit_mask.svg").exists())
             self.assertTrue((out/"03_attacker_T_protect_mask.svg").exists())
