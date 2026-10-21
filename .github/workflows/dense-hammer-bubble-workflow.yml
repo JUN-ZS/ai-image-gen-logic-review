@@ -1,0 +1,76 @@
+name: Dense Hammer Bubble Selection Workflow
+
+on:
+  push:
+    branches: [main, 'feat/**']
+    paths:
+      - 'bubble_break/DENSE_HAMMER_BUBBLE_SELECTION_WORKFLOW.md'
+      - 'bubble_break/dense_hammer_bubble_workflow.py'
+      - 'bubble_break/test_dense_hammer_bubble_workflow.py'
+      - '.github/workflows/dense-hammer-bubble-workflow.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/DENSE_HAMMER_BUBBLE_SELECTION_WORKFLOW.md'
+      - 'bubble_break/dense_hammer_bubble_workflow.py'
+      - 'bubble_break/test_dense_hammer_bubble_workflow.py'
+      - '.github/workflows/dense-hammer-bubble-workflow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dense-hammer-stage-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test candidate axes, hammer ratios, and stage separation
+        run: python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
+      - name: Compile Stage-A dense atlas packet
+        run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/dense_hammer_atlas
+      - name: Compile selected C17 stages B to E
+        run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/dense_hammer_C17 --select C17 --bubble-scale 1.0 --hammer-scale 1.0 --person-height-of-bubble 0.65
+      - name: Verify honest gate states, candidate count, proportions, and isolated stages
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          atlas = Path('out/dense_hammer_atlas')
+          selected = Path('out/dense_hammer_C17')
+          a = json.loads((atlas / 'candidate_manifest.json').read_text(encoding='utf-8'))
+          b = json.loads((selected / 'candidate_manifest.json').read_text(encoding='utf-8'))
+
+          assert a['stage_a_candidate_count'] == 24
+          assert a['selected_candidate_id'] is None
+          assert a['image_realization'] == a['pixel_audit'] == 'NOT_RUN'
+          assert not (atlas / 'stage_b_one_hammer_no_person.md').exists()
+
+          assert b['selected_candidate_id'] == 'C17'
+          assert b['scale_changes']['bubble_scale'] == 1.0
+          assert b['scale_changes']['hammer_scale'] == 1.0
+          assert b['raster_selection_evidence'] == 'PENDING_REAL_RASTER_REFERENCE'
+          for name in (
+              'stage_b_one_hammer_no_person.md',
+              'stage_c_add_person.md',
+              'stage_d_action_refinement.md',
+              'stage_e_glow_bubble_break.md',
+          ):
+              assert (selected / name).is_file(), name
+
+          a_prompt = (atlas / 'stage_a_dense_hammer_atlas.md').read_text(encoding='utf-8').lower()
+          b_prompt = (selected / 'stage_b_one_hammer_no_person.md').read_text(encoding='utf-8').lower()
+          assert 'no regular rings' in a_prompt and 'no humans' in a_prompt
+          assert 'raster wins over the proxy coordinate' in b_prompt
+          assert 'all 23 non-selected heads' in b_prompt
+          print('24 dense hammer candidates; C17 B–E prompt stages compiled; image/pixel status honestly NOT_RUN')
+          PY
+      - name: Upload prompt, manifest, and proxy artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dense-hammer-bubble-selection-packet
+          path: out/dense_hammer_*/
+          if-no-files-found: error
