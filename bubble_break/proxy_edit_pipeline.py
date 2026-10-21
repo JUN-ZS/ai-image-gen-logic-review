@@ -44,11 +44,13 @@ def attacker_plus(cx, face_y, center_y, handle_end):
     return shaft + head
 
 def attacker_t(cx, face_y, center_y, handle_end):
-    # Rotate the whole rigid T so the selected terminal END FACE normal points upward into P.
-    # Head material extends below the terminal face; this SVG remains a schematic, not 3D proof.
+    # Orthographic projection of one rigid T rotated 90 degrees: end-face normal and
+    # crossbar axis point up-screen, so the centered handle projects horizontally.
+    # This SVG is only a schematic coordinate proxy, not 3D or pixel-proof evidence.
     bar_width = 58
     bar_length = 224
     head_joint_y = face_y + bar_length // 2
+    handle_end = (cx - 440, head_joint_y)
     shaft = line(handle_end[0], handle_end[1], cx, head_joint_y, "#02060a", 34)
     shaft += line(handle_end[0], handle_end[1], cx, head_joint_y, "url(#metal)", 23)
     head = rect(cx-bar_width//2, face_y+8, bar_width, bar_length-8, "#234761", "#e0bd82", 5)
@@ -176,7 +178,7 @@ def build_svg(kind, projection, final_weapon="RADIAL"):
     parts.append("</svg>")
     return "\n".join(parts)
 
-def validate_geometry(layout):
+def validate_geometry(layout, final_weapon="RADIAL"):
     p = layout.get("projection_lock", layout)
     required = ("canvas", "sphere_center", "sphere_radius", "P_six_oclock", "frames")
     if any(k not in p for k in required):
@@ -187,12 +189,37 @@ def validate_geometry(layout):
     h2 = p["frames"]["H2"]
     if int(h2["top_face_y"]) != int(point["y"]) or int(h2["head_center"]["x"]) != int(point["x"]):
         raise ValueError("geometry mismatch: attack cross face is not aligned with target cross face")
+    if str(final_weapon).upper() == "T":
+        # Fail closed if the T projection shows a vertical head but a separately diagonal stem.
+        for frame_id in ("H0", "H2", "H3"):
+            frame = p["frames"][frame_id]
+            basis = frame.get("rigid_T_projection")
+            if not isinstance(basis, dict):
+                raise ValueError(f"geometry mismatch: missing rigid_T_projection basis for {frame_id}")
+            crossbar = basis.get("crossbar_axis_screen", {})
+            normal = basis.get("terminal_face_normal_screen", {})
+            stem = basis.get("handle_axis_screen", {})
+            if crossbar != {"x": 0, "y": -1} or normal != {"x": 0, "y": -1}:
+                raise ValueError(f"geometry mismatch: T end-face normal/crossbar axis must project upward for {frame_id}")
+            if stem != {"x": -1, "y": 0}:
+                raise ValueError(f"geometry mismatch: T stem must project laterally in canonical view for {frame_id}")
+            if crossbar["x"] * stem["x"] + crossbar["y"] * stem["y"] != 0:
+                raise ValueError(f"geometry mismatch: projected T crossbar and stem are not perpendicular for {frame_id}")
+            joint = frame.get("handle_joint")
+            head_center = frame.get("head_center")
+            handle_ref = frame.get("handle_reference_point")
+            if joint != head_center or not isinstance(handle_ref, dict):
+                raise ValueError(f"geometry mismatch: T handle joint is not at the crossbar midpoint for {frame_id}")
+            if handle_ref.get("y") != joint.get("y") or handle_ref.get("x", point["x"]) >= joint.get("x", point["x"]):
+                raise ValueError(f"geometry mismatch: T handle reference is not lateral to the joint for {frame_id}")
+            if basis.get("joint_at_crossbar_midpoint") is not True or basis.get("handle_centerline_passes_through_joint") is not True:
+                raise ValueError(f"geometry mismatch: T stem is not locked to the midpoint for {frame_id}")
     return p
 
 def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
     layout = json.loads(layout_path.read_text(encoding="utf-8"))
-    projection = validate_geometry(layout)
     final_weapon = final_weapon.upper()
+    projection = validate_geometry(layout, final_weapon)
     if final_weapon not in ("CROSS","T","RADIAL"):
         raise ValueError("final_weapon must be CROSS, T, or RADIAL")
     outdir.mkdir(parents=True, exist_ok=True)
@@ -278,9 +305,10 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "STAGE C — STORY-SPECIFIC CINEMATIC SCENE GENERATION, ONLY AFTER THE T MASTER AND ALL 48 END-FACE CONTACT-MATRIX H2 IMAGES ARE VISUALLY APPROVED. "
             "Use A_T_weapon_master.png as a WEAPON-SHAPE reference only, and the approved 48-view terminal-END-FACE contact matrix as the active-plane reference; never treat either as a layout, camera, pose or background reference. "
             "Generate H0, H2 and H3 as THREE separate full-bleed images using the corresponding prompt files in this story's frame packet. "
-            "Keep exactly ONE T-headed hammer held by the heroine. Aim its designated TERMINAL END STRIKING FACE at the bubble's six-o'clock point P; never substitute the broad upper/lower crossbar surface, long cheek, corner or handle. The 48-view contact matrix defines which plane is active. "
-            "The hammer handle may run diagonally down-left in the action pose; its joint must remain at the exact crossbar underside midpoint, "
-            "and the straight crossbar must not twist into an X, plus, L, sphere or diagonal bar. The BUBBLE is the target; never draw an upper inverted T "
+            "Keep exactly ONE T-headed hammer held by the heroine. Aim its designated TERMINAL END STRIKING FACE at the bubble's six-o'clock point P; never substitute the broad upper/lower crossbar surface, long cheek, corner or handle. The contact matrix defines which plane is active. "
+            "For the canonical bottom-pole orthographic view, the active face normal and crossbar project upward/vertically while the centered handle projects laterally through the midpoint. Rotate the entire T as one rigid object. "
+            "An oblique scene camera may make both projected axes oblique only through one coherent 3D transform; never force a down-left handle while keeping the crossbar vertical, and never rotate the head independently. Reposition/reframe the heroine to follow the handle axis. "
+            "The straight crossbar must not twist into an X, plus, L, sphere or diagonal bar. The BUBBLE is the target; never draw an upper inverted T "
             "or a second hammer and never replace one hammer with a bubble. Preserve the story-specific environment, scale, shell, palette, symbolism, "
             "motion and cinematic style from the provided frame prompts. Different story IDs should retain their distinct scene concepts; within one story, "
             "H0/H2/H3 share continuity and camera. Do not copy the neutral studio composition of the weapon master."
@@ -344,7 +372,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "required_order":[
                 "A: generate ONE isolated T weapon master using 00_generate_T_weapon_master.txt",
                 "A_GATE: manually review and approve A_T_weapon_master.png; do not infer approval from the prompt or SVG",
-                "B: generate 144 T-to-T H0/H2/H3 contact-matrix prompts over 12 views x 4 collision axes",
+                "B: generate 144 T-to-T H0/H2/H3 contact-matrix prompts over 12 views x 4 collision axes; balance all four handle-roll relationships across the 48 variants",
                 "B_GATE: manually review all 48 H2 contact proofs; each must show terminal END FACE to END FACE, coincident planes and opposing normals",
                 "C: generate each story's H0/H2/H3 across the 12 camera variants; preserve continuity within each camera trio",
                 "C: keep scene concepts varied across story IDs, preserve continuity within each camera trio, then audit actual image pixels",
