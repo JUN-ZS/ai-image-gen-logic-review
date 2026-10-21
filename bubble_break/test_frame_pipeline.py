@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import json, tempfile, unittest
 from pathlib import Path
-from frame_pipeline import FRAME_IDS, build_packets, compile_frame_set, write_packet
+from frame_pipeline import CAMERA_VARIANTS, FRAME_IDS, build_packets, compile_frame_set, write_packet
 
 def sample():
     return {"story_id":"TEST-001","root_sin":"Identity Ownership",
@@ -75,6 +75,36 @@ class FramePipelineTests(unittest.TestCase):
             self.assertIn(impact_glint,h2_svg)
             self.assertNotIn(impact_glint,h3_svg)
             self.assertTrue(all(Path(d/name).exists() for name in layout["geometry_files"].values()))
+    def test_camera_variants_change_prompts_without_breaking_within_trio_lock(self):
+        low=compile_frame_set(sample(),weapon_topology="T",camera_variant="LOW_3Q_FRONTAL")
+        macro=compile_frame_set(sample(),weapon_topology="T",camera_variant="MACRO_CONTACT")
+        self.assertNotEqual(low["shot_lock_id"],macro["shot_lock_id"])
+        self.assertEqual(low["camera_variant"],"LOW_3Q_FRONTAL")
+        self.assertEqual(macro["camera_variant"],"MACRO_CONTACT")
+        self.assertIn("CAMERA VIEW: "+CAMERA_VARIANTS["LOW_3Q_FRONTAL"],low["prompts"]["H0"])
+        self.assertIn("CAMERA VIEW: "+CAMERA_VARIANTS["MACRO_CONTACT"],macro["prompts"]["H2"])
+        self.assertIn("TERMINAL END STRIKING FACE",macro["prompts"]["H2"])
+        self.assertIn("cheek",macro["prompts"]["H2"].lower())
+
+    def test_camera_sweep_writes_12_distinct_H0_H2_H3_trios(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); source=root/"stories.jsonl"
+            source.write_text(json.dumps(sample())+"\\n",encoding="utf-8")
+            out=root/"out"
+            batch=build_packets(source,out,limit=1,weapon_topology="T",camera_sweep=True)
+            self.assertEqual(batch["written_story_packets"],1)
+            self.assertEqual(batch["written_camera_packets"],12)
+            self.assertTrue(batch["camera_sweep"])
+            self.assertEqual(set(batch["camera_variants"]),set(CAMERA_VARIANTS))
+            self.assertEqual(len(batch["packets"]),12)
+            self.assertEqual(len({x["shot_lock_id"] for x in batch["packets"]}),12)
+            for item in batch["packets"]:
+                folder=Path(item["directory"])
+                self.assertTrue((folder/"H0_pre_impact.txt").exists())
+                self.assertTrue((folder/"H2_first_contact_anchor.txt").exists())
+                self.assertTrue((folder/"H3_post_impact.txt").exists())
+                self.assertEqual(item["image_realization"],"NOT_RUN")
+
     def test_batch_reads_jsonl(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td); source=root/"stories.jsonl"
