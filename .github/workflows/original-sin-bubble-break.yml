@@ -161,7 +161,7 @@ jobs:
           for name in ("00_T_weapon_master_geometry.svg", "00_generate_T_weapon_master.txt",
                        "01_T_terminal_end_face_contact_schematic.svg", "02_target_bubble_edit_mask.svg",
                        "03_attacker_T_protect_mask.svg", "05_T_silhouette_reference.svg",
-                       "generate_scene_with_T_master.txt", "stage_gate.json"):
+                       "generate_scene_with_T_master.txt", "A_T_weapon_master_review.template.json", "stage_gate.json"):
               assert (out / name).exists(), name
           gate = json.loads((out / "stage_gate.json").read_text(encoding="utf-8"))
           assert gate["do_not_mark_pass_from_prompt_or_svg_alone"] is True
@@ -185,10 +185,13 @@ jobs:
           assert result["required_first_stage"] == "A_T_WEAPON_MASTER_AND_CONTACT_MATRIX", result
           shared = Path(result["shared_weapon_master_directory"])
           assert (shared / "00_generate_T_weapon_master.txt").exists()
+          assert (shared / "A_T_weapon_master_review.template.json").exists()
           assert (shared / "05_T_silhouette_reference.svg").exists()
           assert (shared / "stage_gate.json").exists()
           assert result["image_realization"] == "NOT_RUN", result
           assert result["pixel_audit_status"] == "NOT_RUN", result
+          assert result["contact_matrix_audit_status"] == "BLOCKED", result
+          assert result["master_review_status"] == "BLOCKED", result
           assert result["contact_matrix_variants"] == 48, result
           assert result["contact_matrix_prompt_count"] == 144, result
           assert result["scene_camera_variants_per_story"] == 12, result
@@ -209,6 +212,8 @@ jobs:
               assert plan["pixel_truth"]["contact_matrix_images"] == "NOT_RUN", plan
               assert plan["selected_edit_prompt"] == "generate_scene_with_T_master.txt", plan
               assert plan["stage_gate_status"] == "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED", plan
+              assert plan["contact_matrix_audit_status"] == "BLOCKED", plan
+              assert plan["master_review_status"] == "BLOCKED", plan
               assert item["stage_gate_status"] == "BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED", item
               assert item["required_first_stage_artifact"] == str(shared / "A_T_weapon_master.png"), item
               assert item["shared_weapon_master_directory"] == str(shared), item
