@@ -284,15 +284,23 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description="Compile 48 T-to-T terminal-face variants (12 cameras x 4 collision axes), each with H0/H2/H3 prompts; does not render images.")
-    parser.add_argument("--outdir", required=True)
+    parser = argparse.ArgumentParser(description="Compile T-to-T contact prompts or validate generated H2 PNGs and explicit human reviews. Never renders images.")
+    parser.add_argument("--outdir", help="destination for prompts, variants and review templates")
+    parser.add_argument("--validate-dir", help="validate generated H2 PNGs and manual review JSONs in an existing matrix")
     args = parser.parse_args(argv)
+    if bool(args.outdir) == bool(args.validate_dir):
+        parser.error("provide exactly one of --outdir or --validate-dir")
     try:
-        result = build_matrix(Path(args.outdir))
+        result = build_matrix(Path(args.outdir)) if args.outdir else validate_matrix(Path(args.validate_dir))
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print("BLOCK: " + str(exc), file=sys.stderr)
         return 2
-    print(json.dumps({k: result[k] for k in ("camera_view_count", "collision_axis_count", "variant_count", "single_image_prompt_count", "required_H2_contact_proof_images", "image_realization", "pixel_audit")}, ensure_ascii=False, indent=2))
+    keys = (
+        ("camera_view_count", "collision_axis_count", "variant_count", "single_image_prompt_count", "required_H2_contact_proof_images", "image_realization", "pixel_audit")
+        if args.outdir else
+        ("overall_status", "variant_count", "reviewed_pass_count", "reviewed_fail_count", "blocked_count", "automatic_pixel_claims")
+    )
+    print(json.dumps({k: result[k] for k in keys}, ensure_ascii=False, indent=2))
     return 0
 
 if __name__ == "__main__":
