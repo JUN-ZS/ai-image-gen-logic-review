@@ -8,7 +8,6 @@ from pathlib import Path
 from bubble_break.dense_hammer_bubble_workflow import (
     BUBBLE_RADIUS,
     CANDIDATE_COUNT,
-    FACE_GAP,
     HANDLE_DIAMETER,
     HANDLE_LENGTH,
     HEAD_DIAMETER,
@@ -29,38 +28,39 @@ from bubble_break.dense_hammer_bubble_workflow import (
 
 
 class TestDenseHammerBubbleWorkflow(unittest.TestCase):
-    def test_deterministic_dense_non_grid_candidate_set(self):
-        a = make_candidates()
-        b = make_candidates()
-        self.assertEqual(len(a), CANDIDATE_COUNT)
-        self.assertEqual([item.candidate_id for item in a], [f"C{i:02d}" for i in range(1, 25)])
-        self.assertEqual(a, b)
-        self.assertGreater(len({item.azimuth_deg for item in a}), 20)
-        self.assertGreater(len({item.polar_deg_to_camera for item in a}), 20)
+    def test_deterministic_24_planted_candidates_with_varied_tangent_handles(self):
+        first = make_candidates()
+        second = make_candidates()
+        self.assertEqual(len(first), CANDIDATE_COUNT)
+        self.assertEqual([item.candidate_id for item in first], [f"C{i:02d}" for i in range(1, 25)])
+        self.assertEqual(first, second)
+        self.assertGreater(len({item.azimuth_deg for item in first}), 20)
+        self.assertGreater(len({item.handle_roll_deg for item in first}), 20)
 
-    def test_every_hammer_faces_inward_and_handle_extends_outward(self):
+    def test_heads_are_planted_radially_and_handles_are_tangent(self):
         for item in make_candidates():
-            radial = unit(item.radial_normal)
-            face_normal = unit(item.front_face_normal)
-            handle = unit(item.handle_direction)
+            radial = unit(item.radial_head_axis)
+            handle = unit(item.handle_tangent_direction)
             self.assertAlmostEqual(length(radial), 1.0, places=7)
-            self.assertAlmostEqual(dot(radial, face_normal), -1.0, places=6)
-            self.assertAlmostEqual(dot(radial, handle), 1.0, places=6)
+            self.assertAlmostEqual(length(handle), 1.0, places=7)
             self.assertAlmostEqual(length(item.bubble_contact_anchor), BUBBLE_RADIUS, places=5)
-            face_offset = tuple(
-                item.glowing_face_center[i] - item.bubble_contact_anchor[i]
+            self.assertAlmostEqual(dot(radial, handle), 0.0, places=6)
+            self.assertAlmostEqual(length(sub(item.handle_end, item.handle_root)), HANDLE_LENGTH, places=4)
+            head_axis_vector = tuple(
+                item.head_outer_cap_center[i] - item.bubble_contact_anchor[i]
                 for i in range(3)
             )
-            self.assertAlmostEqual(length(face_offset), FACE_GAP, places=4)
+            self.assertAlmostEqual(length(head_axis_vector), HEAD_LENGTH, places=4)
+            self.assertAlmostEqual(dot(unit(head_axis_vector), radial), 1.0, places=6)
 
-    def test_hammer_ratio_contract(self):
+    def test_ratio_contract_matches_double_ended_head_and_lateral_handle(self):
         self.assertAlmostEqual(HEAD_DIAMETER / (2 * BUBBLE_RADIUS), 0.08, places=7)
         self.assertAlmostEqual(HEAD_LENGTH / HEAD_DIAMETER, 1.5, places=7)
         self.assertAlmostEqual(HANDLE_LENGTH / HEAD_LENGTH, 3.0, places=7)
         self.assertAlmostEqual(HANDLE_DIAMETER / HEAD_DIAMETER, 0.1, places=7)
         for item in make_candidates():
-            self.assertAlmostEqual(item.head_stub_length / item.head_diameter, 1.5, places=7)
-            self.assertAlmostEqual(item.handle_length / item.head_stub_length, 3.0, places=7)
+            self.assertAlmostEqual(item.head_axial_length / item.head_diameter, 1.5, places=7)
+            self.assertAlmostEqual(item.handle_length / item.head_axial_length, 3.0, places=7)
             self.assertAlmostEqual(item.handle_diameter / item.head_diameter, 0.1, places=7)
 
     def test_candidate_lookup_is_case_insensitive_and_rejects_unknown(self):
@@ -69,51 +69,55 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         with self.assertRaises(ValueError):
             candidate_by_id(candidates, "C99")
 
-    def test_stage_a_prompt_requires_one_bubble_and_complete_glowing_hammers(self):
+    def test_stage_a_prompt_is_planted_double_ended_hammer_not_projectiles(self):
         prompt = make_stage_a_prompt(make_candidates()).lower()
         for expected in (
             "exactly 24",
-            "single large",
-            "complete, separate tool",
-            "front circular terminal face",
+            "double-ended",
+            "two axial circular end caps",
+            "seated flush against the bubble",
+            "side-middle",
+            "local tangent plane",
+            "no people",
             "no regular rings",
-            "no humans",
-            "no huge spark spray",
-            "not a grid",
+            "the contact footprint/base seam",
         ):
             self.assertIn(expected, prompt)
         self.assertIn("c24", prompt)
+        self.assertNotIn("aimed inward toward", prompt)
 
-    def test_stage_b_uses_raster_authority_and_removes_other_hammers(self):
+    def test_stage_b_locks_actual_raster_and_removes_other_23_hammers(self):
         selected = candidate_by_id(make_candidates(), "C17")
         prompt = make_stage_b_prompt(selected, 1.0, 1.0)
-        self.assertIn("exact accepted Stage-A image", prompt)
-        self.assertIn("raster wins over the proxy coordinate", prompt)
-        self.assertIn("all 23 non-selected heads", prompt)
-        self.assertIn("No person, hands", prompt)
-        self.assertIn("head stub Hs", prompt)
-        self.assertIn("handle L", prompt)
-        self.assertNotIn("Use C17's proxy coordinates as exact pixel", prompt)
+        self.assertIn("exact accepted Stage-A raster", prompt)
+        self.assertIn("actual Stage-A raster-visible selected hammer", prompt)
+        self.assertIn("Remove every other 23 hammer assemblies", prompt)
+        self.assertIn("No human, hands", prompt)
+        self.assertIn("side-middle", prompt)
+        self.assertIn("tangent plane", prompt)
+        self.assertIn("PENDING", prompt.upper())
 
-    def test_stage_c_d_e_are_separate_and_preserve_tool(self):
+    def test_stage_c_d_e_preserve_planted_contact_and_handle_attachment(self):
         selected = candidate_by_id(make_candidates(), "C17")
         stage_c = make_stage_c_prompt(selected, 0.65)
         stage_d = make_stage_d_prompt(selected)
         stage_e = make_stage_e_prompt(selected)
-        self.assertIn("exactly one full human figure", stage_c.lower())
+        self.assertIn("exactly one complete person", stage_c.lower())
         self.assertIn("0.650", stage_c)
-        self.assertIn("accepted Stage-C image", stage_d)
-        self.assertIn("do not move or flip", stage_d.lower())
-        self.assertIn("radial fractures", stage_e)
-        self.assertIn("at least one clean contact frame", stage_e.lower())
-        self.assertIn("unselected hammer", stage_e.lower())
+        self.assertIn("same sideways", stage_c.lower())
+        self.assertIn("accepted Stage-C raster", stage_d)
+        self.assertIn("side-middle", stage_d)
+        self.assertIn("base contact", stage_e.lower())
+        self.assertIn("radial cracks", stage_e.lower())
+        self.assertIn("clean contact frame", stage_e.lower())
+        self.assertIn("23 hammer", stage_e.lower())
 
     def test_svg_contains_all_ids_and_selected_candidate(self):
         candidates = make_candidates()
         svg = make_svg(candidates)
         for item in candidates:
             self.assertIn(item.candidate_id, svg)
-        self.assertIn("NOT raster evidence", svg)
+        self.assertIn("geometry proxy only", svg)
         self.assertIn("Selected C17", make_svg(candidates, "C17"))
 
     def test_unselected_packet_does_not_emit_later_stages(self):
@@ -123,9 +127,12 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
             self.assertIsNone(result["selected_candidate_id"])
             self.assertEqual(result["image_realization"], "NOT_RUN")
             self.assertNotIn("stage_b_one_hammer_no_person.md", result["outputs"])
-            self.assertTrue((Path(directory) / "stage_a_dense_hammer_atlas.md").is_file())
+            self.assertTrue((Path(directory) / "stage_a_planted_round_hammer_atlas.md").is_file())
             summary = json.loads((Path(directory) / "packet_summary.json").read_text(encoding="utf-8"))
             self.assertEqual(summary["pixel_audit"], "NOT_RUN")
+            manifest = json.loads((Path(directory) / "candidate_manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["topology"]["head"], "double-ended cylindrical round head, radial axis")
+            self.assertIn("side-middle", manifest["topology"]["handle"])
 
     def test_selected_packet_emits_stages_b_to_e_and_scale_manifest(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -139,7 +146,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
             self.assertEqual(result["selected_candidate_id"], "C17")
             for name in (
                 "stage_b_one_hammer_no_person.md",
-                "stage_c_add_person.md",
+                "stage_c_scale_and_add_person.md",
                 "stage_d_action_refinement.md",
                 "stage_e_glow_bubble_break.md",
             ):
@@ -171,7 +178,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
             self.assertIn("(100, 200, 90, 120)", stage_b)
             self.assertTrue(result["raster_selection_evidence"].startswith("SOURCE_"))
 
-    def test_roi_requires_source_raster_and_bad_scalars_fail(self):
+    def test_roi_requires_source_raster_and_invalid_inputs_fail(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             with self.assertRaises(ValueError):
