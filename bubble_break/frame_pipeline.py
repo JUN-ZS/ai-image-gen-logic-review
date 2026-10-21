@@ -39,8 +39,9 @@ COMMON = (
     "35mm cinema lens, fixed tripod, same horizon, vanishing lines, architecture landmarks, camera distance, "
     "sphere center and scale in every frame. A giant transparent iridescent bubble encloses a visible floating city "
     "and tiny residents; the lower pole is unobstructed. Heroine stays in the lower-left third, bubble occupies "
-    "upper/central frame, P is the exact six-o'clock bottom pole. Keep negative space around P so the gap/contact "
-    "can be judged from pixels. ONE realistic East Asian female warrior, long straight center-parted dark-brown hair, "
+    "upper/central frame when using a wide shot; camera-specific framing may move or crop the heroine in close-ups. "
+    "Keep the bubble's six-o'clock bottom pole P visible enough to judge gap/contact, and prioritize the active face plus pole in macro variants. "
+    "ONE realistic East Asian female warrior, long straight center-parted dark-brown hair, "
     "natural makeup, expressive eyes, black leather combat outfit with straps and gloves, consistent face/costume, "
     "both hands on the same handle. No second heroine. CANONICAL WEAPON: ONE long rigid handle + ONE compact "
     "near-spherical dense steel hammer head. The head looks spherical because many broad, flat polygonal sledgehammer "
@@ -82,7 +83,7 @@ NEGATIVE_BY_TOPOLOGY = {
     "T": (
         "radial spherical hammer head, near-spherical faceted globe head, plus-sign/cross head, X-shaped head, "
         "extra crossbar, missing horizontal crossbar, missing centered stem, off-center stem, bent or diagonal crossbar, "
-        "L-shaped head, Y-shaped head, rounded head, separate head pieces"
+        "L-shaped head, Y-shaped head, rounded head, separate head pieces, top-plane-first contact, cheek-first contact, corner-first contact, handle-first contact"
     ),
     "CROSS": (
         "T-shaped head, radial spherical hammer head, near-spherical faceted globe head, conventional plain rectangular "
@@ -442,7 +443,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
     }[weapon_topology]
     visual_checks=[
         ("V01","每張都是單張成片，不是拼貼／分格／資訊圖"),
-        ("V02","H0/H2/H3 鏡位、地平線、地標、球心及 P 投影位置一致"),
+        ("V02","同一相機變體內的 H0/H2/H3 鏡位、地平線、地標、球心及 P 投影位置一致；不同相機變體可改角度與取景"),
         ("V03","女主臉、服裝一致，且只有一位女主"),
         ("V04",shape_check),
         ("V05","H0 球膜完整無裂，指定接觸面與 P 之間有空隙"),
@@ -466,12 +467,13 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
             "T":"the selected terminal END STRIKING FACE at the terminal end of the rigid T crossbar",
             "CROSS":"the upper terminal face of the vertical arm",
         }[weapon_topology],
+        "camera_variant":camera_variant,"camera_description":CAMERA_VARIANTS[camera_variant],
         "frame_order":list(FRAME_IDS),
         "projection_lock":projection_lock(),
         "workflow":{
           "endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
-          "required_stage_order": (["A_T_WEAPON_MASTER","B_STORY_SPECIFIC_SCENE_FRAMES_H0_H2_H3"] if weapon_topology=="T" else ["H0","H2","H3"]),
+          "required_stage_order": (["A_T_WEAPON_MASTER","B_T_TO_T_END_FACE_CONTACT_MATRIX","C_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS_H0_H2_H3"] if weapon_topology=="T" else ["H0","H2","H3"]),
           "realization_stage_gate": ("BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED" if weapon_topology=="T" else "NO_T_TO_T_GATE"),
           "required_stage_a_artifact": ("A_T_weapon_master.png" if weapon_topology=="T" else None),
           "manual_pixel_review_required_before_stage_b": (True if weapon_topology=="T" else False),
