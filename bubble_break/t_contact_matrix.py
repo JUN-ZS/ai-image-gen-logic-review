@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Compile an exhaustive single-image T-hammer end-face collision matrix.
+"""Compile a stratified single-image T-hammer end-face collision matrix.
 
 This creates prompts and audit manifests only. It never calls an image model.
 """
