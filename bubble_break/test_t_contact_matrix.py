@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from t_contact_matrix import CAMERA_VIEWS, REVIEW_CHECKS, STRIKE_AXES, build_matrix, make_prompt, review_payload_passes, validate_matrix
+from t_contact_matrix import CAMERA_VIEWS, MASTER_REVIEW_CHECKS, REVIEW_CHECKS, STRIKE_AXES, build_matrix, make_prompt, master_review_payload_passes, review_payload_passes, validate_master_review, validate_matrix
 
 
 class TContactMatrixTests(unittest.TestCase):
@@ -73,6 +73,23 @@ class TContactMatrixTests(unittest.TestCase):
         payload["checks"]["no_cheek_first"]=True
         payload["notes"]="   "
         self.assertFalse(review_payload_passes(payload))
+
+    def test_master_review_requires_real_png_and_complete_human_review(self):
+        payload={
+            "status":"PASS",
+            "manual_pixel_review":True,
+            "notes":"Inspected A_T_weapon_master.png at native resolution.",
+            "checks":{name:True for name in MASTER_REVIEW_CHECKS},
+        }
+        self.assertTrue(master_review_payload_passes(payload))
+        payload["checks"]["no_second_or_inverted_T"]=False
+        self.assertFalse(master_review_payload_passes(payload))
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            (root/"A_T_weapon_master_review.json").write_text(json.dumps(payload),encoding="utf-8")
+            result=validate_master_review(root/"A_T_weapon_master.png",root/"A_T_weapon_master_review.json")
+            self.assertEqual(result["status"],"BLOCKED")
+            self.assertIn("MISSING_OR_INVALID_MASTER_PNG",result["issues"])
 
     def test_all_camera_and_axis_slots_are_nonempty_and_distinct(self):
         self.assertEqual(len(CAMERA_VIEWS),12)
