@@ -80,6 +80,23 @@ Also:
 - Preserve double-ended cylindrical head, glowing base contact, side-middle handle attachment and tangent handle direction.
 - No other hammers return. Do not add the person in Stage A/B.
 
+
+## Stage D stepwise protocol (mandatory — 一步步)
+
+Outer-end / coaxial **new handle must not appear** under the layered formula stack. If it appears, the step is **REJECT** and must be redone — do not proceed.
+
+Do **not** jump to full action+grip in one shot. Order is fixed:
+
+| Step | Name | Allowed change | Frozen |
+| --- | --- | --- | --- |
+| D0 | Topology freeze | none (re-show B master only) | head, base glow, outer cap empty, side-middle lateral handle only |
+| D1 | Mini person place | add mini person (full-body area ≈ hammer area); **hands not gripping** | all hammer topology; `NO_NEW_HANDLE` |
+| D2 | Grip existing handle only | move hands onto **existing** side-middle lateral rod only | person scale; outer cap empty; no new shaft |
+| D3 | 找／持槌氣勢＋動作 | stance, weight, eyes, intent (still planted) | topology + grip on existing handle only |
+| D4 | Optional polish | clothing/lighting only | everything above |
+
+**Kill rule:** any outer-end rod, second shaft, or handle-axis rewrite → REJECT that step; roll back to last PASS step. Formula pressure layers: B topology lock → `NO_NEW_HANDLE` → person:hammer 1:1 mini → grip-only-existing → then action.
+
 ## Stage D — action refinement
 
 Improve stance, torso/shoulder rotation, grip, weight transfer, and motion around the selected planted-hammer assembly. Any intentional handle lift/removal from the contact surface must be a separate state, not hidden in a frame claimed as still planted. Do not bend or detach the handle, flip the head, silently move the anchor, grow duplicate handles, or grow any new outer-end coaxial shaft (`NO_NEW_HANDLE` remains locked).

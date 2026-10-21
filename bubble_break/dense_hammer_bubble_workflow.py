@@ -372,6 +372,48 @@ must not be mislabeled as the still-planted contact state.
 """
 
 
+
+def make_stage_d_step_prompt(candidate: HammerCandidate, step: str) -> str:
+    """Emit one Stage-D micro-step prompt. Outer-end new handle is always REJECT."""
+    step = step.strip().upper()
+    common = f"""SOURCE: locked Stage-B master for {candidate.candidate_id} only.
+FROZEN TOPOLOGY (must match source pixels): double-ended cylindrical head planted on bubble;
+cyan-white glow only at base contact; outer circular end cap EMPTY; ONE thin handle only at
+SIDE-MIDDLE of cylinder (~90° to radial axis). NO_NEW_HANDLE: any outer-end shaft / second
+rod / handle-axis rewrite is REJECT — roll back.
+PERSON SCALE when person exists: mini, full-body visual area ≈ hammer area (1:1).
+"""
+    steps = {
+        "D0": common + """
+# STEP D0 — TOPOLOGY FREEZE (no person)
+Re-output the locked hammer only. Zero people. Zero new geometry. Outer cap empty.
+""",
+        "D1": common + """
+# STEP D1 — MINI PERSON PLACE (no grip)
+Add exactly one mini person (full-body area ≈ hammer area) beside the bubble near the
+existing side handle. Hands must NOT grip the tool yet (open or at sides). Do not move
+or rewrite any hammer part. Outer end cap stays empty. No new handle.
+""",
+        "D2": common + """
+# STEP D2 — GRIP EXISTING HANDLE ONLY
+From accepted D1: move hands onto the SAME existing side-middle lateral rod only.
+Do not grow outer-end shaft. Outer cap empty. Keep mini 1:1 scale. Still-planted base.
+""",
+        "D3": common + """
+# STEP D3 — 找／持槌氣勢＋動作
+From accepted D2: refine stance, weight transfer, eyes, intent (seek→hold). Keep grip on
+existing side-middle handle only. Still planted. No break FX. NO_NEW_HANDLE.
+""",
+        "D4": common + """
+# STEP D4 — POLISH ONLY
+Lighting/clothing polish only. No topology change. NO_NEW_HANDLE.
+""",
+    }
+    if step not in steps:
+        raise ValueError(f"未知 Stage D step {step!r}；可用 D0–D4")
+    return steps[step].strip() + "\n"
+
+
 def make_stage_e_prompt(candidate: HammerCandidate) -> str:
     return f"""# STAGE E — GLOWING PLANTED BASE → BUBBLE BREAK SPECTACLE
 

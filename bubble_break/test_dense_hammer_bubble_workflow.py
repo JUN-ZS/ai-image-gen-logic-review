@@ -21,6 +21,7 @@ from bubble_break.dense_hammer_bubble_workflow import (
     make_stage_b_prompt,
     make_stage_c_prompt,
     make_stage_d_prompt,
+    make_stage_d_step_prompt,
     make_stage_e_prompt,
     make_svg,
     sub,
@@ -215,6 +216,22 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         self.assertIn("NO_NEW_HANDLE", prompt)
         self.assertIn("MINI", prompt.upper())
         self.assertIn("same visual area", prompt.lower())
+
+
+    def test_stage_d_step_prompts_kill_outer_end_new_handle(self):
+        selected = candidate_by_id(make_candidates(), "C13")
+        for step in ("D0", "D1", "D2", "D3", "D4"):
+            p = make_stage_d_step_prompt(selected, step)
+            self.assertIn("NO_NEW_HANDLE", p)
+            self.assertIn("REJECT", p)
+            self.assertIn("outer", p.lower())
+        d1 = make_stage_d_step_prompt(selected, "D1")
+        self.assertIn("must NOT grip", d1)
+        self.assertIn("mini", d1.lower())
+        d2 = make_stage_d_step_prompt(selected, "D2")
+        self.assertIn("existing side-middle", d2.lower())
+        with self.assertRaises(ValueError):
+            make_stage_d_step_prompt(selected, "D9")
 
 
 if __name__ == "__main__":
