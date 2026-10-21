@@ -139,6 +139,11 @@ def make_candidates(count: int = CANDIDATE_COUNT, seed: int = SEED) -> list[Hamm
         # The front face points inward. The rear handle continues outward.
         front_face_normal = mul(radial, -1.0)
         handle_end = mul(radial, BUBBLE_RADIUS + FACE_GAP + HEAD_LENGTH + HANDLE_LENGTH)
+        proxy_scale = 275.0 / BUBBLE_RADIUS
+        projected_contact_x = 700.0 + proxy_scale * dot(contact, right)
+        projected_contact_y = 600.0 - proxy_scale * dot(contact, up)
+        projected_handle_x = 700.0 + proxy_scale * dot(handle_end, right)
+        projected_handle_y = 600.0 - proxy_scale * dot(handle_end, up)
         candidates.append(
             HammerCandidate(
                 candidate_id=f"C{i + 1:02d}",
@@ -151,6 +156,10 @@ def make_candidates(count: int = CANDIDATE_COUNT, seed: int = SEED) -> list[Hamm
                 handle_end=tuple(round(x, 8) for x in handle_end),
                 polar_deg_to_camera=round(math.degrees(polar), 4),
                 azimuth_deg=round(math.degrees(azimuth) % 360.0, 4),
+                projected_contact_x=round(projected_contact_x, 3),
+                projected_contact_y=round(projected_contact_y, 3),
+                projected_handle_x=round(projected_handle_x, 3),
+                projected_handle_y=round(projected_handle_y, 3),
             )
         )
     return candidates
