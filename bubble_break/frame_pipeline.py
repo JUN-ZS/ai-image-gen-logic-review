@@ -36,8 +36,8 @@ COMMON = (
     "ONE standalone cinematic frame, 16:9 widescreen, photorealistic live-action fantasy still. "
     "One full-bleed image, not a page, not a storyboard, not a comparison, not a collage. No writing, letters, "
     "labels, panel borders, inset images, diagrams or watermark. CAMERA_VARIANT_PLACEHOLDER. "
-    "35mm cinema lens, fixed tripod, same horizon, vanishing lines, architecture landmarks, camera distance, "
-    "sphere center and scale in every frame. A giant transparent iridescent bubble encloses a visible floating city "
+    "Use the specified camera's focal length and perspective. Within this H0/H2/H3 trio keep the chosen camera, horizon, landmarks, "
+    "sphere projection and scale coherent; across camera variant IDs, camera angle, perspective and framing must intentionally change." A giant transparent iridescent bubble encloses a visible floating city "
     "and tiny residents; the lower pole is unobstructed. Heroine stays in the lower-left third, bubble occupies "
     "upper/central frame when using a wide shot; camera-specific framing may move or crop the heroine in close-ups. "
     "Keep the bubble's six-o'clock bottom pole P visible enough to judge gap/contact, and prioritize the active face plus pole in macro variants. "
@@ -61,12 +61,13 @@ WEAPON_TEXT = {
         "These are broad flat faces, not spikes, studs, blades, a halo, chain, or separate hammers. At impact, only the single upper-facing flat polygon contacts the shell."
     ),
     "T": (
-        "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE rigid hammer made from one straight horizontal rectangular crossbar and ONE long handle joined "
-        "directly at the exact midpoint of the crossbar's underside. The handle itself forms the single stem of the capital-T silhouette; "
-        "there is no separate short post between head and handle. Crossbar width is about 3.8 times its thickness, with equal left/right ends; "
-        "the handle joint is centered. The T silhouette must remain unmistakable. This is not a plus-sign/cross head, radial sphere, mace or spiked ball. "
-        "At impact, only the selected terminal END STRIKING FACE at one end of the rigid T crossbar contacts the exact bottom point P; "
-        "The active surface is the crossbar end face, never the broad upper/lower surface or long cheek. Orient the rigid 3D hammer so this end-face normal points into P; the handle stays rigidly attached at the head joint and cannot touch first."
+        "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE rigid T-headed hammer: one straight rectangular crossbar/head and ONE long handle joined "
+        "at the defined underside midpoint. These dimensions and the capital-T relationship are defined in the hammer's OWN LOCAL COORDINATE FRAME; "
+        "the entire rigid hammer may rotate in 3D and appear sideways or oblique in the image to aim its terminal END STRIKING FACE at P. "
+        "The handle itself forms the single stem; no separate short post. Crossbar width is about 3.8 times its thickness, with equal ends; "
+        "the handle joint is centered. Never bend or rotate the head independently from the handle. This is not a plus-sign/cross head, radial sphere, mace or spiked ball. "
+        "At impact, only the selected terminal END STRIKING FACE at one end of the crossbar contacts P; its normal is aligned to the local sphere normal. "
+        "The broad upper/lower surfaces, long cheek, corners and handle are non-contact surfaces and cannot touch first."
     ),
     "CROSS": (
         "WEAPON_TOPOLOGY_ID=WEAPON_PROXY_CROSS. ONE long rigid handle and ONE thick plus-sign/cross-shaped hammer head. "
@@ -82,7 +83,7 @@ NEGATIVE_BY_TOPOLOGY = {
     ),
     "T": (
         "radial spherical hammer head, near-spherical faceted globe head, plus-sign/cross head, X-shaped head, "
-        "extra crossbar, missing horizontal crossbar, missing centered stem, off-center stem, bent or diagonal crossbar, "
+        "extra crossbar, missing crossbar, missing centered stem, off-center stem, bent or kinked crossbar, head twisted independently from handle, "
         "L-shaped head, Y-shaped head, rounded head, separate head pieces, top-plane-first contact, cheek-first contact, corner-first contact, handle-first contact"
     ),
     "CROSS": (
@@ -143,10 +144,11 @@ STATE = {
 T_STATE = {
     "H0": (
         "PRE-IMPACT START FRAME. Bubble membrane perfectly intact: zero cracks, holes, fragments or explosion. "
-        "The weapon MUST have one unmistakable capital-T silhouette: exactly one straight horizontal rectangular crossbar "
-        "and exactly one long rigid handle joined directly to the midpoint of its underside; the handle itself forms the "
-        "single stem of the T. Do not add a separate short post between the crossbar and handle. The left and right bar ends "
-        "are symmetric, equal and remain in one straight line. The head is a T, not a round object with facets and not a cross. "
+        "The weapon MUST have one unmistakable T topology in its OWN LOCAL COORDINATE FRAME: one straight rigid rectangular crossbar "
+        "and exactly one long handle joined directly to the midpoint of its underside; the handle itself forms the single stem. "
+        "The complete rigid hammer may rotate in 3D and appear sideways/oblique on screen so the chosen terminal end face can face P; "
+        "never twist the crossbar independently of the handle. Do not add a short post. Both bar ends remain symmetric in the object's local frame. "
+        "The head is T topology, not a sphere or plus-sign. "
         "The selected flat TERMINAL END FACE at one end of the crossbar "
         "is the designated striking surface. The broad upper/lower faces and long cheek are non-contact surfaces. "
         "Aim this end face at P with its normal aligned to the local sphere normal, but keep it separated from the bubble's six-o'clock bottom point by a clearly visible "
@@ -154,8 +156,8 @@ T_STATE = {
         "hips and torso coiled, both hands gripping the handle at separated positions. The gap must not be hidden."
     ),
     "H2": (
-        "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer in the same shape as H0: one straight horizontal "
-        "rectangular crossbar and the same single long handle joined directly beneath its midpoint; the handle itself forms "
+        "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer in the same rigid shape as H0: one straight rectangular "
+        "crossbar in the hammer's local frame and the same single long handle joined directly beneath its midpoint; the entire hammer may be rotated as one rigid object to aim its terminal face. The handle itself forms "
         "the single stem of the T, with no separate short post or extra shaft. "
         "The selected flat TERMINAL END STRIKING FACE at the terminal end of the T crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
         "The centre of that active end face is pinned to P, and its normal points into the bubble along the local sphere normal. "
@@ -170,7 +172,7 @@ T_STATE = {
         "POST-IMPACT END FRAME, SAME CAMERA AND SCENE. No continuous unbroken membrane remains. Large iridescent film "
         "fragments and fine light-shards expand outward from the original six-o'clock point P along the original sphere "
         "envelope. Preserve sphere-center projection, P screen position, horizon, city landmarks, heroine identity, costume, "
-        "handle length, camera and lighting. Preserve the EXACT same T topology: a straight horizontal rectangular crossbar "
+        "handle length, camera and lighting. Preserve the EXACT same T topology in the hammer's local frame: one straight rigid rectangular crossbar "
         "with two symmetric ends and the same single long handle attached directly at the underside midpoint; the handle itself "
         "forms the single stem of the T. Do not introduce a separate stub or second shaft. The hammer head must not become spherical, radial-faceted, "
         "cross-shaped, L-shaped or multi-headed "
@@ -409,6 +411,8 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
     weapon_topology = weapon_topology.upper()
     common = common_for_weapon(weapon_topology, camera_variant)
     projection = projection_lock()
+    projection["camera_id"] = camera_variant
+    projection["camera_description"] = CAMERA_VARIANTS[camera_variant]
     if weapon_topology == "T":
         # The active terminal end face is oriented upward at the bubble's bottom pole.
         # The rigid T head extends 224 px downward from the end-face plane; its joint is at the midpoint.
