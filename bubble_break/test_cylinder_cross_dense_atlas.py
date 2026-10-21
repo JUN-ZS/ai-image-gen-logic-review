@@ -52,7 +52,7 @@ class CylinderCrossDenseAtlasTests(unittest.TestCase):
             "upper-left pocket",
             "do not form neat rows or columns",
             "for later human scanning and cropping",
-            "neighboring pairs",
+            "adjacent heads and handles do not fuse",
         ):
             self.assertIn(phrase, prompt)
         self.assertNotIn("Keep both T heads", prompt)
