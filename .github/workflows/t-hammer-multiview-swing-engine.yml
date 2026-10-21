@@ -1,0 +1,53 @@
+name: T-Hammer Multi-View Swing Engine
+
+on:
+  push:
+    branches: [main, 'feat/**']
+    paths:
+      - 'bubble_break/t_hammer_multiview_swing_engine.py'
+      - 'bubble_break/test_t_hammer_multiview_swing_engine.py'
+      - 'bubble_break/T_HAMMER_MULTIVIEW_SWING_ENGINE_SPEC.md'
+      - '.github/workflows/t-hammer-multiview-swing-engine.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/t_hammer_multiview_swing_engine.py'
+      - 'bubble_break/test_t_hammer_multiview_swing_engine.py'
+      - 'bubble_break/T_HAMMER_MULTIVIEW_SWING_ENGINE_SPEC.md'
+      - '.github/workflows/t-hammer-multiview-swing-engine.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  geometry-and-prompt-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run rigid-body and view-matrix tests
+        run: python -m unittest bubble_break/test_t_hammer_multiview_swing_engine.py -v
+      - name: Compile 192 trial variants
+        run: python bubble_break/t_hammer_multiview_swing_engine.py --outdir out/t_hammer_multiview_swing
+      - name: Verify output count and honest audit gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('out/t_hammer_multiview_swing')
+          payload = json.loads((root / 't_hammer_multiview_swing_matrix.json').read_text(encoding='utf-8'))
+          assert payload['counts']['total_variants'] == 192
+          assert payload['acceptance_gate']['image_realization'] == 'NOT_RUN'
+          assert payload['acceptance_gate']['pixel_audit'] == 'NOT_RUN'
+          assert len(list((root / 'svg_proxies').glob('*__H2.svg'))) == 192
+          assert len(list((root / 'prompts').glob('*.json'))) == 192
+          print('192 prompt trials + 192 view-projected SVG proxies; image/pixel status NOT_RUN')
+          PY
+      - name: Upload matrix and proxies
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-hammer-multiview-swing-192-trial-bundle
+          path: out/t_hammer_multiview_swing/
+          if-no-files-found: error
