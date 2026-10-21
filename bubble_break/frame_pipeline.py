@@ -408,6 +408,18 @@ def projection_lock() -> Dict[str, Any]:
 def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", camera_variant: str = "LOW_3Q_FRONTAL") -> Dict[str, Any]:
     weapon_topology = weapon_topology.upper()
     common = common_for_weapon(weapon_topology, camera_variant)
+    projection = projection_lock()
+    if weapon_topology == "T":
+        # The active terminal end face is oriented upward at the bubble's bottom pole.
+        # The rigid T head extends 224 px downward from the end-face plane; its joint is at the midpoint.
+        contact = projection["P_six_oclock"]
+        for frame_id in FRAME_IDS:
+            frame = projection["frames"][frame_id]
+            end_face_y = int(contact["y"]) + int(frame["gap_px"])
+            frame["top_face_y"] = end_face_y
+            frame["head_center"] = {"x": int(contact["x"]), "y": end_face_y + 112}
+            frame["active_surface"] = "TERMINAL_END_STRIKING_FACE"
+            frame["active_surface_normal"] = "UPWARD_TOWARD_BUBBLE_AT_H2"
     story_id = str(record.get("story_id") or "STORY-UNKNOWN")
     scene = axis_text(record, "environment", "a monumental surreal city plaza")
     scale = axis_text(record, "scale", "a giant bubble enclosing a floating city")
@@ -483,7 +495,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
             "CROSS":"the upper terminal face of the vertical arm",
         }[weapon_topology],
         "frame_order":list(FRAME_IDS),
-        "projection_lock":projection_lock(),
+        "projection_lock":projection,
         "workflow":{
           "endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
