@@ -21,9 +21,13 @@ from cylinder_cross_contact_matrix import (
     TOPOLOGY_LOCK,
 )
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 COLUMNS = 8
 ROWS = 6
+
+# The old single-pair matrix negative prompt explicitly forbids a contact sheet,
+# which conflicts with this new dense, multi-interaction image strategy.
+ATLAS_NEGATIVE = NEGATIVE.replace("no contact sheet, ", "").replace("no collage", "no visible collage borders")
 
 
 def build_atlas() -> Dict[str, Any]:
@@ -79,7 +83,7 @@ def build_atlas() -> Dict[str, Any]:
         "separation for later cropping; a smaller number of clean, clearly correct instances is preferable to a field "
         "of ambiguous or physically wrong contacts. Use realistic metal, coherent perspective, controlled neutral "
         "studio illumination, crisp silhouettes and high local contrast at the circular contact seams. No visible "
-        "grid or panel frames; this should read as one continuous dense image. NEGATIVE PROMPT: " + NEGATIVE
+        "grid or panel frames; this should read as one continuous dense image. NEGATIVE PROMPT: " + ATLAS_NEGATIVE
     )
 
     return {
