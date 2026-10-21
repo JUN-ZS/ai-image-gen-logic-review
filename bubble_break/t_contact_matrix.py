@@ -134,7 +134,9 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
             # Each camera sees all four poses; each collision axis sees each pose
             # three times across the twelve cameras.
             variant_index = len(variants)
-            pose_index = variant_index % len(HANDLE_CLOCK_VARIANTS)
+            # Latin-style allocation: each camera gets all four poses, and each
+            # collision axis sees each pose exactly three times across 12 cameras.
+            pose_index = ((cam_index - 1) + (axis_index - 1)) % len(HANDLE_CLOCK_VARIANTS)
             pose_id, pose_text = HANDLE_CLOCK_VARIANTS[pose_index]
             variant_id = f"V{variant_index+1:03d}_{camera_id}_{axis_id}_{pose_id}"
             variant_dir = outdir / variant_id
