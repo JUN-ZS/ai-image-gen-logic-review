@@ -233,6 +233,23 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "NO second hammer, NO inverted/upper T, NO bubble, NO heroine, NO city, NO debris, NO cracks, NO text, NO collage, NO extra shaft or short post. "
             "This is a weapon-geometry reference only, not the composition for the later cinematic scene. Save the reviewed real image as A_T_weapon_master.png.\n",
             encoding="utf-8")
+        files["master_review_template"] = "A_T_weapon_master_review.template.json"
+        master_review_template = {
+            "stage_id": "A_T_WEAPON_MASTER",
+            "status": "UNASSESSED",
+            "image": "A_T_weapon_master.png",
+            "manual_pixel_review": False,
+            "checks": {
+                "exactly_one_T_hammer": False,
+                "horizontal_straight_crossbar": False,
+                "handle_attached_at_underside_midpoint": False,
+                "entire_weapon_visible": False,
+                "no_second_or_inverted_T": False,
+            },
+            "notes": "",
+            "warning": "Fill this out only after inspecting the actual generated A_T_weapon_master.png. Never mark PASS from the prompt or SVG alone.",
+        }
+        (outdir/files["master_review_template"]).write_text(json.dumps(master_review_template, ensure_ascii=False, indent=2)+"\\n", encoding="utf-8")
         files["stage_gate"] = "stage_gate.json"
         stage_gate = {
             "required_order": ["A_T_WEAPON_MASTER", "B_T_TO_T_END_FACE_CONTACT_MATRIX", "C_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS"],
@@ -335,6 +352,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "required_artifacts":{
                 "stage_a_image":"A_T_weapon_master.png",
                 "stage_a_review":"A_T_weapon_master_review.json",
+                "stage_a_review_template":"A_T_weapon_master_review.template.json",
                 "contact_matrix_manifest":"contact_matrix_manifest.json",
                 "contact_matrix_h2_image_count":48,
                 "contact_matrix_h2_review_pattern":"one manually reviewed JSON per variant",
