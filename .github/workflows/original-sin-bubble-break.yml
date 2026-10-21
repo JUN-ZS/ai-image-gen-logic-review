@@ -318,17 +318,26 @@ jobs:
           prompt = prompt_path.read_text(encoding="utf-8").rstrip()
           assert manifest["artifact_type"] == "SINGLE_IMAGE_DENSE_CANDIDATE_ATLAS", manifest
           assert manifest["topology"] == "CYLINDER_CROSS", manifest
-          assert manifest["intended_local_collision_count"] == 48, manifest
-          assert manifest["intended_hammer_count"] == 96, manifest
-          assert len(manifest["instances"]) == 48, manifest
-          assert len({item["instance_id"] for item in manifest["instances"]}) == 48
+          assert manifest["target_local_collision_count"] == 24, manifest
+          assert manifest["target_hammer_count"] == 48, manifest
+          assert manifest["required_visible_long_handles"] == 48, manifest
+          assert manifest["minimum_handle_to_head_width_ratio"] == 2.5, manifest
+          assert manifest["canvas"]["layout"] == "IRREGULAR_SCATTER_NO_GRID", manifest
+          assert len(manifest["instances"]) == 24, manifest
+          assert len({item["instance_id"] for item in manifest["instances"]}) == 24
+          assert len({item["region_hint"] for item in manifest["instances"]}) == 24
+          assert manifest["variation_contract"]["uniform_grid_allowed"] is False, manifest
+          assert manifest["variation_contract"]["repeated_stamp_pose_allowed"] is False, manifest
           assert hashlib.sha256(prompt.encode("utf-8")).hexdigest() == manifest["prompt_sha256"], "prompt hash mismatch"
-          for phrase in ("flat circular end caps", "coincident cap planes", "opposite outward normals",
-                         "curved cylindrical barrel walls", "no bending", "for later visual scanning"):
+          for phrase in ("24 distinct 3d hammer-pair collision studies", "flat circular end caps",
+                         "coincident planes", "opposite normals", "curved-barrel-side collision",
+                         "no short central peg", "both separate handles", "no impact sparks at the center joint",
+                         "no neat rows or columns"):
               assert phrase in prompt.lower(), phrase
           assert manifest["generation_status"] == "IMAGE_REALIZATION_NOT_RUN", manifest
           assert manifest["pixel_audit_status"] == "PIXEL_AUDIT_NOT_RUN", manifest
-          print(json.dumps({"atlas":"PROMPT_COMPILED","one_image_prompt":True,"intended_pairs":48,
+          print(json.dumps({"atlas":"PROMPT_COMPILED","one_image_prompt":True,"target_pairs":24,
+                            "target_separate_handles":48,"uniform_grid":False,
                             "actual_image_generation":"NOT_RUN","pixel_audit":"NOT_RUN"}, ensure_ascii=False, indent=2))
           PY
 
