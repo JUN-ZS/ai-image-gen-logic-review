@@ -42,7 +42,7 @@ class TContactMatrixTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td)
             manifest=build_matrix(root)
-            templates=[Path(v["review_template"]) for v in manifest["variants"]]
+            templates=[root/Path(v["review_template"]) for v in manifest["variants"]]
             self.assertEqual(len(templates),48)
             self.assertTrue(all(p.exists() for p in templates))
             first=json.loads(templates[0].read_text(encoding="utf-8"))
