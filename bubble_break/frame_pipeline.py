@@ -61,7 +61,7 @@ WEAPON_TEXT = {
         "These are broad flat faces, not spikes, studs, blades, a halo, chain, or separate hammers. At impact, only the single upper-facing flat polygon contacts the shell."
     ),
     "T": (
-        "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE rigid T-headed hammer: one straight rectangular crossbar/head and ONE long handle joined "
+        "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE rigid T-headed hammer: one straight horizontal rectangular crossbar/head in its own local coordinate frame and ONE long handle joined "
         "at the defined underside midpoint. These dimensions and the capital-T relationship are defined in the hammer's OWN LOCAL COORDINATE FRAME; "
         "the entire rigid hammer may rotate in 3D and appear sideways or oblique in the image to aim its terminal END STRIKING FACE at P. "
         "The handle itself forms the single stem; no separate short post. Crossbar width is about 3.8 times its thickness, with equal ends; "
