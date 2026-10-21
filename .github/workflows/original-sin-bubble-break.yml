@@ -314,7 +314,7 @@ jobs:
           root = Path("/tmp/cylinder_cross_dense_atlas")
           prompt_path = root / "cylinder_cross_dense_atlas_prompt.txt"
           manifest = json.loads((root / "cylinder_cross_dense_atlas_manifest.json").read_text(encoding="utf-8"))
-          prompt = prompt_path.read_text(encoding="utf-8").rstrip("\\n")
+          prompt = prompt_path.read_text(encoding="utf-8").rstrip()
           assert manifest["artifact_type"] == "SINGLE_IMAGE_DENSE_CANDIDATE_ATLAS", manifest
           assert manifest["topology"] == "CYLINDER_CROSS", manifest
           assert manifest["intended_local_collision_count"] == 48, manifest
@@ -342,5 +342,6 @@ jobs:
             /tmp/wushuang_realize_T
             /tmp/wushuang_CYLINDER_CROSS_contact_matrix
             /tmp/wushuang_realize_CYLINDER_CROSS
+            /tmp/cylinder_cross_dense_atlas
           if-no-files-found: warn
           retention-days: 7
