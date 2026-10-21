@@ -7,8 +7,9 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List
 
-from frame_pipeline import compile_frame_set, write_packet as write_frame_packet
+from frame_pipeline import CAMERA_VARIANTS, compile_frame_set, write_packet as write_frame_packet
 from proxy_edit_pipeline import write_packet as write_proxy_packet
+from t_contact_matrix import build_matrix
 
 def safe_name(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+","_",value).strip("._")[:100] or "story"
@@ -40,9 +41,14 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
         story_id=str(record.get("story_id") or "STORY-UNKNOWN")
         story_dir=outdir/safe_name(story_id)
         frame_out=story_dir/"frames"
-        packet=compile_frame_set(record,weapon_topology=final_weapon)
-        frame_summary=write_frame_packet(packet,frame_out)
-        layout_path=Path(frame_summary["directory"])/"layout.json"
+        frame_summaries=[]
+        # For T mode, emit a distinct H0/H2/H3 trio for every camera variant.
+        camera_ids=list(CAMERA_VARIANTS) if final_weapon=="T" else ["LOW_3Q_FRONTAL"]
+        for camera_id in camera_ids:
+            packet=compile_frame_set(record,weapon_topology=final_weapon,camera_variant=camera_id)
+            frame_summary=write_frame_packet(packet,frame_out/camera_id)
+            frame_summaries.append(frame_summary)
+        layout_path=Path(frame_summaries[0]["directory"])/"layout.json"
         proxy_dir=story_dir/"proxy_edit"
         proxy_summary=write_proxy_packet(layout_path,proxy_dir,final_weapon=final_weapon)
         edit_plan=json.loads((proxy_dir/"edit_plan.json").read_text(encoding="utf-8"))
@@ -51,13 +57,17 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             "causal_kernel_id":record.get("causal_kernel_id") or record.get("root_sin") or "UNASSIGNED",
             "causal_signature":record.get("causal_signature"),
             "final_weapon":final_weapon,
-            "frame_directory":frame_summary["directory"],
+            "frame_directory":str(frame_out),
+            "camera_variants":camera_ids,
+            "frame_directories":[x["directory"] for x in frame_summaries],
             "proxy_directory":proxy_summary["outdir"],
             "proxy_status":proxy_summary["status"],
             "stage_gate_status":edit_plan.get("stage_gate_status","NO_T_TO_T_GATE"),
             "required_first_stage_artifact":edit_plan.get("required_artifacts",{}).get("stage_a_image"),
             "selected_edit_prompt":edit_plan.get("selected_edit_prompt"),
             "terminal_face_gap_px":proxy_summary["terminal_face_gap_px"],
+            "camera_packet_count":len(frame_summaries),
+            "frame_prompt_count":len(frame_summaries)*3,
             "image_realization":"NOT_RUN",
             "edited_pixel_audit":"NOT_RUN",
         })
@@ -74,11 +84,19 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             if not src.exists():
                 raise ValueError(f"shared T master source missing: {src}")
             (shared_master_dir/name).write_text(src.read_text(encoding="utf-8"),encoding="utf-8")
+        contact_dir=shared_master_dir/"contact_matrix"
+        contact_manifest=build_matrix(contact_dir)
         shared_gate_path=shared_master_dir/"stage_gate.json"
         shared_gate=json.loads(shared_gate_path.read_text(encoding="utf-8"))
+        shared_gate["status"]="BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED"
+        shared_gate["required_order"]=["A_T_WEAPON_MASTER","B_T_TO_T_END_FACE_CONTACT_MATRIX","C_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS"]
         shared_gate["required_stage_a_artifact"]="A_T_weapon_master.png"
         shared_gate["required_stage_a_review"]="A_T_weapon_master_review.json"
+        shared_gate["required_contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
+        shared_gate["required_contact_matrix_h2_images"]=contact_manifest["required_H2_contact_proof_images"]
+        shared_gate["required_contact_matrix_h2_reviews"]="one manual review JSON per variant, all face-plane checks true"
         shared_gate["scope"]="SHARED_ACROSS_BATCH"
+        shared_gate["note"]="CI compiles 144 prompts; only generated and visually approved H2 images can pass the matrix."
         shared_gate_path.write_text(json.dumps(shared_gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         for package in packages:
             proxy=Path(package["proxy_directory"])
@@ -88,6 +106,11 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             plan["shared_weapon_master_directory"]=str(shared_master_dir)
             plan["required_artifacts"]["stage_a_image"]=str(shared_master_dir/"A_T_weapon_master.png")
             plan["required_artifacts"]["stage_a_review"]=str(shared_master_dir/"A_T_weapon_master_review.json")
+            plan["required_artifacts"]["contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
+            plan["required_artifacts"]["contact_matrix_h2_images"]=contact_manifest["required_H2_contact_proof_images"]
+            plan["required_artifacts"]["contact_matrix_h2_reviews"]="one manual review JSON per variant"
+            plan["status"]="BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED"
+            plan["stage_gate_status"]="BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED"
             plan["stage_gate_file"]=str(shared_master_dir/"stage_gate.json")
             plan["files"]["proxy"]=str(shared_master_dir/"00_T_weapon_master_geometry.svg")
             plan["files"]["t_shape_reference"]=str(shared_master_dir/"05_T_silhouette_reference.svg")
@@ -97,6 +120,9 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
             gate=json.loads(local_gate.read_text(encoding="utf-8"))
             gate["required_stage_a_artifact"]=str(shared_master_dir/"A_T_weapon_master.png")
             gate["required_stage_a_review"]=str(shared_master_dir/"A_T_weapon_master_review.json")
+            gate["status"]="BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED"
+            gate["required_contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
+            gate["required_contact_matrix_h2_images"]=contact_manifest["required_H2_contact_proof_images"]
             gate["shared_master_directory"]=str(shared_master_dir)
             local_gate.write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
             for name in ("00_T_weapon_master_geometry.svg","00_generate_T_weapon_master.txt","05_T_silhouette_reference.svg"):
@@ -104,7 +130,10 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
                 if candidate.exists():
                     candidate.unlink()
             package["required_first_stage_artifact"]=str(shared_master_dir/"A_T_weapon_master.png")
+            package["stage_gate_status"]="BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED"
             package["shared_weapon_master_directory"]=str(shared_master_dir)
+            package["contact_matrix_manifest"]=str(contact_dir/"contact_matrix_manifest.json")
+            package["required_contact_matrix_h2_images"]=contact_manifest["required_H2_contact_proof_images"]
             package["selected_edit_prompt"]=str(proxy/"generate_scene_with_T_master.txt")
     batch={
         "pipeline_version":"1.0.0",
@@ -114,11 +143,16 @@ def build_batch(input_path: Path, outdir: Path, per_kernel: int=1, limit: int=20
         "selected_stories":len(packages),
         "distinct_causal_kernels":len({p["causal_kernel_id"] for p in packages}),
         "final_weapon":final_weapon,
-        "method":("bulk JSONL -> one shared T-weapon master -> approval gate -> story-specific H0/H2/H3 scene prompts" if final_weapon=="T"
+        "method":("bulk JSONL -> one shared T-weapon master -> 48-variant T end-face contact matrix -> story-specific 12-camera H0/H2/H3 sweeps" if final_weapon=="T"
                   else "bulk JSONL -> per-story frame packet -> cross proxy -> target-only sphere edit plan -> final weapon edit plan"),
-        "stage_gate_status":("BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED" if final_weapon=="T" else "NO_T_TO_T_GATE"),
-        "required_first_stage":("A_T_WEAPON_MASTER" if final_weapon=="T" else None),
+        "stage_gate_status":("BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED" if final_weapon=="T" else "NO_T_TO_T_GATE"),
+        "required_first_stage":("A_T_WEAPON_MASTER_AND_CONTACT_MATRIX" if final_weapon=="T" else None),
         "shared_weapon_master_directory":(str(shared_master_dir) if shared_master_dir else None),
+        "contact_matrix_manifest":(str(shared_master_dir/"contact_matrix"/"contact_matrix_manifest.json") if shared_master_dir else None),
+        "contact_matrix_variants":(48 if final_weapon=="T" else 0),
+        "contact_matrix_prompt_count":(144 if final_weapon=="T" else 0),
+        "scene_camera_variants_per_story":(len(CAMERA_VARIANTS) if final_weapon=="T" else 1),
+        "scene_frame_prompt_count":sum(p["frame_prompt_count"] for p in packages),
         "image_realization":"NOT_RUN",
         "pixel_audit_status":"NOT_RUN",
         "packages":packages,
