@@ -63,8 +63,8 @@ jobs:
           ):
               assert (selected / name).is_file(), name
 
-          a_prompt = (atlas / 'stage_a_planted_round_hammer_atlas.md').read_text(encoding='utf-8').lower()
-          b_prompt = (selected / 'stage_b_one_hammer_no_person.md').read_text(encoding='utf-8').lower()
+          a_prompt = ' '.join((atlas / 'stage_a_planted_round_hammer_atlas.md').read_text(encoding='utf-8').lower().split())
+          b_prompt = ' '.join((selected / 'stage_b_one_hammer_no_person.md').read_text(encoding='utf-8').lower().split())
           assert 'two axial circular end caps' in a_prompt
           assert 'seated flush against the bubble' in a_prompt
           assert 'side-middle' in a_prompt and 'local tangent plane' in a_prompt
