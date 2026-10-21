@@ -81,6 +81,33 @@ Also:
 - No other hammers return. Do not add the person in Stage A/B.
 
 
+
+## Script gates after every full RUN step (mandatory)
+
+**Root cause locked into formula:** the error step was *skipping D1/D2*, or *first grip (D2) without hard-locking the previous frame's side-handle pixels*. Under correct IMG→IMG chain, a new outer-end handle must not appear; if it does, the step gate FAILs.
+
+### Chain (no skip)
+`D0 → D1 → D2 → D3 → D4` only. `validate_step_transition` rejects jumps.
+
+### First grip (D2)
+- `prev_raster_sha256` = accepted **D1** SHA
+- Hands move only onto **existing side-handle pixels** in that D1 raster
+- Prompt includes `PIXEL LOCK (FIRST GRIP / D2)`
+
+### Pixel gates (block_next on FAIL)
+After each IMG→IMG, before next step:
+1. `outer_end_empty` — outer-cap ROI must not show a rod-like protrusion
+2. `side_handle_present` — side-handle ROI must show elongated rod
+3. Overall FAIL → write `BLOCK_NEXT_AFTER_Dx` and **do not proceed**; roll back
+
+```bash
+python -m bubble_break.stage_d_gates --step D2 --from D1 \
+  --image D2.jpg --prev-sha <D1_sha256> --use-default-rois \
+  --out D2_gate.json
+```
+
+Module: `bubble_break/stage_d_gates.py`.
+
 ## Stage D stepwise protocol (mandatory — 一步步)
 
 Outer-end / coaxial **new handle must not appear** under the layered formula stack. If it appears, the step is **REJECT** and must be redone — do not proceed.

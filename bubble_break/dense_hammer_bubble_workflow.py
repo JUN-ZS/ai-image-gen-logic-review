@@ -373,15 +373,40 @@ must not be mislabeled as the still-planted contact state.
 
 
 
-def make_stage_d_step_prompt(candidate: HammerCandidate, step: str) -> str:
-    """Emit one Stage-D micro-step prompt. Outer-end new handle is always REJECT."""
-    step = step.strip().upper()
+def make_stage_d_step_prompt(
+    candidate: HammerCandidate,
+    step: str,
+    prev_raster_sha256: str | None = None,
+    from_step: str | None = None,
+) -> str:
+    """Emit one Stage-D micro-step prompt. Outer-end new handle is always REJECT.
+
+    Formula lock: no skipping D1/D2; first grip (D2) must hard-lock previous frame
+    side-handle pixels via prev_raster_sha256. Use stage_d_gates to enforce.
+    """
+    from bubble_break.stage_d_gates import (
+        grip_pixel_lock_clause,
+        normalize_step,
+        previous_step,
+        validate_step_transition,
+    )
+
+    step = normalize_step(step)
+    if from_step is None and step != "D0":
+        from_step = previous_step(step)
+    validate_step_transition(from_step, step)
+    if step != "D0" and not prev_raster_sha256:
+        # still emit prompt text but mark REQUIRED so full-RUN gate fails closed
+        prev_raster_sha256 = prev_raster_sha256  # may be None → clause shows REQUIRED
+    pixel_lock = grip_pixel_lock_clause(step, prev_raster_sha256)
     common = f"""SOURCE: locked Stage-B master for {candidate.candidate_id} only.
 FROZEN TOPOLOGY (must match source pixels): double-ended cylindrical head planted on bubble;
 cyan-white glow only at base contact; outer circular end cap EMPTY; ONE thin handle only at
 SIDE-MIDDLE of cylinder (~90° to radial axis). NO_NEW_HANDLE: any outer-end shaft / second
 rod / handle-axis rewrite is REJECT — roll back.
 PERSON SCALE when person exists: mini, full-body visual area ≈ hammer area (1:1).
+STEP CHAIN LOCK: never skip D1/D2; order D0→D1→D2→D3→D4 only.
+{pixel_lock}
 """
     steps = {
         "D0": common + """
@@ -395,9 +420,12 @@ existing side handle. Hands must NOT grip the tool yet (open or at sides). Do no
 or rewrite any hammer part. Outer end cap stays empty. No new handle.
 """,
         "D2": common + """
-# STEP D2 — GRIP EXISTING HANDLE ONLY
-From accepted D1: move hands onto the SAME existing side-middle lateral rod only.
-Do not grow outer-end shaft. Outer cap empty. Keep mini 1:1 scale. Still-planted base.
+# STEP D2 — GRIP EXISTING HANDLE ONLY (FIRST GRIP — PIXEL HARD LOCK)
+From accepted D1 raster only (prev_raster_sha256 above). Move hands onto the SAME
+existing side-middle lateral rod pixels already in that D1 frame.
+Do not invent a new handle. Do not grow outer-end shaft. Outer cap empty.
+Keep mini 1:1 scale. Still-planted base.
+After IMG→IMG: run stage_d_gates (outer_end_empty + side_handle_present). FAIL → roll back to D1.
 """,
         "D3": common + """
 # STEP D3 — 找／持槌氣勢＋動作
@@ -531,6 +559,7 @@ def build_packet(
             "contact": "bubble-facing base cap with sphere-conforming full-seat interface",
             "handle": "single lateral handle attached at head side-middle, tangent to sphere",
             "stage_c_hard_locks": "NO_NEW_HANDLE; person_to_hammer_scale default 1:1",
+            "stage_d_chain": "D0→D1→D2→D3→D4 no skip; D2 first-grip locks prev side-handle pixels; pixel gates block_next on FAIL",
         },
         "stage_a_candidate_count": len(candidates),
         "bubble_diameter_proxy_units": BUBBLE_DIAMETER,
@@ -580,11 +609,36 @@ def build_packet(
         (outdir / "stage_d_action_refinement.md").write_text(
             make_stage_d_prompt(selected), encoding="utf-8"
         )
+        # Emit D0–D4 with step-chain formula (no skip); SHA filled later by gate runner
+        _prev = None
         for _dstep in ("D0", "D1", "D2", "D3", "D4"):
             _name = f"stage_d_step_{_dstep}.md"
             (outdir / _name).write_text(
-                make_stage_d_step_prompt(selected, _dstep), encoding="utf-8"
+                make_stage_d_step_prompt(selected, _dstep, prev_raster_sha256=None, from_step=_prev),
+                encoding="utf-8",
             )
+            _prev = _dstep
+        (outdir / "stage_d_GATES.md").write_text(
+            """# Stage D script gates (mandatory after each IMG→IMG)
+
+## Formula error that must never recur
+- Skipping D1/D2, or first grip (D2) without locking previous-frame side-handle pixels.
+
+## After full program RUN + each step raster
+1. validate_step_transition(prev, current) — no skip
+2. prev_raster_sha256 required for D1+
+3. Pixel gates: outer_end_empty + side_handle_present (ROIs)
+4. overall_pass False → block_next; do not proceed; roll back
+
+```bash
+python -m bubble_break.stage_d_gates --step D2 --from D1 \\
+  --image path/to/D2.jpg --prev-sha <D1_sha256> \\
+  --outer-roi 0.58,0.38,0.78,0.72 --side-roi 0.38,0.45,0.58,0.62 \\
+  --out path/to/D2_gate.json
+```
+""",
+            encoding="utf-8",
+        )
         (outdir / "stage_e_glow_bubble_break.md").write_text(
             make_stage_e_prompt(selected), encoding="utf-8"
         )
@@ -597,6 +651,7 @@ def build_packet(
             "stage_d_step_D2.md",
             "stage_d_step_D3.md",
             "stage_d_step_D4.md",
+            "stage_d_GATES.md",
             "stage_e_glow_bubble_break.md",
         ])
     result = {

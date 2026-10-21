@@ -28,6 +28,15 @@ from bubble_break.dense_hammer_bubble_workflow import (
     unit,
     PERSON_TO_HAMMER_SCALE_DEFAULT,
 )
+from bubble_break.stage_d_gates import (
+    FIRST_GRIP_STEP,
+    StepChainError,
+    default_rois_for_wide_hammer_scene,
+    grip_pixel_lock_clause,
+    run_step_gates,
+    validate_step_transition,
+)
+
 
 
 class TestDenseHammerBubbleWorkflow(unittest.TestCase):
@@ -170,6 +179,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
                 "stage_d_step_D2.md",
                 "stage_d_step_D3.md",
                 "stage_d_step_D4.md",
+                "stage_d_GATES.md",
                 "stage_e_glow_bubble_break.md",
             ):
                 self.assertIn(name, result["outputs"])
@@ -226,17 +236,76 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
     def test_stage_d_step_prompts_kill_outer_end_new_handle(self):
         selected = candidate_by_id(make_candidates(), "C13")
         for step in ("D0", "D1", "D2", "D3", "D4"):
-            p = make_stage_d_step_prompt(selected, step)
+            p = make_stage_d_step_prompt(selected, step, prev_raster_sha256="abc" * 12)
             self.assertIn("NO_NEW_HANDLE", p)
             self.assertIn("REJECT", p)
             self.assertIn("outer", p.lower())
-        d1 = make_stage_d_step_prompt(selected, "D1")
+            self.assertIn("STEP CHAIN LOCK", p)
+        d1 = make_stage_d_step_prompt(selected, "D1", prev_raster_sha256="abc" * 12)
         self.assertIn("must NOT grip", d1)
         self.assertIn("mini", d1.lower())
-        d2 = make_stage_d_step_prompt(selected, "D2")
-        self.assertIn("existing side-middle", d2.lower())
+        d2 = make_stage_d_step_prompt(selected, "D2", prev_raster_sha256="d1sha" + "0" * 50)
+        self.assertIn("FIRST GRIP", d2)
+        self.assertIn("d1sha", d2)
+        self.assertIn("PIXEL LOCK", d2)
         with self.assertRaises(ValueError):
             make_stage_d_step_prompt(selected, "D9")
+        with self.assertRaises(StepChainError):
+            make_stage_d_step_prompt(selected, "D2", from_step="D0", prev_raster_sha256="x" * 32)
+
+    def test_step_chain_forbids_skipping_d1_d2(self):
+        with self.assertRaises(StepChainError):
+            validate_step_transition(None, "D2")
+        with self.assertRaises(StepChainError):
+            validate_step_transition("D0", "D2")
+        with self.assertRaises(StepChainError):
+            validate_step_transition("D1", "D3")
+        validate_step_transition("D1", "D2")
+        self.assertEqual(FIRST_GRIP_STEP, "D2")
+        clause = grip_pixel_lock_clause("D2", "deadbeef" * 8)
+        self.assertIn("FIRST GRIP", clause)
+        self.assertIn("deadbeef", clause)
+
+    def test_pixel_gates_block_next_without_rois_or_image(self):
+        report = run_step_gates(
+            "D2",
+            from_step="D1",
+            image_path=None,
+            prev_raster_sha256="a" * 64,
+            require_pixels=True,
+        )
+        self.assertFalse(report.overall_pass)
+        self.assertTrue(report.block_next)
+
+    def test_pixel_gates_on_real_d2_d3_rasters(self):
+        rois = default_rois_for_wide_hammer_scene()
+        d2 = Path("/workspace/artifacts/imagine_images/8f3d210b-a666-4a5e-8353-9c48b8dadff1.jpg")
+        d3 = Path("/workspace/artifacts/imagine_images/f7d12b71-67fe-4c62-a476-45948b72d431.jpg")
+        if not d2.is_file():
+            self.skipTest("D2 raster not in workspace")
+        r2 = run_step_gates(
+            "D2",
+            from_step="D1",
+            image_path=d2,
+            prev_raster_sha256="b" * 64,
+            outer_cap_roi=rois["outer_cap_roi"],
+            side_handle_roi=rois["side_handle_roi"],
+        )
+        # chain must pass; pixel heuristic may vary — assert chain + structure
+        self.assertTrue(r2.chain_ok)
+        names = {g.name: g for g in r2.gates}
+        self.assertIn("outer_end_empty", names)
+        self.assertIn("side_handle_present", names)
+        if d3.is_file():
+            r3 = run_step_gates(
+                "D3",
+                from_step="D2",
+                image_path=d3,
+                prev_raster_sha256="c" * 64,
+                outer_cap_roi=rois["outer_cap_roi"],
+                side_handle_roi=rois["side_handle_roi"],
+            )
+            self.assertTrue(r3.chain_ok)
 
 
 if __name__ == "__main__":
