@@ -122,7 +122,7 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
             review_template = {
                 "variant_id": variant_id,
                 "status": "UNASSESSED",
-                "image": str(image_path),
+                "image": f"{variant_id}/{image_path.name}",
                 "manual_pixel_review": False,
                 "checks": {name: False for name in REVIEW_CHECKS},
                 "notes": "",
@@ -141,7 +141,7 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
                     "collision_axis_id": axis_id,
                     "collision_axis": axis_text,
                     "state": state,
-                    "prompt_file": str(prompt_path),
+                    "prompt_file": str(Path(variant_id) / prompt_path.name),
                     "prompt": prompt,
                     "expected_contact_contract": {
                         "active_surface_A": "TERMINAL_END_STRIKING_FACE",
@@ -154,15 +154,15 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
                     "pixel_audit": "NOT_RUN",
                 }
                 rows.append(row)
-                state_files[state] = str(prompt_path)
+                state_files[state] = str(Path(variant_id) / prompt_path.name)
             variants.append({
                 "variant_id": variant_id,
                 "camera_view_id": camera_id,
                 "collision_axis_id": axis_id,
                 "state_prompt_files": state_files,
-                "required_H2_image": str(image_path),
-                "required_H2_review": str(review_path),
-                "review_template": str(review_template_path),
+                "required_H2_image": str(Path(variant_id) / image_path.name),
+                "required_H2_review": str(Path(variant_id) / review_path.name),
+                "review_template": str(Path(variant_id) / review_template_path.name),
                 "required_review_checks": list(REVIEW_CHECKS),
                 "status": "UNASSESSED",
             })
@@ -194,7 +194,7 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
         "generation_policy": "Every JSONL row is one separately generated image. Never ask the model for a multi-panel/contact sheet.",
         "image_realization": "NOT_RUN",
         "pixel_audit": "NOT_RUN",
-        "prompt_jsonl": str(jsonl_path),
+        "prompt_jsonl": jsonl_path.name,
         "variants": variants,
     }
     (outdir / "contact_matrix_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -229,8 +229,8 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
     results = []
     variants = manifest.get("variants", [])
     for variant in variants:
-        image_path = Path(variant["required_H2_image"])
-        review_path = Path(variant["required_H2_review"])
+        image_path = outdir / variant["required_H2_image"]
+        review_path = outdir / variant["required_H2_review"]
         issues = []
         if not png_is_present_and_plausible(image_path):
             issues.append("MISSING_OR_INVALID_H2_PNG")
