@@ -2,7 +2,7 @@
 
 ## Goal
 
-Use an image-generation model to produce **one single extremely dense 16:9 image** containing many distinct, independently croppable two-hammer interactions. The intended sampling layout is an implicit 8-column by 6-row field (48 target local collision pairs, 96 target hammer instances). This is a target composition, **not a claim that the image model will render all 48 correctly**.
+Use an image-generation model to produce **one single extremely dense 16:9 image** containing many distinct, independently croppable two-hammer interactions. The revised target is 24 distinct collision pairs and 48 separate long handles, placed as an irregular organic scatter, not a uniform grid. This change responds to the failed first atlas, which repeated nearly identical isometric poses and did not make the two long handles per pair unmistakable. The 24 count is a target, not a guarantee; variation and complete readable tools are more important than an exact count.
 
 ## Source and generation bundle
 
@@ -10,7 +10,8 @@ Use an image-generation model to produce **one single extremely dense 16:9 image
 - Decision record: [CYLINDER_CROSS_DENSE_ATLAS_DECISION.md](./CYLINDER_CROSS_DENSE_ATLAS_DECISION.md)
 - Generator: [cylinder_cross_dense_atlas.py](./cylinder_cross_dense_atlas.py)
 - CI run: https://github.com/JUN-ZS/ai-image-gen-logic-review/actions/workflows/original-sin-bubble-break.yml
-- The latest successful run's artifact is named `cylinder-cross-dense-atlas-and-contact-matrix-review-bundle`. Open the run, download its artifact ZIP, and use `cylinder_cross_dense_atlas/cylinder_cross_dense_atlas_prompt.txt` as the image prompt.
+- Failure evidence and observed defects: [FAIL_GROK_EC2EFFf3_DENSE_ATLAS_2026-10-21.md](./reviews/FAIL_GROK_EC2EFFf3_DENSE_ATLAS_2026-10-21.md). Do not reuse or crop the rejected image as evidence.
+- The current branch CI artifact is named `cylinder-cross-dense-atlas-and-contact-matrix-review-bundle`. Open the latest successful run on this branch, download its ZIP and use `cylinder_cross_dense_atlas/cylinder_cross_dense_atlas_prompt.txt`. Do not use the older Run #128 artifact because it contains the failed 48-target prompt.
 
 To compile locally:
 ```bash
@@ -20,24 +21,24 @@ This command writes the prompt, a crop-map manifest and a short README. It does 
 
 ## Copy/paste work order for the image-generation model
 
-Generate **one image only**, not a batch of separate files. Use the full contents of `cylinder_cross_dense_atlas_prompt.txt`.
+Generate **one image only**, not a batch of separate files. Use the full contents of `cylinder_cross_dense_atlas_prompt.txt` from the revised branch artifact, not the old 48-target prompt.
 
 - One seamless, very dense 16:9 image.
-- Target 48 local collision pairs in an implicit 8-by-6 field; no visible borders, grid lines, labels or dividers.
-- Every intended pair is two separate plus-shaped cross hammers with one rigid straight handle fixed at each head's center.
-- Opposite horizontal arms terminate in short solid cylinders.
-- The only valid first-contact surfaces are the two outer flat circular end caps, touching flat face to flat face, with coincident planes and opposing normals.
-- Curved cylindrical barrels, crossbar sides, vertical cross arms, corners and handles must not touch first.
+- Target 24 collision pairs placed as a dense, irregular scatter; no uniform grid, copied tile or repeated stamp pose.
+- Every pair contains two separate complete plus-shaped cross hammers, two distinct heads and **two unmistakably long handles**. Each handle attaches at the exact center BACK of its own head and visibly extends at least 2.5 times the head width when framing permits. A central peg or short post is not a handle. The handle is perpendicular to the cross-head plane and is not the vertical cross arm.
+- Opposite horizontal crossbar ends terminate in short solid cylinders.
+- Only the two outer flat circular end caps may touch first, flat face to flat face, with coincident planes and opposing normals. The contact seam is at the outer cylinder tips, **never the center joint**.
+- Curved cylindrical barrels, crossbar sides, vertical cross arms, corners, center joints and handles must not touch first. Keep sparks tiny and away from the cap seam so the circular contact stays visible.
 - Every head and handle stays rigid: no bending, kinking, twisting, telescoping, detaching, or independent head/handle rotation.
-- Keep neighboring pairs visually separate enough to crop; never merge a handle or head across neighboring instances.
-- Vary horizontal, vertical, rising-diagonal and front-to-back collisions, plus camera angles and rigid handle rolls.
-- Return the original full-resolution raster image. Do not return an SVG, redraw, storyboard, framed contact sheet, or claim that the generated image passed contact review.
+- Make every pair visibly different in projected collision direction, handle-roll relationship, scale and depth placement. Show horizontal, vertical, rising/falling diagonal and front-to-back collisions; vary cap face-on/foreshortened views and handle projections. At least 16 distinct pair silhouettes are the target.
+- Do not satisfy density by repeating one isometric motif or shrinking all tools into tiny icons. If needed, render fewer pairs rather than omit handles or fake variation.
+- Return the original full-resolution raster image. Do not return an SVG, redraw, labels or visible grid. Do not claim that the generated image passed contact review.
 
 If the model cannot render 48 unambiguous local examples, return the image as produced and report the uncertainty. Do not invent success or mark any crop as accepted.
 
 ## Crop and audit contract
 
-The manifest lists intended instance IDs A01–A48, a nominal row/column location, camera/axis/handle-roll targets and each crop's initial status. These locations are planning aids; the model may not obey them precisely.
+The manifest lists intended instance IDs A01–A24, loose irregular region hints, collision-axis/projection/handle-roll targets and each crop's initial status. These are local composition cues, not grid coordinates or visible labels; the model may not obey them precisely.
 
 The user will scan the actual image and crop promising contacts. Each kept crop must be examined at full resolution for:
 1. two designated flat circular end caps really touching face-to-face;
