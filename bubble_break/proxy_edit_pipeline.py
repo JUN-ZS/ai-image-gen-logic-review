@@ -249,7 +249,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "notes": "",
             "warning": "Fill this out only after inspecting the actual generated A_T_weapon_master.png. Never mark PASS from the prompt or SVG alone.",
         }
-        (outdir/files["master_review_template"]).write_text(json.dumps(master_review_template, ensure_ascii=False, indent=2)+"\\n", encoding="utf-8")
+        (outdir/files["master_review_template"]).write_text(json.dumps(master_review_template, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
         files["stage_gate"] = "stage_gate.json"
         stage_gate = {
             "required_order": ["A_T_WEAPON_MASTER", "B_T_TO_T_END_FACE_CONTACT_MATRIX", "C_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS"],
