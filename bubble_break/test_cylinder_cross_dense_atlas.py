@@ -41,7 +41,7 @@ class CylinderCrossDenseAtlasTests(unittest.TestCase):
             "16:9",
             "24 distinct 3d hammer-pair collision studies",
             "flat circular end caps",
-            "flat-face-to-flat-face",
+            "face-to-face",
             "coincident planes",
             "opposite normals",
             "curved-barrel-side collision",
@@ -50,7 +50,7 @@ class CylinderCrossDenseAtlasTests(unittest.TestCase):
             "both separate handles",
             "impact sparks at the center joint",
             "upper-left pocket",
-            "no neat rows or columns",
+            "do not form neat rows or columns",
             "for later human scanning and cropping",
             "neighboring pairs",
         ):
