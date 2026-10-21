@@ -151,12 +151,12 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
                 "notes": "",
                 "warning": "Do not set PASS unless a human has inspected the actual H2 PNG and every face-plane check is visibly true.",
             }
-            review_template_path.write_text(json.dumps(review_template, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+            review_template_path.write_text(json.dumps(review_template, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             state_files = {}
             for state in ("H0", "H2", "H3"):
                 prompt = make_prompt(variant_id, camera_id, camera_text, axis_id, axis_text, pose_id, pose_text, state)
                 prompt_path = variant_dir / f"{state}.txt"
-                prompt_path.write_text(prompt + "\\n", encoding="utf-8")
+                prompt_path.write_text(prompt + "\n", encoding="utf-8")
                 row = {
                     "variant_id": variant_id,
                     "camera_view_id": camera_id,
