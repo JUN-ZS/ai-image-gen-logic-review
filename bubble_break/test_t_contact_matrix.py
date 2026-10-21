@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from t_contact_matrix import CAMERA_VIEWS, STRIKE_AXES, build_matrix, make_prompt
+from t_contact_matrix import CAMERA_VIEWS, REVIEW_CHECKS, STRIKE_AXES, build_matrix, make_prompt, review_payload_passes, validate_matrix
 
 
 class TContactMatrixTests(unittest.TestCase):
@@ -37,6 +37,42 @@ class TContactMatrixTests(unittest.TestCase):
         self.assertIn("handle-first",prompt)
         self.assertIn("one standalone",prompt.lower())
         self.assertIn("no contact sheet",prompt.lower())
+
+    def test_matrix_creates_review_templates_and_unreviewed_images_stay_blocked(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            manifest=build_matrix(root)
+            templates=[Path(v["review_template"]) for v in manifest["variants"]]
+            self.assertEqual(len(templates),48)
+            self.assertTrue(all(p.exists() for p in templates))
+            first=json.loads(templates[0].read_text(encoding="utf-8"))
+            self.assertEqual(first["status"],"UNASSESSED")
+            self.assertFalse(first["manual_pixel_review"])
+            self.assertEqual(set(first["checks"]),set(REVIEW_CHECKS))
+            self.assertTrue(all(v is False for v in first["checks"].values()))
+            report=validate_matrix(root)
+            self.assertEqual(report["overall_status"],"BLOCKED")
+            self.assertEqual(report["reviewed_pass_count"],0)
+            self.assertEqual(report["blocked_count"],48)
+            self.assertFalse(report["automatic_pixel_claims"])
+            self.assertTrue((root/"contact_matrix_audit_report.json").exists())
+
+    def test_review_cannot_pass_without_manual_review_notes_and_all_checks(self):
+        payload={
+            "status":"PASS",
+            "manual_pixel_review":True,
+            "notes":"Inspected the actual rendered H2 image at native resolution.",
+            "checks":{name:True for name in REVIEW_CHECKS},
+        }
+        self.assertTrue(review_payload_passes(payload))
+        payload["manual_pixel_review"]=False
+        self.assertFalse(review_payload_passes(payload))
+        payload["manual_pixel_review"]=True
+        payload["checks"]["no_cheek_first"]=False
+        self.assertFalse(review_payload_passes(payload))
+        payload["checks"]["no_cheek_first"]=True
+        payload["notes"]="   "
+        self.assertFalse(review_payload_passes(payload))
 
     def test_all_camera_and_axis_slots_are_nonempty_and_distinct(self):
         self.assertEqual(len(CAMERA_VIEWS),12)
