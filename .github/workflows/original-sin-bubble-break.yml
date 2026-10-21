@@ -239,14 +239,80 @@ jobs:
                             "contact_matrix_images": "NOT_RUN", "edited_pixels": "NOT_RUN"}, ensure_ascii=False, indent=2))
           PY
 
+      - name: Compile and validate CYLINDER_CROSS end-cap contact matrix
+        run: |
+          python bubble_break/cylinder_cross_contact_matrix.py --outdir /tmp/wushuang_CYLINDER_CROSS_contact_matrix
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/wushuang_CYLINDER_CROSS_contact_matrix")
+          manifest = json.loads((root / "contact_matrix_manifest.json").read_text(encoding="utf-8"))
+          rows = [json.loads(line) for line in (root / "cylinder_cross_contact_matrix.jsonl").read_text(encoding="utf-8").splitlines()]
+          assert manifest["topology_contract"] == "CYLINDER_CROSS_FLAT_CIRCULAR_END_CAP_TO_END_CAP", manifest
+          assert manifest["variant_count"] == 48, manifest
+          assert manifest["single_image_prompt_count"] == 144, manifest
+          assert manifest["required_H2_contact_proof_images"] == 48, manifest
+          assert len(rows) == 144, len(rows)
+          assert all(row["expected_contact_contract"]["active_surface_A"] == "FLAT_CIRCULAR_END_CAP" for row in rows), "wrong active surface A"
+          assert all(row["expected_contact_contract"]["active_surface_B"] == "FLAT_CIRCULAR_END_CAP" for row in rows), "wrong active surface B"
+          assert all("CURVED_BARREL" in row["expected_contact_contract"]["forbidden_first_contacts"] for row in rows), "barrel-first not prohibited"
+          assert not any("Keep both T heads" in row["prompt"] for row in rows), "T-era wording remains in prompts"
+          print(json.dumps({"topology":"CYLINDER_CROSS","variants":48,"single_image_prompts":144,
+                            "active_surfaces":"FLAT_CIRCULAR_END_CAP x 2","generation":"NOT_RUN"}, ensure_ascii=False, indent=2))
+          PY
+          python bubble_break/cylinder_cross_contact_matrix.py --validate-dir /tmp/wushuang_CYLINDER_CROSS_contact_matrix
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("/tmp/wushuang_CYLINDER_CROSS_contact_matrix/contact_matrix_audit_report.json").read_text(encoding="utf-8"))
+          assert report["overall_status"] == "BLOCKED", report
+          assert report["variant_count"] == 48, report
+          assert report["blocked_count"] == 48, report
+          assert report["reviewed_pass_count"] == 0, report
+          print(json.dumps({"empty_real_H2_images":"BLOCKED_AS_REQUIRED","blocked_variants":48,"pixel_audit":"NOT_RUN"}, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Bridge stories through independent CYLINDER_CROSS gate
+        run: |
+          python bubble_break/realize_batch.py --input /tmp/wushuang_1000.jsonl --outdir /tmp/wushuang_realize_CYLINDER_CROSS --per-kernel 1 --limit 2 --final-weapon CYLINDER_CROSS
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/wushuang_realize_CYLINDER_CROSS")
+          result = json.loads((root / "realize_batch_manifest.json").read_text(encoding="utf-8"))
+          assert result["selected_stories"] == 2, result
+          assert result["final_weapon"] == "CYLINDER_CROSS", result
+          assert result["stage_gate_status"] == "BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED", result
+          assert result["required_first_stage"] == "A_CYLINDER_CROSS_END_CAP_CONTACT_MATRIX", result
+          assert result["contact_matrix_variants"] == 48, result
+          assert result["contact_matrix_prompt_count"] == 144, result
+          assert result["contact_matrix_audit_status"] == "BLOCKED", result
+          assert result["image_realization"] == "NOT_RUN", result
+          assert result["pixel_audit_status"] == "NOT_RUN", result
+          matrix = json.loads(Path(result["contact_matrix_manifest"]).read_text(encoding="utf-8"))
+          assert matrix["topology_contract"] == "CYLINDER_CROSS_FLAT_CIRCULAR_END_CAP_TO_END_CAP", matrix
+          for item in result["packages"]:
+              plan = json.loads((Path(item["proxy_directory"]) / "edit_plan.json").read_text(encoding="utf-8"))
+              assert plan["final_weapon"] == "CYLINDER_CROSS", plan
+              assert plan["status"] == "BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED", plan
+              assert plan["pixel_truth"]["contact_matrix_images"] == "NOT_RUN", plan
+              assert Path(item["selected_edit_prompt"]).exists(), item
+              assert (Path(item["proxy_directory"]) / "stage_gate.json").exists()
+          print(json.dumps({"stories":2,"fresh_contact_variants":48,"prompts":144,
+                            "gate":"BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED",
+                            "old_T_evidence_transferred":False,"image_realization":"NOT_RUN"}, ensure_ascii=False, indent=2))
+          PY
+
       - name: Upload T contact matrix prompts and 12-camera scene prompt sweeps
         uses: actions/upload-artifact@v4
         continue-on-error: true
         with:
-          name: t-end-face-contact-matrix-and-camera-sweep-prompts-review-templates
+          name: t-and-cylinder-cross-contact-matrices-and-camera-sweep-prompts-review-templates
           path: |
             /tmp/wushuang_T_contact_matrix
             /tmp/wushuang_frames
             /tmp/wushuang_realize_T
+            /tmp/wushuang_CYLINDER_CROSS_contact_matrix
+            /tmp/wushuang_realize_CYLINDER_CROSS
           if-no-files-found: warn
           retention-days: 7
