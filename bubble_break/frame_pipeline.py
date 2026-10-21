@@ -455,6 +455,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
     ]
     return {
         "pipeline_version":VERSION,"story_id":story_id,"shot_lock_id":shot_id,
+        "camera_variant":camera_variant,"camera_description":CAMERA_VARIANTS[camera_variant],
         "canonical_weapon":{"RADIAL":"WEAPON_C_RADIAL_SPHERE","T":"WEAPON_T","CROSS":"WEAPON_PROXY_CROSS"}[weapon_topology],
         "weapon_topology":weapon_topology,
         "weapon_shape_contract":{
