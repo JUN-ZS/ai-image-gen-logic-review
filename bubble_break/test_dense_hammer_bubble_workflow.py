@@ -103,7 +103,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         self.assertIn("exactly one full human figure", stage_c.lower())
         self.assertIn("0.650", stage_c)
         self.assertIn("accepted Stage-C image", stage_d)
-        self.assertIn("does not move or flip", stage_d.lower())
+        self.assertIn("do not move or flip", stage_d.lower())
         self.assertIn("radial fractures", stage_e)
         self.assertIn("at least one clean contact frame", stage_e.lower())
         self.assertIn("unselected hammer", stage_e.lower())
