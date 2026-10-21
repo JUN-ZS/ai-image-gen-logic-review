@@ -316,8 +316,8 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
         weapon_prompt = (
             "T-WEAPON SHAPE LOCK: exactly one straight rigid rectangular crossbar and one single long handle attached at the "
             "defined central underside joint. The handle itself is the T stem; there is no separate short post. Keep equal left/right bar ends, "
-            "a centered joint and clear T topology in the weapon's own local orientation. The active contact face is a terminal END FACE at one end of the crossbar, not its cheek or upper/lower surface. Perspective may rotate the whole rigid hammer but must not bend it; the handle may project diagonally "
-            "through the scene, but it must not twist the crossbar. No second or inverted T, no sphere head, no plus/X/L head, no extra bar, no extra shaft."
+            "a centered joint and clear T topology in the weapon's own local orientation. The active contact face is a terminal END FACE at one end of the crossbar, not its cheek or upper/lower surface. Perspective may project the handle diagonally only when that angle follows the same rigid 3D transform as the crossbar. "
+            "Never force a diagonal handle while the crossbar projects vertically, and never pivot the handle or head independently. No second or inverted T, no sphere head, no plus/X/L head, no extra bar, no extra shaft."
         )
     else:
         target_prompt = (
