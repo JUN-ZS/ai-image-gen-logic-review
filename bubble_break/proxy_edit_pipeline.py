@@ -282,7 +282,7 @@ def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
             "The complete weapon is a rigid body: never bend, kink, twist, telescope, detach, or rotate its head independently from its handle. "
             "This shape lock alone is not evidence that any generated H2 image achieved the required contact. Do not edit the bubble, P, camera, or background."
         )
-        (outdir/"edit_attacker_cylinder_cross.txt").write_text(cylinder_cross_prompt+"\\n",encoding="utf-8")
+        (outdir/"edit_attacker_cylinder_cross.txt").write_text(cylinder_cross_prompt+"\n",encoding="utf-8")
     if final_weapon == "T":
         files["t_shape_reference"] = "05_T_silhouette_reference.svg"
         (outdir/files["t_shape_reference"]).write_text(build_t_silhouette_reference_svg()+"\n", encoding="utf-8")
