@@ -33,25 +33,36 @@
 
 ## 2. A：先建立唯一一把 T 槌形狀母版
 
-第一關只驗證**武器拓撲**，不是兩把槌互撞，也不是最終電影構圖。只生成一把完整 T 字槌：一條直的水平矩形橫杠；一條長柄直接接在橫杠底面正中央。長柄本身就是 T 的主幹，不能多一截短柱。整把武器必須在畫面內完整可見。
+第一關仍然只驗證武器自身拓撲：一條剛直矩形橫杠、一條接在規定中點的長柄、完整可見的單一 T 槌。這張參考只鎖武器結構，不能當成電影構圖，也不能代替接觸面驗證。
 
 ### T 槌母版 Prompt
 
-> Create ONE photorealistic 16:9 product-reference image of exactly ONE T-headed hammer on a neutral studio background. Show the complete weapon. Its head is one straight rigid horizontal rectangular crossbar with equal left/right ends. Exactly one long handle attaches directly to the exact underside midpoint of that crossbar; the handle itself forms the only stem of the capital T. Use a level near-front view so the crossbar stays straight and horizontal. No second hammer, no inverted T, no bubble, no heroine, no city, no debris, no text, no extra shaft or short post. This is a weapon-shape reference only, not the composition for later cinematic scenes.
+> Create ONE photorealistic 16:9 product-reference image of exactly ONE T-headed hammer on a neutral studio background. Show the complete weapon. Its crossbar is one straight rigid rectangular head with equal left/right ends, and one long handle attaches at the defined central underside joint. The hammer is one connected rigid object. No second hammer, no bubble, no heroine, no city, no debris, no text or extra post. This is a weapon-topology reference only, not a scene composition.
 
-**A 關通過條件：**只有一把槌；橫杠平直、水平、左右端對稱；長柄與橫杠底面中點直接相連；全柄完整可見。把真正產出的圖片存成 A_T_weapon_master.png，再由人類檢查並建立 A_T_weapon_master_review.json。Prompt 和 SVG 只能驗證程式契約，不能代替實際圖片審核。
+把真正產出的圖片存成 `A_T_weapon_master.png`，由人類確認橫杠、柄的接點和完整結構後建立 `A_T_weapon_master_review.json`。Prompt／SVG 只證明資料包內容正確，不能證明外部模型畫對。
 
-## 3. B：共用同一把 T 槌，生成有變化的故事場景
+## 3. B：真正驗證 T 槌對 T 槌的打擊面互撞
 
-整個批次只需一張通過審核的武器母版，放在 _shared_T_weapon_master/，不要每個 story 都重新產一張一模一樣的母版。每個故事繼續使用自己那組 H0/H2/H3 Prompt：母版只控制槌子的形狀，**不控制場景、人物姿勢、背景、光線或構圖**。
+這一關是先前漏掉的關鍵。不是把兩把槌的上下寬面疊住，也不是只把兩個 T 外形放到同一畫面，更不是讓一把槌頭的 cheek（長側壁）、角或柄先碰到另一把。**必須是 T 槌 A 的指定終端打擊面，正面撞上 T 槌 B 的指定終端打擊面。**
 
-- H0：同一把 T 槌尚未碰到泡泡，槌面與泡膜之間保留明顯空隙。
-- H2：同一把 T 槌的指定上平面首次接觸泡泡底部 P，裂紋只從該處開始。
-- H3：同一泡泡從同一個 P 破裂，槌仍然是同一把 T 槌，人物與泡內居民無傷。
+定義固定如下：
 
-每一張圖分開生成；不要把 H0/H2/H3 做成拼貼。不同 story ID 要保留各自的場景、泡泡規模、泡殼、色彩、象徵和故事因果；同一 story 的三幀才鎖定連貫性。**絕不能再畫上方倒置 T 來充當泡泡，也不能做「先兩把 T 對接，再把其中一把換成泡泡」這個錯誤步驟。**
+- **Active face A / B：**兩把槌的橫杠端部各自選中的平坦 `TERMINAL END STRIKING FACE`。
+- **H2 接觸：**兩個端面平面重合、接觸中心都是同一個 P，兩個面法線沿碰撞軸反向；不可留縫，也不可穿模。
+- **失敗接觸：**cheek／長側壁先碰、橫杠上／下寬面先碰、角先碰、柄先碰、兩個槌頭只是靠近卻沒有實際端面互撞。
+- **形狀：**兩把槌必須仍是兩把分開的 T 槌，各自有一個頭與一條柄。在某些側視角，整體接合輪廓可能像 H 對 H；那只是兩把槌的投影，不可把兩把槌合併成一件 H 形武器。
 
-Stage B 使用 generate_scene_with_T_master.txt，並同時提供該故事的 H0/H2/H3 prompt 檔。場景生成完成後，才逐張進行真實像素審核。
+### 不是只做一張：48 組碰撞矩陣
+
+`bubble_break/t_contact_matrix.py` 將下列測試組合成 **12 個鏡頭角度 × 4 個碰撞軸向 = 48 個變體**。每個變體再各自輸出 H0、H2、H3 三張獨立圖片提示，因此總共是 **144 個單圖 Prompt**：
+
+- 鏡頭：正看接觸面、側面、正／反三分之四、低角度、高斜角、Dutch roll、接觸微距、過肩、長焦、全景等。
+- 碰撞軸：水平、垂直、左下至右上的對角、前後景深方向。
+- H0：兩個端面在同一碰撞軸上對正，保留清楚空隙。
+- H2：兩個 `TERMINAL END STRIKING FACE` 真正面對面接觸，接觸中心和反向法線清晰可辨。
+- H3：同一對端面沿相同碰撞軸輕微回彈，兩把槌仍然是剛體。
+
+每列 JSONL 是**一張獨立圖片**，不可要求模型把 3 張做成拼貼或 contact sheet。輸出中的 `image_realization=NOT_RUN` 只代表 Prompt 已建立；必須生成 48 張真正的 H2 接觸圖，逐張人工審核其端面平面與接觸位置後，矩陣才可標記 PASS。48 組的測試圖不可用 SVG 示意圖、T 輪廓表或文字聲稱替代。
 
 ## 4. C：產生真實場景的 H0 主畫面
 
@@ -108,20 +119,24 @@ T 的結構只定義為以下三件事：
 - 生成／編輯時，場景母版控制人物與相機；`05_T_silhouette_reference` 控制 T 橫杠和柄的拓撲；只遮罩武器區域做局部編輯。不要每次全圖重畫。
 - 任一關只要橫杠彎曲／斜轉、柄離開橫杠中點、出現額外短柱、頭部變圓球或加號，就標記形狀失敗，回到武器遮罩重編；不要靠「more powerful」等風格詞補救。
 
-## 6.6 為什麼「T 對 T」不是正確的首關
+## 6.6 為什麼舊版的固定 T 對 T 圖仍然不合格
 
-上一版把「T 字槌不能走形」誤解成「必須先畫兩把 T 槌上下合軸」。程式因而將上方倒置 T 當成泡泡的替身，並用舊的兩把槌閘門將整批停在同一種上下合軸構圖。這不但多造出一把錯誤目標物，也令批次無法展示各故事的實際場景變化。正確流程應是「單一武器母版 → 故事場景變化」。
+問題不是「不應做 T 對 T」；恰好相反，T 對 T 的端面互撞是必需的。舊版把這項必要驗證收窄成一張上下合軸的固定示意圖，而且未證明實際生成像素中兩個指定端面真的相碰。它沒有測不同角度、不同碰撞軸，也沒有排除 cheek／角／柄先碰，所以不能證明模型懂得「哪個平面先接觸」。
 
-新 T 路徑會產生：
-- 00_T_weapon_master_geometry.svg：只有一把 T 字槌的向量形狀參考。
-- 00_generate_T_weapon_master.txt：生成唯一 T 槌母版的 Prompt。
-- _shared_T_weapon_master/：批次共用一份母版 Prompt、形狀參考與審核閘門；不再讓每個故事各產一張重複的 T 母版。
-- generate_scene_with_T_master.txt：告訴模型將母版只用作槌形參考，並依各故事 prompt 生成 H0/H2/H3。
-- stage_gate.json：在實際母版經人工審核前維持 BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED。
+正確順序是：
 
-人工審核後建立 _shared_T_weapon_master/A_T_weapon_master_review.json。這是人工記錄，不是自動認證。CI 綠燈只代表 Prompt／資料包規格一致；沒有真正的 A_T_weapon_master.png、人工審核紀錄和 H0/H2/H3 真實圖片時，不能宣稱圖片生成或像素審核 PASS。
+1. 一張真實的單一 T 槌母版，鎖定槌的結構。
+2. 48 組 T 槌對 T 槌的 END-FACE-to-END-FACE 碰撞變體；每組 H0/H2/H3，共 144 個單圖 Prompt。人工審核 48 張實際 H2 圖。
+3. 只有接觸面矩陣通過後，才做泡泡場景；最終場景每個故事再以 12 個攝影機角度分別產生 H0/H2/H3，每個故事是 36 個單圖 Prompt。
 
-對 H2 的接觸位置，仍須在實際出圖中檢查泡泡六點鐘底極點與槌頭接觸區。向量座標 P=(1090,610) 只定義 1920×1080 代理畫布，不是外部生成圖片已符合的證據。
+新版程式輸出：
+- `00_T_weapon_master_geometry.svg`／`00_generate_T_weapon_master.txt`：單一武器結構參考。
+- `t_contact_matrix.jsonl`／`contact_matrix_manifest.json`：12 角度 × 4 碰撞軸的 48 組端面互撞矩陣。
+- `_shared_T_weapon_master/`：跨故事共用的武器母版和接觸矩陣；不重複產相同的槌形測試。
+- 每個故事的 `frames/`：12 個 camera-view 子目錄，各自包含一組 H0/H2/H3。
+- `generate_scene_with_T_master.txt`：規定母版只控制槌形；接觸面由通過審核的矩陣定義；每個故事的場景和鏡頭按自己的 Prompt 變化。
+
+**CI 只能驗證這些 Prompt、JSONL、閘門和資料包的結構。** 沒有實際產生並人工審核的 48 張 H2 碰撞圖，以及後續的場景圖，就不能聲稱模型已理解端面接觸或場景畫面已通過像素驗收。
 
 ## 7. 程式只負責把 Prompt 和幾何包整理好
 
@@ -147,8 +162,8 @@ python3 bubble_break/proxy_edit_pipeline.py --input-layout "$LAYOUT" --outdir ou
 ## 最終交付物
 
 首個可驗收版本不是 1,000 張混合圖，而是同一場景、同一主角的三張圖片：
-1. `H0_intact.png`：真實場景、泡泡完整、尚未接觸。
-2. `H2_contact.png`：指定端面剛好打中六點鐘 (P)，裂紋從接觸點開始。
-3. `H3_shattered.png`：同一泡泡由同一點碎裂，人物無傷。
+1. 48 組 T 槌對 T 槌端面互撞矩陣的真實 H2 接觸圖先逐張通過人工審核；每組同時保留 H0/H2/H3 三個單圖 Prompt。
+2. 每個故事再輸出 12 個視角 × H0/H2/H3，共 36 張獨立場景圖 Prompt；每一個視角內人物、泡泡與接觸軸保持連貫。
+3. 泡泡 H2 的真實像素需證明指定 END FACE 命中六點鐘底極點 P，裂紋從該接觸中心開始；H3 沿同一接觸軸破裂，女主和居民無傷。
 
 這三張通過後，才沿用同一個角色參考和幾何契約換六棚、動作、服裝或攝影角度；每輪只改一個變量。
