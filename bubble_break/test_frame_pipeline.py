@@ -149,7 +149,13 @@ class FramePipelineTests(unittest.TestCase):
             svg=(d/"H2_first_contact_anchor_geometry.svg").read_text(encoding="utf-8")
             self.assertIn('cx="1090" cy="610"',svg)
             self.assertIn('data-contact-p="1090,610"',svg)
-            self.assertIn('x1="690" y1="920" x2="1090" y2="722"',svg)
+            self.assertIn('x1="650" y1="722" x2="1090" y2="722"',svg)
+            basis=layout["projection_lock"]["frames"]["H2"]["rigid_T_projection"]
+            self.assertEqual(basis["crossbar_axis_screen"],{"x":0,"y":-1})
+            self.assertEqual(basis["terminal_face_normal_screen"],{"x":0,"y":-1})
+            self.assertEqual(basis["handle_axis_screen"],{"x":-1,"y":0})
+            self.assertTrue(basis["joint_at_crossbar_midpoint"])
+            self.assertEqual(layout["projection_lock"]["frames"]["H2"]["handle_joint"],{"x":1090,"y":722})
 
 
 if __name__=="__main__": unittest.main()
