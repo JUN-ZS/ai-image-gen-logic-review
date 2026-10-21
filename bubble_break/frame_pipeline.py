@@ -156,9 +156,9 @@ T_STATE = {
         "EXACT FIRST-CONTACT ANCHOR. Keep one unmistakable capital-T hammer in the same shape as H0: one straight horizontal "
         "rectangular crossbar and the same single long handle joined directly beneath its midpoint; the handle itself forms "
         "the single stem of the T, with no separate short post or extra shaft. "
-        "The selected flat TERMINAL END FACE at one end of the crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
-        "The centre of that end face is pinned to P, and its normal points into the bubble along the local sphere normal. "
-        "crossbar's broad upper/lower surfaces and long cheek are non-contact surfaces; do not let a side wall, corner or handle hit first, and do not "
+        "The selected flat TERMINAL END STRIKING FACE at the terminal end of the T crossbar FIRST touches the exact six-o'clock bottom point P of the bubble. "
+        "The centre of that active end face is pinned to P, and its normal points into the bubble along the local sphere normal. "
+        "The crossbar's broad upper/lower surfaces, cheek, corners and handle are non-contact surfaces; do not let any of them touch first, and do not "
         "change the T into a sphere. The left and right crossbar ends remain symmetric and visibly horizontal; the centered "
         "handle joint remains attached and readable. The contact patch is unmistakable and unobstructed; the handle and side walls "
         "do not touch first. The membrane was intact immediately before contact. Only first tiny fractures now begin at P "
@@ -437,7 +437,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
     }[weapon_topology]
     face_check = {
         "RADIAL": "H0 保持間隙；H2 只有一塊向上的扁平多面槌面首次接觸 P",
-        "T": "H0 保持間隙；H2 只有 T 橫杠端部的指定 END STRIKING FACE 首次接觸 P；寬側壁、上下長面、角、柄均不得先碰",
+        "T": "H0 保持間隙；H2 只有 T 槌橫杠端部指定的 TERMINAL END STRIKING FACE 首次接觸 P；寬側壁／cheek、上下長面、角和柄不得先碰",
         "CROSS": "H0 保持間隙；H2 只有加號頭垂直臂最上端的平面首次接觸 P",
     }[weapon_topology]
     visual_checks=[
@@ -463,7 +463,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
         }[weapon_topology],
         "active_striking_surface":{
             "RADIAL":"one upward-facing flat polygon on the radial head",
-            "T":"the selected terminal END STRIKING FACE at one end of the rigid T crossbar",
+            "T":"the selected terminal END STRIKING FACE at the terminal end of the rigid T crossbar",
             "CROSS":"the upper terminal face of the vertical arm",
         }[weapon_topology],
         "frame_order":list(FRAME_IDS),
@@ -472,7 +472,7 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
           "endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
           "required_stage_order": (["A_T_WEAPON_MASTER","B_STORY_SPECIFIC_SCENE_FRAMES_H0_H2_H3"] if weapon_topology=="T" else ["H0","H2","H3"]),
-          "realization_stage_gate": ("BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED" if weapon_topology=="T" else "NO_T_TO_T_GATE"),
+          "realization_stage_gate": ("BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED" if weapon_topology=="T" else "NO_T_TO_T_GATE"),
           "required_stage_a_artifact": ("A_T_weapon_master.png" if weapon_topology=="T" else None),
           "manual_pixel_review_required_before_stage_b": (True if weapon_topology=="T" else False),
           "do_not_claim_scene_pass_from_master_or_svg": (True if weapon_topology=="T" else False),
@@ -503,21 +503,21 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
     manifest["layout_file"]="layout.json"
     if packet.get("weapon_topology") == "T":
         gate={
-            "status":"BLOCKED_UNTIL_T_WEAPON_MASTER_APPROVED",
-            "required_first_stage":"A_T_WEAPON_MASTER",
-            "required_artifact":"A_T_weapon_master.png",
+            "status":"BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED",
+            "required_first_stage":"A_T_WEAPON_MASTER_AND_CONTACT_MATRIX",
+            "required_artifacts":["A_T_weapon_master.png","contact_matrix_manifest.json","48 reviewed H2 contact images and review records"],
             "manual_review_required":True,
-            "forbidden_shortcuts":["make H0/H2/H3 from the neutral master composition instead of the story prompts","invent a second or inverted target T","mark a scene or contact point correct from prompt wording alone"],
-            "approval_checks":["exactly one T hammer","one straight horizontal crossbar","one handle attached at its underside midpoint","entire weapon visible with unmistakable capital-T topology","no bubble, heroine, city, debris or text in the master"],
+            "forbidden_shortcuts":["skip T-to-T terminal-face contact matrix","substitute top-plane, cheek, corner or handle contact","make story scenes from the neutral master composition","mark contact geometry correct from prompt wording alone"],
+            "approval_checks":["single-T weapon master passes the topology checks","all 48 camera/axis variants have actual H2 images","both terminal END STRIKING FACE planes meet face-to-face at one contact centre P","the two face normals are opposite","zero cheek-first, broad-surface-first, corner-first or handle-first contacts"],
             "reference_scope":"weapon topology only; scene composition must come from each story's own prompt packet",
-            "note":"This manifest gate is workflow evidence only; it does not inspect external generated image pixels."
+            "note":"This manifest gate is workflow evidence only; it does not inspect external generated image pixels. Contact-matrix H2 images must be generated and visually reviewed."
         }
         manifest["realization_stage_gate"]=gate
         (story_dir/"stage_gate.json").write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (story_dir/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     lines=[f"# Pixel audit — {packet['story_id']}","",f"Shot lock: {packet['shot_lock_id']}",
            f"Prompt contract: {packet['prompt_contract_status']}","Image realization: NOT_RUN","Pixel audit: NOT_RUN","",
-           ("**BLOCKED:** T-topology real-image work must start with an actual isolated single-T weapon master and manual approval. The master locks weapon shape only; it is not a two-hammer composition or a final scene. Use each story-specific H0/H2/H3 prompt to restore its distinct setting and action." if packet.get("weapon_topology")=="T" else ""),
+           ("**BLOCKED:** T-topology real-image work requires an approved single-T weapon master AND the 48-variant terminal-END-FACE-to-END-FACE contact matrix. Each H2 must prove the two selected end-face planes truly meet; the master, prompt or SVG alone is insufficient. Only then proceed to story-specific H0/H2/H3 scenes and camera sweeps." if packet.get("weapon_topology")=="T" else ""),
            "Only mark PASS/FAIL after reviewing actual images side by side. Prompt text and vector SVG are not pixel evidence.","",
            "| ID | Visual criterion | Result |","|---|---|---|"]
     lines.extend(f"| {x['id']} | {x['criterion']} | UNASSESSED |" for x in packet["pixel_audit_checks"])
