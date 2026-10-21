@@ -73,7 +73,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
         prompt = make_stage_a_prompt(make_candidates()).lower()
         for expected in (
             "exactly 24",
-            "one large",
+            "single large",
             "complete separate tool",
             "front circular terminal face",
             "no regular rings",
