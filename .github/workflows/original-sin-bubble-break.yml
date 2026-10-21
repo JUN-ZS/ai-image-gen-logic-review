@@ -3,7 +3,8 @@ name: Original Sin Bubble-Break tests
 on:
   push:
     branches:
-      - __paused_while_expanding_contact_matrix_to_192_variants__
+      - main
+      - feat/original-sin-bubble-break-engine
   workflow_dispatch:
 
 permissions:
@@ -98,7 +99,7 @@ jobs:
                            ensure_ascii=False, indent=2))
           PY
 
-      - name: Compile 48-view T terminal-end-face collision matrix
+      - name: Compile 48-view T-to-T terminal-end-face collision matrix with balanced handle poses
         run: |
           python bubble_break/t_contact_matrix.py --outdir /tmp/wushuang_T_contact_matrix
           python - <<'PY'
