@@ -182,7 +182,7 @@ def build_svg(kind, projection, final_weapon="RADIAL"):
         ]
     else:
         raise ValueError("kind must be cross, sphere, or mask")
-    if kind == "final_weapon" or (kind == "sphere" and final_weapon == "T"):
+    if kind == "final_weapon" or (kind == "sphere" and final_weapon in ("T","CYLINDER_CROSS")):
         parts.append(attacker_for_weapon(final_weapon,hx,face_y,hy,handle))
     else:
         parts.append(attacker_plus(hx, face_y, hy, handle))
@@ -229,6 +229,20 @@ def validate_geometry(layout, final_weapon="RADIAL"):
                 raise ValueError(f"geometry mismatch: T handle reference is not lateral to the joint for {frame_id}")
             if basis.get("joint_at_crossbar_midpoint") is not True or basis.get("handle_centerline_passes_through_joint") is not True:
                 raise ValueError(f"geometry mismatch: T stem is not locked to the midpoint for {frame_id}")
+    if str(final_weapon).upper() == "CYLINDER_CROSS":
+        # Require the frame packet's explicit schematic contract, but never treat it as pixel evidence.
+        for frame_id in ("H0", "H2", "H3"):
+            frame = p["frames"].get(frame_id)
+            basis = frame.get("rigid_cylinder_cross_projection") if isinstance(frame, dict) else None
+            if not isinstance(basis, dict):
+                raise ValueError(f"geometry mismatch: missing rigid_cylinder_cross_projection for {frame_id}")
+            if basis.get("only_permitted_contact") != "OUTER_FLAT_CIRCULAR_END_CAP_TO_END_CAP":
+                raise ValueError(f"geometry mismatch: active cylinder-cross surface is not locked to flat outer end caps for {frame_id}")
+            if basis.get("handle_rigid") is not True:
+                raise ValueError(f"geometry mismatch: cylinder-cross handle rigidity is not locked for {frame_id}")
+            forbidden = set(basis.get("forbidden_first_contact", []))
+            if not {"CURVED_BARREL", "CROSSBAR_SIDE", "CROSS_ARM", "CORNER", "HANDLE"}.issubset(forbidden):
+                raise ValueError(f"geometry mismatch: forbidden first-contact surfaces are incompletely specified for {frame_id}")
     return p
 
 def write_packet(layout_path: Path, outdir: Path, final_weapon: str = "RADIAL"):
