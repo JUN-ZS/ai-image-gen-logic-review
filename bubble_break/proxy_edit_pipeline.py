@@ -44,15 +44,16 @@ def attacker_plus(cx, face_y, center_y, handle_end):
     return shaft + head
 
 def attacker_t(cx, face_y, center_y, handle_end):
-    # The selected terminal END FACE is pinned at P; this is a 2D schematic, not a 3D normal proof.
-    head_cx = cx - 112
-    bar_top = face_y - 25
-    bar_bottom = bar_top + 50
-    shaft = line(handle_end[0], handle_end[1], head_cx, bar_bottom, "#02060a", 34)
-    shaft += line(handle_end[0], handle_end[1], head_cx, bar_bottom, "url(#metal)", 23)
-    head = rect(head_cx-112, bar_top, 224, 50, "#234761", "#e0bd82", 5)
-    # Highlight the crossbar's terminal END FACE at right edge x=cx, not its broad upper plane.
-    head += rect(cx-8, bar_top+2, 8, 46, "#6b9cbd", "#fff0bf", 3)
+    # Rotate the whole rigid T so the selected terminal END FACE normal points upward into P.
+    # Head material extends below the terminal face; this SVG remains a schematic, not 3D proof.
+    bar_width = 58
+    bar_length = 224
+    head_joint_y = face_y + bar_length // 2
+    shaft = line(handle_end[0], handle_end[1], cx, head_joint_y, "#02060a", 34)
+    shaft += line(handle_end[0], handle_end[1], cx, head_joint_y, "url(#metal)", 23)
+    head = rect(cx-bar_width//2, face_y+8, bar_width, bar_length-8, "#234761", "#e0bd82", 5)
+    # The complete terminal END FACE is the horizontal top cap at face_y, not a side strip.
+    head += rect(cx-bar_width//2, face_y, bar_width, 8, "#6b9cbd", "#fff0bf", 3)
     return shaft + head
 
 def attacker_radial(cx, face_y, center_y, handle_end):
