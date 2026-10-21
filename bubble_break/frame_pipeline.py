@@ -231,6 +231,7 @@ STATE_BY_TOPOLOGY = {
     "RADIAL": STATE,
     "T": T_STATE,
     "CROSS": CROSS_STATE,
+    "CYLINDER_CROSS": CROSS_STATE,
 }
 
 def axis_text(record: Dict[str, Any], key: str, fallback: str) -> str:
@@ -503,11 +504,13 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
         "RADIAL": "一柄一頭；近球形槌頭由多向寬扁平槌面構成，不是刺球或普通長方槌",
         "T": "一柄一頭；單一水平直橫杠 + 橫杠中點下方唯一中央直柄／短頸，兩端對稱，禁止球形／十字／L形漂移",
         "CROSS": "一柄一頭；單一連體加號頭，水平臂與垂直臂穿過同一中心，不是 T 或球形槌頭",
+        "CYLINDER_CROSS": "一柄一個剛性十字槌頭；橫杠兩端各有一個圓柱槌頭，只有最外側平坦圓形端蓋可撞，柄不可彎折、扭轉或相對槌頭旋轉",
     }[weapon_topology]
     face_check = {
         "RADIAL": "H0 保持間隙；H2 只有一塊向上的扁平多面槌面首次接觸 P",
         "T": "H0 保持間隙；H2 只有 T 槌橫杠端部指定的 TERMINAL END STRIKING FACE 首次接觸 P；寬側壁／cheek、上下長面、角和柄不得先碰",
         "CROSS": "H0 保持間隙；H2 只有加號頭垂直臂最上端的平面首次接觸 P",
+        "CYLINDER_CROSS": "H0 保持間隙；H2 只有兩把十字槌相對圓柱頭最外側的平坦圓形端蓋端面對端面接觸 P；圓柱曲面、橫杠側面、十字臂、角和柄不得先碰",
     }[weapon_topology]
     visual_checks=[
         ("V01","每張都是單張成片，不是拼貼／分格／資訊圖"),
@@ -530,11 +533,13 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
             "RADIAL":"one handle + one near-spherical multi-face head",
             "T":"one straight horizontal crossbar + one long handle joined at its underside midpoint; the handle itself is the only stem; no separate post, spherical head or cross-head substitution",
             "CROSS":"one connected plus-sign head with one horizontal and one vertical rectangular arm",
+            "CYLINDER_CROSS":"one rigid plus-sign cross head; two opposite horizontal ends terminate in cylinders; only their flat circular end caps may strike cap-to-cap",
         }[weapon_topology],
         "active_striking_surface":{
             "RADIAL":"one upward-facing flat polygon on the radial head",
             "T":"the selected terminal END STRIKING FACE at the terminal end of the rigid T crossbar",
             "CROSS":"the upper terminal face of the vertical arm",
+            "CYLINDER_CROSS":"ONLY the flat circular end cap at the outer end of each opposed cylinder; never the curved cylindrical barrel",
         }[weapon_topology],
         "frame_order":list(FRAME_IDS),
         "projection_lock":projection,
