@@ -281,7 +281,7 @@ def png_is_present_and_plausible(path: Path) -> bool:
 
 
 def validate_master_review(image_path: Path, review_path: Path) -> Dict[str, Any]:
-    """Check a real T-master PNG plus a complete explicit human review record."""
+    """Check a real cylinder-cross shape-master PNG plus an explicit human review record."""
     issues = []
     if not png_is_present_and_plausible(image_path):
         issues.append("MISSING_OR_INVALID_MASTER_PNG")
