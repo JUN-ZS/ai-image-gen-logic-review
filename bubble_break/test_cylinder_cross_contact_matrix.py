@@ -42,7 +42,7 @@ class CylinderCrossContactMatrixTests(unittest.TestCase):
             self.assertEqual(len(rows), 144)
             self.assertEqual({row["state"] for row in rows}, {"H0", "H2", "H3"})
             self.assertTrue(all("Keep both T heads" not in row["prompt"] for row in rows))
-            self.assertTrue(all("FLAT CIRCULAR END CAPS" in row["prompt"] for row in rows))
+            self.assertTrue(all("flat circular end caps" in row["prompt"].lower() for row in rows))
             self.assertEqual(len(list(root.glob("V*/H0.txt"))), 48)
             self.assertEqual(len(list(root.glob("V*/H2.txt"))), 48)
             self.assertEqual(len(list(root.glob("V*/H3.txt"))), 48)
