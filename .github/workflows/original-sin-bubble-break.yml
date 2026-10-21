@@ -3,7 +3,7 @@ name: Original Sin Bubble-Break tests
 on:
   push:
     branches:
-      - __paused_while_adding_T_end_face_angle_matrix__
+      - feat/original-sin-bubble-break-engine
   workflow_dispatch:
 
 permissions:
@@ -119,6 +119,22 @@ jobs:
           print(json.dumps({"camera_views": 12, "collision_axes": 4, "variants": 48,
                             "single_image_prompts": 144, "required_H2_images": 48,
                             "actual_images": "NOT_RUN"}, ensure_ascii=False, indent=2))
+          PY
+
+          python bubble_break/t_contact_matrix.py --validate-dir /tmp/wushuang_T_contact_matrix
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("/tmp/wushuang_T_contact_matrix")
+          report = json.loads((root / "contact_matrix_audit_report.json").read_text(encoding="utf-8"))
+          assert report["overall_status"] == "BLOCKED", report
+          assert report["variant_count"] == 48, report
+          assert report["reviewed_pass_count"] == 0, report
+          assert report["blocked_count"] == 48, report
+          assert report["automatic_pixel_claims"] is False, report
+          print(json.dumps({"empty_contact_matrix": "BLOCKED_AS_REQUIRED",
+                            "reviewed_pass": 0, "blocked": 48,
+                            "automatic_pixel_claims": False}, ensure_ascii=False, indent=2))
           PY
 
       - name: Build T weapon master plus end-face matrix gate
