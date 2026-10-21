@@ -62,7 +62,7 @@ WEAPON_TEXT = {
     ),
     "T": (
         "WEAPON_TOPOLOGY_ID=WEAPON_T. ONE rigid T-headed hammer: one straight horizontal rectangular crossbar/head in its own local coordinate frame and ONE long handle joined "
-        "at the defined underside midpoint. These dimensions and the capital-T relationship are defined in the hammer's OWN LOCAL COORDINATE FRAME; "
+        "at the defined underside midpoint. Maintain unmistakable T topology in the hammer's OWN LOCAL COORDINATE FRAME; "
         "the entire rigid hammer may rotate in 3D and appear sideways or oblique in the image to aim its terminal END STRIKING FACE at P. "
         "The handle itself forms the single stem; no separate short post. Crossbar width is about 3.8 times its thickness, with equal ends; "
         "the handle joint is centered. Never bend or rotate the head independently from the handle. This is not a plus-sign/cross head, radial sphere, mace or spiked ball. "
