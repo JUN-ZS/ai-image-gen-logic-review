@@ -523,25 +523,33 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
     lines.extend(f"| {x['id']} | {x['criterion']} | UNASSESSED |" for x in packet["pixel_audit_checks"])
     (story_dir/"pixel_audit.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
     return {"story_id":packet["story_id"],"shot_lock_id":packet["shot_lock_id"],
+            "camera_variant":packet.get("camera_variant","LOW_3Q_FRONTAL"),
             "prompt_contract_status":packet["prompt_contract_status"],"image_realization":"NOT_RUN",
             "pixel_audit_status":"NOT_RUN","directory":str(story_dir)}
 
 def build_packets(input_path: Path, outdir: Path, limit: int=1, story_id_filter: str|None=None,
-                  weapon_topology: str = "RADIAL") -> Dict[str, Any]:
+                  weapon_topology: str = "RADIAL", camera_sweep: bool = False) -> Dict[str, Any]:
     if limit < 1: raise ValueError("--limit must be >= 1")
     summaries=[]
+    story_count=0
+    camera_ids=list(CAMERA_VARIANTS) if camera_sweep else ["LOW_3Q_FRONTAL"]
     with input_path.open("r",encoding="utf-8") as handle:
         for line in handle:
             if not line.strip(): continue
             record=json.loads(line)
             if story_id_filter and record.get("story_id") != story_id_filter: continue
-            summaries.append(write_packet(compile_frame_set(record,weapon_topology),outdir))
-            if len(summaries)>=limit: break
+            story_count += 1
+            for camera_id in camera_ids:
+                packet=compile_frame_set(record,weapon_topology,camera_variant=camera_id)
+                camera_outdir=(outdir/camera_id) if camera_sweep else outdir
+                summaries.append(write_packet(packet,camera_outdir))
+            if story_count>=limit: break
     if not summaries: raise ValueError("no story records selected from input JSONL")
     batch={"pipeline_version":VERSION,"input":str(input_path),"requested_limit":limit,
-           "weapon_topology":weapon_topology.upper(),
-           "written_story_packets":len(summaries),"image_realization":"NOT_RUN",
-           "pixel_audit_status":"NOT_RUN","packets":summaries}
+           "weapon_topology":weapon_topology.upper(),"camera_sweep":camera_sweep,
+           "camera_variants":camera_ids,
+           "written_story_packets":story_count,"written_camera_packets":len(summaries),
+           "image_realization":"NOT_RUN","pixel_audit_status":"NOT_RUN","packets":summaries}
     outdir.mkdir(parents=True,exist_ok=True)
     (outdir/"batch_manifest.json").write_text(json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     return batch
@@ -553,11 +561,13 @@ def main(argv: List[str]|None=None) -> int:
     parser.add_argument("--limit",type=int,default=1,help="maximum story packets; default 1")
     parser.add_argument("--story-id",default=None,help="select one exact story_id")
     parser.add_argument("--weapon-topology",choices=("RADIAL","T","CROSS"),default="RADIAL")
+    parser.add_argument("--camera-sweep",action="store_true",help="emit a separate H0/H2/H3 trio for every camera variant")
     args=parser.parse_args(argv)
-    try: batch=build_packets(Path(args.input),Path(args.outdir),args.limit,args.story_id,args.weapon_topology)
+    try: batch=build_packets(Path(args.input),Path(args.outdir),args.limit,args.story_id,args.weapon_topology,args.camera_sweep)
     except (OSError,ValueError,json.JSONDecodeError) as exc:
         print(f"BLOCK: {exc}",file=sys.stderr); return 2
     print(json.dumps({"written_story_packets":batch["written_story_packets"],
+      "written_camera_packets":batch["written_camera_packets"],"camera_sweep":batch["camera_sweep"],
       "image_realization":batch["image_realization"],"pixel_audit_status":batch["pixel_audit_status"],
       "manifest":str(Path(args.outdir)/"batch_manifest.json")},ensure_ascii=False,indent=2),file=sys.stderr)
     return 0
