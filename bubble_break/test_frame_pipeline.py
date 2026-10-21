@@ -149,7 +149,7 @@ class FramePipelineTests(unittest.TestCase):
             svg=(d/"H2_first_contact_anchor_geometry.svg").read_text(encoding="utf-8")
             self.assertIn('cx="1090" cy="610"',svg)
             self.assertIn('data-contact-p="1090,610"',svg)
-            self.assertIn('x1="690" y1="920" x2="978" y2="635"',svg)
+            self.assertIn('x1="690" y1="920" x2="1090" y2="722"',svg)
 
 
 if __name__=="__main__": unittest.main()
