@@ -481,7 +481,6 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
             "T":"the selected terminal END STRIKING FACE at the terminal end of the rigid T crossbar",
             "CROSS":"the upper terminal face of the vertical arm",
         }[weapon_topology],
-        "camera_variant":camera_variant,"camera_description":CAMERA_VARIANTS[camera_variant],
         "frame_order":list(FRAME_IDS),
         "projection_lock":projection_lock(),
         "workflow":{
