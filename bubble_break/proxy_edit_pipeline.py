@@ -98,7 +98,7 @@ def build_t_weapon_master_geometry_svg(projection):
     """Neutral, label-free master geometry: exactly one upright T-headed hammer."""
     width=int(projection["canvas"]["width"]); height=int(projection["canvas"]["height"])
     cx=width//2
-    bar_width=int(width*0.29); bar_height=int(height*0.085); stem_width=int(width*0.043)
+    bar_height=int(height*0.085); bar_width=int(bar_height*3.8); stem_width=int(width*0.043)
     bar_x=cx-bar_width//2; bar_y=int(height*0.20)
     stem_y=bar_y+bar_height; stem_bottom=int(height*0.82)
     return "\n".join([
