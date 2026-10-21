@@ -119,3 +119,17 @@ It is used as a narrative attention budget (55% current subject, 30% transformed
 See also:
 - https://github.com/JUN-ZS/efv-infinity-v6.4
 - https://github.com/JUN-ZS/efv-gumen-rock-v7.0
+
+
+## EFV V6.4 + Gumen Rock V7.0 song-semantic expansion
+
+For the expanded Original Sin / Wushuang story formula, see [EFV_SONG_SEMANTIC_EXPANSION.md](EFV_SONG_SEMANTIC_EXPANSION.md). This adds explicit semantic motif axes from 《永不退電的一朵花》 and 《古門未啟・聽我（未熄之靈）》 without copying lyric lines: 11 persistent-pulse motifs × 12 gate/mirror/well witness motifs × 20 visual-extremity treatments, over the existing compatible cause/shell/fracture story space.
+
+Windows CMD:
+
+~~~cmd
+python bubble_break\song_motif_expansion.py --count 10000 --seed 20261021 --mode dual --weapon-topology RADIAL --format jsonl --out out\efv_song_story_10000.jsonl
+python -m unittest discover -s bubble_break -p "test_*.py"
+~~~
+
+The compiler emits formula prompts and metadata only. Contract audit PASS is not a rendered-image PASS; image realization and pixel audit remain NOT_RUN until actual image files are reviewed.
