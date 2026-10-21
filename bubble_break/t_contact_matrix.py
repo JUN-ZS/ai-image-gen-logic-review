@@ -15,6 +15,14 @@ from typing import Any, Dict, List, Tuple
 
 VERSION = "1.1.0"
 
+MASTER_REVIEW_CHECKS = (
+    "exactly_one_T_hammer",
+    "horizontal_straight_crossbar",
+    "handle_attached_at_underside_midpoint",
+    "entire_weapon_visible",
+    "no_second_or_inverted_T",
+)
+
 REVIEW_CHECKS = (
     "two_distinct_T_hammers",
     "active_terminal_face_A_identified",
@@ -213,6 +221,19 @@ def review_payload_passes(review: Dict[str, Any]) -> bool:
     )
 
 
+def master_review_payload_passes(review: Dict[str, Any]) -> bool:
+    """Accept a complete human T-master review, not a prompt-derived PASS."""
+    checks = review.get("checks")
+    return (
+        review.get("status") == "PASS"
+        and review.get("manual_pixel_review") is True
+        and isinstance(review.get("notes"), str)
+        and bool(review["notes"].strip())
+        and isinstance(checks, dict)
+        and all(checks.get(name) is True for name in MASTER_REVIEW_CHECKS)
+    )
+
+
 def png_is_present_and_plausible(path: Path) -> bool:
     """Fail closed on missing, empty or non-PNG placeholders; this is not a visual pixel audit."""
     try:
@@ -220,6 +241,26 @@ def png_is_present_and_plausible(path: Path) -> bool:
     except OSError:
         return False
     return len(data) >= 33 and data.startswith(bytes([137, 80, 78, 71, 13, 10, 26, 10])) and data[12:16] == b"IHDR"
+
+
+def validate_master_review(image_path: Path, review_path: Path) -> Dict[str, Any]:
+    """Check a real T-master PNG plus a complete explicit human review record."""
+    issues = []
+    if not png_is_present_and_plausible(image_path):
+        issues.append("MISSING_OR_INVALID_MASTER_PNG")
+    review = None
+    try:
+        review = json.loads(review_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        issues.append("MISSING_OR_INVALID_MASTER_REVIEW_JSON")
+    if review is not None and not master_review_payload_passes(review):
+        issues.append("MASTER_REVIEW_NOT_COMPLETE_PASS")
+    return {
+        "status": "PASS_MANUAL_REVIEW_RECORDED" if not issues else ("FAIL_MANUAL_REVIEW" if review and review.get("status") == "FAIL" else "BLOCKED"),
+        "image_path": str(image_path),
+        "review_path": str(review_path),
+        "issues": issues,
+    }
 
 
 def validate_matrix(outdir: Path) -> Dict[str, Any]:
