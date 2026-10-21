@@ -332,7 +332,7 @@ jobs:
           for phrase in ("24 distinct 3d hammer-pair collision studies", "flat circular end caps",
                          "coincident planes", "opposite normals", "curved-barrel-side collision",
                          "no short central peg", "both separate handles", "no impact sparks at the center joint",
-                         "no neat rows or columns"):
+                         "do not form neat rows or columns"):
               assert phrase in prompt.lower(), phrase
           assert manifest["generation_status"] == "IMAGE_REALIZATION_NOT_RUN", manifest
           assert manifest["pixel_audit_status"] == "PIXEL_AUDIT_NOT_RUN", manifest
