@@ -463,6 +463,20 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
                 "crossbar_projected_thickness_px": 58,
                 "handle_centerline_passes_through_joint": True,
             }
+    if weapon_topology == "CYLINDER_CROSS":
+        # This scene projection is only a schematic; cap-to-cap correctness is gated by the separate matrix.
+        for frame_id in FRAME_IDS:
+            frame = projection["frames"][frame_id]
+            frame["active_surface"] = "FLAT_CIRCULAR_END_CAP_ONLY"
+            frame["active_surface_normal"] = "MATRIX_REQUIRED_OPPOSING_CAP_NORMALS"
+            frame["rigid_cylinder_cross_projection"] = {
+                "model": "SCHEMATIC_ONLY_NOT_3D_CONTACT_PROOF",
+                "plus_head": True,
+                "two_opposed_cylinders": True,
+                "only_permitted_contact": "OUTER_FLAT_CIRCULAR_END_CAP_TO_END_CAP",
+                "forbidden_first_contact": ["CURVED_BARREL", "CROSSBAR_SIDE", "CROSS_ARM", "CORNER", "HANDLE"],
+                "handle_rigid": True,
+            }
     story_id = str(record.get("story_id") or "STORY-UNKNOWN")
     scene = axis_text(record, "environment", "a monumental surreal city plaza")
     scale = axis_text(record, "scale", "a giant bubble enclosing a floating city")
@@ -546,13 +560,13 @@ def compile_frame_set(record: Dict[str, Any], weapon_topology: str = "RADIAL", c
         "workflow":{
           "endpoint_frames":["H0","H3"],"contact_validation_anchor":"H2",
           "generation_policy":"Generate each frame as a separate single image; never request all frames on one canvas.",
-          "required_stage_order": (["A_T_WEAPON_MASTER","B_T_TO_T_END_FACE_CONTACT_MATRIX","C_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS_H0_H2_H3"] if weapon_topology=="T" else ["H0","H2","H3"]),
-          "realization_stage_gate": ("BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED" if weapon_topology=="T" else "NO_T_TO_T_GATE"),
-          "required_stage_a_artifact": ("A_T_weapon_master.png" if weapon_topology=="T" else None),
-          "manual_pixel_review_required_before_stage_b": (True if weapon_topology=="T" else False),
-          "do_not_claim_scene_pass_from_master_or_svg": (True if weapon_topology=="T" else False),
-          "weapon_reference_scope": ("topology only; never copy the neutral master composition" if weapon_topology=="T" else None),
-          "cross_story_variation_policy": ("retain story-specific scene, scale, shell, palette and symbolism while preserving H0/H2/H3 continuity within each story" if weapon_topology=="T" else None),
+          "required_stage_order": (["A_T_WEAPON_MASTER","B_T_TO_T_END_FACE_CONTACT_MATRIX","C_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS_H0_H2_H3"] if weapon_topology=="T" else ["A_CYLINDER_CROSS_END_CAP_CONTACT_MATRIX","B_STORY_SPECIFIC_SCENE_CAMERA_SWEEPS_H0_H2_H3"] if weapon_topology=="CYLINDER_CROSS" else ["H0","H2","H3"]),
+          "realization_stage_gate": ("BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED" if weapon_topology=="T" else "BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED" if weapon_topology=="CYLINDER_CROSS" else "NO_T_TO_T_GATE"),
+          "required_stage_a_artifact": ("A_T_weapon_master.png" if weapon_topology=="T" else "contact_matrix_manifest.json" if weapon_topology=="CYLINDER_CROSS" else None),
+          "manual_pixel_review_required_before_stage_b": (True if weapon_topology in ("T","CYLINDER_CROSS") else False),
+          "do_not_claim_scene_pass_from_master_or_svg": (True if weapon_topology in ("T","CYLINDER_CROSS") else False),
+          "weapon_reference_scope": ("topology only; never copy the neutral master composition" if weapon_topology=="T" else "contact-matrix prompts are not pixel evidence; regenerate and manually review all 48 H2 images" if weapon_topology=="CYLINDER_CROSS" else None),
+          "cross_story_variation_policy": ("retain story-specific scene, scale, shell, palette and symbolism while preserving H0/H2/H3 continuity within each story" if weapon_topology in ("T","CYLINDER_CROSS") else None),
           "continuity_warning":"Shared prompts do not guarantee identical pixels; independently generated endpoints can drift. Review actual images before interpolation."
         },
         "prompts":prompts,"prompt_contract_status":"PROMPT_CONTRACT_PASS" if not errors else "BLOCK",
@@ -594,7 +608,8 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
     (story_dir/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     lines=[f"# Pixel audit — {packet['story_id']}","",f"Shot lock: {packet['shot_lock_id']}",
            f"Prompt contract: {packet['prompt_contract_status']}","Image realization: NOT_RUN","Pixel audit: NOT_RUN","",
-           ("**BLOCKED:** T-topology real-image work requires an approved single-T weapon master AND the 48-variant terminal-END-FACE-to-END-FACE contact matrix. Each H2 must prove the two selected end-face planes truly meet; the master, prompt or SVG alone is insufficient. Only then proceed to story-specific H0/H2/H3 scenes and camera sweeps." if packet.get("weapon_topology")=="T" else ""),
+           ("**BLOCKED:** T-topology real-image work requires an approved single-T weapon master AND the 48-variant terminal-END-FACE-to-END-FACE contact matrix. Each H2 must prove the two selected end-face planes truly meet; the master, prompt or SVG alone is insufficient. Only then proceed to story-specific H0/H2/H3 scenes and camera sweeps." if packet.get("weapon_topology")=="T" else
+            "**BLOCKED:** CYLINDER_CROSS requires all 48 freshly generated H2 images and manual proof of flat circular end-cap-to-end-cap contact. Curved barrels, crossbar sides, cross arms, corners and handles must not touch first. Legacy T images are not evidence." if packet.get("weapon_topology")=="CYLINDER_CROSS" else ""),
            "Only mark PASS/FAIL after reviewing actual images side by side. Prompt text and vector SVG are not pixel evidence.","",
            "| ID | Visual criterion | Result |","|---|---|---|"]
     lines.extend(f"| {x['id']} | {x['criterion']} | UNASSESSED |" for x in packet["pixel_audit_checks"])
