@@ -3,7 +3,7 @@ name: Original Sin Bubble-Break tests
 on:
   push:
     branches:
-      - feat/original-sin-bubble-break-engine
+      - __paused_while_adding_T_end_face_angle_matrix__
   workflow_dispatch:
 
 permissions:
