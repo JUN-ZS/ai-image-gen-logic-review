@@ -215,6 +215,20 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
         "expected_prompt_count": len(CAMERA_VIEWS) * len(STRIKE_AXES) * 3,
         "variant_formula": "12 camera views x 4 collision axes = 48 variants; the four handle-roll relationships are deterministically balanced across the matrix; each variant has H0/H2/H3 = 144 separate image prompts",
         "handle_roll_variant_distribution": {pose_id: len(CAMERA_VIEWS) for pose_id, _ in HANDLE_CLOCK_VARIANTS},
+        "handle_roll_by_camera": {
+            camera_id: {
+                pose_id: sum(v["camera_view_id"] == camera_id and v["handle_roll_variant_id"] == pose_id for v in variants)
+                for pose_id, _ in HANDLE_CLOCK_VARIANTS
+            }
+            for camera_id, _ in CAMERA_VIEWS
+        },
+        "handle_roll_by_collision_axis": {
+            axis_id: {
+                pose_id: sum(v["collision_axis_id"] == axis_id and v["handle_roll_variant_id"] == pose_id for v in variants)
+                for pose_id, _ in HANDLE_CLOCK_VARIANTS
+            }
+            for axis_id, _ in STRIKE_AXES
+        },
         "topology_contract": "T_TO_T_TERMINAL_END_FACE_TO_TERMINAL_END_FACE",
         "contact_contract": {
             "surface_A": "TERMINAL_END_STRIKING_FACE",
