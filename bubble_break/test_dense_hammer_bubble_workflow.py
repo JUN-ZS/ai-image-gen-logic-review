@@ -71,7 +71,7 @@ class TestDenseHammerBubbleWorkflow(unittest.TestCase):
             candidate_by_id(candidates, "C99")
 
     def test_stage_a_prompt_is_planted_double_ended_hammer_not_projectiles(self):
-        prompt = make_stage_a_prompt(make_candidates()).lower()
+        prompt = " ".join(make_stage_a_prompt(make_candidates()).lower().split())
         for expected in (
             "exactly 24",
             "double-ended",
