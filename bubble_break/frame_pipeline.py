@@ -588,7 +588,7 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
             "camera_description":packet.get("camera_description"),
             "projection_lock":packet["projection_lock"],
             "frame_order":list(FRAME_IDS),"geometry_files":geometry_names,
-            "note":("T SVG shows the selected terminal end face at the projected P but cannot prove 3D face-normal alignment; use the 48-view real-image contact matrix." if packet.get("weapon_topology")=="T" else "Deterministic 2D geometry blockout/reference only; not a photorealistic rendered frame.")}
+            "note":("T SVG shows the selected terminal end face at the projected P but cannot prove 3D face-normal alignment; use the 48-view real-image contact matrix." if packet.get("weapon_topology")=="T" else "CYLINDER_CROSS SVG is schematic only; all 48 actual H2 end-cap contact images require a separate manual review gate." if packet.get("weapon_topology")=="CYLINDER_CROSS" else "Deterministic 2D geometry blockout/reference only; not a photorealistic rendered frame.")}
     (story_dir/"layout.json").write_text(json.dumps(layout,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     manifest=dict(packet); manifest["prompt_files"]=names; manifest["geometry_files"]=geometry_names
     manifest["layout_file"]="layout.json"
@@ -602,6 +602,20 @@ def write_packet(packet: Dict[str, Any], outdir: Path) -> Dict[str, Any]:
             "approval_checks":["single-T weapon master passes the topology checks","all 48 camera/axis variants have actual H2 images","both terminal END STRIKING FACE planes meet face-to-face at one contact centre P","the two face normals are opposite","zero cheek-first, broad-surface-first, corner-first or handle-first contacts"],
             "reference_scope":"weapon topology only; scene composition must come from each story's own prompt packet",
             "note":"This manifest gate is workflow evidence only; it does not inspect external generated image pixels. Contact-matrix H2 images must be generated and visually reviewed."
+        }
+        manifest["realization_stage_gate"]=gate
+        (story_dir/"stage_gate.json").write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    if packet.get("weapon_topology") == "CYLINDER_CROSS":
+        gate={
+            "status":"BLOCKED_UNTIL_CYLINDER_CROSS_CONTACT_MATRIX_APPROVED",
+            "required_first_stage":"A_CYLINDER_CROSS_END_CAP_CONTACT_MATRIX",
+            "required_artifacts":["contact_matrix_manifest.json","48 actual H2 images","48 complete manual pixel-review JSON records"],
+            "manual_review_required":True,
+            "topology":"CYLINDER_CROSS",
+            "approval_checks":["both active surfaces are the designated flat circular end caps","cap planes coincide face-to-face and normals oppose","no curved barrel, crossbar side, cross arm, corner or handle touches first","both cross-hammers and their centered handles remain rigid"],
+            "do_not_transfer_old_T_evidence":True,
+            "do_not_mark_pass_from_prompt_or_svg_alone":True,
+            "note":"Generate and manually inspect all 48 actual H2 images. Existing T images, prompts and SVGs are not contact evidence."
         }
         manifest["realization_stage_gate"]=gate
         (story_dir/"stage_gate.json").write_text(json.dumps(gate,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
