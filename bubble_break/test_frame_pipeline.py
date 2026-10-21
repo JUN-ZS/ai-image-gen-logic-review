@@ -41,8 +41,8 @@ class FramePipelineTests(unittest.TestCase):
     def test_same_shot_lock_is_deterministic(self):
         a,b=compile_frame_set(sample()),compile_frame_set(sample())
         self.assertEqual(a["shot_lock_id"],b["shot_lock_id"])
-        self.assertIn("same horizon",a["prompts"]["H0"])
-        for fid in FRAME_IDS: self.assertIn("same horizon, vanishing lines",a["prompts"][fid])
+        self.assertIn("CAMERA VIEW:",a["prompts"]["H0"])
+        for fid in FRAME_IDS: self.assertIn("CAMERA VIEW:",a["prompts"][fid])
     def test_prompt_pass_never_claims_pixel_pass(self):
         p=compile_frame_set(sample())
         self.assertEqual(p["prompt_contract_status"],"PROMPT_CONTRACT_PASS")
