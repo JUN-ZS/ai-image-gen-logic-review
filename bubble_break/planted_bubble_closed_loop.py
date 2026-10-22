@@ -29,7 +29,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw
 
 
 CONTRACT_ID = "PLANTED_DOUBLE_ENDED_CYLINDER_BUBBLE_CONTACT_V1"
@@ -410,6 +410,7 @@ def validate_planted_bubble_frame(
     expected_locked_geometry: Mapping[str, Any] | None = None,
     expected_scene_lock: Mapping[str, Any] | None = None,
     expected_parent_evidence: Mapping[str, Any] | None = None,
+    expected_parent_image_path: str | Path | None = None,
 ) -> dict[str, Any]:
     """Validate exact raster binding, planted-cylinder geometry, scene state, and external review receipt.
 
@@ -448,6 +449,23 @@ def validate_planted_bubble_frame(
         errors.append("EVIDENCE_STAGE_MISMATCH")
     if str(evidence.get("raster_sha256", "")).lower() != digest:
         errors.append("RASTER_SHA256_MISMATCH")
+    if stage != "B_LOCKED_TOOL_MASTER":
+        if expected_parent_sha256 and digest == expected_parent_sha256:
+            errors.append("NO_OP_FRAME_COPIED_FROM_PARENT")
+        if expected_parent_image_path is None or not Path(expected_parent_image_path).is_file():
+            errors.append("PREVIOUS_PASS_PARENT_IMAGE_PATH_REQUIRED")
+        else:
+            mask_path = evidence.get("edit_mask_path")
+            mask_parent_sha = evidence.get("edit_mask_parent_sha256")
+            if not isinstance(mask_path, str) or not Path(mask_path).is_file():
+                errors.append("AUTHORIZED_EDIT_MASK_MISSING")
+            elif mask_parent_sha != expected_parent_sha256:
+                errors.append("EDIT_MASK_NOT_BOUND_TO_LAST_PASS_PARENT")
+            else:
+                frozen_audit = validate_frozen_pixels(expected_parent_image_path, path, mask_path)
+                if not frozen_audit.get("passed", False):
+                    errors.append("UNAUTHORIZED_PIXEL_DRIFT_OUTSIDE_EDIT_MASK")
+
     if stage == "B_LOCKED_TOOL_MASTER":
         if expected_parent_sha256 is not None:
             errors.append("MASTER_MUST_NOT_HAVE_A_PREVIOUS_PASS_PARENT")
@@ -1125,6 +1143,7 @@ def run_planted_bubble_closed_loop(
                     expected_locked_geometry=locked_geometry,
                     expected_scene_lock=scene_lock,
                     expected_parent_evidence=parent_evidence,
+                    expected_parent_image_path=parent_path,
                 )
                 is_valid = bool(validation["eligible_for_next_stage"])
                 scores = _candidate_score(item)
@@ -1301,6 +1320,10 @@ def command_provider(command: str, *, base_cwd: Path | None = None) -> RerunProv
                 evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
             else:
                 continue
+            if request.get("edit_mask_path") and not evidence.get("edit_mask_path"):
+                evidence["edit_mask_path"] = request["edit_mask_path"]
+            if request.get("mask_provenance_parent_sha256") and not evidence.get("edit_mask_parent_sha256"):
+                evidence["edit_mask_parent_sha256"] = request["mask_provenance_parent_sha256"]
             if str(request.get("stage", "")).upper() == "B_LOCKED_TOOL_MASTER" and not isinstance(evidence.get("master_selection"), dict):
                 selection = request.get("master_selection")
                 if isinstance(selection, dict):
