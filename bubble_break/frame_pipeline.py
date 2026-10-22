@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Mainline Bubble-Break Frame Pipeline (`H0 -> H1 -> H2 -> H2B -> H3`) & Raster-Bound Semantic/Geometric Gate.
 
-Enforces the PR #1 & PR #4 mainline Bubble-Break contract:
+**LEGACY CONTRACT NOTICE:** this file's T-hammer/H0-H2-H3 topology is not the latest B3-derived planted-cylinder design documented in docs/半成HAM.txt. Use bubble_break.planted_bubble_closed_loop for the current side-middle-handle/conformal-seat workflow; this module remains for historical comparison and must not approve that workflow.
+
+Enforces the PR #1 & PR #4 historical Bubble-Break contract:
 1. Mainline task is a SINGLE calibrated T-hammer (`HAMMER_A`) striking a transparent containment bubble at
    a locked surface pole `P` (`outward_normal = -n`, `hammer_face_normal = +n`, `dot = -1`), NOT two hammers
    colliding in the final scene, and NOT a handleless cylinder ram.

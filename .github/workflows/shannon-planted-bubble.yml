@@ -1,0 +1,78 @@
+name: Shannon Planted-Cylinder Bubble-Break
+
+on:
+  push:
+    branches: [main, 'feat/**', 'fix/**']
+    paths:
+      - 'bubble_break/planted_bubble_closed_loop.py'
+      - 'bubble_break/test_planted_bubble_closed_loop.py'
+      - 'bubble_break/planted_bubble_information_gain.py'
+      - 'bubble_break/test_planted_bubble_information_gain.py'
+      - 'bubble_break/gemini_planted_bubble_provider.py'
+      - 'bubble_break/test_gemini_planted_bubble_provider.py'
+      - 'bubble_break/create_master_selection_manifest.py'
+      - 'docs/GEMINI_PLANTED_BUBBLE_PROVIDER.md'
+      - 'docs/SHANNON_PLANTED_BUBBLE_CLOSED_LOOP.md'
+      - '.github/workflows/shannon-planted-bubble.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/planted_bubble_closed_loop.py'
+      - 'bubble_break/test_planted_bubble_closed_loop.py'
+      - 'bubble_break/planted_bubble_information_gain.py'
+      - 'bubble_break/test_planted_bubble_information_gain.py'
+      - 'bubble_break/gemini_planted_bubble_provider.py'
+      - 'bubble_break/test_gemini_planted_bubble_provider.py'
+      - 'bubble_break/create_master_selection_manifest.py'
+      - 'docs/GEMINI_PLANTED_BUBBLE_PROVIDER.md'
+      - 'docs/SHANNON_PLANTED_BUBBLE_CLOSED_LOOP.md'
+      - '.github/workflows/shannon-planted-bubble.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  planted-bubble-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install raster validation dependency
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Test planted-cylinder geometry, SHA binding, stage locks and feedback reruns
+        run: python -m unittest bubble_break.test_planted_bubble_closed_loop -v
+      - name: Test Shannon-style planted-cylinder information-gain diagnostics
+        run: python -m unittest bubble_break.test_planted_bubble_information_gain -v
+      - name: Test Gemini image and semantic-review adapter with offline fixtures only
+        run: python -m unittest bubble_break.test_gemini_planted_bubble_provider -v
+      - name: Compile Gemini provider and run CLI help without contacting Google
+        run: |
+          python -m py_compile bubble_break/planted_bubble_closed_loop.py bubble_break/planted_bubble_information_gain.py bubble_break/gemini_planted_bubble_provider.py bubble_break/create_master_selection_manifest.py
+          python -m bubble_break.gemini_planted_bubble_provider --help
+      - name: Compile the seven-stage prompt/contract packet (no image generation)
+        run: python -m bubble_break.planted_bubble_closed_loop --compile-only --outdir out/shannon_planted_bubble
+      - name: Verify the output is honest about generation and visual acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("out/shannon_planted_bubble")
+          packet = json.loads((root / "SHANNON_PLANTED_BUBBLE_PROMPT_PACKET.json").read_text(encoding="utf-8"))
+          assert len(packet["stages"]) == 7, packet
+          assert packet["image_realization"] == "NOT_RUN_BY_PROMPT_COMPILER", packet
+          assert packet["visual_acceptance_status"] == "NOT_VERIFIED_BY_CODE", packet
+          assert "B_LOCKED_TOOL_MASTER" in packet["stages"]
+          assert "D2_FIRST_GRIP_EXISTING_HANDLE" in packet["stages"]
+          assert "E_MID_GLOW_CRACKS_FROM_P" in packet["stages"]
+          assert "E_END_SHELL_SHATTER_FROM_P" in packet["stages"]
+          print(json.dumps({"stages": len(packet["stages"]), "image_realization": packet["image_realization"], "visual_acceptance_status": packet["visual_acceptance_status"]}, indent=2))
+          PY
+      - name: Upload the compiled prompt and contract packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: shannon-planted-bubble-prompt-contract
+          path: out/shannon_planted_bubble/
+          if-no-files-found: error
+          retention-days: 14

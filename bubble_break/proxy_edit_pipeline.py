@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Unified Proxy Edit Pipeline: Upstream Dual T-Hammer Contact Calibration -> Proxy Target Swap at P -> Bubble-Break Closed Loop.
 
-Implements the complete 4-step executable closed loop required by PR #1 and PR #4:
+**LEGACY CONTRACT NOTICE:** this dual-T-to-T-hammer proxy-swap flow is not the latest planted-cylinder design in docs/半成HAM.txt. Use bubble_break.planted_bubble_closed_loop for the current contract; this module remains for historical comparison only and must not be treated as the canonical B3 workflow.
+
+Implements the original 4-step experiment:
 1. Step 1 (Upstream Dual T-Hammer End-Face Calibration):
    - Verifies real Dual T-Hammer rasters (`PRE_FAR`, `PRE_NEAR`, `FIRST_CONTACT`, `REACTION`, `RECOIL`)
      using `validate_raster_bound_collision_evidence`.

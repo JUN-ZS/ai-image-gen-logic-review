@@ -1,0 +1,133 @@
+{
+  "stage": "E_END",
+  "attempt_round": 0,
+  "candidate_index": 0,
+  "raw_generated_path": "/working_dir/c_9a013c6692e76475/artifacts/file_generation/ttl=63d/output/gates/E_END_r00_c00/E_END_raw_generated.png",
+  "raw_generated_sha256": "995fa2c6af9886efd458fc2a818136e3452bbd1574002faace27148c47a212c5",
+  "composited_deliverable_path": "/working_dir/c_9a013c6692e76475/artifacts/file_generation/ttl=63d/output/gates/E_END_r00_c00/E_END_composited_deliverable.png",
+  "composited_deliverable_sha256": "cc089748483c5b616ebc30072cad51370fdd31e500c2212cbd2fd8ebf93127b1",
+  "delivered_raster_sha256_matches_audited_composite": true,
+  "parent_sha256": "c22ed775dfd401bd1ee2c6fda22c8dcddbab0a6ea8db5784bdd2d9f02ca76e1b",
+  "locked_master_b_sha256": "754c2e1b6b845c5c3ae13fd1d377908bd76f990d74845f3e3c11c2b5d18efb72",
+  "edit_mask_path": "/working_dir/c_9a013c6692e76475/artifacts/file_generation/ttl=63d/output/gates/E_END_r00_c00/E_END_edit_mask.png",
+  "freeze_mask_path": "/working_dir/c_9a013c6692e76475/artifacts/file_generation/ttl=63d/output/gates/E_END_r00_c00/E_END_freeze_mask.png",
+  "subframe_mask_metrics": {
+    "stage": "E_END",
+    "parent_sha256": "c22ed775dfd401bd1ee2c6fda22c8dcddbab0a6ea8db5784bdd2d9f02ca76e1b",
+    "raw_generated_sha256": "995fa2c6af9886efd458fc2a818136e3452bbd1574002faace27148c47a212c5",
+    "composited_sha256": "cc089748483c5b616ebc30072cad51370fdd31e500c2212cbd2fd8ebf93127b1",
+    "edit_region_mae_luma": 17.03,
+    "edit_region_changed_fraction": 0.4985,
+    "raw_freeze_region_mae_luma": 4.1411,
+    "composited_freeze_region_mae_luma": 0.0,
+    "is_noop_subframe": false,
+    "unauthorized_freeze_drift": false
+  },
+  "vision_judge_audit": {
+    "stage": "E_END",
+    "raster_sha256": "cc089748483c5b616ebc30072cad51370fdd31e500c2212cbd2fd8ebf93127b1",
+    "raw_generated_sha256": "995fa2c6af9886efd458fc2a818136e3452bbd1574002faace27148c47a212c5",
+    "parent_sha256": "c22ed775dfd401bd1ee2c6fda22c8dcddbab0a6ea8db5784bdd2d9f02ca76e1b",
+    "locked_master_sha256": "754c2e1b6b845c5c3ae13fd1d377908bd76f990d74845f3e3c11c2b5d18efb72",
+    "delivered_is_composited": true,
+    "base_seat_contact_p_ok": true,
+    "contact_point_p_px": [
+      435.0,
+      560.0
+    ],
+    "handle_preserved_tangent_ok": true,
+    "outer_end_cap_empty_ok": true,
+    "person_grip_ergonomics_ok": true,
+    "cracks_strictly_from_p_ok": true,
+    "inhabitants_sanctuary_intact_ok": true,
+    "subframe_not_noop_ok": true,
+    "freeze_region_locked_ok": true,
+    "edit_region_mae_luma": 17.03,
+    "composited_freeze_region_mae_luma": 0.0,
+    "detected_failure_axes": [],
+    "judge_model_id": "gemini-3.8-flash",
+    "judge_status": "GEMINI_STRUCTURED_VISION_AUDIT_PASS",
+    "notes_zh": "Gemini 3.8 Flash 結構化視覺審核通過：已綁定最終遮罩合成圖 SHA-256，底座貼合發光鎖定於 P，橫柄切線無重生，外端蓋空置，裂紋源於 P，內部聖城與居民完好。"
+  },
+  "shannon_diagnostic_ranking": [
+    {
+      "axis_id": "HANDLE_REGENERATION_OR_TILT",
+      "name_zh": "側面 90° 切線橫柄被重生、分叉或外端蓋長出新桿",
+      "prior_fail_prob": 0.45,
+      "inspection_cost_units": 1.0,
+      "diagnostic_check": "檢查握柄是否維持柱身側面中段單一 90° 直桿且外端蓋 C_outer 100% 空置",
+      "repair_action": "Preserve existing single straight 90-degree side-middle rod handle; keep outer circular cap 100% bare.",
+      "is_targeted_failure": false,
+      "expected_information_gain_bits": 0.9928,
+      "efficiency_bits_per_cost": 0.9928
+    },
+    {
+      "axis_id": "UNAUTHORIZED_FREEZE_REGION_MODIFIED",
+      "name_zh": "凍結遮罩區域（背景錨點、外端蓋、非編輯區）發生未授權像素漂移",
+      "prior_fail_prob": 0.3,
+      "inspection_cost_units": 0.9,
+      "diagnostic_check": "檢查 freeze_mask 區域之合成後像素漂移是否為 0",
+      "repair_action": "Composite with parent raster using freeze_mask so all non-editable pixels remain 100% locked.",
+      "is_targeted_failure": false,
+      "expected_information_gain_bits": 0.8813,
+      "efficiency_bits_per_cost": 0.9792
+    },
+    {
+      "axis_id": "BASE_SEAT_CONTACT_P_FAIL",
+      "name_zh": "柱底貼合座與接觸點 P 脫離或無發光",
+      "prior_fail_prob": 0.35,
+      "inspection_cost_units": 1.0,
+      "diagnostic_check": "檢查泡殼側弧形底座是否 100% 貼合泡殼曲率並鎖定於接觸點 P 發光",
+      "repair_action": "Lock conformal circular base seat flush at contact point P with cyan-white collar glow.",
+      "is_targeted_failure": false,
+      "expected_information_gain_bits": 0.9341,
+      "efficiency_bits_per_cost": 0.9341
+    },
+    {
+      "axis_id": "NOOP_SUBFRAME_REJECTED",
+      "name_zh": "可編輯遮罩區域無實質變化（No-Op 子幀）",
+      "prior_fail_prob": 0.2,
+      "inspection_cost_units": 0.8,
+      "diagnostic_check": "檢查 edit_mask 區域之平均亮度變化 (edit_region_mae_luma) 是否高於最小門檻",
+      "repair_action": "Ensure the stage's authorized physical action produces a measurable change inside edit_mask.",
+      "is_targeted_failure": false,
+      "expected_information_gain_bits": 0.7219,
+      "efficiency_bits_per_cost": 0.9024
+    },
+    {
+      "axis_id": "PERSON_GRIP_TOPOLOGY_FAIL",
+      "name_zh": "人物未握住既有握柄或為配合手部位置重新生成新桿",
+      "prior_fail_prob": 0.4,
+      "inspection_cost_units": 1.1,
+      "diagnostic_check": "檢查 D2/D3 手臂是否只移動去握住原圖已存在的那條橫柄",
+      "repair_action": "Move ONLY the warrior's forearms/hands to wrap around the existing straight rod handle; forbid new shafts.",
+      "is_targeted_failure": false,
+      "expected_information_gain_bits": 0.971,
+      "efficiency_bits_per_cost": 0.8827
+    },
+    {
+      "axis_id": "CRACK_ORIGIN_CAUSALITY_FAIL",
+      "name_zh": "E_MID / E_END 裂紋未從同一接觸點 P 向外擴散",
+      "prior_fail_prob": 0.3,
+      "inspection_cost_units": 1.2,
+      "diagnostic_check": "檢查放射狀裂紋與碎片是否嚴格以接觸點 P 為唯一震央向外擴散",
+      "repair_action": "Anchor all radial spiderweb cracks and outward shell shards strictly at contact point P.",
+      "is_targeted_failure": false,
+      "expected_information_gain_bits": 0.8813,
+      "efficiency_bits_per_cost": 0.7344
+    },
+    {
+      "axis_id": "INHABITANT_SAFETY_SANCTUARY_BREACH",
+      "name_zh": "泡殼內部聖城建築或居民受損",
+      "prior_fail_prob": 0.25,
+      "inspection_cost_units": 1.2,
+      "diagnostic_check": "檢查內部暖金梯田聖城與居民是否保持完好無損（只破外殼）",
+      "repair_action": "Freeze interior warm-golden miniature terraced sanctuary city and inhabitants 100% intact.",
+      "is_targeted_failure": false,
+      "expected_information_gain_bits": 0.8113,
+      "efficiency_bits_per_cost": 0.6761
+    }
+  ],
+  "accepted": true,
+  "repair_prompt_patch": null
+}

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """V5.1 Autonomous Closed-Loop Generative Backend, SceneState, Masked Edit & Two-Layer Continuity-Creativity Engine.
 
-Addresses all architectural requirements from PR #3 (`V5_CONTINUITY_AND_CREATIVITY_REVIEW.md`):
+**LEGACY CONTRACT NOTICE:** this V5.1 swing/air-gap trajectory is not the latest B3-derived planted-cylinder design in docs/半成HAM.txt. Use bubble_break.planted_bubble_closed_loop for the current contract; this module remains for historical comparison and does not certify the planted-cylinder scene.
+
+Addresses the original V5.1 requirements from PR #3 (`V5_CONTINUITY_AND_CREATIVITY_REVIEW.md`):
 1. TRUE RERUN LOOP (`ImageGenerationBackend`):
    - Connects the pipeline to a real generative backend (`CallbackGeneratorBackend`, `CliCommandGeneratorBackend`,
      `HttpEndpointGeneratorBackend`). When a batch fails Layer-1 gates, the engine compiles a repair prompt +
