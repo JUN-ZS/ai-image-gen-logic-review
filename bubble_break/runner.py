@@ -156,7 +156,6 @@ class CommandRerunProvider:
         completed = subprocess.run(
             self.command,
             env=env,
-            cwd=str(outdir.resolve()),
             timeout=self.timeout_seconds,
             check=False,
             capture_output=True,
