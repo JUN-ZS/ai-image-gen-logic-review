@@ -11,6 +11,7 @@ from bubble_break.autonomous_pipeline import (
     CallbackGeneratorBackend,
     audit_candidate_frame,
     default_v51_scene_state,
+    gate_required_action_delta,
     gate_cross_frame_continuity,
     gate_no_vertical_splice_seam,
     gate_pre_contact_windup_air_gap,
@@ -59,6 +60,16 @@ class AutonomousPipelineV51Tests(unittest.TestCase):
             self.assertEqual(len(report.five_keyframe_trilogy), 5)
             self.assertEqual(len(report.five_keyframe_transition_audits), 4)
             self.assertGreaterEqual(report.backend_rerun_invocations, 3)
+
+    def test_required_action_delta_rejects_identical_parent_raster(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            parent = Path(td) / "parent.jpg"
+            duplicate = Path(td) / "duplicate.jpg"
+            render_synthetic_stage_raster(parent, "D1")
+            duplicate.write_bytes(parent.read_bytes())
+            gate = gate_required_action_delta(duplicate, parent, stage="D2")
+            self.assertFalse(gate.passed)
+            self.assertEqual(gate.name, "required_action_delta")
 
     def test_gate_cross_frame_continuity_fails_when_parent_missing_or_jumped(self) -> None:
         with tempfile.TemporaryDirectory() as td:
