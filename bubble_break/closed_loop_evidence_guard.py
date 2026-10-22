@@ -123,7 +123,7 @@ def validate_stage_binding(
         elif expected_stage == "H2_FIRST_CONTACT":
             if preexisting_cracks is not False:
                 errors.append("FIRST_CONTACT_MUST_DECLARE_NO_PREEXISTING_CRACKS")
-            if crack_ratio is not None and not (0.0 <= crack_ratio <= 0.15):
+            if crack_ratio is not None and not (0.0 < crack_ratio <= 0.15):
                 errors.append("FIRST_CONTACT_CRACK_FRONT_TOO_LARGE_FOR_INITIATION_STATE")
         elif expected_stage in {"H2B_CRACK_PROPAGATION", "H3_FOLLOWTHROUGH_SHELL_SHATTER"}:
             if preexisting_cracks is not True:
