@@ -11,6 +11,7 @@ from bubble_break.planted_bubble_closed_loop import (
     CONTRACT_ID,
     STAGE_ORDER,
     Candidate,
+    build_stage_masks,
     compile_prompt_packet,
     contract_fingerprint,
     run_planted_bubble_closed_loop,
@@ -251,6 +252,25 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         self.assertIn("CRACKS_DO_NOT_ORIGINATE_AT_P", result["errors"])
         self.assertIn("BREACH_IS_NOT_SHELL_ONLY", result["errors"])
 
+    def test_stage_masks_are_real_binary_artifacts_and_freeze_the_planted_cylinder(self):
+        parent = self.make_image("D1_for_mask.png", (10, 20, 30))
+        parent_sha = sha256_file(parent)
+        evidence = self.make_evidence("D1_APPROACH_NO_GRIP", parent, parent_sha=parent_sha, anchor_sha=parent_sha)
+        masks = build_stage_masks(parent, evidence, "D2_FIRST_GRIP_EXISTING_HANDLE", self.root / "mask_packet")
+        edit = Image.open(masks["edit_mask_path"]).convert("L")
+        freeze = Image.open(masks["freeze_mask_path"]).convert("L")
+        edit_values = set(edit.getdata())
+        freeze_values = set(freeze.getdata())
+        self.assertLessEqual(edit_values, {0, 255})
+        self.assertLessEqual(freeze_values, {0, 255})
+        self.assertGreater(sum(1 for v in edit.getdata() if v == 255), 100)
+        self.assertEqual(edit.getpixel((260, 230)), 0)  # cylinder body is protected
+        self.assertEqual(edit.getpixel((210, 200)), 255)  # existing handle can be occluded by the gripping hands
+        self.assertEqual(edit.getpixel((260, 230)) + freeze.getpixel((260, 230)), 255)
+        self.assertIn("mask_status", masks)
+        self.assertTrue(Path(masks["edit_mask_path"]).is_file())
+        self.assertTrue(Path(masks["freeze_mask_path"]).is_file())
+
     def test_changed_raster_cannot_reuse_old_review_receipt(self):
         image = self.make_image("B.png", (10, 20, 30))
         evidence = self.make_evidence("B_LOCKED_TOOL_MASTER", image, parent_sha=None, anchor_sha=None)
@@ -288,6 +308,10 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
             anchor_sha = request.get("scene_anchor_raster_sha256")
             image = self.make_image(f"{stage}_R{attempt}.png", (20 + len(calls), 40, 60))
             evidence = self.make_evidence(stage, image, parent_sha=parent_sha, anchor_sha=anchor_sha)
+            if stage != "B_LOCKED_TOOL_MASTER":
+                self.assertTrue(Path(request["edit_mask_path"]).is_file(), request)
+                self.assertTrue(Path(request["freeze_mask_path"]).is_file(), request)
+                self.assertEqual(request["mask_provenance_parent_sha256"], parent_sha)
             if stage == "D2_FIRST_GRIP_EXISTING_HANDLE" and attempt == 0:
                 evidence["raster_annotations"]["planted_cylinder"]["additional_handle_or_stub_detected"] = True
             return [Candidate(image, evidence)]
