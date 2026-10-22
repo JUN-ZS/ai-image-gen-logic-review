@@ -12,10 +12,13 @@ from bubble_break.planted_bubble_closed_loop import (
     STAGE_ORDER,
     Candidate,
     build_stage_masks,
+    compose_masked_edit,
     compile_prompt_packet,
+    compute_background_landmarks_sha256,
     contract_fingerprint,
     run_planted_bubble_closed_loop,
     sha256_file,
+    validate_frozen_pixels,
     validate_planted_bubble_frame,
 )
 
@@ -60,6 +63,10 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         crack_origin: tuple[float, float] | None = None,
         shell_only: bool = True,
         selection_mode: str = "HUMAN_ROI",
+        mask_path: Path | None = None,
+        camera_view: str = "CAMERA_VIEW_FIXED_001",
+        hero_box: tuple[int, int, int, int] = (20, 100, 70, 180),
+        pose_signature: str | None = None,
     ) -> dict:
         spec_actor = stage != "B_LOCKED_TOOL_MASTER"
         grip = stage in {
@@ -105,6 +112,10 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
             "raster_sha256": digest,
             "parent_raster_sha256": parent_sha,
             "scene_anchor_raster_sha256": anchor,
+            "scene_id": "BUBBLE_SCENE_001",
+            "camera_rig_id": "CAMERA_RIG_001",
+            "camera_view_fingerprint": camera_view,
+            "background_landmarks_sha256": compute_background_landmarks_sha256(image_path),
             "review": review,
             "selection_metrics": {"creativity_score": 0.0, "novelty_score": 0.0},
             "raster_annotations": {
@@ -137,8 +148,10 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
                 },
                 "heroine": {
                     "present": spec_actor,
-                    "bbox_xyxy_px": [20, 100, 120, 280] if spec_actor else None,
+                    "bbox_xyxy_px": list(hero_box) if spec_actor else None,
                     "scale_class": "MINIATURE" if spec_actor else None,
+                    "identity_id": "HEROINE_001" if spec_actor else None,
+                    "pose_signature": pose_signature or ("POSE_" + stage + "_UNIQUE") if spec_actor else None,
                     "gripping_handle_track_id": (
                         "HANDLE_WRONG" if grip_wrong_handle else (handle_id if grip else None)
                     ),
@@ -153,9 +166,14 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
                     "inhabitants_unharmed": True,
                     "shell_only_breach": shell_only,
                     "crack_origin_px": list(crack_origin) if crack_origin else ([260, 200] if stage.startswith("E_") else None),
+                    "crack_rays_radial_from_P": stage in {"E_MID_GLOW_CRACKS_FROM_P", "E_END_SHELL_SHATTER_FROM_P"},
+                    "fragments_propagate_outward_from_P": stage == "E_END_SHELL_SHATTER_FROM_P",
                 },
             },
         }
+        if stage != "B_LOCKED_TOOL_MASTER" and mask_path is not None:
+            evidence["edit_mask_path"] = str(mask_path.resolve())
+            evidence["edit_mask_parent_sha256"] = parent_sha
         if stage == "B_LOCKED_TOOL_MASTER":
             evidence["master_selection"] = {
                 "selection_mode": selection_mode,
@@ -306,12 +324,23 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
             parent_path = Path(request["parent_image_path"]) if request.get("parent_image_path") else None
             parent_sha = request.get("parent_raster_sha256")
             anchor_sha = request.get("scene_anchor_raster_sha256")
-            image = self.make_image(f"{stage}_R{attempt}.png", (20 + len(calls), 40, 60))
-            evidence = self.make_evidence(stage, image, parent_sha=parent_sha, anchor_sha=anchor_sha)
+            raw_image = self.make_image(f"{stage}_R{attempt}_raw.png", (20 + len(calls), 40, 60))
+            mask_for_evidence = None
+            image = raw_image
             if stage != "B_LOCKED_TOOL_MASTER":
-                self.assertTrue(Path(request["edit_mask_path"]).is_file(), request)
-                self.assertTrue(Path(request["freeze_mask_path"]).is_file(), request)
+                self.assertTrue(parent_path and parent_path.is_file(), request)
+                edit_path = Path(request["edit_mask_path"])
+                freeze_path = Path(request["freeze_mask_path"])
+                self.assertTrue(edit_path.is_file(), request)
+                self.assertTrue(freeze_path.is_file(), request)
                 self.assertEqual(request["mask_provenance_parent_sha256"], parent_sha)
+                composed = request_dir / f"{stage}_R{attempt}_composed.png"
+                compose_masked_edit(parent_path, raw_image, edit_path, composed)
+                frozen = validate_frozen_pixels(parent_path, composed, edit_path)
+                self.assertTrue(frozen["passed"], frozen)
+                mask_for_evidence = edit_path
+                image = composed
+            evidence = self.make_evidence(stage, image, parent_sha=parent_sha, anchor_sha=anchor_sha, mask_path=mask_for_evidence)
             if stage == "D2_FIRST_GRIP_EXISTING_HANDLE" and attempt == 0:
                 evidence["raster_annotations"]["planted_cylinder"]["additional_handle_or_stub_detected"] = True
             return [Candidate(image, evidence)]
