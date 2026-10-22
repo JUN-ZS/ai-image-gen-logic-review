@@ -1166,6 +1166,13 @@ def render_synthetic_stage_raster(
     w, h = 1280, 720
     bg_color = (195, 200, 210) if inject_fault == "scene_jump" else (12, 16, 22)
     img = Image.new("RGB", (w, h), bg_color)
+    # Add the same tiny deterministic film-grain field to every synthetic fixture.
+    # This avoids a mathematically perfect empty background making a naturally drawn
+    # circle edge look like a high-ratio artificial splice. Production gates are unchanged.
+    grain_rng = np.random.default_rng(731_204)
+    grain = grain_rng.integers(-3, 4, size=(h, w, 1), dtype=np.int16)
+    img_arr = np.asarray(img, dtype=np.int16) + grain
+    img = Image.fromarray(np.clip(img_arr, 0, 255).astype(np.uint8), mode="RGB")
     draw = ImageDraw.Draw(img)
 
     if inject_fault == "grid_split":
