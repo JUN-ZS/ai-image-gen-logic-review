@@ -33,6 +33,12 @@ The conclusions below are code/manifest findings. A manifest PASS is not treated
 - Parent KF1 to the actual D2 raster and run normal parent continuity/provenance checks.
 - Require KF3's measured gap to be near zero and its contact interface to be bright; keep shell/drum criteria.
 - Add a no-op regression test and align the workflow's synthetic-evidence assertions and test paths with files actually in the repository.
+- Add `bubble_break/dual_t_hammer_collision.py`: explicit HAMMER_A/HAMMER_B rigid-body contract, opposing strike-face normals, normalized gap windows, point-P-on-both-face-disks geometry, forbidden cheek/shaft/handle contacts, and 12 distinct single-frame camera views per phase.
+- The legacy single-hammer-on-bubble audit can no longer report production PASSED merely because its old pixel gates pass; without dual-hammer geometry evidence it reports BLOCKED / NOT_VERIFIED.
+
+## Corrected task definition
+
+The old pipeline is the wrong physical task for a T-hammer-vs-T-hammer collision. It locks one planted cylindrical hammer onto a bubble. For the intended two-tool interaction, a valid FIRST_CONTACT frame must establish **both separate T tools**, each with its own head and handle; opposing strike-face normals; positive gap in PRE_FAR/PRE_NEAR; zero gap at FIRST_CONTACT; lateral face alignment; and a point P inside both strike-face disks. A high NCC score or a glow cannot substitute for these geometric conditions. The new module compiles prompts and validates structured geometry evidence, but it does not itself supply the missing image-provider or semantic vision service.
 
 ## Limits that remain
 
