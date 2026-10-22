@@ -52,7 +52,7 @@ jobs:
           assert contract['allowed_contact_surfaces'] == ['END_FACE_TO_END_FACE']
           assert manifest['generation_backend_status'] == 'NOT_CONNECTED_BY_THIS_MODULE'
           assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
-          assert manifest['generated_image_count'] == 0
+          assert sum(x['count'] for x in manifest['stage_prompts'].values()) == 5 * 12
           print('Contract valid; image generation and visual acceptance correctly remain unverified.')
           PY
       - name: Upload dual-T collision prompt and geometry contract packet
