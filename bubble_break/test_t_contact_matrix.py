@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import base64
+import hashlib
 import json
 import tempfile
 import unittest
@@ -71,6 +73,42 @@ class TContactMatrixTests(unittest.TestCase):
             self.assertEqual(report["blocked_count"],48)
             self.assertFalse(report["automatic_pixel_claims"])
             self.assertTrue((root/"contact_matrix_audit_report.json").exists())
+
+    def test_matrix_review_is_bound_to_exact_image_sha256(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            manifest=build_matrix(root)
+            variant=manifest["variants"][0]
+            image_path=root/variant["required_H2_image"]
+            image_path.parent.mkdir(parents=True,exist_ok=True)
+            # Tiny PNG fixture; this test checks byte-to-review binding, not visual geometry.
+            png=base64.b64decode(
+                "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADUlEQVR4nGP4z8AAAAMBAQDJ/pLvAAAAAElFTkSuQmCC"
+            )
+            image_path.write_bytes(png)
+            review={
+                "variant_id":variant["variant_id"],
+                "status":"PASS",
+                "manual_pixel_review":True,
+                "image_sha256":hashlib.sha256(png).hexdigest(),
+                "notes":"Test fixture only: review is bound to these exact image bytes.",
+                "checks":{name:True for name in REVIEW_CHECKS},
+            }
+            review_path=root/variant["required_H2_review"]
+            review_path.write_text(json.dumps(review),encoding="utf-8")
+            report=validate_matrix(root)
+            first=next(row for row in report["variants"] if row["variant_id"]==variant["variant_id"])
+            self.assertEqual(first["status"],"PASS_MANUAL_REVIEW_RECORDED",first["issues"])
+            self.assertEqual(first["image_sha256"],review["image_sha256"])
+
+            # Replacing the raster while retaining the old review must invalidate that PASS.
+            changed=bytearray(png)
+            changed[-10] ^= 1
+            image_path.write_bytes(bytes(changed))
+            stale=validate_matrix(root)
+            first_stale=next(row for row in stale["variants"] if row["variant_id"]==variant["variant_id"])
+            self.assertEqual(first_stale["status"],"BLOCKED")
+            self.assertIn("REVIEW_IMAGE_SHA256_MISMATCH",first_stale["issues"])
 
     def test_review_cannot_pass_without_manual_review_notes_and_all_checks(self):
         payload={
