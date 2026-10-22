@@ -363,7 +363,7 @@ class GeminiPlantedBubbleProvider:
             ])
         inputs = [{
             "type": "text",
-            "text": prompt + "\\n\\nIMAGE INPUT MANIFEST:\\n" + "\\n".join(input_manifest),
+            "text": prompt + "\n\nIMAGE INPUT MANIFEST:\n" + "\n".join(input_manifest),
         }]
         inputs.extend(_public_input(ref) for ref in refs)
         # Keep the policy explicit in the actual provider request, not merely in a side document.
@@ -416,6 +416,7 @@ class GeminiPlantedBubbleProvider:
                 mask_context.append(_image_input(path, label))
         refs.extend(mask_context)
         ref_manifest = [f"Image {index}: {ref['_label']}" for index, ref in enumerate(refs, start=1)]
+        ref_manifest = [f"Image {index}: {ref['_label']}" for index, ref in enumerate(refs, start=1)]
         review_prompt = (
             "You are the semantic-vision reviewer for a high-constraint planted-cylinder Bubble-Break frame. "
             "Inspect the ACTUAL candidate pixels, not only the prompt. The planted tool is a double-ended solid "
@@ -426,10 +427,10 @@ class GeminiPlantedBubbleProvider:
             "copy coordinates from a prompt if they don't match the rendered pixels. Estimate pixel coordinates "
             f"and world directions carefully in the raster of size {width}x{height}. If any required geometric or "
             "semantic fact is ambiguous or cannot be seen, set decision=FAIL and explain the missing/ambiguous "
-            "evidence. PASS only if all invariants required at this stage are visibly supported by the image.\\n\\n"
-            f"STAGE: {stage}\\n"
-            f"STAGE SPECIFICATION: {json.dumps(request, ensure_ascii=False, separators=(',', ':'))}\\n\\n"
-            "IMAGE INPUT MANIFEST (candidate is Image 1): " + "; ".join(ref_manifest) + ".\\n"
+            "evidence. PASS only if all invariants required at this stage are visibly supported by the image.\n\n"
+            f"STAGE: {stage}\n"
+            f"STAGE SPECIFICATION: {json.dumps(request, ensure_ascii=False, separators=(',', ':'))}\n\n"
+            "IMAGE INPUT MANIFEST (candidate is Image 1): " + "; ".join(ref_manifest) + ".\n"
             "Annotation rules: image_width_px/image_height_px must equal actual size; coordinates are pixels "
             "(x grows right, y grows down); boxes are [x0,y0,x1,y1]; world vectors are finite 3D vectors. "
             "Always report the cylinder/head, bubble center/radius, P, side handle and sanctuary boxes/axes. "
