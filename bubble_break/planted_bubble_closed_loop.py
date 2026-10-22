@@ -358,6 +358,7 @@ def validate_planted_bubble_frame(
     locked_contact_point_px: tuple[float, float] | None = None,
     expected_cylinder_instance_id: str | None = None,
     expected_handle_track_id: str | None = None,
+    expected_locked_geometry: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Validate exact raster binding, planted-cylinder geometry, scene state, and external review receipt.
 
@@ -432,6 +433,12 @@ def validate_planted_bubble_frame(
     cylinder_id: str | None = None
     handle_id: str | None = None
     geometry_metrics: dict[str, Any] = {}
+    locked_geometry: dict[str, Any] = {}
+    body_bbox: tuple[float, float, float, float] | None = None
+    handle_bbox: tuple[float, float, float, float] | None = None
+    handle_start_px: tuple[float, float] | None = None
+    handle_end_px: tuple[float, float] | None = None
+    sanctuary_bbox: tuple[float, float, float, float] | None = None
 
     try:
         if not isinstance(bubble, dict):
@@ -474,8 +481,15 @@ def validate_planted_bubble_frame(
         seat_distance = _distance2(base_px, contact_point)
         if seat_distance > max(3.0, bubble_radius * 0.02):
             errors.append("CONFORMAL_BASE_SEAT_MOVED_OFF_P")
-        _valid_bbox(cylinder.get("body_bbox_xyxy_px"), "cylinder.body_bbox_xyxy_px", width, height)
-        _valid_bbox(handle.get("bbox_xyxy_px"), "side_handle.bbox_xyxy_px", width, height)
+        body_bbox = _valid_bbox(cylinder.get("body_bbox_xyxy_px"), "cylinder.body_bbox_xyxy_px", width, height)
+        handle_bbox = _valid_bbox(handle.get("bbox_xyxy_px"), "side_handle.bbox_xyxy_px", width, height)
+        handle_start_px = _point2(handle.get("axis_start_px"), "side_handle.axis_start_px")
+        handle_end_px = _point2(handle.get("axis_end_px"), "side_handle.axis_end_px")
+        for key, point in (("side_handle.axis_start_px", handle_start_px), ("side_handle.axis_end_px", handle_end_px)):
+            if not (0 <= point[0] < width and 0 <= point[1] < height):
+                errors.append(f"{key} lies outside the raster")
+        if _distance2(handle_start_px, handle_end_px) < 4:
+            errors.append("SIDE_HANDLE_PIXEL_AXIS_IMPLAUSIBLY_SHORT")
         if _distance2(base_px, outer_px) < 4:
             errors.append("CYLINDER_AXIS_PIXELS_IMPLAUSIBLY_SHORT")
 
@@ -522,8 +536,76 @@ def validate_planted_bubble_frame(
             "handle_axis_dot_surface_normal_abs": round(handle_normal_dot, 5),
             "side_handle_attachment_fraction": round(attach_fraction, 5),
         }
+
+        sanctuary_bbox = _valid_bbox(ann.get("sanctuary_bbox_xyxy_px"), "sanctuary_bbox_xyxy_px", width, height)
+        locked_geometry = {
+            "image_size_px": [width, height],
+            "bubble_center_px": list(bubble_center),
+            "bubble_radius_px": bubble_radius,
+            "contact_point_p_px": list(contact_point),
+            "cylinder_body_bbox_xyxy_px": list(body_bbox),
+            "base_seat_center_px": list(base_px),
+            "outer_end_cap_center_px": list(outer_px),
+            "base_center_world": list(base_world),
+            "outer_end_cap_center_world": list(cap_world),
+            "body_axis_world": list(body_axis),
+            "handle_bbox_xyxy_px": list(handle_bbox),
+            "handle_axis_start_px": list(handle_start_px),
+            "handle_axis_end_px": list(handle_end_px),
+            "handle_axis_world": list(handle_axis),
+            "handle_attachment_world": list(attach_world),
+            "side_handle_track_id": handle_id,
+            "cylinder_instance_id": cylinder_id,
+            "sanctuary_bbox_xyxy_px": list(sanctuary_bbox),
+        }
     except (KeyError, TypeError, ValueError, IndexError) as exc:
         errors.append(f"GEOMETRY_ANNOTATION_INVALID:{exc}")
+
+    # Track IDs are labels, not proof of invariant geometry. Compare coordinates and axes with the accepted master.
+    if expected_locked_geometry is not None:
+        lock = expected_locked_geometry
+        if locked_geometry:
+            if locked_geometry.get("image_size_px") != lock.get("image_size_px"):
+                errors.append("CANVAS_SIZE_CHANGED_FROM_MASTER")
+            for key, issue in (
+                ("bubble_center_px", "BUBBLE_CENTER_DRIFTED_FROM_MASTER"),
+                ("contact_point_p_px", "CONTACT_POINT_DRIFTED_FROM_MASTER"),
+                ("base_seat_center_px", "BASE_SEAT_PIXEL_POSITION_DRIFTED"),
+                ("outer_end_cap_center_px", "OUTER_END_CAP_PIXEL_POSITION_DRIFTED"),
+                ("handle_axis_start_px", "HANDLE_AXIS_START_DRIFTED"),
+                ("handle_axis_end_px", "HANDLE_AXIS_END_DRIFTED"),
+            ):
+                if key in lock and key in locked_geometry and _distance2(locked_geometry[key], lock[key]) > 2.0:
+                    errors.append(issue)
+            if abs(float(locked_geometry.get("bubble_radius_px", 0)) - float(lock.get("bubble_radius_px", 0))) > max(2.0, float(lock.get("bubble_radius_px", 0)) * 0.01):
+                errors.append("BUBBLE_RADIUS_CHANGED_FROM_MASTER")
+            for key, issue in (
+                ("cylinder_body_bbox_xyxy_px", "CYLINDER_BODY_BBOX_CHANGED_FROM_MASTER"),
+                ("handle_bbox_xyxy_px", "HANDLE_BBOX_CHANGED_FROM_MASTER"),
+                ("sanctuary_bbox_xyxy_px", "SANCTUARY_BBOX_CHANGED_FROM_MASTER"),
+            ):
+                current_box, master_box = locked_geometry.get(key), lock.get(key)
+                if current_box is not None and master_box is not None and any(abs(float(a) - float(b)) > 2.0 for a, b in zip(current_box, master_box)):
+                    errors.append(issue)
+            try:
+                if _dot(_unit(locked_geometry["body_axis_world"], "body_axis_world"), _unit(lock["body_axis_world"], "master.body_axis_world")) < math.cos(math.radians(5.0)):
+                    errors.append("CYLINDER_AXIS_ROTATED_FROM_MASTER")
+                if abs(_dot(_unit(locked_geometry["handle_axis_world"], "handle_axis_world"), _unit(lock["handle_axis_world"], "master.handle_axis_world"))) < math.cos(math.radians(5.0)):
+                    errors.append("SIDE_HANDLE_AXIS_ROTATED_FROM_MASTER")
+                if math.dist(locked_geometry["base_center_world"], lock["base_center_world"]) > 0.02:
+                    errors.append("CYLINDER_BASE_WORLD_POSITION_CHANGED")
+                if math.dist(locked_geometry["outer_end_cap_center_world"], lock["outer_end_cap_center_world"]) > 0.02:
+                    errors.append("CYLINDER_OUTER_CAP_WORLD_POSITION_CHANGED")
+                if math.dist(locked_geometry["handle_attachment_world"], lock["handle_attachment_world"]) > 0.02:
+                    errors.append("SIDE_HANDLE_ATTACHMENT_WORLD_POSITION_CHANGED")
+            except (KeyError, TypeError, ValueError):
+                errors.append("MASTER_GEOMETRY_LOCK_VECTOR_INCOMPLETE")
+            if locked_geometry.get("cylinder_instance_id") != lock.get("cylinder_instance_id"):
+                errors.append("CYLINDER_INSTANCE_CHANGED_FROM_MASTER")
+            if locked_geometry.get("side_handle_track_id") != lock.get("side_handle_track_id"):
+                errors.append("SIDE_HANDLE_TRACK_CHANGED_FROM_MASTER")
+        else:
+            errors.append("CURRENT_GEOMETRY_LOCK_VECTOR_MISSING")
 
     spec = STAGE_SPECS[stage]
     if not isinstance(heroine, dict):
@@ -610,6 +692,7 @@ def validate_planted_bubble_frame(
         "cylinder_instance_id": cylinder_id,
         "side_handle_track_id": handle_id,
         "geometry_metrics": geometry_metrics,
+        "locked_geometry": locked_geometry,
         "errors": errors,
         "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
         "limitation": "The code checks exact raster binding and submitted geometry/review records. It does not itself recognize the objects or authenticate that the named reviewer/model saw the pixels.",
@@ -741,6 +824,7 @@ def run_planted_bubble_closed_loop(
     locked_p: tuple[float, float] | None = None
     cylinder_id: str | None = None
     handle_id: str | None = None
+    locked_geometry: dict[str, Any] | None = None
     block_status: str | None = None
 
     for stage in STAGE_ORDER:
@@ -796,6 +880,7 @@ def run_planted_bubble_closed_loop(
                     locked_contact_point_px=locked_p,
                     expected_cylinder_instance_id=cylinder_id,
                     expected_handle_track_id=handle_id,
+                    expected_locked_geometry=locked_geometry,
                 )
                 is_valid = bool(validation["eligible_for_next_stage"])
                 scores = _candidate_score(item)
@@ -854,6 +939,7 @@ def run_planted_bubble_closed_loop(
             locked_p = tuple(stage_validation["locked_contact_point_p_px"])  # type: ignore[assignment]
             cylinder_id = stage_validation["cylinder_instance_id"]
             handle_id = stage_validation["side_handle_track_id"]
+            locked_geometry = dict(stage_validation["locked_geometry"])
         parent_path = locked_path
         parent_sha = locked_sha
 
