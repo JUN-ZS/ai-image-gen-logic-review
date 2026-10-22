@@ -21,8 +21,8 @@ def evidence(**overrides):
         "face_center_a": [0.0, 0.0, 0.0],
         "face_center_b": [0.0, 0.0, 0.0],
         "contact_point": [0.0, 0.0, 0.0],
-        "contact_point_on_face_a": True,
-        "contact_point_on_face_b": True,
+        "face_radius_a": 0.02,
+        "face_radius_b": 0.02,
         "tool_a_present": True,
         "tool_b_present": True,
         "separate_handles": True,
@@ -62,10 +62,10 @@ class DualTHammerCollisionTests(unittest.TestCase):
         self.assertFalse(result["accepted"])
         self.assertTrue(any("zero gap" in e for e in result["errors"]))
 
-    def test_first_contact_point_must_belong_to_both_faces(self):
-        result = validate_collision_evidence(evidence(contact_point_on_face_b=False))
+    def test_first_contact_point_must_lie_inside_both_strike_face_disks(self):
+        result = validate_collision_evidence(evidence(contact_point=[0.0, 0.1, 0.0]))
         self.assertFalse(result["accepted"])
-        self.assertTrue(any("point P must lie on both strike faces" in e for e in result["errors"]))
+        self.assertTrue(any("outside a striking-face disk" in e for e in result["errors"]))
 
     def test_both_tools_and_separate_handles_are_required(self):
         result = validate_collision_evidence(evidence(tool_b_present=False, separate_handles=False))
@@ -74,8 +74,8 @@ class DualTHammerCollisionTests(unittest.TestCase):
         self.assertTrue(any("each hammer must retain its own distinct handle" in e for e in result["errors"]))
 
     def test_precontact_gap_windows_are_not_interchangeable_with_contact(self):
-        far = validate_collision_evidence(evidence(stage="PRE_FAR", contact_surface="NONE", signed_gap=100))
-        near = validate_collision_evidence(evidence(stage="PRE_NEAR", contact_surface="NONE", signed_gap=20))
+        far = validate_collision_evidence(evidence(stage="PRE_FAR", contact_surface="NONE", signed_gap=0.1))
+        near = validate_collision_evidence(evidence(stage="PRE_NEAR", contact_surface="NONE", signed_gap=0.02))
         touching_too_early = validate_collision_evidence(evidence(stage="PRE_NEAR", contact_surface="END_FACE_TO_END_FACE", signed_gap=0))
         self.assertTrue(far["accepted"], far["errors"])
         self.assertTrue(near["accepted"], near["errors"])
