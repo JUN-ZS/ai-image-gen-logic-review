@@ -1,0 +1,63 @@
+name: Dual T-Hammer Collision Contract
+
+on:
+  push:
+    branches: [main, 'feat/dual-t-hammer-collision-contract']
+    paths:
+      - 'bubble_break/dual_t_hammer_collision.py'
+      - 'bubble_break/test_dual_t_hammer_collision.py'
+      - 'bubble_break/raster_bound_collision_audit.py'
+      - 'bubble_break/test_raster_bound_collision_audit.py'
+      - '.github/workflows/dual-t-hammer-collision.yml'
+      - 'docs/DUAL_T_HAMMER_COLLISION_CONTRACT.md'
+  pull_request:
+    paths:
+      - 'bubble_break/dual_t_hammer_collision.py'
+      - 'bubble_break/test_dual_t_hammer_collision.py'
+      - 'bubble_break/raster_bound_collision_audit.py'
+      - 'bubble_break/test_raster_bound_collision_audit.py'
+      - '.github/workflows/dual-t-hammer-collision.yml'
+      - 'docs/DUAL_T_HAMMER_COLLISION_CONTRACT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dual-t-hammer-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow for raster-byte and annotation tests
+        run: python -m pip install --upgrade pip pillow
+      - name: Test dual-T collision contract and raster-bound evidence gate
+        run: |
+          python -m unittest bubble_break/test_dual_t_hammer_collision.py -v
+          python -m unittest bubble_break/test_raster_bound_collision_audit.py -v
+      - name: Compile independent multi-view prompt matrix (prompts only; no image generation)
+        run: python -m bubble_break.dual_t_hammer_collision --outdir out/dual_t_hammer_collision --camera-count 12
+      - name: Verify contract and honest generation/visual evidence status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          out = Path('out/dual_t_hammer_collision')
+          contract = json.loads((out / 'DUAL_T_HAMMER_COLLISION_CONTRACT.json').read_text(encoding='utf-8'))
+          manifest = json.loads((out / 'DUAL_T_HAMMER_PROMPT_MANIFEST.json').read_text(encoding='utf-8'))
+          assert contract['tool_a']['tool_id'] == 'HAMMER_A'
+          assert contract['tool_b']['tool_id'] == 'HAMMER_B'
+          assert contract['allowed_contact_surfaces'] == ['END_FACE_TO_END_FACE']
+          assert manifest['generation_backend_status'] == 'NOT_CONNECTED_BY_THIS_MODULE'
+          assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
+          assert manifest['generated_image_count'] == 0
+          print('Contract valid; image generation and visual acceptance correctly remain unverified.')
+          PY
+      - name: Upload dual-T collision prompt and geometry contract packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: dual-t-hammer-collision-contract-packet
+          path: out/dual_t_hammer_collision/
+          if-no-files-found: error
