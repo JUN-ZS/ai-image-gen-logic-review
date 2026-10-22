@@ -331,6 +331,23 @@ def _selection_errors(selection: Any) -> list[str]:
     return errors
 
 
+def load_master_selection_manifest(path: str | Path) -> dict[str, Any]:
+    """Load and verify the explicit human ROI selected from a source atlas."""
+    manifest_path = Path(path).resolve()
+    raw = json.loads(manifest_path.read_text(encoding="utf-8"))
+    selection = raw.get("master_selection", raw) if isinstance(raw, dict) else None
+    if not isinstance(selection, dict):
+        raise ValueError("master-selection manifest must be an object")
+    selection = dict(selection)
+    atlas_path = selection.get("source_atlas_image_path")
+    if isinstance(atlas_path, str) and not Path(atlas_path).is_absolute():
+        selection["source_atlas_image_path"] = str((manifest_path.parent / atlas_path).resolve())
+    errors = _selection_errors(selection)
+    if errors:
+        raise ValueError("invalid master-selection manifest: " + "; ".join(errors))
+    return selection
+
+
 def validate_planted_bubble_frame(
     image_path: str | Path,
     evidence: dict[str, Any] | None,
@@ -611,6 +628,7 @@ def compile_stage_request(
     locked_cylinder_instance_id: str | None,
     locked_handle_track_id: str | None,
     rejection_errors: Sequence[str] = (),
+    master_selection: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Encode one stage contract and the last verified parent/error vector for a generator wrapper."""
     if stage not in STAGE_SPECS:
@@ -627,6 +645,16 @@ def compile_stage_request(
         + f"LOCKED P={list(locked_contact_point_px) if locked_contact_point_px else 'SET_BY_ACCEPTED_MASTER'}. "
         + f"LOCKED CYLINDER ID={locked_cylinder_instance_id or 'SET_BY_ACCEPTED_MASTER'}; "
         + f"LOCKED HANDLE TRACK={locked_handle_track_id or 'SET_BY_ACCEPTED_MASTER'}. "
+        + (
+            "HUMAN SELECTED SOURCE ATLAS: "
+            + str(master_selection.get("source_atlas_image_path", ""))
+            + "; SOURCE SHA256=" + str(master_selection.get("source_atlas_raster_sha256", ""))
+            + "; ROI XYXY PX=" + str(master_selection.get("selected_roi_xyxy_px", ""))
+            + ". Use this explicit ROI, never a printed label alone. "
+            if stage == "B_LOCKED_TOOL_MASTER" and master_selection is not None else
+            ("BLOCKED: a human ROI master-selection manifest is required before Stage B generation. "
+             if stage == "B_LOCKED_TOOL_MASTER" else "")
+        )
         + "PRIOR FAILURE VECTOR=" + ("; ".join(sorted(set(rejection_errors))) if rejection_errors else "NONE") + ". "
         + "Return one independent full-frame raster and a raster-bound geometry annotation/review receipt. "
         + "If a lock conflicts with a requested change, preserve the lock and report the unmet change. "
@@ -643,6 +671,7 @@ def compile_stage_request(
         "locked_contact_point_p_px": list(locked_contact_point_px) if locked_contact_point_px else None,
         "locked_cylinder_instance_id": locked_cylinder_instance_id,
         "locked_handle_track_id": locked_handle_track_id,
+        "master_selection": dict(master_selection) if master_selection is not None else None,
         "authorized_delta_fields": list(spec["authorized_delta_fields"]),
         "must_preserve": list(spec["must_preserve"]),
         "global_locks": list(GLOBAL_LOCKS),
@@ -683,6 +712,7 @@ def run_planted_bubble_closed_loop(
     candidate_batches: Mapping[str, CandidateBatch] | None = None,
     rerun_provider: RerunProvider | None = None,
     max_retries: int = 2,
+    master_selection: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Run B -> C -> D1 -> D2 -> D3 -> E-mid -> E-end without passing a failed frame.
 
@@ -694,6 +724,13 @@ def run_planted_bubble_closed_loop(
     root = Path(outdir).resolve()
     root.mkdir(parents=True, exist_ok=True)
     batches = candidate_batches or {}
+    configured_selection: Mapping[str, Any] | None = master_selection
+    if configured_selection is None:
+        seed_candidates = list(batches.get("B_LOCKED_TOOL_MASTER", []))
+        if seed_candidates:
+            seed_selection = seed_candidates[0].evidence.get("master_selection")
+            if isinstance(seed_selection, dict):
+                configured_selection = seed_selection
     attempt_log: list[dict[str, Any]] = []
     accepted_stages: dict[str, dict[str, Any]] = {}
     total_reruns = 0
@@ -716,6 +753,10 @@ def run_planted_bubble_closed_loop(
             if attempt_round > 0 or not stage_candidates:
                 if rerun_provider is None:
                     break
+                if stage == "B_LOCKED_TOOL_MASTER" and configured_selection is None:
+                    rejection_vector = sorted(set(rejection_vector + ["HUMAN_MASTER_SELECTION_REQUIRED"]))
+                    block_status = "BLOCKED_HUMAN_MASTER_SELECTION_REQUIRED"
+                    break
                 request = compile_stage_request(
                     stage,
                     attempt_round=attempt_round,
@@ -726,6 +767,7 @@ def run_planted_bubble_closed_loop(
                     locked_cylinder_instance_id=cylinder_id,
                     locked_handle_track_id=handle_id,
                     rejection_errors=rejection_vector,
+                    master_selection=configured_selection,
                 )
                 request_dir = root / "provider_requests" / f"{stage}_R{attempt_round:02d}"
                 request_dir.mkdir(parents=True, exist_ok=True)
@@ -927,6 +969,10 @@ def command_provider(command: str, *, base_cwd: Path | None = None) -> RerunProv
                 evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
             else:
                 continue
+            if str(request.get("stage", "")).upper() == "B_LOCKED_TOOL_MASTER" and not isinstance(evidence.get("master_selection"), dict):
+                selection = request.get("master_selection")
+                if isinstance(selection, dict):
+                    evidence["master_selection"] = dict(selection)
             selection = evidence.get("master_selection")
             if isinstance(selection, dict) and isinstance(selection.get("source_atlas_image_path"), str):
                 atlas_path = Path(selection["source_atlas_image_path"])
@@ -980,6 +1026,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--outdir", type=Path, default=Path("out/shannon_planted_bubble"))
     parser.add_argument("--candidate-manifest", type=Path, default=None)
+    parser.add_argument("--master-selection-json", type=Path, default=None,
+                        help="required for provider-generated Stage B unless the candidate manifest already embeds a human ROI selection")
     parser.add_argument("--provider-command", type=str, default=None,
                         help="optional external command wrapper; this repository does not bundle a generator")
     parser.add_argument("--max-retries", type=int, default=2)
@@ -1001,11 +1049,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         batches = load_candidate_manifest(args.candidate_manifest) if args.candidate_manifest else {}
         provider = command_provider(args.provider_command) if args.provider_command else None
+        selection = load_master_selection_manifest(args.master_selection_json) if args.master_selection_json else None
         report = run_planted_bubble_closed_loop(
             args.outdir,
             candidate_batches=batches,
             rerun_provider=provider,
             max_retries=args.max_retries,
+            master_selection=selection,
         )
     except (OSError, ValueError, json.JSONDecodeError, RuntimeError) as exc:
         print(f"BLOCK: {exc}", file=sys.stderr)
