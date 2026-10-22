@@ -148,10 +148,11 @@ def build_matrix(outdir: Path) -> Dict[str, Any]:
                 "variant_id": variant_id,
                 "status": "UNASSESSED",
                 "image": f"{variant_id}/{image_path.name}",
+                "image_sha256": "",
                 "manual_pixel_review": False,
                 "checks": {name: False for name in REVIEW_CHECKS},
                 "notes": "",
-                "warning": "Do not set PASS unless a human has inspected the actual H2 PNG and every face-plane check is visibly true.",
+                "warning": "After placing the generated PNG at the exact image path, copy its SHA-256 into image_sha256. Do not set PASS unless a human inspected those exact image bytes and every face-plane check is visibly true.",
             }
             review_template_path.write_text(json.dumps(review_template, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             state_files = {}
@@ -281,21 +282,32 @@ def png_is_present_and_plausible(path: Path) -> bool:
     return len(data) >= 33 and data.startswith(bytes([137, 80, 78, 71, 13, 10, 26, 10])) and data[12:16] == b"IHDR"
 
 
+def sha256_file(path: Path) -> str:
+    """Return the digest of the exact image bytes that a review record must identify."""
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def validate_master_review(image_path: Path, review_path: Path) -> Dict[str, Any]:
-    """Check a real T-master PNG plus a complete explicit human review record."""
+    """Check a real T-master PNG plus a human review bound to the exact image bytes."""
     issues = []
-    if not png_is_present_and_plausible(image_path):
+    image_valid = png_is_present_and_plausible(image_path)
+    if not image_valid:
         issues.append("MISSING_OR_INVALID_MASTER_PNG")
+    image_sha256 = sha256_file(image_path) if image_valid else None
     review = None
     try:
         review = json.loads(review_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         issues.append("MISSING_OR_INVALID_MASTER_REVIEW_JSON")
-    if review is not None and not master_review_payload_passes(review):
-        issues.append("MASTER_REVIEW_NOT_COMPLETE_PASS")
+    if review is not None:
+        if image_sha256 is not None and review.get("image_sha256") != image_sha256:
+            issues.append("MASTER_REVIEW_IMAGE_SHA256_MISMATCH")
+        if not master_review_payload_passes(review):
+            issues.append("MASTER_REVIEW_NOT_COMPLETE_PASS")
     return {
         "status": "PASS_MANUAL_REVIEW_RECORDED" if not issues else ("FAIL_MANUAL_REVIEW" if review and review.get("status") == "FAIL" else "BLOCKED"),
         "image_path": str(image_path),
+        "image_sha256": image_sha256,
         "review_path": str(review_path),
         "issues": issues,
     }
@@ -311,8 +323,10 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
         image_path = outdir / variant["required_H2_image"]
         review_path = outdir / variant["required_H2_review"]
         issues = []
-        if not png_is_present_and_plausible(image_path):
+        image_valid = png_is_present_and_plausible(image_path)
+        if not image_valid:
             issues.append("MISSING_OR_INVALID_H2_PNG")
+        image_sha256 = sha256_file(image_path) if image_valid else None
         review = None
         try:
             review = json.loads(review_path.read_text(encoding="utf-8"))
@@ -321,6 +335,8 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
         if review is not None:
             if review.get("variant_id") != variant["variant_id"]:
                 issues.append("REVIEW_VARIANT_ID_MISMATCH")
+            if image_sha256 is not None and review.get("image_sha256") != image_sha256:
+                issues.append("REVIEW_IMAGE_SHA256_MISMATCH")
             if not review_payload_passes(review):
                 issues.append("REVIEW_NOT_COMPLETE_PASS")
         if not issues:
@@ -333,6 +349,7 @@ def validate_matrix(outdir: Path) -> Dict[str, Any]:
             "variant_id": variant["variant_id"],
             "status": status,
             "image_path": str(image_path),
+            "image_sha256": image_sha256,
             "review_path": str(review_path),
             "issues": issues,
         })
