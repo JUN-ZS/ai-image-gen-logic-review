@@ -1,0 +1,55 @@
+name: Shannon Planted Bubble Continuity Gate
+
+on:
+  push:
+    branches: ['fix/shannon-planted-bubble-closed-loop-20261022']
+    paths:
+      - 'bubble_break/planted_bubble_closed_loop.py'
+      - 'bubble_break/test_planted_bubble_closed_loop.py'
+      - '.github/workflows/shannon-planted-bubble-closed-loop.yml'
+      - 'docs/SHANNON_PLANTED_BUBBLE_CONTINUITY_AUDIT.md'
+  pull_request:
+    paths:
+      - 'bubble_break/planted_bubble_closed_loop.py'
+      - 'bubble_break/test_planted_bubble_closed_loop.py'
+      - '.github/workflows/shannon-planted-bubble-closed-loop.yml'
+      - 'docs/SHANNON_PLANTED_BUBBLE_CONTINUITY_AUDIT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  continuity-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install raster library
+        run: python -m pip install --upgrade pip pillow
+      - name: Run planted-bubble geometry, continuity, mask and closed-loop tests
+        run: python -m unittest bubble_break/test_planted_bubble_closed_loop.py -v
+      - name: Compile seven stage prompt packet without claiming image generation
+        run: |
+          python -m bubble_break.planted_bubble_closed_loop --compile-only --outdir out/shannon_planted_bubble_prompt_packet
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('out/shannon_planted_bubble_prompt_packet')
+          manifest = json.loads((root / 'SHANNON_PLANTED_BUBBLE_PROMPT_PACKET.json').read_text(encoding='utf-8'))
+          assert len(manifest['stages']) == 7
+          assert manifest['image_realization'] == 'NOT_RUN_BY_PROMPT_COMPILER'
+          assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED_BY_CODE'
+          assert 'D2_FIRST_GRIP_EXISTING_HANDLE' in manifest['stages']
+          assert 'E_END_SHELL_SHATTER_FROM_P' in manifest['stages']
+          print('Seven-stage contract compiled; no raster generation or visual acceptance is claimed.')
+          PY
+      - name: Upload prompt packet and contract manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: shannon-planted-bubble-prompt-contract
+          path: out/shannon_planted_bubble_prompt_packet/
+          if-no-files-found: error
+          retention-days: 7
