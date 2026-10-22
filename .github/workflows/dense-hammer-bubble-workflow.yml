@@ -2,7 +2,7 @@ name: Dense Hammer Bubble Selection Workflow
 
 on:
   push:
-    branches: [main, 'feat/**']
+    branches: [main, 'feat/**', 'fix/**']
     paths:
       - 'bubble_break/DENSE_HAMMER_BUBBLE_SELECTION_WORKFLOW.md'
       - 'bubble_break/dense_hammer_bubble_workflow.py'
