@@ -208,7 +208,7 @@ def sha256_file(path: str | Path) -> str:
     return digest.hexdigest()
 
 
-def background_landmarks_sha256(image_path: str | Path, border_fraction: float = 0.02) -> str:
+def compute_background_landmarks_sha256(image_path: str | Path, border_fraction: float = 0.02) -> str:
     """Hash a narrow, lossless RGB border used as a stable scene/camera background landmark."""
     if not 0.005 <= border_fraction <= 0.10:
         raise ValueError("border_fraction must be between 0.005 and 0.10")
@@ -245,10 +245,11 @@ def authorized_pixel_delta(parent_path: str | Path, child_path: str | Path, edit
         return {"passed": False, "status": "BLOCK_DIMENSION_MISMATCH", "changed_editable_pixels": None}
     mask = mask.point(lambda value: 255 if value >= 128 else 0)
     diff = ImageChops.difference(parent, child).convert("L")
-    editable = sum(1 for y in range(parent.height) for x in range(parent.width) if mask.getpixel((x, y)) > 0)
-    changed = sum(1 for y in range(parent.height) for x in range(parent.width) if mask.getpixel((x, y)) > 0 and diff.getpixel((x, y)) != 0)
-    return {"passed": changed > 0, "status": "PASS_AUTHORIZED_PIXEL_DELTA" if changed > 0 else "BLOCK_NO_AUTHORIZED_PIXEL_DELTA",
-            "changed_editable_pixels": changed, "editable_pixels": editable}
+    changed = ImageChops.multiply(diff, mask)
+    changed_count = sum(changed.histogram()[1:])
+    editable_count = mask.histogram()[255]
+    return {"passed": changed_count > 0, "status": "PASS_AUTHORIZED_PIXEL_DELTA" if changed_count > 0 else "BLOCK_NO_AUTHORIZED_PIXEL_DELTA",
+            "changed_editable_pixels": changed_count, "editable_pixels": editable_count}
 
 
 def compose_masked_edit(parent_path: str | Path, generated_path: str | Path, edit_mask_path: str | Path, output_path: str | Path) -> str:
@@ -281,9 +282,9 @@ def validate_frozen_pixels(parent_path: str | Path, child_path: str | Path, edit
     mask = mask.point(lambda value: 255 if value >= 128 else 0)
     frozen = mask.point(lambda value: 255 - value)
     difference = ImageChops.difference(parent, child).convert("L")
-    mismatch = sum(1 for y in range(parent.height) for x in range(parent.width)
-                   if frozen.getpixel((x, y)) > 0 and difference.getpixel((x, y)) != 0)
-    frozen_count = sum(1 for y in range(parent.height) for x in range(parent.width) if frozen.getpixel((x, y)) > 0)
+    frozen_difference = ImageChops.multiply(difference, frozen)
+    mismatch = sum(frozen_difference.histogram()[1:])
+    frozen_count = frozen.histogram()[255]
     return {"passed": mismatch == 0,
             "status": "PASS_FROZEN_PIXELS_IDENTICAL" if mismatch == 0 else "BLOCK_FROZEN_PIXEL_DRIFT",
             "outside_edit_mismatch_pixels": mismatch, "outside_edit_pixels": frozen_count,
@@ -541,7 +542,7 @@ def validate_planted_bubble_frame(
         errors.append("CAMERA_VIEW_FINGERPRINT_MISSING")
     if not isinstance(background_landmarks_sha256, str) or len(background_landmarks_sha256) != 64 or any(ch not in "0123456789abcdef" for ch in background_landmarks_sha256.lower()):
         errors.append("BACKGROUND_LANDMARKS_SHA256_MISSING_OR_INVALID")
-    raster_background_sha = background_landmarks_sha256_fn = background_landmarks_sha256(path)
+    raster_background_sha = compute_background_landmarks_sha256(path)
     if background_landmarks_sha256 != raster_background_sha:
         errors.append("BACKGROUND_LANDMARK_FINGERPRINT_MISMATCH")
     scene_lock = {"scene_id": scene_id, "camera_rig_id": camera_rig_id,
