@@ -115,6 +115,7 @@ jobs:
         with:
           name: planted-double-ended-round-hammer-prompt-packet
           path: |
+            out/dual_t_hammer_collision/
             out/planted_hammer_*/
             out/autonomous_ci_run/
           if-no-files-found: error
