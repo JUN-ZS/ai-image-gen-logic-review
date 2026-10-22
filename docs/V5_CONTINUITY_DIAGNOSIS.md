@@ -133,3 +133,21 @@ Z
 
 
 Gemini 是 AI，有時可能會出錯。
+
+---
+
+## 2026-10-22：程式碼核驗修正（以實際實作為準）
+
+上文的根因假說有可用部分，但「NCC 高即跨幀無縫」「從 D3 逆推即可保留 100% 拓撲」「自動連續生成」這些表述必須收窄。逐行檢查程式後，確認以下差距：
+
+1. **此 Python 程式沒有呼叫圖像生成器。** 它會讀取外部提供的候選 raster、執行 Gate，並在 FAIL 時寫出 repair prompt 檔案；repair prompt 沒有被程式提交給模型重跑。未提供候選圖時，舊版會使用 Pillow 畫出的合成 raster，這只能測試程式門檻，不能當成出圖成功證據。
+2. **PRE_NEAR 舊版不是從 PRE_FAR 真正推演出來的。** synthesize_connected_pre_near_frame 用 D3 作畫布，遮暗接觸光，並把球的部分區域向右移 42 px；傳入的 PRE_FAR 影像實際沒有參與像素合成。這可能形成可見接縫，不能稱為真正的時間插值，也沒有證明 PRE_FAR → PRE_NEAR 連貫。
+3. **Gate #9 是粗粒度警報，不是整張圖的連貫證明。** 它只量固定左側 ROI，縮到 16×16 灰階計算 NCC；舊版在沒有 parent path 時會略過此 Gate。高 NCC 不能證明人物身份、泡泡幾何、槌柄接點、裂紋起點或故事因果一致。
+4. **舊版候選選擇不是在 PASS 集合中選最佳。** 它遇到第一張 PASS 就 break；若一階段所有候選都 FAIL，仍可能將最高分的 FAIL 圖留在 canonical sequence 並繼續。
+5. **目前這個 v5 分支沒有整合 Original Sin 因果故事編譯器。** 它能鎖槌、角色、泡殼接觸和效果，但沒有把「制度承諾 → 隱藏機制 → 人的代價 → 證據 → 主角發現 → 破除機制 → 居民自選」作為跨幀狀態輸入。因此幾何更穩定，不會自動變得有創意或有因果的故事。
+
+### 修正分支的實際改動
+
+分支 fix/v5-continuity-evidence-gates 現在要求正式執行必須提供真實候選 raster 與 PRE_FAR、PRE_NEAR；合成畫面只允許以 --synthetic-test-mode 跑軟體測試。Gate #9 缺少 parent 就 FAIL；候選完整評估後才選最高分 PASS；整階段沒有 PASS 就 BLOCK，不再把 FAIL 傳下去。五個 keyframes 的相鄰對會另存「靜態背景區域」檢查，但這仍不是人物身份／故事連貫證明。Manifest 和 contact strips 會顯示 evidence mode、圖像後端連線狀態及人工驗收狀態。
+
+**未解決項目仍要明示：**此程式目前仍未連接任何圖像生成後端；repair prompt 尚未真的自動 rerun；背景 NCC 亦不能代替真實圖像的人眼像素驗收。真正的 v5.1 下一步應接上可重試的圖像生成 adapter，為每張圖帶入母圖與局部 edit mask，再對每一幀同時驗證固定場景、人物身份、武器拓撲、接觸狀態及故事狀態。
