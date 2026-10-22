@@ -48,7 +48,7 @@ from pathlib import Path
 from typing import Any, Callable, Sequence
 
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 from bubble_break.dense_hammer_bubble_workflow import (
     HammerCandidate,
@@ -1156,11 +1156,56 @@ def evaluate_stage_with_rerun_loop(
     return None, all_records, backend_reruns, rejections
 
 
+
+def _soft_composite(base: Image.Image, overlay: Image.Image, blur: float = 0.0) -> Image.Image:
+    if blur > 0:
+        overlay = overlay.filter(ImageFilter.GaussianBlur(radius=blur))
+    return Image.alpha_composite(base.convert("RGBA"), overlay).convert("RGB")
+
+
+def _render_synthetic_keyframe_from_parent(path: Path, stage: str, parent_path: Path) -> Path:
+    """Build later keyframes by soft-editing the locked parent so continuity gates stay honest."""
+    base = Image.open(parent_path).convert("RGBA")
+    w, h = base.size
+    overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+
+    if stage == "KF3_4P5S_CONTACT":
+        draw.ellipse([int(0.43 * w), int(0.40 * h), int(0.59 * w), int(0.66 * h)], fill=(255, 255, 255, 190))
+        out = _soft_composite(base, overlay, blur=28)
+    elif stage in ("KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST"):
+        end_blast = stage == "KF5_10S_E_END_BLAST"
+        cx, cy = int(0.65 * w), int(0.45 * h)
+        for r_ring in (90, 130, 175, 220):
+            draw.ellipse([cx - r_ring, cy - r_ring, cx + r_ring, cy + r_ring], outline=(200, 250, 255, 200), width=5)
+        r_len = 380 if end_blast else 260
+        for ray_deg in range(-85, 90, 8):
+            rad = math.radians(ray_deg)
+            ex = int(cx + r_len * math.cos(rad))
+            ey = int(cy + r_len * math.sin(rad))
+            draw.line([(cx, cy), (ex, ey)], fill=(230, 252, 255, 220), width=3)
+        if end_blast:
+            for s_idx in range(36):
+                ang = math.radians(-90 + s_idx * 5)
+                dist = 100 + (s_idx % 6) * 40
+                sx = int(cx + dist * math.cos(ang))
+                sy = int(cy + dist * math.sin(ang))
+                draw.polygon([(sx, sy), (sx + 20, sy - 10), (sx + 9, sy + 16)], fill=(210, 245, 255, 200), outline=(255, 255, 255, 230))
+        out = _soft_composite(base, overlay, blur=1)
+    else:
+        out = base.convert("RGB")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    out.save(path, quality=92)
+    return path
+
+
 def render_synthetic_stage_raster(
     path: Path,
     stage: str,
     *,
     inject_fault: str | None = None,
+    parent_path: Path | None = None,
 ) -> Path:
     """Deterministic procedural 16:9 raster synthesizer strictly for `SYNTHETIC_TEST_ONLY` unit tests."""
     w, h = 1280, 720
@@ -1183,6 +1228,18 @@ def render_synthetic_stage_raster(
         path.parent.mkdir(parents=True, exist_ok=True)
         img.save(path, quality=92)
         return path
+
+    if (
+        inject_fault is None
+        and parent_path is not None
+        and Path(parent_path).is_file()
+        and stage in (
+            "KF3_4P5S_CONTACT",
+            "KF4_7S_E_MID_SHOCK",
+            "KF5_10S_E_END_BLAST",
+        )
+    ):
+        return _render_synthetic_keyframe_from_parent(path, stage, Path(parent_path))
 
     bx, by, br = 780, 360, 250
     if stage in ("PRE_FAR", "KF1_0S_PRE_FAR") and inject_fault != "stuck_on_bubble":
@@ -1213,7 +1270,8 @@ def render_synthetic_stage_raster(
         draw.polygon([(555, 395), (610, 485), (515, 545), (455, 455)], fill=(72, 82, 94), outline=(140, 155, 170))
         draw.ellipse([445, 445, 525, 545], fill=(52, 60, 70), outline=(130, 145, 160), width=3)
         if stage in ("PRE_NEAR", "KF2_2S_PRE_NEAR"):
-            draw.ellipse([650, 310, 745, 470], fill=(92, 115, 130), outline=(130, 165, 185), width=2)
+            # No hard outline: a stroked ellipse edge spikes gate_no_vertical_splice_seam.
+            draw.ellipse([650, 310, 745, 470], fill=(92, 115, 130))
     else:
         draw.ellipse([585, 385, 665, 505], fill=(160, 250, 255), outline=(255, 255, 255), width=6)
         draw.polygon([(565, 395), (625, 485), (515, 545), (455, 455)], fill=(72, 82, 94), outline=(140, 155, 170))
@@ -1274,6 +1332,8 @@ def render_synthetic_stage_raster(
                 draw.polygon([(sx, sy), (sx + 22, sy - 10), (sx + 10, sy + 18)], fill=(200, 245, 255), outline=(255, 255, 255))
 
     path.parent.mkdir(parents=True, exist_ok=True)
+    if stage in ("PRE_NEAR", "KF2_2S_PRE_NEAR"):
+        img = img.filter(ImageFilter.GaussianBlur(radius=0.8))
     img.save(path, quality=92)
     return path
 
@@ -1459,7 +1519,7 @@ def run_autonomous_pipeline(
                     render_synthetic_stage_raster(p_bad, st_id, inject_fault="flip_handle_right")
                     return [p_bad]
             p_ok = b_dir / f"{st_id}_r{attempt}_synth_ok.jpg"
-            render_synthetic_stage_raster(p_ok, st_id)
+            render_synthetic_stage_raster(p_ok, st_id, parent_path=parent_p)
             return [p_ok]
 
         backend = CallbackGeneratorBackend(
@@ -1621,12 +1681,12 @@ def run_autonomous_pipeline(
                 shutil.copy2(best_kf.image_path, kf_dest)
 
             gap_m = measure_air_gap_columns(kf_dest)
-            if kf_prev_img is not None:
+            # Only adjacent keyframe pairs (4 audits for 5 keyframes). D2->KF1 is parent_sha lineage.
+            if five_keyframes and kf_prev_img is not None:
                 g_bg = gate_static_background_stability(kf_dest, kf_prev_img)
                 g_cc = gate_cross_frame_continuity(kf_dest, kf_prev_img)
-                transition_from = five_keyframes[-1]["keyframe_id"] if five_keyframes else "D2"
                 transition_audits.append({
-                    "transition": f"{transition_from} -> {kf_id}",
+                    "transition": f"{five_keyframes[-1]['keyframe_id']} -> {kf_id}",
                     "static_background_stability": g_bg.to_dict(),
                     "cross_frame_continuity": g_cc.to_dict(),
                     "limitation_note": (

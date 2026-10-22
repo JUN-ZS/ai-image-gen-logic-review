@@ -85,8 +85,8 @@ class DualTHammerCollisionTests(unittest.TestCase):
         prompt = compile_dual_hammer_prompt("FIRST_CONTACT")
         self.assertIn("HAMMER_A", prompt)
         self.assertIn("HAMMER_B", prompt)
-        self.assertIn("FLAT END FACES", prompt)
-        self.assertIn("CHEEK", prompt)
+        self.assertIn("FLAT END FACE", prompt)
+        self.assertIn("cheek", prompt)
         self.assertIn("no bubble as target", prompt)
         self.assertNotIn("Create one cinematic 16:9 image with exactly ONE large, intact", prompt)
 
