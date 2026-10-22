@@ -23,6 +23,14 @@ from typing import Any, Callable, Mapping, Sequence
 
 from PIL import Image
 
+from bubble_break.planted_bubble_closed_loop import (
+    authorized_pixel_delta,
+    background_landmarks_sha256,
+    compose_masked_edit,
+    sha256_file as pipeline_sha256_file,
+    validate_frozen_pixels,
+)
+
 DEFAULT_API_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
 DEFAULT_IMAGE_MODEL = "gemini-nano-banana-2.1"
 DEFAULT_REVIEW_MODEL = "gemini-3.8-flash"
@@ -120,6 +128,7 @@ def _build_review_schema() -> dict[str, Any]:
     nullable_point2 = {"type": ["array", "null"], "items": {"type": "number"}}
     nullable_string = {"type": ["string", "null"]}
     nullable_bbox = {"type": ["array", "null"], "items": {"type": "number"}}
+    nullable_long_string = {"type": ["string", "null"]}
     string = {"type": "string"}
     boolean = {"type": "boolean"}
     number = {"type": "number"}
@@ -164,10 +173,12 @@ def _build_review_schema() -> dict[str, Any]:
             "present": boolean,
             "bbox_xyxy_px": nullable_bbox,
             "scale_class": nullable_string,
+            "identity_id": nullable_string,
+            "pose_signature": nullable_long_string,
             "gripping_handle_track_id": nullable_string,
             "both_hands_on_existing_handle": boolean,
         },
-        "required": ["present", "bbox_xyxy_px", "scale_class", "gripping_handle_track_id", "both_hands_on_existing_handle"],
+        "required": ["present", "bbox_xyxy_px", "scale_class", "identity_id", "pose_signature", "gripping_handle_track_id", "both_hands_on_existing_handle"],
     }
     shell = {
         "type": "object",
@@ -180,10 +191,13 @@ def _build_review_schema() -> dict[str, Any]:
             "inhabitants_unharmed": boolean,
             "shell_only_breach": boolean,
             "crack_origin_px": nullable_point2,
+            "crack_rays_radial_from_P": boolean,
+            "fragments_propagate_outward_from_P": boolean,
         },
         "required": [
             "state", "crack_state", "base_glow_on_conformal_seat", "base_glow_origin_px",
             "sanctuary_state", "inhabitants_unharmed", "shell_only_breach", "crack_origin_px",
+            "crack_rays_radial_from_P", "fragments_propagate_outward_from_P",
         ],
     }
     return {
@@ -191,6 +205,9 @@ def _build_review_schema() -> dict[str, Any]:
         "properties": {
             "decision": {"type": "string", "enum": ["PASS", "FAIL"]},
             "notes": string,
+            "scene_id": string,
+            "camera_rig_id": string,
+            "camera_view_fingerprint": string,
             "creativity_score": number,
             "novelty_score": number,
             "raster_annotations": {
@@ -215,7 +232,7 @@ def _build_review_schema() -> dict[str, Any]:
                 ],
             },
         },
-        "required": ["decision", "notes", "creativity_score", "novelty_score", "raster_annotations"],
+        "required": ["decision", "notes", "scene_id", "camera_rig_id", "camera_view_fingerprint", "creativity_score", "novelty_score", "raster_annotations"],
     }
 
 
@@ -436,6 +453,12 @@ class GeminiPlantedBubbleProvider:
             "Always report the cylinder/head, bubble center/radius, P, side handle and sanctuary boxes/axes. "
             "For B/C/D1/D2/D3 crack_origin_px must be null and shell crack_state NONE; for E-mid report "
             "CRACKING_NOT_SHATTERED and RADIAL_FROM_P; for E-end report SHATTERED and SHATTERED_OUTWARD_FROM_P. "
+            "Also set crack_rays_radial_from_P=true only when the visible rays genuinely spread outward from the same P; "
+            "set fragments_propagate_outward_from_P=true at E-end only when visible shell fragments travel outward from P. "
+            "For D1/D2/D3, identity_id must track the same heroine and pose_signature must describe the actual visible pose, not copy the stage name. "
+            "For child stages copy the exact scene_id, camera_rig_id and camera_view_fingerprint from parent_scene_identity in the request; if the raster visibly changes camera/view, set decision FAIL. "
+            "For B, establish stable non-empty scene_id, camera_rig_id and camera_view_fingerprint values for this shot. "
+            "The code calculates background_landmarks_sha256 from the final raster's protected edge pixels; do not invent that hash. "
             "base_glow_origin_px must be the visible conformal-seat glow. sanctuary_state is INTACT; "
             "inhabitants_unharmed must be true only when all visible residents are unharmed; uncertainty or visible harm "
             "must produce decision FAIL. In D2 and later, only the same existing side handle is allowed as the grip target. "
@@ -455,8 +478,20 @@ class GeminiPlantedBubbleProvider:
         if reviewed.get("decision") not in {"PASS", "FAIL"}:
             reviewed["decision"] = "FAIL"
             reviewed["notes"] = str(reviewed.get("notes", "")) + " Reviewer omitted a valid PASS/FAIL decision; fail-closed."
-        # Software binds the model's visual observations to exact file bytes; it never changes FAIL to PASS.
+        # Child stages must preserve scene/camera identity; never silently accept a viewpoint reset.
+        parent_identity = request.get("parent_scene_identity") if stage != "B_LOCKED_TOOL_MASTER" else None
+        if stage != "B_LOCKED_TOOL_MASTER":
+            if not isinstance(parent_identity, dict):
+                reviewed["decision"] = "FAIL"
+                reviewed["notes"] = str(reviewed.get("notes", "")) + " Missing parent scene/camera identity; continuity cannot be proven."
+            else:
+                for key in ("scene_id", "camera_rig_id", "camera_view_fingerprint"):
+                    if reviewed.get(key) != parent_identity.get(key):
+                        reviewed["decision"] = "FAIL"
+                        reviewed["notes"] = str(reviewed.get("notes", "")) + f" {key} differs from the accepted parent; camera/scene continuity FAIL."
+        # Software binds the model's visual observations to exact final raster bytes; it never changes FAIL to PASS.
         digest = sha256_file(raster)
+        bg_digest = background_landmarks_sha256(raster)
         parent_sha = request.get("parent_raster_sha256")
         anchor_sha = digest if stage == "B_LOCKED_TOOL_MASTER" else request.get("scene_anchor_raster_sha256")
         evidence = {
@@ -466,6 +501,10 @@ class GeminiPlantedBubbleProvider:
             "raster_sha256": digest,
             "parent_raster_sha256": parent_sha,
             "scene_anchor_raster_sha256": anchor_sha,
+            "scene_id": str((parent_identity or {}).get("scene_id")) if parent_identity else str(reviewed.get("scene_id", "")).strip(),
+            "camera_rig_id": str((parent_identity or {}).get("camera_rig_id")) if parent_identity else str(reviewed.get("camera_rig_id", "")).strip(),
+            "camera_view_fingerprint": str((parent_identity or {}).get("camera_view_fingerprint")) if parent_identity else str(reviewed.get("camera_view_fingerprint", "")).strip(),
+            "background_landmarks_sha256": bg_digest,
             "raster_annotations": reviewed.get("raster_annotations"),
             "review": {
                 "decision": reviewed["decision"],
@@ -484,6 +523,9 @@ class GeminiPlantedBubbleProvider:
         }
         if stage == "B_LOCKED_TOOL_MASTER":
             evidence["master_selection"] = dict(request["master_selection"])
+        else:
+            evidence["edit_mask_path"] = str(Path(request["edit_mask_path"]).resolve())
+            evidence["edit_mask_parent_sha256"] = request.get("mask_provenance_parent_sha256")
         (request_dir / "semantic_review.json").write_text(json.dumps({
             "review_model": self.review_model,
             "decision": reviewed["decision"],
@@ -499,7 +541,34 @@ class GeminiPlantedBubbleProvider:
         if stage not in STAGE_ORDER:
             raise ValueError(f"unsupported planted-cylinder stage: {stage!r}")
         generated = self._generate(request, stage, request_dir)
-        evidence = self._review(request, stage, generated, request_dir)
+        final_raster = generated
+        if stage != "B_LOCKED_TOOL_MASTER":
+            parent_path = self._resolve(request.get("parent_image_path"), request_dir, "last accepted parent raster")
+            edit_mask = self._resolve(request.get("edit_mask_path"), request_dir, "authorized edit mask")
+            freeze_mask = self._resolve(request.get("freeze_mask_path"), request_dir, "protected freeze mask")
+            if parent_path is None or edit_mask is None or freeze_mask is None:
+                raise ValueError(f"{stage} requires a parent raster and both masks")
+            parent_sha = request.get("parent_raster_sha256")
+            if not parent_sha or pipeline_sha256_file(parent_path) != parent_sha:
+                raise ValueError("parent raster SHA-256 mismatch before mask compositing")
+            if request.get("mask_provenance_parent_sha256") != parent_sha:
+                raise ValueError("mask provenance does not match the last accepted parent")
+            with Image.open(edit_mask) as e_im, Image.open(freeze_mask) as f_im:
+                edit_values = e_im.convert("L")
+                freeze_values = f_im.convert("L")
+                if edit_values.size != freeze_values.size:
+                    raise ValueError("edit/freeze mask dimensions differ")
+                if ImageChops.difference(edit_values.point(lambda v: 255 if v >= 128 else 0), freeze_values.point(lambda v: 255 if v >= 128 else 0).point(lambda v: 255-v)).getbbox():
+                    raise ValueError("edit/freeze masks are not exact complements")
+            final_raster = request_dir / f"final_{stage}_attempt_{int(request.get('attempt_round', 0)):02d}.png"
+            compose_masked_edit(parent_path, generated, edit_mask, final_raster)
+            frozen_audit = validate_frozen_pixels(parent_path, final_raster, edit_mask)
+            if not frozen_audit.get("passed", False):
+                raise ValueError(f"unauthorized pixel drift after composition: {frozen_audit}")
+            delta_audit = authorized_pixel_delta(parent_path, final_raster, edit_mask)
+            if not delta_audit.get("passed", False):
+                raise ValueError(f"generated child contains no authorized pixel change: {delta_audit}")
+        evidence = self._review(request, stage, final_raster, request_dir)
         # The caller's command_provider accepts {"image": path, "evidence": object}.
         return_json_path = request_dir / "candidate_response.json"
         return_json_path.write_text(json.dumps({
