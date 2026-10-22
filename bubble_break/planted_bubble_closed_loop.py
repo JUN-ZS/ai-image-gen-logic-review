@@ -29,7 +29,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 CONTRACT_ID = "PLANTED_DOUBLE_ENDED_CYLINDER_BUBBLE_CONTACT_V1"
@@ -700,6 +700,117 @@ def validate_planted_bubble_frame(
 
 
 
+def build_stage_masks(
+    parent_image_path: str | Path,
+    parent_evidence: Mapping[str, Any],
+    stage: str,
+    outdir: str | Path,
+) -> dict[str, str]:
+    """Build complementary binary masks from the last accepted frame's reviewed geometry annotations.
+
+    White in edit_mask.png means editable; white in freeze_mask.png means protected.
+    These are conservative ROI masks, not segmentation. The raster-bound gate remains
+    authoritative after generation because masks alone cannot guarantee pixel invariance.
+    """
+    if stage not in STAGE_SPECS:
+        raise ValueError(f"Unknown mask stage {stage!r}")
+    path = Path(parent_image_path)
+    ann = parent_evidence.get("raster_annotations")
+    if not path.is_file() or not isinstance(ann, dict):
+        raise ValueError("mask construction requires a real accepted parent raster and its annotations")
+    with Image.open(path) as source:
+        width, height = source.size
+    bubble = ann.get("bubble", {})
+    cylinder = ann.get("planted_cylinder", {})
+    handle = cylinder.get("side_handle", {}) if isinstance(cylinder, dict) else {}
+    heroine = ann.get("heroine", {})
+    shell = ann.get("shell", {})
+    cx, cy = _point2(bubble.get("center_px"), "bubble.center_px")
+    radius = float(bubble.get("radius_px"))
+    if not math.isfinite(radius) or radius <= 0:
+        raise ValueError("mask parent bubble radius is invalid")
+    cylinder_box = _valid_bbox(cylinder.get("body_bbox_xyxy_px"), "planted_cylinder.body_bbox_xyxy_px", width, height)
+    handle_box = _valid_bbox(handle.get("bbox_xyxy_px"), "side_handle.bbox_xyxy_px", width, height)
+    sanctuary_box = _valid_bbox(ann.get("sanctuary_bbox_xyxy_px"), "sanctuary_bbox_xyxy_px", width, height)
+    edit = Image.new("L", (width, height), 0)
+    draw = ImageDraw.Draw(edit)
+
+    def rect(box: Sequence[float], pad: float = 0.0) -> tuple[int, int, int, int]:
+        x0, y0, x1, y1 = [float(v) for v in box]
+        return (
+            max(0, int(math.floor(x0 - pad))),
+            max(0, int(math.floor(y0 - pad))),
+            min(width - 1, int(math.ceil(x1 + pad))),
+            min(height - 1, int(math.ceil(y1 + pad))),
+        )
+
+    def protect(box: Sequence[float], pad: float = 0.0) -> None:
+        draw.rectangle(rect(box, pad), fill=0)
+
+    if stage == "C_PERSON_SCALE_NO_GRIP":
+        # Add the miniature heroine in the left/lower scene region, not inside the bubble.
+        draw.rectangle((0, int(height * 0.12), int(width * 0.56), int(height * 0.97)), fill=255)
+        draw.ellipse((int(cx-radius), int(cy-radius), int(cx+radius), int(cy+radius)), fill=0)
+        protect(sanctuary_box, 2)
+        protect(cylinder_box, 5)
+        protect(handle_box, 4)
+    elif stage in ("D1_APPROACH_NO_GRIP", "D3_TENSION_EXISTING_HANDLE"):
+        hero_box = heroine.get("bbox_xyxy_px") if isinstance(heroine, dict) else None
+        if not isinstance(hero_box, (list, tuple)) or len(hero_box) != 4:
+            raise ValueError(f"{stage} mask requires the parent heroine bbox")
+        x0, y0, x1, y1 = [float(v) for v in hero_box]
+        pad_x = max(12.0, (x1 - x0) * 0.40)
+        pad_y = max(12.0, (y1 - y0) * 0.30)
+        draw.rectangle(rect((x0, y0, x1, y1), max(pad_x, pad_y)), fill=255)
+        # Preserve all non-actor objects, especially the tool and the existing handle.
+        protect(cylinder_box, 5)
+        protect(handle_box, 3)
+        protect(sanctuary_box, 2)
+    elif stage == "D2_FIRST_GRIP_EXISTING_HANDLE":
+        hero_box = heroine.get("bbox_xyxy_px") if isinstance(heroine, dict) else None
+        if not isinstance(hero_box, (list, tuple)) or len(hero_box) != 4:
+            raise ValueError("D2 mask requires the parent heroine bbox")
+        x0, y0, x1, y1 = [float(v) for v in hero_box]
+        hx0, hy0, hx1, hy1 = [float(v) for v in handle_box]
+        union = (min(x0, hx0), min(y0, hy0), max(x1, hx1), max(y1, hy1))
+        pad = max(16.0, (y1 - y0) * 0.15)
+        draw.rectangle(rect(union, pad), fill=255)
+        # The handle may be temporarily under the fingers, but the cylinder itself is frozen;
+        # its bbox, handle track, axis and world attachment are checked after generation.
+        protect(cylinder_box, 5)
+        protect(sanctuary_box, 2)
+    elif stage in ("E_MID_GLOW_CRACKS_FROM_P", "E_END_SHELL_SHATTER_FROM_P"):
+        # Edit the shell annulus and outward shatter zone, not the sanctuary.
+        outer_radius = radius * (1.40 if stage == "E_END_SHELL_SHATTER_FROM_P" else 1.05)
+        inner_radius = radius * 0.72
+        draw.ellipse((cx-outer_radius, cy-outer_radius, cx+outer_radius, cy+outer_radius), fill=255)
+        draw.ellipse((cx-inner_radius, cy-inner_radius, cx+inner_radius, cy+inner_radius), fill=0)
+        # Open a small shell-local window around P for glow/crack growth without unfreezing the tool's body.
+        px, py = _point2(ann.get("contact_point_p_px"), "contact_point_p_px")
+        p_radius = max(5.0, radius * 0.08)
+        draw.ellipse((px-p_radius, py-p_radius, px+p_radius, py+p_radius), fill=255)
+        protect(cylinder_box, 2)
+        protect(handle_box, 2)
+        protect(sanctuary_box, 2)
+    else:
+        raise ValueError(f"{stage} does not have a parent-image mask stage")
+
+    freeze = Image.eval(edit, lambda value: 255 - value)
+    root = Path(outdir)
+    root.mkdir(parents=True, exist_ok=True)
+    edit_path = root / "edit_mask.png"
+    freeze_path = root / "freeze_mask.png"
+    edit.save(edit_path)
+    freeze.save(freeze_path)
+    return {
+        "edit_mask_path": str(edit_path.resolve()),
+        "freeze_mask_path": str(freeze_path.resolve()),
+        "mask_convention": "edit_mask white=editable; freeze_mask white=protected",
+        "mask_provenance_parent_sha256": sha256_file(path),
+        "mask_status": "BUILT_FROM_ACCEPTED_PARENT_ANNOTATIONS_NOT_SEGMENTATION",
+    }
+
+
 def compile_stage_request(
     stage: str,
     *,
@@ -712,11 +823,18 @@ def compile_stage_request(
     locked_handle_track_id: str | None,
     rejection_errors: Sequence[str] = (),
     master_selection: Mapping[str, Any] | None = None,
+    parent_evidence: Mapping[str, Any] | None = None,
+    mask_output_dir: str | Path | None = None,
 ) -> dict[str, Any]:
     """Encode one stage contract and the last verified parent/error vector for a generator wrapper."""
     if stage not in STAGE_SPECS:
         raise ValueError(f"Unknown stage {stage!r}")
     spec = STAGE_SPECS[stage]
+    mask_info: dict[str, str] = {}
+    if stage != "B_LOCKED_TOOL_MASTER" and parent_image_path is not None:
+        if parent_evidence is None or mask_output_dir is None:
+            raise ValueError(f"{stage} requires parent_evidence and mask_output_dir to build protected edit masks")
+        mask_info = build_stage_masks(parent_image_path, parent_evidence, stage, mask_output_dir)
     prompt = (
         f"CONTRACT={CONTRACT_ID}; CONTRACT_SHA256={contract_fingerprint()}; STAGE={stage}. "
         + "GLOBAL LOCKS: " + " | ".join(GLOBAL_LOCKS) + " "
@@ -755,6 +873,8 @@ def compile_stage_request(
         "locked_cylinder_instance_id": locked_cylinder_instance_id,
         "locked_handle_track_id": locked_handle_track_id,
         "master_selection": dict(master_selection) if master_selection is not None else None,
+        "parent_geometry_annotation": dict(parent_evidence.get("raster_annotations", {})) if parent_evidence is not None else None,
+        **mask_info,
         "authorized_delta_fields": list(spec["authorized_delta_fields"]),
         "must_preserve": list(spec["must_preserve"]),
         "global_locks": list(GLOBAL_LOCKS),
@@ -825,6 +945,7 @@ def run_planted_bubble_closed_loop(
     cylinder_id: str | None = None
     handle_id: str | None = None
     locked_geometry: dict[str, Any] | None = None
+    parent_evidence: dict[str, Any] | None = None
     block_status: str | None = None
 
     for stage in STAGE_ORDER:
@@ -841,6 +962,8 @@ def run_planted_bubble_closed_loop(
                     rejection_vector = sorted(set(rejection_vector + ["HUMAN_MASTER_SELECTION_REQUIRED"]))
                     block_status = "BLOCKED_HUMAN_MASTER_SELECTION_REQUIRED"
                     break
+                request_dir = root / "provider_requests" / f"{stage}_R{attempt_round:02d}"
+                request_dir.mkdir(parents=True, exist_ok=True)
                 request = compile_stage_request(
                     stage,
                     attempt_round=attempt_round,
@@ -852,9 +975,9 @@ def run_planted_bubble_closed_loop(
                     locked_handle_track_id=handle_id,
                     rejection_errors=rejection_vector,
                     master_selection=configured_selection,
+                    parent_evidence=parent_evidence,
+                    mask_output_dir=request_dir / "masks",
                 )
-                request_dir = root / "provider_requests" / f"{stage}_R{attempt_round:02d}"
-                request_dir.mkdir(parents=True, exist_ok=True)
                 request_path = request_dir / "request.json"
                 request_path.write_text(json.dumps(request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
                 total_reruns += 1
@@ -942,6 +1065,7 @@ def run_planted_bubble_closed_loop(
             locked_geometry = dict(stage_validation["locked_geometry"])
         parent_path = locked_path
         parent_sha = locked_sha
+        parent_evidence = dict(stage_accepted.evidence)
 
     all_passed = len(accepted_stages) == len(STAGE_ORDER) and block_status is None
     report = {
