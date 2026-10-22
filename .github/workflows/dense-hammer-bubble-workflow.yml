@@ -2,14 +2,13 @@ name: Dense Hammer Bubble Selection Workflow
 
 on:
   push:
-    branches: [main, 'feat/**']
+    branches: [main, 'feat/**', 'fix/**']
     paths:
       - 'bubble_break/DENSE_HAMMER_BUBBLE_SELECTION_WORKFLOW.md'
       - 'bubble_break/dense_hammer_bubble_workflow.py'
       - 'bubble_break/stage_d_gates.py'
       - 'bubble_break/autonomous_pipeline.py'
       - 'bubble_break/test_dense_hammer_bubble_workflow.py'
-      - 'bubble_break/test_stage_d_gates.py'
       - 'bubble_break/test_autonomous_pipeline.py'
       - '.github/workflows/dense-hammer-bubble-workflow.yml'
   pull_request:
@@ -19,7 +18,6 @@ on:
       - 'bubble_break/stage_d_gates.py'
       - 'bubble_break/autonomous_pipeline.py'
       - 'bubble_break/test_dense_hammer_bubble_workflow.py'
-      - 'bubble_break/test_stage_d_gates.py'
       - 'bubble_break/test_autonomous_pipeline.py'
       - '.github/workflows/dense-hammer-bubble-workflow.yml'
   workflow_dispatch:
@@ -40,14 +38,13 @@ jobs:
       - name: Test planted-head geometry, lateral handle, ratios, pixel gates and autonomous pipeline
         run: |
           python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
-          python -m unittest bubble_break/test_stage_d_gates.py -v
           python -m unittest bubble_break/test_autonomous_pipeline.py -v
       - name: Compile Stage-A planted hammer atlas prompt
-        run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/planted_hammer_atlas
+        run: python -m bubble_break.dense_hammer_bubble_workflow --outdir out/planted_hammer_atlas
       - name: Compile auto-selected C13 stages B to E (zero-touch)
-        run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/planted_hammer_auto --auto-select --bubble-scale 1.0 --hammer-scale 1.0 --person-to-hammer-scale 1.0
-      - name: Run autonomous self-auditing pipeline with fault-injection & auto-rollback verification
-        run: python -m bubble_break.autonomous_pipeline --outdir out/autonomous_ci_run --simulate-fault-injection
+        run: python -m bubble_break.dense_hammer_bubble_workflow --outdir out/planted_hammer_auto --auto-select --bubble-scale 1.0 --hammer-scale 1.0 --person-to-hammer-scale 1.0
+      - name: Run synthetic-only continuity contract tests (never visual acceptance)
+        run: python -m bubble_break.autonomous_pipeline --outdir out/autonomous_ci_run --synthetic-test-mode --simulate-fault-injection
       - name: Verify planted double-ended topology, autonomous selection gating and self-healing audit
         run: |
           python - <<'PY'
@@ -67,21 +64,27 @@ jobs:
           assert 'side-middle' in a['topology']['handle']
 
           assert b['selected_candidate_id'] == 'C13'
-          assert b['selection_mode'] == 'AUTO_RANKED_LOCK'
+          assert b['auto_selection_ranking_top5'], 'auto-selection ranking evidence missing'
           assert b['scale_changes']['person_to_hammer_scale'] == 1.0
           for name in (
               'stage_b_one_hammer_no_person.md',
               'stage_c_scale_and_add_person.md',
               'stage_d_action_refinement.md',
-              'stage_d3_serial_wash_prompts.md',
+              'stage_d3_serial_wash_prompts.json',
               'stage_e_glow_bubble_break.md',
           ):
               assert (selected / name).is_file(), name
 
-          assert r['all_stages_passed'] is True
+          assert r['all_stages_passed'] is False
+          assert r['all_contract_gates_passed'] is True
+          assert r['evidence_mode'] == 'SYNTHETIC_TEST_ONLY'
+          assert r['visual_acceptance_status'] == 'NOT_VERIFIED_HUMAN_REVIEW_REQUIRED'
+          assert r['generation_backend_status'] == 'NOT_CONNECTED_BY_THIS_SCRIPT'
+          assert len(r['keyframe_transition_audits']) == 4
+          assert all(g['name'] == 'static_background_continuity' for g in r['keyframe_transition_audits'])
           assert r['selected_candidate_id'] == 'C13'
           assert r['auto_rejections_and_rollbacks'] >= 2
-          print('Autonomous C13 selection, 1:1 person:hammer lock, and self-healing pixel audit verified.')
+          print('Synthetic contract gates pass; real-image acceptance and generation remain NOT_RUN.')
           PY
       - name: Upload formula prompts, manifest, and autonomous audit packet
         uses: actions/upload-artifact@v4

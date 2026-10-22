@@ -1,32 +1,16 @@
 #!/usr/bin/env python3
-"""Autonomous Closed-Loop Sequential Image Generation, Topology Lock & Cross-Frame Continuity Engine (v5).
+"""V5 raster-candidate auditor for hammer/bubble continuity.
 
-Solves the two core root causes identified in `STAGE_FAILURE_SUCCESS_REWRITE_LOG.md` (`半成HAM.txt`)
-and diffusion spatial-conditioning literature:
+This module checks supplied candidate rasters and writes audit/repair-prompt records.
+It does NOT call an image-generation model. A passing software test or automated gate
+is not a human visual acceptance. Procedural raster generation is test-only, and a real
+run must supply the seven canonical stage candidate groups plus real PRE_FAR/PRE_NEAR
+rasters. A real per-stage generation/rerun adapter remains unconnected.
 
-1. WHY "FULL SERIAL" FAILS TO CONNECT (`全串行斷鏈問題`) & THE FIX:
-   - Mixing branching exploration trials (Zoom-In/Out, competing D3 washes, or unplanted pre-frames)
-     into a linear chain destroys frame-to-frame pixel registration (`NCC` drops from `>0.85` to `<0.20`).
-   - Fix:
-     a) Separate the **Canonical Planted Spine (`A -> B0_ROI_4X -> B3 -> D0 -> D1 -> D2 -> D3 -> E_MID -> E_END`)**
-        from **Star-Topology Candidate Washes (`D2 -> {S1..Sn} -> pick 1 winner`)**.
-     b) Enforce **Gate #9 (`gate_cross_frame_continuity`)** on every post-B spine transition:
-        computes Normalized Cross-Correlation (`NCC >= 0.80`) and luminance stability (`luma_diff <= 15.0`)
-        in the locked left hammer+handle anchor zone against the parent PASS frame. Any frame where the
-        model re-layouts the scene (e.g. rear-view flip `NCC=-0.18`, factory background jump `NCC=+0.11`,
-        or scale jump `NCC=+0.11`) is AUTOMATICALLY REJECTED!
-
-2. WHY "TOPOLOGY" BREAKS ON ISOLATION / GRIP / FAR PRE-FRAME (`拓撲崩潰問題`) & THE FIX:
-   - Diffusion models have a dominant pre-trained prior (`Hammer = Coaxial End-Cap Sledgehammer`).
-   - The `C13` 90° side-middle handle topology only survives when the cylinder's inner circular face is
-     **pinned to the bubble's outward normal Z' by the glowing base contact ring**.
-   - When detached in `PRE_FAR (0s 遠距蓄力)` or `PRE_NEAR (2s 近泡)`, the Z' normal anchor vanishes
-     and unmasked diffusion collapses the cylinder into an axial sledgehammer (`492e`) or horizontal pipe (`1474`).
-   - Fix:
-     a) Lock the planted spine `B3 -> D1 -> D2 -> D3` first (with `Stage B0 4x ROI Zoom` + `D1/D2 micro-step split`).
-     b) Derive `PRE_FAR (0s)` and `PRE_NEAR (2s)` **backward from the locked `D3` anchor (`4.5s`)** via
-        Rigid-Body Spatial Mask Back-Projection (`build_connected_5keyframe_trilogy`), preserving 100% of
-        the `C13` XYZ orthogonal cross topology while opening the pre-contact time-axis air gap along `-n`.
+Gate #9 is only a coarse grayscale ROI correlation check; the separate keyframe gate
+checks thin static-background margins only. Neither alone proves subject identity,
+full-scene pixel continuity, narrative continuity, or video interpolation. The five
+keyframes must be inspected as actual images before claiming a visually connected result.
 """
 from __future__ import annotations
 
@@ -81,6 +65,15 @@ AUTONOMOUS_STAGE_SEQUENCE: tuple[str, ...] = (
     "E_END",
 )
 
+# Thin image margins are used only as a coarse static-background continuity check.
+# They do NOT prove character identity, story continuity, or pixel-perfect topology.
+STATIC_BACKGROUND_ROIS: tuple[tuple[float, float, float, float], ...] = (
+    # Top edge plus narrow left/right margins avoid the central sphere and E_END shards.
+    (0.00, 0.00, 1.00, 0.045),
+    (0.00, 0.08, 0.025, 0.92),
+    (0.975, 0.08, 1.00, 0.92),
+)
+
 
 @dataclass
 class CandidateAttemptRecord:
@@ -112,6 +105,11 @@ class AutonomousPipelineReport:
     attempt_history: list[dict[str, Any]]
     five_keyframe_trilogy: list[dict[str, Any]]
     video_transition_manifest: list[dict[str, Any]]
+    evidence_mode: str = "PROVIDED_RASTER_CANDIDATES"
+    all_contract_gates_passed: bool = False
+    visual_acceptance_status: str = "NOT_VERIFIED_HUMAN_REVIEW_REQUIRED"
+    generation_backend_status: str = "NOT_CONNECTED_BY_THIS_SCRIPT"
+    keyframe_transition_audits: list[dict[str, Any]] = field(default_factory=list)
     summary_board_path: str | None = None
     trilogy_strip_path: str | None = None
 
@@ -201,6 +199,76 @@ def gate_cross_frame_continuity(
             )
         ),
         metrics={"ncc": ncc, "luma_diff": luma_diff},
+    )
+
+
+def gate_static_background_continuity(
+    image_path: Path,
+    parent_image_path: Path | None,
+    *,
+    rois: tuple[tuple[float, float, float, float], ...] = STATIC_BACKGROUND_ROIS,
+    min_similarity: float = 0.78,
+    max_mean_luma_diff: float = 18.0,
+) -> GateResult:
+    """Coarse static-background check across keyframes, not a semantic continuity proof.
+
+    The tested strips intentionally avoid the central action area. Low-texture strips use
+    normalized absolute luminance difference instead of pretending a flat patch has a
+    meaningful NCC score. Object continuity still needs the separate geometry gates and
+    human visual review.
+    """
+    if parent_image_path is None or not parent_image_path.is_file():
+        return GateResult(
+            name="static_background_continuity",
+            passed=False,
+            detail="FAIL: missing parent raster for keyframe background comparison",
+        )
+    parent = np.asarray(
+        Image.open(parent_image_path).convert("RGB").resize((640, 360)), dtype=np.float32
+    ).mean(axis=2)
+    child = np.asarray(
+        Image.open(image_path).convert("RGB").resize((640, 360)), dtype=np.float32
+    ).mean(axis=2)
+    similarities: list[float] = []
+    luma_diffs: list[float] = []
+    for x0f, y0f, x1f, y1f in rois:
+        h, w = parent.shape
+        x0, y0 = int(x0f * w), int(y0f * h)
+        x1, y1 = max(x0 + 1, int(x1f * w)), max(y0 + 1, int(y1f * h))
+        p = parent[y0:y1, x0:x1]
+        q = child[y0:y1, x0:x1]
+        luma_diff = float(np.mean(np.abs(p - q)))
+        luma_diffs.append(luma_diff)
+        if float(p.std()) < 2.0 and float(q.std()) < 2.0:
+            similarity = max(0.0, 1.0 - luma_diff / 255.0)
+        else:
+            pc, qc = p - p.mean(), q - q.mean()
+            denom = float(np.sqrt((pc * pc).mean() * (qc * qc).mean())) + 1e-8
+            ncc = float((pc * qc).mean() / denom)
+            similarity = max(0.0, min(1.0, (ncc + 1.0) / 2.0))
+        similarities.append(similarity)
+    worst_similarity = min(similarities, default=0.0)
+    mean_luma_diff = float(np.mean(luma_diffs)) if luma_diffs else 255.0
+    passed = worst_similarity >= min_similarity and mean_luma_diff <= max_mean_luma_diff
+    return GateResult(
+        name="static_background_continuity",
+        passed=passed,
+        detail=(
+            f"PASS: outer-frame background strips remain similar "
+            f"(worst_similarity={worst_similarity:.3f}, mean_luma_diff={mean_luma_diff:.1f}); "
+            "this does not certify subject identity or motion continuity"
+            if passed else
+            f"FAIL: scene/background jump (worst_similarity={worst_similarity:.3f} < "
+            f"{min_similarity:.2f} or mean_luma_diff={mean_luma_diff:.1f} > "
+            f"{max_mean_luma_diff:.1f})"
+        ),
+        metrics={
+            "roi_similarity": similarities,
+            "roi_luma_diff": luma_diffs,
+            "worst_similarity": worst_similarity,
+            "mean_luma_diff": mean_luma_diff,
+            "scope": "STATIC_BACKGROUND_ONLY_NOT_SEMANTIC_CONTINUITY",
+        },
     )
 
 
@@ -417,7 +485,8 @@ def audit_candidate_frame(
                 )
             )
             # Gate #9: Cross-frame pixel continuity check against parent frame!
-            if parent_image_path is not None and stage in ("D1", "D2", "D3", "E_MID", "E_END"):
+            if stage in ("D1", "D2", "D3", "E_MID", "E_END"):
+                # Missing parent is a hard FAIL: never silently omit Gate #9.
                 gates.append(gate_cross_frame_continuity(image_path, parent_image_path, r["continuity_anchor_roi"]))
 
         cap_roi = r["h0_outer_cap_exterior_roi"] if stage in ("PRE_FAR", "PRE_NEAR", "D3_H0_PRE_CONTACT") else r["outer_cap_roi"]
@@ -503,13 +572,11 @@ def synthesize_connected_pre_near_frame(
     d3_contact_path: Path,
     out_path: Path,
 ) -> Path:
-    """Synthesize a topology-locked `t=2.0s PRE_NEAR` frame bridging `0s PRE_FAR` and `4.5s D3_CONTACT`.
+    """Create a deterministic synthetic fixture for unit tests only.
 
-    Why needed (as proven in `STAGE_FAILURE_SUCCESS_REWRITE_LOG.md` Taxonomy #8):
-    Chaining a second diffusion hop from an unplanted `PRE_FAR` frame loses the Z' normal anchor
-    and collapses the cylinder horizontally onto the floor (`1474610...`). Instead, we interpolate
-    the rigid hammer+warrior assembly on the left from `D3_CONTACT` and the approaching intact
-    bubble on the right so `0s -> 2s -> 4.5s` maintains 100% XYZ cross topology and continuity.
+    This is a hand-composited raster, not image-model generation, not interpolation, and
+    not evidence of continuity. Production runs must supply a separately rendered PRE_NEAR
+    candidate; using this helper for production is forbidden.
     """
     far_img = Image.open(pre_far_path).convert("RGB")
     d3_img = Image.open(d3_contact_path).convert("RGB")
@@ -657,10 +724,15 @@ def create_audit_contact_board(
     cell_w, cell_h = 540, 340
     board = Image.new("RGB", (cols * cell_w, rows * cell_h + 70), (14, 18, 24))
     draw = ImageDraw.Draw(board)
+    evidence_label = (
+        "SYNTHETIC TEST ONLY — NOT IMAGE VALIDATION"
+        if report.evidence_mode == "SYNTHETIC_TEST_ONLY"
+        else "AUTOMATED CANDIDATE GATES — HUMAN VISUAL REVIEW REQUIRED"
+    )
     draw.text(
         (24, 20),
-        f"v5 CANONICAL SPINE + CROSS-FRAME CONTINUITY LOCK — CANDIDATE {report.selected_candidate_id} "
-        f"(PASSED {report.passed_stages}/{report.total_stages} | "
+        f"{evidence_label} | CANDIDATE {report.selected_candidate_id} "
+        f"(CONTRACT-GATE STAGES {report.passed_stages}/{report.total_stages} | "
         f"AUTO-REJECTS: {report.auto_rejections_and_rollbacks})",
         fill=(130, 245, 255),
     )
@@ -686,15 +758,22 @@ def create_audit_contact_board(
 def create_five_keyframe_trilogy_strip(
     five_keyframes: list[dict[str, Any]],
     out_path: Path,
+    *,
+    evidence_mode: str = "UNKNOWN",
 ) -> Path:
-    """Render the continuous 10-second 5-Keyframe Trilogy Filmstrip (`0s -> 2s -> 4.5s -> 7s -> 10s`)."""
+    """Render a five-keyframe contact strip; the title states the evidence scope explicitly."""
     cell_w, cell_h = 440, 290
     cols = len(five_keyframes)
     strip = Image.new("RGB", (cols * cell_w, cell_h + 64), (10, 14, 20))
     draw = ImageDraw.Draw(strip)
+    title = (
+        "SYNTHETIC TEST ONLY — NOT VISUAL ACCEPTANCE"
+        if evidence_mode == "SYNTHETIC_TEST_ONLY"
+        else "CANDIDATE RASTER STRIP — AUTOMATED CHECKS ONLY; HUMAN REVIEW REQUIRED"
+    )
     draw.text(
         (20, 18),
-        "CONTINUOUS 10s FIVE-KEYFRAME TIMELINE (0s PRE_FAR -> 2s PRE_NEAR -> 4.5s CONTACT -> 7s E_MID -> 10s E_END)",
+        title + " | 0s PRE_FAR -> 2s PRE_NEAR -> 4.5s CONTACT -> 7s E_MID -> 10s E_END",
         fill=(130, 245, 255),
     )
     for idx, kf in enumerate(five_keyframes):
@@ -718,7 +797,7 @@ def build_video_transition_manifest(
     five_keyframes: list[dict[str, Any]],
     candidate_id: str,
 ) -> list[dict[str, Any]]:
-    """Build the 10-second continuous First-to-Last Frame (首尾幀) video transition manifest."""
+    """Build proposed transition records only; this function does not render or validate a video."""
     transitions: list[dict[str, Any]] = []
     for i in range(len(five_keyframes) - 1):
         k_from, k_to = five_keyframes[i], five_keyframes[i + 1]
@@ -737,9 +816,10 @@ def build_video_transition_manifest(
             "duration_sec": round(float(k_to["time_sec"]) - float(k_from["time_sec"]), 2),
             "motion_bucket_id": 127,
             "transition_prompt": (
-                f"Continuous {k_from['time_sec']}s->{k_to['time_sec']}s interpolation ({k_from['label_zh']} -> {k_to['label_zh']}); "
+                f"Proposed {k_from['time_sec']}s->{k_to['time_sec']}s interpolation ({k_from['label_zh']} -> {k_to['label_zh']}); "
                 f"keep C13 radial dark-steel cylinder, 100% bare lower-left circular cap, and upper-left 90° straight rod locked."
             ),
+            "validation_status": "PROMPT_ONLY_NOT_INTERPOLATED_OR_VISUALLY_VALIDATED",
         })
     return transitions
 
@@ -749,10 +829,39 @@ def run_autonomous_pipeline(
     *,
     stage_candidates_map: dict[str, Sequence[Path]] | None = None,
     pre_far_candidate: Path | None = None,
+    pre_near_candidate: Path | None = None,
     simulate_fault_injection: bool = False,
+    synthetic_test_mode: bool = False,
 ) -> AutonomousPipelineReport:
-    """Execute the v5 Canonical Spine + Cross-Frame Continuity Lock + 5-Keyframe Trilogy Engine."""
+    """Audit supplied raster candidates. This function does not call an image model.
+
+    By default, real candidate rasters for every required stage plus PRE_FAR and PRE_NEAR
+    must be supplied. Procedural rasters are allowed only when synthetic_test_mode=True;
+    such a run can pass software contract tests but can never be reported as visual acceptance.
+    """
     outdir.mkdir(parents=True, exist_ok=True)
+    if simulate_fault_injection and not synthetic_test_mode:
+        raise ValueError("simulate_fault_injection is permitted only in synthetic_test_mode")
+    if not synthetic_test_mode:
+        if not stage_candidates_map:
+            raise ValueError(
+                "BLOCK: real raster candidates are required; this script has no connected image-generation backend. "
+                "Supply --candidates-json with A/B/D1/D2/D3/E_MID/E_END candidates."
+            )
+        required_stages = ("A", "B", "D1", "D2", "D3", "E_MID", "E_END")
+        missing = [stage for stage in required_stages if not stage_candidates_map.get(stage)]
+        if missing:
+            raise ValueError(f"BLOCK: missing real candidate rasters for stages: {', '.join(missing)}")
+        missing_files = [
+            str(path) for stage in required_stages for path in stage_candidates_map[stage]
+            if not Path(path).is_file()
+        ]
+        if missing_files:
+            raise ValueError("BLOCK: candidate raster file(s) do not exist: " + ", ".join(missing_files))
+        if pre_far_candidate is None or not Path(pre_far_candidate).is_file():
+            raise ValueError("BLOCK: supply a real PRE_FAR raster; synthetic fallback is forbidden")
+        if pre_near_candidate is None or not Path(pre_near_candidate).is_file():
+            raise ValueError("BLOCK: supply a real PRE_NEAR raster; the code-composited fixture is test-only")
     rasters_dir = outdir / "rasters"
     gates_dir = outdir / "gates"
     rasters_dir.mkdir(parents=True, exist_ok=True)
@@ -806,7 +915,7 @@ def run_autonomous_pipeline(
         stage_files: list[Path] = []
         if stage_candidates_map and stage in stage_candidates_map:
             stage_files = [Path(p) for p in stage_candidates_map[stage]]
-        else:
+        elif synthetic_test_mode:
             if simulate_fault_injection and stage == "D2":
                 bad_p = rasters_dir / f"{stage}_attempt01_fault_outer_shaft.jpg"
                 render_synthetic_stage_raster(bad_p, stage, inject_fault="outer_end_shaft")
@@ -819,11 +928,18 @@ def run_autonomous_pipeline(
                 bad_p = rasters_dir / f"{stage}_attempt01_fault_flipped_handle.jpg"
                 render_synthetic_stage_raster(bad_p, stage, inject_fault="flip_handle_right")
                 stage_files.append(bad_p)
-            good_p = rasters_dir / f"{stage}_canonical.jpg"
+            good_p = rasters_dir / f"{stage}_canonical_synthetic_test_only.jpg"
             render_synthetic_stage_raster(good_p, stage)
             stage_files.append(good_p)
+        else:
+            raise ValueError(
+                f"BLOCK: no real candidate raster list supplied for stage {stage}; refusing synthetic PASS fallback"
+            )
+        if not stage_files:
+            raise ValueError(f"BLOCK: empty raster candidate list for stage {stage}")
 
         stage_passed = False
+        passing_attempts: list[CandidateAttemptRecord] = []
         best_attempt: CandidateAttemptRecord | None = None
         elevation = "k=3_FULL_PROGRAM_LOCK"
         d_step = stage_to_canonical_d_step(stage)
@@ -867,13 +983,29 @@ def run_autonomous_pipeline(
                 encoding="utf-8",
             )
             if passed:
-                best_attempt = rec
-                stage_passed = True
-                break
+                passing_attempts.append(rec)
             if best_attempt is None or rec.quality_score > best_attempt.quality_score:
                 best_attempt = rec
 
-        assert best_attempt is not None
+        # Evaluate the whole candidate wash. Choose the highest-scoring PASS, not merely
+        # the first PASS. A failed-only stage is BLOCKED and must not feed later stages.
+        if not passing_attempts:
+            blocked = {
+                "status": "BLOCKED_NO_PASSING_CANDIDATE",
+                "stage": stage,
+                "parent_sha256": prev_sha,
+                "candidate_attempts": [x for x in attempt_history if x["stage"] == stage],
+                "generation_backend_status": "NOT_CONNECTED_BY_THIS_SCRIPT",
+                "visual_acceptance_status": "NOT_VERIFIED_HUMAN_REVIEW_REQUIRED",
+            }
+            (gates_dir / f"BLOCKED_{stage}.json").write_text(
+                json.dumps(blocked, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+            )
+            raise RuntimeError(
+                f"BLOCK: every supplied candidate failed gates for {stage}; see {gates_dir / f'BLOCKED_{stage}.json'}"
+            )
+        best_attempt = max(passing_attempts, key=lambda item: item.quality_score)
+        stage_passed = True
         locked_dest = rasters_dir / f"LOCKED_{stage}_{winner.candidate_id}.jpg"
         if Path(best_attempt.image_path).resolve() != locked_dest.resolve():
             shutil.copy2(best_attempt.image_path, locked_dest)
@@ -893,18 +1025,45 @@ def run_autonomous_pipeline(
             prev_sha = best_attempt.sha256
             prev_image_path = locked_dest
 
-    # Build the 10-second 5-Keyframe Trilogy (`0s PRE_FAR -> 2s PRE_NEAR -> 4.5s D3 -> 7s E_MID -> 10s E_END`)
-    # derived backward and forward from the locked D3 anchor as documented in `半成HAM.txt`!
+    # Build the 10-second 5-Keyframe Trilogy from five actual/declared raster states.
+    # Production must supply both pre-contact states. The image-composited PRE_NEAR helper
+    # is allowed only as a synthetic unit-test fixture and is never called for real runs.
     d3_locked_path = Path(canonical_sequence["D3"]["image_path"])
-    if pre_far_candidate and pre_far_candidate.is_file():
-        pre_far_dest = rasters_dir / f"LOCKED_KF1_0S_PRE_FAR_{winner.candidate_id}.jpg"
-        shutil.copy2(pre_far_candidate, pre_far_dest)
-    else:
-        pre_far_dest = rasters_dir / f"LOCKED_KF1_0S_PRE_FAR_{winner.candidate_id}.jpg"
-        render_synthetic_stage_raster(pre_far_dest, "PRE_FAR")
-
+    pre_far_dest = rasters_dir / f"LOCKED_KF1_0S_PRE_FAR_{winner.candidate_id}.jpg"
     pre_near_dest = rasters_dir / f"LOCKED_KF2_2S_PRE_NEAR_{winner.candidate_id}.jpg"
-    synthesize_connected_pre_near_frame(pre_far_dest, d3_locked_path, pre_near_dest)
+    if pre_far_candidate and Path(pre_far_candidate).is_file():
+        shutil.copy2(pre_far_candidate, pre_far_dest)
+    elif synthetic_test_mode:
+        render_synthetic_stage_raster(pre_far_dest, "PRE_FAR")
+    else:
+        raise ValueError("BLOCK: missing real PRE_FAR input")
+
+    if pre_near_candidate and Path(pre_near_candidate).is_file():
+        shutil.copy2(pre_near_candidate, pre_near_dest)
+    elif synthetic_test_mode:
+        synthesize_connected_pre_near_frame(pre_far_dest, d3_locked_path, pre_near_dest)
+    else:
+        raise ValueError("BLOCK: missing real PRE_NEAR input")
+
+    # Validate each pre-contact state, not just the planted contact spine.
+    pre_far_passed, pre_far_score, pre_far_gates, pre_far_reasons = audit_candidate_frame(
+        "PRE_FAR", pre_far_dest, prev_sha256=canonical_sequence["D3"]["sha256"]
+    )
+    pre_near_passed, pre_near_score, pre_near_gates, pre_near_reasons = audit_candidate_frame(
+        "PRE_NEAR", pre_near_dest, prev_sha256=sha256_file(pre_far_dest)
+    )
+    pre_state_audit = {
+        "PRE_FAR": {"passed": pre_far_passed, "score": pre_far_score,
+                    "gates": [g.to_dict() for g in pre_far_gates], "reasons": pre_far_reasons},
+        "PRE_NEAR": {"passed": pre_near_passed, "score": pre_near_score,
+                     "gates": [g.to_dict() for g in pre_near_gates], "reasons": pre_near_reasons},
+    }
+    if not pre_far_passed or not pre_near_passed:
+        (gates_dir / "BLOCKED_PRECONTACT_KEYFRAMES.json").write_text(
+            json.dumps({"status": "BLOCKED_PRECONTACT_KEYFRAME_GATE", **pre_state_audit},
+                       indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+        raise RuntimeError("BLOCK: PRE_FAR or PRE_NEAR failed the per-frame state gates")
 
     five_keyframes = [
         {
@@ -953,8 +1112,35 @@ def run_autonomous_pipeline(
         auto_select=True,
     )
 
+    # Check all four adjacent transitions in the published five-keyframe timeline.
+    # This is a coarse background test only; subject identity and narrative continuity remain
+    # explicit human-review requirements and are never inferred from a high NCC by itself.
+    keyframe_transition_audits: list[dict[str, Any]] = []
+    for left, right in zip(five_keyframes, five_keyframes[1:]):
+        gate = gate_static_background_continuity(
+            Path(right["image_path"]), Path(left["image_path"])
+        )
+        keyframe_transition_audits.append({
+            "from": left["keyframe_id"], "to": right["keyframe_id"],
+            "from_sha256": left["sha256"], "to_sha256": right["sha256"],
+            **gate.to_dict(),
+        })
+    if any(not item["passed"] for item in keyframe_transition_audits):
+        (gates_dir / "BLOCKED_KEYFRAME_BACKGROUND_CONTINUITY.json").write_text(
+            json.dumps({"status": "BLOCKED_KEYFRAME_BACKGROUND_CONTINUITY",
+                        "transitions": keyframe_transition_audits},
+                       indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+        raise RuntimeError("BLOCK: one or more 5-keyframe transitions failed static-background continuity")
+
     video_manifest = build_video_transition_manifest(five_keyframes, winner.candidate_id)
     passed_count = sum(1 for item in canonical_sequence.values() if item["passed"])
+    all_contract_gates_passed = (
+        passed_count == len(AUTONOMOUS_STAGE_SEQUENCE)
+        and pre_far_passed and pre_near_passed
+        and all(item["passed"] for item in keyframe_transition_audits)
+    )
+    evidence_mode = "SYNTHETIC_TEST_ONLY" if synthetic_test_mode else "PROVIDED_RASTER_CANDIDATES"
     report = AutonomousPipelineReport(
         workflow="v5-canonical-spine-and-5keyframe-trilogy-continuity-engine",
         selected_candidate_id=winner.candidate_id,
@@ -963,14 +1149,23 @@ def run_autonomous_pipeline(
         passed_stages=passed_count,
         total_attempts=len(attempt_history),
         auto_rejections_and_rollbacks=auto_rejections,
-        all_stages_passed=(passed_count == len(AUTONOMOUS_STAGE_SEQUENCE)),
+        # Deliberately false for synthetic fixtures even when their software gates pass.
+        all_stages_passed=(all_contract_gates_passed and not synthetic_test_mode),
         canonical_sequence=canonical_sequence,
         attempt_history=attempt_history,
         five_keyframe_trilogy=five_keyframes,
         video_transition_manifest=video_manifest,
+        evidence_mode=evidence_mode,
+        all_contract_gates_passed=all_contract_gates_passed,
+        visual_acceptance_status="NOT_VERIFIED_HUMAN_REVIEW_REQUIRED",
+        generation_backend_status="NOT_CONNECTED_BY_THIS_SCRIPT",
+        keyframe_transition_audits=keyframe_transition_audits,
     )
     board_path = create_audit_contact_board(report, outdir / "AUTONOMOUS_AUDIT_SUMMARY_BOARD.jpg")
-    strip_path = create_five_keyframe_trilogy_strip(five_keyframes, outdir / "CONNECTED_5KEYFRAME_TRILOGY_STRIP.jpg")
+    strip_path = create_five_keyframe_trilogy_strip(
+        five_keyframes, outdir / "CONNECTED_5KEYFRAME_TRILOGY_STRIP.jpg",
+        evidence_mode=report.evidence_mode,
+    )
     report.summary_board_path = str(board_path)
     report.trilogy_strip_path = str(strip_path)
 
@@ -985,29 +1180,61 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--outdir", type=Path, default=Path("out/autonomous_run"))
     parser.add_argument("--simulate-fault-injection", action="store_true")
-    parser.add_argument("--candidates-json", type=Path, default=None)
+    parser.add_argument("--synthetic-test-mode", action="store_true",
+                        help="use procedural fixture rasters for software tests only; never visual acceptance")
+    parser.add_argument("--candidates-json", type=Path, default=None,
+                        help="JSON mapping stage names A/B/D1/D2/D3/E_MID/E_END to pre-generated raster paths")
+    parser.add_argument("--pre-far-candidate", type=Path, default=None)
+    parser.add_argument("--pre-near-candidate", type=Path, default=None)
     args = parser.parse_args(list(argv) if argv is not None else None)
 
     stage_map: dict[str, Sequence[Path]] | None = None
-    if args.candidates_json and args.candidates_json.is_file():
+    if args.candidates_json:
+        if not args.candidates_json.is_file():
+            print(json.dumps({"status": "BLOCK", "reason": f"candidate map not found: {args.candidates_json}"}, ensure_ascii=False))
+            return 2
         raw = json.loads(args.candidates_json.read_text(encoding="utf-8"))
         stage_map = {k: [Path(p) for p in v] for k, v in raw.items()}
 
-    report = run_autonomous_pipeline(
-        args.outdir,
-        stage_candidates_map=stage_map,
-        simulate_fault_injection=args.simulate_fault_injection,
-    )
+    try:
+        report = run_autonomous_pipeline(
+            args.outdir,
+            stage_candidates_map=stage_map,
+            pre_far_candidate=args.pre_far_candidate,
+            pre_near_candidate=args.pre_near_candidate,
+            simulate_fault_injection=args.simulate_fault_injection,
+            synthetic_test_mode=args.synthetic_test_mode,
+        )
+    except (ValueError, RuntimeError) as exc:
+        args.outdir.mkdir(parents=True, exist_ok=True)
+        blocked = {
+            "status": "BLOCKED",
+            "reason": str(exc),
+            "generation_backend_status": "NOT_CONNECTED_BY_THIS_SCRIPT",
+            "image_realization_status": "NOT_RUN_BY_THIS_SCRIPT",
+            "visual_acceptance_status": "NOT_VERIFIED",
+        }
+        (args.outdir / "BLOCKED_RUN.json").write_text(
+            json.dumps(blocked, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+        print(json.dumps(blocked, indent=2, ensure_ascii=False))
+        return 2
+
     print(json.dumps({
         "selected_candidate_id": report.selected_candidate_id,
-        "passed_stages": f"{report.passed_stages}/{report.total_stages}",
+        "passed_contract_stages": f"{report.passed_stages}/{report.total_stages}",
         "auto_rejections_and_rollbacks": report.auto_rejections_and_rollbacks,
-        "all_stages_passed": report.all_stages_passed,
+        "all_stages_passed_on_real_rasters": report.all_stages_passed,
+        "all_contract_gates_passed": report.all_contract_gates_passed,
+        "evidence_mode": report.evidence_mode,
+        "visual_acceptance_status": report.visual_acceptance_status,
+        "generation_backend_status": report.generation_backend_status,
+        "keyframe_transition_audits": report.keyframe_transition_audits,
         "manifest": str(args.outdir / "AUTONOMOUS_RUN_MANIFEST.json"),
         "summary_board": report.summary_board_path,
         "trilogy_strip": report.trilogy_strip_path,
     }, indent=2, ensure_ascii=False))
-    return 0 if report.all_stages_passed else 2
+    return 0 if report.all_contract_gates_passed else 2
 
 
 if __name__ == "__main__":
