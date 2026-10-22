@@ -10,6 +10,8 @@ on:
       - 'bubble_break/autonomous_pipeline.py'
       - 'bubble_break/dual_t_hammer_collision.py'
       - 'bubble_break/test_dual_t_hammer_collision.py'
+      - 'bubble_break/raster_bound_collision_audit.py'
+      - 'bubble_break/test_raster_bound_collision_audit.py'
       - 'bubble_break/test_dense_hammer_bubble_workflow.py'
       - 'bubble_break/test_autonomous_pipeline.py'
       - '.github/workflows/dense-hammer-bubble-workflow.yml'
@@ -44,6 +46,7 @@ jobs:
           python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
           python -m unittest bubble_break/test_autonomous_pipeline.py -v
           python -m unittest bubble_break/test_dual_t_hammer_collision.py -v
+          python -m unittest bubble_break/test_raster_bound_collision_audit.py -v
       - name: Compile the corrected dual-T-hammer contact-plane prompt matrix
         run: python -m bubble_break.dual_t_hammer_collision --outdir out/dual_t_hammer_collision --camera-count 12
       - name: Verify physical contact contract, multiple camera variants, and honest not-verified status
