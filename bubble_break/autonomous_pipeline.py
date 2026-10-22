@@ -84,10 +84,10 @@ AUTONOMOUS_STAGE_SEQUENCE: tuple[str, ...] = (
 # Thin image margins are used only as a coarse static-background continuity check.
 # They do NOT prove character identity, story continuity, or pixel-perfect topology.
 STATIC_BACKGROUND_ROIS: tuple[tuple[float, float, float, float], ...] = (
-    (0.00, 0.00, 1.00, 0.06),
-    (0.00, 0.94, 1.00, 1.00),
-    (0.00, 0.06, 0.035, 0.94),
-    (0.965, 0.06, 1.00, 0.94),
+    # Top edge plus narrow left/right margins avoid the central sphere and E_END shards.
+    (0.00, 0.00, 1.00, 0.045),
+    (0.00, 0.08, 0.025, 0.92),
+    (0.975, 0.08, 1.00, 0.92),
 )
 
 
