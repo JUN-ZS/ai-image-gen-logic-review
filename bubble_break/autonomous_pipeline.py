@@ -959,7 +959,12 @@ def compile_elevation_prompt_repair(
     rejection_reasons: Sequence[str],
     scene_state: SceneState | None = None,
 ) -> dict[str, str]:
-    d_step = stage_to_canonical_d_step(stage)
+    if stage in ("KF1_0S_PRE_FAR", "KF2_2S_PRE_NEAR"):
+        d_step = "D2"
+    elif stage == "KF3_4P5S_CONTACT":
+        d_step = "D3"
+    else:
+        d_step = stage_to_canonical_d_step(stage)
     lock_clause = grip_pixel_lock_clause(d_step, prev_sha256)
     reason_blob = " | ".join(rejection_reasons)
     causal_summary = ""
@@ -1610,8 +1615,9 @@ def run_autonomous_pipeline(
             if kf_prev_img is not None:
                 g_bg = gate_static_background_stability(kf_dest, kf_prev_img)
                 g_cc = gate_cross_frame_continuity(kf_dest, kf_prev_img)
+                transition_from = five_keyframes[-1]["keyframe_id"] if five_keyframes else "D2"
                 transition_audits.append({
-                    "transition": f"{five_keyframes[-1]['keyframe_id']} -> {kf_id}",
+                    "transition": f"{transition_from} -> {kf_id}",
                     "static_background_stability": g_bg.to_dict(),
                     "cross_frame_continuity": g_cc.to_dict(),
                     "limitation_note": (
