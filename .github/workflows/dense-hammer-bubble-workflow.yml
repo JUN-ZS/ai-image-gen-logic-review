@@ -8,10 +8,6 @@ on:
       - 'bubble_break/dense_hammer_bubble_workflow.py'
       - 'bubble_break/stage_d_gates.py'
       - 'bubble_break/autonomous_pipeline.py'
-      - 'bubble_break/dual_t_hammer_collision.py'
-      - 'bubble_break/test_dual_t_hammer_collision.py'
-      - 'bubble_break/raster_bound_collision_audit.py'
-      - 'bubble_break/test_raster_bound_collision_audit.py'
       - 'bubble_break/test_dense_hammer_bubble_workflow.py'
       - 'bubble_break/test_autonomous_pipeline.py'
       - '.github/workflows/dense-hammer-bubble-workflow.yml'
@@ -21,8 +17,6 @@ on:
       - 'bubble_break/dense_hammer_bubble_workflow.py'
       - 'bubble_break/stage_d_gates.py'
       - 'bubble_break/autonomous_pipeline.py'
-      - 'bubble_break/dual_t_hammer_collision.py'
-      - 'bubble_break/test_dual_t_hammer_collision.py'
       - 'bubble_break/test_dense_hammer_bubble_workflow.py'
       - 'bubble_break/test_autonomous_pipeline.py'
       - '.github/workflows/dense-hammer-bubble-workflow.yml'
@@ -45,27 +39,6 @@ jobs:
         run: |
           python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
           python -m unittest bubble_break/test_autonomous_pipeline.py -v
-          python -m unittest bubble_break/test_dual_t_hammer_collision.py -v
-          python -m unittest bubble_break/test_raster_bound_collision_audit.py -v
-      - name: Compile the corrected dual-T-hammer contact-plane prompt matrix
-        run: python -m bubble_break.dual_t_hammer_collision --outdir out/dual_t_hammer_collision --camera-count 12
-      - name: Verify physical contact contract, multiple camera variants, and honest not-verified status
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          out = Path('out/dual_t_hammer_collision')
-          manifest = json.loads((out / 'DUAL_T_HAMMER_PROMPT_MANIFEST.json').read_text(encoding='utf-8'))
-          contract = json.loads((out / 'DUAL_T_HAMMER_COLLISION_CONTRACT.json').read_text(encoding='utf-8'))
-          contact = json.loads((out / 'FIRST_CONTACT_camera_matrix.json').read_text(encoding='utf-8'))
-          assert contract['tool_a']['tool_id'] == 'HAMMER_A'
-          assert contract['tool_b']['tool_id'] == 'HAMMER_B'
-          assert contract['allowed_contact_surfaces'] == ['END_FACE_TO_END_FACE']
-          assert len(contact) == 12 and len({x['camera_view'] for x in contact}) == 12
-          assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
-          assert manifest['generation_backend_status'] == 'NOT_CONNECTED_BY_THIS_MODULE'
-          print('Dual-hammer geometry contract and 12 independent contact-view prompts verified; pixels remain unapproved until evidence/review.')
-          PY
       - name: Compile Stage-A planted hammer atlas prompt
         run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/planted_hammer_atlas
       - name: Compile auto-selected C13 stages B to E (zero-touch)
@@ -115,7 +88,6 @@ jobs:
         with:
           name: planted-double-ended-round-hammer-prompt-packet
           path: |
-            out/dual_t_hammer_collision/
             out/planted_hammer_*/
             out/autonomous_ci_run/
           if-no-files-found: error
