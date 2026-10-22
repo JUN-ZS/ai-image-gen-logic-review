@@ -599,6 +599,65 @@ def validate_planted_bubble_frame(
     }
 
 
+
+def compile_stage_request(
+    stage: str,
+    *,
+    attempt_round: int,
+    parent_image_path: str | None,
+    parent_raster_sha256: str | None,
+    scene_anchor_raster_sha256: str | None,
+    locked_contact_point_px: Sequence[float] | None,
+    locked_cylinder_instance_id: str | None,
+    locked_handle_track_id: str | None,
+    rejection_errors: Sequence[str] = (),
+) -> dict[str, Any]:
+    """Encode one stage contract and the last verified parent/error vector for a generator wrapper."""
+    if stage not in STAGE_SPECS:
+        raise ValueError(f"Unknown stage {stage!r}")
+    spec = STAGE_SPECS[stage]
+    prompt = (
+        f"CONTRACT={CONTRACT_ID}; CONTRACT_SHA256={contract_fingerprint()}; STAGE={stage}. "
+        + "GLOBAL LOCKS: " + " | ".join(GLOBAL_LOCKS) + " "
+        + "STAGE ACTION: " + spec["prompt"] + " "
+        + "AUTHORIZED DELTAS ONLY: " + ", ".join(spec["authorized_delta_fields"]) + ". "
+        + "FROZEN FIELDS: " + ", ".join(spec["must_preserve"]) + ". "
+        + f"ATTEMPT={attempt_round}. LAST VERIFIED PARENT SHA256={parent_raster_sha256 or 'NONE_FOR_MASTER'}. "
+        + f"MASTER ANCHOR SHA256={scene_anchor_raster_sha256 or 'SET_BY_ACCEPTED_MASTER'}. "
+        + f"LOCKED P={list(locked_contact_point_px) if locked_contact_point_px else 'SET_BY_ACCEPTED_MASTER'}. "
+        + f"LOCKED CYLINDER ID={locked_cylinder_instance_id or 'SET_BY_ACCEPTED_MASTER'}; "
+        + f"LOCKED HANDLE TRACK={locked_handle_track_id or 'SET_BY_ACCEPTED_MASTER'}. "
+        + "PRIOR FAILURE VECTOR=" + ("; ".join(sorted(set(rejection_errors))) if rejection_errors else "NONE") + ". "
+        + "Return one independent full-frame raster and a raster-bound geometry annotation/review receipt. "
+        + "If a lock conflicts with a requested change, preserve the lock and report the unmet change. "
+        + "Do not invent a new handle, move P, unseat the base, or shatter the sanctuary."
+    )
+    return {
+        "contract_id": CONTRACT_ID,
+        "contract_sha256": contract_fingerprint(),
+        "stage": stage,
+        "attempt_round": attempt_round,
+        "parent_image_path": parent_image_path,
+        "parent_raster_sha256": parent_raster_sha256,
+        "scene_anchor_raster_sha256": scene_anchor_raster_sha256,
+        "locked_contact_point_p_px": list(locked_contact_point_px) if locked_contact_point_px else None,
+        "locked_cylinder_instance_id": locked_cylinder_instance_id,
+        "locked_handle_track_id": locked_handle_track_id,
+        "authorized_delta_fields": list(spec["authorized_delta_fields"]),
+        "must_preserve": list(spec["must_preserve"]),
+        "global_locks": list(GLOBAL_LOCKS),
+        "mask_policy": {
+            "use_parent_image_as_reference": parent_image_path is not None,
+            "freeze_all_unauthorized_regions": True,
+            "edit_only_authorized_delta_regions": True,
+            "one_full_frame_per_request": True,
+            "source_hash_must_be_preserved_in_receipt": True,
+        },
+        "repair_error_vector": sorted(set(rejection_errors)),
+        "prompt": prompt,
+    }
+
+
 CandidateBatch = Sequence[Candidate]
 RerunProvider = Callable[[dict[str, Any], Path], CandidateBatch]
 
