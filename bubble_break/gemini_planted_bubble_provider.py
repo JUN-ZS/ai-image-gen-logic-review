@@ -572,9 +572,9 @@ class GeminiPlantedBubbleProvider:
         # The caller's command_provider accepts {"image": path, "evidence": object}.
         return_json_path = request_dir / "candidate_response.json"
         return_json_path.write_text(json.dumps({
-            "candidates": [{"image": str(generated.resolve()), "evidence": evidence}]
+            "candidates": [{"image": str(final_raster.resolve()), "evidence": evidence}]
         }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        return [{"image": str(generated.resolve()), "evidence": evidence}]
+        return [{"image": str(final_raster.resolve()), "evidence": evidence}]
 
 
 def _bounded_score(value: Any) -> float:
