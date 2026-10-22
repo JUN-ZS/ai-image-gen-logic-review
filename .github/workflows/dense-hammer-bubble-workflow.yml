@@ -40,9 +40,9 @@ jobs:
           python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
           python -m unittest bubble_break/test_autonomous_pipeline.py -v
       - name: Compile Stage-A planted hammer atlas prompt
-        run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/planted_hammer_atlas
+        run: python -m bubble_break.dense_hammer_bubble_workflow --outdir out/planted_hammer_atlas
       - name: Compile auto-selected C13 stages B to E (zero-touch)
-        run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/planted_hammer_auto --auto-select --bubble-scale 1.0 --hammer-scale 1.0 --person-to-hammer-scale 1.0
+        run: python -m bubble_break.dense_hammer_bubble_workflow --outdir out/planted_hammer_auto --auto-select --bubble-scale 1.0 --hammer-scale 1.0 --person-to-hammer-scale 1.0
       - name: Run synthetic-only continuity contract tests (never visual acceptance)
         run: python -m bubble_break.autonomous_pipeline --outdir out/autonomous_ci_run --synthetic-test-mode --simulate-fault-injection
       - name: Verify planted double-ended topology, autonomous selection gating and self-healing audit
