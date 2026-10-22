@@ -40,6 +40,11 @@ from bubble_break.frame_pipeline import (
 from bubble_break.raster_bound_collision_audit import (
     validate_raster_bound_collision_evidence,
 )
+from bubble_break.closed_loop_evidence_guard import (
+    attach_guard_errors,
+    validate_stage_binding,
+)
+from bubble_break.shannon_information_gain import recommend_next_experiment
 
 
 @dataclass
@@ -54,6 +59,7 @@ class StageAttemptAudit:
     visual_acceptance_status: str
     errors: list[str] = field(default_factory=list)
     rejection_note: str | None = None
+    next_experiment: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -72,6 +78,7 @@ class UnifiedCalibratedBubbleBreakReport:
     attempt_log: list[dict[str, Any]]
     master_comparison_board_path: str | None = None
     bubble_break_strip_path: str | None = None
+    acceptance_level: str = "NOT_ACCEPTED"
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -104,7 +111,9 @@ def run_calibrated_bubble_break_closed_loop(
     total_rejections = 0
 
     required_cal_stages = ("PRE_FAR", "PRE_NEAR", "FIRST_CONTACT", "REACTION", "RECOIL")
-    if not calibration_candidates or any(st not in calibration_candidates for st in required_cal_stages):
+    calibration_candidates = calibration_candidates or {}
+    missing_calibration_inputs = any(st not in calibration_candidates for st in required_cal_stages)
+    if missing_calibration_inputs and rerun_provider is None:
         rep = UnifiedCalibratedBubbleBreakReport(
             workflow="calibrated-dual-t-to-bubble-break-closed-loop-v1",
             status="BLOCKED_UNTIL_T_CONTACT_MATRIX_APPROVED",
@@ -126,6 +135,7 @@ def run_calibrated_bubble_break_closed_loop(
 
     # STEP 1: Verify Upstream Dual T-Hammer End-Face Contact Calibration
     cal_parent_img: Path | None = None
+    cal_parent_stage: str | None = None
     for st in required_cal_stages:
         batch = list(calibration_candidates.get(st, []))
         accepted_entry: dict[str, Any] | None = None
@@ -153,6 +163,27 @@ def run_calibrated_bubble_break_closed_loop(
                 else:
                     val = validate_raster_bound_collision_evidence(cand_p, cand_ev)
 
+                expected_parent_sha = (
+                    sha256_file(cal_parent_img)
+                    if cal_parent_img is not None and cal_parent_img.is_file()
+                    else None
+                )
+                previous_cal_evidence = (
+                    calibration_stages.get(cal_parent_stage, {}).get("evidence")
+                    if cal_parent_stage is not None
+                    else None
+                )
+                binding_errors = validate_stage_binding(
+                    domain="CALIBRATION",
+                    expected_stage=st,
+                    evidence=cand_ev,
+                    raster_sha256=sha,
+                    expected_parent_sha256=expected_parent_sha,
+                    expected_parent_stage=cal_parent_stage,
+                    previous_evidence=previous_cal_evidence,
+                )
+                val = attach_guard_errors(val, binding_errors)
+
                 ok = bool(val.get("accepted", False))
                 errs = list(val.get("errors", []))
                 rej_note = None
@@ -172,6 +203,10 @@ def run_calibrated_bubble_break_closed_loop(
                     visual_acceptance_status=str(val.get("visual_acceptance_status", "NOT_VERIFIED_BY_CODE")),
                     errors=errs,
                     rejection_note=rej_note,
+                    next_experiment=(
+                        recommend_next_experiment(errs, attempt_log)
+                        if not ok else {}
+                    ),
                 )
                 attempt_log.append(asdict(rec))
                 if ok and accepted_entry is None:
@@ -211,11 +246,13 @@ def run_calibrated_bubble_break_closed_loop(
 
         calibration_stages[st] = accepted_entry
         cal_parent_img = Path(accepted_entry["raster_path"])
+        cal_parent_stage = st
 
     # STEP 2: Extract Approved Attacking T-Hammer SHA-256 & Geometry for Proxy Target Swap at P
     calibrated_first_contact_sha = calibration_stages["FIRST_CONTACT"]["raster_sha256"]
 
-    if not bubble_break_candidates:
+    bubble_break_candidates = bubble_break_candidates or {}
+    if not bubble_break_candidates and rerun_provider is None:
         rep = UnifiedCalibratedBubbleBreakReport(
             workflow="calibrated-dual-t-to-bubble-break-closed-loop-v1",
             status="BLOCKED_BUBBLE_BREAK_SEMANTIC_EVIDENCE_MISSING",
@@ -237,6 +274,8 @@ def run_calibrated_bubble_break_closed_loop(
 
     # STEP 3 & STEP 4: Audit Bubble-Break Sequence (H0 -> H1 -> H2 -> H2B -> H3) with Live Rerun on Failure
     bub_parent_img: Path | None = Path(calibration_stages["FIRST_CONTACT"]["raster_path"])
+    bub_parent_stage: str | None = "CALIBRATION_FIRST_CONTACT"
+    previous_bubble_evidence: dict[str, Any] | None = None
     for st in BUBBLE_BREAK_STAGES:
         batch = list(bubble_break_candidates.get(st, []))
         accepted_bub: dict[str, Any] | None = None
@@ -260,6 +299,22 @@ def run_calibrated_bubble_break_closed_loop(
                     cand_ev,
                     locked_pole_p_px=locked_pole_p_px,
                 )
+                expected_parent_sha = (
+                    sha256_file(bub_parent_img)
+                    if bub_parent_img is not None and bub_parent_img.is_file()
+                    else None
+                )
+                binding_errors = validate_stage_binding(
+                    domain="BUBBLE_BREAK",
+                    expected_stage=st,
+                    evidence=cand_ev,
+                    raster_sha256=sha,
+                    expected_parent_sha256=expected_parent_sha,
+                    expected_parent_stage=bub_parent_stage,
+                    expected_calibration_sha256=calibrated_first_contact_sha,
+                    previous_evidence=previous_bubble_evidence,
+                )
+                val = attach_guard_errors(val, binding_errors)
                 if val["status"] == "BLOCKED_BUBBLE_BREAK_SEMANTIC_EVIDENCE_MISSING":
                     missing_semantic_evidence = True
 
@@ -282,6 +337,10 @@ def run_calibrated_bubble_break_closed_loop(
                     visual_acceptance_status=str(val.get("visual_acceptance_status", "NOT_VERIFIED_BY_CODE")),
                     errors=errs,
                     rejection_note=rej_note,
+                    next_experiment=(
+                        recommend_next_experiment(errs, attempt_log)
+                        if not ok else {}
+                    ),
                 )
                 attempt_log.append(asdict(rec))
                 if ok and accepted_bub is None and cand_ev is not None:
@@ -329,6 +388,8 @@ def run_calibrated_bubble_break_closed_loop(
 
         bubble_break_stages[st] = accepted_bub
         bub_parent_img = Path(accepted_bub["raster_path"])
+        bub_parent_stage = st
+        previous_bubble_evidence = accepted_bub["evidence"]
 
     strip_path = create_calibrated_bubble_break_strip(
         calibration_stages["FIRST_CONTACT"],
@@ -343,9 +404,9 @@ def run_calibrated_bubble_break_closed_loop(
 
     rep = UnifiedCalibratedBubbleBreakReport(
         workflow="calibrated-dual-t-to-bubble-break-closed-loop-v1",
-        status="PASSED_CALIBRATED_BUBBLE_BREAK_CLOSED_LOOP",
-        calibration_approved=True,
-        bubble_break_approved=True,
+        status="EVIDENCE_CONTRACTS_PASSED_REQUIRES_VISUAL_REVIEW",
+        calibration_approved=False,
+        bubble_break_approved=False,
         code_visual_acceptance_status="NOT_VERIFIED_BY_CODE",
         calibrated_attacking_hammer_sha256=calibrated_first_contact_sha,
         locked_bubble_pole_p_px=list(locked_pole_p_px),
@@ -356,6 +417,7 @@ def run_calibrated_bubble_break_closed_loop(
         attempt_log=attempt_log,
         master_comparison_board_path=str(board_path),
         bubble_break_strip_path=str(strip_path),
+        acceptance_level="STRUCTURED_EVIDENCE_CONTRACT_ONLY",
     )
     (outdir / "UNIFIED_CLOSED_LOOP_MANIFEST.json").write_text(
         json.dumps(rep.to_dict(), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
@@ -421,7 +483,7 @@ def create_calibrated_bubble_break_overlay_board(
             board.paste(thumb, (x0 + 6, y0 + 6))
         color = (255, 210, 90) if idx == 0 else (90, 235, 160)
         draw.rectangle([x0 + 4, y0 + 4, x0 + cw - 4, y0 + ch - 4], outline=color, width=2)
-        draw.text((x0 + 12, y0 + ch - 36), f"{lbl} | sha={sha[:10]} | VERIFIED", fill=color)
+        draw.text((x0 + 12, y0 + ch - 36), f"{lbl} | sha={sha[:10]} | EVIDENCE ONLY", fill=color)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     board.save(out_path, quality=93)
