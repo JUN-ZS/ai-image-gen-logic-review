@@ -256,7 +256,7 @@ def run_calibrated_bubble_break_closed_loop(
         rep = UnifiedCalibratedBubbleBreakReport(
             workflow="calibrated-dual-t-to-bubble-break-closed-loop-v1",
             status="BLOCKED_BUBBLE_BREAK_SEMANTIC_EVIDENCE_MISSING",
-            calibration_approved=True,
+            calibration_approved=False,
             bubble_break_approved=False,
             code_visual_acceptance_status="NOT_VERIFIED_BY_CODE",
             calibrated_attacking_hammer_sha256=calibrated_first_contact_sha,
@@ -299,6 +299,9 @@ def run_calibrated_bubble_break_closed_loop(
                     cand_ev,
                     locked_pole_p_px=locked_pole_p_px,
                 )
+                semantic_evidence_missing_for_candidate = (
+                    val.get("status") == "BLOCKED_BUBBLE_BREAK_SEMANTIC_EVIDENCE_MISSING"
+                )
                 expected_parent_sha = (
                     sha256_file(bub_parent_img)
                     if bub_parent_img is not None and bub_parent_img.is_file()
@@ -315,7 +318,7 @@ def run_calibrated_bubble_break_closed_loop(
                     previous_evidence=previous_bubble_evidence,
                 )
                 val = attach_guard_errors(val, binding_errors)
-                if val["status"] == "BLOCKED_BUBBLE_BREAK_SEMANTIC_EVIDENCE_MISSING":
+                if semantic_evidence_missing_for_candidate:
                     missing_semantic_evidence = True
 
                 ok = bool(val.get("accepted", False))
