@@ -1217,7 +1217,19 @@ def render_synthetic_stage_raster(
         "D1", "D2", "D3", "E_MID", "E_END",
         "PRE_FAR", "PRE_NEAR", "KF1_0S_PRE_FAR", "KF2_2S_PRE_NEAR", "KF3_4P5S_CONTACT", "KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST",
     ):
-        px, py = (780, 260) if inject_fault == "flip_handle_right" else ((335, 295) if stage == "D1" else (345, 285))
+        if inject_fault == "flip_handle_right":
+            px, py = 780, 260
+        elif stage == "D1":
+            px, py = 335, 295
+        elif stage in ("D3", "E_MID", "E_END", "KF3_4P5S_CONTACT", "KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST"):
+            # Synthetic fixtures must encode distinct action states, not teach the no-op gate to pass clones.
+            px, py = 390, 255
+        elif stage in ("KF1_0S_PRE_FAR",):
+            px, py = 300, 330
+        elif stage in ("KF2_2S_PRE_NEAR",):
+            px, py = 320, 310
+        else:
+            px, py = 345, 285
         draw.ellipse([px - 18, py - 55, px + 18, py - 18], fill=(210, 180, 165), outline=(240, 210, 195), width=2)
         draw.rectangle([px - 22, py - 18, px + 22, py + 55], fill=(35, 40, 48), outline=(150, 160, 175), width=3)
         draw.line([(px - 12, py + 55), (px - 24, py + 125)], fill=(45, 50, 60), width=10)
