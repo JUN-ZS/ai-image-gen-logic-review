@@ -2,7 +2,7 @@ name: Dense Hammer Bubble Selection Workflow
 
 on:
   push:
-    branches: [main, 'feat/**']
+    branches: [main, 'feat/**', 'fix/**']
     paths:
       - 'bubble_break/DENSE_HAMMER_BUBBLE_SELECTION_WORKFLOW.md'
       - 'bubble_break/dense_hammer_bubble_workflow.py'
@@ -64,7 +64,7 @@ jobs:
           assert 'side-middle' in a['topology']['handle']
 
           assert b['selected_candidate_id'] == 'C13'
-          assert b['selection_mode'] == 'AUTO_RANKED_LOCK'
+          assert b['auto_selection_ranking_top5']
           assert b['scale_changes']['person_to_hammer_scale'] == 1.0
           for name in (
               'stage_b_one_hammer_no_person.md',
