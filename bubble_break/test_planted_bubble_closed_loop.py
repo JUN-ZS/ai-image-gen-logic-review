@@ -227,8 +227,8 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
             return [Candidate(image, evidence)]
 
         report = run_planted_bubble_closed_loop(outdir, rerun_provider=provider, max_retries=2)
-        self.assertFalse(report["next_stage_allowed"])
-        self.assertEqual(report["accepted_stage_count"], len(STAGE_ORDER)) if report["next_stage_allowed"] else self.assertGreater(report["accepted_stage_count"], 1)
+        self.assertTrue(report["next_stage_allowed"], report["status"])
+        self.assertEqual(report["accepted_stage_count"], len(STAGE_ORDER))
         d2_calls = [r for r in calls if r["stage"] == "D2_FIRST_GRIP_EXISTING_HANDLE"]
         self.assertEqual([r["attempt_round"] for r in d2_calls], [0, 1])
         self.assertEqual(d2_calls[1]["parent_raster_sha256"], d2_calls[0]["parent_raster_sha256"])
@@ -237,4 +237,4 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         self.assertTrue(d2_second["eligible_for_next_stage"])
         self.assertTrue(d2_second["selected"])
         self.assertFalse(any(x["selected"] for x in report["attempt_log"] if x["stage"] == "D2_FIRST_GRIP_EXISTING_HANDLE" and x["attempt_round"] == 0))
-        self.assertIn("NEW_HANDLE_OR_STUB_DETECTED_OR_UNVERIFIED", calls[1].get("repair_error_vector", []))
+        self.assertIn("NEW_HANDLE_OR_STUB_DETECTED_OR_UNVERIFIED", d2_calls[1].get("repair_error_vector", []))
