@@ -1,0 +1,1084 @@
+{
+  "workflow": "autonomous-multicamera-zoom-precontact-windup-anthology-album",
+  "selected_candidate_id": "C13",
+  "auto_selection_score": 0.869661,
+  "total_stages": 9,
+  "passed_stages": 9,
+  "total_attempts": 11,
+  "auto_rejections_and_rollbacks": 2,
+  "all_stages_passed": true,
+  "canonical_sequence": {
+    "WASH_01_ZOOM_IN_SEAM": {
+      "stage": "WASH_01_ZOOM_IN_SEAM",
+      "name_zh": "選柱後 ZOOM IN 85mm 接縫微距檢視",
+      "theme_zh": "暗黑母棚・微距審計",
+      "camera_rig": {
+        "rig_id": "CAM_ZOOM_IN_85MM_SEAM",
+        "name_zh": "85mm 特寫 ZOOM IN（接縫與外圓面審計）",
+        "focal_mm": 85,
+        "zoom_mode": "ZOOM_IN_MACRO",
+        "orbit_deg": 28.0,
+        "off_normal_deg": 32.0,
+        "roll_deg": 0.0,
+        "prompt_directive": "85mm telephoto macro ZOOM-IN shot (1.8x closer): inspect the bare flat outer circular end cap, the 90° side-middle rod weld, and the glowing circular base contact seam."
+      },
+      "contact_phase": "PLANTED_LOCK",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_01_ZOOM_IN_SEAM.jpg",
+      "sha256": "c7dda42829e00b895f75602c8acad11ff0e4c98498afafcaae4d37b4e83f3057",
+      "parent_sha256": "f612ec7e07d95f256d3bd352f73f98ca913074c87556aed58cfc3223a059ee81",
+      "passed": true,
+      "quality_score": 0.94,
+      "elevation_level": "k=3_CAM_ZOOM_IN_85MM_SEAM__THEME_STUDIO",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.049076292985575,
+            "coverage": 0.3566938213741026,
+            "n": 38356.0,
+            "eig_ratio": 4.198713654475505,
+            "angle_deg": 148.35652938817722
+          }
+        }
+      ]
+    },
+    "WASH_02_ZOOM_IN_EMERALD_GRIP": {
+      "stage": "WASH_02_ZOOM_IN_EMERALD_GRIP",
+      "name_zh": "選柱後 ZOOM IN 100mm 主角握柄特寫",
+      "theme_zh": "翡翠森靈神殿",
+      "camera_rig": {
+        "rig_id": "CAM_ZOOM_IN_100MM_GRIP",
+        "name_zh": "100mm 極距 ZOOM IN（主角握側柄特寫）",
+        "focal_mm": 100,
+        "zoom_mode": "ZOOM_IN_MACRO",
+        "orbit_deg": 35.0,
+        "off_normal_deg": 38.0,
+        "roll_deg": 0.0,
+        "prompt_directive": "100mm macro cinema lens ZOOM-IN close-up on the protagonist gripping the 90° side-middle lateral rod while the outer circular end cap in foreground stays 100% bare."
+      },
+      "contact_phase": "PLANTED_LOCK",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_02_ZOOM_IN_EMERALD_GRIP.jpg",
+      "sha256": "0aaef5c5c4564d0fb146f6659619dbdcddc48c3a83618d536b9687fa085e497b",
+      "parent_sha256": "c7dda42829e00b895f75602c8acad11ff0e4c98498afafcaae4d37b4e83f3057",
+      "passed": true,
+      "quality_score": 0.94,
+      "elevation_level": "k=3_CAM_ZOOM_IN_100MM_GRIP__THEME_EMERALD_SHRINE",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.683507221932215,
+            "coverage": 0.357409887289365,
+            "n": 38433.0,
+            "eig_ratio": 2.834196566297924,
+            "angle_deg": 157.32205938074338
+          }
+        }
+      ]
+    },
+    "WASH_03_ZOOM_OUT_ASTRAL_HERO": {
+      "stage": "WASH_03_ZOOM_OUT_ASTRAL_HERO",
+      "name_zh": "換鏡 ZOOM OUT 18mm 低仰角英雄遠景",
+      "theme_zh": "星塵黃金神殿",
+      "camera_rig": {
+        "rig_id": "CAM_ZOOM_OUT_18MM_HERO",
+        "name_zh": "18mm 超廣角低仰 ZOOM OUT（史詩比例）",
+        "focal_mm": 18,
+        "zoom_mode": "ZOOM_OUT_WIDE",
+        "orbit_deg": 20.0,
+        "off_normal_deg": 62.0,
+        "roll_deg": 0.0,
+        "prompt_directive": "18mm ultra-wide low-angle hero ZOOM-OUT revealing the colossal iridescent containment sphere and monumental temple architecture."
+      },
+      "contact_phase": "PLANTED_LOCK",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_03_ZOOM_OUT_ASTRAL_HERO.jpg",
+      "sha256": "1ab3c579ea997ed7eac45e09b0d5d9a5655b2594828e0c1d8c2b779494648164",
+      "parent_sha256": "0aaef5c5c4564d0fb146f6659619dbdcddc48c3a83618d536b9687fa085e497b",
+      "passed": true,
+      "quality_score": 0.94,
+      "elevation_level": "k=3_CAM_ZOOM_OUT_18MM_HERO__THEME_ASTRAL_GOLD",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.6904002323618375,
+            "coverage": 0.3534017780753636,
+            "n": 38002.0,
+            "eig_ratio": 2.857452945568954,
+            "angle_deg": 158.66081416166304
+          }
+        }
+      ]
+    },
+    "WASH_04_ZOOM_OUT_CYBER_CATHEDRAL": {
+      "stage": "WASH_04_ZOOM_OUT_CYBER_CATHEDRAL",
+      "name_zh": "換鏡 ZOOM OUT 20mm 賽博暴雨聖堂全景",
+      "theme_zh": "霓虹暴雨聖堂",
+      "camera_rig": {
+        "rig_id": "CAM_ZOOM_OUT_20MM_CATHEDRAL",
+        "name_zh": "20mm 廣角全景 ZOOM OUT（賽博聖堂全景）",
+        "focal_mm": 20,
+        "zoom_mode": "ZOOM_OUT_WIDE",
+        "orbit_deg": 40.0,
+        "off_normal_deg": 65.0,
+        "roll_deg": 0.0,
+        "prompt_directive": "20mm ultra-wide establishing ZOOM-OUT showing the full giant iridescent sphere, the C13 cylinder + upper-left rod, and grand architectural pillars."
+      },
+      "contact_phase": "PLANTED_LOCK",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_04_ZOOM_OUT_CYBER_CATHEDRAL.jpg",
+      "sha256": "90a49b4e29c012125ddd18218aaad2a5d84979a91d05b504c86a0ff47bd12ae3",
+      "parent_sha256": "1ab3c579ea997ed7eac45e09b0d5d9a5655b2594828e0c1d8c2b779494648164",
+      "passed": true,
+      "quality_score": 0.94,
+      "elevation_level": "k=3_CAM_ZOOM_OUT_20MM_CATHEDRAL__THEME_CYBER_RAIN",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.441667357459124,
+            "coverage": 0.35000743964587283,
+            "n": 37637.0,
+            "eig_ratio": 2.078404769563174,
+            "angle_deg": -177.46193012833626
+          }
+        }
+      ]
+    },
+    "WASH_05_AIRBORNE_SPIRAL_KICK": {
+      "stage": "WASH_05_AIRBORNE_SPIRAL_KICK",
+      "name_zh": "動作多洗：荷蘭斜角騰空旋身飛踢拉弓",
+      "theme_zh": "星塵黃金神殿",
+      "camera_rig": {
+        "rig_id": "CAM_DUTCH_22DEG_WASH",
+        "name_zh": "22° 荷蘭斜角動態追焦鏡",
+        "focal_mm": 32,
+        "zoom_mode": "DUTCH_TILT",
+        "orbit_deg": 70.0,
+        "off_normal_deg": 48.0,
+        "roll_deg": 22.0,
+        "prompt_directive": "32mm dynamic 22-degree Dutch roll angle amplifying backward wind-up tension without altering world-space rigid-body cylinder normal."
+      },
+      "contact_phase": "PLANTED_LOCK",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_05_AIRBORNE_SPIRAL_KICK.jpg",
+      "sha256": "ab6ba50f7b55e1944a452228fa6115361cf1f4e1bb162c9afc621316dd2c70ce",
+      "parent_sha256": "90a49b4e29c012125ddd18218aaad2a5d84979a91d05b504c86a0ff47bd12ae3",
+      "passed": true,
+      "quality_score": 0.94,
+      "elevation_level": "k=3_CAM_DUTCH_22DEG_WASH__THEME_ASTRAL_GOLD",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 1.0,
+            "row_gutter_peaks": 1.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.210481232107003,
+            "coverage": 0.3514395714763977,
+            "n": 37791.0,
+            "eig_ratio": 4.886227277497294,
+            "angle_deg": -163.57662418130505
+          }
+        }
+      ]
+    },
+    "WASH_06_H0_STUDIO_AIR_GAP": {
+      "stage": "WASH_06_H0_STUDIO_AIR_GAP",
+      "name_zh": "Tricky 蓄力（柱未碰泡前）：母棚同軸懸空拉開氣隙",
+      "theme_zh": "暗黑母棚・懸空蓄力",
+      "camera_rig": {
+        "rig_id": "CAM_LOW_HERO_24MM_GAP",
+        "name_zh": "24mm 廣角懸空氣隙審計鏡（蓄力未碰泡）",
+        "focal_mm": 24,
+        "zoom_mode": "STANDARD_LOCK",
+        "orbit_deg": 15.0,
+        "off_normal_deg": 72.0,
+        "roll_deg": -6.0,
+        "prompt_directive": "24mm side-grazing low-hero angle exposing the wide pre-contact air gap between the cylinder's inner circular face and the untouched bubble."
+      },
+      "contact_phase": "H0_PRE_CONTACT_AIR_GAP",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_06_H0_STUDIO_AIR_GAP.jpg",
+      "sha256": "540f1bea2d3bdb5053ccedfe225ff6e8767f1c48eb381d175a5710910b2d30cb",
+      "parent_sha256": "ab6ba50f7b55e1944a452228fa6115361cf1f4e1bb162c9afc621316dd2c70ce",
+      "passed": true,
+      "quality_score": 0.97,
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 5.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.638634681548733,
+            "coverage": 0.3173689677437467,
+            "n": 11305.0,
+            "eig_ratio": 2.685123619574317,
+            "angle_deg": 73.83808377024897
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": true,
+          "detail": "PASS: pre-contact air gap verified (cylinder detached before bubble, seam_p99=47.7 < 220.0, drum_median=25.7)",
+          "metrics": {
+            "seam_p99_luma": 47.66666793823242,
+            "seam_mean_luma": 19.11672019958496,
+            "drum_median_luma": 25.66666603088379
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.013)",
+          "metrics": {
+            "high_edge_density": 0.012934834848332924
+          }
+        }
+      ]
+    },
+    "WASH_07_H0_NEON_ROOFTOP_AIR_GAP": {
+      "stage": "WASH_07_H0_NEON_ROOFTOP_AIR_GAP",
+      "name_zh": "Tricky 蓄力（柱未碰泡前）：霓虹雨夜天台荷蘭角拉滿蓄力",
+      "theme_zh": "霓虹暴雨天台",
+      "camera_rig": {
+        "rig_id": "CAM_DUTCH_22DEG_WASH",
+        "name_zh": "22° 荷蘭斜角動態追焦鏡",
+        "focal_mm": 32,
+        "zoom_mode": "DUTCH_TILT",
+        "orbit_deg": 70.0,
+        "off_normal_deg": 48.0,
+        "roll_deg": 22.0,
+        "prompt_directive": "32mm dynamic 22-degree Dutch roll angle amplifying backward wind-up tension without altering world-space rigid-body cylinder normal."
+      },
+      "contact_phase": "H0_PRE_CONTACT_AIR_GAP",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_07_H0_NEON_ROOFTOP_AIR_GAP.jpg",
+      "sha256": "bfbe3ec11ba82ccb0d63db65dca9b36a4e1e2a8b842be84a3a23a9ff0e7a966a",
+      "parent_sha256": "540f1bea2d3bdb5053ccedfe225ff6e8767f1c48eb381d175a5710910b2d30cb",
+      "passed": true,
+      "quality_score": 0.97,
+      "elevation_level": "k=3_CAM_DUTCH_22DEG_WASH__THEME_CYBER_RAIN",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 1.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.070866901356308,
+            "coverage": 0.3507762275062463,
+            "n": 12495.0,
+            "eig_ratio": 1.1467559204204603,
+            "angle_deg": -143.1666836290864
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": true,
+          "detail": "PASS: pre-contact air gap verified (cylinder detached before bubble, seam_p99=176.0 < 220.0, drum_median=50.3)",
+          "metrics": {
+            "seam_p99_luma": 176.0,
+            "seam_mean_luma": 44.34626770019531,
+            "drum_median_luma": 50.33333206176758
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.152)",
+          "metrics": {
+            "high_edge_density": 0.15206124078985128
+          }
+        }
+      ]
+    },
+    "WASH_08_H0_EMERALD_LEAP_AIR_GAP": {
+      "stage": "WASH_08_H0_EMERALD_LEAP_AIR_GAP",
+      "name_zh": "Tricky 蓄力（柱未碰泡前）：翡翠神殿凌空躍起懸空蓄力",
+      "theme_zh": "翡翠森靈神殿",
+      "camera_rig": {
+        "rig_id": "CAM_LOW_HERO_24MM_GAP",
+        "name_zh": "24mm 廣角懸空氣隙審計鏡（蓄力未碰泡）",
+        "focal_mm": 24,
+        "zoom_mode": "STANDARD_LOCK",
+        "orbit_deg": 15.0,
+        "off_normal_deg": 72.0,
+        "roll_deg": -6.0,
+        "prompt_directive": "24mm side-grazing low-hero angle exposing the wide pre-contact air gap between the cylinder's inner circular face and the untouched bubble."
+      },
+      "contact_phase": "H0_PRE_CONTACT_AIR_GAP",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_08_H0_EMERALD_LEAP_AIR_GAP.jpg",
+      "sha256": "5373181adaaed7a74b8c513fcef600d263707af1716b6d29bbb71582a787e02c",
+      "parent_sha256": "bfbe3ec11ba82ccb0d63db65dca9b36a4e1e2a8b842be84a3a23a9ff0e7a966a",
+      "passed": true,
+      "quality_score": 0.97,
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 2.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.8948331897274722,
+            "coverage": 0.22433396030431488,
+            "n": 7991.0,
+            "eig_ratio": 3.5903928168927868,
+            "angle_deg": 76.98027063157937
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": true,
+          "detail": "PASS: pre-contact air gap verified (cylinder detached before bubble, seam_p99=207.7 < 220.0, drum_median=24.7)",
+          "metrics": {
+            "seam_p99_luma": 207.6666717529297,
+            "seam_mean_luma": 102.50338745117188,
+            "drum_median_luma": 24.66666603088379
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.068)",
+          "metrics": {
+            "high_edge_density": 0.06828735318219066
+          }
+        }
+      ]
+    },
+    "WASH_09_H3_EMERALD_IMPACT_SHATTER": {
+      "stage": "WASH_09_H3_EMERALD_IMPACT_SHATTER",
+      "name_zh": "終章正撞破泡（H0 懸空蓄力 ➔ H3 端面正撞爆破）",
+      "theme_zh": "翡翠森靈神殿",
+      "camera_rig": {
+        "rig_id": "CAM_LOW_HERO_24MM_GAP",
+        "name_zh": "24mm 廣角懸空氣隙審計鏡（蓄力未碰泡）",
+        "focal_mm": 24,
+        "zoom_mode": "STANDARD_LOCK",
+        "orbit_deg": 15.0,
+        "off_normal_deg": 72.0,
+        "roll_deg": -6.0,
+        "prompt_directive": "24mm side-grazing low-hero angle exposing the wide pre-contact air gap between the cylinder's inner circular face and the untouched bubble."
+      },
+      "contact_phase": "H3_IMPACT_SHATTER",
+      "image_path": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_09_H3_EMERALD_IMPACT_SHATTER.jpg",
+      "sha256": "d04dea80f9f6db31898a7d8ccd65083b3488434c6a44895c04a40b192b7f768f",
+      "parent_sha256": "5373181adaaed7a74b8c513fcef600d263707af1716b6d29bbb71582a787e02c",
+      "passed": true,
+      "quality_score": 0.96,
+      "elevation_level": "k=3_CAM_LOW_HERO_24MM_GAP__THEME_EMERALD_SHRINE",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.268011013721641,
+            "coverage": 0.3514522999208031,
+            "n": 32839.0,
+            "eig_ratio": 1.6078519309193833,
+            "angle_deg": 145.96865180660524
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: outward bubble shatter spectacle verified (edge_density=0.215)",
+          "metrics": {
+            "high_edge_density": 0.21453912912894121
+          }
+        }
+      ]
+    }
+  },
+  "attempt_history": [
+    {
+      "stage": "WASH_01_ZOOM_IN_SEAM",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_920516474513053289.jpg",
+      "sha256": "c7dda42829e00b895f75602c8acad11ff0e4c98498afafcaae4d37b4e83f3057",
+      "parent_sha256": "f612ec7e07d95f256d3bd352f73f98ca913074c87556aed58cfc3223a059ee81",
+      "elevation_level": "k=3_CAM_ZOOM_IN_85MM_SEAM__THEME_STUDIO",
+      "passed": true,
+      "quality_score": 0.94,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.049076292985575,
+            "coverage": 0.3566938213741026,
+            "n": 38356.0,
+            "eig_ratio": 4.198713654475505,
+            "angle_deg": 148.35652938817722
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_02_ZOOM_IN_EMERALD_GRIP",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_5088568335220294406.jpg",
+      "sha256": "0aaef5c5c4564d0fb146f6659619dbdcddc48c3a83618d536b9687fa085e497b",
+      "parent_sha256": "c7dda42829e00b895f75602c8acad11ff0e4c98498afafcaae4d37b4e83f3057",
+      "elevation_level": "k=3_CAM_ZOOM_IN_100MM_GRIP__THEME_EMERALD_SHRINE",
+      "passed": true,
+      "quality_score": 0.94,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.683507221932215,
+            "coverage": 0.357409887289365,
+            "n": 38433.0,
+            "eig_ratio": 2.834196566297924,
+            "angle_deg": 157.32205938074338
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_03_ZOOM_OUT_ASTRAL_HERO",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_1672491233494744031.jpg",
+      "sha256": "1ab3c579ea997ed7eac45e09b0d5d9a5655b2594828e0c1d8c2b779494648164",
+      "parent_sha256": "0aaef5c5c4564d0fb146f6659619dbdcddc48c3a83618d536b9687fa085e497b",
+      "elevation_level": "k=3_CAM_ZOOM_OUT_18MM_HERO__THEME_ASTRAL_GOLD",
+      "passed": true,
+      "quality_score": 0.94,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.6904002323618375,
+            "coverage": 0.3534017780753636,
+            "n": 38002.0,
+            "eig_ratio": 2.857452945568954,
+            "angle_deg": 158.66081416166304
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_04_ZOOM_OUT_CYBER_CATHEDRAL",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_8200684612301864123.jpg",
+      "sha256": "90a49b4e29c012125ddd18218aaad2a5d84979a91d05b504c86a0ff47bd12ae3",
+      "parent_sha256": "1ab3c579ea997ed7eac45e09b0d5d9a5655b2594828e0c1d8c2b779494648164",
+      "elevation_level": "k=3_CAM_ZOOM_OUT_20MM_CATHEDRAL__THEME_CYBER_RAIN",
+      "passed": true,
+      "quality_score": 0.94,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.441667357459124,
+            "coverage": 0.35000743964587283,
+            "n": 37637.0,
+            "eig_ratio": 2.078404769563174,
+            "angle_deg": -177.46193012833626
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_05_AIRBORNE_SPIRAL_KICK",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_13174224021440329808.jpg",
+      "sha256": "ab6ba50f7b55e1944a452228fa6115361cf1f4e1bb162c9afc621316dd2c70ce",
+      "parent_sha256": "90a49b4e29c012125ddd18218aaad2a5d84979a91d05b504c86a0ff47bd12ae3",
+      "elevation_level": "k=3_CAM_DUTCH_22DEG_WASH__THEME_ASTRAL_GOLD",
+      "passed": true,
+      "quality_score": 0.94,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 1.0,
+            "row_gutter_peaks": 1.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.210481232107003,
+            "coverage": 0.3514395714763977,
+            "n": 37791.0,
+            "eig_ratio": 4.886227277497294,
+            "angle_deg": -163.57662418130505
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_06_H0_STUDIO_AIR_GAP",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_396373535313525858.jpg",
+      "sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634",
+      "parent_sha256": "ab6ba50f7b55e1944a452228fa6115361cf1f4e1bb162c9afc621316dd2c70ce",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": false,
+      "quality_score": 0.3,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.2642500429961991,
+            "coverage": 0.3518430139524438,
+            "n": 12533.0,
+            "eig_ratio": 1.5983281712158917,
+            "angle_deg": 47.791444747051266
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": false,
+          "detail": "FAIL: cylinder head is still touching/planted on bubble during H0 windup (seam_p99=247.7 >= 220.0) — REJECT + pull cylinder back along -n",
+          "metrics": {
+            "seam_p99_luma": 247.6666717529297,
+            "seam_mean_luma": 71.56065368652344,
+            "drum_median_luma": 27.66666603088379
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.028)",
+          "metrics": {
+            "high_edge_density": 0.0277713428232585
+          }
+        }
+      ],
+      "rejection_reasons": [
+        "pre_contact_windup_air_gap: FAIL: cylinder head is still touching/planted on bubble during H0 windup (seam_p99=247.7 >= 220.0) — REJECT + pull cylinder back along -n"
+      ],
+      "repair_action_taken": "AUTO_REJECT_AND_ROLLBACK -> k=0_CORE_REPAIR_THEN_K3"
+    },
+    {
+      "stage": "WASH_06_H0_STUDIO_AIR_GAP",
+      "attempt_index": 2,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_10556397867986353199.jpg",
+      "sha256": "540f1bea2d3bdb5053ccedfe225ff6e8767f1c48eb381d175a5710910b2d30cb",
+      "parent_sha256": "ab6ba50f7b55e1944a452228fa6115361cf1f4e1bb162c9afc621316dd2c70ce",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": true,
+      "quality_score": 0.97,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 5.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.638634681548733,
+            "coverage": 0.3173689677437467,
+            "n": 11305.0,
+            "eig_ratio": 2.685123619574317,
+            "angle_deg": 73.83808377024897
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": true,
+          "detail": "PASS: pre-contact air gap verified (cylinder detached before bubble, seam_p99=47.7 < 220.0, drum_median=25.7)",
+          "metrics": {
+            "seam_p99_luma": 47.66666793823242,
+            "seam_mean_luma": 19.11672019958496,
+            "drum_median_luma": 25.66666603088379
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.013)",
+          "metrics": {
+            "high_edge_density": 0.012934834848332924
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_07_H0_NEON_ROOFTOP_AIR_GAP",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_12672927877571234453.jpg",
+      "sha256": "bfbe3ec11ba82ccb0d63db65dca9b36a4e1e2a8b842be84a3a23a9ff0e7a966a",
+      "parent_sha256": "540f1bea2d3bdb5053ccedfe225ff6e8767f1c48eb381d175a5710910b2d30cb",
+      "elevation_level": "k=3_CAM_DUTCH_22DEG_WASH__THEME_CYBER_RAIN",
+      "passed": true,
+      "quality_score": 0.97,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 1.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.070866901356308,
+            "coverage": 0.3507762275062463,
+            "n": 12495.0,
+            "eig_ratio": 1.1467559204204603,
+            "angle_deg": -143.1666836290864
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": true,
+          "detail": "PASS: pre-contact air gap verified (cylinder detached before bubble, seam_p99=176.0 < 220.0, drum_median=50.3)",
+          "metrics": {
+            "seam_p99_luma": 176.0,
+            "seam_mean_luma": 44.34626770019531,
+            "drum_median_luma": 50.33333206176758
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.152)",
+          "metrics": {
+            "high_edge_density": 0.15206124078985128
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_08_H0_EMERALD_LEAP_AIR_GAP",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_5556018405890776757.jpg",
+      "sha256": "b6ed99fbaf2f730db4ab69da11c7a8a08cd95dd35955b138f4db0135bd81f812",
+      "parent_sha256": "bfbe3ec11ba82ccb0d63db65dca9b36a4e1e2a8b842be84a3a23a9ff0e7a966a",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": false,
+      "quality_score": 0.2,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": false,
+          "detail": "FAIL: outer-cap ROI shows rod-like structure (likely new outer-end handle) — REJECT + roll back",
+          "metrics": {
+            "elongation": 4.202020410254927,
+            "coverage": 0.19106706717947278,
+            "n": 6806.0,
+            "eig_ratio": 17.656975528198984,
+            "angle_deg": 82.4577328365831
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": false,
+          "detail": "FAIL: cylinder head is still touching/planted on bubble during H0 windup (seam_p99=224.0 >= 220.0) — REJECT + pull cylinder back along -n",
+          "metrics": {
+            "seam_p99_luma": 224.0,
+            "seam_mean_luma": 96.76178741455078,
+            "drum_median_luma": 102.66666412353516
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.068)",
+          "metrics": {
+            "high_edge_density": 0.06791047614437502
+          }
+        }
+      ],
+      "rejection_reasons": [
+        "outer_end_empty: FAIL: outer-cap ROI shows rod-like structure (likely new outer-end handle) — REJECT + roll back",
+        "pre_contact_windup_air_gap: FAIL: cylinder head is still touching/planted on bubble during H0 windup (seam_p99=224.0 >= 220.0) — REJECT + pull cylinder back along -n"
+      ],
+      "repair_action_taken": "AUTO_REJECT_AND_ROLLBACK -> k=0_CORE_REPAIR_THEN_K3"
+    },
+    {
+      "stage": "WASH_08_H0_EMERALD_LEAP_AIR_GAP",
+      "attempt_index": 2,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_6798052722769216451.jpg",
+      "sha256": "5373181adaaed7a74b8c513fcef600d263707af1716b6d29bbb71582a787e02c",
+      "parent_sha256": "bfbe3ec11ba82ccb0d63db65dca9b36a4e1e2a8b842be84a3a23a9ff0e7a966a",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": true,
+      "quality_score": 0.97,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 2.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.8948331897274722,
+            "coverage": 0.22433396030431488,
+            "n": 7991.0,
+            "eig_ratio": 3.5903928168927868,
+            "angle_deg": 76.98027063157937
+          }
+        },
+        {
+          "name": "pre_contact_windup_air_gap",
+          "passed": true,
+          "detail": "PASS: pre-contact air gap verified (cylinder detached before bubble, seam_p99=207.7 < 220.0, drum_median=24.7)",
+          "metrics": {
+            "seam_p99_luma": 207.6666717529297,
+            "seam_mean_luma": 102.50338745117188,
+            "drum_median_luma": 24.66666603088379
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.068)",
+          "metrics": {
+            "high_edge_density": 0.06828735318219066
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "WASH_09_H3_EMERALD_IMPACT_SHATTER",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_9823433701377142934.jpg",
+      "sha256": "d04dea80f9f6db31898a7d8ccd65083b3488434c6a44895c04a40b192b7f768f",
+      "parent_sha256": "5373181adaaed7a74b8c513fcef600d263707af1716b6d29bbb71582a787e02c",
+      "elevation_level": "k=3_CAM_LOW_HERO_24MM_GAP__THEME_EMERALD_SHRINE",
+      "passed": true,
+      "quality_score": 0.96,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.268011013721641,
+            "coverage": 0.3514522999208031,
+            "n": 32839.0,
+            "eig_ratio": 1.6078519309193833,
+            "angle_deg": 145.96865180660524
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: outward bubble shatter spectacle verified (edge_density=0.215)",
+          "metrics": {
+            "high_edge_density": 0.21453912912894121
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    }
+  ],
+  "video_transition_manifest": [
+    {
+      "segment_id": "p00_WASH_01_ZOOM_IN_SEAM_to_WASH_02_ZOOM_IN_EMERALD_GRIP",
+      "candidate_id": "C13",
+      "start_stage": "WASH_01_ZOOM_IN_SEAM",
+      "end_stage": "WASH_02_ZOOM_IN_EMERALD_GRIP",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_01_ZOOM_IN_SEAM.jpg",
+      "start_sha256": "c7dda42829e00b895f75602c8acad11ff0e4c98498afafcaae4d37b4e83f3057",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_02_ZOOM_IN_EMERALD_GRIP.jpg",
+      "end_sha256": "0aaef5c5c4564d0fb146f6659619dbdcddc48c3a83618d536b9687fa085e497b",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_01_ZOOM_IN_SEAM to WASH_02_ZOOM_IN_EMERALD_GRIP; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    },
+    {
+      "segment_id": "p01_WASH_02_ZOOM_IN_EMERALD_GRIP_to_WASH_03_ZOOM_OUT_ASTRAL_HERO",
+      "candidate_id": "C13",
+      "start_stage": "WASH_02_ZOOM_IN_EMERALD_GRIP",
+      "end_stage": "WASH_03_ZOOM_OUT_ASTRAL_HERO",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_02_ZOOM_IN_EMERALD_GRIP.jpg",
+      "start_sha256": "0aaef5c5c4564d0fb146f6659619dbdcddc48c3a83618d536b9687fa085e497b",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_03_ZOOM_OUT_ASTRAL_HERO.jpg",
+      "end_sha256": "1ab3c579ea997ed7eac45e09b0d5d9a5655b2594828e0c1d8c2b779494648164",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_02_ZOOM_IN_EMERALD_GRIP to WASH_03_ZOOM_OUT_ASTRAL_HERO; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    },
+    {
+      "segment_id": "p02_WASH_03_ZOOM_OUT_ASTRAL_HERO_to_WASH_04_ZOOM_OUT_CYBER_CATHEDRAL",
+      "candidate_id": "C13",
+      "start_stage": "WASH_03_ZOOM_OUT_ASTRAL_HERO",
+      "end_stage": "WASH_04_ZOOM_OUT_CYBER_CATHEDRAL",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_03_ZOOM_OUT_ASTRAL_HERO.jpg",
+      "start_sha256": "1ab3c579ea997ed7eac45e09b0d5d9a5655b2594828e0c1d8c2b779494648164",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_04_ZOOM_OUT_CYBER_CATHEDRAL.jpg",
+      "end_sha256": "90a49b4e29c012125ddd18218aaad2a5d84979a91d05b504c86a0ff47bd12ae3",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_03_ZOOM_OUT_ASTRAL_HERO to WASH_04_ZOOM_OUT_CYBER_CATHEDRAL; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    },
+    {
+      "segment_id": "p03_WASH_04_ZOOM_OUT_CYBER_CATHEDRAL_to_WASH_05_AIRBORNE_SPIRAL_KICK",
+      "candidate_id": "C13",
+      "start_stage": "WASH_04_ZOOM_OUT_CYBER_CATHEDRAL",
+      "end_stage": "WASH_05_AIRBORNE_SPIRAL_KICK",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_04_ZOOM_OUT_CYBER_CATHEDRAL.jpg",
+      "start_sha256": "90a49b4e29c012125ddd18218aaad2a5d84979a91d05b504c86a0ff47bd12ae3",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_05_AIRBORNE_SPIRAL_KICK.jpg",
+      "end_sha256": "ab6ba50f7b55e1944a452228fa6115361cf1f4e1bb162c9afc621316dd2c70ce",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_04_ZOOM_OUT_CYBER_CATHEDRAL to WASH_05_AIRBORNE_SPIRAL_KICK; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    },
+    {
+      "segment_id": "p04_WASH_05_AIRBORNE_SPIRAL_KICK_to_WASH_06_H0_STUDIO_AIR_GAP",
+      "candidate_id": "C13",
+      "start_stage": "WASH_05_AIRBORNE_SPIRAL_KICK",
+      "end_stage": "WASH_06_H0_STUDIO_AIR_GAP",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_05_AIRBORNE_SPIRAL_KICK.jpg",
+      "start_sha256": "ab6ba50f7b55e1944a452228fa6115361cf1f4e1bb162c9afc621316dd2c70ce",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_06_H0_STUDIO_AIR_GAP.jpg",
+      "end_sha256": "540f1bea2d3bdb5053ccedfe225ff6e8767f1c48eb381d175a5710910b2d30cb",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_05_AIRBORNE_SPIRAL_KICK to WASH_06_H0_STUDIO_AIR_GAP; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    },
+    {
+      "segment_id": "p05_WASH_06_H0_STUDIO_AIR_GAP_to_WASH_07_H0_NEON_ROOFTOP_AIR_GAP",
+      "candidate_id": "C13",
+      "start_stage": "WASH_06_H0_STUDIO_AIR_GAP",
+      "end_stage": "WASH_07_H0_NEON_ROOFTOP_AIR_GAP",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_06_H0_STUDIO_AIR_GAP.jpg",
+      "start_sha256": "540f1bea2d3bdb5053ccedfe225ff6e8767f1c48eb381d175a5710910b2d30cb",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_07_H0_NEON_ROOFTOP_AIR_GAP.jpg",
+      "end_sha256": "bfbe3ec11ba82ccb0d63db65dca9b36a4e1e2a8b842be84a3a23a9ff0e7a966a",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_06_H0_STUDIO_AIR_GAP to WASH_07_H0_NEON_ROOFTOP_AIR_GAP; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    },
+    {
+      "segment_id": "p06_WASH_07_H0_NEON_ROOFTOP_AIR_GAP_to_WASH_08_H0_EMERALD_LEAP_AIR_GAP",
+      "candidate_id": "C13",
+      "start_stage": "WASH_07_H0_NEON_ROOFTOP_AIR_GAP",
+      "end_stage": "WASH_08_H0_EMERALD_LEAP_AIR_GAP",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_07_H0_NEON_ROOFTOP_AIR_GAP.jpg",
+      "start_sha256": "bfbe3ec11ba82ccb0d63db65dca9b36a4e1e2a8b842be84a3a23a9ff0e7a966a",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_08_H0_EMERALD_LEAP_AIR_GAP.jpg",
+      "end_sha256": "5373181adaaed7a74b8c513fcef600d263707af1716b6d29bbb71582a787e02c",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_07_H0_NEON_ROOFTOP_AIR_GAP to WASH_08_H0_EMERALD_LEAP_AIR_GAP; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    },
+    {
+      "segment_id": "p07_WASH_08_H0_EMERALD_LEAP_AIR_GAP_to_WASH_09_H3_EMERALD_IMPACT_SHATTER",
+      "candidate_id": "C13",
+      "start_stage": "WASH_08_H0_EMERALD_LEAP_AIR_GAP",
+      "end_stage": "WASH_09_H3_EMERALD_IMPACT_SHATTER",
+      "start_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_08_H0_EMERALD_LEAP_AIR_GAP.jpg",
+      "start_sha256": "5373181adaaed7a74b8c513fcef600d263707af1716b6d29bbb71582a787e02c",
+      "end_frame": "/tmp/thematic_anthology_run/rasters/LOCKED_WASH_09_H3_EMERALD_IMPACT_SHATTER.jpg",
+      "end_sha256": "d04dea80f9f6db31898a7d8ccd65083b3488434c6a44895c04a40b192b7f768f",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Smooth rigid-body camera/motion transition from WASH_08_H0_EMERALD_LEAP_AIR_GAP to WASH_09_H3_EMERALD_IMPACT_SHATTER; preserve radial dark-steel cylinder, 100% bare outer circular cap, and 90° side-middle lateral rod."
+    }
+  ],
+  "summary_board_path": "/tmp/thematic_anthology_run/THEMATIC_ANTHOLOGY_ALBUM_BOARD.jpg"
+}
