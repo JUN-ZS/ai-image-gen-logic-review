@@ -873,7 +873,7 @@ def audit_candidate_frame(
     if stage in ("A", "B0_ROI_4X"):
         gates.append(gate_base_conformal_glow(image_path, (0.15, 0.15, 0.85, 0.85), min_peak_luma=140.0))
     else:
-        if stage not in ("B", "D0", "KF1_0S_PRE_FAR"):
+        if stage not in ("B", "D0"):
             d_step = stage_to_canonical_d_step(stage)
             if d_step in ("D1", "D2", "D3", "D4"):
                 try:
@@ -1018,7 +1018,7 @@ def compile_elevation_prompt_repair(
         ),
     }
     if stage in frame_directives:
-        base += "\\n\\n"+frame_directives[stage]+"\\n"
+        base += "\n\n"+frame_directives[stage]+"\n"
     return {
         "elevation_level": "k=0_CORE_MASK_REPAIR_THEN_K3",
         "repaired_prompt": core_k0 + "\n" + base,
