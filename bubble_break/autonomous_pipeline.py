@@ -394,6 +394,8 @@ class AutonomousPipelineReport:
     video_transition_manifest: list[dict[str, Any]]
     summary_board_path: str | None = None
     trilogy_strip_path: str | None = None
+    scene_contract_id: str = "LEGACY_SINGLE_HAMMER_PLANTED_ON_BUBBLE"
+    visual_acceptance_status: str = "NOT_VERIFIED"
 
     def __post_init__(self) -> None:
         """Fail fast if evidence flags contradict the declared run mode."""
@@ -1672,9 +1674,12 @@ def run_autonomous_pipeline(
         prod_passed = False  # PR #3 Hard Rule: synthetic test never sets all_stages_passed=True!
         synth_passed = True
     else:
-        evidence_mode = "REAL_GENERATIVE_RASTER"
-        status_str = "PASSED"
-        prod_passed = True
+        # Pixel-level legacy bubble gates cannot certify the requested dual-T-hammer contact plane.
+        # A real raster is not a semantically accepted raster. Block until the dual-tool geometry
+        # evidence is connected to this report; see dual_t_hammer_collision.py.
+        evidence_mode = "BLOCKED"
+        status_str = "BLOCKED_DUAL_T_HAMMER_SEMANTIC_EVIDENCE_MISSING"
+        prod_passed = False
         synth_passed = False
 
     report = AutonomousPipelineReport(
@@ -1697,6 +1702,8 @@ def run_autonomous_pipeline(
         five_keyframe_trilogy=five_keyframes,
         five_keyframe_transition_audits=transition_audits,
         video_transition_manifest=video_manifest,
+        scene_contract_id="LEGACY_SINGLE_HAMMER_PLANTED_ON_BUBBLE",
+        visual_acceptance_status="NOT_VERIFIED",
     )
     if canonical_sequence:
         board_path = create_audit_contact_board(report, outdir / "AUTONOMOUS_AUDIT_SUMMARY_BOARD.jpg")
