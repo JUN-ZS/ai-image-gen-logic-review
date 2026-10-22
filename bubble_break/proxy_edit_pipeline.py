@@ -373,7 +373,7 @@ def run_calibrated_bubble_break_closed_loop(
             rep = UnifiedCalibratedBubbleBreakReport(
                 workflow="calibrated-dual-t-to-bubble-break-closed-loop-v1",
                 status=block_status,
-                calibration_approved=True,
+                calibration_approved=False,
                 bubble_break_approved=False,
                 code_visual_acceptance_status="NOT_VERIFIED_BY_CODE",
                 calibrated_attacking_hammer_sha256=calibrated_first_contact_sha,
