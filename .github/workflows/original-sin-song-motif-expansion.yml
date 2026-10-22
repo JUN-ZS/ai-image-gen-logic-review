@@ -1,0 +1,101 @@
+name: EFV Song-Semantic Original Sin Story Expansion
+
+on:
+  push:
+    branches: [main, 'feat/**']
+    paths:
+      - 'bubble_break/song_motif_expansion.py'
+      - 'bubble_break/test_song_motif_expansion.py'
+      - 'bubble_break/EFV_SONG_SEMANTIC_EXPANSION.md'
+      - '.github/workflows/original-sin-song-motif-expansion.yml'
+      - 'bubble_break/generate.py'
+  pull_request:
+    paths:
+      - 'bubble_break/song_motif_expansion.py'
+      - 'bubble_break/test_song_motif_expansion.py'
+      - 'bubble_break/EFV_SONG_SEMANTIC_EXPANSION.md'
+      - '.github/workflows/original-sin-song-motif-expansion.yml'
+      - 'bubble_break/generate.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  song-semantic-story-prompt-compiler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install existing image-audit test dependencies
+        run: python -m pip install --disable-pip-version-check Pillow numpy
+      - name: Test all story engines and EFV semantic overlay
+        run: python -m unittest discover -s bubble_break -p 'test_*.py' -v
+      - name: Compile a 1,000-story dual-mode prompt batch
+        run: |
+          python bubble_break/song_motif_expansion.py \
+            --count 1000 \
+            --seed 20261021 \
+            --mode dual \
+            --weapon-topology RADIAL \
+            --format jsonl \
+            --out out/efv_song_inspired_original_sin_1000.jsonl
+      - name: Verify breadth, motif balance, cause balance, and honest audit states
+        run: |
+          python - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+
+          root = Path("out")
+          path = root / "efv_song_inspired_original_sin_1000.jsonl"
+          rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+          assert len(rows) == 1000, len(rows)
+          assert len({r["story_id"] for r in rows}) == 1000
+          causes = Counter(r["causal_kernel_id"] for r in rows)
+          flower = Counter(r["song_semantic_layer"]["flower_source"]["motif_id"] for r in rows)
+          gumen = Counter(r["song_semantic_layer"]["gumen_source"]["motif_id"] for r in rows)
+          pairs = Counter((r["song_semantic_layer"]["flower_source"]["motif_id"],
+                           r["song_semantic_layer"]["gumen_source"]["motif_id"]) for r in rows)
+          extreme = Counter(r["song_semantic_layer"]["visual_extremity"]["id"] for r in rows)
+          assert len(causes) == 20, len(causes)
+          assert max(causes.values()) - min(causes.values()) <= 1, causes
+          assert len(flower) == 11 and len(gumen) == 12, (len(flower), len(gumen))
+          assert len(pairs) == 132, len(pairs)
+          assert max(pairs.values()) - min(pairs.values()) <= 1, (min(pairs.values()), max(pairs.values()))
+          assert len(extreme) == 20, len(extreme)
+          assert all(r["audit"]["status"] == "PROMPT_CONTRACT_PASS" for r in rows)
+          assert all(r["audit"]["image_realization"] == "NOT_RUN" for r in rows)
+          assert all(r["audit"]["pixel_audit_status"] == "NOT_RUN" for r in rows)
+          assert all(set(r["prompts"]) == {"heroine", "abstract"} for r in rows)
+          assert all("第一次接觸 P" in r["contact_prompt"] for r in rows)
+          assert all("裂紋只在接觸後從 P" in r["contact_prompt"] for r in rows)
+          assert all("全部存活" in r["end_prompt"] and "沒有傷口" in r["end_prompt"] for r in rows)
+          summary = {
+              "record_count": len(rows),
+              "unique_story_ids": len({r["story_id"] for r in rows}),
+              "root_cause_kernels": len(causes),
+              "flower_motifs": len(flower),
+              "gumen_motifs": len(gumen),
+              "flower_x_gumen_pairs": len(pairs),
+              "visual_extremity_profiles": len(extreme),
+              "contract_audit": "PASS",
+              "image_realization": "NOT_RUN",
+              "pixel_audit_status": "NOT_RUN",
+              "lyrics_copied": False
+          }
+          (root / "song_motif_batch_summary.json").write_text(
+              json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
+          )
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          PY
+      - name: Upload story formula prompts and audit summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: efv-song-inspired-original-sin-story-prompts-1000
+          path: |
+            out/efv_song_inspired_original_sin_1000.jsonl
+            out/song_motif_batch_summary.json
+          if-no-files-found: error
