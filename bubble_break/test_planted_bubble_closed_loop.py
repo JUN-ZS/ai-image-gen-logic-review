@@ -33,6 +33,19 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         Image.new("RGB", (400, 300), color).save(path)
         return path
 
+    def make_master_selection(self) -> dict:
+        return {
+            "selection_mode": "HUMAN_ROI",
+            "selection_reviewer": "test-human",
+            "selection_notes": "Selected by visible position, not printed label",
+            "source_atlas_image_path": str(self.atlas),
+            "source_atlas_raster_sha256": self.atlas_sha,
+            "source_atlas_width_px": 400,
+            "source_atlas_height_px": 300,
+            "selected_roi_xyxy_px": [180, 70, 300, 250],
+            "selected_tool_is_single_instance": True,
+        }
+
     def make_evidence(
         self,
         stage: str,
@@ -207,6 +220,20 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         self.assertFalse(result["contract_valid"])
         self.assertIn("RASTER_SHA256_MISMATCH", result["errors"])
 
+    def test_provider_run_blocks_without_explicit_master_roi_selection(self):
+        outdir = self.root / "missing_selection_run"
+        calls = []
+
+        def provider(request: dict, request_dir: Path):
+            calls.append(request)
+            return []
+
+        report = run_planted_bubble_closed_loop(outdir, rerun_provider=provider, max_retries=1)
+        self.assertFalse(report["next_stage_allowed"])
+        self.assertEqual(report["accepted_stage_count"], 0)
+        self.assertEqual(calls, [])
+        self.assertIn("BLOCKED", report["status"])
+
     def test_pipeline_uses_feedback_and_retries_from_last_pass_parent(self):
         outdir = self.root / "run"
         calls = []
@@ -226,7 +253,12 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
                 evidence["raster_annotations"]["planted_cylinder"]["additional_handle_or_stub_detected"] = True
             return [Candidate(image, evidence)]
 
-        report = run_planted_bubble_closed_loop(outdir, rerun_provider=provider, max_retries=2)
+        report = run_planted_bubble_closed_loop(
+            outdir,
+            rerun_provider=provider,
+            max_retries=2,
+            master_selection=self.make_master_selection(),
+        )
         self.assertTrue(report["next_stage_allowed"], report["status"])
         self.assertEqual(report["accepted_stage_count"], len(STAGE_ORDER))
         d2_calls = [r for r in calls if r["stage"] == "D2_FIRST_GRIP_EXISTING_HANDLE"]
@@ -238,3 +270,4 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         self.assertTrue(d2_second["selected"])
         self.assertFalse(any(x["selected"] for x in report["attempt_log"] if x["stage"] == "D2_FIRST_GRIP_EXISTING_HANDLE" and x["attempt_round"] == 0))
         self.assertIn("NEW_HANDLE_OR_STUB_DETECTED_OR_UNVERIFIED", d2_calls[1].get("repair_error_vector", []))
+        self.assertEqual(calls[0]["master_selection"]["selected_roi_xyxy_px"], [180, 70, 300, 250])
