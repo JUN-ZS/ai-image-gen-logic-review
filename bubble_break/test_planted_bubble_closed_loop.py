@@ -188,6 +188,108 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
             }
         return evidence
 
+    def make_masked_child(self, stage, parent_path, parent_evidence, *, color=(40, 50, 60), camera_view="CAMERA_VIEW_FIXED_001", hero_box=(20, 100, 70, 180), pose_signature=None):
+        parent_sha = sha256_file(parent_path)
+        masks = build_stage_masks(parent_path, parent_evidence, stage, self.root / ("masks_" + stage))
+        raw = self.make_image(stage + "_raw_" + str(len(list(self.root.glob("*.png")))) + ".png", color)
+        composed = self.root / (stage + "_composed_" + str(len(list(self.root.glob("*.png")))) + ".png")
+        compose_masked_edit(parent_path, raw, masks["edit_mask_path"], composed)
+        frozen = validate_frozen_pixels(parent_path, composed, masks["edit_mask_path"])
+        self.assertTrue(frozen["passed"], frozen)
+        evidence = self.make_evidence(
+            stage, composed, parent_sha=parent_sha,
+            anchor_sha=parent_evidence.get("scene_anchor_raster_sha256"),
+            mask_path=Path(masks["edit_mask_path"]), camera_view=camera_view,
+            hero_box=hero_box, pose_signature=pose_signature,
+        )
+        return composed, evidence, masks
+
+    def test_scene_camera_and_background_locks_reject_viewpoint_reset(self):
+        master = self.make_image("scene_lock_master.png", (10, 20, 30))
+        master_ev = self.make_evidence("B_LOCKED_TOOL_MASTER", master, parent_sha=None, anchor_sha=None)
+        master_audit = validate_planted_bubble_frame(master, master_ev, expected_stage="B_LOCKED_TOOL_MASTER")
+        self.assertTrue(master_audit["contract_valid"], master_audit["errors"])
+        child, child_ev, _ = self.make_masked_child(
+            "C_PERSON_SCALE_NO_GRIP", master, master_ev, camera_view="CAMERA_VIEW_RESET_02",
+        )
+        audit = validate_planted_bubble_frame(
+            child, child_ev, expected_stage="C_PERSON_SCALE_NO_GRIP",
+            expected_parent_sha256=sha256_file(master), expected_anchor_sha256=sha256_file(master),
+            expected_locked_geometry=master_audit["locked_geometry"],
+            expected_scene_lock={key: master_audit["locked_geometry"][key] for key in (
+                "scene_id", "camera_rig_id", "camera_view_fingerprint", "background_landmarks_sha256")},
+            expected_parent_evidence=master_ev, expected_parent_image_path=master,
+        )
+        self.assertFalse(audit["contract_valid"])
+        self.assertIn("CAMERA_VIEW_CHANGED_WITHIN_TIMELINE", audit["errors"])
+
+    def test_oversized_heroine_is_blocked_even_when_label_says_miniature(self):
+        master = self.make_image("scale_master.png", (10, 20, 30))
+        master_ev = self.make_evidence("B_LOCKED_TOOL_MASTER", master, parent_sha=None, anchor_sha=None)
+        master_audit = validate_planted_bubble_frame(master, master_ev, expected_stage="B_LOCKED_TOOL_MASTER")
+        child, child_ev, _ = self.make_masked_child(
+            "C_PERSON_SCALE_NO_GRIP", master, master_ev, hero_box=(20, 80, 80, 192),
+        )
+        audit = validate_planted_bubble_frame(
+            child, child_ev, expected_stage="C_PERSON_SCALE_NO_GRIP",
+            expected_parent_sha256=sha256_file(master), expected_anchor_sha256=sha256_file(master),
+            expected_locked_geometry=master_audit["locked_geometry"],
+            expected_scene_lock={key: master_audit["locked_geometry"][key] for key in (
+                "scene_id", "camera_rig_id", "camera_view_fingerprint", "background_landmarks_sha256")},
+            expected_parent_evidence=master_ev, expected_parent_image_path=master,
+        )
+        self.assertFalse(audit["contract_valid"])
+        self.assertTrue(any(error.startswith("HEROINE_TOO_LARGE_RELATIVE_TO_BUBBLE") for error in audit["errors"]), audit["errors"])
+
+    def test_pose_must_change_and_no_op_child_must_block(self):
+        master = self.make_image("pose_master.png", (10, 20, 30))
+        master_ev = self.make_evidence("B_LOCKED_TOOL_MASTER", master, parent_sha=None, anchor_sha=None)
+        master_audit = validate_planted_bubble_frame(master, master_ev, expected_stage="B_LOCKED_TOOL_MASTER")
+        self.assertTrue(master_audit["contract_valid"], master_audit["errors"])
+        c_frame, c_ev, _ = self.make_masked_child("C_PERSON_SCALE_NO_GRIP", master, master_ev)
+        c_audit = validate_planted_bubble_frame(
+            c_frame, c_ev, expected_stage="C_PERSON_SCALE_NO_GRIP",
+            expected_parent_sha256=sha256_file(master), expected_anchor_sha256=sha256_file(master),
+            expected_locked_geometry=master_audit["locked_geometry"],
+            expected_scene_lock={key: master_audit["locked_geometry"][key] for key in (
+                "scene_id", "camera_rig_id", "camera_view_fingerprint", "background_landmarks_sha256")},
+            expected_parent_evidence=master_ev, expected_parent_image_path=master,
+        )
+        self.assertTrue(c_audit["contract_valid"], c_audit["errors"])
+        same_pose = c_ev["raster_annotations"]["heroine"]["pose_signature"]
+        d1_frame, d1_ev, masks = self.make_masked_child(
+            "D1_APPROACH_NO_GRIP", c_frame, c_ev, pose_signature=same_pose,
+        )
+        d1_audit = validate_planted_bubble_frame(
+            d1_frame, d1_ev, expected_stage="D1_APPROACH_NO_GRIP",
+            expected_parent_sha256=sha256_file(c_frame), expected_anchor_sha256=sha256_file(master),
+            expected_locked_geometry=master_audit["locked_geometry"],
+            expected_scene_lock={key: master_audit["locked_geometry"][key] for key in (
+                "scene_id", "camera_rig_id", "camera_view_fingerprint", "background_landmarks_sha256")},
+            expected_parent_evidence=c_ev, expected_parent_image_path=c_frame,
+        )
+        self.assertFalse(d1_audit["contract_valid"])
+        self.assertIn("AUTHORIZED_POSE_DELTA_NOT_VISIBLE", d1_audit["errors"])
+
+        no_op = self.root / "no_op_child.png"
+        no_op.write_bytes(c_frame.read_bytes())
+        no_op_ev = self.make_evidence(
+            "D1_APPROACH_NO_GRIP", no_op, parent_sha=sha256_file(c_frame),
+            anchor_sha=sha256_file(master), mask_path=Path(masks["edit_mask_path"]),
+            pose_signature="POSE_D1_NEW",
+        )
+        no_op_audit = validate_planted_bubble_frame(
+            no_op, no_op_ev, expected_stage="D1_APPROACH_NO_GRIP",
+            expected_parent_sha256=sha256_file(c_frame), expected_anchor_sha256=sha256_file(master),
+            expected_locked_geometry=master_audit["locked_geometry"],
+            expected_scene_lock={key: master_audit["locked_geometry"][key] for key in (
+                "scene_id", "camera_rig_id", "camera_view_fingerprint", "background_landmarks_sha256")},
+            expected_parent_evidence=c_ev, expected_parent_image_path=c_frame,
+        )
+        self.assertFalse(no_op_audit["contract_valid"])
+        self.assertIn("NO_OP_FRAME_COPIED_FROM_PARENT", no_op_audit["errors"])
+        self.assertIn("NO_AUTHORIZED_PIXEL_DELTA_IN_CHILD", no_op_audit["errors"])
+
     def test_prompt_packet_has_correct_planted_geometry_not_flying_hammer(self):
         packet = compile_prompt_packet(self.root / "packet")
         self.assertEqual(len(packet["stages"]), 7)
