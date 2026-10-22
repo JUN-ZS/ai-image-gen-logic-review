@@ -334,3 +334,12 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         self.assertFalse(any(x["selected"] for x in report["attempt_log"] if x["stage"] == "D2_FIRST_GRIP_EXISTING_HANDLE" and x["attempt_round"] == 0))
         self.assertIn("NEW_HANDLE_OR_STUB_DETECTED_OR_UNVERIFIED", d2_calls[1].get("repair_error_vector", []))
         self.assertEqual(calls[0]["master_selection"]["selected_roi_xyxy_px"], [180, 70, 300, 250])
+        self.assertTrue(d2_calls[1].get("diagnostic_experiment"), d2_calls[1])
+        self.assertEqual(
+            d2_calls[1]["diagnostic_experiment"]["action_id"],
+            "EXISTING_HANDLE_TRACK_AUDIT",
+        )
+        self.assertIn(
+            "SHANNON-STYLE NEXT DIAGNOSTIC",
+            d2_calls[1]["prompt"],
+        )
