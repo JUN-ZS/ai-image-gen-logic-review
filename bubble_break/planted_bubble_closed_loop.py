@@ -1064,6 +1064,7 @@ def compile_stage_request(
         "locked_handle_track_id": locked_handle_track_id,
         "master_selection": dict(master_selection) if master_selection is not None else None,
         "parent_geometry_annotation": dict(parent_evidence.get("raster_annotations", {})) if parent_evidence is not None else None,
+        "parent_scene_identity": ({key: parent_evidence.get(key) for key in ("scene_id", "camera_rig_id", "camera_view_fingerprint", "background_landmarks_sha256")} if parent_evidence is not None else None),
         **mask_info,
         "authorized_delta_fields": list(spec["authorized_delta_fields"]),
         "must_preserve": list(spec["must_preserve"]),
