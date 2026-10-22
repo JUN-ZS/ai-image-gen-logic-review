@@ -44,7 +44,9 @@ This is the latest **planted** interaction concept. The earlier V5.1 flying/swin
 For each real raster, the validator requires:
 - SHA-256 of the exact image bytes and matching image dimensions;
 - a parent-raster SHA (except the selected master) and an immutable master-anchor SHA;
-- an explicit source-atlas SHA, dimensions and valid pixel ROI for the initial master selection;
+- an explicit source-atlas SHA, dimensions and valid pixel ROI for the initial master selection; provider-driven Stage B is blocked without this human ROI selection;
+- per-stage binary edit/freeze mask files created from the last accepted parent's annotations. White in edit_mask.png means editable; white in freeze_mask.png means protected. These are conservative bounding-region masks, not semantic segmentation, so hard raster/geometry gates still run after generation;
+- a master geometry lock vector containing bubble center/radius, P, cylinder/base/cap coordinates and bounding boxes, the world axis, side-handle axis/attachment, and sanctuary bounds. Later stages cannot inherit the same track ID while secretly moving the handle or changing the bubble geometry;
 - the same cylinder instance ID and handle track ID through the chain;
 - P on the bubble surface and the conformal seat still at P;
 - cylinder axis aligned to the local bubble normal; handle axis transverse to the cylinder axis and tangent to the bubble; side-middle attachment fraction 0.35–0.65;
@@ -60,7 +62,7 @@ These gates validate the evidence contract and submitted annotation record. They
 ## Current implementation status
 
 The branch adds:
-- bubble_break/planted_bubble_closed_loop.py: planted-cylinder stage contract, prompt compiler, raster/evidence validator, bounded retry loop, source-atlas ROI selection record, SHA-bound parent lineage, structured error feedback, candidate ranking after hard gates, and a generic external command adapter.
+- bubble_break/planted_bubble_closed_loop.py: planted-cylinder stage contract, prompt compiler, raster/evidence validator, immutable master-geometry vector, per-stage edit/freeze masks, bounded retry loop, source-atlas ROI selection record, SHA-bound parent lineage, structured error feedback, candidate ranking after hard gates, and a generic external command adapter.
 - bubble_break/test_planted_bubble_closed_loop.py: regression tests for the source-atlas ROI gate, handle/stub and track locks, crack origin/shell-only requirements, stale raster receipts, and retrying from the last verified parent.
 - .github/workflows/shannon-planted-bubble.yml: tests and compiles the prompt/contract packet.
 
@@ -80,10 +82,10 @@ Run the regression tests:
 python -m unittest bubble_break.test_planted_bubble_closed_loop -v
 ~~~
 
-Once a provider wrapper and real evidence manifest exist, pass them explicitly:
+For provider-driven runs, first create a human-reviewed master-selection JSON with the exact source atlas path, its SHA-256 and dimensions, the chosen pixel ROI, reviewer, and notes. The fields are the same as the master_selection object accepted in a candidate evidence record. Then pass it explicitly:
 
 ~~~bash
-python -m bubble_break.planted_bubble_closed_loop --provider-command "python path/to/your_provider_wrapper.py" --outdir out/planted_bubble_run --max-retries 2
+python -m bubble_break.planted_bubble_closed_loop --master-selection-json out/master-selection.json --provider-command "python path/to/your_provider_wrapper.py" --outdir out/planted_bubble_run --max-retries 2
 ~~~
 
-The example command is a documented interface only. The named wrapper must actually call the configured image service, save its real output image bytes, and return evidence/review receipts matching the schema. No image service or credentials are silently assumed.
+For a fully offline replay, use --candidate-manifest and include evidence records bound to each exact raster. The example provider command is a handoff interface only. The named wrapper must actually call the configured image service, use the request's parent image and edit/freeze masks, save real image bytes, and return evidence/review receipts matching the schema. No image service or credentials are silently assumed.
