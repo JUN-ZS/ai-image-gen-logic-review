@@ -81,6 +81,15 @@ AUTONOMOUS_STAGE_SEQUENCE: tuple[str, ...] = (
     "E_END",
 )
 
+# Thin image margins are used only as a coarse static-background continuity check.
+# They do NOT prove character identity, story continuity, or pixel-perfect topology.
+STATIC_BACKGROUND_ROIS: tuple[tuple[float, float, float, float], ...] = (
+    (0.00, 0.00, 1.00, 0.06),
+    (0.00, 0.94, 1.00, 1.00),
+    (0.00, 0.06, 0.035, 0.94),
+    (0.965, 0.06, 1.00, 0.94),
+)
+
 
 @dataclass
 class CandidateAttemptRecord:
@@ -112,6 +121,11 @@ class AutonomousPipelineReport:
     attempt_history: list[dict[str, Any]]
     five_keyframe_trilogy: list[dict[str, Any]]
     video_transition_manifest: list[dict[str, Any]]
+    evidence_mode: str = "PROVIDED_RASTER_CANDIDATES"
+    all_contract_gates_passed: bool = False
+    visual_acceptance_status: str = "NOT_VERIFIED_HUMAN_REVIEW_REQUIRED"
+    generation_backend_status: str = "NOT_CONNECTED_BY_THIS_SCRIPT"
+    keyframe_transition_audits: list[dict[str, Any]] = field(default_factory=list)
     summary_board_path: str | None = None
     trilogy_strip_path: str | None = None
 
@@ -201,6 +215,76 @@ def gate_cross_frame_continuity(
             )
         ),
         metrics={"ncc": ncc, "luma_diff": luma_diff},
+    )
+
+
+def gate_static_background_continuity(
+    image_path: Path,
+    parent_image_path: Path | None,
+    *,
+    rois: tuple[tuple[float, float, float, float], ...] = STATIC_BACKGROUND_ROIS,
+    min_similarity: float = 0.78,
+    max_mean_luma_diff: float = 18.0,
+) -> GateResult:
+    """Coarse static-background check across keyframes, not a semantic continuity proof.
+
+    The tested strips intentionally avoid the central action area. Low-texture strips use
+    normalized absolute luminance difference instead of pretending a flat patch has a
+    meaningful NCC score. Object continuity still needs the separate geometry gates and
+    human visual review.
+    """
+    if parent_image_path is None or not parent_image_path.is_file():
+        return GateResult(
+            name="static_background_continuity",
+            passed=False,
+            detail="FAIL: missing parent raster for keyframe background comparison",
+        )
+    parent = np.asarray(
+        Image.open(parent_image_path).convert("RGB").resize((640, 360)), dtype=np.float32
+    ).mean(axis=2)
+    child = np.asarray(
+        Image.open(image_path).convert("RGB").resize((640, 360)), dtype=np.float32
+    ).mean(axis=2)
+    similarities: list[float] = []
+    luma_diffs: list[float] = []
+    for x0f, y0f, x1f, y1f in rois:
+        h, w = parent.shape
+        x0, y0 = int(x0f * w), int(y0f * h)
+        x1, y1 = max(x0 + 1, int(x1f * w)), max(y0 + 1, int(y1f * h))
+        p = parent[y0:y1, x0:x1]
+        q = child[y0:y1, x0:x1]
+        luma_diff = float(np.mean(np.abs(p - q)))
+        luma_diffs.append(luma_diff)
+        if float(p.std()) < 2.0 and float(q.std()) < 2.0:
+            similarity = max(0.0, 1.0 - luma_diff / 255.0)
+        else:
+            pc, qc = p - p.mean(), q - q.mean()
+            denom = float(np.sqrt((pc * pc).mean() * (qc * qc).mean())) + 1e-8
+            ncc = float((pc * qc).mean() / denom)
+            similarity = max(0.0, min(1.0, (ncc + 1.0) / 2.0))
+        similarities.append(similarity)
+    worst_similarity = min(similarities, default=0.0)
+    mean_luma_diff = float(np.mean(luma_diffs)) if luma_diffs else 255.0
+    passed = worst_similarity >= min_similarity and mean_luma_diff <= max_mean_luma_diff
+    return GateResult(
+        name="static_background_continuity",
+        passed=passed,
+        detail=(
+            f"PASS: outer-frame background strips remain similar "
+            f"(worst_similarity={worst_similarity:.3f}, mean_luma_diff={mean_luma_diff:.1f}); "
+            "this does not certify subject identity or motion continuity"
+            if passed else
+            f"FAIL: scene/background jump (worst_similarity={worst_similarity:.3f} < "
+            f"{min_similarity:.2f} or mean_luma_diff={mean_luma_diff:.1f} > "
+            f"{max_mean_luma_diff:.1f})"
+        ),
+        metrics={
+            "roi_similarity": similarities,
+            "roi_luma_diff": luma_diffs,
+            "worst_similarity": worst_similarity,
+            "mean_luma_diff": mean_luma_diff,
+            "scope": "STATIC_BACKGROUND_ONLY_NOT_SEMANTIC_CONTINUITY",
+        },
     )
 
 
@@ -417,7 +501,8 @@ def audit_candidate_frame(
                 )
             )
             # Gate #9: Cross-frame pixel continuity check against parent frame!
-            if parent_image_path is not None and stage in ("D1", "D2", "D3", "E_MID", "E_END"):
+            if stage in ("D1", "D2", "D3", "E_MID", "E_END"):
+                # Missing parent is a hard FAIL: never silently omit Gate #9.
                 gates.append(gate_cross_frame_continuity(image_path, parent_image_path, r["continuity_anchor_roi"]))
 
         cap_roi = r["h0_outer_cap_exterior_roi"] if stage in ("PRE_FAR", "PRE_NEAR", "D3_H0_PRE_CONTACT") else r["outer_cap_roi"]
@@ -503,13 +588,11 @@ def synthesize_connected_pre_near_frame(
     d3_contact_path: Path,
     out_path: Path,
 ) -> Path:
-    """Synthesize a topology-locked `t=2.0s PRE_NEAR` frame bridging `0s PRE_FAR` and `4.5s D3_CONTACT`.
+    """Create a deterministic synthetic fixture for unit tests only.
 
-    Why needed (as proven in `STAGE_FAILURE_SUCCESS_REWRITE_LOG.md` Taxonomy #8):
-    Chaining a second diffusion hop from an unplanted `PRE_FAR` frame loses the Z' normal anchor
-    and collapses the cylinder horizontally onto the floor (`1474610...`). Instead, we interpolate
-    the rigid hammer+warrior assembly on the left from `D3_CONTACT` and the approaching intact
-    bubble on the right so `0s -> 2s -> 4.5s` maintains 100% XYZ cross topology and continuity.
+    This is a hand-composited raster, not image-model generation, not interpolation, and
+    not evidence of continuity. Production runs must supply a separately rendered PRE_NEAR
+    candidate; using this helper for production is forbidden.
     """
     far_img = Image.open(pre_far_path).convert("RGB")
     d3_img = Image.open(d3_contact_path).convert("RGB")
