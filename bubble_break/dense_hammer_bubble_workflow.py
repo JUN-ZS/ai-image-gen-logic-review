@@ -10,6 +10,12 @@ Upgraded (2026-10-22) with:
 """
 from __future__ import annotations
 
+# Allow `python bubble_break/dense_hammer_bubble_workflow.py` in CI without PYTHONPATH=.
+if __package__ in (None, ""):
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parents[1]))
+
 import argparse
 import hashlib
 import json
