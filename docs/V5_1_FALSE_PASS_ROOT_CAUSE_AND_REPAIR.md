@@ -1,68 +1,67 @@
-# V5.1 False-PASS Root Cause Audit and Repair
+# V5.1 Bubble-Break False-PASS Root Cause Audit and Repair
 
 ## Scope
 
-Audited branch `feat/v5.1-closed-loop-continuity` at commit `172f665216d95d0756a03c428d0e54b989456bd4`, including `bubble_break/autonomous_pipeline.py`, `bubble_break/stage_d_gates.py`, `.github/workflows/dense-hammer-bubble-workflow.yml`, and `out/v5_1_run/AUTONOMOUS_RUN_MANIFEST.json`.
+Audited `feat/v5.1-closed-loop-continuity` at the time of review, including `bubble_break/autonomous_pipeline.py`, `bubble_break/stage_d_gates.py`, the GitHub Actions workflow, the committed run manifest, and the rendered image `out/v5_1_run/keyframe_sample.jfif`.
 
-The conclusions below are code/manifest findings. A manifest PASS is not treated as proof that the pixels are correct.
+This audit concerns the **Bubble-Break image sequence**: one correctly constructed T-topology / multi-face hammer strikes the containment bubble at the specified bottom contact point; the bubble then fractures outward while the inner sanctuary and its inhabitants remain safe. The T-hammer-to-T-hammer contact matrix is a separate upstream geometry-calibration stage from the larger Bubble-Break story output. It is not a replacement for the bubble scene.
 
-## Confirmed root causes
+A green manifest or CI workflow is not treated as visual proof.
 
-1. **Evidence contract was contradictory.** The stored manifest says `evidence_mode=REAL_GENERATIVE_RASTER`, `status=PASSED`, `all_stages_passed=true`, and `synthetic_test_passed=true` at once. The committed production branch in `run_autonomous_pipeline` set `synth_passed = True` even on the real-raster branch. The report had no invariant preventing this contradiction.
+## Confirmed code and manifest defects
 
-2. **D2 could be an unchanged copy of D1 and still pass.** The stored manifest's D1 and D2 have the exact same SHA-256 `4383492de569416281b24e360c239072d2df9909ddb5170557240476f4fee9bc`. D2's `parent_sha256` is also identical to the candidate's SHA. The action-step checker had no required-change/no-op gate; a high NCC score can reward identical frames rather than reject a missing first-grip action.
+1. **Contradictory evidence flags.** The stored manifest says `evidence_mode=REAL_GENERATIVE_RASTER`, `status=PASSED`, `all_stages_passed=true`, and `synthetic_test_passed=true` together. A real raster run cannot also claim that its synthetic test passed.
 
-3. **Keyframe first-generation prompts were placeholders.** Backend calls sent literal strings such as `INITIAL_D1` and `INITIAL_KF2_2S_PRE_NEAR`, not the compiled generation instructions. A connected generator therefore did not receive the necessary scene or physical contract at initial generation.
+2. **D1 and D2 can be identical and still pass.** The stored manifest has identical SHA-256 values for D1 and D2. The action-stage gate did not require a meaningful change, so a no-op image could be accepted as an action transition.
 
-4. **Repair prompts conflated three distinct story states.** `KF1_0S_PRE_FAR`, `KF2_2S_PRE_NEAR`, and `KF3_4P5S_CONTACT` all received the D3 action prompt in the repair compiler. Thus the prompt compiler itself was flattening far-windup, near-approach and first-contact into one state. `E_MID` and `E_END` also shared the same generic break prompt without a separate middle-vs-final state contract.
+3. **Initial-generation prompts were placeholders.** Backend calls passed strings such as `INITIAL_D1` and `INITIAL_KF2_2S_PRE_NEAR`, not fully compiled stage instructions. A real generation adapter receiving those values would not receive the required scene contract.
 
-5. **The first keyframe was not raster-parented to D2.** The code copied D2's SHA into `kf_prev_sha` but set `kf_prev_img = None`; it then deliberately omitted the parent raster from KF1 audit. That is metadata-only lineage, not a real image-to-image continuity check.
+4. **Distinct bubble-story states were conflated during repair.** The 0s far-precontact, 2s near-precontact, and 4.5s first-contact keyframes could be repaired with the same generic D3 action prompt. E_MID and E_END likewise lacked distinct enough state-specific instructions.
 
-6. **The 4.5-second contact check did not prove contact.** KF3 only tested for a bright region. It did not require a near-zero measured air gap, a bright interface at P, and the planted-head state together. A glow somewhere in the ROI could satisfy the glow condition without proving the intended first-contact geometry.
+5. **The first keyframe lacked a real parent raster.** The code copied the D2 SHA into the keyframe provenance field but set the actual parent image path to `None`. A matching hash string is not a substitute for raster-to-raster comparison.
 
-7. **Continuity gates were too low-resolution to prove semantics.** The main cross-frame metric compresses one broad ROI to 16×16 grayscale pixels and checks NCC/luminance. Static-background stability checks average luminance in only two corner patches. These checks can detect some cuts, but cannot establish same face, same tool topology, correct hand-to-existing-handle contact, correct contact plane, or shell-only failure.
+6. **The first-contact check could be satisfied by glow.** A bright patch is not proof that the intended thick terminal striking face is the first part to touch the bubble at the exact six-o'clock point P. Correct contact requires the proper hammer topology, the face normal aimed at P, zero gap at H2, and no shaft/side-head collision.
 
-8. **CI was not testing the checked-in contract.** The workflow tried to run `bubble_break/test_stage_d_gates.py`, which is not present in this branch. Its synthetic test assertion also expected `all_stages_passed=true`, contradicting the test and pipeline contract that synthetic evidence must never be production PASS. The workflow asserted a stale `selection_mode` field that the actual candidate manifest does not emit.
+7. **Continuity metrics cannot prove the required geometry or story semantics.** The branch reduces a broad ROI to 16×16 grayscale pixels for NCC and compares average luminance in two background corners. Those checks can detect some cuts or large changes; they cannot establish the exact striking face, the T-hammer head/handle joint, the contact surface at P, shell-only failure, or the continued safety of the inner sanctuary.
+
+8. **CI did not match the checked-in contract.** The workflow called a missing `bubble_break/test_stage_d_gates.py`, expected a stale candidate-manifest field, and contained a synthetic-run assertion inconsistent with the intended honest evidence contract. These defects were corrected on the repair branch.
 
 ## Direct visual review of `out/v5_1_run/keyframe_sample.jfif`
 
-The provided JFIF is a five-panel strip labelled 0s, 2s, 4.5s, 7s and 10s. Looking at the pixels rather than trusting its green labels:
+The JFIF contains five panels labelled 0s, 2s, 4.5s, 7s, and 10s. Direct review of the pixels—not the green PASS borders—finds:
 
-- **Wrong physical task throughout:** every panel shows one large cylindrical ram-like object approaching a bubble. There is no second independently identifiable T-hammer, so this cannot demonstrate T-hammer-versus-T-hammer collision.
-- **The actual striking faces are not legible as opposed end-face planes.** The prominent dark circular cap faces toward the viewer at the lower-left. Near the bubble, the tool appears to meet the shell along/near the side of the long cylinder; the bright 4.5s ring alone does not show two planar end faces meeting at P.
-- **The 0s → 2s motion reads mostly as a small approach/position change of that same single ram.** This does not establish two independent rigid-body trajectories or their collision normals.
-- **The 7s frame is dominated by luminous rings on the bubble.** A radial fracture front visibly propagating from the same physically proven face-to-face P is not clear enough to accept as evidence.
-- **The 10s panel does show the shell opened and a miniature bright interior,** but this downstream spectacle cannot repair the missing two-tool contact event upstream.
-- The warrior's hand-to-handle mechanics are not visually clear enough to certify that she grips one existing transverse T-handle on the intended tool; the size contrast also makes force application hard to read.
+- **The intended T-topology is not clearly depicted.** The main object reads as a long cylindrical ram, with a large circular cap facing the viewer at lower-left and the long body approaching the bubble. The required transverse T-handle / rigid head topology and its actual striking end face are not legible enough to accept.
+- **The active contact face appears wrong or unproven.** The cylinder seems to meet the bubble around its side wall. The 4.5s glow ring does not prove that the designated flat terminal striking face alone first contacts P at the bubble's six-o'clock pole. A glow cannot make an incorrect face correct.
+- **0s → 2s does not communicate the required progression strongly enough.** The same large ram and bubble remain in nearly the same composition; even if a pixel gap has changed, the visual evidence for a deliberate rigid-body approach with the exact striking face aimed at P is weak.
+- **The 7s frame is dominated by luminous rings.** It does not clearly demonstrate radial cracks propagating outward from the already established physical contact point P.
+- **The 10s panel has a broken-shell spectacle and a bright miniature interior,** but that downstream image alone cannot prove the preceding first contact was physically correct or that the sanctuary stayed unchanged across the entire sequence.
+- **Hand-to-handle force transfer is not clear enough to certify.** The image does not reliably show both hands gripping the pre-existing handle at its specified joint/orientation while keeping the shaft and non-striking head surfaces off the bubble.
 
-Consequently this sample must be rejected for the requested task even if several pixel gates pass. This finding is a direct image review, distinct from the code/manifest findings above.
+Accordingly, this sample is **rejected for Bubble-Break visual acceptance** even though the manifest reports PASS. This is not rejection for failing to show two hammers in the final bubble scene; the bubble scene uses one attacking hammer. The two-T-hammer terminal-face matrix is an upstream geometry-calibration step whose result must not be confused with the final bubble-breaking frame.
 
-## Changes on this repair branch
+## Repair-branch changes
 
-- Enforce evidence-mode invariants when a report is instantiated; real-raster success cannot also claim a synthetic test passed.
-- Add a mandatory measurable action-delta gate for D1/D2/D3, E_MID/E_END and the changing keyframes, so an unchanged D2 cannot be promoted as a successful grip transition.
-- Make initial generation use compiled task prompts and attach the state-specific edit mask where available.
-- Compile distinct prompt contracts for 0s far-windup, 2s near-approach, 4.5s first contact, 7s mid-shock, and 10s shell-only final blast.
-- Parent KF1 to the actual D2 raster and run normal parent continuity/provenance checks.
-- Require KF3's measured gap to be near zero and its contact interface to be bright; keep shell/drum criteria.
-- Add a no-op regression test and align the workflow's synthetic-evidence assertions and test paths with files actually in the repository.
-- Add `bubble_break/dual_t_hammer_collision.py`: explicit HAMMER_A/HAMMER_B rigid-body contract, opposing strike-face normals, normalized gap windows, point-P-on-both-face-disks geometry, forbidden cheek/shaft/handle contacts, and 12 distinct single-frame camera views per phase.
-- The legacy single-hammer-on-bubble audit can no longer report production PASSED merely because its old pixel gates pass; without dual-hammer geometry evidence it reports BLOCKED / NOT_VERIFIED.
+- Enforce consistent evidence-mode invariants; a real-raster run cannot simultaneously claim synthetic-test acceptance.
+- Reject unchanged/no-op action frames at action-required stages.
+- Use compiled initial prompts and distinct stage contracts for far precontact, near precontact, first contact, mid-shock, and shell-only final break.
+- Parent the first keyframe to the actual D2 raster and run parent-image checks.
+- Keep missing or inadequate evidence blocked rather than promoting a raster on NCC, luminance, or a glow alone.
+- Align CI test paths, manifest assertions, and artifact paths with files that actually exist.
+- Preserve an explicit `visual_acceptance_status=NOT_VERIFIED` until the exact real raster has adequate Bubble-Break geometry evidence and visual review.
 
-## Corrected task definition
+## Correct Bubble-Break physical contract
 
-The old pipeline is the wrong physical task for a T-hammer-vs-T-hammer collision. It locks one planted cylindrical hammer onto a bubble. For the intended two-tool interaction, a valid FIRST_CONTACT frame must establish **both separate T tools**, each with its own head and handle; opposing strike-face normals; positive gap in PRE_FAR/PRE_NEAR; zero gap at FIRST_CONTACT; lateral face alignment; and a point P inside both strike-face disks. A high NCC score or a glow cannot substitute for these geometric conditions. The new module compiles prompts and validates structured geometry evidence, but it does not itself supply the missing image-provider or semantic vision service.
+The scene has **one attacking hammer** and one containment bubble. The intended weapon is a rigid 3D T-topology / multi-face hammer with its prescribed terminal striking face and existing transverse handle. The canonical contact point is the sphere's six-o'clock pole P.
 
-## Limits that remain
+- **H0 / precontact:** bubble intact, no cracks, striking end face clearly separated from P; the face normal is aimed at P; shaft and side heads remain clear.
+- **H1 / approach or mechanism reveal:** the same hammer, target bubble, camera, and scene identity remain locked; still no contact or premature cracks.
+- **H2 / first contact:** only the designated thick terminal end face touches P; gap is zero; no cheek, shaft, handle, or side-head contact substitutes for it.
+- **H3 / fracture and release:** cracks originate at P and propagate outward; the bubble shell is what breaks; inner sanctuary/residents remain safe and regain agency.
 
-These changes harden the pipeline's ability to reject measurable false passes. They do **not** make ordinary pixel statistics understand human identity or causal story semantics. Face/character similarity, correct contact plane/normal, whether hands truly grip the pre-existing rod (rather than a visually similar new rod), radial crack origin, and sanctuary survival still need a semantic vision judge with a calibrated rubric and/or explicit geometry/segmentation evidence plus human review. Until those checks are implemented and tested on real rasters, label visual acceptance `NOT_VERIFIED`; do not equate CI green or high NCC with a correct image.
+The separate T-vs-T contact matrix can be used to calibrate the end-face geometry and camera recognizability before replacing the target hammer with the bubble at the same P. It is not permission to generate a final frame showing two hammers colliding with one another instead of the bubble.
 
-The repository's abstract/CLI backend interface is not itself a provider integration. The exact external backend that produced the checked-in manifest is not instantiated by the committed CLI (`--cli-generator-cmd` is the only live CLI adapter). Do not describe the run as reproducibly regenerated by this repository unless the exact backend adapter, request/response receipts, parent image, mask and output hashes are attached.
+## Remaining limit
 
-## Additional evidence-integrity gate (follow-up)
+The repaired pixel-gate pipeline is not a semantic vision service. It must not claim that it can automatically identify the correct T-head, distinguish all end-face/cheek collisions, or certify shell-only failure unless those checks are backed by a calibrated image model/segmentation evidence or an explicit human review tied to the exact raster bytes. The external generator adapter, its request/response receipts, and actual accepted Bubble-Break rasters also need to be available for a reproducible generation claim.
 
-The follow-up adds `bubble_break/raster_bound_collision_audit.py` and regression tests. Geometry annotations must be attached to the exact raster through its SHA-256 and matching pixel dimensions. The record includes two distinct hammer instance IDs, separate head/handle bounds and axes, transverse handle geometry, striking-face centers/radii, and the pixel location of P for FIRST_CONTACT. It rejects stale/wrong hashes, duplicated instance IDs, non-transverse handles, and P outside either annotated striking-face disk.
-
-**Important limit:** this gate validates the annotation record and its binding to image bytes; it does not extract those annotations from pixels. It therefore keeps `visual_acceptance_status=NOT_VERIFIED_BY_CODE`. A semantic vision provider or explicit human review of the exact raster is still required before claiming the picture itself is correct.
-
-The CI artifact now includes `out/dual_t_hammer_collision/`, so the generated multi-angle prompt matrix and contract files remain downloadable from the run instead of being discarded at job end. Prompt compilation is not image generation; this repository branch still does not have a provider implementation that independently generates the 60 camera/stage images.
+Until that is connected and real images pass, the honest result is `BLOCKED` / `NOT_VERIFIED`, not PASS.
