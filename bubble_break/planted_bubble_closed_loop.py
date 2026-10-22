@@ -29,7 +29,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageChops, ImageDraw
 
 from bubble_break.planted_bubble_information_gain import recommend_next_experiment
 
@@ -208,6 +208,45 @@ def sha256_file(path: str | Path) -> str:
     return digest.hexdigest()
 
 
+def compose_masked_edit(parent_path: str | Path, generated_path: str | Path, edit_mask_path: str | Path, output_path: str | Path) -> str:
+    """Take new pixels only inside the authorized mask; output PNG preserves frozen pixels exactly."""
+    with Image.open(parent_path) as im:
+        parent = im.convert("RGB")
+    with Image.open(generated_path) as im:
+        generated = im.convert("RGB")
+    with Image.open(edit_mask_path) as im:
+        mask = im.convert("L")
+    if parent.size != generated.size or parent.size != mask.size:
+        raise ValueError("parent, generated image, and edit mask must have identical dimensions")
+    mask = mask.point(lambda value: 255 if value >= 128 else 0)
+    out = Path(output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    Image.composite(generated, parent, mask).save(out, format="PNG")
+    return sha256_file(out)
+
+
+def validate_frozen_pixels(parent_path: str | Path, child_path: str | Path, edit_mask_path: str | Path) -> dict[str, Any]:
+    """Reject any pixel drift outside the authorized edit mask."""
+    with Image.open(parent_path) as im:
+        parent = im.convert("RGB")
+    with Image.open(child_path) as im:
+        child = im.convert("RGB")
+    with Image.open(edit_mask_path) as im:
+        mask = im.convert("L")
+    if parent.size != child.size or parent.size != mask.size:
+        return {"passed": False, "status": "BLOCK_DIMENSION_MISMATCH", "outside_edit_mismatch_pixels": None}
+    mask = mask.point(lambda value: 255 if value >= 128 else 0)
+    frozen = mask.point(lambda value: 255 - value)
+    difference = ImageChops.difference(parent, child).convert("L")
+    mismatch = sum(1 for y in range(parent.height) for x in range(parent.width)
+                   if frozen.getpixel((x, y)) > 0 and difference.getpixel((x, y)) != 0)
+    frozen_count = sum(1 for y in range(parent.height) for x in range(parent.width) if frozen.getpixel((x, y)) > 0)
+    return {"passed": mismatch == 0,
+            "status": "PASS_FROZEN_PIXELS_IDENTICAL" if mismatch == 0 else "BLOCK_FROZEN_PIXEL_DRIFT",
+            "outside_edit_mismatch_pixels": mismatch, "outside_edit_pixels": frozen_count,
+            "parent_sha256": sha256_file(parent_path), "child_sha256": sha256_file(child_path)}
+
+
 def canonical_sha256(value: Any) -> str:
     payload = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()
@@ -361,6 +400,9 @@ def validate_planted_bubble_frame(
     expected_cylinder_instance_id: str | None = None,
     expected_handle_track_id: str | None = None,
     expected_locked_geometry: Mapping[str, Any] | None = None,
+    expected_scene_lock: Mapping[str, Any] | None = None,
+    expected_parent_evidence: Mapping[str, Any] | None = None,
+    expected_parent_image_path: str | Path | None = None,
 ) -> dict[str, Any]:
     """Validate exact raster binding, planted-cylinder geometry, scene state, and external review receipt.
 
@@ -399,6 +441,23 @@ def validate_planted_bubble_frame(
         errors.append("EVIDENCE_STAGE_MISMATCH")
     if str(evidence.get("raster_sha256", "")).lower() != digest:
         errors.append("RASTER_SHA256_MISMATCH")
+    if stage != "B_LOCKED_TOOL_MASTER":
+        if expected_parent_sha256 and digest == expected_parent_sha256:
+            errors.append("NO_OP_FRAME_COPIED_FROM_PARENT")
+        if expected_parent_image_path is None or not Path(expected_parent_image_path).is_file():
+            errors.append("PREVIOUS_PASS_PARENT_IMAGE_PATH_REQUIRED")
+        else:
+            mask_path = evidence.get("edit_mask_path")
+            mask_parent_sha = evidence.get("edit_mask_parent_sha256")
+            if not isinstance(mask_path, str) or not Path(mask_path).is_file():
+                errors.append("AUTHORIZED_EDIT_MASK_MISSING")
+            elif mask_parent_sha != expected_parent_sha256:
+                errors.append("EDIT_MASK_NOT_BOUND_TO_LAST_PASS_PARENT")
+            else:
+                frozen_audit = validate_frozen_pixels(expected_parent_image_path, path, mask_path)
+                if not frozen_audit.get("passed", False):
+                    errors.append("UNAUTHORIZED_PIXEL_DRIFT_OUTSIDE_EDIT_MASK")
+
     if stage == "B_LOCKED_TOOL_MASTER":
         if expected_parent_sha256 is not None:
             errors.append("MASTER_MUST_NOT_HAVE_A_PREVIOUS_PASS_PARENT")
@@ -422,6 +481,30 @@ def validate_planted_bubble_frame(
         ann = {}
     if ann.get("image_width_px") != width or ann.get("image_height_px") != height:
         errors.append("ANNOTATION_DIMENSIONS_MISMATCH")
+
+    # A single story timeline cannot silently swap camera rigs or scene/background landmarks.
+    scene_id = evidence.get("scene_id")
+    camera_rig_id = evidence.get("camera_rig_id")
+    camera_view_fingerprint = evidence.get("camera_view_fingerprint")
+    background_landmarks_sha256 = evidence.get("background_landmarks_sha256")
+    if not isinstance(scene_id, str) or not scene_id.strip():
+        errors.append("SCENE_ID_MISSING")
+    if not isinstance(camera_rig_id, str) or not camera_rig_id.strip():
+        errors.append("CAMERA_RIG_ID_MISSING")
+    if not isinstance(camera_view_fingerprint, str) or not camera_view_fingerprint.strip():
+        errors.append("CAMERA_VIEW_FINGERPRINT_MISSING")
+    if not isinstance(background_landmarks_sha256, str) or len(background_landmarks_sha256) != 64 or any(ch not in "0123456789abcdef" for ch in background_landmarks_sha256.lower()):
+        errors.append("BACKGROUND_LANDMARKS_SHA256_MISSING_OR_INVALID")
+    scene_lock = {"scene_id": scene_id, "camera_rig_id": camera_rig_id,
+                  "camera_view_fingerprint": camera_view_fingerprint,
+                  "background_landmarks_sha256": background_landmarks_sha256}
+    if expected_scene_lock is not None:
+        for key, issue in (( "scene_id", "SCENE_ID_CHANGED"),
+                           ("camera_rig_id", "CAMERA_RIG_CHANGED"),
+                           ("camera_view_fingerprint", "CAMERA_VIEW_CHANGED_WITHIN_TIMELINE"),
+                           ("background_landmarks_sha256", "BACKGROUND_LANDMARKS_CHANGED")):
+            if scene_lock.get(key) != expected_scene_lock.get(key):
+                errors.append(issue)
 
     if stage == "B_LOCKED_TOOL_MASTER":
         errors.extend(_selection_errors(evidence.get("master_selection")))
@@ -559,6 +642,10 @@ def validate_planted_bubble_frame(
             "side_handle_track_id": handle_id,
             "cylinder_instance_id": cylinder_id,
             "sanctuary_bbox_xyxy_px": list(sanctuary_bbox),
+            "scene_id": scene_id,
+            "camera_rig_id": camera_rig_id,
+            "camera_view_fingerprint": camera_view_fingerprint,
+            "background_landmarks_sha256": background_landmarks_sha256,
         }
     except (KeyError, TypeError, ValueError, IndexError) as exc:
         errors.append(f"GEOMETRY_ANNOTATION_INVALID:{exc}")
@@ -618,11 +705,40 @@ def validate_planted_bubble_frame(
             errors.append("HEROINE_PRESENCE_WRONG_FOR_STAGE")
         if spec["actor_present"]:
             try:
-                _valid_bbox(heroine.get("bbox_xyxy_px"), "heroine.bbox_xyxy_px", width, height)
+                hero_box = _valid_bbox(heroine.get("bbox_xyxy_px"), "heroine.bbox_xyxy_px", width, height)
+                hero_height = hero_box[3] - hero_box[1]
+                hero_center = ((hero_box[0] + hero_box[2]) / 2.0, (hero_box[1] + hero_box[3]) / 2.0)
+                hero_height_ratio = hero_height / max(2.0 * bubble_radius, 1.0)
+                if hero_height_ratio > 0.60:
+                    errors.append(f"HEROINE_TOO_LARGE_RELATIVE_TO_BUBBLE:{hero_height_ratio:.3f}")
             except (ValueError, TypeError) as exc:
                 errors.append(f"HEROINE_BBOX_INVALID:{exc}")
+                hero_height, hero_center = 0.0, (0.0, 0.0)
             if heroine.get("scale_class") != "MINIATURE":
                 errors.append("HEROINE_SCALE_CLASS_NOT_MINIATURE")
+            if not isinstance(heroine.get("identity_id"), str) or not heroine["identity_id"].strip():
+                errors.append("HEROINE_IDENTITY_TRACK_MISSING")
+            pose_signature = heroine.get("pose_signature")
+            if not isinstance(pose_signature, str) or len(pose_signature) < 8:
+                errors.append("HEROINE_POSE_SIGNATURE_MISSING")
+            if expected_parent_evidence is not None:
+                p_ann = expected_parent_evidence.get("raster_annotations", {})
+                p_hero = p_ann.get("heroine", {}) if isinstance(p_ann, dict) else {}
+                if p_hero.get("present") is True:
+                    if heroine.get("identity_id") != p_hero.get("identity_id"):
+                        errors.append("HEROINE_IDENTITY_CHANGED_FROM_PARENT")
+                    try:
+                        p_box = _valid_bbox(p_hero.get("bbox_xyxy_px"), "parent heroine bbox", width, height)
+                        p_height = p_box[3] - p_box[1]
+                        p_center = ((p_box[0] + p_box[2]) / 2.0, (p_box[1] + p_box[3]) / 2.0)
+                        if p_height > 0 and abs(hero_height / p_height - 1.0) > 0.18:
+                            errors.append("HEROINE_SCALE_JUMP_FROM_PARENT")
+                        if _distance2(hero_center, p_center) > max(12.0, bubble_radius * 0.85):
+                            errors.append("HEROINE_POSITION_JUMP_FROM_PARENT")
+                    except (ValueError, TypeError):
+                        errors.append("PARENT_HEROINE_BBOX_INVALID")
+                    if stage in ("D1_APPROACH_NO_GRIP", "D2_FIRST_GRIP_EXISTING_HANDLE", "D3_TENSION_EXISTING_HANDLE") and pose_signature == p_hero.get("pose_signature"):
+                        errors.append("AUTHORIZED_POSE_DELTA_NOT_VISIBLE")
         grip_id = heroine.get("gripping_handle_track_id")
         if spec["grip_existing_handle"]:
             if heroine.get("both_hands_on_existing_handle") is not True:
@@ -656,6 +772,10 @@ def validate_planted_bubble_frame(
     if stage in ("E_MID_GLOW_CRACKS_FROM_P", "E_END_SHELL_SHATTER_FROM_P"):
         if shell.get("shell_only_breach") is not True:
             errors.append("BREACH_IS_NOT_SHELL_ONLY")
+        if shell.get("crack_rays_radial_from_P") is not True:
+            errors.append("RADIAL_CRACK_PROPAGATION_NOT_VERIFIED")
+        if stage == "E_END_SHELL_SHATTER_FROM_P" and shell.get("fragments_propagate_outward_from_P") is not True:
+            errors.append("SHARDS_NOT_VERIFIED_OUTWARD_FROM_P")
         crack_origin = shell.get("crack_origin_px")
         if not isinstance(crack_origin, (list, tuple)) or contact_point is None:
             errors.append("CRACK_ORIGIN_MISSING")
@@ -960,6 +1080,7 @@ def run_planted_bubble_closed_loop(
     handle_id: str | None = None
     locked_geometry: dict[str, Any] | None = None
     parent_evidence: dict[str, Any] | None = None
+    scene_lock: dict[str, Any] | None = None
     block_status: str | None = None
 
     for stage in STAGE_ORDER:
@@ -1024,6 +1145,9 @@ def run_planted_bubble_closed_loop(
                     expected_cylinder_instance_id=cylinder_id,
                     expected_handle_track_id=handle_id,
                     expected_locked_geometry=locked_geometry,
+                    expected_scene_lock=scene_lock,
+                    expected_parent_evidence=parent_evidence,
+                    expected_parent_image_path=parent_path,
                 )
                 is_valid = bool(validation["eligible_for_next_stage"])
                 scores = _candidate_score(item)
@@ -1083,6 +1207,7 @@ def run_planted_bubble_closed_loop(
             cylinder_id = stage_validation["cylinder_instance_id"]
             handle_id = stage_validation["side_handle_track_id"]
             locked_geometry = dict(stage_validation["locked_geometry"])
+            scene_lock = {key: locked_geometry[key] for key in ("scene_id", "camera_rig_id", "camera_view_fingerprint", "background_landmarks_sha256")}
         parent_path = locked_path
         parent_sha = locked_sha
         parent_evidence = dict(stage_accepted.evidence)
