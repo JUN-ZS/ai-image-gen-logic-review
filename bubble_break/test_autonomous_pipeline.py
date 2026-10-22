@@ -2,6 +2,7 @@
 """Unit tests for V5.1 Closed-Loop Generative Backend, Honest Evidence Gates, SceneState & Two-Layer Scorer."""
 from __future__ import annotations
 
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,6 +12,7 @@ from bubble_break.autonomous_pipeline import (
     CallbackGeneratorBackend,
     audit_candidate_frame,
     default_v51_scene_state,
+    gate_required_action_delta,
     gate_cross_frame_continuity,
     gate_no_vertical_splice_seam,
     gate_pre_contact_windup_air_gap,
@@ -51,7 +53,16 @@ class AutonomousPipelineV51Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             outdir = Path(td) / "synth_run"
             report = run_autonomous_pipeline(outdir, simulate_fault_injection=True)
-            self.assertEqual(report.evidence_mode, "SYNTHETIC_TEST_ONLY")
+            debug = {
+                "status": report.status,
+                "canonical_stages": list(report.canonical_sequence),
+                "failed_attempts": [
+                    {"stage": rec.get("stage"), "round": rec.get("retry_round"), "reasons": rec.get("rejection_reasons")}
+                    for rec in report.attempt_history if not rec.get("layer1_continuity_passed", False)
+                ][-12:],
+                "keyframes": [k.get("keyframe_id") for k in report.five_keyframe_trilogy],
+            }
+            self.assertEqual(report.evidence_mode, "SYNTHETIC_TEST_ONLY", msg=json.dumps(debug, ensure_ascii=False))
             self.assertEqual(report.status, "SYNTHETIC_TEST_ONLY")
             self.assertFalse(report.all_stages_passed)  # PR #3 rule: synthetic never sets all_stages_passed=True
             self.assertTrue(report.synthetic_test_passed)
@@ -59,6 +70,16 @@ class AutonomousPipelineV51Tests(unittest.TestCase):
             self.assertEqual(len(report.five_keyframe_trilogy), 5)
             self.assertEqual(len(report.five_keyframe_transition_audits), 4)
             self.assertGreaterEqual(report.backend_rerun_invocations, 3)
+
+    def test_required_action_delta_rejects_identical_parent_raster(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            parent = Path(td) / "parent.jpg"
+            duplicate = Path(td) / "duplicate.jpg"
+            render_synthetic_stage_raster(parent, "D1")
+            duplicate.write_bytes(parent.read_bytes())
+            gate = gate_required_action_delta(duplicate, parent, stage="D2")
+            self.assertFalse(gate.passed)
+            self.assertEqual(gate.name, "required_action_delta")
 
     def test_gate_cross_frame_continuity_fails_when_parent_missing_or_jumped(self) -> None:
         with tempfile.TemporaryDirectory() as td:

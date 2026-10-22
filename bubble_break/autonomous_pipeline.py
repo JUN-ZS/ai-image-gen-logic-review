@@ -48,7 +48,7 @@ from pathlib import Path
 from typing import Any, Callable, Sequence
 
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 from bubble_break.dense_hammer_bubble_workflow import (
     HammerCandidate,
@@ -56,7 +56,9 @@ from bubble_break.dense_hammer_bubble_workflow import (
     build_packet,
     estimate_candidate_roi,
     make_candidates,
+    make_stage_a_prompt,
     make_stage_b_prompt,
+    make_stage_c_prompt,
     make_stage_d_step_prompt,
     make_stage_e_prompt,
 )
@@ -392,6 +394,24 @@ class AutonomousPipelineReport:
     video_transition_manifest: list[dict[str, Any]]
     summary_board_path: str | None = None
     trilogy_strip_path: str | None = None
+    scene_contract_id: str = "BUBBLE_BREAK_SINGLE_HAMMER_CANONICAL_CONTACT"
+    visual_acceptance_status: str = "NOT_VERIFIED"
+
+    def __post_init__(self) -> None:
+        """Fail fast if evidence flags contradict the declared run mode."""
+        if self.evidence_mode == "SYNTHETIC_TEST_ONLY":
+            if self.all_stages_passed or not self.synthetic_test_passed:
+                raise ValueError("Synthetic evidence must have all_stages_passed=False and synthetic_test_passed=True")
+        elif self.evidence_mode == "REAL_GENERATIVE_RASTER":
+            if self.synthetic_test_passed:
+                raise ValueError("Real raster acceptance must never set synthetic_test_passed=True")
+            if self.status == "PASSED" and not self.all_stages_passed:
+                raise ValueError("A PASSED real-raster report requires all_stages_passed=True")
+        elif self.evidence_mode == "BLOCKED":
+            if self.all_stages_passed or self.synthetic_test_passed:
+                raise ValueError("Blocked evidence must not claim production or synthetic acceptance")
+        else:
+            raise ValueError(f"Unknown evidence_mode: {self.evidence_mode}")
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -606,6 +626,68 @@ def gate_left_handle_not_flipped_to_right(
     )
 
 
+def gate_required_action_delta(
+    image_path: Path,
+    parent_image_path: Path | None,
+    *,
+    stage: str,
+    min_mean_delta: float = 0.15,
+    min_changed_fraction: float = 0.002,
+) -> GateResult:
+    """Reject a no-op raster on a step whose contract requires a visible action/state change.
+
+    This is a low-level no-op guard, not a semantic pose detector. It complements, rather
+    than replaces, the stage-specific physical-state and (where available) visual review gates.
+    """
+    if parent_image_path is None or not parent_image_path.is_file():
+        return GateResult(
+            name="required_action_delta", passed=False,
+            detail=f"FAIL: {stage} requires a parent raster to verify its authorized change",
+        )
+    current = np.asarray(Image.open(image_path).convert("RGB").resize((320, 180)), dtype=np.float32).mean(axis=2)
+    parent = np.asarray(Image.open(parent_image_path).convert("RGB").resize((320, 180)), dtype=np.float32).mean(axis=2)
+    # Focus on the subject/tool action field; omit the outermost background margins.
+    h, w = current.shape
+    x0, x1 = int(0.04 * w), int(0.94 * w)
+    y0, y1 = int(0.10 * h), int(0.94 * h)
+    delta = np.abs(current[y0:y1, x0:x1] - parent[y0:y1, x0:x1])
+    mean_delta = float(delta.mean())
+    changed_fraction = float(np.mean(delta >= 6.0))
+    passed = mean_delta >= min_mean_delta and changed_fraction >= min_changed_fraction
+    return GateResult(
+        name="required_action_delta",
+        passed=passed,
+        detail=(
+            f"PASS: {stage} changes its action field (mean_delta={mean_delta:.3f}, changed_fraction={changed_fraction:.4f})"
+            if passed else
+            f"FAIL: {stage} is a no-op or has no measurable authorized state change "
+            f"(mean_delta={mean_delta:.3f} < {min_mean_delta:.3f} or changed_fraction={changed_fraction:.4f} "
+            f"< {min_changed_fraction:.4f}) — REJECT + rerun"
+        ),
+        metrics={"mean_delta": mean_delta, "changed_fraction": changed_fraction},
+    )
+
+
+def gate_first_contact_state(image_path: Path) -> GateResult:
+    """Require the 4.5 s frame to show actual zero-gap contact and a bright interface at P."""
+    metrics = measure_air_gap_columns(image_path)
+    gap = metrics["dark_gap_cols"]
+    seam = metrics["seam_p99_luma"]
+    drum = metrics["drum_median_luma"]
+    passed = gap <= 5.0 and seam >= 230.0 and drum < 75.0
+    return GateResult(
+        name="first_contact_zero_gap_at_P",
+        passed=passed,
+        detail=(
+            f"PASS: first contact at P (dark_gap_cols={gap:.0f} <= 5, seam_p99={seam:.1f} >= 230, drum_median={drum:.1f})"
+            if passed else
+            f"FAIL: 4.5 s is not proven as first contact (dark_gap_cols={gap:.0f}, seam_p99={seam:.1f}, "
+            f"drum_median={drum:.1f}) — REJECT + rerun"
+        ),
+        metrics=metrics,
+    )
+
+
 def measure_air_gap_columns(image_path: Path) -> dict[str, float]:
     """Measure the dark air-gap width (in columns) and contact seam p99 luma between cylinder and bubble."""
     img = Image.open(image_path).convert("RGB")
@@ -793,7 +875,7 @@ def audit_candidate_frame(
     if stage in ("A", "B0_ROI_4X"):
         gates.append(gate_base_conformal_glow(image_path, (0.15, 0.15, 0.85, 0.85), min_peak_luma=140.0))
     else:
-        if stage not in ("B", "D0", "KF1_0S_PRE_FAR"):
+        if stage not in ("B", "D0"):
             d_step = stage_to_canonical_d_step(stage)
             if d_step in ("D1", "D2", "D3", "D4"):
                 try:
@@ -844,6 +926,7 @@ def audit_candidate_frame(
             max_gap = (prev_gap_cols - 15.0) if (prev_gap_cols is not None and prev_gap_cols > 25.0) else 75.0
             gates.append(gate_pre_contact_windup_air_gap(image_path, min_dark_gap_cols=10.0, max_dark_gap_cols=max_gap))
         elif stage == "KF3_4P5S_CONTACT":
+            gates.append(gate_first_contact_state(image_path))
             gates.append(gate_base_conformal_glow(image_path, (0.42, 0.35, 0.60, 0.72)))
         else:
             gates.append(gate_base_conformal_glow(image_path, r["base_glow_roi"]))
@@ -852,6 +935,13 @@ def audit_candidate_frame(
             gates.append(gate_mini_person_scale_1_to_1(image_path, r["person_roi"], r["hammer_roi"]))
 
         gates.append(gate_stage_e_fracture_progression(image_path, stage, r["bubble_shell_roi"]))
+
+    action_required_stages = {
+        "D1", "D2", "D3", "E_MID", "E_END",
+        "KF2_2S_PRE_NEAR", "KF3_4P5S_CONTACT", "KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST",
+    }
+    if stage in action_required_stages:
+        gates.append(gate_required_action_delta(image_path, parent_image_path, stage=stage))
 
     passed = all(g.passed for g in gates)
     reasons = [f"{g.name}: {g.detail}" for g in gates if not g.passed]
@@ -871,7 +961,12 @@ def compile_elevation_prompt_repair(
     rejection_reasons: Sequence[str],
     scene_state: SceneState | None = None,
 ) -> dict[str, str]:
-    d_step = stage_to_canonical_d_step(stage)
+    if stage in ("KF1_0S_PRE_FAR", "KF2_2S_PRE_NEAR"):
+        d_step = "D2"
+    elif stage == "KF3_4P5S_CONTACT":
+        d_step = "D3"
+    else:
+        d_step = stage_to_canonical_d_step(stage)
     lock_clause = grip_pixel_lock_clause(d_step, prev_sha256)
     reason_blob = " | ".join(rejection_reasons)
     causal_summary = ""
@@ -886,18 +981,69 @@ def compile_elevation_prompt_repair(
         f"- Dark-steel cylinder at lower-left aimed radially at the right-side bubble; outer cap 100% bare.\n"
         f"- Single straight metal rod handle attached flush at 90° to SIDE-MIDDLE pointing upper-left (\\).\n"
     )
-    if stage == "D2":
+    if stage == "A":
+        base = make_stage_a_prompt(make_candidates())
+    elif stage == "B":
+        base = make_stage_b_prompt(candidate, raster_sha256=prev_sha256)
+    elif stage == "D1":
+        base = make_stage_c_prompt(candidate)
+    elif stage in ("D2", "KF1_0S_PRE_FAR", "KF2_2S_PRE_NEAR"):
         base = make_stage_d_step_prompt(candidate, "D2", prev_raster_sha256=prev_sha256, from_step="D1")
-    elif stage in ("D3", "KF1_0S_PRE_FAR", "KF2_2S_PRE_NEAR", "KF3_4P5S_CONTACT"):
+    elif stage in ("D3", "KF3_4P5S_CONTACT"):
         base = make_stage_d_step_prompt(candidate, "D3", prev_raster_sha256=prev_sha256, from_step="D2")
-    elif stage in ("E_MID", "E_END", "KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST"):
-        base = make_stage_e_prompt(candidate)
+    elif stage in ("E_MID", "KF4_7S_E_MID_SHOCK"):
+        base = make_stage_e_prompt(candidate) + """\n\nFRAME STATE — 7.0 s MID-SHOCK (not final blast):\n- Radial spiderweb cracks and concentric shock rings must originate at the same first-contact point P.\n- Show a progressing fracture front, but keep a substantial portion of the shell visibly intact.\n- Do not turn this frame into the 10.0 s full outward shell shatter. Keep the inner sanctuary unstruck.\n"""
+    elif stage in ("E_END", "KF5_10S_E_END_BLAST"):
+        base = make_stage_e_prompt(candidate) + """\n\nFRAME STATE — 10.0 s FINAL BLAST:\n- Shatter only the translucent outer bubble shell; fragments travel outward from the same point P.\n- Keep the miniature terraced sanctuary and its inhabitants visibly intact and readable inside.\n- The warrior has a distinct follow-through pose; the outer shell must be broken, not merely covered by glow.\n"""
     else:
         base = make_stage_b_prompt(candidate, raster_sha256=prev_sha256)
+
+    frame_directives = {
+        "KF1_0S_PRE_FAR": (
+            "KEYFRAME 0.0 s / PRE-FAR: keep the sphere completely intact; show a large clear positive air gap "
+            "of at least 60 image columns between the round cap and shell; no contact glow, no cracks, no sparks; "
+            "warrior is in distant wind-up posture."
+        ),
+        "KF2_2S_PRE_NEAR": (
+            "KEYFRAME 2.0 s / PRE-NEAR: same camera, identity, tool and sphere; warrior drives forward; "
+            "air gap must remain positive (10–59 image columns) and be smaller than at 0.0 s; no contact glow, "
+            "no shell cracks, and no contact yet."
+        ),
+        "KF3_4P5S_CONTACT": (
+            "KEYFRAME 4.5 s / FIRST CONTACT: the bare circular lower-left cap first touches the bubble at point P; "
+            "zero air gap; bright compact conformal contact glow exactly at P; outside P the bubble remains intact; "
+            "no outward shatter yet."
+        ),
+        "KF4_7S_E_MID_SHOCK": (
+            "KEYFRAME 7.0 s / MID-SHOCK: cracks and concentric shock rings radiate outward from exactly the same P; "
+            "this is the middle fracture phase, not the final blast; sanctuary and inhabitants stay unharmed."
+        ),
+        "KF5_10S_E_END_BLAST": (
+            "KEYFRAME 10.0 s / FINAL BLAST: the outer soap-crystal shell bursts outward from the same P; "
+            "the inner terraced sanctuary and people remain intact, visible, and recover freedom of movement; "
+            "no second contact point or new hammer shaft."
+        ),
+    }
+    if stage in frame_directives:
+        base += "\n\n"+frame_directives[stage]+"\n"
     return {
         "elevation_level": "k=0_CORE_MASK_REPAIR_THEN_K3",
         "repaired_prompt": core_k0 + "\n" + base,
     }
+
+
+def compile_initial_stage_prompt(
+    candidate: HammerCandidate,
+    stage: str,
+    prev_sha256: str | None,
+    scene_state: SceneState,
+) -> str:
+    """Compile a real task prompt for first generation; never send literal INITIAL_STAGE tokens to an image model."""
+    if stage == "A":
+        return make_stage_a_prompt(make_candidates())
+    return compile_elevation_prompt_repair(
+        candidate, stage, prev_sha256, ["initial_generation"], scene_state
+    )["repaired_prompt"]
 
 
 def evaluate_stage_with_rerun_loop(
@@ -957,7 +1103,7 @@ def evaluate_stage_with_rerun_loop(
                 stage_id,
                 cand_path,
                 prev_sha256=prev_sha,
-                parent_image_path=prev_image_path if stage_id not in ("A", "B", "KF1_0S_PRE_FAR") else None,
+                parent_image_path=prev_image_path if stage_id not in ("A", "B") else None,
                 prev_gap_cols=prev_gap_cols,
             )
             l2_metrics = score_layer2_creativity_and_motion(stage_id, cand_path, prev_image_path)
@@ -1010,16 +1156,68 @@ def evaluate_stage_with_rerun_loop(
     return None, all_records, backend_reruns, rejections
 
 
+
+def _soft_composite(base: Image.Image, overlay: Image.Image, blur: float = 0.0) -> Image.Image:
+    if blur > 0:
+        overlay = overlay.filter(ImageFilter.GaussianBlur(radius=blur))
+    return Image.alpha_composite(base.convert("RGBA"), overlay).convert("RGB")
+
+
+def _render_synthetic_keyframe_from_parent(path: Path, stage: str, parent_path: Path) -> Path:
+    """Build later keyframes by soft-editing the locked parent so continuity gates stay honest."""
+    base = Image.open(parent_path).convert("RGBA")
+    w, h = base.size
+    overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+
+    if stage == "KF3_4P5S_CONTACT":
+        draw.ellipse([int(0.43 * w), int(0.40 * h), int(0.59 * w), int(0.66 * h)], fill=(255, 255, 255, 190))
+        out = _soft_composite(base, overlay, blur=28)
+    elif stage in ("KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST"):
+        end_blast = stage == "KF5_10S_E_END_BLAST"
+        cx, cy = int(0.65 * w), int(0.45 * h)
+        for r_ring in (90, 130, 175, 220):
+            draw.ellipse([cx - r_ring, cy - r_ring, cx + r_ring, cy + r_ring], outline=(200, 250, 255, 200), width=5)
+        r_len = 380 if end_blast else 260
+        for ray_deg in range(-85, 90, 8):
+            rad = math.radians(ray_deg)
+            ex = int(cx + r_len * math.cos(rad))
+            ey = int(cy + r_len * math.sin(rad))
+            draw.line([(cx, cy), (ex, ey)], fill=(230, 252, 255, 220), width=3)
+        if end_blast:
+            for s_idx in range(36):
+                ang = math.radians(-90 + s_idx * 5)
+                dist = 100 + (s_idx % 6) * 40
+                sx = int(cx + dist * math.cos(ang))
+                sy = int(cy + dist * math.sin(ang))
+                draw.polygon([(sx, sy), (sx + 20, sy - 10), (sx + 9, sy + 16)], fill=(210, 245, 255, 200), outline=(255, 255, 255, 230))
+        out = _soft_composite(base, overlay, blur=1)
+    else:
+        out = base.convert("RGB")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    out.save(path, quality=92)
+    return path
+
+
 def render_synthetic_stage_raster(
     path: Path,
     stage: str,
     *,
     inject_fault: str | None = None,
+    parent_path: Path | None = None,
 ) -> Path:
     """Deterministic procedural 16:9 raster synthesizer strictly for `SYNTHETIC_TEST_ONLY` unit tests."""
     w, h = 1280, 720
     bg_color = (195, 200, 210) if inject_fault == "scene_jump" else (12, 16, 22)
     img = Image.new("RGB", (w, h), bg_color)
+    # Add the same tiny deterministic film-grain field to every synthetic fixture.
+    # This avoids a mathematically perfect empty background making a naturally drawn
+    # circle edge look like a high-ratio artificial splice. Production gates are unchanged.
+    grain_rng = np.random.default_rng(731_204)
+    grain = grain_rng.integers(-3, 4, size=(h, w, 1), dtype=np.int16)
+    img_arr = np.asarray(img, dtype=np.int16) + grain
+    img = Image.fromarray(np.clip(img_arr, 0, 255).astype(np.uint8), mode="RGB")
     draw = ImageDraw.Draw(img)
 
     if inject_fault == "grid_split":
@@ -1030,6 +1228,18 @@ def render_synthetic_stage_raster(
         path.parent.mkdir(parents=True, exist_ok=True)
         img.save(path, quality=92)
         return path
+
+    if (
+        inject_fault is None
+        and parent_path is not None
+        and Path(parent_path).is_file()
+        and stage in (
+            "KF3_4P5S_CONTACT",
+            "KF4_7S_E_MID_SHOCK",
+            "KF5_10S_E_END_BLAST",
+        )
+    ):
+        return _render_synthetic_keyframe_from_parent(path, stage, Path(parent_path))
 
     bx, by, br = 780, 360, 250
     if stage in ("PRE_FAR", "KF1_0S_PRE_FAR") and inject_fault != "stuck_on_bubble":
@@ -1060,7 +1270,8 @@ def render_synthetic_stage_raster(
         draw.polygon([(555, 395), (610, 485), (515, 545), (455, 455)], fill=(72, 82, 94), outline=(140, 155, 170))
         draw.ellipse([445, 445, 525, 545], fill=(52, 60, 70), outline=(130, 145, 160), width=3)
         if stage in ("PRE_NEAR", "KF2_2S_PRE_NEAR"):
-            draw.ellipse([650, 310, 745, 470], fill=(92, 115, 130), outline=(130, 165, 185), width=2)
+            # No hard outline: a stroked ellipse edge spikes gate_no_vertical_splice_seam.
+            draw.ellipse([650, 310, 745, 470], fill=(92, 115, 130))
     else:
         draw.ellipse([585, 385, 665, 505], fill=(160, 250, 255), outline=(255, 255, 255), width=6)
         draw.polygon([(565, 395), (625, 485), (515, 545), (455, 455)], fill=(72, 82, 94), outline=(140, 155, 170))
@@ -1078,7 +1289,19 @@ def render_synthetic_stage_raster(
         "D1", "D2", "D3", "E_MID", "E_END",
         "PRE_FAR", "PRE_NEAR", "KF1_0S_PRE_FAR", "KF2_2S_PRE_NEAR", "KF3_4P5S_CONTACT", "KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST",
     ):
-        px, py = (780, 260) if inject_fault == "flip_handle_right" else ((335, 295) if stage == "D1" else (345, 285))
+        if inject_fault == "flip_handle_right":
+            px, py = 780, 260
+        elif stage == "D1":
+            px, py = 335, 295
+        elif stage in ("D3", "E_MID", "E_END", "KF3_4P5S_CONTACT", "KF4_7S_E_MID_SHOCK", "KF5_10S_E_END_BLAST"):
+            # Synthetic fixtures must encode distinct action states, not teach the no-op gate to pass clones.
+            px, py = 390, 255
+        elif stage in ("KF1_0S_PRE_FAR",):
+            px, py = 300, 330
+        elif stage in ("KF2_2S_PRE_NEAR",):
+            px, py = 320, 310
+        else:
+            px, py = 345, 285
         draw.ellipse([px - 18, py - 55, px + 18, py - 18], fill=(210, 180, 165), outline=(240, 210, 195), width=2)
         draw.rectangle([px - 22, py - 18, px + 22, py + 55], fill=(35, 40, 48), outline=(150, 160, 175), width=3)
         draw.line([(px - 12, py + 55), (px - 24, py + 125)], fill=(45, 50, 60), width=10)
@@ -1109,6 +1332,8 @@ def render_synthetic_stage_raster(
                 draw.polygon([(sx, sy), (sx + 22, sy - 10), (sx + 10, sy + 18)], fill=(200, 245, 255), outline=(255, 255, 255))
 
     path.parent.mkdir(parents=True, exist_ok=True)
+    if stage in ("PRE_NEAR", "KF2_2S_PRE_NEAR"):
+        img = img.filter(ImageFilter.GaussianBlur(radius=0.8))
     img.save(path, quality=92)
     return path
 
@@ -1294,7 +1519,7 @@ def run_autonomous_pipeline(
                     render_synthetic_stage_raster(p_bad, st_id, inject_fault="flip_handle_right")
                     return [p_bad]
             p_ok = b_dir / f"{st_id}_r{attempt}_synth_ok.jpg"
-            render_synthetic_stage_raster(p_ok, st_id)
+            render_synthetic_stage_raster(p_ok, st_id, parent_path=parent_p)
             return [p_ok]
 
         backend = CallbackGeneratorBackend(
@@ -1355,7 +1580,12 @@ def run_autonomous_pipeline(
         if stage_candidates_map and stage in stage_candidates_map:
             init_files = [Path(p) for p in stage_candidates_map[stage]]
         elif backend is not None:
-            init_files = backend.generate_candidates(stage, f"INITIAL_{stage}", prev_image_path, None, 0, rasters_dir / "init")
+            initial_prompt = compile_initial_stage_prompt(winner, stage, prev_sha, active_scene)
+            initial_mask = None
+            if stage in active_scene.frame_specs and prev_image_path is not None and prev_image_path.is_file():
+                mask_info = MaskProtectedEditor.build_stage_masks(prev_image_path, active_scene.frame_specs[stage], gates_dir / "masks")
+                initial_mask = Path(mask_info["edit_mask_path"])
+            init_files = backend.generate_candidates(stage, initial_prompt, prev_image_path, initial_mask, 0, rasters_dir / "init")
 
         best_rec, recs, reruns, rejs = evaluate_stage_with_rerun_loop(
             stage,
@@ -1405,7 +1635,8 @@ def run_autonomous_pipeline(
 
     if not pipeline_blocked:
         kf_prev_sha: str | None = canonical_sequence["D2"]["sha256"]
-        kf_prev_img: Path | None = None
+        # The first storyboard frame must descend from D2 by real raster lineage, not SHA-only metadata.
+        kf_prev_img: Path | None = Path(canonical_sequence["D2"]["image_path"])
         kf_prev_gap: float | None = None
 
         for kf_id in FIVE_KEYFRAME_IDS:
@@ -1414,7 +1645,12 @@ def run_autonomous_pipeline(
             if keyframe_candidates_map and kf_id in keyframe_candidates_map:
                 kf_init = [Path(p) for p in keyframe_candidates_map[kf_id]]
             elif backend is not None:
-                kf_init = backend.generate_candidates(kf_id, f"INITIAL_{kf_id}", kf_prev_img, None, 0, rasters_dir / "kf_init")
+                initial_prompt = compile_initial_stage_prompt(winner, kf_id, kf_prev_sha, active_scene)
+                initial_mask = None
+                if kf_prev_img is not None and kf_prev_img.is_file():
+                    mask_info = MaskProtectedEditor.build_stage_masks(kf_prev_img, f_spec, gates_dir / "masks")
+                    initial_mask = Path(mask_info["edit_mask_path"])
+                kf_init = backend.generate_candidates(kf_id, initial_prompt, kf_prev_img, initial_mask, 0, rasters_dir / "kf_init")
             else:
                 pipeline_blocked = True
                 break
@@ -1445,7 +1681,8 @@ def run_autonomous_pipeline(
                 shutil.copy2(best_kf.image_path, kf_dest)
 
             gap_m = measure_air_gap_columns(kf_dest)
-            if kf_prev_img is not None:
+            # Only adjacent keyframe pairs (4 audits for 5 keyframes). D2->KF1 is parent_sha lineage.
+            if five_keyframes and kf_prev_img is not None:
                 g_bg = gate_static_background_stability(kf_dest, kf_prev_img)
                 g_cc = gate_cross_frame_continuity(kf_dest, kf_prev_img)
                 transition_audits.append({
@@ -1504,10 +1741,14 @@ def run_autonomous_pipeline(
         prod_passed = False  # PR #3 Hard Rule: synthetic test never sets all_stages_passed=True!
         synth_passed = True
     else:
-        evidence_mode = "REAL_GENERATIVE_RASTER"
-        status_str = "PASSED"
-        prod_passed = True
-        synth_passed = True
+        # The task here is ONE locked double-ended hammer striking the containment bubble.
+        # Pixel-only gates cannot prove the canonical hammer end-face is the first contact surface,
+        # that the shaft/side heads stay clear, or that the inner sanctuary survives the shell-only
+        # breach. Block a real raster until bubble-specific geometric/semantic evidence is attached.
+        evidence_mode = "BLOCKED"
+        status_str = "BLOCKED_BUBBLE_BREAK_SEMANTIC_EVIDENCE_MISSING"
+        prod_passed = False
+        synth_passed = False
 
     report = AutonomousPipelineReport(
         workflow="v5.1-closed-loop-generative-continuity-and-creativity-engine",
@@ -1529,6 +1770,8 @@ def run_autonomous_pipeline(
         five_keyframe_trilogy=five_keyframes,
         five_keyframe_transition_audits=transition_audits,
         video_transition_manifest=video_manifest,
+        scene_contract_id="BUBBLE_BREAK_SINGLE_HAMMER_CANONICAL_CONTACT",
+        visual_acceptance_status="NOT_VERIFIED",
     )
     if canonical_sequence:
         board_path = create_audit_contact_board(report, outdir / "AUTONOMOUS_AUDIT_SUMMARY_BOARD.jpg")
