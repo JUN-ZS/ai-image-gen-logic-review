@@ -17,7 +17,7 @@ from bubble_break.gemini_planted_bubble_provider import (
     GeminiPlantedBubbleProvider,
     sha256_file,
 )
-from bubble_break.planted_bubble_closed_loop import validate_frozen_pixels
+from bubble_break.planted_bubble_closed_loop import compute_background_landmarks_sha256, validate_frozen_pixels
 
 
 
@@ -224,7 +224,7 @@ class GeminiPlantedBubbleProviderTests(unittest.TestCase):
                 "scene_id": "SCENE_TEST_001",
                 "camera_rig_id": "CAMERA_RIG_TEST",
                 "camera_view_fingerprint": "VIEW_TEST_FIXED",
-                "background_landmarks_sha256": "fixture-parent-border-hash",
+                "background_landmarks_sha256": compute_background_landmarks_sha256(parent),
             },
             "edit_mask_path": str(edit),
             "freeze_mask_path": str(freeze),
@@ -248,7 +248,7 @@ class GeminiPlantedBubbleProviderTests(unittest.TestCase):
         self.assertEqual(evidence["camera_rig_id"], "CAMERA_RIG_TEST")
         self.assertEqual(evidence["camera_view_fingerprint"], "VIEW_TEST_FIXED")
         self.assertEqual(evidence["edit_mask_parent_sha256"], parent_sha)
-        self.assertTrue(validate_frozen_pixels(parent, image_path, edit)["passed"])
+        self.assertTrue(validate_frozen_pixels(parent, Path(response[0]["image"]), edit)["passed"])
 
     def test_missing_key_and_image_free_response_block(self):
         with self.assertRaisesRegex(ValueError, "GEMINI_API_KEY"):
