@@ -66,7 +66,7 @@ The branch adds:
 - bubble_break/test_planted_bubble_closed_loop.py: regression tests for the source-atlas ROI gate, handle/stub and track locks, crack origin/shell-only requirements, stale raster receipts, and retrying from the last verified parent.
 - .github/workflows/shannon-planted-bubble.yml: tests and compiles the prompt/contract packet.
 
-**A Gemini/image-generation provider is not connected by this repository patch.** The command adapter is an interface; it is not a built-in Gemini API. The offline fixtures and CI packet are not newly generated production images. Do not label the sequence generated, visually accepted, or complete until a real provider supplies rasters and a named human/semantic-vision reviewer checks those exact images.
+**Provider status has two levels.** This base implementation began with a generic external-command adapter; the follow-up branch `feat/gemini-planted-bubble-closed-loop-20261022` adds `bubble_break/gemini_planted_bubble_provider.py`, which directly calls the official Gemini Interactions API for image edits and a separate structured semantic-vision review. It requires `GEMINI_API_KEY` at runtime; no credential is stored in Git and CI does not call Google. The offline fixtures and CI packet are not newly generated production images. Do not label the sequence visually accepted or complete until a live provider actually returns rasters and a human reviews those exact images. Even a Gemini semantic review remains model evidence rather than human approval; `visual_acceptance_status` stays `NOT_VERIFIED_BY_CODE`.
 
 ## Reproducible commands
 
