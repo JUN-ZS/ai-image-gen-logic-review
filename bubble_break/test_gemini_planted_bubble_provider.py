@@ -170,8 +170,12 @@ class GeminiPlantedBubbleProviderTests(unittest.TestCase):
         candidate = response[0]
         image_path = Path(candidate["image"])
         self.assertTrue(image_path.is_file())
-        self.assertEqual(sha256_file(image_path), hashlib.sha256(self.generated_bytes).hexdigest())
+        with Image.open(image_path) as saved_image, Image.open(io.BytesIO(self.generated_bytes)) as source_image:
+            self.assertEqual(saved_image.format, "PNG")
+            self.assertEqual(saved_image.size, source_image.size)
+            self.assertEqual(list(saved_image.convert("RGB").getdata()), list(source_image.convert("RGB").getdata()))
         evidence = candidate["evidence"]
+        self.assertEqual(sha256_file(image_path), evidence["raster_sha256"])
         self.assertEqual(evidence["review"]["decision"], "FAIL")
         self.assertEqual(evidence["review"]["mode"], "SEMANTIC_VISION_REVIEW")
         self.assertEqual(evidence["review"]["reviewed_raster_sha256"], evidence["raster_sha256"])
