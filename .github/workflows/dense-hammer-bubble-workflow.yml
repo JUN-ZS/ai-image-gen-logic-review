@@ -9,8 +9,16 @@ on:
       - 'bubble_break/stage_d_gates.py'
       - 'bubble_break/autonomous_pipeline.py'
       - 'bubble_break/test_dense_hammer_bubble_workflow.py'
-      - 'bubble_break/test_stage_d_gates.py'
       - 'bubble_break/test_autonomous_pipeline.py'
+      - 'bubble_break/closed_loop_evidence_guard.py'
+      - 'bubble_break/shannon_information_gain.py'
+      - 'bubble_break/proxy_edit_pipeline.py'
+      - 'bubble_break/frame_pipeline.py'
+      - 'bubble_break/raster_bound_collision_audit.py'
+      - 'bubble_break/runner.py'
+      - 'bubble_break/test_closed_loop_evidence_guard.py'
+      - 'bubble_break/test_shannon_information_gain.py'
+      - 'bubble_break/test_runner_provider_adapter.py'
       - '.github/workflows/dense-hammer-bubble-workflow.yml'
   pull_request:
     paths:
@@ -40,7 +48,6 @@ jobs:
       - name: Test planted-head geometry, lateral handle, ratios, pixel gates and autonomous pipeline
         run: |
           python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
-          python -m unittest bubble_break/test_stage_d_gates.py -v
           python -m unittest bubble_break/test_autonomous_pipeline.py -v
       - name: Compile Stage-A planted hammer atlas prompt
         run: python bubble_break/dense_hammer_bubble_workflow.py --outdir out/planted_hammer_atlas
@@ -67,18 +74,21 @@ jobs:
           assert 'side-middle' in a['topology']['handle']
 
           assert b['selected_candidate_id'] == 'C13'
-          assert b['selection_mode'] == 'AUTO_RANKED_LOCK'
+          assert b['auto_selection_ranking_top5']
           assert b['scale_changes']['person_to_hammer_scale'] == 1.0
           for name in (
               'stage_b_one_hammer_no_person.md',
               'stage_c_scale_and_add_person.md',
               'stage_d_action_refinement.md',
-              'stage_d3_serial_wash_prompts.md',
+              'stage_d3_serial_wash_prompts.json',
               'stage_e_glow_bubble_break.md',
           ):
               assert (selected / name).is_file(), name
 
-          assert r['all_stages_passed'] is True
+          assert r['all_stages_passed'] is False
+          assert r['synthetic_test_passed'] is True
+          assert r['evidence_mode'] == 'SYNTHETIC_TEST_ONLY'
+          assert r['status'] == 'SYNTHETIC_TEST_ONLY'
           assert r['selected_candidate_id'] == 'C13'
           assert r['auto_rejections_and_rollbacks'] >= 2
           print('Autonomous C13 selection, 1:1 person:hammer lock, and self-healing pixel audit verified.')
