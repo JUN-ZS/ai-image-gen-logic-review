@@ -111,6 +111,7 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
                 "image_height_px": 300,
                 "bubble": {"center_px": [260, 120], "radius_px": 80},
                 "contact_point_p_px": [260, 200],
+                "sanctuary_bbox_xyxy_px": [238, 100, 282, 142],
                 "planted_cylinder": {
                     "instance_id": "CYLINDER_01",
                     "body_bbox_xyxy_px": [240, 198, 280, 270],
@@ -127,6 +128,8 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
                     "side_handle": {
                         "track_id": handle_id,
                         "bbox_xyxy_px": [165, 194, 260, 206],
+                        "axis_start_px": [165, 200],
+                        "axis_end_px": [260, 200],
                         "axis_world": [1, 0, 0],
                         "attachment_world": [0, 0.5, 0],
                     },
@@ -201,6 +204,42 @@ class PlantedBubbleClosedLoopTests(unittest.TestCase):
         result = validate_planted_bubble_frame(image, evidence, expected_stage="D2_FIRST_GRIP_EXISTING_HANDLE", expected_parent_sha256=parent_sha, expected_anchor_sha256=parent_sha, expected_cylinder_instance_id="CYLINDER_01", expected_handle_track_id="HANDLE_01")
         self.assertFalse(result["contract_valid"])
         self.assertIn("HEROINE_NOT_GRIPPING_THE_LOCKED_HANDLE_INSTANCE", result["errors"])
+
+    def test_later_frame_cannot_shift_handle_even_if_it_reuses_the_same_track_id(self):
+        master = self.make_image("B_lock.png", (10, 20, 30))
+        master_ev = self.make_evidence("B_LOCKED_TOOL_MASTER", master, parent_sha=None, anchor_sha=None)
+        master_result = validate_planted_bubble_frame(master, master_ev, expected_stage="B_LOCKED_TOOL_MASTER")
+        self.assertTrue(master_result["contract_valid"], master_result["errors"])
+
+        child = self.make_image("D1_handle_shift.png", (30, 40, 50))
+        child_sha = sha256_file(child)
+        master_sha = sha256_file(master)
+        child_ev = self.make_evidence("D1_APPROACH_NO_GRIP", child, parent_sha=master_sha, anchor_sha=master_sha)
+        handle = child_ev["raster_annotations"]["planted_cylinder"]["side_handle"]
+        handle["bbox_xyxy_px"] = [175, 194, 270, 206]
+        handle["axis_start_px"] = [175, 200]
+        handle["axis_end_px"] = [270, 200]
+        child_ev["raster_sha256"] = child_sha
+        child_ev["parent_raster_sha256"] = master_sha
+        child_ev["scene_anchor_raster_sha256"] = master_sha
+        child_ev["review"]["reviewed_raster_sha256"] = child_sha
+        child_ev["review"]["reviewed_parent_sha256"] = master_sha
+        child_ev["review"]["reviewed_scene_anchor_sha256"] = master_sha
+
+        result = validate_planted_bubble_frame(
+            child,
+            child_ev,
+            expected_stage="D1_APPROACH_NO_GRIP",
+            expected_parent_sha256=master_sha,
+            expected_anchor_sha256=master_sha,
+            locked_contact_point_px=(260, 200),
+            expected_cylinder_instance_id="CYLINDER_01",
+            expected_handle_track_id="HANDLE_01",
+            expected_locked_geometry=master_result["locked_geometry"],
+        )
+        self.assertFalse(result["contract_valid"])
+        self.assertIn("HANDLE_AXIS_START_DRIFTED", result["errors"])
+        self.assertIn("HANDLE_BBOX_CHANGED_FROM_MASTER", result["errors"])
 
     def test_e_mid_requires_cracks_from_same_p_and_shell_only_breach(self):
         parent = self.make_image("D3.png", (10, 20, 30))
