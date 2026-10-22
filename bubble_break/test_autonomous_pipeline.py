@@ -10,6 +10,7 @@ from bubble_break.autonomous_pipeline import (
     AUTONOMOUS_STAGE_SEQUENCE,
     audit_candidate_frame,
     gate_cross_frame_continuity,
+    gate_static_background_continuity,
     gate_pre_contact_windup_air_gap,
     render_synthetic_stage_raster,
     run_autonomous_pipeline,
@@ -46,6 +47,16 @@ class AutonomousPipelineTests(unittest.TestCase):
             self.assertFalse(g_bad.passed)
             self.assertIn("disconnected from parent frame", g_bad.detail)
 
+            # Gate #9 must fail closed when the parent frame is missing.
+            g_missing = gate_cross_frame_continuity(p_good, None)
+            self.assertFalse(g_missing.passed)
+            self.assertIn("missing parent", g_missing.detail.lower())
+
+            g_bg = gate_static_background_continuity(p_good, p_parent)
+            self.assertTrue(g_bg.passed, g_bg.detail)
+            g_bg_jump = gate_static_background_continuity(p_jump, p_parent)
+            self.assertFalse(g_bg_jump.passed, g_bg_jump.detail)
+
     def test_pre_contact_windup_air_gap_rejects_stuck_cylinder_and_passes_detached(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             stuck_p = Path(td) / "h0_stuck.jpg"
@@ -61,12 +72,25 @@ class AutonomousPipelineTests(unittest.TestCase):
     def test_fault_injection_triggers_auto_rejection_and_rollback(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             outdir = Path(td) / "auto_run"
-            report = run_autonomous_pipeline(outdir, simulate_fault_injection=True)
-            self.assertTrue(report.all_stages_passed)
+            report = run_autonomous_pipeline(
+                outdir, simulate_fault_injection=True, synthetic_test_mode=True
+            )
+            # Synthetic geometry fixtures can test gates, but must never claim real-image PASS.
+            self.assertFalse(report.all_stages_passed)
+            self.assertTrue(report.all_contract_gates_passed)
+            self.assertEqual(report.evidence_mode, "SYNTHETIC_TEST_ONLY")
+            self.assertEqual(report.visual_acceptance_status, "NOT_VERIFIED_HUMAN_REVIEW_REQUIRED")
+            self.assertEqual(report.generation_backend_status, "NOT_CONNECTED_BY_THIS_SCRIPT")
             self.assertEqual(report.selected_candidate_id, "C13")
             self.assertEqual(report.passed_stages, len(AUTONOMOUS_STAGE_SEQUENCE))
             self.assertEqual(report.auto_rejections_and_rollbacks, 3)
             self.assertEqual(len(report.five_keyframe_trilogy), 5)
+            self.assertEqual(len(report.keyframe_transition_audits), 4)
+
+    def test_default_run_blocks_when_real_rasters_are_not_provided(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            with self.assertRaisesRegex(ValueError, "real raster candidates are required"):
+                run_autonomous_pipeline(Path(td) / "blocked")
 
     def test_grid_split_candidate_is_rejected_by_single_frame_gate(self) -> None:
         with tempfile.TemporaryDirectory() as td:
