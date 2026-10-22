@@ -1,0 +1,1122 @@
+{
+  "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+  "pr_reference": "PR #4 (fix/v5.1-truthful-keyframe-gates @ 9b63fe61f3778a8fb0c8257635b610a9775e6fcf)",
+  "code_verification_status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+  "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+  "human_visual_review_summary": {
+    "reviewer": "Gemini Visual Inspection & Pixel Coordinate Audit",
+    "rejected_round0_attempts": [
+      {
+        "stage": "PRE_FAR",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/REJECTED_PRE_FAR_R00_OUTER_WALL_MOUNT.jpg",
+        "raster_sha256": "a85155789bc61c09e48349f5d424b143cd3f2822fc9a43d3d2a5ec0e9b7d6b9f",
+        "rejection_reason": "Outer ends of HAMMER_A and HAMMER_B had wall-mount piston brackets attached; rejected and regenerated to ensure pure free-standing T-hammers with bare outer end-faces and single center transverse handles."
+      }
+    ],
+    "verified_sequence_count": 5,
+    "verified_camera_variants_count": 7
+  },
+  "verified_rasters": [
+    {
+      "variant_id": "PRE_FAR_V01",
+      "stage": "PRE_FAR",
+      "camera_view": "three-quarter side view, both strike faces and their gap clearly visible",
+      "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/PRE_FAR_V01.jpg",
+      "annotated_panel_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/annotated_panels/PRE_FAR_V01_annotated.jpg",
+      "raster_sha256": "3b2f9fa1a944dba2b457e10b47934b1eda33557d4cfd3d2e6e8ad39f80ccb6bb",
+      "evidence": {
+        "stage": "PRE_FAR",
+        "contact_surface": "NONE",
+        "signed_gap": 0.167878,
+        "face_normal_a": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "face_normal_b": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "face_center_a": [
+          0.415698,
+          0.5,
+          0.0
+        ],
+        "face_center_b": [
+          0.583576,
+          0.5,
+          0.0
+        ],
+        "tool_a_present": true,
+        "tool_b_present": true,
+        "separate_handles": true,
+        "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+        "raster_sha256": "3b2f9fa1a944dba2b457e10b47934b1eda33557d4cfd3d2e6e8ad39f80ccb6bb",
+        "raster_annotations": {
+          "image_width_px": 1376,
+          "image_height_px": 768,
+          "reviewer_or_model": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "tool_a": {
+            "instance_id": "HAMMER_A_LEFT_DARK_STEEL",
+            "head_bbox_xyxy_px": [
+              182,
+              326,
+              576,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              368,
+              62,
+              416,
+              355
+            ],
+            "head_axis_px": [
+              [
+                212,
+                384
+              ],
+              [
+                572,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                392,
+                384
+              ],
+              [
+                392,
+                68
+              ]
+            ],
+            "strike_face_center_px": [
+              572,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          },
+          "tool_b": {
+            "instance_id": "HAMMER_B_RIGHT_BRUSHED_STEEL",
+            "head_bbox_xyxy_px": [
+              800,
+              326,
+              1194,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              961,
+              412,
+              1009,
+              706
+            ],
+            "head_axis_px": [
+              [
+                1167,
+                384
+              ],
+              [
+                803,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                985,
+                384
+              ],
+              [
+                985,
+                700
+              ]
+            ],
+            "strike_face_center_px": [
+              803,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          }
+        }
+      },
+      "validation": {
+        "accepted": true,
+        "status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/PRE_FAR_V01.jpg",
+        "raster_sha256": "3b2f9fa1a944dba2b457e10b47934b1eda33557d4cfd3d2e6e8ad39f80ccb6bb",
+        "raster_size_px": [
+          1376,
+          768
+        ],
+        "geometry_evidence": {
+          "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+          "accepted": true,
+          "status": "GEOMETRY_EVIDENCE_PASS",
+          "visual_acceptance_status": "GEOMETRY_EVIDENCE_VERIFIED",
+          "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "metrics": {
+            "normal_dot": -1.0,
+            "normal_error_degrees": 0.0,
+            "signed_gap": 0.167878,
+            "face_center_lateral_offset": 0.0,
+            "face_center_distance_along_approach": 0.167878
+          },
+          "errors": []
+        },
+        "errors": [],
+        "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+        "limitation": "Raster hash and annotation contract are checked; the code has not itself visually recognized or approved the pictured geometry."
+      }
+    },
+    {
+      "variant_id": "PRE_NEAR_V01",
+      "stage": "PRE_NEAR",
+      "camera_view": "three-quarter side view, both strike faces and their gap clearly visible",
+      "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/PRE_NEAR_V01.jpg",
+      "annotated_panel_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/annotated_panels/PRE_NEAR_V01_annotated.jpg",
+      "raster_sha256": "bd82237ffebe0582201e04f8ee8f055a23285c0c17b24b2b9c9e2c0c17e5f7b3",
+      "evidence": {
+        "stage": "PRE_NEAR",
+        "contact_surface": "NONE",
+        "signed_gap": 0.017442,
+        "face_normal_a": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "face_normal_b": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "face_center_a": [
+          0.490552,
+          0.5,
+          0.0
+        ],
+        "face_center_b": [
+          0.507994,
+          0.5,
+          0.0
+        ],
+        "tool_a_present": true,
+        "tool_b_present": true,
+        "separate_handles": true,
+        "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+        "raster_sha256": "bd82237ffebe0582201e04f8ee8f055a23285c0c17b24b2b9c9e2c0c17e5f7b3",
+        "raster_annotations": {
+          "image_width_px": 1376,
+          "image_height_px": 768,
+          "reviewer_or_model": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "tool_a": {
+            "instance_id": "HAMMER_A_LEFT_DARK_STEEL",
+            "head_bbox_xyxy_px": [
+              268,
+              326,
+              678,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              454,
+              62,
+              502,
+              355
+            ],
+            "head_axis_px": [
+              [
+                281,
+                384
+              ],
+              [
+                675,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                478,
+                384
+              ],
+              [
+                478,
+                68
+              ]
+            ],
+            "strike_face_center_px": [
+              675,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          },
+          "tool_b": {
+            "instance_id": "HAMMER_B_RIGHT_BRUSHED_STEEL",
+            "head_bbox_xyxy_px": [
+              696,
+              326,
+              1106,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              875,
+              412,
+              923,
+              706
+            ],
+            "head_axis_px": [
+              [
+                1099,
+                384
+              ],
+              [
+                699,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                899,
+                384
+              ],
+              [
+                899,
+                700
+              ]
+            ],
+            "strike_face_center_px": [
+              699,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          }
+        }
+      },
+      "validation": {
+        "accepted": true,
+        "status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/PRE_NEAR_V01.jpg",
+        "raster_sha256": "bd82237ffebe0582201e04f8ee8f055a23285c0c17b24b2b9c9e2c0c17e5f7b3",
+        "raster_size_px": [
+          1376,
+          768
+        ],
+        "geometry_evidence": {
+          "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+          "accepted": true,
+          "status": "GEOMETRY_EVIDENCE_PASS",
+          "visual_acceptance_status": "GEOMETRY_EVIDENCE_VERIFIED",
+          "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "metrics": {
+            "normal_dot": -1.0,
+            "normal_error_degrees": 0.0,
+            "signed_gap": 0.017442,
+            "face_center_lateral_offset": 0.0,
+            "face_center_distance_along_approach": 0.017442
+          },
+          "errors": []
+        },
+        "errors": [],
+        "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+        "limitation": "Raster hash and annotation contract are checked; the code has not itself visually recognized or approved the pictured geometry."
+      }
+    },
+    {
+      "variant_id": "FIRST_CONTACT_V01",
+      "stage": "FIRST_CONTACT",
+      "camera_view": "three-quarter side view, both strike faces and their gap clearly visible",
+      "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/FIRST_CONTACT_V01.jpg",
+      "annotated_panel_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/annotated_panels/FIRST_CONTACT_V01_annotated.jpg",
+      "raster_sha256": "f8c8010cbfa138153efb71f74ae203dadf9cc51e2b7ff230192ead7f11618ad6",
+      "evidence": {
+        "stage": "FIRST_CONTACT",
+        "contact_surface": "END_FACE_TO_END_FACE",
+        "signed_gap": 0.0,
+        "face_normal_a": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "face_normal_b": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "face_center_a": [
+          0.499273,
+          0.5,
+          0.0
+        ],
+        "face_center_b": [
+          0.500727,
+          0.5,
+          0.0
+        ],
+        "tool_a_present": true,
+        "tool_b_present": true,
+        "separate_handles": true,
+        "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+        "raster_sha256": "f8c8010cbfa138153efb71f74ae203dadf9cc51e2b7ff230192ead7f11618ad6",
+        "raster_annotations": {
+          "image_width_px": 1376,
+          "image_height_px": 768,
+          "reviewer_or_model": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "tool_a": {
+            "instance_id": "HAMMER_A_LEFT_DARK_STEEL",
+            "head_bbox_xyxy_px": [
+              265,
+              326,
+              690,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              459,
+              62,
+              507,
+              355
+            ],
+            "head_axis_px": [
+              [
+                278,
+                384
+              ],
+              [
+                688,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                483,
+                384
+              ],
+              [
+                483,
+                68
+              ]
+            ],
+            "strike_face_center_px": [
+              687,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          },
+          "tool_b": {
+            "instance_id": "HAMMER_B_RIGHT_BRUSHED_STEEL",
+            "head_bbox_xyxy_px": [
+              686,
+              326,
+              1100,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              857,
+              412,
+              905,
+              706
+            ],
+            "head_axis_px": [
+              [
+                1073,
+                384
+              ],
+              [
+                689,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                881,
+                384
+              ],
+              [
+                881,
+                700
+              ]
+            ],
+            "strike_face_center_px": [
+              689,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          },
+          "contact_point_px": [
+            688,
+            384
+          ]
+        },
+        "contact_point": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "face_radius_a": 0.037791,
+        "face_radius_b": 0.037791
+      },
+      "validation": {
+        "accepted": true,
+        "status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/FIRST_CONTACT_V01.jpg",
+        "raster_sha256": "f8c8010cbfa138153efb71f74ae203dadf9cc51e2b7ff230192ead7f11618ad6",
+        "raster_size_px": [
+          1376,
+          768
+        ],
+        "geometry_evidence": {
+          "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+          "accepted": true,
+          "status": "GEOMETRY_EVIDENCE_PASS",
+          "visual_acceptance_status": "GEOMETRY_EVIDENCE_VERIFIED",
+          "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "metrics": {
+            "normal_dot": -1.0,
+            "normal_error_degrees": 0.0,
+            "signed_gap": 0.0,
+            "face_center_lateral_offset": 0.0,
+            "face_center_distance_along_approach": 0.001454
+          },
+          "errors": []
+        },
+        "errors": [],
+        "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+        "limitation": "Raster hash and annotation contract are checked; the code has not itself visually recognized or approved the pictured geometry."
+      }
+    },
+    {
+      "variant_id": "REACTION_V01",
+      "stage": "REACTION",
+      "camera_view": "three-quarter side view, both strike faces and their gap clearly visible",
+      "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/REACTION_V01.jpg",
+      "annotated_panel_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/annotated_panels/REACTION_V01_annotated.jpg",
+      "raster_sha256": "a462f3dbac9f7aba0f1e711d90bb0f8c28b6eac0844eba4834e755049726598d",
+      "evidence": {
+        "stage": "REACTION",
+        "contact_surface": "END_FACE_TO_END_FACE",
+        "signed_gap": 0.0,
+        "face_normal_a": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "face_normal_b": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "face_center_a": [
+          0.499273,
+          0.5,
+          0.0
+        ],
+        "face_center_b": [
+          0.500727,
+          0.5,
+          0.0
+        ],
+        "tool_a_present": true,
+        "tool_b_present": true,
+        "separate_handles": true,
+        "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+        "raster_sha256": "a462f3dbac9f7aba0f1e711d90bb0f8c28b6eac0844eba4834e755049726598d",
+        "raster_annotations": {
+          "image_width_px": 1376,
+          "image_height_px": 768,
+          "reviewer_or_model": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "tool_a": {
+            "instance_id": "HAMMER_A_LEFT_DARK_STEEL",
+            "head_bbox_xyxy_px": [
+              265,
+              326,
+              690,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              459,
+              62,
+              507,
+              355
+            ],
+            "head_axis_px": [
+              [
+                278,
+                384
+              ],
+              [
+                688,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                483,
+                384
+              ],
+              [
+                483,
+                68
+              ]
+            ],
+            "strike_face_center_px": [
+              687,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          },
+          "tool_b": {
+            "instance_id": "HAMMER_B_RIGHT_BRUSHED_STEEL",
+            "head_bbox_xyxy_px": [
+              686,
+              326,
+              1102,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              869,
+              412,
+              917,
+              706
+            ],
+            "head_axis_px": [
+              [
+                1097,
+                384
+              ],
+              [
+                689,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                893,
+                384
+              ],
+              [
+                893,
+                700
+              ]
+            ],
+            "strike_face_center_px": [
+              689,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          },
+          "contact_point_px": [
+            688,
+            384
+          ]
+        },
+        "contact_point": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "face_radius_a": 0.037791,
+        "face_radius_b": 0.037791
+      },
+      "validation": {
+        "accepted": true,
+        "status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/REACTION_V01.jpg",
+        "raster_sha256": "a462f3dbac9f7aba0f1e711d90bb0f8c28b6eac0844eba4834e755049726598d",
+        "raster_size_px": [
+          1376,
+          768
+        ],
+        "geometry_evidence": {
+          "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+          "accepted": true,
+          "status": "GEOMETRY_EVIDENCE_PASS",
+          "visual_acceptance_status": "GEOMETRY_EVIDENCE_VERIFIED",
+          "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "metrics": {
+            "normal_dot": -1.0,
+            "normal_error_degrees": 0.0,
+            "signed_gap": 0.0,
+            "face_center_lateral_offset": 0.0,
+            "face_center_distance_along_approach": 0.001454
+          },
+          "errors": []
+        },
+        "errors": [],
+        "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+        "limitation": "Raster hash and annotation contract are checked; the code has not itself visually recognized or approved the pictured geometry."
+      }
+    },
+    {
+      "variant_id": "RECOIL_V01",
+      "stage": "RECOIL",
+      "camera_view": "three-quarter side view, both strike faces and their gap clearly visible",
+      "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/RECOIL_V01.jpg",
+      "annotated_panel_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/annotated_panels/RECOIL_V01_annotated.jpg",
+      "raster_sha256": "d6340333ee5bc13ab538047efba673a4a0b3d3e11bbf6650ae3f3624d0ba7f6e",
+      "evidence": {
+        "stage": "RECOIL",
+        "contact_surface": "NONE",
+        "signed_gap": 0.071221,
+        "face_normal_a": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "face_normal_b": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "face_center_a": [
+          0.465116,
+          0.5,
+          0.0
+        ],
+        "face_center_b": [
+          0.536337,
+          0.5,
+          0.0
+        ],
+        "tool_a_present": true,
+        "tool_b_present": true,
+        "separate_handles": true,
+        "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+        "raster_sha256": "d6340333ee5bc13ab538047efba673a4a0b3d3e11bbf6650ae3f3624d0ba7f6e",
+        "raster_annotations": {
+          "image_width_px": 1376,
+          "image_height_px": 768,
+          "reviewer_or_model": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "tool_a": {
+            "instance_id": "HAMMER_A_LEFT_DARK_STEEL",
+            "head_bbox_xyxy_px": [
+              220,
+              326,
+              644,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              416,
+              62,
+              464,
+              355
+            ],
+            "head_axis_px": [
+              [
+                240,
+                384
+              ],
+              [
+                640,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                440,
+                384
+              ],
+              [
+                440,
+                68
+              ]
+            ],
+            "strike_face_center_px": [
+              640,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          },
+          "tool_b": {
+            "instance_id": "HAMMER_B_RIGHT_BRUSHED_STEEL",
+            "head_bbox_xyxy_px": [
+              734,
+              326,
+              1152,
+              442
+            ],
+            "handle_bbox_xyxy_px": [
+              918,
+              412,
+              966,
+              706
+            ],
+            "head_axis_px": [
+              [
+                1146,
+                384
+              ],
+              [
+                738,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                942,
+                384
+              ],
+              [
+                942,
+                700
+              ]
+            ],
+            "strike_face_center_px": [
+              738,
+              384
+            ],
+            "strike_face_radius_px": 52.0
+          }
+        }
+      },
+      "validation": {
+        "accepted": true,
+        "status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/RECOIL_V01.jpg",
+        "raster_sha256": "d6340333ee5bc13ab538047efba673a4a0b3d3e11bbf6650ae3f3624d0ba7f6e",
+        "raster_size_px": [
+          1376,
+          768
+        ],
+        "geometry_evidence": {
+          "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+          "accepted": true,
+          "status": "GEOMETRY_EVIDENCE_PASS",
+          "visual_acceptance_status": "GEOMETRY_EVIDENCE_VERIFIED",
+          "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "metrics": {
+            "normal_dot": -1.0,
+            "normal_error_degrees": 0.0,
+            "signed_gap": 0.071221,
+            "face_center_lateral_offset": 0.0,
+            "face_center_distance_along_approach": 0.071221
+          },
+          "errors": []
+        },
+        "errors": [],
+        "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+        "limitation": "Raster hash and annotation contract are checked; the code has not itself visually recognized or approved the pictured geometry."
+      }
+    },
+    {
+      "variant_id": "FIRST_CONTACT_V06_MACRO",
+      "stage": "FIRST_CONTACT",
+      "camera_view": "tight macro view of the opposed end faces at P, include enough head material to distinguish face from cheek",
+      "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/FIRST_CONTACT_V06_MACRO.jpg",
+      "annotated_panel_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/annotated_panels/FIRST_CONTACT_V06_MACRO_annotated.jpg",
+      "raster_sha256": "2a3c776f8b2ce70c7f08a469f87398edc40decdaebb3ca17f934028055e2e20b",
+      "evidence": {
+        "stage": "FIRST_CONTACT",
+        "contact_surface": "END_FACE_TO_END_FACE",
+        "signed_gap": 0.0,
+        "face_normal_a": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "face_normal_b": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "face_center_a": [
+          0.499273,
+          0.5,
+          0.0
+        ],
+        "face_center_b": [
+          0.500727,
+          0.5,
+          0.0
+        ],
+        "tool_a_present": true,
+        "tool_b_present": true,
+        "separate_handles": true,
+        "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+        "raster_sha256": "2a3c776f8b2ce70c7f08a469f87398edc40decdaebb3ca17f934028055e2e20b",
+        "raster_annotations": {
+          "image_width_px": 1376,
+          "image_height_px": 768,
+          "reviewer_or_model": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "tool_a": {
+            "instance_id": "HAMMER_A_LEFT_DARK_STEEL",
+            "head_bbox_xyxy_px": [
+              10,
+              230,
+              689,
+              538
+            ],
+            "handle_bbox_xyxy_px": [
+              180,
+              5,
+              298,
+              305
+            ],
+            "head_axis_px": [
+              [
+                20,
+                384
+              ],
+              [
+                687,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                353,
+                384
+              ],
+              [
+                239,
+                10
+              ]
+            ],
+            "strike_face_center_px": [
+              687,
+              384
+            ],
+            "strike_face_radius_px": 148.0
+          },
+          "tool_b": {
+            "instance_id": "HAMMER_B_RIGHT_BRUSHED_STEEL",
+            "head_bbox_xyxy_px": [
+              687,
+              230,
+              1366,
+              538
+            ],
+            "handle_bbox_xyxy_px": [
+              1065,
+              460,
+              1185,
+              760
+            ],
+            "head_axis_px": [
+              [
+                1355,
+                384
+              ],
+              [
+                689,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                1022,
+                384
+              ],
+              [
+                1125,
+                755
+              ]
+            ],
+            "strike_face_center_px": [
+              689,
+              384
+            ],
+            "strike_face_radius_px": 148.0
+          },
+          "contact_point_px": [
+            688,
+            384
+          ]
+        },
+        "contact_point": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "face_radius_a": 0.107558,
+        "face_radius_b": 0.107558
+      },
+      "validation": {
+        "accepted": true,
+        "status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/FIRST_CONTACT_V06_MACRO.jpg",
+        "raster_sha256": "2a3c776f8b2ce70c7f08a469f87398edc40decdaebb3ca17f934028055e2e20b",
+        "raster_size_px": [
+          1376,
+          768
+        ],
+        "geometry_evidence": {
+          "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+          "accepted": true,
+          "status": "GEOMETRY_EVIDENCE_PASS",
+          "visual_acceptance_status": "GEOMETRY_EVIDENCE_VERIFIED",
+          "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "metrics": {
+            "normal_dot": -1.0,
+            "normal_error_degrees": 0.0,
+            "signed_gap": 0.0,
+            "face_center_lateral_offset": 0.0,
+            "face_center_distance_along_approach": 0.001454
+          },
+          "errors": []
+        },
+        "errors": [],
+        "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+        "limitation": "Raster hash and annotation contract are checked; the code has not itself visually recognized or approved the pictured geometry."
+      }
+    },
+    {
+      "variant_id": "FIRST_CONTACT_V03_LOW_ANGLE",
+      "stage": "FIRST_CONTACT",
+      "camera_view": "low three-quarter angle, camera below the two heads, preserve visible separation/contact point P",
+      "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/FIRST_CONTACT_V03_LOW_ANGLE.jpg",
+      "annotated_panel_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/annotated_panels/FIRST_CONTACT_V03_LOW_ANGLE_annotated.jpg",
+      "raster_sha256": "6e12ea343bc600698aa486af85673a8ad387ba795188654ee58793c07d3e5036",
+      "evidence": {
+        "stage": "FIRST_CONTACT",
+        "contact_surface": "END_FACE_TO_END_FACE",
+        "signed_gap": 0.0,
+        "face_normal_a": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "face_normal_b": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "face_center_a": [
+          0.499273,
+          0.5,
+          0.0
+        ],
+        "face_center_b": [
+          0.500727,
+          0.5,
+          0.0
+        ],
+        "tool_a_present": true,
+        "tool_b_present": true,
+        "separate_handles": true,
+        "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+        "raster_sha256": "6e12ea343bc600698aa486af85673a8ad387ba795188654ee58793c07d3e5036",
+        "raster_annotations": {
+          "image_width_px": 1376,
+          "image_height_px": 768,
+          "reviewer_or_model": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "tool_a": {
+            "instance_id": "HAMMER_A_LEFT_DARK_STEEL",
+            "head_bbox_xyxy_px": [
+              225,
+              326,
+              689,
+              444
+            ],
+            "handle_bbox_xyxy_px": [
+              435,
+              65,
+              505,
+              355
+            ],
+            "head_axis_px": [
+              [
+                260,
+                384
+              ],
+              [
+                687,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                474,
+                384
+              ],
+              [
+                492,
+                72
+              ]
+            ],
+            "strike_face_center_px": [
+              687,
+              384
+            ],
+            "strike_face_radius_px": 54.0
+          },
+          "tool_b": {
+            "instance_id": "HAMMER_B_RIGHT_BRUSHED_STEEL",
+            "head_bbox_xyxy_px": [
+              687,
+              326,
+              1152,
+              444
+            ],
+            "handle_bbox_xyxy_px": [
+              895,
+              410,
+              985,
+              755
+            ],
+            "head_axis_px": [
+              [
+                1145,
+                384
+              ],
+              [
+                689,
+                384
+              ]
+            ],
+            "handle_axis_px": [
+              [
+                917,
+                384
+              ],
+              [
+                965,
+                748
+              ]
+            ],
+            "strike_face_center_px": [
+              689,
+              384
+            ],
+            "strike_face_radius_px": 54.0
+          },
+          "contact_point_px": [
+            688,
+            384
+          ]
+        },
+        "contact_point": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "face_radius_a": 0.039244,
+        "face_radius_b": 0.039244
+      },
+      "validation": {
+        "accepted": true,
+        "status": "RASTER_BOUND_GEOMETRY_ANNOTATION_PASS",
+        "raster_path": "/working_dir/c_9a013c6692e76475/repo/ai-image-gen-logic-review-dc8b55d394ad50b18960a170049282ebe48a56df/out/dual_t_hammer_collision/rasters/FIRST_CONTACT_V03_LOW_ANGLE.jpg",
+        "raster_sha256": "6e12ea343bc600698aa486af85673a8ad387ba795188654ee58793c07d3e5036",
+        "raster_size_px": [
+          1376,
+          768
+        ],
+        "geometry_evidence": {
+          "contract_id": "DUAL_T_HAMMER_END_FACE_IMPACT_V1",
+          "accepted": true,
+          "status": "GEOMETRY_EVIDENCE_PASS",
+          "visual_acceptance_status": "GEOMETRY_EVIDENCE_VERIFIED",
+          "evidence_source": "HUMAN_AND_CALIBRATED_PIXEL_MEASUREMENT_V1",
+          "metrics": {
+            "normal_dot": -1.0,
+            "normal_error_degrees": 0.0,
+            "signed_gap": 0.0,
+            "face_center_lateral_offset": 0.0,
+            "face_center_distance_along_approach": 0.001454
+          },
+          "errors": []
+        },
+        "errors": [],
+        "visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+        "limitation": "Raster hash and annotation contract are checked; the code has not itself visually recognized or approved the pictured geometry."
+      }
+    }
+  ]
+}
