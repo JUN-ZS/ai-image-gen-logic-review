@@ -1,32 +1,16 @@
 #!/usr/bin/env python3
-"""Autonomous Closed-Loop Sequential Image Generation, Topology Lock & Cross-Frame Continuity Engine (v5).
+"""V5 raster-candidate auditor for hammer/bubble continuity.
 
-Solves the two core root causes identified in `STAGE_FAILURE_SUCCESS_REWRITE_LOG.md` (`半成HAM.txt`)
-and diffusion spatial-conditioning literature:
+This module checks supplied candidate rasters and writes audit/repair-prompt records.
+It does NOT call an image-generation model. A passing software test or automated gate
+is not a human visual acceptance. Procedural raster generation is test-only, and a real
+run must supply the seven canonical stage candidate groups plus real PRE_FAR/PRE_NEAR
+rasters. A real per-stage generation/rerun adapter remains unconnected.
 
-1. WHY "FULL SERIAL" FAILS TO CONNECT (`全串行斷鏈問題`) & THE FIX:
-   - Mixing branching exploration trials (Zoom-In/Out, competing D3 washes, or unplanted pre-frames)
-     into a linear chain destroys frame-to-frame pixel registration (`NCC` drops from `>0.85` to `<0.20`).
-   - Fix:
-     a) Separate the **Canonical Planted Spine (`A -> B0_ROI_4X -> B3 -> D0 -> D1 -> D2 -> D3 -> E_MID -> E_END`)**
-        from **Star-Topology Candidate Washes (`D2 -> {S1..Sn} -> pick 1 winner`)**.
-     b) Enforce **Gate #9 (`gate_cross_frame_continuity`)** on every post-B spine transition:
-        computes Normalized Cross-Correlation (`NCC >= 0.80`) and luminance stability (`luma_diff <= 15.0`)
-        in the locked left hammer+handle anchor zone against the parent PASS frame. Any frame where the
-        model re-layouts the scene (e.g. rear-view flip `NCC=-0.18`, factory background jump `NCC=+0.11`,
-        or scale jump `NCC=+0.11`) is AUTOMATICALLY REJECTED!
-
-2. WHY "TOPOLOGY" BREAKS ON ISOLATION / GRIP / FAR PRE-FRAME (`拓撲崩潰問題`) & THE FIX:
-   - Diffusion models have a dominant pre-trained prior (`Hammer = Coaxial End-Cap Sledgehammer`).
-   - The `C13` 90° side-middle handle topology only survives when the cylinder's inner circular face is
-     **pinned to the bubble's outward normal Z' by the glowing base contact ring**.
-   - When detached in `PRE_FAR (0s 遠距蓄力)` or `PRE_NEAR (2s 近泡)`, the Z' normal anchor vanishes
-     and unmasked diffusion collapses the cylinder into an axial sledgehammer (`492e`) or horizontal pipe (`1474`).
-   - Fix:
-     a) Lock the planted spine `B3 -> D1 -> D2 -> D3` first (with `Stage B0 4x ROI Zoom` + `D1/D2 micro-step split`).
-     b) Derive `PRE_FAR (0s)` and `PRE_NEAR (2s)` **backward from the locked `D3` anchor (`4.5s`)** via
-        Rigid-Body Spatial Mask Back-Projection (`build_connected_5keyframe_trilogy`), preserving 100% of
-        the `C13` XYZ orthogonal cross topology while opening the pre-contact time-axis air gap along `-n`.
+Gate #9 is only a coarse grayscale ROI correlation check; the separate keyframe gate
+checks thin static-background margins only. Neither alone proves subject identity,
+full-scene pixel continuity, narrative continuity, or video interpolation. The five
+keyframes must be inspected as actual images before claiming a visually connected result.
 """
 from __future__ import annotations
 
@@ -813,7 +797,7 @@ def build_video_transition_manifest(
     five_keyframes: list[dict[str, Any]],
     candidate_id: str,
 ) -> list[dict[str, Any]]:
-    """Build the 10-second continuous First-to-Last Frame (首尾幀) video transition manifest."""
+    """Build proposed transition records only; this function does not render or validate a video."""
     transitions: list[dict[str, Any]] = []
     for i in range(len(five_keyframes) - 1):
         k_from, k_to = five_keyframes[i], five_keyframes[i + 1]
@@ -832,9 +816,10 @@ def build_video_transition_manifest(
             "duration_sec": round(float(k_to["time_sec"]) - float(k_from["time_sec"]), 2),
             "motion_bucket_id": 127,
             "transition_prompt": (
-                f"Continuous {k_from['time_sec']}s->{k_to['time_sec']}s interpolation ({k_from['label_zh']} -> {k_to['label_zh']}); "
+                f"Proposed {k_from['time_sec']}s->{k_to['time_sec']}s interpolation ({k_from['label_zh']} -> {k_to['label_zh']}); "
                 f"keep C13 radial dark-steel cylinder, 100% bare lower-left circular cap, and upper-left 90° straight rod locked."
             ),
+            "validation_status": "PROMPT_ONLY_NOT_INTERPOLATED_OR_VISUALLY_VALIDATED",
         })
     return transitions
 
