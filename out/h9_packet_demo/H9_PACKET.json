@@ -1,0 +1,151 @@
+{
+  "h9_id": "H9_IMAGINE_PLANTED_BUBBLE_CLOSED_LOOP_V1",
+  "contract_id": "PLANTED_DOUBLE_ENDED_CYLINDER_BUBBLE_CONTACT_V1",
+  "contract_sha256": "7298dd8221fbe9b6372a1285d1d65df5de2b63aea5a4da9bbbf6137c2866aa41",
+  "provider": "grok_imagine_serial_fullframe",
+  "compiled_at_utc": "2026-10-22T15:37:19Z",
+  "aspect": "16:9",
+  "master_b3_sha256": "8ae5ecedcdc53d61efba59634ca1496d297a174598d30dbbedeba1f1be0953fe",
+  "person_ref_sha256": "f612ec7e07d95f256d3bd352f73f98ca913074c87556aed58cfc3223a059ee81",
+  "stage_order": [
+    "B_LOCKED_TOOL_MASTER",
+    "C_PERSON_SCALE_NO_GRIP",
+    "D1_APPROACH_NO_GRIP",
+    "D2_FIRST_GRIP_EXISTING_HANDLE",
+    "D3_TENSION_EXISTING_HANDLE",
+    "E_MID_GLOW_CRACKS_FROM_P",
+    "E_END_SHELL_SHATTER_FROM_P"
+  ],
+  "stages": [
+    {
+      "stage": "B_LOCKED_TOOL_MASTER",
+      "label_zh": "B：隔離並鎖定單一種植圓柱母版",
+      "prompt_path": "prompts/B_LOCKED_TOOL_MASTER.md",
+      "parent_stage": null,
+      "authorized_delta_fields": [
+        "isolate_selected_tool_roi",
+        "remove_other_candidate_tools"
+      ],
+      "must_preserve": [
+        "bubble_center_radius",
+        "P",
+        "conformal_base_seat",
+        "cylinder_axis",
+        "outer_cap",
+        "side_middle_handle"
+      ]
+    },
+    {
+      "stage": "C_PERSON_SCALE_NO_GRIP",
+      "label_zh": "C：加入迷你人物，不握柄",
+      "prompt_path": "prompts/C_PERSON_SCALE_NO_GRIP.md",
+      "parent_stage": "B_LOCKED_TOOL_MASTER",
+      "authorized_delta_fields": [
+        "add_one_miniature_protagonist",
+        "adjust_heroine_scale_and_position"
+      ],
+      "must_preserve": [
+        "all_B_master_pixels_outside_actor_edit_region",
+        "P",
+        "base_contact",
+        "cylinder",
+        "same_side_handle"
+      ]
+    },
+    {
+      "stage": "D1_APPROACH_NO_GRIP",
+      "label_zh": "D1：人物蓄力定位，仍不握柄",
+      "prompt_path": "prompts/D1_APPROACH_NO_GRIP.md",
+      "parent_stage": "C_PERSON_SCALE_NO_GRIP",
+      "authorized_delta_fields": [
+        "heroine_pose",
+        "heroine_body_position",
+        "cloth_and_hair_motion"
+      ],
+      "must_preserve": [
+        "P",
+        "base_contact",
+        "cylinder_axis",
+        "outer_cap_clearance",
+        "side_handle_instance_and_axis"
+      ]
+    },
+    {
+      "stage": "D2_FIRST_GRIP_EXISTING_HANDLE",
+      "label_zh": "D2：首次握住來源圖已有的側柄",
+      "prompt_path": "prompts/D2_FIRST_GRIP_EXISTING_HANDLE.md",
+      "parent_stage": "D1_APPROACH_NO_GRIP",
+      "authorized_delta_fields": [
+        "heroine_hands_and_forearms",
+        "minimum_required_arm_pose"
+      ],
+      "must_preserve": [
+        "P",
+        "base_contact",
+        "cylinder",
+        "outer_cap_clearance",
+        "existing_handle_pixels_and_axis"
+      ]
+    },
+    {
+      "stage": "D3_TENSION_EXISTING_HANDLE",
+      "label_zh": "D3：沿既有側柄建立張力",
+      "prompt_path": "prompts/D3_TENSION_EXISTING_HANDLE.md",
+      "parent_stage": "D2_FIRST_GRIP_EXISTING_HANDLE",
+      "authorized_delta_fields": [
+        "heroine_pose_tension",
+        "shoulder_hip_weight_shift",
+        "hair_and_cloth_followthrough"
+      ],
+      "must_preserve": [
+        "same_gripped_handle_track",
+        "P",
+        "base_contact",
+        "cylinder_geometry",
+        "outer_cap_clearance"
+      ]
+    },
+    {
+      "stage": "E_MID_GLOW_CRACKS_FROM_P",
+      "label_zh": "E 中幀：底座發光增強，裂紋從 P 擴散",
+      "prompt_path": "prompts/E_MID_GLOW_CRACKS_FROM_P.md",
+      "parent_stage": "D3_TENSION_EXISTING_HANDLE",
+      "authorized_delta_fields": [
+        "base_interface_glow_intensity",
+        "shell_cracks_radiating_from_P",
+        "restrained_shock_rings"
+      ],
+      "must_preserve": [
+        "same_gripped_handle_track",
+        "P",
+        "conformal_base_seat",
+        "cylinder_pose",
+        "sanctuary_and_residents"
+      ]
+    },
+    {
+      "stage": "E_END_SHELL_SHATTER_FROM_P",
+      "label_zh": "E 尾幀：只破泡殼，內部居民完好",
+      "prompt_path": "prompts/E_END_SHELL_SHATTER_FROM_P.md",
+      "parent_stage": "E_MID_GLOW_CRACKS_FROM_P",
+      "authorized_delta_fields": [
+        "shell_fragmentation_outward_from_P",
+        "light_and_shockwave_aftermath"
+      ],
+      "must_preserve": [
+        "same_gripped_handle_track",
+        "P",
+        "cylinder_pose",
+        "conformal_base_seat",
+        "outer_cap_clearance",
+        "sanctuary_and_residents"
+      ]
+    }
+  ],
+  "code_visual_acceptance_status": "NOT_VERIFIED_BY_CODE",
+  "paths": {
+    "prompts": "prompts/",
+    "sources": "sources/",
+    "playbook": "AGENT_PLAYBOOK.md"
+  }
+}
