@@ -2,8 +2,11 @@
 """Compile formula prompts for double-ended cylindrical hammers planted on a bubble.
 
 The handle sprouts sideways from each radial cylindrical head. The glowing,
-sphere-conforming contact interface is at the planted base. This compiler emits
-prompts/metadata/SVG only; it does not generate images or claim pixel acceptance.
+sphere-conforming contact interface is at the planted base.
+Upgraded (2026-10-22) with:
+- Deterministic autonomous candidate scoring & selection (`auto_select_candidate`, `--auto-select`)
+- Automatic proxy ROI estimation (`estimate_candidate_roi`)
+- Serial full-frame D3 action wash generator (`make_stage_d3_serial_wash_prompts`)
 """
 from __future__ import annotations
 
@@ -14,7 +17,7 @@ import math
 import random
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Any, Iterable, Sequence
 from xml.sax.saxutils import escape
 
 V3 = tuple[float, float, float]
@@ -184,6 +187,92 @@ def candidate_by_id(candidates: Sequence[HammerCandidate], candidate_id: str) ->
         if candidate.candidate_id == requested:
             return candidate
     raise ValueError(f"未知候選編號 {candidate_id!r}；可用範圍為 C01–C{len(candidates):02d}")
+
+
+def score_candidate_for_autonomous_lock(
+    candidate: HammerCandidate,
+    all_candidates: Sequence[HammerCandidate],
+) -> dict[str, Any]:
+    """Deterministically score a Stage-A candidate for autonomous selection without human intervention.
+
+    Criteria based on STAGE_FAILURE_SUCCESS_REWRITE_LOG.md:
+    1. Left-pointing handle projection (dx < 0) to satisfy PROVEN left-handle lock (D2 first grip).
+    2. Unforeshortened projected handle length (plen near maximum ~200px).
+    3. Optimal grazing polar angle (48°–62°) so both circular caps and side-middle joint are legible.
+    4. Spatial isolation from neighboring candidate anchors/handles.
+    """
+    dx = candidate.projected_handle_x - candidate.projected_contact_x
+    dy = candidate.projected_handle_y - candidate.projected_contact_y
+    plen = math.hypot(dx, dy)
+    # 1. Leftward orientation bonus (dx < -80 is ideal for left-rod pixel lock)
+    left_score = clamp((-dx) / 160.0, 0.0, 1.0) if dx < 0 else 0.0
+    # 2. Projected handle length score (max ~200.6px)
+    length_score = clamp(plen / 200.0, 0.0, 1.0)
+    # 3. Grazing polar angle score (peak at 56°: shows both base seam and cylinder wall)
+    polar_diff = abs(candidate.polar_deg_to_camera - 56.0)
+    polar_score = clamp(1.0 - (polar_diff / 30.0), 0.0, 1.0)
+    # 4. Nearest-neighbor separation in 2D projection
+    min_dist = min(
+        (
+            math.hypot(
+                candidate.projected_contact_x - other.projected_contact_x,
+                candidate.projected_contact_y - other.projected_contact_y,
+            )
+            for other in all_candidates
+            if other.candidate_id != candidate.candidate_id
+        ),
+        default=120.0,
+    )
+    isolation_score = clamp(min_dist / 110.0, 0.0, 1.0)
+    total_score = (
+        0.38 * left_score
+        + 0.30 * length_score
+        + 0.20 * polar_score
+        + 0.12 * isolation_score
+    )
+    return {
+        "candidate_id": candidate.candidate_id,
+        "total_score": round(total_score, 6),
+        "left_score": round(left_score, 4),
+        "length_score": round(length_score, 4),
+        "polar_score": round(polar_score, 4),
+        "isolation_score": round(isolation_score, 4),
+        "projected_dx": round(dx, 3),
+        "projected_dy": round(dy, 3),
+        "projected_length": round(plen, 3),
+    }
+
+
+def auto_select_candidate(
+    candidates: Sequence[HammerCandidate] | None = None,
+) -> tuple[HammerCandidate, list[dict[str, Any]]]:
+    """Autonomously rank all 24 candidates and return (best_candidate, full_ranking)."""
+    cands = list(candidates) if candidates is not None else make_candidates()
+    scored = [score_candidate_for_autonomous_lock(c, cands) for c in cands]
+    scored.sort(key=lambda item: item["total_score"], reverse=True)
+    winner = candidate_by_id(cands, scored[0]["candidate_id"])
+    return winner, scored
+
+
+def estimate_candidate_roi(
+    candidate: HammerCandidate,
+    image_width: int = 1400,
+    image_height: int = 1200,
+) -> tuple[int, int, int, int]:
+    """Compute a deterministic bounding ROI (x, y, width, height) for a selected candidate."""
+    sx = image_width / 1400.0
+    sy = image_height / 1200.0
+    cx = candidate.projected_contact_x * sx
+    cy = candidate.projected_contact_y * sy
+    hx = candidate.projected_handle_x * sx
+    hy = candidate.projected_handle_y * sy
+    pad_x = max(48.0 * sx, abs(hx - cx) * 0.35)
+    pad_y = max(48.0 * sy, abs(hy - cy) * 0.35)
+    x0 = int(max(0, min(cx, hx) - pad_x))
+    y0 = int(max(0, min(cy, hy) - pad_y))
+    x1 = int(min(image_width, max(cx, hx) + pad_x))
+    y1 = int(min(image_height, max(cy, hy) + pad_y))
+    return (x0, y0, max(16, x1 - x0), max(16, y1 - y0))
 
 
 def fmt_vec(vector: Sequence[float]) -> str:
@@ -372,7 +461,6 @@ must not be mislabeled as the still-planted contact state.
 """
 
 
-
 def make_stage_d_step_prompt(
     candidate: HammerCandidate,
     step: str,
@@ -396,8 +484,7 @@ def make_stage_d_step_prompt(
         from_step = previous_step(step)
     validate_step_transition(from_step, step)
     if step != "D0" and not prev_raster_sha256:
-        # still emit prompt text but mark REQUIRED so full-RUN gate fails closed
-        prev_raster_sha256 = prev_raster_sha256  # may be None → clause shows REQUIRED
+        prev_raster_sha256 = prev_raster_sha256
     pixel_lock = grip_pixel_lock_clause(step, prev_raster_sha256)
     common = f"""SOURCE: locked Stage-B master for {candidate.candidate_id} only.
 FROZEN TOPOLOGY (must match source pixels): double-ended cylindrical head planted on bubble;
@@ -427,7 +514,7 @@ Do not invent a new handle. Do not grow outer-end shaft. Outer cap empty.
 Keep mini 1:1 scale. Still-planted base.
 After IMG→IMG: run stage_d_gates (outer_end_empty + side_handle_present). FAIL → roll back to D1.
 PROVEN 2026-10-21 HARD LOCK: 跳過「握既有左柄」會長新柄；鎖左柄像素後可壓住。
-Grip the SAME left-pointing side-middle rod already in D1; outer end EMPTY; never a new outer-end stub.
+Grip the SAME left-pointing side-middle lateral rod already in D1; outer end EMPTY; never a new outer-end stub.
 """,
         "D3": common + """
 # STEP D3 — 找／持槌氣勢＋動作
@@ -444,6 +531,58 @@ Lighting/clothing polish only. No topology change. NO_NEW_HANDLE.
     return steps[step].strip() + "\n"
 
 
+POSE_CATALOG: tuple[str, ...] = (
+    "3/4 back lean-pull",
+    "full back hard pull",
+    "side profile pull",
+    "crouch low grip",
+    "wide stance yank",
+    "one-knee brace",
+    "overhead-ready hold (still on left rod only)",
+    "twist torso pull",
+    "step-back lean",
+    "close grip short lever",
+    "long-arm full extension",
+    "hair-swing effort",
+    "shoulder-drive push-on-handle",
+    "low center squat",
+    "high elbow tension",
+    "looking at contact glow",
+    "looking along handle axis",
+    "micro-step footwork",
+    "double-hand choke-up",
+    "double-hand choke-down",
+)
+
+
+def make_stage_d3_serial_wash_prompts(
+    candidate: HammerCandidate,
+    prev_raster_sha256: str,
+    count: int = 6,
+) -> list[dict[str, str]]:
+    """Generate N independent full-frame D3 action wash prompts (proven serial wash law).
+
+    STAGE_FAILURE_SUCCESS_REWRITE_LOG.md proved that a single 20-cell grid image destroys
+    pixel locks (~5% bandwidth per cell), whereas serial N full-frame generations keep
+    6/6 outer+side gates intact and allow automated winner selection.
+    """
+    if count < 1 or count > len(POSE_CATALOG):
+        raise ValueError(f"count must be 1..{len(POSE_CATALOG)}")
+    base_d3 = make_stage_d_step_prompt(candidate, "D3", prev_raster_sha256=prev_raster_sha256, from_step="D2")
+    serial_list: list[dict[str, str]] = []
+    for idx in range(count):
+        pose = POSE_CATALOG[idx]
+        variant_id = f"D3_SERIAL_{idx + 1:02d}"
+        prompt = (
+            f"{base_d3}\n"
+            f"## SERIAL FULL-FRAME VARIANT {variant_id} (100% full-frame bandwidth, NOT a grid)\n"
+            f"- Action variation: {pose}\n"
+            f"- Keep 100% locked: planted cylinder on bubble, cyan-white base glow, outer circular end cap EMPTY, "
+            f"both hands gripping ONLY the existing left-pointing side-middle lateral rod from D2 ({prev_raster_sha256}).\n"
+        )
+        serial_list.append({"variant_id": variant_id, "pose": pose, "prompt": prompt})
+    return serial_list
+
 
 def make_stage_d3_control_sheet_prompt(
     candidate: HammerCandidate,
@@ -454,8 +593,8 @@ def make_stage_d3_control_sheet_prompt(
 ) -> str:
     """D3 multi-combination action wash on ONE contact sheet (ControlNet-style mother board).
 
-    Not freehand wipe: every cell inherits D2 left-handle pixel lock + outer empty.
-    User picks one cell as D3 master after full program RUN.
+    NOTE: For autonomous production runs, prefer `make_stage_d3_serial_wash_prompts`
+    so each candidate receives 100% full-frame pixel lock and per-frame gate auditing.
     """
     if cells < 1 or cells > 20:
         raise ValueError("cells must be 1..20")
@@ -463,28 +602,7 @@ def make_stage_d3_control_sheet_prompt(
         raise ValueError("rows*cols must cover cells")
     from bubble_break.stage_d_gates import PROVEN_RULE
 
-    pose_catalog = [
-        "3/4 back lean-pull",
-        "full back hard pull",
-        "side profile pull",
-        "crouch low grip",
-        "wide stance yank",
-        "one-knee brace",
-        "overhead-ready hold (still on left rod only)",
-        "twist torso pull",
-        "step-back lean",
-        "close grip short lever",
-        "long-arm full extension",
-        "hair-swing effort",
-        "shoulder-drive push-on-handle",
-        "low center squat",
-        "high elbow tension",
-        "looking at contact glow",
-        "looking along handle axis",
-        "micro-step footwork",
-        "double-hand choke-up",
-        "double-hand choke-down",
-    ][:cells]
+    pose_catalog = list(POSE_CATALOG[:cells])
     lines = "\n".join(f"  cell {i+1:02d}: {p}" for i, p in enumerate(pose_catalog))
     return f"""# D3 CONTROL SHEET — multi-combination action WASH (not freehand wipe)
 # Layout: {rows}x{cols} grid, {cells} cells max, ONE image mother board.
@@ -571,7 +689,6 @@ def make_svg(candidates: Sequence[HammerCandidate], selected_id: str | None = No
         selected = candidate.candidate_id == selected_id
         color = "#fff3a6" if selected else "#69efff"
         width_face = 4 if selected else 2.0
-        # Planted head axis: base at sphere, outer cap outside; lateral handle leaves side-middle.
         elements.extend([
             f'<line x1="{ax:.2f}" y1="{ay:.2f}" x2="{tx:.2f}" y2="{ty:.2f}" stroke="#b8d0df" stroke-width="{HEAD_DIAMETER * scale:.2f}" stroke-linecap="round"/>',
             f'<circle cx="{ax:.2f}" cy="{ay:.2f}" r="{HEAD_DIAMETER * scale * 0.34:.2f}" fill="{color}" fill-opacity="0.45" stroke="#ffffff" stroke-width="{width_face}"/>',
@@ -585,7 +702,6 @@ def make_svg(candidates: Sequence[HammerCandidate], selected_id: str | None = No
         elements.append('<text x="36" y="1160" fill="#ffffff" font-family="sans-serif" font-size="19">24 candidate proxies only; actual raster is required for pixel selection.</text>')
     elements.append("</svg>")
     return "\n".join(elements) + "\n"
-
 
 
 def _raise_deprecated_person_bubble():
@@ -602,6 +718,7 @@ def build_packet(
     person_to_hammer_scale: float = PERSON_TO_HAMMER_SCALE_DEFAULT,
     source_raster: Path | None = None,
     roi: tuple[int, int, int, int] | None = None,
+    auto_select: bool = False,
 ) -> dict[str, object]:
     for name, value in (
         ("bubble_scale", bubble_scale),
@@ -616,7 +733,17 @@ def build_packet(
         raise ValueError(f"找不到來源 Stage-A 圖片：{source_raster}")
 
     candidates = make_candidates()
-    selected = candidate_by_id(candidates, selected_id) if selected_id else None
+    ranking: list[dict[str, Any]] | None = None
+    if auto_select and not selected_id:
+        selected, ranking = auto_select_candidate(candidates)
+    else:
+        selected = candidate_by_id(candidates, selected_id) if selected_id else None
+        if selected:
+            _, ranking = auto_select_candidate(candidates)
+
+    if selected and source_raster and roi is None and auto_select:
+        roi = estimate_candidate_roi(selected)
+
     raster_sha = hashlib.sha256(source_raster.read_bytes()).hexdigest() if source_raster else None
     outdir.mkdir(parents=True, exist_ok=True)
     manifest: dict[str, object] = {
@@ -638,6 +765,7 @@ def build_packet(
             "handle_diameter_over_head_diameter": HANDLE_DIAMETER_TO_HEAD_DIAMETER,
         },
         "selected_candidate_id": selected.candidate_id if selected else None,
+        "auto_selection_ranking_top5": ranking[:5] if ranking else None,
         "scale_changes": {
             "bubble_scale": bubble_scale,
             "hammer_scale": hammer_scale,
@@ -648,7 +776,7 @@ def build_packet(
         },
         "source_stage_a_raster": str(source_raster) if source_raster else None,
         "source_stage_a_sha256": raster_sha,
-        "selected_raster_roi_xywh": roi,
+        "selected_raster_roi_xywh": list(roi) if roi else None,
         "raster_selection_evidence": (
             "SOURCE_SHA256_AND_USER_ROI_RECORDED" if raster_sha and roi
             else "PENDING_REAL_RASTER_REFERENCE"
@@ -677,7 +805,6 @@ def build_packet(
         (outdir / "stage_d_action_refinement.md").write_text(
             make_stage_d_prompt(selected), encoding="utf-8"
         )
-        # Emit D0–D4 with step-chain formula (no skip); SHA filled later by gate runner
         _prev = None
         for _dstep in ("D0", "D1", "D2", "D3", "D4"):
             _name = f"stage_d_step_{_dstep}.md"
@@ -686,6 +813,11 @@ def build_packet(
                 encoding="utf-8",
             )
             _prev = _dstep
+        serial_d3 = make_stage_d3_serial_wash_prompts(selected, prev_raster_sha256="<LOCKED_D2_SHA256>", count=6)
+        (outdir / "stage_d3_serial_wash_prompts.json").write_text(
+            json.dumps(serial_d3, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
         (outdir / "stage_d_GATES.md").write_text(
             """# Stage D script gates (mandatory after each IMG→IMG)
 
@@ -695,13 +827,12 @@ def build_packet(
 ## After full program RUN + each step raster
 1. validate_step_transition(prev, current) — no skip
 2. prev_raster_sha256 required for D1+
-3. Pixel gates: outer_end_empty + side_handle_present (ROIs)
+3. Pixel gates: outer_end_empty + side_handle_present (ROIs or --auto-rois)
 4. overall_pass False → block_next; do not proceed; roll back
 
 ```bash
 python -m bubble_break.stage_d_gates --step D2 --from D1 \\
-  --image path/to/D2.jpg --prev-sha <D1_sha256> \\
-  --outer-roi 0.58,0.38,0.78,0.72 --side-roi 0.38,0.45,0.58,0.62 \\
+  --image path/to/D2.jpg --prev-sha <D1_sha256> --auto-rois \\
   --out path/to/D2_gate.json
 ```
 """,
@@ -719,6 +850,7 @@ python -m bubble_break.stage_d_gates --step D2 --from D1 \\
             "stage_d_step_D2.md",
             "stage_d_step_D3.md",
             "stage_d_step_D4.md",
+            "stage_d3_serial_wash_prompts.json",
             "stage_d_GATES.md",
             "stage_e_glow_bubble_break.md",
         ])
@@ -740,7 +872,9 @@ python -m bubble_break.stage_d_gates --step D2 --from D1 \\
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--outdir", type=Path, default=Path("out/dense_hammer_bubble"))
-    parser.add_argument("--select", type=str, default=None, help="Selected visible raster ID, e.g. C17")
+    parser.add_argument("--select", type=str, default=None, help="Selected visible raster ID, e.g. C13 or C17")
+    parser.add_argument("--auto-select", action="store_true",
+                        help="Autonomously rank all 24 candidates and pick the optimal left-handle candidate (C13)")
     parser.add_argument("--bubble-scale", type=float, default=1.0)
     parser.add_argument("--hammer-scale", type=float, default=1.0)
     parser.add_argument("--person-to-hammer-scale", type=float, default=PERSON_TO_HAMMER_SCALE_DEFAULT,
@@ -762,6 +896,7 @@ def main(argv: Iterable[str] | None = None) -> int:
             ),
             source_raster=args.source_raster,
             roi=args.roi,
+            auto_select=args.auto_select,
         )
     except ValueError as exc:
         parser.error(str(exc))

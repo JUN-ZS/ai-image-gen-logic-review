@@ -1,0 +1,1691 @@
+{
+  "workflow": "v5-canonical-spine-and-5keyframe-trilogy-continuity-engine",
+  "selected_candidate_id": "C13",
+  "auto_selection_score": 0.869661,
+  "total_stages": 9,
+  "passed_stages": 9,
+  "total_attempts": 10,
+  "auto_rejections_and_rollbacks": 3,
+  "all_stages_passed": true,
+  "canonical_sequence": {
+    "A": {
+      "stage": "A",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_A_C13.jpg",
+      "sha256": "d4bb86ffd78d6ce8e4c9cfad9fa61b239229a9c300efd5b554ce37b8c6c99fcf",
+      "parent_sha256": null,
+      "pixel_lock_clause": "STAGE_A_24_CANDIDATE_ATLAS",
+      "passed": true,
+      "quality_score": 0.85,
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 3.0
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=247.3, contrast=8.34x)",
+          "metrics": {
+            "p99_luma": 247.3333282470703,
+            "median_luma": 29.66666603088379,
+            "contrast_ratio": 8.337078658909286
+          }
+        }
+      ]
+    },
+    "B0_ROI_4X": {
+      "stage": "B0_ROI_4X",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_B0_ROI_4X_C13.jpg",
+      "sha256": "db17cfc2b66c2d7bff51fd6d962219686b59c641465865bf6e7e42c7ded15671",
+      "parent_sha256": "d4bb86ffd78d6ce8e4c9cfad9fa61b239229a9c300efd5b554ce37b8c6c99fcf",
+      "pixel_lock_clause": "STAGE_B0_4X_ROI_CROP_ZOOM_PIXEL_TRUTH",
+      "passed": true,
+      "quality_score": 0.96,
+      "elevation_level": "k=0_ROI_4X_ZOOM"
+    },
+    "B": {
+      "stage": "B",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_B_C13.jpg",
+      "sha256": "989fef39b60891559ecec29c47ff8e211e76d5271e95fde2866a01bb286df06f",
+      "parent_sha256": "db17cfc2b66c2d7bff51fd6d962219686b59c641465865bf6e7e42c7ded15671",
+      "pixel_lock_clause": "PIXEL LOCK: D0 is topology freeze only; no person; no new geometry.",
+      "passed": true,
+      "quality_score": 0.966,
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.737606228093302,
+            "coverage": 0.007180719921104537,
+            "n": 233.0,
+            "eig_ratio": 3.0192754039086322,
+            "angle_deg": -177.4666548974246
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 6.294884098586097,
+            "coverage": 0.08630079597821533,
+            "n": 7416.0,
+            "eig_ratio": 39.6255658146321,
+            "angle_deg": -151.20999338082558
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=8.80, corr_inner=+0.97, corr_outer=+0.94)",
+          "metrics": {
+            "left_elongation": 8.801634410103725,
+            "right_elongation": 2.1300277592310493,
+            "slope_corr": 0.9667124340723293,
+            "corr_inner": 0.9667124340723293,
+            "corr_outer": 0.944705027778414
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=253.7, contrast=4.32x)",
+          "metrics": {
+            "p99_luma": 253.6666717529297,
+            "median_luma": 58.66666793823242,
+            "contrast_ratio": 4.323863629344081
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.029)",
+          "metrics": {
+            "high_edge_density": 0.02910597159937625
+          }
+        }
+      ]
+    },
+    "D0": {
+      "stage": "D0",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_B_C13.jpg",
+      "sha256": "989fef39b60891559ecec29c47ff8e211e76d5271e95fde2866a01bb286df06f",
+      "parent_sha256": "989fef39b60891559ecec29c47ff8e211e76d5271e95fde2866a01bb286df06f",
+      "pixel_lock_clause": "PIXEL LOCK: D0 is topology freeze only; no person; no new geometry.",
+      "passed": true,
+      "quality_score": 0.966,
+      "elevation_level": "k=0_TOPOLOGY_FREEZE"
+    },
+    "D1": {
+      "stage": "D1",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_D1_C13.jpg",
+      "sha256": "4383492de569416281b24e360c239072d2df9909ddb5170557240476f4fee9bc",
+      "parent_sha256": "989fef39b60891559ecec29c47ff8e211e76d5271e95fde2866a01bb286df06f",
+      "pixel_lock_clause": "PIXEL LOCK: edit from B-master / D0 only. Do not rewrite handle pixels. Outer end stays empty. Side-middle lateral rod pixels must remain.",
+      "passed": true,
+      "quality_score": 0.9894,
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 1.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 989fef39b608...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.996 >= 0.78, luma_diff=0.3)",
+          "metrics": {
+            "ncc": 0.9959522485733032,
+            "luma_diff": 0.3189506530761719
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.1732640734934625,
+            "coverage": 0.01679610453648915,
+            "n": 545.0,
+            "eig_ratio": 4.723076733137399,
+            "angle_deg": 164.53987144306643
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 2.9918525665957634,
+            "coverage": 0.11838430386817483,
+            "n": 10173.0,
+            "eig_ratio": 8.951181780245657,
+            "angle_deg": -155.49748744338493
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=2.99, corr_inner=+0.71, corr_outer=+0.71)",
+          "metrics": {
+            "left_elongation": 2.9918525665957634,
+            "right_elongation": 2.4935824334389634,
+            "slope_corr": 0.710056464340648,
+            "corr_inner": 0.7081435466620355,
+            "corr_outer": 0.710056464340648
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=251.3, contrast=4.36x)",
+          "metrics": {
+            "p99_luma": 251.3333282470703,
+            "median_luma": 57.66666793823242,
+            "contrast_ratio": 4.3583813185855815
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.27:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.2689636244642895,
+            "person_area_frac": 0.11375628330910853,
+            "hammer_area_frac": 0.08964503088662791
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.029)",
+          "metrics": {
+            "high_edge_density": 0.02935837548708764
+          }
+        }
+      ]
+    },
+    "D2": {
+      "stage": "D2",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_D2_C13.jpg",
+      "sha256": "5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25",
+      "parent_sha256": "4383492de569416281b24e360c239072d2df9909ddb5170557240476f4fee9bc",
+      "pixel_lock_clause": "PIXEL LOCK (FIRST GRIP / D2 — non-negotiable): Source raster SHA-256=4383492de569416281b24e360c239072d2df9909ddb5170557240476f4fee9bc. Hands may move ONLY onto the side-handle pixels already present in that source. Do not invent, extrude, or attach any rod at the outer end cap. If outer-end shaft appears, gate FAIL — roll back to D1. PROVEN: 跳過「握既有左柄」會長新柄；鎖左柄像素後可壓住。D2 must grip the SAME left-pointing side-middle lateral rod already in D1; outer end empty. Never place hands on a new outer-end stub.",
+      "passed": true,
+      "quality_score": 0.9851,
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 4383492de569...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.965 >= 0.78, luma_diff=0.1)",
+          "metrics": {
+            "ncc": 0.9647833108901978,
+            "luma_diff": 0.11713409423828125
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.73728496490021,
+            "coverage": 0.018460305719921105,
+            "n": 599.0,
+            "eig_ratio": 7.492728979068743,
+            "angle_deg": -171.5266375837302
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 2.1618092257294568,
+            "coverage": 0.17343946376204442,
+            "n": 14904.0,
+            "eig_ratio": 4.673419128448993,
+            "angle_deg": -147.57989131970288
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=2.16, corr_inner=+0.61, corr_outer=+0.09)",
+          "metrics": {
+            "left_elongation": 2.1618092257294568,
+            "right_elongation": 2.2722242276973628,
+            "slope_corr": 0.6096008320347178,
+            "corr_inner": 0.6096008320347178,
+            "corr_outer": 0.09003016718131278
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=251.3, contrast=4.36x)",
+          "metrics": {
+            "p99_luma": 251.3333282470703,
+            "median_luma": 57.66666793823242,
+            "contrast_ratio": 4.3583813185855815
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.30:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.2953106043961293,
+            "person_area_frac": 0.12831293150436046,
+            "hammer_area_frac": 0.09905958545300388
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.029)",
+          "metrics": {
+            "high_edge_density": 0.02926847821201235
+          }
+        }
+      ]
+    },
+    "D3": {
+      "stage": "D3",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_D3_C13.jpg",
+      "sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634",
+      "parent_sha256": "5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D3; NO_NEW_HANDLE.",
+      "passed": true,
+      "quality_score": 0.9871,
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 5f03b1036d82...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.979 >= 0.78, luma_diff=0.0)",
+          "metrics": {
+            "ncc": 0.979475200176239,
+            "luma_diff": 0.003063201904296875
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.4408188076508905,
+            "coverage": 0.06980399408284024,
+            "n": 2265.0,
+            "eig_ratio": 2.0759588364805337,
+            "angle_deg": 86.52643597436439
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 1.9229235050150744,
+            "coverage": 0.20503421309872924,
+            "n": 17619.0,
+            "eig_ratio": 3.697634806139459,
+            "angle_deg": -144.57558842907147
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=1.97, corr_inner=+0.56, corr_outer=+0.18)",
+          "metrics": {
+            "left_elongation": 1.9711962025591891,
+            "right_elongation": 2.346842950594324,
+            "slope_corr": 0.5611749533616697,
+            "corr_inner": 0.5611749533616697,
+            "corr_outer": 0.18386289892488392
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=249.3, contrast=4.27x)",
+          "metrics": {
+            "p99_luma": 249.3333282470703,
+            "median_luma": 58.33333206176758,
+            "contrast_ratio": 4.274285720264668
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.32:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.3170496453900709,
+            "person_area_frac": 0.1317961936773256,
+            "hammer_area_frac": 0.10006926780523256
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.028)",
+          "metrics": {
+            "high_edge_density": 0.0277713428232585
+          }
+        }
+      ]
+    },
+    "E_MID": {
+      "stage": "E_MID",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_E_MID_C13.jpg",
+      "sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054",
+      "parent_sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D4; NO_NEW_HANDLE.",
+      "passed": true,
+      "quality_score": 0.9708,
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA c04fe845cdc4...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.863 >= 0.78, luma_diff=1.9)",
+          "metrics": {
+            "ncc": 0.8625020980834961,
+            "luma_diff": 1.8712959289550781
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.2913794842706192,
+            "coverage": 0.005454881656804734,
+            "n": 177.0,
+            "eig_ratio": 1.6676609723950504,
+            "angle_deg": 108.22977687079015
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 2.993219779149723,
+            "coverage": 0.13375692407950474,
+            "n": 11494.0,
+            "eig_ratio": 8.959364646293116,
+            "angle_deg": -154.02468634857377
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=3.30, corr_inner=+0.79, corr_outer=+0.19)",
+          "metrics": {
+            "left_elongation": 3.303360284936012,
+            "right_elongation": 1.4976796764345002,
+            "slope_corr": 0.7865595898852422,
+            "corr_inner": 0.7865595898852422,
+            "corr_outer": 0.19085880407779388
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=254.0, contrast=1.97x)",
+          "metrics": {
+            "p99_luma": 254.0,
+            "median_luma": 128.6666717529297,
+            "contrast_ratio": 1.974093186211732
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.20:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.1995291874012932,
+            "person_area_frac": 0.1142776844113372,
+            "hammer_area_frac": 0.09526878179505814
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: Stage E_MID radial cracks & shock rings active (edge_density=0.092)",
+          "metrics": {
+            "high_edge_density": 0.09241785636489995
+          }
+        }
+      ]
+    },
+    "E_END": {
+      "stage": "E_END",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_E_END_C13.jpg",
+      "sha256": "ea9e0492eee737ec306e99683b8790ef6ce99ab8c26e87ff5314412d09af90f6",
+      "parent_sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D4; NO_NEW_HANDLE.",
+      "passed": true,
+      "quality_score": 0.9777,
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 09c17ed21928...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.912 >= 0.78, luma_diff=9.4)",
+          "metrics": {
+            "ncc": 0.9124024510383606,
+            "luma_diff": 9.399005889892578
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.5337535643980105,
+            "coverage": 0.022250986193293885,
+            "n": 722.0,
+            "eig_ratio": 2.352399996303602,
+            "angle_deg": -148.87486023503217
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 1.6537912089699633,
+            "coverage": 0.2545733836056417,
+            "n": 21876.0,
+            "eig_ratio": 2.735025362866333,
+            "angle_deg": -159.18306092414724
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=2.26, corr_inner=+0.50, corr_outer=+0.16)",
+          "metrics": {
+            "left_elongation": 2.2629968504717928,
+            "right_elongation": 1.565943608499623,
+            "slope_corr": 0.5036508881857109,
+            "corr_inner": 0.5036508881857109,
+            "corr_outer": 0.16236230733868096
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=253.0, contrast=1.45x)",
+          "metrics": {
+            "p99_luma": 253.0,
+            "median_luma": 174.0,
+            "contrast_ratio": 1.4540229885057472
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.13:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.1253678335870119,
+            "person_area_frac": 0.08395787911821706,
+            "hammer_area_frac": 0.0746048328488372
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: Stage E_END outward bubble shatter spectacle verified (edge_density=0.131)",
+          "metrics": {
+            "high_edge_density": 0.13064494379691513
+          }
+        }
+      ]
+    }
+  },
+  "attempt_history": [
+    {
+      "stage": "A",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_12731679754036592984.jpg",
+      "sha256": "d4bb86ffd78d6ce8e4c9cfad9fa61b239229a9c300efd5b554ce37b8c6c99fcf",
+      "parent_sha256": null,
+      "pixel_lock_clause": "STAGE_A_24_CANDIDATE_ATLAS",
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "passed": true,
+      "quality_score": 0.85,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 2.0,
+            "row_gutter_peaks": 3.0
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=247.3, contrast=8.34x)",
+          "metrics": {
+            "p99_luma": 247.3333282470703,
+            "median_luma": 29.66666603088379,
+            "contrast_ratio": 8.337078658909286
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "B",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_5252964662119909298.jpg",
+      "sha256": "989fef39b60891559ecec29c47ff8e211e76d5271e95fde2866a01bb286df06f",
+      "parent_sha256": "db17cfc2b66c2d7bff51fd6d962219686b59c641465865bf6e7e42c7ded15671",
+      "pixel_lock_clause": "PIXEL LOCK: D0 is topology freeze only; no person; no new geometry.",
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "passed": true,
+      "quality_score": 0.966,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.737606228093302,
+            "coverage": 0.007180719921104537,
+            "n": 233.0,
+            "eig_ratio": 3.0192754039086322,
+            "angle_deg": -177.4666548974246
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 6.294884098586097,
+            "coverage": 0.08630079597821533,
+            "n": 7416.0,
+            "eig_ratio": 39.6255658146321,
+            "angle_deg": -151.20999338082558
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=8.80, corr_inner=+0.97, corr_outer=+0.94)",
+          "metrics": {
+            "left_elongation": 8.801634410103725,
+            "right_elongation": 2.1300277592310493,
+            "slope_corr": 0.9667124340723293,
+            "corr_inner": 0.9667124340723293,
+            "corr_outer": 0.944705027778414
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=253.7, contrast=4.32x)",
+          "metrics": {
+            "p99_luma": 253.6666717529297,
+            "median_luma": 58.66666793823242,
+            "contrast_ratio": 4.323863629344081
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.029)",
+          "metrics": {
+            "high_edge_density": 0.02910597159937625
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "D1",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_18047558900025991780.jpg",
+      "sha256": "4383492de569416281b24e360c239072d2df9909ddb5170557240476f4fee9bc",
+      "parent_sha256": "989fef39b60891559ecec29c47ff8e211e76d5271e95fde2866a01bb286df06f",
+      "pixel_lock_clause": "PIXEL LOCK: edit from B-master / D0 only. Do not rewrite handle pixels. Outer end stays empty. Side-middle lateral rod pixels must remain.",
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "passed": true,
+      "quality_score": 0.9894,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 1.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 989fef39b608...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.996 >= 0.78, luma_diff=0.3)",
+          "metrics": {
+            "ncc": 0.9959522485733032,
+            "luma_diff": 0.3189506530761719
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.1732640734934625,
+            "coverage": 0.01679610453648915,
+            "n": 545.0,
+            "eig_ratio": 4.723076733137399,
+            "angle_deg": 164.53987144306643
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 2.9918525665957634,
+            "coverage": 0.11838430386817483,
+            "n": 10173.0,
+            "eig_ratio": 8.951181780245657,
+            "angle_deg": -155.49748744338493
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=2.99, corr_inner=+0.71, corr_outer=+0.71)",
+          "metrics": {
+            "left_elongation": 2.9918525665957634,
+            "right_elongation": 2.4935824334389634,
+            "slope_corr": 0.710056464340648,
+            "corr_inner": 0.7081435466620355,
+            "corr_outer": 0.710056464340648
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=251.3, contrast=4.36x)",
+          "metrics": {
+            "p99_luma": 251.3333282470703,
+            "median_luma": 57.66666793823242,
+            "contrast_ratio": 4.3583813185855815
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.27:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.2689636244642895,
+            "person_area_frac": 0.11375628330910853,
+            "hammer_area_frac": 0.08964503088662791
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.029)",
+          "metrics": {
+            "high_edge_density": 0.02935837548708764
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "D2",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_1613819855099179013.jpg",
+      "sha256": "5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25",
+      "parent_sha256": "4383492de569416281b24e360c239072d2df9909ddb5170557240476f4fee9bc",
+      "pixel_lock_clause": "PIXEL LOCK (FIRST GRIP / D2 — non-negotiable): Source raster SHA-256=4383492de569416281b24e360c239072d2df9909ddb5170557240476f4fee9bc. Hands may move ONLY onto the side-handle pixels already present in that source. Do not invent, extrude, or attach any rod at the outer end cap. If outer-end shaft appears, gate FAIL — roll back to D1. PROVEN: 跳過「握既有左柄」會長新柄；鎖左柄像素後可壓住。D2 must grip the SAME left-pointing side-middle lateral rod already in D1; outer end empty. Never place hands on a new outer-end stub.",
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "passed": true,
+      "quality_score": 0.9851,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 4383492de569...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.965 >= 0.78, luma_diff=0.1)",
+          "metrics": {
+            "ncc": 0.9647833108901978,
+            "luma_diff": 0.11713409423828125
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 2.73728496490021,
+            "coverage": 0.018460305719921105,
+            "n": 599.0,
+            "eig_ratio": 7.492728979068743,
+            "angle_deg": -171.5266375837302
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 2.1618092257294568,
+            "coverage": 0.17343946376204442,
+            "n": 14904.0,
+            "eig_ratio": 4.673419128448993,
+            "angle_deg": -147.57989131970288
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=2.16, corr_inner=+0.61, corr_outer=+0.09)",
+          "metrics": {
+            "left_elongation": 2.1618092257294568,
+            "right_elongation": 2.2722242276973628,
+            "slope_corr": 0.6096008320347178,
+            "corr_inner": 0.6096008320347178,
+            "corr_outer": 0.09003016718131278
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=251.3, contrast=4.36x)",
+          "metrics": {
+            "p99_luma": 251.3333282470703,
+            "median_luma": 57.66666793823242,
+            "contrast_ratio": 4.3583813185855815
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.30:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.2953106043961293,
+            "person_area_frac": 0.12831293150436046,
+            "hammer_area_frac": 0.09905958545300388
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.029)",
+          "metrics": {
+            "high_edge_density": 0.02926847821201235
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "D3",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_16209162277153424584.jpg",
+      "sha256": "4f439ef204e911ce3e24f3a1782e8a76382667763b3046f423e39aee8114e6be",
+      "parent_sha256": "5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D3; NO_NEW_HANDLE.",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": false,
+      "quality_score": 0.3556,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 5f03b1036d82...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": false,
+          "detail": "FAIL: disconnected from parent frame / scene re-layout detected (NCC=+0.102 < 0.78, luma_diff=55.7) — REJECT + rollback",
+          "metrics": {
+            "ncc": 0.10239727795124054,
+            "luma_diff": 55.68217849731445
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.9386503191390176,
+            "coverage": 0.353211291913215,
+            "n": 11461.0,
+            "eig_ratio": 3.758365059897815,
+            "angle_deg": 87.97622623070693
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 1.542259716031557,
+            "coverage": 0.3556765814830331,
+            "n": 30564.0,
+            "eig_ratio": 2.378565031693739,
+            "angle_deg": 152.97594850192274
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=1.84, corr_inner=+0.22, corr_outer=+0.42)",
+          "metrics": {
+            "left_elongation": 1.8424956478682102,
+            "right_elongation": 1.4443081860801603,
+            "slope_corr": 0.4210369262001125,
+            "corr_inner": 0.22396561418560015,
+            "corr_outer": 0.4210369262001125
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=184.0, contrast=1.97x)",
+          "metrics": {
+            "p99_luma": 184.0,
+            "median_luma": 93.33333587646484,
+            "contrast_ratio": 1.9714285177114073
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.50:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.4956995887872993,
+            "person_area_frac": 0.09396385961724807,
+            "hammer_area_frac": 0.06282268198885659
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.049)",
+          "metrics": {
+            "high_edge_density": 0.048527240603141564
+          }
+        }
+      ],
+      "rejection_reasons": [
+        "cross_frame_continuity: FAIL: disconnected from parent frame / scene re-layout detected (NCC=+0.102 < 0.78, luma_diff=55.7) — REJECT + rollback"
+      ],
+      "repair_action_taken": "AUTO_REJECT_AND_ROLLBACK_TO_5f03b1036d -> k=0_CORE_REPAIR_THEN_K3"
+    },
+    {
+      "stage": "D3",
+      "attempt_index": 2,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_10119403978004776196.jpg",
+      "sha256": "71963049d144981aad29159fd648a4025e16d3079a0ecdb2ddffd8dc6b4482cf",
+      "parent_sha256": "5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D3; NO_NEW_HANDLE.",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": false,
+      "quality_score": 0.2667,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 3.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 5f03b1036d82...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": false,
+          "detail": "FAIL: disconnected from parent frame / scene re-layout detected (NCC=-0.098 < 0.78, luma_diff=2.8) — REJECT + rollback",
+          "metrics": {
+            "ncc": -0.09798959642648697,
+            "luma_diff": 2.7592811584472656
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.467974196377825,
+            "coverage": 0.3526873767258383,
+            "n": 11444.0,
+            "eig_ratio": 2.1549482412311214,
+            "angle_deg": 127.45500702867012
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 2.326518806771014,
+            "coverage": 0.27300656332914397,
+            "n": 23460.0,
+            "eig_ratio": 5.412689758259223,
+            "angle_deg": 161.38642449505735
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": false,
+          "detail": "FAIL: upper-left handle missing, tilted horizontal, or flipped to right (elong=6.99, corr_inner=-0.50, corr_outer=+0.09, right_elong=2.70) — REJECT + rollback",
+          "metrics": {
+            "left_elongation": 6.985400408728355,
+            "right_elongation": 2.699973043462704,
+            "slope_corr": 0.09438075797683768,
+            "corr_inner": -0.49764111903059766,
+            "corr_outer": 0.09438075797683768
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": false,
+          "detail": "FAIL: base contact glow weak or missing (p99=80.0) — REJECT",
+          "metrics": {
+            "p99_luma": 80.03646087646484,
+            "median_luma": 34.0,
+            "contrast_ratio": 2.3540135551901424
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.43:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.4297096556380826,
+            "person_area_frac": 0.13023766805959303,
+            "hammer_area_frac": 0.09109378785125968
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.041)",
+          "metrics": {
+            "high_edge_density": 0.04105885159688679
+          }
+        }
+      ],
+      "rejection_reasons": [
+        "cross_frame_continuity: FAIL: disconnected from parent frame / scene re-layout detected (NCC=-0.098 < 0.78, luma_diff=2.8) — REJECT + rollback",
+        "left_handle_direction_lock: FAIL: upper-left handle missing, tilted horizontal, or flipped to right (elong=6.99, corr_inner=-0.50, corr_outer=+0.09, right_elong=2.70) — REJECT + rollback",
+        "base_conformal_glow: FAIL: base contact glow weak or missing (p99=80.0) — REJECT"
+      ],
+      "repair_action_taken": "AUTO_REJECT_AND_ROLLBACK_TO_5f03b1036d -> k=0_CORE_REPAIR_THEN_K3"
+    },
+    {
+      "stage": "D3",
+      "attempt_index": 3,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_396373535313525858.jpg",
+      "sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634",
+      "parent_sha256": "5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=5f03b1036d82ffdf6c11aef298afb8f7610d9bff0c3ac851dfcd5a754ea2db25. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D3; NO_NEW_HANDLE.",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": true,
+      "quality_score": 0.9871,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 5f03b1036d82...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.979 >= 0.78, luma_diff=0.0)",
+          "metrics": {
+            "ncc": 0.979475200176239,
+            "luma_diff": 0.003063201904296875
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.4408188076508905,
+            "coverage": 0.06980399408284024,
+            "n": 2265.0,
+            "eig_ratio": 2.0759588364805337,
+            "angle_deg": 86.52643597436439
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 1.9229235050150744,
+            "coverage": 0.20503421309872924,
+            "n": 17619.0,
+            "eig_ratio": 3.697634806139459,
+            "angle_deg": -144.57558842907147
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=1.97, corr_inner=+0.56, corr_outer=+0.18)",
+          "metrics": {
+            "left_elongation": 1.9711962025591891,
+            "right_elongation": 2.346842950594324,
+            "slope_corr": 0.5611749533616697,
+            "corr_inner": 0.5611749533616697,
+            "corr_outer": 0.18386289892488392
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=249.3, contrast=4.27x)",
+          "metrics": {
+            "p99_luma": 249.3333282470703,
+            "median_luma": 58.33333206176758,
+            "contrast_ratio": 4.274285720264668
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.32:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.3170496453900709,
+            "person_area_frac": 0.1317961936773256,
+            "hammer_area_frac": 0.10006926780523256
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: bubble shell intact prior to impact (edge_density=0.028)",
+          "metrics": {
+            "high_edge_density": 0.0277713428232585
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "E_MID",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_1274040342516402802.jpg",
+      "sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054",
+      "parent_sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D4; NO_NEW_HANDLE.",
+      "elevation_level": "k=3_FULL_PROGRAM_LOCK",
+      "passed": true,
+      "quality_score": 0.9708,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA c04fe845cdc4...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.863 >= 0.78, luma_diff=1.9)",
+          "metrics": {
+            "ncc": 0.8625020980834961,
+            "luma_diff": 1.8712959289550781
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.2913794842706192,
+            "coverage": 0.005454881656804734,
+            "n": 177.0,
+            "eig_ratio": 1.6676609723950504,
+            "angle_deg": 108.22977687079015
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 2.993219779149723,
+            "coverage": 0.13375692407950474,
+            "n": 11494.0,
+            "eig_ratio": 8.959364646293116,
+            "angle_deg": -154.02468634857377
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=3.30, corr_inner=+0.79, corr_outer=+0.19)",
+          "metrics": {
+            "left_elongation": 3.303360284936012,
+            "right_elongation": 1.4976796764345002,
+            "slope_corr": 0.7865595898852422,
+            "corr_inner": 0.7865595898852422,
+            "corr_outer": 0.19085880407779388
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=254.0, contrast=1.97x)",
+          "metrics": {
+            "p99_luma": 254.0,
+            "median_luma": 128.6666717529297,
+            "contrast_ratio": 1.974093186211732
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.20:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.1995291874012932,
+            "person_area_frac": 0.1142776844113372,
+            "hammer_area_frac": 0.09526878179505814
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: Stage E_MID radial cracks & shock rings active (edge_density=0.092)",
+          "metrics": {
+            "high_edge_density": 0.09241785636489995
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    },
+    {
+      "stage": "E_END",
+      "attempt_index": 1,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_10633463337397516812.jpg",
+      "sha256": "09c53226907d6cadeaa5b7f592095330294418f6d2811fd647f1b4d0cfa6b809",
+      "parent_sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D4; NO_NEW_HANDLE.",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": false,
+      "quality_score": 0.2667,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 09c17ed21928...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": false,
+          "detail": "FAIL: disconnected from parent frame / scene re-layout detected (NCC=+0.501 < 0.78, luma_diff=54.0) — REJECT + rollback",
+          "metrics": {
+            "ncc": 0.5010598301887512,
+            "luma_diff": 53.99631118774414
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.4303774944683214,
+            "coverage": 0.3526873767258383,
+            "n": 11444.0,
+            "eig_ratio": 2.045979776681473,
+            "angle_deg": 69.74437642389573
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": false,
+          "detail": "FAIL: side-handle ROI missing elongated rod — REJECT + roll back",
+          "metrics": {
+            "elongation": 1.401572438326625,
+            "coverage": 0.16074919703951962,
+            "n": 18418.0,
+            "eig_ratio": 1.9644052998768413,
+            "angle_deg": -148.80446080081322
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": false,
+          "detail": "FAIL: upper-left handle missing, tilted horizontal, or flipped to right (elong=1.40, corr_inner=+0.05, corr_outer=+0.29, right_elong=1.93) — REJECT + rollback",
+          "metrics": {
+            "left_elongation": 1.401572438326625,
+            "right_elongation": 1.9323355217039828,
+            "slope_corr": 0.291617176585609,
+            "corr_inner": 0.04681944609735793,
+            "corr_outer": 0.291617176585609
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=252.3, contrast=2.11x)",
+          "metrics": {
+            "p99_luma": 252.3333282470703,
+            "median_luma": 119.33333587646484,
+            "contrast_ratio": 2.1145250519795113
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.17:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.1652591801527974,
+            "person_area_frac": 0.13422719083091086,
+            "hammer_area_frac": 0.11519084605135659
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: Stage E_END outward bubble shatter spectacle verified (edge_density=0.110)",
+          "metrics": {
+            "high_edge_density": 0.11042842966748381
+          }
+        }
+      ],
+      "rejection_reasons": [
+        "cross_frame_continuity: FAIL: disconnected from parent frame / scene re-layout detected (NCC=+0.501 < 0.78, luma_diff=54.0) — REJECT + rollback",
+        "side_handle_present: FAIL: side-handle ROI missing elongated rod — REJECT + roll back",
+        "left_handle_direction_lock: FAIL: upper-left handle missing, tilted horizontal, or flipped to right (elong=1.40, corr_inner=+0.05, corr_outer=+0.29, right_elong=1.93) — REJECT + rollback"
+      ],
+      "repair_action_taken": "AUTO_REJECT_AND_ROLLBACK_TO_09c17ed219 -> k=0_CORE_REPAIR_THEN_K3"
+    },
+    {
+      "stage": "E_END",
+      "attempt_index": 2,
+      "image_path": "/working_dir/c_9a013c6692e76475/user_uploaded_files/ttl=63d/tool_generated/watermarked_img_9783971329173847590.jpg",
+      "sha256": "ea9e0492eee737ec306e99683b8790ef6ce99ab8c26e87ff5314412d09af90f6",
+      "parent_sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054",
+      "pixel_lock_clause": "PIXEL LOCK: Source raster SHA-256=09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054. Keep the same side-handle pixels (same rod). Outer end empty. Only authorized change for D4; NO_NEW_HANDLE.",
+      "elevation_level": "k=0_CORE_REPAIR_THEN_K3",
+      "passed": true,
+      "quality_score": 0.9777,
+      "gates": [
+        {
+          "name": "single_full_frame_no_grid",
+          "passed": true,
+          "detail": "PASS: single full-frame composition (no multi-cell grid split)",
+          "metrics": {
+            "col_gutter_peaks": 0.0,
+            "row_gutter_peaks": 0.0
+          }
+        },
+        {
+          "name": "parent_sha_provenance_lock",
+          "passed": true,
+          "detail": "PASS: chained from locked parent SHA 09c17ed21928...",
+          "metrics": {}
+        },
+        {
+          "name": "cross_frame_continuity",
+          "passed": true,
+          "detail": "PASS: frame-to-frame pixel continuity locked (NCC=+0.912 >= 0.78, luma_diff=9.4)",
+          "metrics": {
+            "ncc": 0.9124024510383606,
+            "luma_diff": 9.399005889892578
+          }
+        },
+        {
+          "name": "outer_end_empty",
+          "passed": true,
+          "detail": "PASS: outer-cap ROI no rod-like protrusion",
+          "metrics": {
+            "elongation": 1.5337535643980105,
+            "coverage": 0.022250986193293885,
+            "n": 722.0,
+            "eig_ratio": 2.352399996303602,
+            "angle_deg": -148.87486023503217
+          }
+        },
+        {
+          "name": "side_handle_present",
+          "passed": true,
+          "detail": "PASS: side-handle ROI has elongated rod structure",
+          "metrics": {
+            "elongation": 1.6537912089699633,
+            "coverage": 0.2545733836056417,
+            "n": 21876.0,
+            "eig_ratio": 2.735025362866333,
+            "angle_deg": -159.18306092414724
+          }
+        },
+        {
+          "name": "left_handle_direction_lock",
+          "passed": true,
+          "detail": "PASS: upper-left 90° side handle locked (elong=2.26, corr_inner=+0.50, corr_outer=+0.16)",
+          "metrics": {
+            "left_elongation": 2.2629968504717928,
+            "right_elongation": 1.565943608499623,
+            "slope_corr": 0.5036508881857109,
+            "corr_inner": 0.5036508881857109,
+            "corr_outer": 0.16236230733868096
+          }
+        },
+        {
+          "name": "base_conformal_glow",
+          "passed": true,
+          "detail": "PASS: luminous base seam detected (p99=253.0, contrast=1.45x)",
+          "metrics": {
+            "p99_luma": 253.0,
+            "median_luma": 174.0,
+            "contrast_ratio": 1.4540229885057472
+          }
+        },
+        {
+          "name": "mini_person_scale_1_to_1",
+          "passed": true,
+          "detail": "PASS: mini-person:hammer visual area ratio=1.13:1 (target 1.0:1)",
+          "metrics": {
+            "person_to_hammer_ratio": 1.1253678335870119,
+            "person_area_frac": 0.08395787911821706,
+            "hammer_area_frac": 0.0746048328488372
+          }
+        },
+        {
+          "name": "causal_fracture_progression",
+          "passed": true,
+          "detail": "PASS: Stage E_END outward bubble shatter spectacle verified (edge_density=0.131)",
+          "metrics": {
+            "high_edge_density": 0.13064494379691513
+          }
+        }
+      ],
+      "rejection_reasons": [],
+      "repair_action_taken": null
+    }
+  ],
+  "five_keyframe_trilogy": [
+    {
+      "keyframe_id": "KF1_PRE_FAR",
+      "time_sec": 0.0,
+      "label_zh": "遠距蓄力（未碰泡前・大氣隙）",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_KF1_0S_PRE_FAR_C13.jpg",
+      "sha256": "4741be2bc45786742ab4f27eeaf63acf78a9c7303252feae41f81dd8c7c17610"
+    },
+    {
+      "keyframe_id": "KF2_PRE_NEAR",
+      "time_sec": 2.0,
+      "label_zh": "近泡逼近（未碰泡前・微氣隙）",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_KF2_2S_PRE_NEAR_C13.jpg",
+      "sha256": "7706b839a4738895b2ab988e4011c6ed48a59c3b3b8a811a263fe100b49630cd"
+    },
+    {
+      "keyframe_id": "KF3_D3_CONTACT",
+      "time_sec": 4.5,
+      "label_zh": "持柄接觸（底面貼合發光母錨點）",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_D3_C13.jpg",
+      "sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634"
+    },
+    {
+      "keyframe_id": "KF4_E_MID_SHOCK",
+      "time_sec": 7.0,
+      "label_zh": "衝擊碎裂（底光擴散與放射裂紋）",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_E_MID_C13.jpg",
+      "sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054"
+    },
+    {
+      "keyframe_id": "KF5_E_END_BLAST",
+      "time_sec": 10.0,
+      "label_zh": "史詩爆破尾幀（泡殼向外炸裂）",
+      "image_path": "/tmp/v5_continuity_run/rasters/LOCKED_E_END_C13.jpg",
+      "sha256": "ea9e0492eee737ec306e99683b8790ef6ce99ab8c26e87ff5314412d09af90f6"
+    }
+  ],
+  "video_transition_manifest": [
+    {
+      "segment_id": "seg00_KF1_PRE_FAR_to_KF2_PRE_NEAR",
+      "candidate_id": "C13",
+      "start_time_sec": 0.0,
+      "end_time_sec": 2.0,
+      "start_stage": "KF1_PRE_FAR",
+      "end_stage": "KF2_PRE_NEAR",
+      "start_frame": "/tmp/v5_continuity_run/rasters/LOCKED_KF1_0S_PRE_FAR_C13.jpg",
+      "start_sha256": "4741be2bc45786742ab4f27eeaf63acf78a9c7303252feae41f81dd8c7c17610",
+      "end_frame": "/tmp/v5_continuity_run/rasters/LOCKED_KF2_2S_PRE_NEAR_C13.jpg",
+      "end_sha256": "7706b839a4738895b2ab988e4011c6ed48a59c3b3b8a811a263fe100b49630cd",
+      "fps": 24,
+      "duration_sec": 2.0,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Continuous 0.0s->2.0s interpolation (遠距蓄力（未碰泡前・大氣隙） -> 近泡逼近（未碰泡前・微氣隙）); keep C13 radial dark-steel cylinder, 100% bare lower-left circular cap, and upper-left 90° straight rod locked."
+    },
+    {
+      "segment_id": "seg01_KF2_PRE_NEAR_to_KF3_D3_CONTACT",
+      "candidate_id": "C13",
+      "start_time_sec": 2.0,
+      "end_time_sec": 4.5,
+      "start_stage": "KF2_PRE_NEAR",
+      "end_stage": "KF3_D3_CONTACT",
+      "start_frame": "/tmp/v5_continuity_run/rasters/LOCKED_KF2_2S_PRE_NEAR_C13.jpg",
+      "start_sha256": "7706b839a4738895b2ab988e4011c6ed48a59c3b3b8a811a263fe100b49630cd",
+      "end_frame": "/tmp/v5_continuity_run/rasters/LOCKED_D3_C13.jpg",
+      "end_sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Continuous 2.0s->4.5s interpolation (近泡逼近（未碰泡前・微氣隙） -> 持柄接觸（底面貼合發光母錨點）); keep C13 radial dark-steel cylinder, 100% bare lower-left circular cap, and upper-left 90° straight rod locked."
+    },
+    {
+      "segment_id": "seg02_KF3_D3_CONTACT_to_KF4_E_MID_SHOCK",
+      "candidate_id": "C13",
+      "start_time_sec": 4.5,
+      "end_time_sec": 7.0,
+      "start_stage": "KF3_D3_CONTACT",
+      "end_stage": "KF4_E_MID_SHOCK",
+      "start_frame": "/tmp/v5_continuity_run/rasters/LOCKED_D3_C13.jpg",
+      "start_sha256": "c04fe845cdc4b40e47ce198b02dd5b91dac28bef54bba3a6e772050dce712634",
+      "end_frame": "/tmp/v5_continuity_run/rasters/LOCKED_E_MID_C13.jpg",
+      "end_sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054",
+      "fps": 24,
+      "duration_sec": 2.5,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Continuous 4.5s->7.0s interpolation (持柄接觸（底面貼合發光母錨點） -> 衝擊碎裂（底光擴散與放射裂紋）); keep C13 radial dark-steel cylinder, 100% bare lower-left circular cap, and upper-left 90° straight rod locked."
+    },
+    {
+      "segment_id": "seg03_KF4_E_MID_SHOCK_to_KF5_E_END_BLAST",
+      "candidate_id": "C13",
+      "start_time_sec": 7.0,
+      "end_time_sec": 10.0,
+      "start_stage": "KF4_E_MID_SHOCK",
+      "end_stage": "KF5_E_END_BLAST",
+      "start_frame": "/tmp/v5_continuity_run/rasters/LOCKED_E_MID_C13.jpg",
+      "start_sha256": "09c17ed21928e286cca27f350e88b59e916abb7433e3aa4f8df2beb5b7520054",
+      "end_frame": "/tmp/v5_continuity_run/rasters/LOCKED_E_END_C13.jpg",
+      "end_sha256": "ea9e0492eee737ec306e99683b8790ef6ce99ab8c26e87ff5314412d09af90f6",
+      "fps": 24,
+      "duration_sec": 3.0,
+      "motion_bucket_id": 127,
+      "transition_prompt": "Continuous 7.0s->10.0s interpolation (衝擊碎裂（底光擴散與放射裂紋） -> 史詩爆破尾幀（泡殼向外炸裂）); keep C13 radial dark-steel cylinder, 100% bare lower-left circular cap, and upper-left 90° straight rod locked."
+    }
+  ],
+  "summary_board_path": "/tmp/v5_continuity_run/AUTONOMOUS_AUDIT_SUMMARY_BOARD.jpg",
+  "trilogy_strip_path": "/tmp/v5_continuity_run/CONNECTED_5KEYFRAME_TRILOGY_STRIP.jpg"
+}
