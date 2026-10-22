@@ -1,0 +1,105 @@
+name: Calibrated Bubble-Break Closed Loop
+
+on:
+  push:
+    branches: [main, 'feat/**', 'fix/**']
+    paths:
+      - 'bubble_break/closed_loop_evidence_guard.py'
+      - 'bubble_break/shannon_information_gain.py'
+      - 'bubble_break/proxy_edit_pipeline.py'
+      - 'bubble_break/frame_pipeline.py'
+      - 'bubble_break/raster_bound_collision_audit.py'
+      - 'bubble_break/dual_t_hammer_collision.py'
+      - 'bubble_break/runner.py'
+      - 'bubble_break/test_closed_loop_evidence_guard.py'
+      - 'bubble_break/test_shannon_information_gain.py'
+      - 'bubble_break/test_runner_provider_adapter.py'
+      - 'bubble_break/test_autonomous_pipeline.py'
+      - 'bubble_break/test_dense_hammer_bubble_workflow.py'
+      - 'bubble_break/test_t_hammer_multiview_swing_engine.py'
+      - '.github/workflows/calibrated-bubble-break-closed-loop.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/closed_loop_evidence_guard.py'
+      - 'bubble_break/shannon_information_gain.py'
+      - 'bubble_break/proxy_edit_pipeline.py'
+      - 'bubble_break/frame_pipeline.py'
+      - 'bubble_break/raster_bound_collision_audit.py'
+      - 'bubble_break/dual_t_hammer_collision.py'
+      - 'bubble_break/runner.py'
+      - 'bubble_break/test_closed_loop_evidence_guard.py'
+      - 'bubble_break/test_shannon_information_gain.py'
+      - 'bubble_break/test_runner_provider_adapter.py'
+      - 'bubble_break/test_autonomous_pipeline.py'
+      - 'bubble_break/test_dense_hammer_bubble_workflow.py'
+      - 'bubble_break/test_t_hammer_multiview_swing_engine.py'
+      - '.github/workflows/calibrated-bubble-break-closed-loop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  calibrated-bubble-break:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image-measurement dependencies
+        run: python -m pip install --disable-pip-version-check pillow numpy
+      - name: Test Shannon entropy and information-gain ranking
+        run: python -m unittest bubble_break/test_shannon_information_gain.py -v
+      - name: Test stage, parent, identity and fracture state guards
+        run: python -m unittest bubble_break/test_closed_loop_evidence_guard.py -v
+      - name: Test external provider adapter request/response contract
+        run: python -m unittest bubble_break/test_runner_provider_adapter.py -v
+      - name: Regression-test the imported V5.1 pipeline honesty rules
+        run: python -m unittest bubble_break/test_autonomous_pipeline.py -v
+      - name: Test planted hammer geometric/pixel gates
+        run: python -m unittest bubble_break/test_dense_hammer_bubble_workflow.py -v
+      - name: Test multi-view T-hammer rigid-body geometry
+        run: python -m unittest bubble_break/test_t_hammer_multiview_swing_engine.py -v
+      - name: Compile the closed-loop modules
+        run: python -m py_compile bubble_break/proxy_edit_pipeline.py bubble_break/frame_pipeline.py bubble_break/raster_bound_collision_audit.py bubble_break/dual_t_hammer_collision.py bubble_break/closed_loop_evidence_guard.py bubble_break/shannon_information_gain.py bubble_break/runner.py
+      - name: Verify runner help and honest behavior when calibration is missing
+        run: |
+          python -m bubble_break.runner --help
+          python - <<'PY'
+          import json, subprocess, sys, tempfile
+          from pathlib import Path
+          with tempfile.TemporaryDirectory() as td:
+              root = Path(td)
+              manifest = root / "empty_candidates.json"
+              manifest.write_text(json.dumps({
+                  "calibration_candidates": {},
+                  "bubble_break_candidates": {}
+              }), encoding="utf-8")
+              proc = subprocess.run([
+                  sys.executable, "-m", "bubble_break.runner",
+                  "--candidate-manifest", str(manifest),
+                  "--outdir", str(root / "blocked_run")
+              ], capture_output=True, text=True)
+              assert proc.returncode == 2, (proc.returncode, proc.stdout, proc.stderr)
+              report_path = root / "blocked_run" / "UNIFIED_CLOSED_LOOP_MANIFEST.json"
+              assert report_path.is_file(), "missing blocked-run manifest"
+              report = json.loads(report_path.read_text(encoding="utf-8"))
+              assert report["status"].startswith("BLOCKED"), report["status"]
+              assert report["code_visual_acceptance_status"] == "NOT_VERIFIED_BY_CODE"
+              assert report["calibration_approved"] is False
+              assert report["bubble_break_approved"] is False
+              print("Missing real candidate inputs correctly remain BLOCKED; no raster was fabricated.")
+          PY
+      - name: Upload test receipts and explicit contracts (not generated-image claims)
+        uses: actions/upload-artifact@v4
+        with:
+          name: shannon-closed-loop-test-receipts
+          path: |
+            docs/SHANNON_INFORMATION_GAIN_FOR_BUBBLE_BREAK.md
+            docs/CLOSED_LOOP_PROVIDER_ADAPTER.md
+            bubble_break/closed_loop_evidence_guard.py
+            bubble_break/shannon_information_gain.py
+            bubble_break/runner.py
+          if-no-files-found: error
