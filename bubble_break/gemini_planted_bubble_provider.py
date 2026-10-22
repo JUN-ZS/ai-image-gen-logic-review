@@ -21,11 +21,11 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image
+from PIL import Image, ImageChops
 
 from bubble_break.planted_bubble_closed_loop import (
     authorized_pixel_delta,
-    background_landmarks_sha256,
+    compute_background_landmarks_sha256,
     compose_masked_edit,
     sha256_file as pipeline_sha256_file,
     validate_frozen_pixels,
@@ -491,7 +491,7 @@ class GeminiPlantedBubbleProvider:
                         reviewed["notes"] = str(reviewed.get("notes", "")) + f" {key} differs from the accepted parent; camera/scene continuity FAIL."
         # Software binds the model's visual observations to exact final raster bytes; it never changes FAIL to PASS.
         digest = sha256_file(raster)
-        bg_digest = background_landmarks_sha256(raster)
+        bg_digest = compute_background_landmarks_sha256(raster)
         parent_sha = request.get("parent_raster_sha256")
         anchor_sha = digest if stage == "B_LOCKED_TOOL_MASTER" else request.get("scene_anchor_raster_sha256")
         evidence = {
