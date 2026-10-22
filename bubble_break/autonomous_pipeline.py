@@ -777,7 +777,7 @@ def create_five_keyframe_trilogy_strip(
     *,
     evidence_mode: str = "UNKNOWN",
 ) -> Path:
-    """Render a five-keyframe contact strip; the title states the evidence scope explicitly.""""
+    """Render a five-keyframe contact strip; the title states the evidence scope explicitly."""
     cell_w, cell_h = 440, 290
     cols = len(five_keyframes)
     strip = Image.new("RGB", (cols * cell_w, cell_h + 64), (10, 14, 20))
