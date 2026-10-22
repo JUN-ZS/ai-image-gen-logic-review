@@ -208,6 +208,49 @@ def sha256_file(path: str | Path) -> str:
     return digest.hexdigest()
 
 
+def background_landmarks_sha256(image_path: str | Path, border_fraction: float = 0.02) -> str:
+    """Hash a narrow, lossless RGB border used as a stable scene/camera background landmark."""
+    if not 0.005 <= border_fraction <= 0.10:
+        raise ValueError("border_fraction must be between 0.005 and 0.10")
+    with Image.open(image_path) as im:
+        image = im.convert("RGB")
+    width, height = image.size
+    margin_x = max(1, int(width * border_fraction))
+    margin_y = max(1, int(height * border_fraction))
+    digest = hashlib.sha256()
+    digest.update(f"{width}x{height}|border={border_fraction:.4f}|".encode("ascii"))
+    # Hash four non-overlapping border strips. Their pixels are protected by every child edit mask.
+    strips = (
+        image.crop((0, 0, width, margin_y)),
+        image.crop((0, height-margin_y, width, height)),
+        image.crop((0, margin_y, margin_x, height-margin_y)),
+        image.crop((width-margin_x, margin_y, width, height-margin_y)),
+    )
+    for strip in strips:
+        digest.update(strip.size[0].to_bytes(4, "big"))
+        digest.update(strip.size[1].to_bytes(4, "big"))
+        digest.update(strip.tobytes())
+    return digest.hexdigest()
+
+
+def authorized_pixel_delta(parent_path: str | Path, child_path: str | Path, edit_mask_path: str | Path) -> dict[str, Any]:
+    """Measure whether an edit changed any pixels inside the allowed mask."""
+    with Image.open(parent_path) as im:
+        parent = im.convert("RGB")
+    with Image.open(child_path) as im:
+        child = im.convert("RGB")
+    with Image.open(edit_mask_path) as im:
+        mask = im.convert("L")
+    if parent.size != child.size or parent.size != mask.size:
+        return {"passed": False, "status": "BLOCK_DIMENSION_MISMATCH", "changed_editable_pixels": None}
+    mask = mask.point(lambda value: 255 if value >= 128 else 0)
+    diff = ImageChops.difference(parent, child).convert("L")
+    editable = sum(1 for y in range(parent.height) for x in range(parent.width) if mask.getpixel((x, y)) > 0)
+    changed = sum(1 for y in range(parent.height) for x in range(parent.width) if mask.getpixel((x, y)) > 0 and diff.getpixel((x, y)) != 0)
+    return {"passed": changed > 0, "status": "PASS_AUTHORIZED_PIXEL_DELTA" if changed > 0 else "BLOCK_NO_AUTHORIZED_PIXEL_DELTA",
+            "changed_editable_pixels": changed, "editable_pixels": editable}
+
+
 def compose_masked_edit(parent_path: str | Path, generated_path: str | Path, edit_mask_path: str | Path, output_path: str | Path) -> str:
     """Take new pixels only inside the authorized mask; output PNG preserves frozen pixels exactly."""
     with Image.open(parent_path) as im:
@@ -457,6 +500,9 @@ def validate_planted_bubble_frame(
                 frozen_audit = validate_frozen_pixels(expected_parent_image_path, path, mask_path)
                 if not frozen_audit.get("passed", False):
                     errors.append("UNAUTHORIZED_PIXEL_DRIFT_OUTSIDE_EDIT_MASK")
+                delta_audit = authorized_pixel_delta(expected_parent_image_path, path, mask_path)
+                if not delta_audit.get("passed", False):
+                    errors.append("NO_AUTHORIZED_PIXEL_DELTA_IN_CHILD")
 
     if stage == "B_LOCKED_TOOL_MASTER":
         if expected_parent_sha256 is not None:
@@ -495,9 +541,12 @@ def validate_planted_bubble_frame(
         errors.append("CAMERA_VIEW_FINGERPRINT_MISSING")
     if not isinstance(background_landmarks_sha256, str) or len(background_landmarks_sha256) != 64 or any(ch not in "0123456789abcdef" for ch in background_landmarks_sha256.lower()):
         errors.append("BACKGROUND_LANDMARKS_SHA256_MISSING_OR_INVALID")
+    raster_background_sha = background_landmarks_sha256_fn = background_landmarks_sha256(path)
+    if background_landmarks_sha256 != raster_background_sha:
+        errors.append("BACKGROUND_LANDMARK_FINGERPRINT_MISMATCH")
     scene_lock = {"scene_id": scene_id, "camera_rig_id": camera_rig_id,
                   "camera_view_fingerprint": camera_view_fingerprint,
-                  "background_landmarks_sha256": background_landmarks_sha256}
+                  "background_landmarks_sha256": raster_background_sha}
     if expected_scene_lock is not None:
         for key, issue in (( "scene_id", "SCENE_ID_CHANGED"),
                            ("camera_rig_id", "CAMERA_RIG_CHANGED"),
@@ -645,7 +694,7 @@ def validate_planted_bubble_frame(
             "scene_id": scene_id,
             "camera_rig_id": camera_rig_id,
             "camera_view_fingerprint": camera_view_fingerprint,
-            "background_landmarks_sha256": background_landmarks_sha256,
+            "background_landmarks_sha256": raster_background_sha,
         }
     except (KeyError, TypeError, ValueError, IndexError) as exc:
         errors.append(f"GEOMETRY_ANNOTATION_INVALID:{exc}")
@@ -917,6 +966,13 @@ def build_stage_masks(
     else:
         raise ValueError(f"{stage} does not have a parent-image mask stage")
 
+    # Preserve a narrow border as an actual pixel landmark for same-camera/background checks.
+    border_x = max(1, int(width * 0.02))
+    border_y = max(1, int(height * 0.02))
+    draw.rectangle((0, 0, width - 1, border_y - 1), fill=0)
+    draw.rectangle((0, height - border_y, width - 1, height - 1), fill=0)
+    draw.rectangle((0, 0, border_x - 1, height - 1), fill=0)
+    draw.rectangle((width - border_x, 0, width - 1, height - 1), fill=0)
     freeze = Image.eval(edit, lambda value: 255 - value)
     root = Path(outdir)
     root.mkdir(parents=True, exist_ok=True)
