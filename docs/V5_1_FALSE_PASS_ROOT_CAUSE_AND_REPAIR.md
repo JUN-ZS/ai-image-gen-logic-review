@@ -24,6 +24,19 @@ The conclusions below are code/manifest findings. A manifest PASS is not treated
 
 8. **CI was not testing the checked-in contract.** The workflow tried to run `bubble_break/test_stage_d_gates.py`, which is not present in this branch. Its synthetic test assertion also expected `all_stages_passed=true`, contradicting the test and pipeline contract that synthetic evidence must never be production PASS. The workflow asserted a stale `selection_mode` field that the actual candidate manifest does not emit.
 
+## Direct visual review of `out/v5_1_run/keyframe_sample.jfif`
+
+The provided JFIF is a five-panel strip labelled 0s, 2s, 4.5s, 7s and 10s. Looking at the pixels rather than trusting its green labels:
+
+- **Wrong physical task throughout:** every panel shows one large cylindrical ram-like object approaching a bubble. There is no second independently identifiable T-hammer, so this cannot demonstrate T-hammer-versus-T-hammer collision.
+- **The actual striking faces are not legible as opposed end-face planes.** The prominent dark circular cap faces toward the viewer at the lower-left. Near the bubble, the tool appears to meet the shell along/near the side of the long cylinder; the bright 4.5s ring alone does not show two planar end faces meeting at P.
+- **The 0s → 2s motion reads mostly as a small approach/position change of that same single ram.** This does not establish two independent rigid-body trajectories or their collision normals.
+- **The 7s frame is dominated by luminous rings on the bubble.** A radial fracture front visibly propagating from the same physically proven face-to-face P is not clear enough to accept as evidence.
+- **The 10s panel does show the shell opened and a miniature bright interior,** but this downstream spectacle cannot repair the missing two-tool contact event upstream.
+- The warrior's hand-to-handle mechanics are not visually clear enough to certify that she grips one existing transverse T-handle on the intended tool; the size contrast also makes force application hard to read.
+
+Consequently this sample must be rejected for the requested task even if several pixel gates pass. This finding is a direct image review, distinct from the code/manifest findings above.
+
 ## Changes on this repair branch
 
 - Enforce evidence-mode invariants when a report is instantiated; real-raster success cannot also claim a synthetic test passed.
