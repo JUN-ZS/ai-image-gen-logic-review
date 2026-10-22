@@ -394,7 +394,7 @@ class AutonomousPipelineReport:
     video_transition_manifest: list[dict[str, Any]]
     summary_board_path: str | None = None
     trilogy_strip_path: str | None = None
-    scene_contract_id: str = "LEGACY_SINGLE_HAMMER_PLANTED_ON_BUBBLE"
+    scene_contract_id: str = "BUBBLE_BREAK_SINGLE_HAMMER_CANONICAL_CONTACT"
     visual_acceptance_status: str = "NOT_VERIFIED"
 
     def __post_init__(self) -> None:
@@ -1741,11 +1741,12 @@ def run_autonomous_pipeline(
         prod_passed = False  # PR #3 Hard Rule: synthetic test never sets all_stages_passed=True!
         synth_passed = True
     else:
-        # Pixel-level legacy bubble gates cannot certify the requested dual-T-hammer contact plane.
-        # A real raster is not a semantically accepted raster. Block until the dual-tool geometry
-        # evidence is connected to this report; see dual_t_hammer_collision.py.
+        # The task here is ONE locked double-ended hammer striking the containment bubble.
+        # Pixel-only gates cannot prove the canonical hammer end-face is the first contact surface,
+        # that the shaft/side heads stay clear, or that the inner sanctuary survives the shell-only
+        # breach. Block a real raster until bubble-specific geometric/semantic evidence is attached.
         evidence_mode = "BLOCKED"
-        status_str = "BLOCKED_DUAL_T_HAMMER_SEMANTIC_EVIDENCE_MISSING"
+        status_str = "BLOCKED_BUBBLE_BREAK_SEMANTIC_EVIDENCE_MISSING"
         prod_passed = False
         synth_passed = False
 
@@ -1769,7 +1770,7 @@ def run_autonomous_pipeline(
         five_keyframe_trilogy=five_keyframes,
         five_keyframe_transition_audits=transition_audits,
         video_transition_manifest=video_manifest,
-        scene_contract_id="LEGACY_SINGLE_HAMMER_PLANTED_ON_BUBBLE",
+        scene_contract_id="BUBBLE_BREAK_SINGLE_HAMMER_CANONICAL_CONTACT",
         visual_acceptance_status="NOT_VERIFIED",
     )
     if canonical_sequence:
