@@ -116,11 +116,11 @@ def default_dual_t_hammer_contract() -> DualHammerCollisionContract:
         first_contact_point_name="P",
         allowed_contact_surfaces=("END_FACE_TO_END_FACE",),
         forbidden_contact_surfaces=("CHEEK", "HANDLE", "SHAFT", "HANDLE_JOINT", "OTHER"),
-        pre_far_gap_min=80.0,
-        pre_near_gap_min=8.0,
-        pre_near_gap_max=60.0,
-        contact_gap_abs_max=2.0,
-        max_face_center_lateral_offset=0.18,
+        pre_far_gap_min=0.08,
+        pre_near_gap_min=0.008,
+        pre_near_gap_max=0.06,
+        contact_gap_abs_max=0.002,
+        max_face_center_lateral_offset=0.018,
         max_normal_error_degrees=15.0,
         max_handle_head_axis_dot_abs=0.25,
     )
@@ -163,7 +163,7 @@ def validate_collision_evidence(
       face_normal_a / face_normal_b: face outward unit normals
       face_center_a / face_center_b: end-face centers, normalized image/world coordinates
       contact_point: detected intersection/contact location (required for FIRST_CONTACT)
-      contact_point_on_face_a / contact_point_on_face_b: booleans from segmenter/annotator
+      face_radius_a / face_radius_b: measured striking-face radii in the same normalized units
       tool_a_present / tool_b_present / separate_handles: booleans from instance segmentation
       evidence_source: named detector/model or HUMAN_REVIEW
     """
@@ -239,11 +239,28 @@ def validate_collision_evidence(
             errors.append(f"FIRST_CONTACT requires zero gap within ±{c.contact_gap_abs_max}; got {gap:.4f}")
         if surface != "END_FACE_TO_END_FACE":
             errors.append("FIRST_CONTACT must be end-face to end-face; end-face/cheek does NOT count")
-        for key in ("contact_point", "contact_point_on_face_a", "contact_point_on_face_b"):
-            if key not in evidence:
-                errors.append(f"FIRST_CONTACT missing {key}")
-        if not evidence.get("contact_point_on_face_a", False) or not evidence.get("contact_point_on_face_b", False):
-            errors.append("point P must lie on both strike faces")
+        contact_point = None
+        try:
+            contact_point = _vec(evidence.get("contact_point"), "contact_point")
+            radius_a = float(evidence.get("face_radius_a"))
+            radius_b = float(evidence.get("face_radius_b"))
+            if radius_a <= 0 or radius_b <= 0 or not math.isfinite(radius_a + radius_b):
+                raise ValueError("face_radius_a and face_radius_b must be finite and positive")
+        except (TypeError, ValueError) as exc:
+            errors.append(f"FIRST_CONTACT invalid/missing face geometry: {exc}")
+        if contact_point is not None and "face_radius_a" in evidence and "face_radius_b" in evidence:
+            da = tuple(contact_point[i] - ca[i] for i in range(3))
+            db = tuple(contact_point[i] - cb[i] for i in range(3))
+            plane_a = abs(_dot(da, na))
+            plane_b = abs(_dot(db, nb))
+            in_plane_a = tuple(da[i] - _dot(da, na) * na[i] for i in range(3))
+            in_plane_b = tuple(db[i] - _dot(db, nb) * nb[i] for i in range(3))
+            radial_a = _norm(in_plane_a)
+            radial_b = _norm(in_plane_b)
+            if plane_a > c.contact_gap_abs_max or plane_b > c.contact_gap_abs_max:
+                errors.append(f"point P must lie in both face planes (offsetA={plane_a:.4f}, offsetB={plane_b:.4f})")
+            if radial_a > radius_a or radial_b > radius_b:
+                errors.append(f"point P lies outside a striking-face disk (radiusA={radial_a:.4f}/{radius_a:.4f}, radiusB={radial_b:.4f}/{radius_b:.4f})")
     elif stage == "REACTION" and surface not in ("END_FACE_TO_END_FACE", "NONE", "NO_CONTACT"):
         errors.append(f"REACTION contains forbidden contact surface={surface}")
     elif stage == "RECOIL" and gap <= 0:
