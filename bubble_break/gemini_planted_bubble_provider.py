@@ -377,12 +377,14 @@ class GeminiPlantedBubbleProvider:
         response = self._post_json(payload)
         image_bytes, _reported_mime = _extract_generated_image(response)
         out_path = request_dir / f"generated_{stage}_attempt_{int(request.get('attempt_round', 0)):02d}.png"
-        out_path.write_bytes(image_bytes)
         try:
-            with Image.open(out_path) as image:
-                image.verify()
-            with Image.open(out_path) as image:
+            # Normalize the provider bytes to a true PNG instead of trusting the response MIME
+            # or filename; downstream hashing and the review request bind these exact output bytes.
+            from io import BytesIO
+            with Image.open(BytesIO(image_bytes)) as image:
                 image.load()
+                normalized = image.convert("RGB")
+                normalized.save(out_path, format="PNG", optimize=True)
         except Exception as exc:
             out_path.unlink(missing_ok=True)
             raise ValueError(f"Gemini output is not a readable image: {exc}") from exc
