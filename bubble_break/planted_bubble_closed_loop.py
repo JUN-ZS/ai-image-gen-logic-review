@@ -31,6 +31,8 @@ from typing import Any, Callable, Mapping, Sequence
 
 from PIL import Image, ImageDraw
 
+from bubble_break.planted_bubble_information_gain import recommend_next_experiment
+
 
 CONTRACT_ID = "PLANTED_DOUBLE_ENDED_CYLINDER_BUBBLE_CONTACT_V1"
 STAGE_ORDER: tuple[str, ...] = (
@@ -825,6 +827,7 @@ def compile_stage_request(
     master_selection: Mapping[str, Any] | None = None,
     parent_evidence: Mapping[str, Any] | None = None,
     mask_output_dir: str | Path | None = None,
+    diagnostic_experiment: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Encode one stage contract and the last verified parent/error vector for a generator wrapper."""
     if stage not in STAGE_SPECS:
@@ -857,6 +860,16 @@ def compile_stage_request(
              if stage == "B_LOCKED_TOOL_MASTER" else "")
         )
         + "PRIOR FAILURE VECTOR=" + ("; ".join(sorted(set(rejection_errors))) if rejection_errors else "NONE") + ". "
+        + (
+            "SHANNON-STYLE NEXT DIAGNOSTIC: " + str(diagnostic_experiment.get("action_id", "NONE"))
+            + " — " + str(diagnostic_experiment.get("diagnostic_instruction", "No classified failure yet."))
+            + ". Expected information gain/cost="
+            + str(diagnostic_experiment.get("information_gain_per_cost", "NA"))
+            + "; assumptions=" + str(diagnostic_experiment.get("assumptions_status", "UNVALIDATED_ENGINEERING_PRIORS"))
+            + ". This selects an inspection/edit emphasis only and must not override hard locks. "
+            if diagnostic_experiment is not None else
+            "SHANNON-STYLE NEXT DIAGNOSTIC: none selected yet; preserve all hard locks. "
+        )
         + "Return one independent full-frame raster and a raster-bound geometry annotation/review receipt. "
         + "If a lock conflicts with a requested change, preserve the lock and report the unmet change. "
         + "Do not invent a new handle, move P, unseat the base, or shatter the sanctuary."
@@ -886,6 +899,7 @@ def compile_stage_request(
             "source_hash_must_be_preserved_in_receipt": True,
         },
         "repair_error_vector": sorted(set(rejection_errors)),
+        "diagnostic_experiment": dict(diagnostic_experiment) if diagnostic_experiment is not None else None,
         "prompt": prompt,
     }
 
@@ -964,6 +978,11 @@ def run_planted_bubble_closed_loop(
                     break
                 request_dir = root / "provider_requests" / f"{stage}_R{attempt_round:02d}"
                 request_dir.mkdir(parents=True, exist_ok=True)
+                diagnostic = (
+                    recommend_next_experiment(rejection_vector, attempt_log)
+                    if rejection_vector else None
+                )
+                diagnostic = diagnostic["selected_experiment"] if diagnostic else None
                 request = compile_stage_request(
                     stage,
                     attempt_round=attempt_round,
@@ -977,6 +996,7 @@ def run_planted_bubble_closed_loop(
                     master_selection=configured_selection,
                     parent_evidence=parent_evidence,
                     mask_output_dir=request_dir / "masks",
+                    diagnostic_experiment=diagnostic,
                 )
                 request_path = request_dir / "request.json"
                 request_path.write_text(json.dumps(request, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
