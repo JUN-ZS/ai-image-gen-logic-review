@@ -248,7 +248,7 @@ def recommend_next_experiment(
     base = _priors_from_attempt_history(attempt_history)
     # Current observed error codes are evidence about the fault hypothesis. This uses a transparent
     # heuristic update (not a learned/calibrated model): reweight matched classes, then normalize.
-    weights = {hypothesis: base[hypothesis] * (3.0 if hypothesis in identified else 1.0) for hypothesis in HYPOTHESES}
+    weights = {hypothesis: base[hypothesis] * (8.0 if hypothesis in identified else 1.0) for hypothesis in HYPOTHESES}
     posterior = normalize_distribution(weights)
     ranked = rank_diagnostic_experiments(posterior)
     best = ranked[0]
