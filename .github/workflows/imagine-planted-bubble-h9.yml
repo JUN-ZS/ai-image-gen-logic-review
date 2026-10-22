@@ -1,0 +1,30 @@
+name: H9 Imagine Planted-Bubble (no API key)
+on:
+  push:
+    paths:
+      - "bubble_break/imagine_planted_bubble_h9.py"
+      - "bubble_break/test_imagine_planted_bubble_h9.py"
+      - "bubble_break/planted_bubble_closed_loop.py"
+      - ".github/workflows/imagine-planted-bubble-h9.yml"
+  pull_request:
+    paths:
+      - "bubble_break/imagine_planted_bubble_h9.py"
+      - "bubble_break/test_imagine_planted_bubble_h9.py"
+      - "bubble_break/planted_bubble_closed_loop.py"
+      - ".github/workflows/imagine-planted-bubble-h9.yml"
+  workflow_dispatch:
+
+jobs:
+  h9-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pillow
+        run: pip install pillow
+      - name: Unit tests (offline, no GEMINI_API_KEY)
+        run: python -m unittest bubble_break.test_imagine_planted_bubble_h9 -v
+      - name: Show contract
+        run: python -m bubble_break.imagine_planted_bubble_h9 show-contract

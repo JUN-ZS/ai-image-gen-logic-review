@@ -256,3 +256,23 @@ A dense plant → pick C13
 5. Append this log when a new FAIL→rewrite→PASS is proven.
 
 *End of log — 2026-10-21*
+
+---
+
+## H9 — Imagine track opened (2026-10-22)
+
+**Branch:** `feat/imagine-planted-bubble-h9-20261022`  
+**Module:** `bubble_break/imagine_planted_bubble_h9.py`  
+**Why:** parallel closed loop that does **not** require `GEMINI_API_KEY`; provider = Grok Imagine serial full-frame under the same planted-cylinder contract.
+
+### FAIL avoided
+- Waiting on Gemini key before iterating geometry.
+- Using PR #6 import sledge/city rasters as if they were B3 topology.
+
+### PASS / rewrite
+- Reuse `STAGE_SPECS` + `GLOBAL_LOCKS` from `planted_bubble_closed_loop`.
+- `compile` → agent Imagine → `ingest` (hash + strip).
+- Always `code_visual_acceptance_status=NOT_VERIFIED_BY_CODE`.
+
+### First live Imagine seed (this chat)
+B `7713610c` → C `caea5cca` → D1 `de5ec90f` → D2 `9a1ef2a2` → D3 `e4352bb5` → E_MID `59381c37` → E_END `49a3e9ad`
