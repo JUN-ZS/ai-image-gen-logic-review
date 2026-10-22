@@ -6,12 +6,24 @@ on:
     paths:
       - 'bubble_break/planted_bubble_closed_loop.py'
       - 'bubble_break/test_planted_bubble_closed_loop.py'
+      - 'bubble_break/planted_bubble_information_gain.py'
+      - 'bubble_break/test_planted_bubble_information_gain.py'
+      - 'bubble_break/gemini_planted_bubble_provider.py'
+      - 'bubble_break/test_gemini_planted_bubble_provider.py'
+      - 'bubble_break/create_master_selection_manifest.py'
+      - 'docs/GEMINI_PLANTED_BUBBLE_PROVIDER.md'
       - 'docs/SHANNON_PLANTED_BUBBLE_CLOSED_LOOP.md'
       - '.github/workflows/shannon-planted-bubble.yml'
   pull_request:
     paths:
       - 'bubble_break/planted_bubble_closed_loop.py'
       - 'bubble_break/test_planted_bubble_closed_loop.py'
+      - 'bubble_break/planted_bubble_information_gain.py'
+      - 'bubble_break/test_planted_bubble_information_gain.py'
+      - 'bubble_break/gemini_planted_bubble_provider.py'
+      - 'bubble_break/test_gemini_planted_bubble_provider.py'
+      - 'bubble_break/create_master_selection_manifest.py'
+      - 'docs/GEMINI_PLANTED_BUBBLE_PROVIDER.md'
       - 'docs/SHANNON_PLANTED_BUBBLE_CLOSED_LOOP.md'
       - '.github/workflows/shannon-planted-bubble.yml'
   workflow_dispatch:
@@ -31,6 +43,14 @@ jobs:
         run: python -m pip install --disable-pip-version-check pillow
       - name: Test planted-cylinder geometry, SHA binding, stage locks and feedback reruns
         run: python -m unittest bubble_break.test_planted_bubble_closed_loop -v
+      - name: Test Shannon-style planted-cylinder information-gain diagnostics
+        run: python -m unittest bubble_break.test_planted_bubble_information_gain -v
+      - name: Test Gemini image and semantic-review adapter with offline fixtures only
+        run: python -m unittest bubble_break.test_gemini_planted_bubble_provider -v
+      - name: Compile Gemini provider and run CLI help without contacting Google
+        run: |
+          python -m py_compile bubble_break/planted_bubble_closed_loop.py bubble_break/planted_bubble_information_gain.py bubble_break/gemini_planted_bubble_provider.py bubble_break/create_master_selection_manifest.py
+          python -m bubble_break.gemini_planted_bubble_provider --help
       - name: Compile the seven-stage prompt/contract packet (no image generation)
         run: python -m bubble_break.planted_bubble_closed_loop --compile-only --outdir out/shannon_planted_bubble
       - name: Verify the output is honest about generation and visual acceptance
