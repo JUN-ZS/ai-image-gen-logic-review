@@ -97,5 +97,5 @@ class RasterBoundCollisionAuditTests(unittest.TestCase):
         self.assertTrue(any("outside" in e and "face disk" in e for e in result["errors"]))
 
 
-if __class__ == "__main__":
+if __name__ == "__main__":
     unittest.main()
