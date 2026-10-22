@@ -70,7 +70,7 @@ jobs:
               'stage_b_one_hammer_no_person.md',
               'stage_c_scale_and_add_person.md',
               'stage_d_action_refinement.md',
-              'stage_d3_serial_wash_prompts.md',
+              'stage_d3_serial_wash_prompts.json',
               'stage_e_glow_bubble_break.md',
           ):
               assert (selected / name).is_file(), name
