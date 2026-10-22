@@ -17,6 +17,8 @@ from bubble_break.gemini_planted_bubble_provider import (
     GeminiPlantedBubbleProvider,
     sha256_file,
 )
+from bubble_break.planted_bubble_closed_loop import validate_frozen_pixels
+
 
 
 def png_bytes(size=(400, 300), colour=(30, 40, 50)) -> bytes:
@@ -47,6 +49,9 @@ def review_fixture(stage: str, image_bytes: bytes, decision="FAIL") -> dict:
     return {
         "decision": decision,
         "notes": "Test fixture only; model review was deliberately FAIL to verify fail-closed behavior.",
+        "scene_id": "SCENE_TEST_001",
+        "camera_rig_id": "CAMERA_RIG_TEST",
+        "camera_view_fingerprint": "VIEW_TEST_FIXED",
         "creativity_score": 0.65,
         "novelty_score": 0.55,
         "raster_annotations": {
@@ -81,6 +86,8 @@ def review_fixture(stage: str, image_bytes: bytes, decision="FAIL") -> dict:
                 "present": stage != "B_LOCKED_TOOL_MASTER",
                 "bbox_xyxy_px": [20, 100, 120, 280] if stage != "B_LOCKED_TOOL_MASTER" else None,
                 "scale_class": "MINIATURE" if stage != "B_LOCKED_TOOL_MASTER" else None,
+                "identity_id": "HEROINE_TEST_001" if stage != "B_LOCKED_TOOL_MASTER" else None,
+                "pose_signature": f"POSE_TEST_{stage}" if stage != "B_LOCKED_TOOL_MASTER" else None,
                 "gripping_handle_track_id": "HANDLE_TEST" if grip else None,
                 "both_hands_on_existing_handle": grip,
             },
@@ -93,6 +100,8 @@ def review_fixture(stage: str, image_bytes: bytes, decision="FAIL") -> dict:
                 "inhabitants_unharmed": True,
                 "shell_only_breach": has_cracks,
                 "crack_origin_px": [260, 200] if has_cracks else None,
+                "crack_rays_radial_from_P": stage in {"E_MID_GLOW_CRACKS_FROM_P", "E_END_SHELL_SHATTER_FROM_P"},
+                "fragments_propagate_outward_from_P": stage == "E_END_SHELL_SHATTER_FROM_P",
             },
         },
     }
@@ -195,8 +204,12 @@ class GeminiPlantedBubbleProviderTests(unittest.TestCase):
         edit = self.root / "edit_mask.png"
         freeze = self.root / "freeze_mask.png"
         Image.new("RGB", (400, 300), (10, 20, 30)).save(parent)
-        Image.new("L", (400, 300), 255).save(edit)
-        Image.new("L", (400, 300), 0).save(freeze)
+        edit_img = Image.new("L", (400, 300), 0)
+        from PIL import ImageDraw
+        ImageDraw.Draw(edit_img).rectangle((80, 70, 180, 170), fill=255)
+        edit_img.save(edit)
+        freeze_img = edit_img.point(lambda value: 255 - value)
+        freeze_img.save(freeze)
         parent_sha = sha256_file(parent)
         request = {
             "contract_id": "PLANTED_DOUBLE_ENDED_CYLINDER_BUBBLE_CONTACT_V1",
@@ -207,6 +220,12 @@ class GeminiPlantedBubbleProviderTests(unittest.TestCase):
             "parent_image_path": str(parent),
             "parent_raster_sha256": parent_sha,
             "scene_anchor_raster_sha256": "locked-master-sha",
+            "parent_scene_identity": {
+                "scene_id": "SCENE_TEST_001",
+                "camera_rig_id": "CAMERA_RIG_TEST",
+                "camera_view_fingerprint": "VIEW_TEST_FIXED",
+                "background_landmarks_sha256": "fixture-parent-border-hash",
+            },
             "edit_mask_path": str(edit),
             "freeze_mask_path": str(freeze),
             "mask_provenance_parent_sha256": parent_sha,
@@ -225,6 +244,11 @@ class GeminiPlantedBubbleProviderTests(unittest.TestCase):
         self.assertEqual(evidence["scene_anchor_raster_sha256"], "locked-master-sha")
         self.assertEqual(evidence["review"]["reviewed_parent_sha256"], parent_sha)
         self.assertEqual(evidence["review"]["reviewed_scene_anchor_sha256"], "locked-master-sha")
+        self.assertEqual(evidence["scene_id"], "SCENE_TEST_001")
+        self.assertEqual(evidence["camera_rig_id"], "CAMERA_RIG_TEST")
+        self.assertEqual(evidence["camera_view_fingerprint"], "VIEW_TEST_FIXED")
+        self.assertEqual(evidence["edit_mask_parent_sha256"], parent_sha)
+        self.assertTrue(validate_frozen_pixels(parent, image_path, edit)["passed"])
 
     def test_missing_key_and_image_free_response_block(self):
         with self.assertRaisesRegex(ValueError, "GEMINI_API_KEY"):
