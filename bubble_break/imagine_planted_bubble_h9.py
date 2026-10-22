@@ -222,13 +222,23 @@ No `GEMINI_API_KEY` is used in H9.
 
 
 def _find_raster(rasters_dir: Path, stage: str) -> Path:
-    for ext in (".jpg", ".jpeg", ".png", ".webp"):
-        candidate = rasters_dir / f"{stage}{ext}"
-        if candidate.is_file() and candidate.stat().st_size > 0:
-            return candidate
-        locked = rasters_dir / f"LOCKED_{stage}{ext}"
-        if locked.is_file() and locked.stat().st_size > 0:
-            return locked
+    # Accept full stage id, LOCKED_ prefix, and a few short aliases used in ad-hoc seeds.
+    short = {
+        "B_LOCKED_TOOL_MASTER": ["B", "B_TOOL_MASTER", "B_LOCKED_TOOL_MASTER"],
+        "C_PERSON_SCALE_NO_GRIP": ["C", "C_PERSON_SCALE_NO_GRIP"],
+        "D1_APPROACH_NO_GRIP": ["D1", "D1_APPROACH_NO_GRIP"],
+        "D2_FIRST_GRIP_EXISTING_HANDLE": ["D2", "D2_FIRST_GRIP_EXISTING_HANDLE"],
+        "D3_TENSION_EXISTING_HANDLE": ["D3", "D3_TENSION_EXISTING_HANDLE"],
+        "E_MID_GLOW_CRACKS_FROM_P": ["E_MID", "E_MID_GLOW_CRACKS_FROM_P"],
+        "E_END_SHELL_SHATTER_FROM_P": ["E_END", "E_END_SHELL_SHATTER_FROM_P"],
+    }
+    stems = short.get(stage, [stage])
+    for stem in stems:
+        for ext in (".jpg", ".jpeg", ".png", ".webp"):
+            for name in (f"{stem}{ext}", f"LOCKED_{stem}{ext}", f"LOCKED_{stage}{ext}", f"{stage}{ext}"):
+                candidate = rasters_dir / name
+                if candidate.is_file() and candidate.stat().st_size > 0:
+                    return candidate
     raise FileNotFoundError(f"missing raster for stage {stage} under {rasters_dir}")
 
 
