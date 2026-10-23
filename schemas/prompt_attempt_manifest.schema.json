@@ -48,6 +48,7 @@
       "enum": [
         "planted_cylinder_side_handle",
         "t_hammer_terminal_face",
+        "dual_t_hammer_terminal_face_pair",
         "cylinder_cross_cap_pair",
         "line_striker_orthogonal_negative_control",
         "radial_multi_face_round_head",
