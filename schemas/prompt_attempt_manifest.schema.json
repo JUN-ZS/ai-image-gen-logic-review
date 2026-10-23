@@ -49,6 +49,8 @@
         "planted_cylinder_side_handle",
         "t_hammer_terminal_face",
         "dual_t_hammer_terminal_face_pair",
+        "original_sin_t_crossbar_upper_plane",
+        "original_sin_proxy_cross_upper_terminal_face",
         "cylinder_cross_cap_pair",
         "line_striker_orthogonal_negative_control",
         "radial_multi_face_round_head",
