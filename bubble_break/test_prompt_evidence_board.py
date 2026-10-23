@@ -109,7 +109,7 @@ class TestPromptEvidenceBoard(unittest.TestCase):
         self.assertIn("TRY &lt;42&gt;", svg)
         self.assertIn("X_RIGHT", svg)
         self.assertIn("t_hammer_terminal_face", svg)
-        self.assertIn("active_surface=terminal_end_face", svg)
+        self.assertIn("face=end-face", svg)
         self.assertIn("FAILURE REASONS", svg)
         self.assertIn("NEXT CHANGE", svg)
 
