@@ -198,6 +198,81 @@
         "raster_sha256"
       ],
       "additionalProperties": true
+    },
+    "raster_sha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "description": "SHA-256 computed from the exact reviewed source raster."
+    },
+    "failure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Structured reviewer/vision-audit failure codes. A code alone is not accepted unless the FAIL receipt is bound to the same raster SHA."
+    },
+    "diagnosis": {
+      "type": "object",
+      "description": "Rule-based next-change recommendation derived from structured reviewed observations. This is not an automatic visual diagnosis.",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "HOLD",
+            "REPAIR_PLAN_READY"
+          ]
+        },
+        "method": {
+          "type": "string"
+        },
+        "primary_failure_code": {
+          "type": "string"
+        },
+        "all_failure_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "next_change": {
+          "type": "string"
+        },
+        "edit_only": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "freeze": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "repair_prompt_delta": {
+          "type": "string"
+        },
+        "expected_after_change": {
+          "type": "string"
+        },
+        "auto_visual_detection": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "primary_failure_code",
+        "next_change",
+        "repair_prompt_delta",
+        "auto_visual_detection"
+      ],
+      "additionalProperties": true
     }
   },
   "additionalProperties": true
