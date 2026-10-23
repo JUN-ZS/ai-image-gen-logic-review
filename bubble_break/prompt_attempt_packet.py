@@ -627,23 +627,51 @@ def package_planted_bubble(
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--matrix", required=True, help="JSON matrix containing variants[*].prompts")
+    parser.add_argument(
+        "--format",
+        choices=["matrix", "original-sin-jsonl", "dense-atlas", "dense-bubble", "planted-bubble-packet"],
+        default="matrix",
+        help="source generator format to normalize into per-prompt packets"
+    )
+    parser.add_argument("--matrix", help="legacy alias for --input when --format=matrix")
+    parser.add_argument("--input", help="input artifact: matrix JSON, JSONL, atlas manifest, packet summary/directory, or planted-bubble prompt packet")
     parser.add_argument("--outdir", required=True, help="output attempt-packet directory")
     parser.add_argument("--branch", required=True, help="exact source branch name")
-    parser.add_argument("--commit-sha", required=True, help="exact commit SHA that generated this matrix")
-    parser.add_argument("--topology-id", default="t_hammer_terminal_face")
+    parser.add_argument("--commit-sha", required=True, help="exact 40- or 64-hex commit SHA that generated the source artifact")
+    parser.add_argument("--topology-id", default="t_hammer_terminal_face", help="default topology for matrix format")
     args = parser.parse_args()
-    index = package_matrix(
-        Path(args.matrix), Path(args.outdir), args.branch, args.commit_sha, args.topology_id
-    )
+    raw_input = args.input or args.matrix
+    if not raw_input:
+        parser.error("supply --input (or --matrix for the legacy matrix format)")
+    input_path = Path(raw_input)
+    outdir = Path(args.outdir)
+    if not input_path.exists():
+        parser.error(f"input artifact does not exist: {input_path}")
+
+    try:
+        if args.format == "matrix":
+            index = package_matrix(input_path, outdir, args.branch, args.commit_sha, args.topology_id)
+        elif args.format == "original-sin-jsonl":
+            index = package_original_sin_jsonl(input_path, outdir, args.branch, args.commit_sha)
+        elif args.format == "dense-atlas":
+            index = package_dense_atlas(input_path, outdir, args.branch, args.commit_sha)
+        elif args.format == "dense-bubble":
+            index = package_dense_bubble(input_path, outdir, args.branch, args.commit_sha)
+        else:
+            index = package_planted_bubble(input_path, outdir, args.branch, args.commit_sha)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        parser.error(str(exc))
+
     print(json.dumps({
         "outdir": args.outdir,
+        "source_format": index.get("source_format", args.format),
         "variant_count": index["variant_count"],
         "attempt_count": index["attempt_count"],
-        "source_matrix_sha256": index["source_matrix_sha256"],
-        "image_realization": "NOT_RUN",
-        "pixel_audit": "NOT_RUN",
-        "note": "Each prompt gets prompt.txt, manifest.json, and a no-raster teaching-board placeholder."
+        "source_matrix_sha256": index.get("source_matrix_sha256"),
+        "source_artifact_sha256": index.get("source_artifact_sha256"),
+        "image_realization": index["image_realization"],
+        "pixel_audit": index["pixel_audit"],
+        "note": "Each prompt gets prompt.txt, manifest.json, and a no-raster teaching-board placeholder. No image or pixel PASS is inferred."
     }, ensure_ascii=False))
     return 0
 
