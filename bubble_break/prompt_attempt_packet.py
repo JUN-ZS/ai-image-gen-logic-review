@@ -456,7 +456,8 @@ def package_dense_atlas(
     if not prompt_path.is_file():
         raise ValueError(f"dense-atlas prompt file missing: {prompt_path}")
     prompt = prompt_path.read_text(encoding="utf-8")
-    prompt_sha = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+    # The atlas generator hashes the prompt string before writing its trailing newline.
+    prompt_sha = hashlib.sha256(prompt.rstrip("\r\n").encode("utf-8")).hexdigest()
     expected_prompt_sha = str(manifest.get("prompt_sha256", "")).lower()
     if expected_prompt_sha and expected_prompt_sha != prompt_sha:
         raise ValueError("dense-atlas prompt SHA does not match its manifest")
