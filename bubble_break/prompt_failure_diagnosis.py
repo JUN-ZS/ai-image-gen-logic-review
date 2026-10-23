@@ -260,7 +260,7 @@ def diagnose_attempt(manifest: dict[str, Any], raster_sha256: str | None = None)
     receipt = manifest.get("review_receipt")
     receipt = receipt if isinstance(receipt, dict) else {}
     receipt_sha = str(receipt.get("raster_sha256", "")).lower()
-    raster_sha = str(raster_sha256 or manifest.get("raster_sha256") or manifest.get("source_raster_sha256") or "").lower()
+    raster_sha = str(raster_sha256 or "").lower()
     verdict = str(receipt.get("verdict", "")).upper()
     if (
         verdict != "FAIL"
