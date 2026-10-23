@@ -69,6 +69,38 @@ python bubble_break/prompt_evidence_board.py \
 - 這是來源綁定檢查，不會自行判斷接觸面是否畫正確；真正的像素判讀仍須由指定 reviewer／視覺檢查程序完成。
 - `review_receipt` 的 reviewer 身份與結論仍是外部信任輸入；工具不會認證人類身份。
 
+## 「下一次改哪裡」必須由失敗證據驅動
+
+\`bubble_break/prompt_failure_diagnosis.py\` 會根據已審查的結構化欄位，選出一個優先失敗原因，輸出：
+
+- \`primary_failure_code\` 與全部已識別失敗；
+- \`edit_only\`：下一輪允許改的最小變量；
+- \`freeze\`：必須保持不變的拓撲／相機／接觸點等欄位；
+- \`repair_prompt_delta\`：附加到原 Prompt 的具體修正指令；
+- \`expected_after_change\`：下一張圖必須驗證的可觀察結果。
+
+### 例：真正接觸到槌腰側面
+
+在 reviewer 檢查這張原圖後，將該圖的 SHA-256 寫入 \`review_receipt.raster_sha256\`，將 \`review_receipt.verdict\` 設為 \`FAIL\`，並記錄 \`observed.active_surface = "broad_sidewall"\`。同時應寫入 reviewer 身份、時間及失敗理由。然後：
+
+~~~bash
+python bubble_break/prompt_failure_diagnosis.py \
+  --manifest out/attempts/TRY-0042/manifest.json \
+  --prompt out/attempts/TRY-0042/prompt.txt \
+  --image out/attempts/TRY-0042/source.png \
+  --outdir out/attempts/TRY-0042/repair
+~~~
+
+此例預期選中 \`WRONG_CONTACT_FACE\`：下輪調整整把剛性武器的姿態／進入方向，使指定端面先接觸；凍結武器拓撲、頭柄接點、目標幾何、相機、人物與場景。它不會用「加強特效」掩飾側面碰撞，也不會把拓撲改成另一把槌。
+
+其他已定義類型包括：\`GAP_REMAINS\`、\`INTERPENETRATION\`、\`WRONG_CRACK_ORIGIN\`、\`EARLY_CRACKS\`、\`HANDLE_TOPOLOGY_FAIL\`、\`CAMERA_OBSCURES_CONTACT\`、\`SCENE_CONTINUITY_FAIL\`、\`IDENTITY_DRIFT\`、\`RESIDENT_SAFETY_FAIL\` 和 \`FOLLOWTHROUGH_MISMATCH\`。有多個失敗時，診斷器列出全部原因，但先安排一個優先修正；其他失敗不能從報告中刪除。
+
+### 證據邊界
+
+診斷器**不會自己看懂像素**。它要求 reviewer 或經驗證的視覺審查程序提供結構化觀察，並要求 \`--image\` 指向的原圖 SHA-256 與 FAIL 收據完全一致。沒有原圖、收據遺失／不匹配、或觀察欄位仍是 \`UNVERIFIED\` 時，結果必須是 \`HOLD\`，不生成冒充有根據的修正方向。
+
+本工具會產生 \`diagnosis.json\` 和附加修正段落的 \`repair_prompt.txt\`；它**不會自動呼叫外部圖像模型**。真正的下一輪仍須執行生成，之後以新 raster 重做同一套審查。若修正後問題未消失，不能升級為 PASS，也不能刪除上一輪失敗記錄。
+
 ## 已知涵蓋範圍與 CLI 選項
 
 bubble_break/prompt_attempt_packet.py 已有五種輸入格式適配器：
