@@ -114,6 +114,15 @@ def compile_manifest(
     else:
         expected = {"contact_contract": "SEE_PROMPT_AND_BRANCH_SPEC"}
 
+    overrides = variant.get("variables_changed")
+    if isinstance(overrides, dict):
+        vars_changed.update(overrides)
+    expected_by_prompt = variant.get("expected_by_prompt")
+    if isinstance(expected_by_prompt, dict) and isinstance(expected_by_prompt.get(prompt_id), dict):
+        expected = dict(expected_by_prompt[prompt_id])
+    elif isinstance(variant.get("expected"), dict):
+        expected = dict(variant["expected"])
+
     source_status = variant.get("audit_status") if isinstance(variant.get("audit_status"), dict) else {}
     image_status = str(source_status.get("image_realization", "NOT_RUN")).upper()
     audit_status = str(source_status.get("pixel_audit", "NOT_RUN")).upper()
@@ -126,13 +135,17 @@ def compile_manifest(
         audit_status = "NOT_RUN"
 
     prompt_sha = hashlib.sha256(prompt_text.encode("utf-8")).hexdigest()
-    resolved_topology = "dual_t_hammer_terminal_face_pair" if prompt_id.startswith("stage_a") else topology_id
+    resolved_topology = str(variant.get("topology_id") or ("dual_t_hammer_terminal_face_pair" if prompt_id.startswith("stage_a") else topology_id))
     return {
         "schema_version": 1,
         "attempt_id": f"{variant_id}__{stage}__TRY{attempt_index:04d}",
         "branch": branch,
         "source_commit_sha": commit_sha,
         "source_matrix_sha256": matrix_sha,
+        "source_artifact_path": variant.get("source_artifact_path", ""),
+        "source_artifact_sha256": variant.get("source_artifact_sha256", matrix_sha),
+        "source_format": variant.get("source_format", "matrix"),
+        "source_record_id": variant.get("source_record_id", ""),
         "prompt_id": prompt_id,
         "prompt_sha256": prompt_sha,
         "variant_id": variant_id,
@@ -206,7 +219,8 @@ def package_matrix(
                 "variant_id": variant_id,
                 "prompt_id": prompt_id,
                 "stage_id": manifest["stage_id"],
-                "topology_id": topology_id,
+                "topology_id": manifest["topology_id"],
+                "source_artifact_sha256": manifest["source_artifact_sha256"],
                 "prompt_sha256": manifest["prompt_sha256"],
                 "manifest": f"{folder.name}/manifest.json",
                 "prompt": f"{folder.name}/prompt.txt",
@@ -222,6 +236,9 @@ def package_matrix(
         "branch": branch,
         "source_commit_sha": commit_sha,
         "topology_id": topology_id,
+        "source_format": matrix.get("source_format", "matrix"),
+        "source_artifact_path": matrix.get("source_artifact_path", str(matrix_path)),
+        "source_artifact_sha256": matrix.get("source_artifact_sha256", matrix_sha),
         "variant_count": len(variants),
         "attempt_count": len(index_items),
         "image_realization": "NOT_RUN",
