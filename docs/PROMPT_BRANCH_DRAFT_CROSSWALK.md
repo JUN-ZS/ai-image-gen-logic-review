@@ -66,6 +66,15 @@ SHOT = CONTRACT + HERO + GEAR + ACTION + WEAPON + TARGET + SET + CAM + LIGHT + G
 - Shannon-inspired 文件只借用冗餘、雜訊、回饋與回滾的工程類比；不宣稱圖像模型已被證明為具已知容量的 Shannon channel。
 - Shannon 七階段 audit 明確拒絕把構圖跳變、接觸點不一致或內部聖所狀態不明的 strip 當作 continuity 證據。
 
+## 4A. 本次新增：可追溯的圖像／驗收板輸出
+
+- `bubble_break/prompt_evidence_board.py`：將指定 attempt 的原始 raster 嵌入 SVG，顯示 ID、分支、commit、拓撲、變量、預期／實際接觸、ROI、失敗原因與下一輪修正。
+- `schemas/prompt_attempt_manifest.schema.json`：每次嘗試的 JSON 資料契約。
+- `examples/prompt_attempt_manifest.example.json`：未生成的模板樣本，用來展示欄位，不代表真實測試結果。
+- `bubble_break/test_prompt_evidence_board.py`：防止缺少原圖或 raster SHA 不一致時仍標示 Pixel Audit PASS。
+
+標準輸出應同時保留 SOURCE RASTER 與 PROMPT EVIDENCE BOARD。前者保持無文字、作為像素審查來源；後者是加上確定性標註的教學／驗收視圖。資料不能由圖像模型自由補寫。
+
 ## 4. 主要來源路徑
 
 主線：
