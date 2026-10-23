@@ -331,7 +331,7 @@ def diagnose_attempt(manifest: dict[str, Any], raster_sha256: str | None = None)
             "next_change": rule["change"],
             "edit_only": rule["edit_only"],
             "freeze": rule["freeze"],
-            "repair_prompt_delta": rule["delta"],
+            "repair_prompt_delta": repair_delta,
             "expected_after_change": rule["expect"],
             "auto_visual_detection": False,
         }
@@ -339,6 +339,42 @@ def diagnose_attempt(manifest: dict[str, Any], raster_sha256: str | None = None)
     valid.sort(key=lambda pair: RULES[pair[0]]["priority"])
     primary, primary_evidence = valid[0]
     rule = RULES[primary]
+    observed = manifest.get("observed") if isinstance(manifest.get("observed"), dict) else {}
+    expected = manifest.get("expected") if isinstance(manifest.get("expected"), dict) else {}
+    repair_delta = str(rule["delta"])
+
+    if primary == "GAP_REMAINS":
+        gap = _number(observed.get("measured_gap_units", observed.get("gap_units", observed.get("measured_gap"))))
+        if gap is not None and gap > TOLERANCE:
+            repair_delta = (
+                f"The raster-bound review measured a remaining H2 gap of {gap:g} units. "
+                f"Translate the same rigid hammer toward the target along the existing collision normal by exactly {gap:g} units. "
+                "Keep rotation, scale, topology, contact target, camera, and effects frozen; re-audit for zero gap and zero penetration."
+            )
+    elif primary == "INTERPENETRATION":
+        depth = _number(observed.get("penetration_depth_units", observed.get("penetration_depth")))
+        if depth is None:
+            measured_gap = _number(observed.get("measured_gap_units", observed.get("gap_units", observed.get("measured_gap"))))
+            depth = abs(measured_gap) if measured_gap is not None and measured_gap < -TOLERANCE else None
+        if depth is not None and depth > TOLERANCE:
+            repair_delta = (
+                f"The raster-bound review measured {depth:g} units of interpenetration. "
+                f"Retract the same rigid hammer along the inverse collision normal by exactly {depth:g} units. "
+                "Keep rotation, scale, topology, contact target, camera, and effects frozen; re-audit for zero gap and zero penetration."
+            )
+    elif primary == "FOLLOWTHROUGH_MISMATCH":
+        measured = _number(observed.get("measured_advance_units", observed.get("advance_units")))
+        target = _number(expected.get("advance_units", expected.get("H3_advance_units")))
+        if measured is not None and target is not None:
+            error = target - measured
+            if abs(error) > TOLERANCE:
+                direction = "the declared +n direction" if error > 0 else "the inverse (-n) direction"
+                repair_delta = (
+                    f"The raster-bound review measured H3 advance={measured:g} units; target={target:g} units. "
+                    f"Translate the same rigid hammer by exactly {abs(error):g} units in {direction}. "
+                    "Keep rotation, scale, topology, P, camera, and scene frozen."
+                )
+
     other = [code for code, _ in valid[1:]]
     return {
         "status": "REPAIR_PLAN_READY",
