@@ -53,6 +53,14 @@ jobs:
             --outdir out/prompt_evidence_board/demo_packets \
             --branch "${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" \
             --commit-sha "${GITHUB_SHA}"
+      - name: Compile the full 192-variant T-Hammer matrix and per-prompt packets
+        run: |
+          python bubble_break/t_hammer_multiview_swing_engine.py --outdir out/prompt_evidence_board/t_hammer_matrix
+          python bubble_break/prompt_attempt_packet.py \
+            --matrix out/prompt_evidence_board/t_hammer_matrix/t_hammer_multiview_swing_matrix.json \
+            --outdir out/prompt_evidence_board/t_hammer_packets \
+            --branch "${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" \
+            --commit-sha "${GITHUB_SHA}"
       - name: Verify previews cannot claim an image PASS
         run: |
           python - <<'PY'
@@ -67,7 +75,13 @@ jobs:
           assert index['image_realization'] == 'NOT_RUN'
           assert index['pixel_audit'] == 'NOT_RUN'
           assert all(x['pixel_audit_status'] == 'NOT_RUN' for x in index['attempts'])
-          print('Teaching board rendered; two prompt packets created; no raster or pixel PASS claimed.')
+          full_index = __import__('json').loads(Path('out/prompt_evidence_board/t_hammer_packets/prompt_attempt_index.json').read_text(encoding='utf-8'))
+          assert full_index['variant_count'] == 192
+          assert full_index['attempt_count'] == 768
+          assert full_index['image_realization'] == 'NOT_RUN'
+          assert full_index['pixel_audit'] == 'NOT_RUN'
+          assert len({x['attempt_id'] for x in full_index['attempts']}) == 768
+          print('Mini fixture: 2 packets. Full T-Hammer matrix: 192 variants / 768 per-prompt packets. No image/pixel PASS claimed.')
           PY
       - name: Upload evidence-board preview
         uses: actions/upload-artifact@v4
