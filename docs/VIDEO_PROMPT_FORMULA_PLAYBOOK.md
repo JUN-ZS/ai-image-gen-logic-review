@@ -4,6 +4,12 @@
 > 基準：main @ 03934ba4f147e5f85937068e1113f2f62198f8e6；參照 V5／V5.1、Gemini、Shannon continuity 分支與槌1.txt／槌2.txt。  
 > 本文件是可複用的影片 Prompt／驗收規格，不宣稱 repo 已連接任何外部影片生成器。
 
+## 每幀雙輸出：影片素材不加字，教學板精確標註
+
+每個 keyframe 應保留兩個對應資產：原始乾淨 frame（用於影片剪輯與像素審查），以及以同一 raster SHA 為來源的 PROMPT EVIDENCE BOARD（顯示時間碼、attempt／branch、參數、預期與實際接觸、fail reason 和 continuity 狀態）。不要要求影片模型在畫面內準確畫出時間碼、SHA、角度或驗收勾號；這些文字要由程式後製排版。
+
+每一幀用相同的 `bubble_break/prompt_evidence_board.py` 及該幀 manifest 產生記錄板。最終影片預設使用無註記的來源 raster／影片；若需要「教學＋驗收」版影片，再把記錄板作為獨立畫中畫／片尾審計軌，不覆蓋原始幀。原始 raster 的 SHA 與 board 內記錄的來源 SHA 必須保留。
+
 ## 0. 先選影片模式
 
 | 模式 | 輸出目標 | 應用 |
