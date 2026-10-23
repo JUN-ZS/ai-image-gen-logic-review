@@ -1,7 +1,7 @@
 # 所有 Prompt Draft 與 Branch 對照表｜2026-10-23
 
 > Repository：JUN-ZS/ai-image-gen-logic-review  
-> 核對方式：查閱 main 樹、20 個現存 branch refs、主 Prompt 歷史檔、各路線規格／審查文件與部分 commit metadata。以下 SHA 是本次核對時 branch tip；後續 push 會變動。這份表不代表每個歷史 ZIP 內的二進位資料已全部解包逐項閱讀。
+> 核對方式：查閱 main 樹、21 個現存 branch refs、主 Prompt 歷史檔、各路線規格／審查文件與部分 commit metadata。以下 SHA 是本次核對時 branch tip；後續 push 會變動。這份表不代表每個歷史 ZIP 內的二進位資料已全部解包逐項閱讀。
 
 ## 1. 統一結論
 
@@ -15,7 +15,7 @@
 
 整合不是將不同句子摻在一起，而是將每個 branch 建成可選模組、使相互矛盾的模組互斥，並統一錯誤分類、回滾方式與證據標籤。
 
-## 2. 20 個 branch tip inventory
+## 2. 21 個 branch tip inventory
 
 | Branch | Tip SHA | 主題／來源 | 整合判斷 |
 |---|---|---|---|
