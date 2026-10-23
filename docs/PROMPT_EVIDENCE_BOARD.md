@@ -69,6 +69,25 @@ python bubble_break/prompt_evidence_board.py \
 - 這是來源綁定檢查，不會自行判斷接觸面是否畫正確；真正的像素判讀仍須由指定 reviewer／視覺檢查程序完成。
 - `review_receipt` 的 reviewer 身份與結論仍是外部信任輸入；工具不會認證人類身份。
 
-## 已知涵蓋範圍
+## 已知涵蓋範圍與 CLI 選項
 
-此版 packet compiler 已有 T-Hammer multiview 的 `variants[].prompts` adapter。其他 branch 的輸出格式不完全相同（例如 Original Sin JSONL、CYLINDER_CROSS 的單張 dense-atlas prompt、planted-bubble 階段 request），需要各自的 adapter 映射至同一個 manifest schema；未適配的輸出不可宣稱已自動整合。Branch／Draft 對照表用於記錄這些來源、互斥拓撲與驗收邊界。
+bubble_break/prompt_attempt_packet.py 已有五種輸入格式適配器：
+
+| --format | 輸入 | 對應來源／用途 |
+|---|---|---|
+| matrix | variants[].prompts JSON | T-Hammer multiview 矩陣；每個 variant 的雙槌證明、H0、H2、H3 分別打包 |
+| original-sin-jsonl | Original Sin generate.py 輸出的 JSONL | 每個 story/mode 的 H0–H3 與 storyboard cells |
+| dense-atlas | CYLINDER_CROSS atlas manifest JSON | 單張密集候選圖 Prompt，核對 manifest 記載的 prompt SHA |
+| dense-bubble | dense-hammer 的輸出目錄或 packet_summary.json | Stage A–E 與 D0–D4 的階段 Prompt Markdown |
+| planted-bubble-packet | SHANNON_PLANTED_BUBBLE_PROMPT_PACKET.json | 每階段 request JSON 的 prompt、授權變量與必須保留欄位 |
+
+例子（branch 和 commit 必須用真正產生輸入檔的版本，不可照抄示例值；以下路徑是按各生成器輸出位置示意）：
+
+~~~bash
+python bubble_break/prompt_attempt_packet.py --format original-sin-jsonl --input out/original_sin_bubble_break.jsonl --outdir out/prompt_packets/original_sin --branch feat/original-sin-bubble-break-engine --commit-sha ACTUAL_SOURCE_COMMIT_SHA
+python bubble_break/prompt_attempt_packet.py --format dense-atlas --input out/cylinder_cross_dense_atlas/cylinder_cross_dense_atlas_manifest.json --outdir out/prompt_packets/cylinder_cross_atlas --branch feat/cylinder-cross-dense-atlas --commit-sha ACTUAL_SOURCE_COMMIT_SHA
+python bubble_break/prompt_attempt_packet.py --format dense-bubble --input out/dense_hammer_bubble/packet_summary.json --outdir out/prompt_packets/planted_cylinder --branch feat/dense-hammer-bubble-pick --commit-sha ACTUAL_SOURCE_COMMIT_SHA
+python bubble_break/prompt_attempt_packet.py --format planted-bubble-packet --input out/shannon_planted_bubble/SHANNON_PLANTED_BUBBLE_PROMPT_PACKET.json --outdir out/prompt_packets/shannon_planted_bubble --branch feat/gemini-planted-bubble-closed-loop-20261022 --commit-sha ACTUAL_SOURCE_COMMIT_SHA
+~~~
+
+These adapters normalize prompts, source paths/hashes, stage/topology IDs, expected geometry, numeric variables, and unverified observation fields into one manifest contract. They do not merge contradictory geometries; each adapter preserves its source topology. A branch with a different output schema still needs an explicit adapter and test before it can be called integrated.
