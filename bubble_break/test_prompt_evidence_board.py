@@ -111,7 +111,7 @@ class TestPromptEvidenceBoard(unittest.TestCase):
         self.assertIn("t_hammer_terminal_face", svg)
         self.assertIn("face=end-face", svg)
         self.assertIn("FAILURE REASONS", svg)
-        self.assertIn("NEXT CHANGE", svg)
+        self.assertIn("NEXT TRIAL", svg)
 
     def test_next_change_is_derived_from_sha_bound_failure_not_generic_text(self):
         manifest = self.base_manifest()
@@ -147,7 +147,18 @@ class TestPromptEvidenceBoard(unittest.TestCase):
             }
             svg = build_svg(manifest, raster)
             self.assertIn("INSUFFICIENT_EVIDENCE", svg)
-            self.assertIn("Do not change the image formula yet", svg)
+            self.assertIn("Run prompt_trial_planner.py", svg)
+
+    def test_formula_first_board_is_a_layout_variant_not_a_new_raster(self):
+        manifest = self.base_manifest()
+        standard = build_svg(manifest, None, teaching_layout="standard")
+        formula_first = build_svg(manifest, None, teaching_layout="formula-first")
+        self.assertIn("打泡實驗板", standard)
+        self.assertIn("NEXT TRIAL", standard)
+        self.assertIn("圖像公式教學板", formula_first)
+        self.assertIn("FORMULA / 公式拆解", formula_first)
+        self.assertIn("OUTPUT CONTRACT", formula_first)
+        self.assertIn("NO SOURCE RASTER ATTACHED", formula_first)
 
     def test_contact_roi_is_overlaid_only_when_raster_exists(self):
         manifest = self.base_manifest()

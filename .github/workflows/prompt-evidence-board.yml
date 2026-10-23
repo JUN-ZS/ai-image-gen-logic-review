@@ -1,4 +1,4 @@
-name: Prompt Evidence Board
+name: Prompt Evidence Board and Trial Planner
 
 on:
   push:
@@ -7,6 +7,8 @@ on:
       - 'bubble_break/prompt_evidence_board.py'
       - 'bubble_break/prompt_attempt_packet.py'
       - 'bubble_break/prompt_failure_diagnosis.py'
+      - 'bubble_break/prompt_trial_planner.py'
+      - 'bubble_break/test_prompt_trial_planner.py'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
       - 'bubble_break/test_prompt_failure_diagnosis.py'
@@ -19,7 +21,11 @@ on:
     paths:
       - 'bubble_break/prompt_evidence_board.py'
       - 'bubble_break/prompt_attempt_packet.py'
+      - 'bubble_break/prompt_failure_diagnosis.py'
+      - 'bubble_break/prompt_trial_planner.py'
+      - 'bubble_break/test_prompt_trial_planner.py'
       - 'bubble_break/test_prompt_evidence_board.py'
+      - 'bubble_break/test_prompt_failure_diagnosis.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
       - 'schemas/prompt_attempt_manifest.schema.json'
       - 'examples/prompt_attempt_manifest.example.json'
@@ -61,16 +67,37 @@ jobs:
           assert 'by exactly {gap:g} units' in source
           assert 'The raster-bound review measured H3 advance=' in source
           PY
-      - name: Run evidence-board, prompt-packet, and diagnosis tests
+      - name: Run evidence-board, prompt-packet, diagnosis, and trial-planner tests
         run: |
           python -m unittest bubble_break/test_prompt_evidence_board.py -v
           python -m unittest bubble_break/test_prompt_attempt_packet.py -v
           python -m unittest bubble_break/test_prompt_failure_diagnosis.py -v
-      - name: Render a manifest-only teaching board
+          python -m unittest bubble_break/test_prompt_trial_planner.py -v
+      - name: Render standard and formula-first teaching board templates
         run: |
           python bubble_break/prompt_evidence_board.py \
             --manifest examples/prompt_attempt_manifest.example.json \
+            --teaching-layout standard \
             --out out/prompt_evidence_board/template.svg
+          python bubble_break/prompt_evidence_board.py \
+            --manifest examples/prompt_attempt_manifest.example.json \
+            --teaching-layout formula-first \
+            --out out/prompt_evidence_board/template_formula_first.svg
+      - name: Create the next image/teaching/video trial plan
+        run: |
+          python bubble_break/prompt_trial_planner.py \
+            --outdir out/prompt_evidence_board/next_trials \
+            --limit 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          plan = json.loads(Path('out/prompt_evidence_board/next_trials/trial_plan.json').read_text(encoding='utf-8'))
+          assert plan['plan_status'] == 'PLAN_READY'
+          assert [t['trial_id'] for t in plan['next_trials']] == ['IMG-FORMULA-01', 'IMG-TEACH-01', 'VIDEO-FORMULA-01']
+          assert {t['family'] for t in plan['next_trials']} == {'image_formula', 'image_teaching', 'video_formula'}
+          assert plan['plan_only'] is True and plan['external_generation_called'] is False
+          print('Preregistered trial plan covers image formula, image teaching-board layout, and video prompt formula; generation not claimed.')
+          PY
       - name: Compile a traceable prompt-packet example
         run: |
           python bubble_break/prompt_attempt_packet.py \
@@ -96,7 +123,11 @@ jobs:
           assert 'NOT_RUN' in s
           assert 'FORMULA ≠ PIXEL PROOF' in s
           assert 'HOLD' in s
-          assert 'Do not change the image formula yet' in s
+          assert 'NEXT TRIAL' in s
+          assert 'Run prompt_trial_planner.py' in s
+          f = Path('out/prompt_evidence_board/template_formula_first.svg').read_text(encoding='utf-8')
+          assert 'FORMULA / 公式拆解' in f
+          assert 'OUTPUT CONTRACT' in f
           index = __import__('json').loads(Path('out/prompt_evidence_board/demo_packets/prompt_attempt_index.json').read_text(encoding='utf-8'))
           assert index['attempt_count'] == 2
           assert index['image_realization'] == 'NOT_RUN'
@@ -113,6 +144,6 @@ jobs:
       - name: Upload evidence-board preview
         uses: actions/upload-artifact@v4
         with:
-          name: prompt-evidence-board-template
+          name: prompt-trial-plan-and-teaching-board
           path: out/prompt_evidence_board/
           if-no-files-found: error

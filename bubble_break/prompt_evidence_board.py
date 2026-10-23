@@ -158,7 +158,13 @@ def compact_data(data: dict[str, Any]) -> str:
     return " · ".join(parts) if parts else "UNVERIFIED：尚無記錄"
 
 
-def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
+def build_svg(manifest: dict[str, Any], image_path: Path | None, teaching_layout: str = "standard") -> str:
+    if teaching_layout not in {"standard", "formula-first"}:
+        raise ValueError("teaching_layout must be standard or formula-first")
+    formula_steps = manifest.get("formula_steps")
+    if not isinstance(formula_steps, list) or not formula_steps:
+        formula_steps = ["OUTPUT CONTRACT", "TOPOLOGY", "CONTACT", "ACTION", "CAMERA", "LIGHT/FX", "NEGATIVES"]
+    formula_chain = " → ".join(str(item) for item in formula_steps)
     attempt = str(manifest.get("attempt_id", "ATTEMPT-ID-MISSING"))
     branch = str(manifest.get("branch", "UNSPECIFIED"))
     commit = str(manifest.get("source_commit_sha", "UNPINNED"))
@@ -183,14 +189,21 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     diagnosis = diagnose_attempt(manifest, raster_sha256=image_sha)
     diagnosis_codes = diagnosis.get("all_failure_codes", [])
     diagnosis_status = str(diagnosis.get("status", "HOLD"))
-    if diagnosis_status == "REPAIR_PLAN_READY":
-        change_fields = ", ".join(map(str, diagnosis.get("edit_only", [])))
-        freeze_fields = ", ".join(map(str, diagnosis.get("freeze", [])))
-        next_change = f"{diagnosis.get('primary_failure_code')} | CHANGE ONLY: {change_fields}"
-        freeze_text = f"KEEP FROZEN: {freeze_fields}"
+    trial = manifest.get("next_trial")
+    if isinstance(trial, dict) and trial.get("trial_id"):
+        next_trial_text = f"{trial.get('trial_id')} | {trial.get('objective', trial.get('hypothesis', '預先註冊的試驗'))}"
+        vary_fields = ", ".join(map(str, trial.get("vary_only", []))) or "見 trial card"
+        freeze_fields = ", ".join(map(str, trial.get("freeze", []))) or "見 trial card"
+        freeze_text = f"VARY ONLY: {vary_fields} · FREEZE: {freeze_fields}"
+        plan_badge = "TRIAL ATTACHED"
+    elif diagnosis_status == "REPAIR_PLAN_READY":
+        next_trial_text = f"證據線索：{diagnosis.get('primary_failure_code')}。這是試驗輸入，不是已證實的修補答案。請執行 prompt_trial_planner.py 建立 A/B 對照。"
+        freeze_text = "先建立 control / treatment；一次只測一個因素。"
+        plan_badge = "PLANNER REQUIRED"
     else:
-        next_change = str(diagnosis.get("next_change", "需先取得與原圖 SHA 綁定的失敗審查"))
-        freeze_text = "變量凍結：等待與本圖 SHA 綁定的失敗審查"
+        next_trial_text = "尚未指派下輪試驗。執行 prompt_trial_planner.py，取得圖像公式、教學板及影片公式的對照組／試驗組。"
+        freeze_text = "凍結其餘條件；以實際生成媒體及對應審查收據評分。"
+        plan_badge = "PLANNER REQUIRED"
     if not failures and diagnosis_codes:
         failures = [
             f"{item.get('code')}: {item.get('basis')}"
@@ -210,7 +223,7 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
         '<linearGradient id="header" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#102a43"/><stop offset="1" stop-color="#173b55"/></linearGradient></defs>',
         '<rect width="1920" height="1080" fill="url(#bg)"/>',
         rect(36, 28, 1848, 112, "url(#header)", "#36516d", 24, 2),
-        text_el(62, 72, "打泡實驗板  /  PROMPT → IMAGE → AUDIT", 33, "#f4f8ff", 700),
+        text_el(62, 72, "打泡實驗板  /  PROMPT → IMAGE → AUDIT" if teaching_layout == "standard" else "圖像公式教學板  /  FORMULA → GEOMETRY → AUDIT", 33, "#f4f8ff", 700),
         text_el(64, 111, f"{attempt}   ·   {stage}   ·   {prompt_id}", 21, "#a6c2db", 500),
         rect(1510, 48, 340, 62, status_color, "none", 18),
         text_el(1532, 87, f"PIXEL AUDIT  ·  {audit_status}", 23, "#071425", 800),
@@ -256,9 +269,15 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
               multiline(rx + 22, 299, f"Topology: {topology}", 49, 1, 19, "#f4f8ff", 600),
               multiline(rx + 22, 332, f"Prompt: {prompt_id}  |  Variant: {manifest.get('variant_id', '—')}", 50, 1, 17)]
 
+    if teaching_layout == "formula-first":
+        formula_panel_text = f"Formula: {formula_chain}\nTrial variable: {variables_text}"
+        formula_panel_title = "02  FORMULA / 公式拆解"
+    else:
+        formula_panel_text = f"Changed: {variables_text}"
+        formula_panel_title = "02  VARIABLES / 本次改了什麼"
     parts += [rect(rx, 378, rw, 192, "#102238", "#294864", 16, 1),
-              text_el(rx + 22, 413, "02  VARIABLES / 本次改了什麼", 22, "#80d5ff", 800),
-              multiline(rx + 22, 451, f"Changed: {variables_text}", 58, 3, 18),
+              text_el(rx + 22, 413, formula_panel_title, 22, "#80d5ff", 800),
+              multiline(rx + 22, 451, formula_panel_text, 58, 3, 17 if teaching_layout == "formula-first" else 18),
               multiline(rx + 22, 535, f"Stage: {stage}  |  Image: {image_status}", 49, 1, 17, "#b8c9da")]
 
     expected_text = compact_data(expected) if expected else "未填：不能從 Prompt 推定"
@@ -276,8 +295,8 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     fail_text = "；".join(str(x) for x in failures) if failures else "未記錄（不能自動判為成功）"
     parts.append(multiline(80, 926, fail_text, 42, 3, 20))
     parts += [rect(656, 854, 590, 184, "#102a33", "#28645c", 16, 1),
-              text_el(678, 890, f"05  NEXT CHANGE / 下一輪只改  ·  {diagnosis_status}", 19, "#69e6c2", 800),
-              multiline(678, 926, next_change, 56, 2, 17),
+              text_el(678, 890, f"05  NEXT TRIAL / 下一次要試  ·  {plan_badge}", 19, "#69e6c2", 800),
+              multiline(678, 926, next_trial_text, 56, 2, 17),
               multiline(678, 980, freeze_text, 58, 2, 14, "#a8bdcf", 400, 18)]
     parts += [rect(1270, 822, 592, 216, "#162435", "#52657a", 16, 1),
               text_el(1292, 858, "06  AUDIT / 驗收證據", 21, "#e4edf7", 800),
@@ -300,6 +319,8 @@ def main() -> int:
     parser.add_argument("--manifest", required=True, help="JSON attempt manifest")
     parser.add_argument("--image", help="actual source raster (PNG/JPEG etc.); omitted means no-image board")
     parser.add_argument("--out", required=True, help="output SVG evidence board")
+    parser.add_argument("--teaching-layout", choices=["standard", "formula-first"], default="standard",
+                        help="standard audit board or formula-first image-teaching layout")
     args = parser.parse_args()
 
     manifest_path = Path(args.manifest)
@@ -311,16 +332,18 @@ def main() -> int:
         raise SystemExit(f"source raster does not exist: {image_path}")
     output = Path(args.out)
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(build_svg(manifest, image_path), encoding="utf-8")
+    output.write_text(build_svg(manifest, image_path, teaching_layout=args.teaching_layout), encoding="utf-8")
+    attached_trial = manifest.get("next_trial")
     print(json.dumps({
         "output_svg": str(output),
+        "teaching_layout": args.teaching_layout,
         "diagnosis_status": diagnose_attempt(manifest, raster_sha256=hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path else None)["status"],
-        "next_change": diagnose_attempt(manifest, raster_sha256=hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path else None)["next_change"],
+        "next_trial_id": attached_trial.get("trial_id") if isinstance(attached_trial, dict) else None,
         "attempt_id": manifest.get("attempt_id", "ATTEMPT-ID-MISSING"),
         "source_raster_attached": bool(image_path),
         "source_raster_sha256": hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path else None,
         "pixel_audit_displayed": audit_state(manifest, hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path else None)[1],
-        "note": "SVG board annotates evidence; it does not generate an image or validate pixels itself."
+        "note": "SVG board annotates evidence; formula-first changes the teaching layout only. It does not generate media or validate pixels itself."
     }, ensure_ascii=False))
     return 0
 

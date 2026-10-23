@@ -19,7 +19,7 @@ attempt/
 - **右上：來源追溯。** Attempt ID、stage、branch、source commit、topology、prompt ID、variant ID。
 - **右中：公式與數值。** 這次更動的撞擊軸、鏡頭角度／焦距、windup、柄向，以及 H0 gap／H2 gap／H3 advance 等與該公式有關的數字。
 - **右下：預期 vs 實際。** 預期接觸面、P、法線、間距，與真正檢查畫面後記錄的接觸面／位置／剛性。
-- **底部：驗收與下一輪。** 失敗原因、下一輪只改哪個變量、審查者、raster SHA-256 與 audit 狀態。
+- **底部：驗收與下一項試驗。** 失敗原因、已註冊的 control/treatment、下一個可驗證假設、審查者、raster SHA-256 與 audit 狀態。
 
 色碼：青色為來源／公式欄位；綠色只代表有綁定相同 raster SHA 的 PASS 收據；紅色顯示明確 FAIL；琥珀色顯示等待或未驗證。無原圖時以 NO SOURCE RASTER ATTACHED 顯示，不會放一張 proxy 假扮成出圖。
 
@@ -61,7 +61,14 @@ python bubble_break/prompt_attempt_packet.py \
 python bubble_break/prompt_evidence_board.py \
   --manifest out/prompt_packets/THE_ATTEMPT/manifest.json \
   --image out/actual_generated_raster.png \
+  --teaching-layout standard \
   --out out/prompt_packets/THE_ATTEMPT/teaching_board.svg
+
+python bubble_break/prompt_evidence_board.py \
+  --manifest out/prompt_packets/THE_ATTEMPT/manifest.json \
+  --image out/actual_generated_raster.png \
+  --teaching-layout formula-first \
+  --out out/prompt_packets/THE_ATTEMPT/teaching_board_formula_first.svg
 ~~~
 
 - 在 manifest 中只填實際生成／審查後的欄位。沒有看過像素時，observed 值應是 `UNVERIFIED`。
@@ -69,7 +76,9 @@ python bubble_break/prompt_evidence_board.py \
 - 這是來源綁定檢查，不會自行判斷接觸面是否畫正確；真正的像素判讀仍須由指定 reviewer／視覺檢查程序完成。
 - `review_receipt` 的 reviewer 身份與結論仍是外部信任輸入；工具不會認證人類身份。
 
-## 「下一次改哪裡」必須由失敗證據驅動
+## 「下一次要試什麼」由試驗排程器安排，診斷只提供證據
+
+圖像公式、教學板與影片 Prompt 的第一批對照、命令及判定門檻見 [Prompt Trial Planner](PROMPT_TRIAL_PLANNER.md)。教學板可以輸出 standard 與 formula-first 兩版，用同一張 source raster 做版式盲測。診斷器的失敗原因是試驗假設的輸入，不是自動宣告某個改法有效。
 
 \`bubble_break/prompt_failure_diagnosis.py\` 會根據已審查的結構化欄位，選出一個優先失敗原因，輸出：
 
@@ -79,7 +88,7 @@ python bubble_break/prompt_evidence_board.py \
 - \`repair_prompt_delta\`：附加到原 Prompt 的具體修正指令；
 - \`expected_after_change\`：下一張圖必須驗證的可觀察結果。
 
-### 例：真正接觸到槌腰側面
+### 例：側面接觸是觀察證據，不是唯一試驗答案
 
 在 reviewer 檢查這張原圖後，將該圖的 SHA-256 寫入 \`review_receipt.raster_sha256\`，將 \`review_receipt.verdict\` 設為 \`FAIL\`，並記錄 \`observed.active_surface = "broad_sidewall"\`。同時應寫入 reviewer 身份、時間及失敗理由。然後：
 
@@ -123,3 +132,8 @@ python bubble_break/prompt_attempt_packet.py --format planted-bubble-packet --in
 ~~~
 
 These adapters normalize prompts, source paths/hashes, stage/topology IDs, expected geometry, numeric variables, and unverified observation fields into one manifest contract. They do not merge contradictory geometries; each adapter preserves its source topology. A branch with a different output schema still needs an explicit adapter and test before it can be called integrated.
+
+
+## 試驗排程輸出
+
+執行 `python bubble_break/prompt_trial_planner.py --outdir out/prompt_trials --limit 3`，會產生圖像公式、教學板與影片公式三張初始試驗卡及對照／試驗文字。這些是預先註冊的實驗計劃，不代表外部生成或像素審核已完成。
