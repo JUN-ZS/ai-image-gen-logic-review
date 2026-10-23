@@ -186,8 +186,8 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     diagnosis_codes = diagnosis.get("all_failure_codes", [])
     diagnosis_status = str(diagnosis.get("status", "HOLD"))
     if diagnosis_status == "REPAIR_PLAN_READY":
-        change_fields = "、".join(map(str, diagnosis.get("edit_only", [])))
-        next_change = f"{diagnosis.get('primary_failure_code')}｜只改：{change_fields}。{diagnosis.get('next_change')}"
+        change_fields = ", ".join(map(str, diagnosis.get("edit_only", [])))
+        next_change = f"{diagnosis.get('primary_failure_code')} | 只改：{change_fields}. {diagnosis.get('next_change')}"
     else:
         next_change = str(diagnosis.get("next_change", "需先取得與原圖 SHA 綁定的失敗審查"))
     if not failures and diagnosis_codes:
@@ -196,7 +196,7 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
             for item in diagnosis.get("evidence", [])
         ]
     if not failures and diagnosis_status == "HOLD":
-        failures = ["尚未有與此 raster SHA 綁定的 FAIL 審查；不推測修正位置。"]
+        failures = [f"{diagnosis.get('primary_failure_code', 'INSUFFICIENT_EVIDENCE')}: 尚未有與此 raster SHA 綁定的 FAIL 審查；不推測修正位置。"]
 
     status_color = {
         "PASS": "#39d98a", "FAIL": "#ff5d6c", "PENDING": "#ffc857",
