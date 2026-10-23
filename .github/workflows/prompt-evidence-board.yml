@@ -16,9 +16,12 @@ on:
   pull_request:
     paths:
       - 'bubble_break/prompt_evidence_board.py'
+      - 'bubble_break/prompt_attempt_packet.py'
       - 'bubble_break/test_prompt_evidence_board.py'
+      - 'bubble_break/test_prompt_attempt_packet.py'
       - 'schemas/prompt_attempt_manifest.schema.json'
       - 'examples/prompt_attempt_manifest.example.json'
+      - 'examples/prompt_matrix_minimal.example.json'
       - 'docs/PROMPT_*'
       - '.github/workflows/prompt-evidence-board.yml'
   workflow_dispatch:
