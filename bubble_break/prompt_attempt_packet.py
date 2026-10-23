@@ -18,8 +18,10 @@ from typing import Any
 
 try:
     from bubble_break.prompt_evidence_board import build_svg
+    from bubble_break.prompt_failure_diagnosis import diagnose_attempt
 except ModuleNotFoundError:  # support direct execution as: python bubble_break/prompt_attempt_packet.py
     from prompt_evidence_board import build_svg
+    from prompt_failure_diagnosis import diagnose_attempt
 
 
 STAGE_IDS = {
@@ -136,7 +138,7 @@ def compile_manifest(
 
     prompt_sha = hashlib.sha256(prompt_text.encode("utf-8")).hexdigest()
     resolved_topology = str(variant.get("topology_id") or ("dual_t_hammer_terminal_face_pair" if prompt_id.startswith("stage_a") else topology_id))
-    return {
+    manifest = {
         "schema_version": 1,
         "attempt_id": f"{variant_id}__{stage}__TRY{attempt_index:04d}",
         "branch": branch,
@@ -167,6 +169,9 @@ def compile_manifest(
         "next_change": "NOT GENERATED: attach the actual raster, audit the declared contact contract, then change only a measured failed variable.",
         "prompt_excerpt": prompt_text[:240],
     }
+    manifest["diagnosis"] = diagnose_attempt(manifest)
+    manifest["next_change"] = manifest["diagnosis"]["next_change"]
+    return manifest
 
 
 def package_matrix(
