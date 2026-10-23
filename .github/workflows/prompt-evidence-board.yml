@@ -1,0 +1,57 @@
+name: Prompt Evidence Board
+
+on:
+  push:
+    branches: ['docs/**', 'feat/**']
+    paths:
+      - 'bubble_break/prompt_evidence_board.py'
+      - 'bubble_break/test_prompt_evidence_board.py'
+      - 'schemas/prompt_attempt_manifest.schema.json'
+      - 'examples/prompt_attempt_manifest.example.json'
+      - 'docs/PROMPT_*'
+      - '.github/workflows/prompt-evidence-board.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/prompt_evidence_board.py'
+      - 'bubble_break/test_prompt_evidence_board.py'
+      - 'schemas/prompt_attempt_manifest.schema.json'
+      - 'examples/prompt_attempt_manifest.example.json'
+      - 'docs/PROMPT_*'
+      - '.github/workflows/prompt-evidence-board.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  traceability-and-audit-honesty:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run evidence-board tests
+        run: python -m unittest bubble_break/test_prompt_evidence_board.py -v
+      - name: Render a manifest-only teaching board
+        run: |
+          python bubble_break/prompt_evidence_board.py \
+            --manifest examples/prompt_attempt_manifest.example.json \
+            --out out/prompt_evidence_board/template.svg
+      - name: Verify the preview cannot claim an image PASS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('out/prompt_evidence_board/template.svg')
+          s = p.read_text(encoding='utf-8')
+          assert 'NO SOURCE RASTER ATTACHED' in s
+          assert 'NOT_RUN' in s
+          assert 'FORMULA ≠ PIXEL PROOF' in s
+          print('Manifest preview rendered; no raster or pixel PASS claimed.')
+          PY
+      - name: Upload evidence-board preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: prompt-evidence-board-template
+          path: out/prompt_evidence_board/template.svg
+          if-no-files-found: error
