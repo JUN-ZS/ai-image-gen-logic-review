@@ -166,8 +166,8 @@ def package_matrix(
     variants = matrix.get("variants")
     if not isinstance(variants, list):
         raise ValueError("input matrix must contain a 'variants' array")
-    if not branch.strip() or not commit_sha.strip() or commit_sha.upper() in {"UNPINNED", "HEAD", "UNKNOWN"}:
-        raise ValueError("branch and a real source commit SHA are required for traceability")
+    if not branch.strip() or not re.fullmatch(r"[0-9a-fA-F]{40}|[0-9a-fA-F]{64}", commit_sha):
+        raise ValueError("branch and an exact 40- or 64-hex source commit SHA are required for traceability")
     outdir.mkdir(parents=True, exist_ok=True)
     index_items: list[dict[str, Any]] = []
     attempt_index = 0
