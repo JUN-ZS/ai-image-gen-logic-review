@@ -8,6 +8,8 @@
 
 ## 建議閱讀順序
 
+0. [Prompt Evidence Board 使用指南](PROMPT_EVIDENCE_BOARD.md)：每次生成的原始打擊圖、Prompt／變量封包與教學／驗收標註板如何一一對應。
+
 1. [圖像 Prompt 公式教學](PROMPT_FORMULA_PLAYBOOK.md)：所有武器／打泡模式、可複製單圖 Prompt、負面約束與像素驗收。
 2. [影片 Prompt 公式教學](VIDEO_PROMPT_FORMULA_PLAYBOOK.md)：10 秒時間軸、五個關鍵幀、母圖與遮罩、連續性硬閘門，以及三分鐘 MV 的敘事公式。
 3. [所有 Draft 與 Branch 對照表](PROMPT_BRANCH_DRAFT_CROSSWALK.md)：21 個 branch refs、歷史 Prompt 草稿、互斥拓撲和證據狀態。
