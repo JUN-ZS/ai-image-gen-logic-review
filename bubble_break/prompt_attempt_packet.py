@@ -16,7 +16,10 @@ import shutil
 from pathlib import Path
 from typing import Any
 
-from bubble_break.prompt_evidence_board import build_svg
+try:
+    from bubble_break.prompt_evidence_board import build_svg
+except ModuleNotFoundError:  # support direct execution as: python bubble_break/prompt_attempt_packet.py
+    from prompt_evidence_board import build_svg
 
 
 STAGE_IDS = {
