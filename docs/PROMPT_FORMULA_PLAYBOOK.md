@@ -4,6 +4,23 @@
 > 基準：main @ 03934ba4f147e5f85937068e1113f2f62198f8e6（2026-10-23 核對）。  
 > 文件狀態：跨分支規格手冊，不是單次生成成功的證明。
 
+## 輸出規則：乾淨打擊圖 + 精確教學／驗收板
+
+每次 attempt 預期交付兩個視圖，而不是讓圖像模型把數據字硬畫進成圖：
+
+1. **SOURCE RASTER**：純打擊畫面。Prompt 要求 no text / no labels / no panel grid，保留原始輸出供像素驗收。
+2. **PROMPT EVIDENCE BOARD**：將該張 raster 原樣嵌入 SVG，再由程式以真實 manifest 加上 attempt ID、branch／commit、topology、改動變量、數字參數、EXPECTED vs OBSERVED、接觸點 ROI、失敗原因、下一輪變量及審查狀態。標籤與數據是確定性渲染，避免模型把數字或中文字拼錯。
+
+編譯工具：`bubble_break/prompt_evidence_board.py`；資料契約：`schemas/prompt_attempt_manifest.schema.json`；樣本：`examples/prompt_attempt_manifest.example.json`。例子中的 placeholder 不是實際實驗數據。
+
+~~~bash
+python bubble_break/prompt_evidence_board.py --manifest examples/prompt_attempt_manifest.example.json --out out/prompt_evidence/TRY-0001.svg
+# 真實圖片到手後，將 --image 指向該次原始 raster，再生成同一 attempt 的註記板
+python bubble_break/prompt_evidence_board.py --manifest out/attempt.json --image out/attempt.png --out out/prompt_evidence/TRY-0001.svg
+~~~
+
+若沒有附上原始 raster，板上會明確顯示 NO SOURCE RASTER ATTACHED；程式不會把 Prompt PASS 或 SVG proxy PASS 改寫成 image PASS。Pixel Audit 的 PASS 只有在 review receipt 的 SHA-256 與實際 raster 一致、且 verdict=PASS 時才會顯示。這仍依賴可信的實際審查者；工具本身不會自動看懂碰撞。
+
 ## 0. 核心原則：所有分支都在打泡，但不是同一種槌
 
 不可把所有分支揉成一條 mega-prompt。現有嘗試有互斥的武器拓撲：
