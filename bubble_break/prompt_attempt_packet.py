@@ -60,18 +60,17 @@ def compile_manifest(
     swing = variant.get("swing") if isinstance(variant.get("swing"), dict) else {}
     windup = variant.get("windup_profile") if isinstance(variant.get("windup_profile"), dict) else {}
     stage = STAGE_IDS.get(prompt_id, prompt_id.upper())
+    off = camera.get("off_normal_deg", "UNSPECIFIED")
+    orbit = camera.get("orbit_deg", "UNSPECIFIED")
+    roll = camera.get("roll_deg", "UNSPECIFIED")
     vars_changed = {
         "impact_axis": axis.get("axis_id", axis.get("name_en", "UNSPECIFIED")),
-        "axis_normal": axis.get("normal", geometry.get("attacker_normal", "UNSPECIFIED")),
         "camera": camera.get("camera_id", camera.get("name_en", "UNSPECIFIED")),
-        "camera_off_normal_deg": camera.get("off_normal_deg", "UNSPECIFIED"),
-        "camera_orbit_deg": camera.get("orbit_deg", "UNSPECIFIED"),
-        "camera_roll_deg": camera.get("roll_deg", "UNSPECIFIED"),
+        "camera_view_deg": f"off={off}, orbit={orbit}, roll={roll}",
         "focal_mm": camera.get("focal_mm", "UNSPECIFIED"),
-        "swing": swing.get("swing_id", swing.get("name_en", "UNSPECIFIED")),
         "windup_profile": windup.get("profile_id", "UNSPECIFIED"),
-        "handle_roll_A_deg": geometry.get("roll_A", "UNSPECIFIED"),
-        "handle_roll_B_deg": geometry.get("roll_B", "UNSPECIFIED"),
+        "handle_rolls_deg": f"A={geometry.get('roll_A', 'UNSPECIFIED')}, B={geometry.get('roll_B', 'UNSPECIFIED')}",
+        "distance_contract": f"H0_total_gap={geometry.get('H0_total_gap', 'UNSPECIFIED')}, H2_gap={geometry.get('H2_gap', 'UNSPECIFIED')}, H3_advance={geometry.get('H3_advance', 'UNSPECIFIED')}",
     }
     if prompt_id.startswith("stage_a"):
         expected = {
@@ -124,6 +123,7 @@ def compile_manifest(
         audit_status = "NOT_RUN"
 
     prompt_sha = hashlib.sha256(prompt_text.encode("utf-8")).hexdigest()
+    resolved_topology = "dual_t_hammer_terminal_face_pair" if prompt_id.startswith("stage_a") else topology_id
     return {
         "schema_version": 1,
         "attempt_id": f"{variant_id}__{stage}__TRY{attempt_index:04d}",
@@ -133,7 +133,7 @@ def compile_manifest(
         "prompt_id": prompt_id,
         "prompt_sha256": prompt_sha,
         "variant_id": variant_id,
-        "topology_id": topology_id,
+        "topology_id": resolved_topology,
         "stage_id": stage,
         "variables_changed": vars_changed,
         "expected": expected,
