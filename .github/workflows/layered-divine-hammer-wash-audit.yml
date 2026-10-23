@@ -1,0 +1,45 @@
+name: Layered Divine + Cross Hammer Wash Audit
+
+on:
+  push:
+    branches: [main, 'feat/**']
+    paths:
+      - 'bubble_break/layered_divine_hammer_wash_audit.py'
+      - 'bubble_break/test_layered_divine_hammer_wash_audit.py'
+      - 'bubble_break/cross_hammer_into_camera_bubble_contract.py'
+      - 'bubble_break/test_cross_hammer_into_camera_bubble_contract.py'
+      - 'bubble_break/CROSS_HAMMER_INTO_CAMERA_BUBBLE_CONTRACT.md'
+      - '.github/workflows/layered-divine-hammer-wash-audit.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/layered_divine_hammer_wash_audit.py'
+      - 'bubble_break/test_layered_divine_hammer_wash_audit.py'
+      - 'bubble_break/cross_hammer_into_camera_bubble_contract.py'
+      - 'bubble_break/test_cross_hammer_into_camera_bubble_contract.py'
+      - 'bubble_break/CROSS_HAMMER_INTO_CAMERA_BUBBLE_CONTRACT.md'
+      - '.github/workflows/layered-divine-hammer-wash-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  l1-l5-unit-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pillow numpy
+        run: pip install pillow numpy
+      - name: Dual-warrior divine T-hammer L1–L5 unit tests
+        run: python -m unittest bubble_break.test_layered_divine_hammer_wash_audit -v
+      - name: Cross-hammer into-camera bubble L1–L5 unit tests
+        run: python -m unittest bubble_break.test_cross_hammer_into_camera_bubble_contract -v
+      - name: Honest visual gate note
+        run: |
+          python - <<'PY'
+          print("visual_acceptance_status remains NOT_VERIFIED_BY_CODE")
+          print("unit gates OK does not mean real image PASS")
+          PY
