@@ -80,12 +80,22 @@ class TestPromptFailureDiagnosis(unittest.TestCase):
         self.assertEqual(result["edit_only"], ["weapon_translation_along_collision_normal"])
         self.assertIn("camera_rig", result["freeze"])
         self.assertIn("4.5 units", result["evidence"][0]["basis"])
+        self.assertIn("exactly 4.5 units", result["repair_prompt_delta"])
 
     def test_interpenetration_has_priority_over_residual_gap(self):
         manifest, digest = self.reviewed_manifest(measured_gap_units=-2.0, penetration_depth_units=2.0)
         result = diagnose_attempt(manifest, raster_sha256=digest)
         self.assertEqual(result["primary_failure_code"], "INTERPENETRATION")
         self.assertIn("inverse collision normal", result["repair_prompt_delta"])
+
+    def test_followthrough_uses_measured_delta_not_generic_instruction(self):
+        manifest, digest = self.reviewed_manifest(measured_advance_units=6.0)
+        manifest["stage_id"] = "H3"
+        result = diagnose_attempt(manifest, raster_sha256=digest)
+        self.assertEqual(result["primary_failure_code"], "FOLLOWTHROUGH_MISMATCH")
+        self.assertIn("advance=6 units", result["repair_prompt_delta"])
+        self.assertIn("target=15 units", result["repair_prompt_delta"])
+        self.assertIn("exactly 9 units", result["repair_prompt_delta"])
 
     def test_wrong_crack_origin_changes_effect_only(self):
         manifest, digest = self.reviewed_manifest(crack_origin="far_side")
