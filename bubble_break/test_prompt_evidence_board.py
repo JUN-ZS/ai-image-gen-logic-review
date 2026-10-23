@@ -113,6 +113,42 @@ class TestPromptEvidenceBoard(unittest.TestCase):
         self.assertIn("FAILURE REASONS", svg)
         self.assertIn("NEXT CHANGE", svg)
 
+    def test_next_change_is_derived_from_sha_bound_failure_not_generic_text(self):
+        manifest = self.base_manifest()
+        manifest["pixel_audit_status"] = "FAIL"
+        manifest["observed"]["active_surface"] = "broad_sidewall"
+        with tempfile.TemporaryDirectory() as tmp:
+            raster = Path(tmp) / "source.png"
+            raster.write_bytes(TINY_PNG)
+            digest = hashlib.sha256(TINY_PNG).hexdigest()
+            manifest["review_receipt"] = {
+                "reviewer": "human-review",
+                "verdict": "FAIL",
+                "raster_sha256": digest,
+                "reviewed_at": "2026-10-23T08:00:00Z"
+            }
+            svg = build_svg(manifest, raster)
+            self.assertIn("WRONG_CONTACT_FACE", svg)
+            self.assertIn("approach_vector", svg)
+            self.assertIn("weapon_topology", svg)
+            self.assertIn("REPAIR_PLAN_READY", svg)
+
+    def test_board_holds_next_change_when_review_sha_does_not_match(self):
+        manifest = self.base_manifest()
+        manifest["pixel_audit_status"] = "FAIL"
+        manifest["observed"]["active_surface"] = "broad_sidewall"
+        with tempfile.TemporaryDirectory() as tmp:
+            raster = Path(tmp) / "source.png"
+            raster.write_bytes(TINY_PNG)
+            manifest["review_receipt"] = {
+                "reviewer": "human-review",
+                "verdict": "FAIL",
+                "raster_sha256": "0" * 64
+            }
+            svg = build_svg(manifest, raster)
+            self.assertIn("INSUFFICIENT_EVIDENCE", svg)
+            self.assertIn("Do not change the image formula yet", svg)
+
     def test_contact_roi_is_overlaid_only_when_raster_exists(self):
         manifest = self.base_manifest()
         manifest["contact_roi_norm"] = {"x": 0.4, "y": 0.45, "w": 0.12, "h": 0.1}
