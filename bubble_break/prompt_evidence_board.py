@@ -124,6 +124,37 @@ def audit_state(manifest: dict[str, Any], image_sha: str | None) -> tuple[str, s
     return image_status, audit, reason
 
 
+def compact_data(data: dict[str, Any]) -> str:
+    names = {
+        "active_surface": "face", "contact_point_id": "P", "contact_point": "P",
+        "contact_mode": "mode", "expected_gap_units": "gap", "gap_units": "gap",
+        "H0_total_gap_units": "H0_total", "H0_total_gap": "H0_total",
+        "H2_gap_units": "H2_gap", "H2_gap": "H2_gap",
+        "H3_advance_units": "H3_advance", "advance_units": "advance",
+        "normal_dot": "n_dot", "active_face_normal_dot_sphere_outward_normal": "n_dot",
+        "no_interpenetration": "no_penetration", "cracks_begin_at_P_only": "cracks_from_P",
+        "cracks_propagate_from_P": "cracks_from_P", "sphere_intact": "sphere_intact",
+        "early_cracks": "early_cracks", "measured_gap": "measured_gap",
+        "rigid_body_topology": "rigid_body", "gap_state": "gap_state",
+        "visual_causality": "causality"
+    }
+    values = {
+        "terminal_end_face": "end-face",
+        "terminal_end_face_to_terminal_end_face": "end-face↔end-face",
+        "UNVERIFIED": "UNVERIFIED",
+        True: "yes",
+        False: "no"
+    }
+    parts = []
+    for key, value in data.items():
+        name = names.get(str(key), str(key))
+        if isinstance(value, (dict, list)):
+            value = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
+        value = values.get(value, value) if isinstance(value, (str, bool)) else value
+        parts.append(f"{name}={value}")
+    return " · ".join(parts) if parts else "UNVERIFIED：尚無記錄"
+
+
 def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     attempt = str(manifest.get("attempt_id", "ATTEMPT-ID-MISSING"))
     branch = str(manifest.get("branch", "UNSPECIFIED"))
@@ -207,17 +238,17 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
 
     parts += [rect(rx, 378, rw, 192, "#102238", "#294864", 16, 1),
               text_el(rx + 22, 413, "02  VARIABLES / 本次改了什麼", 22, "#80d5ff", 800),
-              multiline(rx + 22, 451, f"Changed: {variables_text}", 47, 3, 19),
+              multiline(rx + 22, 451, f"Changed: {variables_text}", 58, 3, 18),
               multiline(rx + 22, 535, f"Stage: {stage}  |  Image: {image_status}", 49, 1, 17, "#b8c9da")]
 
-    expected_text = " · ".join(f"{k}={v}" for k, v in expected.items()) or "未填：不能從 Prompt 推定"
-    observed_text = " · ".join(f"{k}={v}" for k, v in observed.items()) or "UNVERIFIED：尚無像素審查紀錄"
+    expected_text = compact_data(expected) if expected else "未填：不能從 Prompt 推定"
+    observed_text = compact_data(observed) if observed else "UNVERIFIED：尚無像素審查紀錄"
     parts += [rect(rx, 586, rw, 220, "#102238", "#294864", 16, 1),
               text_el(rx + 22, 621, "03  EXPECTED vs OBSERVED / 預期與實際", 22, "#80d5ff", 800),
               text_el(rx + 22, 657, "EXPECTED  / 公式預期", 18, "#8be0bb", 700),
-              multiline(rx + 22, 685, expected_text, 47, 2, 19),
+              multiline(rx + 22, 685, expected_text, 58, 2, 18),
               text_el(rx + 22, 737, "OBSERVED  / 實際畫面", 18, "#ffbf69", 700),
-              multiline(rx + 22, 765, observed_text, 47, 2, 19)]
+              multiline(rx + 22, 765, observed_text, 58, 2, 18)]
 
     # Bottom row: fail diagnosis, next experiment and audit/provenance boundary.
     parts += [rect(58, 854, 580, 184, "#251b28", "#71404c", 16, 1),
@@ -231,10 +262,13 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
               text_el(1292, 858, "06  AUDIT / 驗收證據", 21, "#e4edf7", 800),
               multiline(1292, 891, f"Pixel audit: {audit_status}", 48, 1, 19, status_color, 800),
               multiline(1292, 922, f"Review receipt: {(manifest.get('review_receipt') or {}).get('reviewer', 'MISSING')}", 48, 1, 17),
-              multiline(1292, 951, f"Receipt SHA: {(manifest.get('review_receipt') or {}).get('raster_sha256', 'MISSING')}", 48, 1, 16, "#b8c9da"),
-              multiline(1292, 983, audit_reason or "PASS 只在收據綁定相同 raster SHA 時顯示。", 49, 2, 16, "#b8c9da")]
+              multiline(1292, 949, f"Receipt SHA: {(manifest.get('review_receipt') or {}).get('raster_sha256', 'MISSING')}", 42, 2, 14, "#b8c9da", 400, 18),
+              multiline(1292, 992, audit_reason or "PASS 只在收據綁定相同 raster SHA 時顯示。", 50, 2, 14, "#b8c9da", 400, 18)]
 
-    parts += [text_el(60, 1065, f"PROMPT EXCERPT: {prompt_excerpt}", 15, "#91a4ba", 400),
+    short_excerpt = str(prompt_excerpt).replace("\n", " ")[:125]
+    if len(str(prompt_excerpt)) > 125:
+        short_excerpt += "…"
+    parts += [text_el(60, 1065, f"PROMPT EXCERPT: {short_excerpt}", 15, "#91a4ba", 400),
               text_el(1625, 1065, "FORMULA ≠ PIXEL PROOF", 15, "#91a4ba", 700),
               '</svg>']
     return "\n".join(parts)
