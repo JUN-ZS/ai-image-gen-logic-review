@@ -331,7 +331,7 @@ def diagnose_attempt(manifest: dict[str, Any], raster_sha256: str | None = None)
             "next_change": rule["change"],
             "edit_only": rule["edit_only"],
             "freeze": rule["freeze"],
-            "repair_prompt_delta": repair_delta,
+            "repair_prompt_delta": rule["delta"],
             "expected_after_change": rule["expect"],
             "auto_visual_detection": False,
         }
