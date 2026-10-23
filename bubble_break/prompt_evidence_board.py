@@ -16,6 +16,11 @@ import struct
 from pathlib import Path
 from typing import Any
 
+try:
+    from bubble_break.prompt_failure_diagnosis import diagnose_attempt
+except ModuleNotFoundError:  # support direct execution as: python bubble_break/prompt_evidence_board.py
+    from prompt_failure_diagnosis import diagnose_attempt
+
 
 W, H = 1920, 1080
 VALID_AUDIT = {"NOT_RUN", "PENDING", "PASS", "FAIL", "UNVERIFIED"}
@@ -174,10 +179,24 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     failures = manifest.get("failure_reasons", [])
     if isinstance(failures, str):
         failures = [failures] if failures else []
-    next_change = manifest.get("next_change", "未記錄")
     prompt_excerpt = manifest.get("prompt_excerpt", "未附 Prompt 摘要")
     image_sha = hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path and image_path.is_file() else None
     image_status, audit_status, audit_reason = audit_state(manifest, image_sha)
+    diagnosis = diagnose_attempt(manifest, raster_sha256=image_sha)
+    diagnosis_codes = diagnosis.get("all_failure_codes", [])
+    diagnosis_status = str(diagnosis.get("status", "HOLD"))
+    if diagnosis_status == "REPAIR_PLAN_READY":
+        change_fields = "、".join(map(str, diagnosis.get("edit_only", [])))
+        next_change = f"{diagnosis.get('primary_failure_code')}｜只改：{change_fields}。{diagnosis.get('next_change')}"
+    else:
+        next_change = str(diagnosis.get("next_change", "需先取得與原圖 SHA 綁定的失敗審查"))
+    if not failures and diagnosis_codes:
+        failures = [
+            f"{item.get('code')}: {item.get('basis')}"
+            for item in diagnosis.get("evidence", [])
+        ]
+    if not failures and diagnosis_status == "HOLD":
+        failures = ["尚未有與此 raster SHA 綁定的 FAIL 審查；不推測修正位置。"]
 
     status_color = {
         "PASS": "#39d98a", "FAIL": "#ff5d6c", "PENDING": "#ffc857",
@@ -256,8 +275,8 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     fail_text = "；".join(str(x) for x in failures) if failures else "未記錄（不能自動判為成功）"
     parts.append(multiline(80, 926, fail_text, 42, 3, 20))
     parts += [rect(656, 854, 590, 184, "#102a33", "#28645c", 16, 1),
-              text_el(678, 890, "05  NEXT CHANGE / 下一輪只改", 21, "#69e6c2", 800),
-              multiline(678, 926, next_change, 44, 3, 20)]
+              text_el(678, 890, f"05  NEXT CHANGE / 下一輪只改  ·  {diagnosis_status}", 19, "#69e6c2", 800),
+              multiline(678, 926, next_change, 44, 3, 19)]
     parts += [rect(1270, 822, 592, 216, "#162435", "#52657a", 16, 1),
               text_el(1292, 858, "06  AUDIT / 驗收證據", 21, "#e4edf7", 800),
               multiline(1292, 891, f"Pixel audit: {audit_status}", 48, 1, 19, status_color, 800),
@@ -293,6 +312,8 @@ def main() -> int:
     output.write_text(build_svg(manifest, image_path), encoding="utf-8")
     print(json.dumps({
         "output_svg": str(output),
+        "diagnosis_status": diagnose_attempt(manifest, raster_sha256=hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path else None)["status"],
+        "next_change": diagnose_attempt(manifest, raster_sha256=hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path else None)["next_change"],
         "attempt_id": manifest.get("attempt_id", "ATTEMPT-ID-MISSING"),
         "source_raster_attached": bool(image_path),
         "source_raster_sha256": hashlib.sha256(image_path.read_bytes()).hexdigest() if image_path else None,
