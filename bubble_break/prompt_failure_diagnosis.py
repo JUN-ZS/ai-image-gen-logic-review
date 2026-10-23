@@ -97,7 +97,7 @@ RULES: dict[str, dict[str, Any]] = {
         "expect": "character identity and scale satisfy the declared continuity gates; weapon/contact geometry is unchanged.",
     },
     "RESIDENT_SAFETY_FAIL": {
-        "priority": 8, "severity": "BLOCKING",
+        "priority": 1, "severity": "BLOCKING",
         "when": "shell fragments/effects damage or obscure protected inhabitants/sanctuary.",
         "change": "Change only fragment trajectories/effect mask and protect the sanctuary ROI; do not alter the accepted contact geometry.",
         "edit_only": ["fragment_trajectory", "effect_mask", "sanctuary_protection_roi"],
