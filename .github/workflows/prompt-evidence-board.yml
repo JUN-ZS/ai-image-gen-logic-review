@@ -124,7 +124,7 @@ jobs:
           assert 'FORMULA ≠ PIXEL PROOF' in s
           assert 'HOLD' in s
           assert 'NEXT TRIAL' in s
-          assert 'Run prompt_trial_planner.py' in s
+          assert 'prompt_trial_planner.py' in s
           f = Path('out/prompt_evidence_board/template_formula_first.svg').read_text(encoding='utf-8')
           assert 'FORMULA / 公式拆解' in f
           assert 'OUTPUT CONTRACT' in f

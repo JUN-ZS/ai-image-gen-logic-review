@@ -113,7 +113,7 @@ class TestPromptEvidenceBoard(unittest.TestCase):
         self.assertIn("FAILURE REASONS", svg)
         self.assertIn("NEXT TRIAL", svg)
 
-    def test_next_change_is_derived_from_sha_bound_failure_not_generic_text(self):
+    def test_failure_diagnosis_is_evidence_for_trial_not_a_proven_repair(self):
         manifest = self.base_manifest()
         manifest["pixel_audit_status"] = "FAIL"
         manifest["observed"]["active_surface"] = "broad_sidewall"
@@ -129,9 +129,9 @@ class TestPromptEvidenceBoard(unittest.TestCase):
             }
             svg = build_svg(manifest, raster)
             self.assertIn("WRONG_CONTACT_FACE", svg)
-            self.assertIn("approach_vector", svg)
-            self.assertIn("weapon_topology", svg)
-            self.assertIn("REPAIR_PLAN_READY", svg)
+            self.assertIn("不是已證實的修補答案", svg)
+            self.assertIn("prompt_trial_planner.py", svg)
+            self.assertIn("PLANNER REQUIRED", svg)
 
     def test_board_holds_next_change_when_review_sha_does_not_match(self):
         manifest = self.base_manifest()
@@ -147,7 +147,7 @@ class TestPromptEvidenceBoard(unittest.TestCase):
             }
             svg = build_svg(manifest, raster)
             self.assertIn("INSUFFICIENT_EVIDENCE", svg)
-            self.assertIn("Run prompt_trial_planner.py", svg)
+            self.assertIn("prompt_trial_planner.py", svg)
 
     def test_formula_first_board_is_a_layout_variant_not_a_new_raster(self):
         manifest = self.base_manifest()
