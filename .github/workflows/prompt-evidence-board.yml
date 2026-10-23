@@ -122,7 +122,7 @@ jobs:
           assert 'NO SOURCE RASTER ATTACHED' in s
           assert 'NOT_RUN' in s
           assert 'FORMULA ≠ PIXEL PROOF' in s
-          assert 'HOLD' in s
+          assert 'PLANNER REQUIRED' in s
           assert 'NEXT TRIAL' in s
           assert 'prompt_trial_planner.py' in s
           f = Path('out/prompt_evidence_board/template_formula_first.svg').read_text(encoding='utf-8')
