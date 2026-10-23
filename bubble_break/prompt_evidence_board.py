@@ -187,9 +187,12 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     diagnosis_status = str(diagnosis.get("status", "HOLD"))
     if diagnosis_status == "REPAIR_PLAN_READY":
         change_fields = ", ".join(map(str, diagnosis.get("edit_only", [])))
-        next_change = f"{diagnosis.get('primary_failure_code')} | 只改：{change_fields}. {diagnosis.get('next_change')}"
+        freeze_fields = ", ".join(map(str, diagnosis.get("freeze", [])))
+        next_change = f"{diagnosis.get('primary_failure_code')} | CHANGE ONLY: {change_fields}"
+        freeze_text = f"KEEP FROZEN: {freeze_fields}"
     else:
         next_change = str(diagnosis.get("next_change", "需先取得與原圖 SHA 綁定的失敗審查"))
+        freeze_text = "變量凍結：等待與本圖 SHA 綁定的失敗審查"
     if not failures and diagnosis_codes:
         failures = [
             f"{item.get('code')}: {item.get('basis')}"
@@ -276,7 +279,8 @@ def build_svg(manifest: dict[str, Any], image_path: Path | None) -> str:
     parts.append(multiline(80, 926, fail_text, 42, 3, 20))
     parts += [rect(656, 854, 590, 184, "#102a33", "#28645c", 16, 1),
               text_el(678, 890, f"05  NEXT CHANGE / 下一輪只改  ·  {diagnosis_status}", 19, "#69e6c2", 800),
-              multiline(678, 926, next_change, 44, 3, 19)]
+              multiline(678, 926, next_change, 56, 2, 17),
+              multiline(678, 980, freeze_text, 58, 2, 14, "#a8bdcf", 400, 18)]
     parts += [rect(1270, 822, 592, 216, "#162435", "#52657a", 16, 1),
               text_el(1292, 858, "06  AUDIT / 驗收證據", 21, "#e4edf7", 800),
               multiline(1292, 891, f"Pixel audit: {audit_status}", 48, 1, 19, status_color, 800),
