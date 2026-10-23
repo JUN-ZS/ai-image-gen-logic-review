@@ -69,13 +69,13 @@ SHOT = CONTRACT + HERO + GEAR + ACTION + WEAPON + TARGET + SET + CAM + LIGHT + G
 ## 4A. 本次新增：可追溯的圖像／驗收板輸出
 
 - `bubble_break/prompt_evidence_board.py`：將指定 attempt 的原始 raster 嵌入 SVG，顯示 ID、分支、commit、拓撲、變量、預期／實際接觸、ROI、失敗原因與下一輪修正。
-- `bubble_break/prompt_attempt_packet.py`：目前支援 `variants[].prompts` 形式的 T-Hammer multiview matrix，為每個 variant／prompt 建立獨立資料夾、Prompt、manifest 與教學板佔位；不會生成 raster。
+- `bubble_break/prompt_attempt_packet.py`：目前有五種輸入 adapter（T-Hammer matrix、Original Sin JSONL、CYLINDER_CROSS dense atlas、dense-hammer Stage A–E、Shannon planted-bubble stage packet），為每條 Prompt 建立獨立資料夾、manifest 和教學板佔位；不會生成 raster。
 - `schemas/prompt_attempt_manifest.schema.json`：每次嘗試的 JSON 資料契約。
 - [Prompt Evidence Board 使用指南](PROMPT_EVIDENCE_BOARD.md)：版式與從矩陣到封包的命令。
 - `examples/prompt_attempt_manifest.example.json`：未生成的模板樣本，用來展示欄位，不代表真實測試結果。
 - `bubble_break/test_prompt_evidence_board.py`：防止缺少原圖或 raster SHA 不一致時仍標示 Pixel Audit PASS。
 
-目前自動封包 adapter 先覆蓋 T-Hammer multiview matrix；其他分支的 JSONL／單張 atlas／分階段 request 還需逐一映射，不能宣稱已全部自動轉換。標準輸出應同時保留 SOURCE RASTER 與 PROMPT EVIDENCE BOARD。前者保持無文字、作為像素審查來源；後者是加上確定性標註的教學／驗收視圖。資料不能由圖像模型自由補寫。
+目前自動封包 adapter 覆蓋上述五種主要生成器輸出格式；Actions 已測試 adapter contract 並編譯完整 T-Hammer 192 variants／768 prompts 範例包。這不等於 21 個 branch 的每個歷史 artifact 都已批次匯入，也不代表任何外部生成 raster 已全部通過像素驗收。新格式仍須逐一核對來源、實際輸入／輸出數量與 source SHA。標準輸出應同時保留 SOURCE RASTER 與 PROMPT EVIDENCE BOARD。前者保持無文字、作為像素審查來源；後者是加上確定性標註的教學／驗收視圖。資料不能由圖像模型自由補寫。
 
 ## 4. 主要來源路徑
 
