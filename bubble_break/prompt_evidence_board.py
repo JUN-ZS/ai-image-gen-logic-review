@@ -117,15 +117,13 @@ def audit_state(manifest: dict[str, Any], image_sha: str | None) -> tuple[str, s
         audit = "UNVERIFIED"
     receipt = manifest.get("review_receipt")
     reason = ""
-    if audit == "PASS":
+    if audit in {"PASS", "FAIL"}:
         receipt_sha = str((receipt or {}).get("raster_sha256", "")).lower()
         verdict = str((receipt or {}).get("verdict", "")).upper()
         if not image_sha:
-            audit, reason = "UNVERIFIED", "PASS rejected: no source raster attached"
-        elif receipt_sha != image_sha.lower() or verdict != "PASS":
-            audit, reason = "UNVERIFIED", "PASS rejected: reviewer receipt missing or raster SHA mismatch"
-    if audit == "FAIL" and not image_sha:
-        reason = "FAIL label retained from manifest; source raster is not attached"
+            audit, reason = "UNVERIFIED", f"{audit} rejected: no source raster attached"
+        elif receipt_sha != image_sha.lower() or verdict != audit:
+            audit, reason = "UNVERIFIED", f"{audit} rejected: reviewer receipt missing, verdict mismatch, or raster SHA mismatch"
     return image_status, audit, reason
 
 
