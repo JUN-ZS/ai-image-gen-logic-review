@@ -71,7 +71,7 @@ class TestPromptFailureDiagnosis(unittest.TestCase):
         prompt = build_repair_prompt("Original H2 prompt", result)
         self.assertIn("[DATA-DRIVEN NEXT-ATTEMPT DELTA]", prompt)
         self.assertIn("KEEP FROZEN", prompt)
-        self.assertIn("do not change success", prompt.lower())
+        self.assertIn("Do not claim success", prompt)
 
     def test_positive_contact_gap_selects_translation_not_camera_or_scale(self):
         manifest, digest = self.reviewed_manifest(measured_gap_units=4.5)
