@@ -6,8 +6,10 @@ on:
     paths:
       - 'bubble_break/prompt_evidence_board.py'
       - 'bubble_break/prompt_attempt_packet.py'
+      - 'bubble_break/prompt_failure_diagnosis.py'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
+      - 'bubble_break/test_prompt_failure_diagnosis.py'
       - 'schemas/prompt_attempt_manifest.schema.json'
       - 'examples/prompt_attempt_manifest.example.json'
       - 'examples/prompt_matrix_minimal.example.json'
@@ -37,10 +39,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run evidence-board and prompt-packet tests
+      - name: Run evidence-board, prompt-packet, and diagnosis tests
         run: |
           python -m unittest bubble_break/test_prompt_evidence_board.py -v
           python -m unittest bubble_break/test_prompt_attempt_packet.py -v
+          python -m unittest bubble_break/test_prompt_failure_diagnosis.py -v
       - name: Render a manifest-only teaching board
         run: |
           python bubble_break/prompt_evidence_board.py \
@@ -70,6 +73,8 @@ jobs:
           assert 'NO SOURCE RASTER ATTACHED' in s
           assert 'NOT_RUN' in s
           assert 'FORMULA ≠ PIXEL PROOF' in s
+          assert 'HOLD' in s
+          assert 'Do not change the image formula yet' in s
           index = __import__('json').loads(Path('out/prompt_evidence_board/demo_packets/prompt_attempt_index.json').read_text(encoding='utf-8'))
           assert index['attempt_count'] == 2
           assert index['image_realization'] == 'NOT_RUN'
