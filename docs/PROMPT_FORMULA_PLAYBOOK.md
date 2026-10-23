@@ -6,12 +6,14 @@
 
 ## 輸出規則：乾淨打擊圖 + 精確教學／驗收板
 
+完整板式與命令參考：[Prompt Evidence Board 使用指南](PROMPT_EVIDENCE_BOARD.md)。
+
 每次 attempt 預期交付兩個視圖，而不是讓圖像模型把數據字硬畫進成圖：
 
 1. **SOURCE RASTER**：純打擊畫面。Prompt 要求 no text / no labels / no panel grid，保留原始輸出供像素驗收。
 2. **PROMPT EVIDENCE BOARD**：將該張 raster 原樣嵌入 SVG，再由程式以真實 manifest 加上 attempt ID、branch／commit、topology、改動變量、數字參數、EXPECTED vs OBSERVED、接觸點 ROI、失敗原因、下一輪變量及審查狀態。標籤與數據是確定性渲染，避免模型把數字或中文字拼錯。
 
-編譯工具：`bubble_break/prompt_evidence_board.py`；資料契約：`schemas/prompt_attempt_manifest.schema.json`；樣本：`examples/prompt_attempt_manifest.example.json`。例子中的 placeholder 不是實際實驗數據。
+編譯工具：`bubble_break/prompt_evidence_board.py`；矩陣 Prompt 封包編譯器：`bubble_break/prompt_attempt_packet.py`；資料契約：`schemas/prompt_attempt_manifest.schema.json`；樣本：`examples/prompt_attempt_manifest.example.json`。例子中的 placeholder 不是實際實驗數據。
 
 ~~~bash
 python bubble_break/prompt_evidence_board.py --manifest examples/prompt_attempt_manifest.example.json --out out/prompt_evidence/TRY-0001.svg
