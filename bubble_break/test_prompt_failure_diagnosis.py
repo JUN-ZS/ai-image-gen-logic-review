@@ -112,9 +112,9 @@ class TestPromptFailureDiagnosis(unittest.TestCase):
     def test_multiple_failures_are_listed_but_one_minimal_repair_is_prioritized(self):
         manifest, digest = self.reviewed_manifest(active_surface="sidewall", residents_safe=False)
         result = diagnose_attempt(manifest, raster_sha256=digest)
-        self.assertEqual(result["primary_failure_code"], "WRONG_CONTACT_FACE")
-        self.assertIn("RESIDENT_SAFETY_FAIL", result["all_failure_codes"])
-        self.assertIn("RESIDENT_SAFETY_FAIL", result["additional_failure_codes"])
+        self.assertEqual(result["primary_failure_code"], "RESIDENT_SAFETY_FAIL")
+        self.assertIn("WRONG_CONTACT_FACE", result["all_failure_codes"])
+        self.assertIn("WRONG_CONTACT_FACE", result["additional_failure_codes"])
 
     def test_unclassified_prose_does_not_invent_diagnosis(self):
         manifest, digest = self.reviewed_manifest()
