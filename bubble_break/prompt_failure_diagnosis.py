@@ -255,8 +255,33 @@ def _inferred_failures(manifest: dict[str, Any]) -> list[tuple[str, str]]:
     return [(code, evidence) for code, evidence in dedup.items()]
 
 
-def diagnose_attempt(manifest: dict[str, Any]) -> dict[str, Any]:
-    """Return a minimal next-change plan grounded in structured observed failures."""
+def diagnose_attempt(manifest: dict[str, Any], raster_sha256: str | None = None) -> dict[str, Any]:
+    """Return a minimal next-change plan only when evidence is bound to this exact raster."""
+    receipt = manifest.get("review_receipt")
+    receipt = receipt if isinstance(receipt, dict) else {}
+    receipt_sha = str(receipt.get("raster_sha256", "")).lower()
+    raster_sha = str(raster_sha256 or manifest.get("raster_sha256") or manifest.get("source_raster_sha256") or "").lower()
+    verdict = str(receipt.get("verdict", "")).upper()
+    if (
+        verdict != "FAIL"
+        or not re.fullmatch(r"[0-9a-f]{64}", raster_sha)
+        or receipt_sha != raster_sha
+    ):
+        rule = RULES["INSUFFICIENT_EVIDENCE"]
+        return {
+            "status": "HOLD",
+            "method": "DETERMINISTIC_RULES_OVER_SHA_BOUND_REVIEW_ONLY",
+            "primary_failure_code": "INSUFFICIENT_EVIDENCE",
+            "all_failure_codes": [],
+            "evidence": [],
+            "severity": rule["severity"],
+            "next_change": "Do not change the image formula yet. A FAIL review receipt bound to this exact raster SHA-256 is required.",
+            "edit_only": [],
+            "freeze": ["all_variables_until_sha_bound_review"],
+            "repair_prompt_delta": "NO REPAIR PROMPT YET. Attach the actual raster and a review receipt with verdict=FAIL and a matching raster_sha256, then record structured observations.",
+            "expected_after_change": rule["expect"],
+            "auto_visual_detection": False,
+        }
     explicit = manifest.get("failure_codes", [])
     if isinstance(explicit, str):
         explicit = [explicit]
@@ -361,20 +386,26 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", required=True, help="the actual reviewed attempt manifest JSON")
     parser.add_argument("--prompt", required=True, help="the exact parent prompt.txt")
+    parser.add_argument("--image", required=True, help="the actual raster reviewed by the reviewer")
     parser.add_argument("--outdir", required=True, help="directory for diagnosis.json and repair_prompt.txt")
     args = parser.parse_args()
     manifest_path, prompt_path, outdir = Path(args.manifest), Path(args.prompt), Path(args.outdir)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     prompt = prompt_path.read_text(encoding="utf-8")
+    image_path = Path(args.image)
+    if not image_path.is_file():
+        raise SystemExit(f"reviewed raster does not exist: {image_path}")
+    raster_sha = __import__("hashlib").sha256(image_path.read_bytes()).hexdigest()
     if not isinstance(manifest, dict):
         raise SystemExit("manifest root must be an object")
-    diagnosis = diagnose_attempt(manifest)
+    diagnosis = diagnose_attempt(manifest, raster_sha256=raster_sha)
     outdir.mkdir(parents=True, exist_ok=True)
     (outdir / "diagnosis.json").write_text(json.dumps(diagnosis, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (outdir / "repair_prompt.txt").write_text(build_repair_prompt(prompt, diagnosis), encoding="utf-8")
     print(json.dumps({
         "status": diagnosis["status"],
         "primary_failure_code": diagnosis["primary_failure_code"],
+        "raster_sha256": raster_sha,
         "next_change": diagnosis["next_change"],
         "diagnosis_file": str(outdir / "diagnosis.json"),
         "repair_prompt_file": str(outdir / "repair_prompt.txt"),
