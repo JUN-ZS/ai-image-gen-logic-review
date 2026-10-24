@@ -93,3 +93,6 @@
 | S4「24 卡」 | ACT3 只留 PACK_IMPACT_4 |
 | 再 × 粉彩 I-21 | 未跑（可再乘） |
 
+## 四線變體乘積
+
+見 [`VARIANT_CROSSWALK.md`](VARIANT_CROSSWALK.md)（SOFT/HARD 隔離、192/48/10/六幕合法上界）。
