@@ -116,3 +116,7 @@
 ## 單組完整 TRY realization 樣例
 
 [`one_try_BPX-0007DA681947FB49/`](one_try_BPX-0007DA681947FB49/) — 107,784 中取出 1 組；六幕 IMAGE 已 realization；VIDEO NOT_RUN。
+
+## 高多樣性乘積 · 單組 realization
+
+[`one_try_BPX-0000559E2F9EBD56/`](one_try_BPX-0000559E2F9EBD56/) — S02-AQUARIUM-CAFE · GEO.MULTI · H2 · P02 · W02 · V-09；1/431,136。

@@ -1,0 +1,124 @@
+{
+  "combination_id": "BPX-0000559E2F9EBD56",
+  "loop_id": "LOOP-000002",
+  "try_id": "TRY-0000559E2F9E",
+  "axes": {
+    "geo_family": "MULTI",
+    "contact": "H2",
+    "camera_pack": "WASH10",
+    "camera": "NA",
+    "wash": "W02",
+    "style": "S02",
+    "shot": "FRONT",
+    "windup": "",
+    "geometry_catalog": "I-16;I-17;I-22",
+    "pose_id": "P02",
+    "video_method": "V-09",
+    "series_id": "S02-AQUARIUM-CAFE",
+    "series_label": "Aquarium Café / 水族咖啡館 / S02",
+    "world_id": "WORLD-AQUARIUM-CAFE",
+    "world_name": "Aquarium Café / 水族咖啡館",
+    "protagonist_description": "an adult Black woman marine biologist with natural curls, a teal café apron and a notebook covered in fish sketches",
+    "story_hook": "the café's fish migrate through a wall the customers insist is solid"
+  },
+  "full_cross_product_space": 431136,
+  "status_package": "PROMPT_READY",
+  "image_realization": "IMAGE_GENERATED_IN_SESSION",
+  "video_realization": "NOT_RUN",
+  "pixel_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "honest_notes": [
+    "ACT3 hammer shows embossed letter P on head — geometry lock wants multi-facet planar face contact only; letter is residual model artifact / not method code.",
+    "ACT3 contact location and multi-facet topology need human review for H2 planar-first contract.",
+    "Soft acts preserve series identity well; ACT5 glass-floor reflection weaker than ACT6 ring.",
+    "try_art SVG is canonical 3D poster; preview_poster.jpg is convenience raster for chat.",
+    "This is ONE of 431,136 legal combinations under lock-geometry / free-all-else rule."
+  ],
+  "acts_realized": [
+    {
+      "act": 1,
+      "file": "raw/act1_draw_boundary.jpg",
+      "sha256": "0a8429b5540ccb935479674a868e71e43deb8b66aa599f2b9283eba12bddb445"
+    },
+    {
+      "act": 2,
+      "file": "raw/act2_protect.jpg",
+      "sha256": "0f4aa8cb8a6de25c6bf1a60e5b4fab4c785d42fe5da079e3fd7c6a4baad06a9e"
+    },
+    {
+      "act": 3,
+      "file": "raw/act3_primary_MULTI_H2_P02.jpg",
+      "sha256": "612dbd4fd89124a02a5ebedc8289d4eaa2839e7b131c0d4aae41b903320691a5"
+    },
+    {
+      "act": 4,
+      "file": "raw/act4_false_repair.jpg",
+      "sha256": "27119219abcd0c85255377916b48b3912b077147d481ecbd2a0ab0330093060b"
+    },
+    {
+      "act": 5,
+      "file": "raw/act5_one_boundary.jpg",
+      "sha256": "a594965c6552c8398efc8a3e19d5ad3c9b7ac07b8925edc4787ca5fee3bcfdff"
+    },
+    {
+      "act": 6,
+      "file": "raw/act6_choose.jpg",
+      "sha256": "cdb00081f3c981634dbcb26008559671f2ebde126b06a3c7c6e949711a3a9329"
+    }
+  ],
+  "art_label_spec": {
+    "story": "THE BOUNDARY WALKER",
+    "loop_id": "LOOP-000002",
+    "try_id": "TRY-0000559E2F9E",
+    "series_id": "S02-AQUARIUM-CAFE",
+    "world_label": "Aquarium Café / 水族咖啡館",
+    "method_id": "GEO.MULTI",
+    "method_label": "single multi-facet rounded head / nominated flat face · first contact at P · V-09",
+    "geometry_family": "MULTI",
+    "contact_method": "H2",
+    "camera_id": "WASH10-NA-W02",
+    "pose_id": "P02",
+    "style_id": "S02",
+    "panel_side": "right",
+    "art_direction": "large floating 3D poster; reserved plaque covers ~34.3% of full frame",
+    "status": "REVIEW_PENDING",
+    "acts": {
+      "1": {
+        "act_id": "1",
+        "prompt_id": "BPX-0000559E2F9EBD56-I-ACT1",
+        "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT1",
+        "note": "ACT 1: 畫界 · primary loop method remains MULTI/H2"
+      },
+      "2": {
+        "act_id": "2",
+        "prompt_id": "BPX-0000559E2F9EBD56-I-ACT2",
+        "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT2",
+        "note": "ACT 2: 保護 · primary loop method remains MULTI/H2"
+      },
+      "3": {
+        "act_id": "3",
+        "prompt_id": "BPX-0000559E2F9EBD56-I-ACT3",
+        "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT3",
+        "note": "ACT 3: 試法／碎裂 · primary loop method remains MULTI/H2"
+      },
+      "4": {
+        "act_id": "4",
+        "prompt_id": "BPX-0000559E2F9EBD56-I-ACT4",
+        "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT4",
+        "note": "ACT 4: 假修 · primary loop method remains MULTI/H2"
+      },
+      "5": {
+        "act_id": "5",
+        "prompt_id": "BPX-0000559E2F9EBD56-I-ACT5",
+        "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT5",
+        "note": "ACT 5: 一界 · primary loop method remains MULTI/H2"
+      },
+      "6": {
+        "act_id": "6",
+        "prompt_id": "BPX-0000559E2F9EBD56-I-ACT6",
+        "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT6",
+        "note": "ACT 6: 選擇 · primary loop method remains MULTI/H2"
+      }
+    }
+  }
+}
