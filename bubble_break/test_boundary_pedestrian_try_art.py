@@ -34,8 +34,14 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
             "act_id": "3",
             "method_id": "GEO.T",
             "method_label": "T-hammer end-face contact",
+            "series_id": "S01-RAIN-TOKYO",
+            "world_label": "Rainy Tokyo",
+            "geometry_family": "T",
+            "contact_method": "H2",
+            "camera_id": "CAM07",
+            "pose_id": "P03",
             "prompt_id": "I-04",
-            "style_id": "S-01",
+            "style_id": "S01",
             "status": "REVIEW_PENDING",
             "note": "每一次失敗，都帶來下一個試法。",
             "source_sha256": sha256_bytes(self.source),
@@ -56,6 +62,12 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
         self.assertIn("REVIEW PENDING", svg)
         self.assertIn(self.metadata["source_sha256"][:12], svg)
         self.assertIn("pixel_audit_status", svg)
+        self.assertIn("floating-3d-poster", svg)
+        self.assertIn("Rainy Tokyo", svg)
+        self.assertIn("CAM CAM07", svg)
+        self.assertIn("POSE P03", svg)
+        self.assertIn("SHA-256", svg)
+        self.assertIn("poster_panel_area_fraction", svg)
 
     def test_art_text_is_xml_escaped(self) -> None:
         metadata = dict(self.metadata)
@@ -64,6 +76,13 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
         self.assertIn("side &lt; end &amp; cap", svg)
         self.assertNotIn("side < end & cap", svg)
 
+    def test_art_poster_occupies_at_least_one_third_of_frame(self) -> None:
+        panel_fraction = 0.425 * 0.765
+        self.assertGreater(panel_fraction, 1 / 3)
+        svg = build_svg(self.source, "image/png", 1920, 1080, self.metadata)
+        self.assertIn("floating-3d-poster", svg)
+        self.assertIn("letter-spacing=\"1.1\"", svg)
+
     def test_plain_pass_cannot_be_selected(self) -> None:
         with self.assertRaises(ValueError):
             validate_status("PASS")
@@ -71,7 +90,10 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
 
     def test_ass_overlay_carries_same_loop_try_and_method(self) -> None:
         ass = build_ass(self.metadata, 6.0)
-        self.assertIn("Title: THE BOUNDARY WALKER TRY overlay", ass)
+        self.assertIn("Title: THE BOUNDARY WALKER — 3D TRY TITLE", ass)
+        self.assertIn("S01-RAIN-TOKYO", ass)
+        self.assertIn("Rainy Tokyo", ass)
+        self.assertIn("POSE P03", ass)
         self.assertIn("TRY 0001", ass)
         self.assertIn("GEO.T", ass)
         self.assertIn("T-hammer end-face contact", ass)
