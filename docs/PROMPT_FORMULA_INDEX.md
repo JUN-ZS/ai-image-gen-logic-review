@@ -9,6 +9,8 @@
 ## 建議閱讀順序
 
 0. [IMAGE／VIDEO 半公式＋完整 PROMPT 總庫](IMAGE_VIDEO_PROMPT_CATALOG.md)
+0a. [《邊界行人》無限輪迴 TRY 故事規格](boundary_pedestrian/LOOPING_TRY_STORY.md) — 六幕因果、所有合法幾何／鏡頭／美術／影片方法、輪迴規則與可直接複製的 IMAGE／VIDEO Prompt
+0a1. [畫中 TRY 藝術字疊加器](../bubble_break/boundary_pedestrian_try_art.py) — 以確定文字排版 SVG 圖中字牌與影片 ASS 字幕，並記錄來源／藝術版 SHA
 0b. [《邊界行人》六幕 IMAGE 圖庫](boundary_pedestrian/README.md) — I-20/I-21 母圖
 0c. [《邊界行人》×公式源代 26 鏡](boundary_pedestrian/mv26/README.md) — 6幕×多鏡乘出（非正式像素驗收）
 0d. [《邊界行人》×總庫四線變體乘積](boundary_pedestrian/VARIANT_CROSSWALK.md) — 合法上界與禁止混句
