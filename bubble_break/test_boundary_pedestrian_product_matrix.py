@@ -144,6 +144,18 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
                 self.assertTrue(all("independently reviewable" in act["video_prompt"] for act in record["acts"]))
                 self.assertEqual(record["image_realization"], "NOT_RUN")
                 self.assertEqual(record["pixel_audit_status"], "NOT_RUN")
+                labels = record["art_label_spec"]
+                self.assertEqual(labels["loop_id"], record["loop_id"])
+                self.assertEqual(labels["try_id"], record["try_id"])
+                self.assertEqual(labels["method_id"], "GEO." + record["axes"]["geo_family"])
+                self.assertEqual(labels["geometry_family"], record["axes"]["geo_family"])
+                self.assertEqual(labels["contact_method"], record["axes"]["contact"])
+                self.assertEqual(labels["pose_id"], record["axes"]["pose_id"])
+                self.assertEqual(labels["style_id"], record["axes"]["style"])
+                self.assertEqual(len(labels["acts"]), 6)
+                self.assertEqual(labels["acts"]["3"]["prompt_id"], record["acts"][2]["image_prompt_id"])
+                self.assertEqual(record["axes"]["series_id"], labels["series_id"])
+                self.assertEqual(labels["world_label"], record["axes"]["world_name"])
             with (outdir / "boundary_walker_product_index.csv").open(encoding="utf-8", newline="") as handle:
                 self.assertEqual(len(list(csv.DictReader(handle))), 4)
 
