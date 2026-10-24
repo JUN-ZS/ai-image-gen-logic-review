@@ -185,3 +185,10 @@ SET-I 連續修復樣本：`setI_obsidian` cont 管線 · LOOP 以 MID clean SHA
 後續管線為保幀連 + SVG 準字，prompt 刪咗呢啲條件 → **唔係模型突然唔識，係配方冇再寫**。  
 復原用 `ANALYSIS_HUD_PACK` + `DEPTH_TYPE_PACK`；圖解格可與敘事三幀分槽。
 
+---
+
+## 11. 人物疊影救回（SCAN-CROP PASTE）
+
+反覆 img2img 致人物 ghost → 用 clean 首幀 **extract 描裁** 貼回完成圖。  
+見 **`CHARACTER_SCAN_CROP_PASTE.md`**。Paste 後禁止再整圖 img2img。
+
