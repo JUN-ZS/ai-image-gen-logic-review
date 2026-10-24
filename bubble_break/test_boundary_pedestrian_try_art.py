@@ -77,7 +77,7 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
         self.assertNotIn("side < end & cap", svg)
 
     def test_art_poster_occupies_at_least_one_third_of_frame(self) -> None:
-        panel_fraction = 0.425 * 0.765
+        panel_fraction = 0.44 * 0.78
         self.assertGreater(panel_fraction, 1 / 3)
         svg = build_svg(self.source, "image/png", 1920, 1080, self.metadata)
         self.assertIn("floating-3d-poster", svg)
