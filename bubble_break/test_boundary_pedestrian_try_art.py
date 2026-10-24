@@ -15,6 +15,7 @@ from bubble_break.boundary_pedestrian_try_art import (
     image_size,
     main,
     sha256_bytes,
+    text_content_sha256,
     validate_status,
 )
 
@@ -89,6 +90,19 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
         self.assertIn("floating-3d-poster", svg)
         self.assertIn("letter-spacing=\"1.1\"", svg)
 
+    def test_pre_and_post_typography_changes_visual_treatment_not_words_or_video_text(self) -> None:
+        before_metadata = dict(self.metadata, typography_variant="before")
+        after_metadata = dict(self.metadata, typography_variant="after")
+        before_svg = build_svg(self.source, "image/png", 1920, 1080, before_metadata)
+        after_svg = build_svg(self.source, "image/png", 1920, 1080, after_metadata)
+        self.assertNotEqual(before_svg, after_svg)
+        self.assertIn("#8aeaff", before_svg)
+        self.assertIn("#ff9a50", after_svg)
+        self.assertEqual(text_content_sha256(before_metadata), text_content_sha256(after_metadata))
+        # Video lettering remains one stable canonical treatment rather than switching style mid-clip.
+        self.assertEqual(build_ass(before_metadata, 6.0), build_ass(after_metadata, 6.0))
+        self.assertEqual(text_content_sha256(before_metadata), text_content_sha256(after_metadata))
+
     def test_plain_pass_cannot_be_selected(self) -> None:
         with self.assertRaises(ValueError):
             validate_status("PASS")
@@ -145,6 +159,7 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
                 "--out", str(out),
                 "--label-manifest", str(manifest),
                 "--act-id", "3",
+                "--typography-variant", "before",
             ]
             with patch("sys.argv", argv):
                 self.assertEqual(main(), 0)
@@ -157,6 +172,8 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
             self.assertEqual(sidecar["try_id"], "TRY-ABC123")
             self.assertEqual(sidecar["prompt_id"], "BPX-ABC-I-ACT3")
             self.assertEqual(sidecar["series_id"], "S01-RAIN-TOKYO")
+            self.assertEqual(sidecar["typography_variant"], "before")
+            self.assertEqual(sidecar["text_content_sha256"], text_content_sha256(sidecar))
             self.assertGreater(sidecar["poster_panel_area_fraction"], 1 / 3)
             svg = out.read_text(encoding="utf-8")
             self.assertIn("TRY-ABC123", svg)
