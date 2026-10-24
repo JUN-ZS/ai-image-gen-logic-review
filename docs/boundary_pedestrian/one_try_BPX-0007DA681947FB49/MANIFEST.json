@@ -1,0 +1,70 @@
+{
+  "combination_id": "BPX-0007DA681947FB49",
+  "loop_id": "LOOP-000014",
+  "try_id": "TRY-0007DA681947",
+  "axes": {
+    "geo_family": "T",
+    "contact": "H2",
+    "camera_pack": "T_H2_IMPACT4",
+    "camera": "Y_DEPTH__CAM02_FRONT_THREE_QUARTER__M1",
+    "wash": "W00",
+    "style": "S01",
+    "shot": "LOW",
+    "windup": "M1",
+    "geometry_catalog": "I-01;I-04;I-18;PACK_IMPACT_4",
+    "video_method": "V-04",
+    "story_route": "BP6-I20",
+    "story_route_label": "original photoreal six-act spine"
+  },
+  "status_package": "PROMPT_READY",
+  "image_realization": "IMAGE_GENERATED_IN_SESSION",
+  "video_realization": "NOT_RUN",
+  "pixel_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "honest_notes": [
+    "ACT3 T topology may read inverted/handle-dominant vs ideal letter-T terminal-face H2; needs human geometry review.",
+    "Soft acts 2/4/5 show outfit drift vs combat kit; identity approximate.",
+    "Labels: try_art SVG + optional PIL bar; exact method codes from product matrix axes.",
+    "This is ONE of 107,784 legal combinations — not a full product realization."
+  ],
+  "acts_realized": [
+    {
+      "act": 1,
+      "file": "raw/act1_draw_boundary.jpg",
+      "sha256": "a9c0143cc4744baa9f27b37787c0fb12dc8d3293c140ec64cdf3901a44f2d9d5",
+      "asset_notes": "session generation"
+    },
+    {
+      "act": 2,
+      "file": "raw/act2_protect.jpg",
+      "sha256": "d4bf8fca8ea9486c4a0a4874b80fe4bce175bd4fbeab576fa992f7f5f6c480c2",
+      "asset_notes": "session generation"
+    },
+    {
+      "act": 3,
+      "file": "raw/act3_primary_try_T_H2.jpg",
+      "sha256": "9ba2b4bc866d70eee95d54e74361d31aacffc9cb9571cf6d1c06ec63fe477221",
+      "asset_notes": "session generation"
+    },
+    {
+      "act": 4,
+      "file": "raw/act4_false_repair.jpg",
+      "sha256": "b7ea303589b2136de3b0993c24558c16058c0b2d0e44ae276a46d5397d98d2f2",
+      "asset_notes": "session generation"
+    },
+    {
+      "act": 5,
+      "file": "raw/act5_one_boundary.jpg",
+      "sha256": "623a34cc4acca81cc5f02dfacf72598532aeee20994f95783fc36baae7440cde",
+      "asset_notes": "session generation"
+    },
+    {
+      "act": 6,
+      "file": "raw/act6_choose.jpg",
+      "sha256": "5d11717fc665eef76763c5b28de7d5ca4416bac07ceceb68f188c668c6fe764f",
+      "asset_notes": "session generation"
+    }
+  ],
+  "video_prompts_present": true,
+  "source": "compile_product_matrix limit=80 pick BPX-0007DA681947FB49"
+}

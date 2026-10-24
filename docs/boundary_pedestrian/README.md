@@ -112,3 +112,7 @@
 ## 輪迴 TRY 圖鑑（藝術字標方法）
 
 [`reincarnation_try/`](reincarnation_try/) — 同一六幕故事多輪方法輪換，畫面內標 TRY 方法碼。
+
+## 單組完整 TRY realization 樣例
+
+[`one_try_BPX-0007DA681947FB49/`](one_try_BPX-0007DA681947FB49/) — 107,784 中取出 1 組；六幕 IMAGE 已 realization；VIDEO NOT_RUN。
