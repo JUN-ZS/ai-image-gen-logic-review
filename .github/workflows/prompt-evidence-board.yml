@@ -290,7 +290,7 @@ jobs:
           summary['output_index_csv'] = 'NOT_RETAINED_IN_ARTIFACT; regenerate with boundary_pedestrian_product_matrix.py'
           summary['artifact_sample_jsonl_gzip'] = str(receipt / 'first_32_full_prompt_packages.jsonl.gz')
           summary['artifact_note'] = 'CI verified the complete 431,136-combination product in the runner; this artifact retains a 32-row full-prompt sample plus counts/series inventory to avoid Actions storage quota exhaustion. Re-run boundary_pedestrian_product_matrix.py to reproduce the complete JSONL.GZ.'
-          (receipt / 'full_product_verification_receipt.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
+          (receipt / 'full_product_verification_receipt.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           shutil.rmtree(root)
           shutil.rmtree(Path('out/prompt_evidence_board/boundary_pedestrian/loop_prompts'), ignore_errors=True)
           print('Full product was verified; the uploaded artifact retains a 32-combination prompt sample and complete summary only.')
