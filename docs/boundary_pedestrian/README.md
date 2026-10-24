@@ -100,3 +100,7 @@
 ## HARD 抽樣（P3/P4）
 
 [`hard_samples/`](hard_samples/) — MULTI×3 洗圖 + T×H2×8 軸。
+
+## 全量 ID / 已出圖對照
+
+[`variants/`](variants/) — `VARIANT_IDS_FULL.csv` + `GENERATED_ASSETS_CATALOG_MAP.csv`。
