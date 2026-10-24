@@ -1,0 +1,21 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "LOOP-V5-001",
+  "try_id": "TRY-S04-T-H2-001",
+  "series_id": "S04-SNOW-TORII",
+  "world_label": "Snow Torii Shrine / 寂雪鳥居",
+  "method_id": "GEO.T",
+  "method_label": "T-hammer · H2 first contact · S04",
+  "geometry_family": "T",
+  "contact_method": "H2",
+  "camera_id": "CAM05_OTS",
+  "pose_id": "P04",
+  "style_id": "S04",
+  "status": "IMAGE_GENERATED",
+  "text_content_sha256": "e67a6eeae3795940533e29d46ebb1b8a723b6388a9665584b05b2077ca0189cd",
+  "acts": {
+    "3": {
+      "prompt_id": "SET-V5-S04-T-H2-001-ACT3-MID"
+    }
+  }
+}

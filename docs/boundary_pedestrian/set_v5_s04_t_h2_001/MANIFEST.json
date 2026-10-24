@@ -1,0 +1,64 @@
+{
+  "set_id": "SET-V5-S04-T-H2-001",
+  "formula_edition": "MASTER_PROMPT_v5_20261025",
+  "identity": "邊界行人 / THE BOUNDARY WALKER",
+  "world": "S04 SNOW TORII SHRINE",
+  "geometry": "GEO.T · H2",
+  "face_ref": "c0bd4c99-b2dd-4513-b032-a98bf6a0d074",
+  "spine": [
+    "畫界",
+    "保護",
+    "試法碎裂",
+    "假修",
+    "一界",
+    "選擇"
+  ],
+  "mid_master_sha256": "43ea242828ddefe96dcc884a83b7a94e6573ec0bd6fa815bfb716bd17131e1b3",
+  "text_content_sha256": "e67a6eeae3795940533e29d46ebb1b8a723b6388a9665584b05b2077ca0189cd",
+  "files": {
+    "act1": {
+      "path": "raw/act1_畫界.jpg",
+      "sha256": "9b758b92c7f05d45ec8cda65f1f2ff81e8605d831fd4c34be3cd79c147eb33e1"
+    },
+    "act2": {
+      "path": "raw/act2_保護.jpg",
+      "sha256": "24b798e067cf5b12348fd129ee9feff3e8158b874c85993525161f4bebf11fe0"
+    },
+    "act3_MID": {
+      "path": "raw/act3_MID_H2.jpg",
+      "sha256": "43ea242828ddefe96dcc884a83b7a94e6573ec0bd6fa815bfb716bd17131e1b3"
+    },
+    "act3_PRE": {
+      "path": "raw/act3_PRE_H1.jpg",
+      "sha256": "231c12783a2ac13e32278c4d23ce1f10a09afd2a34ee05c1ee839432a60692ef"
+    },
+    "act3_POST": {
+      "path": "raw/act3_POST_H3.jpg",
+      "sha256": "d9b9cb142e8a7ae893b84106e125e578f48f8d39c2d01ae66c47247aec3452eb"
+    },
+    "act4": {
+      "path": "raw/act4_假修.jpg",
+      "sha256": "37f9f3a05551e0a364e16475dbbf6339b33540a01adf514e78f39e8bf3bc70f1"
+    },
+    "act5": {
+      "path": "raw/act5_一界.jpg",
+      "sha256": "869c77ed291d31f467c49fc3910f78481f34a7130e15ffe42863d1e70439f634"
+    },
+    "act6": {
+      "path": "raw/act6_選擇.jpg",
+      "sha256": "956506d3b4c33b0a4c8924d18c3e37fbe8985c8ebcf3ddbaafae797d729c1878"
+    }
+  },
+  "gate": {
+    "HUMAN_ACCEPTED": false,
+    "PIXEL_AUDIT": "NOT_RUN",
+    "PRE_POST": "DRAFT_FROM_MID · not gate-unlocked"
+  },
+  "honest_notes": [
+    "This SET locks 邊界行人 identity: luminous boundary line + sphere with LIVING miniature sanctuary village.",
+    "SOFT acts 1/2/4/5/6 have no weapon.",
+    "ACT3 MID uses letter-T; terminal end-face contact improved vs prior rain triad but still REVIEW_PENDING.",
+    "PRE shows air gap no cracks; POST denser cracks — same cam/hammer from MID parent.",
+    "No HUMAN_ACCEPTED receipt forged."
+  ]
+}
