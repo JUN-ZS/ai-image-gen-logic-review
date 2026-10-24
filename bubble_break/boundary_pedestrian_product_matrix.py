@@ -33,6 +33,7 @@ from bubble_break.boundary_pedestrian_loop_planner import (
     style_description,
     wash_description,
 )
+from bubble_break.boundary_pedestrian_frame_triad import label_text_sha256
 
 STYLES = ("S01", "S02", "S03")
 POSE_VARIANTS = ("P01", "P02", "P03", "P04")
