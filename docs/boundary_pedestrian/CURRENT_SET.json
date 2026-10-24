@@ -1,23 +1,10 @@
 {
   "active_set": "SET-H",
-  "world": "ARCTIC AURORA · ICE CRYSTAL NIGHT",
   "world_code": "ARCTIC_AURORA_ICE",
-  "previous_set": "SET-G GOLD FOIL RUINED TEMPLE",
-  "branch": "feature/boundary-pedestrian-setg-axis-a-settings",
-  "hub_press": "HUB_PRESS_ON_IMAGE_PRIORITY.md",
-  "artifact_root": "boundary_pedestrian_setH_arctic/",
-  "methods_rendered": [
-    "H1",
-    "H2",
-    "T2",
-    "ROD_POS",
-    "ROD_NEG",
-    "PLANT_O"
-  ],
-  "frame_contract": [
-    "PRE",
-    "MID",
-    "POST"
-  ],
-  "asof": "2026-10-25T01:34:00+08:00"
+  "heroine_id": "BW_HEROINE_SET_H_V1",
+  "typeset": "SVG deterministic (setH_try_art_typeset_v1) — not model glyphs",
+  "demo_loop": "L-7ab89829778f",
+  "demo_method": "GEO.T · H2",
+  "asof": "2026-10-25T02:07:00+08:00",
+  "honest": "AI text overlays rejected; heroine now locked; only H2 typeset demo full pipeline this turn"
 }

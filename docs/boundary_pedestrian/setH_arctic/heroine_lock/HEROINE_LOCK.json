@@ -1,0 +1,11 @@
+{
+  "heroine_id": "BW_HEROINE_SET_H_V1",
+  "body_asset": "f22f34c0-c4d4-494c-a1a0-6007366c80cc",
+  "face_asset": "f58807b1-a3fa-48f2-984c-91bc3a35108f",
+  "world_asset": "ad9703b3-ec07-491a-a09e-73db9bc0312f",
+  "look": "high knot hair, frost-bitten dark layered arctic cloak, mid-20s East Asian, determined calm",
+  "set": "SET-H ARCTIC_AURORA_ICE",
+  "body_sha256": "52e9b45de4cca9353420db60ac839a1f7f4cf70027a10602ada04f07f9c30b91",
+  "face_sha256": "9e610eab43e26554f4b11a03bbf37afb1d793a4f59c7277c3f912bf856674138",
+  "world_sha256": "b4d324f8862a02ce3b45f31d6e46666c6d0ee1bf9231680695a257cf599ed2d2"
+}
