@@ -43,6 +43,49 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def canonical_text_payload(metadata: dict[str, Any]) -> dict[str, str]:
+    """Words/IDs that must stay identical across PRE/MID/POST and the assembled video."""
+    return {
+        "title": "邊界行人 / THE BOUNDARY WALKER",
+        "loop_try": f"LOOP {metadata.get('loop_id', '')}  /  TRY {metadata.get('try_id', '')}",
+        "method": str(metadata.get("method_label") or metadata.get("method_id") or ""),
+        "geometry_contact": f"{metadata.get('geometry_family', '')} / {metadata.get('contact_method', '')}",
+        "camera_pose": f"{metadata.get('camera_id', '')} / {metadata.get('pose_id', '')}",
+        "style_series_world": " / ".join(
+            str(metadata.get(key) or "")
+            for key in ("style_id", "series_id", "world_label")
+        ),
+        "prompt_id": str(metadata.get("prompt_id") or ""),
+    }
+
+
+def text_content_sha256(metadata: dict[str, Any]) -> str:
+    payload = canonical_text_payload(metadata)
+    return sha256_bytes(json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode("utf-8"))
+
+
+TYPOGRAPHY_TREATMENTS = {
+    "before": {
+        "deep": "#061a2a", "edge": "#8aeaff", "metal": "#c7faff",
+        "ink": "#f2fdff", "shadow": "#174e78",
+    },
+    "middle": {
+        "deep": "#101b28", "edge": "#8fcbd2", "metal": "#d5dce2",
+        "ink": "#fffaf1", "shadow": "#46596e",
+    },
+    "after": {
+        "deep": "#26120d", "edge": "#ff9a50", "metal": "#ffd079",
+        "ink": "#fff5d5", "shadow": "#873014",
+    },
+    "video-lock": {
+        "deep": "#101b28", "edge": "#6fd6d4", "metal": "#f3dc98",
+        "ink": "#fdf6e8", "shadow": "#293d55",
+    },
+}
+
+
 def image_size(data: bytes) -> tuple[int, int]:
     """Read dimensions from PNG or JPEG headers without re-encoding the source."""
     if data.startswith(b"\x89PNG\r\n\x1a\n") and len(data) >= 24 and data[12:16] == b"IHDR":
@@ -126,8 +169,16 @@ def build_svg(
 ) -> str:
     metadata = dict(metadata)
     metadata.setdefault("poster_panel_area_fraction", 0.44 * 0.78)
+    metadata.setdefault("typography_variant", "middle")
+    payload = canonical_text_payload(metadata)
+    metadata.setdefault("canonical_text_payload", payload)
+    metadata.setdefault("text_content_sha256", text_content_sha256(metadata))
     scale = max(0.45, min(width / 1920.0, height / 1080.0))
-    p = PALETTES.get(str(metadata.get("style_id", "S01")), PALETTES["S01"])
+    variant = str(metadata.get("typography_variant", "middle"))
+    p = TYPOGRAPHY_TREATMENTS.get(
+        variant,
+        PALETTES.get(str(metadata.get("style_id", "S01")), PALETTES["S01"]),
+    )
     pad = max(18, round(36 * scale))
     panel_w = round(width * 0.44)
     panel_h = round(height * 0.78)
@@ -200,7 +251,7 @@ def build_svg(
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      width="{width}" height="{height}" viewBox="0 0 {width} {height}">
   <title>{esc(title_zh)} / {esc(title_en)} — {esc(tryline)}</title>
-  <desc>Floating 3D poster artwork layer. Exact method typography is deterministic; source image pixels are embedded unchanged.</desc>
+  <desc>Floating 3D poster artwork layer. Exact method typography is deterministic; source image pixels are embedded unchanged. Frame typography variant: {esc(metadata.get("typography_variant", "middle"))}; stable text SHA-256: {esc(metadata.get("text_content_sha256", ""))}.</desc>
   <metadata>{esc(json.dumps(metadata, ensure_ascii=False, sort_keys=True))}</metadata>
   <defs>
     <linearGradient id="metalFace" x1="0" y1="0" x2="0.9" y2="1">
@@ -262,10 +313,12 @@ def build_ass(metadata: dict[str, Any], duration_seconds: float) -> str:
     tryline = ass_escape(f"LOOP {metadata['loop_id']}  ·  TRY {metadata['try_id']}")
     method = ass_escape(f"{metadata['method_id']}  /  {metadata.get('method_label') or ''}")
     world = ass_escape(f"{metadata.get('series_id') or 'SERIES'}  ·  {metadata.get('world_label') or 'WORLD'}")
+    content_hash = str(metadata.get("text_content_sha256") or text_content_sha256(metadata))
     meta = ass_escape(
         f"GEO {metadata.get('geometry_family') or '?'} / CONTACT {metadata.get('contact_method') or '?'}"
         f" / CAM {metadata.get('camera_id') or '?'} / POSE {metadata.get('pose_id') or '?'}"
         f" / STYLE {metadata.get('style_id') or '?'} / PROMPT {metadata.get('prompt_id') or '?'}"
+        f" / TEXT SHA-256 {content_hash}"
     )
     status = ass_escape(str(metadata.get("status", DEFAULT_STATUS)).replace("_", " "))
     return "\n".join([
@@ -311,6 +364,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pose-id", default="")
     parser.add_argument("--prompt-id", default="")
     parser.add_argument("--style-id", default="")
+    parser.add_argument("--typography-variant", choices=["", "before", "middle", "after", "video-lock"], default="")
     parser.add_argument("--note", default="")
     parser.add_argument("--panel-side", choices=["left", "right"], default="")
     parser.add_argument("--status", default="", choices=["", *sorted(ALLOWED_STATUSES)])
@@ -371,6 +425,7 @@ def main() -> int:
         "pose_id": choose(args.pose_id, "pose_id"),
         "prompt_id": choose(args.prompt_id, "prompt_id"),
         "style_id": choose(args.style_id, "style_id", "S01"),
+        "typography_variant": choose(args.typography_variant, "typography_variant", "middle"),
         "panel_side": choose(args.panel_side, "panel_side", "right"),
         "status": status,
         "note": choose(args.note, "note", "每一次失敗，都帶來下一個試法。"),
@@ -383,7 +438,22 @@ def main() -> int:
         "pixel_audit_status": "NOT_RUN",
         "visual_acceptance_status": "NOT_VERIFIED",
         "renderer": "boundary_pedestrian_try_art.py",
+        "canonical_text_payload": canonical_text_payload({
+            "loop_id": loop_id,
+            "try_id": try_id,
+            "method_id": method_id,
+            "method_label": metadata["method_label"],
+            "geometry_family": metadata["geometry_family"],
+            "contact_method": metadata["contact_method"],
+            "camera_id": metadata["camera_id"],
+            "pose_id": metadata["pose_id"],
+            "style_id": metadata["style_id"],
+            "series_id": metadata["series_id"],
+            "world_label": metadata["world_label"],
+            "prompt_id": metadata["prompt_id"],
+        }),
     }
+    metadata["text_content_sha256"] = text_content_sha256(metadata)
     svg = build_svg(source, mime_type, width, height, metadata)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(svg, encoding="utf-8")
