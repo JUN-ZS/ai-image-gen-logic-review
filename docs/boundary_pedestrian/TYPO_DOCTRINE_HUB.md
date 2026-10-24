@@ -137,8 +137,40 @@ ROD± · PLANT_O · 五段相 · E_90/E_face · signed_gap · Crack±δt · reac
 
 ---
 
+
+
+---
+
+## 9. 幀連感（CONTINUITY · 2026-10-25 補）
+
+**失敗根因**：對已完成的 clean／標字圖再做 **img2img 半途改字／改景**，模型會重繪身份、槌形、鏡頭 → **PRE｜MID｜POST 連貫失敗**。
+
+### 正確鏈（鎖死）
+
+```text
+1. PRE clean   = 世界 + 女主 root（一次定稿）
+2. MID clean   = **只以 PRE clean 為底** img2img（只推進時間：接觸）
+3. POST clean  = **只以 MID clean 為底** img2img（只推進時間：跟進碎裂）
+4. 字層        = **SVG／ASS 疊加**（或極輕「只加字、禁止改主體」且審核不通過即回 SVG）
+5. 禁止        = 用世界板重抽 MID/POST；禁止標字後再 img2img 整圖重畫
+```
+
+### 可接受變體
+
+| 做法 | 連貫 | 字生動 |
+|------|------|--------|
+| 鏈 clean + **SVG 疊字** | ✅ 最穩 | 中（glow 可控） |
+| 鏈 clean + 極輕 B 軌「只加字」 | ⚠️ 易漂 | 高 |
+| 三幀各自 world+face 重抽再加字 | ❌ | — |
+| 標字後再 img2img 改風格 | ❌ | — |
+
+**原則**：時間推進只在 clean 鏈；字是**後製層**，唔好反過來用字去重生圖。
+
+SET-I 連續修復樣本：`setI_obsidian` cont 管線 · LOOP 以 MID clean SHA。
+
 ## 8. 變更日誌
 
 | 日 | 變更 |
 |----|------|
 | 2026-10-25 | 初版上 HUB：雙軌、F=用法非外觀、世界材料表、幀物理綁定、SET-I 示範 |
+| 2026-10-25 | §9 幀連感：禁止半途 img2img 改字；clean 鏈 PRE→MID→POST 後再 SVG 疊字 |
