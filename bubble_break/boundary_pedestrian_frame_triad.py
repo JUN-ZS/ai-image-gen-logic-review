@@ -42,7 +42,7 @@ def canonical_text_payload(label: dict[str, Any], act_id: str = "3") -> dict[str
     act = (label.get("acts") or {}).get(str(act_id), {})
     return {
         "title": "邊界行人 / THE BOUNDARY WALKER",
-        "loop_try": f"{label.get('loop_id', '')} / {label.get('try_id', '')}",
+        "loop_try": f"LOOP {label.get('loop_id', '')} / TRY {label.get('try_id', '')}",
         "method": str(label.get("method_label") or label.get("method_id") or ""),
         "geometry_contact": f"{label.get('geometry_family', '')} / {label.get('contact_method', '')}",
         "camera_pose": f"{label.get('camera_id', '')} / {label.get('pose_id', '')}",
