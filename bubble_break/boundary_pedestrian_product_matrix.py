@@ -338,6 +338,16 @@ VIDEO_METHODS = {
     "PLANT_O": ("V-03", "V-04", "V-09"),
     "MULTI": ("V-04", "V-08", "V-09"),
 }
+def compatible_video_methods(config: ImageConfig) -> tuple[str, ...]:
+    """Return only physically/temporally compatible methods for this exact image config."""
+    methods = list(VIDEO_METHODS[config.geo_family])
+    # V-02 is an H2-centred five-frame sequence. It must not be multiplied onto H0/H1/H3
+    # master rows because those states are generated from the corrected H2 frame, not vice versa.
+    if config.geo_family == "T" and config.contact != "H2" and "V-02" in methods:
+        methods.remove("V-02")
+    return tuple(methods)
+
+
 VIDEO_DESCRIPTIONS = {
     "V-01": "Generate one continuous 10-second scene, not a montage. Use a readable PRE state, approach, nominated contact/event, follow-through if applicable, and aftermath; no teleporting or geometry reset.",
     "V-02": "Use five separately prompted keyframes at 0.0s PRE_FAR, 2.0s PRE_NEAR, 4.5s CONTACT, 7.0s MID_SHOCK, and 10.0s END. Keep parent identity and scene continuity between frames.",
@@ -673,7 +683,7 @@ def compile_product_matrix(catalog_csv: Path, outdir: Path, catalog_doc: Path,
         # Only series with the matching visual style are eligible. A series' style/world/character
         # remain fixed across its six acts, while another series may change all of them.
         compatible_series = [sid for sid, series in STORY_SERIES.items() if series["style_id"] == config.style]
-        for video_method in VIDEO_METHODS[config.geo_family]:
+        for video_method in compatible_video_methods(config):
             for series_id in compatible_series:
                 key = combo_key(config, video_method, series_id)
                 digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
@@ -796,7 +806,7 @@ def compile_product_matrix(catalog_csv: Path, outdir: Path, catalog_doc: Path,
         "source_variant_rows": len(rows),
         "image_geometry_camera_style_pose_configs": len(configs),
         "image_geometry_camera_style_pose_counts": dict(sorted(Counter(c.geo_family for c in configs).items())),
-        "compatible_geometry_camera_style_pose_video_configs": sum(len(VIDEO_METHODS[c.geo_family]) for c in configs),
+        "compatible_geometry_camera_style_pose_video_configs": sum(len(compatible_video_methods(config)) for config in configs),
         "cross_product_combinations_after_style_matched_series": total if "total" in locals() else 0,
         "pose_factor": len(POSE_VARIANTS),
         "pose_variants": {key: value for key, value in POSE_DESCRIPTIONS.items()},
@@ -835,6 +845,7 @@ def compile_product_matrix(catalog_csv: Path, outdir: Path, catalog_doc: Path,
             "Each six-act story uses visibly different camera/action profiles by act; the TRY method label is composited as a large 3D poster title and source/artwork SHA values are recorded in manifests.",
             "Only ACT 3 receives the selected hard geometry; ACTS 1/2/4/5/6 are soft narrative companions and never add a second impact topology.",
             "T H2 FRONT is shared with the standard T192 front frame; H2 impact pack adds LOW/PEAK/SIDE only so identical FRONT pixels are not double-counted.",
+            "V-02 is paired only with T/H2 configs: the corrected H2 master is generated and reviewed first; PRE/POST keyframes derive from that exact accepted raster. V-02 is not multiplied onto H0/H1/H3 master rows.",
             "V-02 expands to five separately written keyframe prompts; V-09 expands into 24 or 52 shot cards with independent image and video prompts.",
             "PROMPT_READY is not equivalent to image/video generation, geometry PASS, continuity PASS or video audit PASS.",
         ],
