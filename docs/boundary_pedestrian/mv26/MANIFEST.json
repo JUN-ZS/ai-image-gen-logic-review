@@ -1,0 +1,276 @@
+{
+  "title": "邊界行人 × 公式源代 — 26-shot expansion",
+  "asof": "2026-10-24",
+  "formula": "6 acts × (4 shots typical; ACT3 has 6) = 26 stills",
+  "s4_24_cards": "If ACT3 kept to 4 (PACK_IMPACT_4 only) → 24 cards",
+  "evidence_grade": "IMAGE_GENERATED_IN_SESSION",
+  "pixel_audit_pass": false,
+  "notes": [
+    "Wires 槌2 MV_* packs into six narrative acts of 邊界行人.",
+    "PACK_IMPACT_4 = MV_3_1..3_4 only; ACT3 also has FALL+NET.",
+    "Not formal PIXEL_AUDIT_PASS; weapon geometry not claimed PASS.",
+    "Soft ACT2 shots omit hammer-in-contact by source prompt."
+  ],
+  "shots": [
+    {
+      "id": "MV_1_1_WIDE",
+      "act": 1,
+      "slot": 1,
+      "tag": "WIDE",
+      "path": "docs/boundary_pedestrian/mv26/act1/MV_1_1_WIDE.jpg",
+      "bytes": 860243,
+      "sha256": "904222fb94344af0e632bc002a2f37a3c1c612364dccb4d74faec8e9b1908fc2",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_1_2_LINE",
+      "act": 1,
+      "slot": 2,
+      "tag": "LINE",
+      "path": "docs/boundary_pedestrian/mv26/act1/MV_1_2_LINE.jpg",
+      "bytes": 629905,
+      "sha256": "7146b49c1ca873f1b9434fff90da7e033c138cec37b57c3fc24470abcf7bafb7",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_1_3_BORDER_WALK",
+      "act": 1,
+      "slot": 3,
+      "tag": "BORDER_WALK",
+      "path": "docs/boundary_pedestrian/mv26/act1/MV_1_3_BORDER_WALK.jpg",
+      "bytes": 960116,
+      "sha256": "f71ad3d45f912158be147fcc9f13045d61fdc6d4b213bd7e3fa216d0f0b7bc30",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_1_4_PUPIL",
+      "act": 1,
+      "slot": 4,
+      "tag": "PUPIL",
+      "path": "docs/boundary_pedestrian/mv26/act1/MV_1_4_PUPIL.jpg",
+      "bytes": 720157,
+      "sha256": "0adfdb0251f29b304dca2e91edd6dc7244fa38e7814460d5b99a394d347a1714",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_2_1_PLACE",
+      "act": 2,
+      "slot": 1,
+      "tag": "PLACE",
+      "path": "docs/boundary_pedestrian/mv26/act2/MV_2_1_PLACE.jpg",
+      "bytes": 667229,
+      "sha256": "462a9532d72a264418d68927be2a7c795d2fda6f03a285421074f66972d5bbc2",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_2_2_HOLD",
+      "act": 2,
+      "slot": 2,
+      "tag": "HOLD",
+      "path": "docs/boundary_pedestrian/mv26/act2/MV_2_2_HOLD.jpg",
+      "bytes": 625726,
+      "sha256": "ce1aabe60bbfcc97f5e1cc064bea29fd9becc6f43738b62f7abad18cc4bf345d",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_2_3_VACUUM",
+      "act": 2,
+      "slot": 3,
+      "tag": "VACUUM",
+      "path": "docs/boundary_pedestrian/mv26/act2/MV_2_3_VACUUM.jpg",
+      "bytes": 705525,
+      "sha256": "7a02b7a990f78ec9ef6097d8d0e9a6d5c961631249484499492d5a8ddbff2e22",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_2_4_CRACK_HAND",
+      "act": 2,
+      "slot": 4,
+      "tag": "CRACK_HAND",
+      "path": "docs/boundary_pedestrian/mv26/act2/MV_2_4_CRACK_HAND.jpg",
+      "bytes": 607270,
+      "sha256": "6a1273a3d37eadbd1be9412ae6c50d4dda1e4a2354ef31ff550d8dc9e57b1a5b",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_3_1_FRONT",
+      "act": 3,
+      "slot": 1,
+      "tag": "FRONT",
+      "path": "docs/boundary_pedestrian/mv26/act3/MV_3_1_FRONT.jpg",
+      "bytes": 799003,
+      "sha256": "9f84605ce2b60150b9fcec40750e7c12dd344842789557b593400bcdbdbd471e",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_3_2_LOW",
+      "act": 3,
+      "slot": 2,
+      "tag": "LOW",
+      "path": "docs/boundary_pedestrian/mv26/act3/MV_3_2_LOW.jpg",
+      "bytes": 904849,
+      "sha256": "dc0c7615ab499e21c960660c616d957ed8ec53d0c2cc1cb21e7c4bb7982dc6ed",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_3_3_PEAK",
+      "act": 3,
+      "slot": 3,
+      "tag": "PEAK",
+      "path": "docs/boundary_pedestrian/mv26/act3/MV_3_3_PEAK.jpg",
+      "bytes": 934927,
+      "sha256": "ba791afe4060bdd8543cf61a01f519b0dbc1fdb358a6a3f76e5bb3f5dbdf44a4",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_3_4_SIDE",
+      "act": 3,
+      "slot": 4,
+      "tag": "SIDE",
+      "path": "docs/boundary_pedestrian/mv26/act3/MV_3_4_SIDE.jpg",
+      "bytes": 860511,
+      "sha256": "2a15420520b50cc3a57637c92d98fddbc0a30be016b69fd6a7798b2a9823f998",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_3_5_FALL",
+      "act": 3,
+      "slot": 5,
+      "tag": "FALL",
+      "path": "docs/boundary_pedestrian/mv26/act3/MV_3_5_FALL.jpg",
+      "bytes": 1043766,
+      "sha256": "1bb00521c71471abf722a99288dd591ffc6c192c7bbddaec22d3626a9245810c",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_3_6_NET",
+      "act": 3,
+      "slot": 6,
+      "tag": "NET",
+      "path": "docs/boundary_pedestrian/mv26/act3/MV_3_6_NET.jpg",
+      "bytes": 1020629,
+      "sha256": "8dc5aca870e6541af54c59eb80ec25fc759403c515a3f298fea8d50e46752dc7",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_4_1_PANIC",
+      "act": 4,
+      "slot": 1,
+      "tag": "PANIC",
+      "path": "docs/boundary_pedestrian/mv26/act4/MV_4_1_PANIC.jpg",
+      "bytes": 697706,
+      "sha256": "937213b1ec0ce97cac77050f06887043b3c011ac85eccc694a4e06d9c25538f9",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_4_2_CLAW",
+      "act": 4,
+      "slot": 2,
+      "tag": "CLAW",
+      "path": "docs/boundary_pedestrian/mv26/act4/MV_4_2_CLAW.jpg",
+      "bytes": 682284,
+      "sha256": "29d29390435056defb53f991d2a3c66e3442aa5116f5681bf76c2547f4fc4218",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_4_3_SELFIE",
+      "act": 4,
+      "slot": 3,
+      "tag": "SELFIE",
+      "path": "docs/boundary_pedestrian/mv26/act4/MV_4_3_SELFIE.jpg",
+      "bytes": 543372,
+      "sha256": "e28b9ed77900515b7c0dbed5b3295c560fa2ae7f851c65f40db2f6b16a118eaa",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_4_4_FUSE",
+      "act": 4,
+      "slot": 4,
+      "tag": "FUSE",
+      "path": "docs/boundary_pedestrian/mv26/act4/MV_4_4_FUSE.jpg",
+      "bytes": 605032,
+      "sha256": "841b9c33038650f9b02c314dcc4d3b8b0d6c192d703566e41d5890865a3453f2",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_5_1_PEEL",
+      "act": 5,
+      "slot": 1,
+      "tag": "PEEL",
+      "path": "docs/boundary_pedestrian/mv26/act5/MV_5_1_PEEL.jpg",
+      "bytes": 775581,
+      "sha256": "4d54e00f89186fe46701874fe8abac0c30ce3d4d7009b9ce2c3e0f86e780c13a",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_5_2_PAIN",
+      "act": 5,
+      "slot": 2,
+      "tag": "PAIN",
+      "path": "docs/boundary_pedestrian/mv26/act5/MV_5_2_PAIN.jpg",
+      "bytes": 615050,
+      "sha256": "81b3100d647f5cda31a506eec10e7a8befe6ab69ae1131b9b90cb3342474a299",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_5_3_BANDAGE",
+      "act": 5,
+      "slot": 3,
+      "tag": "BANDAGE",
+      "path": "docs/boundary_pedestrian/mv26/act5/MV_5_3_BANDAGE.jpg",
+      "bytes": 585590,
+      "sha256": "ed4a6a27a7f8c95197f3206f4f8009052c4172daaee2ea361df1c2d6bfc93dda",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_5_4_REDTHREAD",
+      "act": 5,
+      "slot": 4,
+      "tag": "REDTHREAD",
+      "path": "docs/boundary_pedestrian/mv26/act5/MV_5_4_REDTHREAD.jpg",
+      "bytes": 552093,
+      "sha256": "abeb8a928e10934fd068edfeb9615a514a6c15037d68d29a8c1c9ce4b430a15c",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_6_1_ASK",
+      "act": 6,
+      "slot": 1,
+      "tag": "ASK",
+      "path": "docs/boundary_pedestrian/mv26/act6/MV_6_1_ASK.jpg",
+      "bytes": 792854,
+      "sha256": "56f111aea9e314ce5d92e3cb914b0cce09ae7f82e9b3e2444e30f4135cff872a",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_6_2_SPLIT",
+      "act": 6,
+      "slot": 2,
+      "tag": "SPLIT",
+      "path": "docs/boundary_pedestrian/mv26/act6/MV_6_2_SPLIT.jpg",
+      "bytes": 458913,
+      "sha256": "5715437faf70434c0494a1142f2fdc95ad36b881d7174d3240e57cebc92f7397",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_6_3_DANCE",
+      "act": 6,
+      "slot": 3,
+      "tag": "DANCE",
+      "path": "docs/boundary_pedestrian/mv26/act6/MV_6_3_DANCE.jpg",
+      "bytes": 746653,
+      "sha256": "b433f3d6b37f81e31836a0a276fde528724f4027e0d67c68fb1c6bc85cd07b15",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    },
+    {
+      "id": "MV_6_4_FINAL",
+      "act": 6,
+      "slot": 4,
+      "tag": "FINAL",
+      "path": "docs/boundary_pedestrian/mv26/act6/MV_6_4_FINAL.jpg",
+      "bytes": 855211,
+      "sha256": "3c897cd52c0500d67a6e810f5ac62716db2f033f717fdcaeacfd968495ef716f",
+      "prompt_source": "槌2.txt MV PROMPT 公式源代"
+    }
+  ]
+}

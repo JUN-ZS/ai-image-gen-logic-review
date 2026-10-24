@@ -1,0 +1,106 @@
+{
+  "schema_version": "BW-FRAME-TRIAD-1.0",
+  "triad_id": "TRIAD-239CDE38EF0551F3",
+  "loop_id": "LOOP-TRIAD-001",
+  "try_id": "TRY-FEMALE-H2-001",
+  "method_id": "GEO.T",
+  "transition": [
+    "PRE_H1",
+    "MID_H2",
+    "POST_H3"
+  ],
+  "generation_order": [
+    "MID_H2_CORRECT_AND_REVIEW",
+    "PRE_H1_FROM_ACCEPTED_MID",
+    "POST_H3_FROM_ACCEPTED_MID"
+  ],
+  "only_temporal_state_may_change": true,
+  "mid_master_sha256": "b0b2e78fd1572adde80e526a487822bb1722922aa68f19ae02e9b7c5789a95d7",
+  "mid_geometry_review_accepted": false,
+  "blocked_reasons": [
+    "SHA-bound human geometry review receipt not supplied"
+  ],
+  "shared_frame_lock": {
+    "camera_lock": {
+      "camera_id": "XZ_FALL__CAM08_MACRO_SEAM__M1",
+      "camera_pack": "T_H2_IMPACT4",
+      "canvas": "16:9",
+      "crop": "pixel-identical framing to the accepted H2 master",
+      "lens_perspective": "locked",
+      "camera_position_and_orientation": "locked",
+      "background_registration": "locked",
+      "lighting_direction": "locked"
+    },
+    "hammer_lock": {
+      "topology": "Exactly one rigid T-hammer: one straight rectangular crossbar and one straight handle joined at the crossbar midpoint at 90 degrees.",
+      "dimensions_and_proportions": "identical to the accepted H2 master raster; no redesign, rescale, bend, extra head, extra handle or topology substitution",
+      "active_face": "the nominated flat terminal end face of the crossbar",
+      "handle_attachment": "crossbar midpoint, 90-degree attachment; fixed across all three frames",
+      "rigid_body": "hammer remains one rigid body; no internal bending or changing silhouette"
+    },
+    "character_pose": "same character, same grip and same body silhouette; only the minimum physically required hand/arm follow-through along the declared path",
+    "world_and_props": "pixel-registered; no new props, no environment redesign",
+    "text_payload": {
+      "title": "邊界行人 / THE BOUNDARY WALKER",
+      "loop_try": "LOOP LOOP-TRIAD-001  /  TRY TRY-FEMALE-H2-001",
+      "method": "T-hammer · H2 first contact · IMPACT4 · P04 · female face lock",
+      "geometry_contact": "T / H2",
+      "camera_pose": "T_H2_IMPACT4-XZ_FALL-CAM08-LOW-M1 / P04",
+      "style_series_world": "S01 / S01-RAIN-TOKYO / Rainy Tokyo / 雨夜東京",
+      "prompt_id": "BPX-TRIAD-FEMALE-RAIN-TOKYO-001-I-MID-H2"
+    },
+    "text_content_sha256": "5e4fdbaf27e1a0e404bbaea09864bc3dd22f248e17b26e5a2df850492a6a1442",
+    "video_text_rule": "the canonical word content and IDs are identical across PRE/MID/POST and throughout the video; only still-frame typography treatment may change"
+  },
+  "frame_typography": {
+    "text_content_sha256": "5e4fdbaf27e1a0e404bbaea09864bc3dd22f248e17b26e5a2df850492a6a1442",
+    "pre_frame_variant": "before",
+    "mid_frame_variant": "middle",
+    "post_frame_variant": "after",
+    "video_variant": "video-lock",
+    "same_words_across_all_frames_and_video": true,
+    "pre_and_post_visual_treatment_differs": true,
+    "text_is_rendered_by_svg_ass_not_image_model": true
+  },
+  "frames": [
+    {
+      "frame_id": "MID_H2",
+      "time_role": "CONTACT",
+      "generation_order": 1,
+      "source": "candidate H2 image-edit source",
+      "typography_variant": "middle",
+      "text_content_sha256": "5e4fdbaf27e1a0e404bbaea09864bc3dd22f248e17b26e5a2df850492a6a1442",
+      "prompt": "H2 MID MASTER — CORRECT THIS FRAME FIRST. Use the supplied candidate H2 raster as an image-edit source, not as a loose inspiration and not as a fresh scene-generation request. Preserve the current camera, crop, perspective, scene, character identity, grip, lighting, color grade, sphere and all background landmarks. Correct only the local T-hammer geometry/contact defect: exactly one rigid T-hammer, a straight rectangular crossbar with one straight handle attached at the crossbar midpoint at 90 degrees; preserve the candidate's hammer proportions and material. The nominated flat terminal end face is the only first contact at P. The active face and sphere have zero gap at P, opposing normals, and no interpenetration. First fine cracks originate only at P. Do not let the side cheek, shaft, handle, corner or another surface touch first. Do not add/remove a handle, rotate the camera, change focal length, reframe, move the sphere, redesign the character, or change world details. If correcting the contact requires changing the camera or hammer shape, stop and flag for a human correction rather than inventing an alternative. This image becomes the sole master for both derived temporal frames. Do not add typography in the generated raster; typography is overlaid later.",
+      "status": "MID_CORRECTION_REQUIRED",
+      "image_sha256": "b0b2e78fd1572adde80e526a487822bb1722922aa68f19ae02e9b7c5789a95d7"
+    },
+    {
+      "frame_id": "PRE_H1",
+      "time_role": "PRE_NEAR",
+      "generation_order": 2,
+      "parent_frame_id": "MID_H2",
+      "parent_sha256": null,
+      "typography_variant": "before",
+      "text_content_sha256": "5e4fdbaf27e1a0e404bbaea09864bc3dd22f248e17b26e5a2df850492a6a1442",
+      "prompt": "PRE FRAME — DERIVE FROM THE ACCEPTED H2 MID MASTER ONLY. Use the exact accepted H2 mid-frame raster as the mandatory image-to-image parent/reference. Do not generate independently from text. Preserve pixel-registered camera position/orientation, 16:9 crop, perspective, sphere position/shape, character identity, costume, background landmarks, lighting direction, world, material and the T-hammer's exact silhouette, dimensions, crossbar/handle proportions, 90-degree midpoint handle attachment and hand grip. The only temporal change is rewinding the same rigid hammer/connected grip slightly backward along its already-established approach axis to H1 PRE_NEAR: leave a clear positive air gap between the same nominated terminal face and point P; no contact, cracks, sparks, glow, shadow-contact or interpenetration. Keep face normals and perspective consistent with the mid master. No camera move, zoom, re-angle, new pose, weapon redesign, background redraw or independent composition. Preserve the same exact text payload; apply still typography treatment BEFORE (cold glass/ice edge, restrained cyan refraction and thin engraved bevel). Typography styling may differ, but every word, LOOP/TRY ID, method name and prompt ID must remain byte-for-byte identical to the canonical payload. Do not generate text in the raster; composite it afterward.",
+      "status": "BLOCKED_UNTIL_MID_H2_ACCEPTED"
+    },
+    {
+      "frame_id": "POST_H3",
+      "time_role": "FOLLOW_THROUGH",
+      "generation_order": 3,
+      "parent_frame_id": "MID_H2",
+      "parent_sha256": null,
+      "typography_variant": "after",
+      "text_content_sha256": "5e4fdbaf27e1a0e404bbaea09864bc3dd22f248e17b26e5a2df850492a6a1442",
+      "prompt": "POST FRAME — DERIVE FROM THE SAME ACCEPTED H2 MID MASTER ONLY. Use the exact same accepted H2 mid-frame raster as mandatory image-to-image parent/reference. Do not generate independently from text or use the PRE frame as a new composition source. Preserve pixel-registered camera, 16:9 crop, perspective, sphere, character identity, costume, background landmarks, lighting, world, materials and the T-hammer's exact silhouette, dimensions, crossbar/handle proportions, 90-degree midpoint handle attachment and grip. The only temporal change is the small same-axis H3 follow-through after contact at P: the same rigid hammer advances a small distance along the established collision axis; cracks propagate outward from the original P. No second impact point, no side-first contact, no handle-through-sphere, no topology change, no extra rotation or invented camera motion. Keep the same text payload, words, LOOP/TRY ID, method name and prompt ID; apply still typography treatment AFTER (warm molten-metal/amber foil, deeper embossed 3D extrusion and ember highlight). It must visibly differ in material/style from PRE while the text content SHA remains the same. Do not generate text in the raster; composite it afterward.",
+      "status": "BLOCKED_UNTIL_MID_H2_ACCEPTED"
+    }
+  ],
+  "status": "HOLD_MID_CORRECTION_AND_REVIEW",
+  "external_generation_called": false,
+  "image_realization": "NOT_RUN",
+  "continuity_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "rule": "Do not generate PRE/POST until the corrected H2 master raster has an exact SHA-bound HUMAN_ACCEPTED receipt with every required geometry check true. Both frames derive from that same raster."
+}

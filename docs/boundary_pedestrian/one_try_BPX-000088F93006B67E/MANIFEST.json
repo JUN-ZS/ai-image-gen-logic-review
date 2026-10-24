@@ -1,0 +1,128 @@
+{
+  "combination_id": "BPX-000088F93006B67E",
+  "loop_id": "LOOP-000005",
+  "try_id": "TRY-000088F93006",
+  "axes": {
+    "geo_family": "T",
+    "contact": "H2",
+    "camera_pack": "T192",
+    "camera": "Z_DOWN__CAM04_LOW_HERO__M2",
+    "wash": "W00",
+    "style": "S01",
+    "shot": "FRONT",
+    "windup": "M2",
+    "geometry_catalog": "I-01;I-02..I-05;I-18",
+    "pose_id": "P03",
+    "video_method": "V-04",
+    "series_id": "S01-SNOW-SOCIETY",
+    "series_label": "Snow Society / 雪社 / S01",
+    "world_id": "WORLD-SNOW-SOCIETY",
+    "world_name": "Snow Society / 雪社",
+    "protagonist_description": "adult East Asian woman heroine locked from approved face reference: long dark-brown hair parted center, soft oval face, natural makeup; series costume adapted to the selected world while preserving this face",
+    "story_hook": "the village survives by keeping a storm outside, until its boundary begins reflecting a village that no longer exists",
+    "face_ref_asset": "c0bd4c99-b2dd-4513-b032-a98bf6a0d074",
+    "protagonist_override": "USER_FACE_REF_LOCK"
+  },
+  "full_cross_product_space": 431136,
+  "face_ref_asset": "c0bd4c99-b2dd-4513-b032-a98bf6a0d074",
+  "image_realization": "IMAGE_GENERATED_IN_SESSION",
+  "video_realization": "NOT_RUN",
+  "pixel_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "honest_notes": [
+    "User face ref lock applied over series default ice-cartographer face; costume follows Snow Society bible.",
+    "ACT3 T topology still imperfect: head/handle junction may read as inverted-T / long-face contact rather than ideal terminal-end H2; needs human geometry review.",
+    "ACT5 is surreal face-in-sphere reflection composition — narrative soft act OK, not geometry audit.",
+    "try_art SVG is canonical 3D poster (34.32%); preview_poster.jpg is chat convenience."
+  ],
+  "acts_realized": [
+    {
+      "act": 1,
+      "file": "raw/act1_draw_boundary.jpg",
+      "sha256": "3d2f6efe2f6931717fe5ca48ce5717468fe548953d05487e0e44e72f9b664a21"
+    },
+    {
+      "act": 2,
+      "file": "raw/act2_protect.jpg",
+      "sha256": "e53470aaef952b289d9b73ad816a17b691c70ae1f482aeb9301adcc7d336ddcd"
+    },
+    {
+      "act": 3,
+      "file": "raw/act3_primary_T_H2_P03.jpg",
+      "sha256": "f61c3c5ce72053b928cae1e3f8b0c0967a78d3c2a64a931ec649ef56d5365466"
+    },
+    {
+      "act": 4,
+      "file": "raw/act4_false_repair.jpg",
+      "sha256": "4ebec3556a17adcecbfc236b1e2854f36e172870e941e32e3cbdca74f263702e"
+    },
+    {
+      "act": 5,
+      "file": "raw/act5_one_boundary.jpg",
+      "sha256": "b5381a08f43dc71016d3538f8fbd9c26aea558dbf658accea96b2efb10cbceb3"
+    },
+    {
+      "act": 6,
+      "file": "raw/act6_choose.jpg",
+      "sha256": "4d82d59935f4887d2220d81b381a563d7c8462fbb822783a30b53a05ea35b63b"
+    }
+  ],
+  "art_label_spec": {
+    "story": "THE BOUNDARY WALKER",
+    "loop_id": "LOOP-000005",
+    "try_id": "TRY-000088F93006",
+    "series_id": "S01-SNOW-SOCIETY",
+    "world_label": "Snow Society / 雪社",
+    "method_id": "GEO.T",
+    "method_label": "single T-hammer / nominated terminal end face · first contact at P · V-04",
+    "geometry_family": "T",
+    "contact_method": "H2",
+    "camera_id": "T192-Z_DOWN__CAM04_LOW_HERO__M2-M2",
+    "pose_id": "P03",
+    "style_id": "S01",
+    "panel_side": "right",
+    "art_direction": "large floating 3D poster; reserved plaque covers ~34.3% of full frame",
+    "status": "IMAGE_GENERATED",
+    "acts": {
+      "1": {
+        "act_id": "1",
+        "prompt_id": "BPX-000088F93006B67E-I-ACT1",
+        "video_prompt_id": "BPX-000088F93006B67E-V-ACT1",
+        "note": "ACT 1: 畫界 · primary loop method remains T/H2"
+      },
+      "2": {
+        "act_id": "2",
+        "prompt_id": "BPX-000088F93006B67E-I-ACT2",
+        "video_prompt_id": "BPX-000088F93006B67E-V-ACT2",
+        "note": "ACT 2: 保護 · primary loop method remains T/H2"
+      },
+      "3": {
+        "act_id": "3",
+        "prompt_id": "BPX-000088F93006B67E-I-ACT3",
+        "video_prompt_id": "BPX-000088F93006B67E-V-ACT3",
+        "note": "ACT 3: 試法／碎裂 · primary loop method remains T/H2"
+      },
+      "4": {
+        "act_id": "4",
+        "prompt_id": "BPX-000088F93006B67E-I-ACT4",
+        "video_prompt_id": "BPX-000088F93006B67E-V-ACT4",
+        "note": "ACT 4: 假修 · primary loop method remains T/H2"
+      },
+      "5": {
+        "act_id": "5",
+        "prompt_id": "BPX-000088F93006B67E-I-ACT5",
+        "video_prompt_id": "BPX-000088F93006B67E-V-ACT5",
+        "note": "ACT 5: 一界 · primary loop method remains T/H2"
+      },
+      "6": {
+        "act_id": "6",
+        "prompt_id": "BPX-000088F93006B67E-I-ACT6",
+        "video_prompt_id": "BPX-000088F93006B67E-V-ACT6",
+        "note": "ACT 6: 選擇 · primary loop method remains T/H2"
+      }
+    },
+    "note_face": "USER_FACE_REF c0bd4c99",
+    "face_ref": "c0bd4c99-b2dd-4513-b032-a98bf6a0d074",
+    "protagonist_override": "USER_FACE_REF_LOCK"
+  }
+}

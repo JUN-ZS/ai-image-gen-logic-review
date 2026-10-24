@@ -1,0 +1,173 @@
+{
+  "title": "《邊界行人》輪迴 TRY 圖鑑",
+  "concept": "Same six-act story reincarnates; each loop/try uses a different catalog method; method codes appear as artistic on-image text.",
+  "count": 15,
+  "pixel_audit_pass": false,
+  "items": [
+    {
+      "file": "00_title_ring.jpg",
+      "loop": "META",
+      "act": "—",
+      "geo": "NONE",
+      "lane": "TITLE",
+      "catalog_methods": "S-01 poster",
+      "story_beat": "輪迴 TRY 開場：方法當業力",
+      "sha256": "f5909ab1f7697dad9a0ad46a7a3dba197b6d5472a94125cb03016d87196f5796",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L1_ACT1_SOFT_I20_S01.jpg",
+      "loop": "LOOP1",
+      "act": "1",
+      "geo": "NONE",
+      "lane": "SOFT",
+      "catalog_methods": "I-20;S-01",
+      "story_beat": "畫界",
+      "sha256": "40d0fc84c4239225740bfd96f69d82898c80e9ef42c8c919af31e000ebb6584b",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L1_ACT2_SOFT_I20_S01.jpg",
+      "loop": "LOOP1",
+      "act": "2",
+      "geo": "NONE",
+      "lane": "SOFT",
+      "catalog_methods": "I-20;S-01",
+      "story_beat": "保護",
+      "sha256": "570da4e69a62f48231c575dddd01c4f6f15bc726903b9dad431a6331c01eabf6",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L1_ACT3_MULTI_I16_H2.jpg",
+      "loop": "LOOP1",
+      "act": "3",
+      "geo": "MULTI",
+      "lane": "HARD",
+      "catalog_methods": "I-16;I-17;I-22 W01;S-01",
+      "story_beat": "碎裂 MULTI",
+      "sha256": "46ac1571a213b9f929649443e87d26abb9e5d6211e27a12b5a04f1d9c99e5d9a",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L1_ACT3_T_I01_I04_I18.jpg",
+      "loop": "LOOP1",
+      "act": "3",
+      "geo": "T",
+      "lane": "HARD",
+      "catalog_methods": "I-01;I-04 H2;I-18;S-01",
+      "story_beat": "碎裂 T（同幕不同方法）",
+      "sha256": "9d25274a47e9dcaf174d380708414ef92b395cd1280c4d3a60cb798e5d4a1d2c",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L1_ACT4_SOFT_I20_S01.jpg",
+      "loop": "LOOP1",
+      "act": "4",
+      "geo": "NONE",
+      "lane": "SOFT",
+      "catalog_methods": "I-20;S-01",
+      "story_beat": "假修",
+      "sha256": "c99aa752639d1ceb42f03dc0a386534119a78d516e707a8976f845b47ea72a8d",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L1_ACT5_SOFT_I20_S01.jpg",
+      "loop": "LOOP1",
+      "act": "5",
+      "geo": "NONE",
+      "lane": "SOFT",
+      "catalog_methods": "I-20;S-01",
+      "story_beat": "一界",
+      "sha256": "422eee11cbf0d0edbc2bd45bbe31ed3476fca3170d3fddb9bb647bf7adf05b8f",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L1_ACT6_SOFT_I20_S01.jpg",
+      "loop": "LOOP1",
+      "act": "6",
+      "geo": "NONE",
+      "lane": "SOFT",
+      "catalog_methods": "I-20;S-01",
+      "story_beat": "選擇 · 輪迴未閉",
+      "sha256": "7d959a8abfe0d954b800a731aae5e6317548899fb77ab719e5b13c0defc75bcb",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L2_ACT1_PASTEL_I21_S02.jpg",
+      "loop": "LOOP2",
+      "act": "1",
+      "geo": "NONE",
+      "lane": "SOFT",
+      "catalog_methods": "I-21;S-02",
+      "story_beat": "同故事換粉彩",
+      "sha256": "457bfdab19b66565ef63464eedb72a3202521272a3215f307714b2af29ad5391",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L2_ACT3_MULTI_I21xI16_S02.jpg",
+      "loop": "LOOP2",
+      "act": "3",
+      "geo": "MULTI",
+      "lane": "HARD",
+      "catalog_methods": "I-21×I-16;H2;S-02",
+      "story_beat": "方法換了故事仍碎",
+      "sha256": "5bd14d04ffa8db49091fff6e071123e7b8a0a945d62fc43ca6f42cae82083aae",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L3_ACT3_ROD_I10.jpg",
+      "loop": "LOOP3",
+      "act": "3",
+      "geo": "ROD",
+      "lane": "HARD",
+      "catalog_methods": "I-10;I-22 W04;S-01",
+      "story_beat": "線形棒",
+      "sha256": "734846d908040baadc4bad22a1bac2b3fc2b51c4ce12bdc13f409a1dd8264e3a",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L3_ACT3_CROSS_I08.jpg",
+      "loop": "LOOP3",
+      "act": "3",
+      "geo": "CROSS",
+      "lane": "HARD",
+      "catalog_methods": "I-08;I-19 sample;S-01",
+      "story_beat": "厚十字",
+      "sha256": "840f4c9122318d10748635dd74dbde5e32437e813cedfd57524fddeaf2a4ba86",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L3_ACT3_PLANT_O_I15.jpg",
+      "loop": "LOOP3",
+      "act": "3",
+      "geo": "PLANT_O",
+      "lane": "HARD",
+      "catalog_methods": "I-15;V-03 mind;S-01",
+      "story_beat": "外端種植",
+      "sha256": "7fd74a80c8c829ccc2f141958f6ef5c59e067be201bc041093c6b135d2ba0d1f",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "L4_ACT6_SURREAL_S03.jpg",
+      "loop": "LOOP4",
+      "act": "6",
+      "geo": "NONE",
+      "lane": "SOFT",
+      "catalog_methods": "S-03;I-20 spine",
+      "story_beat": "超現實再開輪迴",
+      "sha256": "33657a9d57fbe1a087c92dac8a424d6c561964c40c6ba21afd9995838601d9d4",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    },
+    {
+      "file": "META_methods_as_karma.jpg",
+      "loop": "META",
+      "act": "—",
+      "geo": "ALL",
+      "lane": "META",
+      "catalog_methods": "map of families",
+      "story_beat": "METHODS AS KARMA",
+      "sha256": "bd324d798ae3b1213c894c1ead5e5a75763f56770909d9e2737abea36496a4a7",
+      "on_image_text": "YES_ARTISTIC_TRY_LABEL"
+    }
+  ]
+}

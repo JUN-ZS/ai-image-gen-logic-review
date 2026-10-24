@@ -25,3 +25,8 @@ docs/
 ## 與其他 repo 的關係
 
 - 非龍珠版內容；與 `efv-infinity-v6.4` / `efv-gumen-rock-v7.0` 同屬 EFV 圖像生成討論脈絡，但本 repo 僅為對話存檔，不含管線程式碼。
+
+## 《邊界行人》圖庫
+
+- 預覽：[`docs/boundary_pedestrian/README.md`](docs/boundary_pedestrian/README.md)
+- Prompt：[`docs/IMAGE_VIDEO_PROMPT_CATALOG.md`](docs/IMAGE_VIDEO_PROMPT_CATALOG.md) I-20 / I-21 / V-09

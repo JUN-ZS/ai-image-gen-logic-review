@@ -1,0 +1,55 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "LOOP-000002",
+  "try_id": "TRY-0000559E2F9E",
+  "series_id": "S02-AQUARIUM-CAFE",
+  "world_label": "Aquarium Café / 水族咖啡館",
+  "method_id": "GEO.MULTI",
+  "method_label": "single multi-facet rounded head / nominated flat face · first contact at P · V-09",
+  "geometry_family": "MULTI",
+  "contact_method": "H2",
+  "camera_id": "WASH10-NA-W02",
+  "pose_id": "P02",
+  "style_id": "S02",
+  "panel_side": "right",
+  "art_direction": "large floating 3D poster; reserved plaque covers ~34.3% of full frame",
+  "status": "REVIEW_PENDING",
+  "acts": {
+    "1": {
+      "act_id": "1",
+      "prompt_id": "BPX-0000559E2F9EBD56-I-ACT1",
+      "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT1",
+      "note": "ACT 1: 畫界 · primary loop method remains MULTI/H2"
+    },
+    "2": {
+      "act_id": "2",
+      "prompt_id": "BPX-0000559E2F9EBD56-I-ACT2",
+      "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT2",
+      "note": "ACT 2: 保護 · primary loop method remains MULTI/H2"
+    },
+    "3": {
+      "act_id": "3",
+      "prompt_id": "BPX-0000559E2F9EBD56-I-ACT3",
+      "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT3",
+      "note": "ACT 3: 試法／碎裂 · primary loop method remains MULTI/H2"
+    },
+    "4": {
+      "act_id": "4",
+      "prompt_id": "BPX-0000559E2F9EBD56-I-ACT4",
+      "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT4",
+      "note": "ACT 4: 假修 · primary loop method remains MULTI/H2"
+    },
+    "5": {
+      "act_id": "5",
+      "prompt_id": "BPX-0000559E2F9EBD56-I-ACT5",
+      "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT5",
+      "note": "ACT 5: 一界 · primary loop method remains MULTI/H2"
+    },
+    "6": {
+      "act_id": "6",
+      "prompt_id": "BPX-0000559E2F9EBD56-I-ACT6",
+      "video_prompt_id": "BPX-0000559E2F9EBD56-V-ACT6",
+      "note": "ACT 6: 選擇 · primary loop method remains MULTI/H2"
+    }
+  }
+}
