@@ -1,0 +1,39 @@
+{
+  "set": "SET-L",
+  "world": "COPPER_RAIN_YARD",
+  "method": "GEO.T · H2",
+  "loop": "L-c13ea38255e9",
+  "mid_sha256": "c13ea38255e9f6b57125620e933639ca8d3efcb7f6f533ce6a5160eaae49c59f",
+  "pipeline": "LOCKED_PIPELINE A→F complete",
+  "steps": [
+    "A world+heroine",
+    "B clean chain",
+    "C HUD once",
+    "D person PASTE",
+    "E TYPE on PASTE",
+    "F SHA stop"
+  ],
+  "frames": {
+    "pre": {
+      "clean": "56f6c964d95b7ef2e342d4e426bd69c8c61db201c92593d336c79929b24e3f01",
+      "hud": "39acb380207c12f32922b0642d372f97c61510049eb7d981440fdf4536952105",
+      "paste": "93fd1186e579cffc1928719bc02b604067845959d4685979b25d7f57c47eca94",
+      "type_layer": "3f95a6316fe625b03462f39d3b55e73f231b64d642105a008393a6b231291b8f",
+      "final": "ea592ae3a80d33aed04828685f56b9d3f3f6ef3a3b3d47575c4f95f355e563e1"
+    },
+    "mid": {
+      "clean": "c13ea38255e9f6b57125620e933639ca8d3efcb7f6f533ce6a5160eaae49c59f",
+      "hud": "ef38d8a3d5a61127cee47baae6fbd4a05aedeaba5c6e16f0d762012366a48eac",
+      "paste": "1499be2de6d5db45330758252f38531e62fcc33f837b1c01b8df2e958fb8880f",
+      "type_layer": "87cd4247fe8c9488363d1be5c9682cf14f2673ca31d6f01d9160d198a925f234",
+      "final": "45fe2a5b47814d7b419bf651a3b481c03f15f89af1e6d637003fb1477b8dc754"
+    },
+    "post": {
+      "clean": "493aa536d1919d02cb0ab848ea0d475694bfc8fee1131fb0530ec032aaddd0c1",
+      "hud": "e6cf1a1f1db6bfa496ba5105855b4f0f748094464d5dccc7d8e7d12b8db42af0",
+      "paste": "85d15c2b7503575a586e52ec394ccc81a61bfaf8ae0beaeeb3047d97d4cfdf6c",
+      "type_layer": "8db63392045a80160995a2403137f2020f3dc881510e09b7f76abea2ea5a2d7e",
+      "final": "02e75dd455f6d85d4071f659765e01cb01c24daf64b6dd95417f3997477b4a14"
+    }
+  }
+}
