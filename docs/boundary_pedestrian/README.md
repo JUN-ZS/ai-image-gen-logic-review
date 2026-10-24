@@ -120,3 +120,7 @@
 ## 高多樣性乘積 · 單組 realization
 
 [`one_try_BPX-0000559E2F9EBD56/`](one_try_BPX-0000559E2F9EBD56/) — S02-AQUARIUM-CAFE · GEO.MULTI · H2 · P02 · W02 · V-09；1/431,136。
+
+## 新一組 · 雪社 + 用戶臉孔
+
+[`one_try_BPX-000088F93006B67E/`](one_try_BPX-000088F93006B67E/) — S01-SNOW-SOCIETY · GEO.T · H2 · P03 · face ref lock · V-04。

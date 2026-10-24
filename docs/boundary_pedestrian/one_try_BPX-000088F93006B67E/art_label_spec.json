@@ -1,0 +1,58 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "LOOP-000005",
+  "try_id": "TRY-000088F93006",
+  "series_id": "S01-SNOW-SOCIETY",
+  "world_label": "Snow Society / 雪社",
+  "method_id": "GEO.T",
+  "method_label": "single T-hammer / nominated terminal end face · first contact at P · V-04",
+  "geometry_family": "T",
+  "contact_method": "H2",
+  "camera_id": "T192-Z_DOWN__CAM04_LOW_HERO__M2-M2",
+  "pose_id": "P03",
+  "style_id": "S01",
+  "panel_side": "right",
+  "art_direction": "large floating 3D poster; reserved plaque covers ~34.3% of full frame",
+  "status": "IMAGE_GENERATED",
+  "acts": {
+    "1": {
+      "act_id": "1",
+      "prompt_id": "BPX-000088F93006B67E-I-ACT1",
+      "video_prompt_id": "BPX-000088F93006B67E-V-ACT1",
+      "note": "ACT 1: 畫界 · primary loop method remains T/H2"
+    },
+    "2": {
+      "act_id": "2",
+      "prompt_id": "BPX-000088F93006B67E-I-ACT2",
+      "video_prompt_id": "BPX-000088F93006B67E-V-ACT2",
+      "note": "ACT 2: 保護 · primary loop method remains T/H2"
+    },
+    "3": {
+      "act_id": "3",
+      "prompt_id": "BPX-000088F93006B67E-I-ACT3",
+      "video_prompt_id": "BPX-000088F93006B67E-V-ACT3",
+      "note": "ACT 3: 試法／碎裂 · primary loop method remains T/H2"
+    },
+    "4": {
+      "act_id": "4",
+      "prompt_id": "BPX-000088F93006B67E-I-ACT4",
+      "video_prompt_id": "BPX-000088F93006B67E-V-ACT4",
+      "note": "ACT 4: 假修 · primary loop method remains T/H2"
+    },
+    "5": {
+      "act_id": "5",
+      "prompt_id": "BPX-000088F93006B67E-I-ACT5",
+      "video_prompt_id": "BPX-000088F93006B67E-V-ACT5",
+      "note": "ACT 5: 一界 · primary loop method remains T/H2"
+    },
+    "6": {
+      "act_id": "6",
+      "prompt_id": "BPX-000088F93006B67E-I-ACT6",
+      "video_prompt_id": "BPX-000088F93006B67E-V-ACT6",
+      "note": "ACT 6: 選擇 · primary loop method remains T/H2"
+    }
+  },
+  "note_face": "USER_FACE_REF c0bd4c99",
+  "face_ref": "c0bd4c99-b2dd-4513-b032-a98bf6a0d074",
+  "protagonist_override": "USER_FACE_REF_LOCK"
+}
