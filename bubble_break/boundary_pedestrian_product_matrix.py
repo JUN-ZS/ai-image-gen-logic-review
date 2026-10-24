@@ -364,6 +364,59 @@ def camera_text(config: ImageConfig) -> str:
     return f"{config.wash}: {wash_description(config.wash)}"
 
 
+METHOD_LABELS = {
+    "T": "single T-hammer / nominated terminal end face",
+    "T2": "two independent T-hammers / terminal face-to-face",
+    "CROSS": "thick plus-sign cross-hammers / flat circular end-cap face-to-face",
+    "ROD": "90-degree line-striker rods / positive or negative facet control",
+    "PLANT_S": "planted double-ended cylinder / side-middle tangent handle",
+    "PLANT_O": "planted double-ended cylinder / axial outer-end handle",
+    "MULTI": "single multi-facet rounded head / nominated flat face",
+}
+
+
+def art_label_spec(config: ImageConfig, video_method: str, series_id: str,
+                   loop_id: str, try_id: str, combo_id: str) -> dict[str, Any]:
+    series = STORY_SERIES[series_id]
+    method_name = METHOD_LABELS[config.geo_family]
+    contact_label = {
+        "H0": "PRE_FAR / positive gap",
+        "H1": "PRE_NEAR / positive gap",
+        "H2": "first contact at P",
+        "H3": "same-axis follow-through",
+        "FACE": "nominated faces meet",
+        "POS": "positive 90-degree control",
+        "NEG": "negative control / expected fail",
+        "PLANTED": "fixed planted anchor",
+    }.get(config.contact, config.contact)
+    return {
+        "story": "THE BOUNDARY WALKER",
+        "loop_id": loop_id,
+        "try_id": try_id,
+        "series_id": series_id,
+        "world_label": series["world_name"],
+        "method_id": f"GEO.{config.geo_family}",
+        "method_label": f"{method_name} · {contact_label} · {video_method}",
+        "geometry_family": config.geo_family,
+        "contact_method": config.contact,
+        "camera_id": f"{config.camera_pack}-{config.camera}-{config.windup or config.wash}",
+        "pose_id": config.pose_id,
+        "style_id": config.style,
+        "panel_side": "right",
+        "art_direction": "large floating 3D poster; reserved plaque covers ~34.3% of full frame",
+        "status": "REVIEW_PENDING",
+        "acts": {
+            act: {
+                "act_id": act,
+                "prompt_id": f"{combo_id}-I-ACT{act}",
+                "video_prompt_id": f"{combo_id}-V-ACT{act}",
+                "note": f"ACT {act}: {ACTS[act][0]} · primary loop method remains {config.geo_family}/{config.contact}",
+            }
+            for act in ACTS
+        },
+    }
+
+
 def geometry_contract(geo: str, contact: str) -> str:
     description = GEO_DESCRIPTIONS[geo]
     if geo in {"PLANT_S", "PLANT_O"}:
@@ -642,6 +695,7 @@ def compile_product_matrix(catalog_csv: Path, outdir: Path, catalog_doc: Path,
                     "protagonist_description": STORY_SERIES[series_id]["protagonist_description"],
                     "story_hook": STORY_SERIES[series_id]["story_hook"],
                 },
+                "art_label_spec": art_label_spec(config, video_method, series_id, loop_id, try_id, combo_id),
                 "geometry_contract": geometry_contract(config.geo_family, config.contact),
                 "reference_catalog_ids": config.geometry_catalog,
                 "style_description": style_description(config.style),
