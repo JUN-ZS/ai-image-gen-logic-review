@@ -174,3 +174,14 @@ SET-I 連續修復樣本：`setI_obsidian` cont 管線 · LOOP 以 MID clean SHA
 |----|------|
 | 2026-10-25 | 初版上 HUB：雙軌、F=用法非外觀、世界材料表、幀物理綁定、SET-I 示範 |
 | 2026-10-25 | §9 幀連感：禁止半途 img2img 改字；clean 鏈 PRE→MID→POST 後再 SVG 疊字 |
+
+---
+
+## 10. 分析 HUD／方向／HIGHLIGHT／3D 景深字（曾有後失）
+
+詳見 **`ANNOTATION_HUD_AND_3D_TYPE.md`**。
+
+早期 REF 有：力矢箭咀、HOT 受面高亮、wireframe 貼槌、準星、火字景深遮擋、橫梁刻字。  
+後續管線為保幀連 + SVG 準字，prompt 刪咗呢啲條件 → **唔係模型突然唔識，係配方冇再寫**。  
+復原用 `ANALYSIS_HUD_PACK` + `DEPTH_TYPE_PACK`；圖解格可與敘事三幀分槽。
+
