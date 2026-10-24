@@ -93,6 +93,32 @@
 
 這是版式示例；實際值必須從本次 manifest 取得。若本輪是 GEO.PLANT_SIDE，標籤必須寫側柄種植圓柱；若是 GEO.PLANT_OUTER，標籤必須寫外端接柄圓柱；若是負控制，必須顯示 NEGATIVE CONTROL／預期失敗。不能拿同一張標籤套在不同幾何之上。
 
+### 可執行的藝術字疊加
+
+使用 bubble_break/boundary_pedestrian_try_art.py，把一張實際生成的 PNG/JPEG 作底圖，輸出含內嵌原圖及藝術字層的 SVG。工具同時輸出 JSON sidecar，記錄來源 SHA、藝術版 SHA、Loop／TRY／Act／Method ID；它不會呼叫圖像模型，也不會自行判定像素 PASS。
+
+    python bubble_break/boundary_pedestrian_try_art.py \
+      --image path/to/actual_generated_frame.png \
+      --out out/boundary_pedestrian/loop001_try0001.svg \
+      --loop-id 001 --try-id 0001 --act-id 3 \
+      --method-id GEO.T --method-label "T-hammer end-face contact" \
+      --prompt-id I-04 --style-id S-01 \
+      --note "本輪試法：T 槌指定端面第一次接觸" \
+      --status REVIEW_PENDING
+
+若要為影片同一方法加精確字牌，使用相同 ID 生成 ASS 字幕層：
+
+    python bubble_break/boundary_pedestrian_try_art.py \
+      --image path/to/actual_generated_keyframe.png \
+      --out out/boundary_pedestrian/loop001_try0001.svg \
+      --loop-id 001 --try-id 0001 --act-id 3 \
+      --method-id GEO.T --method-label "T-hammer end-face contact" \
+      --prompt-id V-02 --style-id S-01 \
+      --ass-out out/boundary_pedestrian/loop001_try0001.ass \
+      --duration-seconds 6
+
+SVG 是帶有藝術字的作品版，JSON sidecar 是追溯記錄；ASS 是後期影片字牌。這些輸出只證明字牌已排版，不證明幾何、人物連續性或影片物理通過。工具預設 REVIEW_PENDING，禁止使用含糊的裸字 PASS；未有真實像素審查，請保留 NOT_RUN／NOT_VERIFIED 狀態。
+
 ### 狀態字不得造假
 
 - PROMPT READY：Prompt 已編寫，未必出圖。
