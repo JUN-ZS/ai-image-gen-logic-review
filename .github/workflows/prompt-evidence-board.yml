@@ -177,6 +177,7 @@ jobs:
         run: |
           python bubble_break/boundary_pedestrian_frame_triad.py \
             --package examples/boundary_pedestrian_frame_triad.example.json \
+            --mid-image docs/boundary_pedestrian/hard_samples/p4_t_h2/AX0_X_RIGHT.jpg \
             --outdir out/prompt_evidence_board/boundary_pedestrian/frame_triad
           python - <<'PY'
           import json
@@ -184,6 +185,9 @@ jobs:
           root = Path('out/prompt_evidence_board/boundary_pedestrian/frame_triad')
           plan = json.loads((root / 'frame_triad.json').read_text(encoding='utf-8'))
           assert plan['status'] == 'HOLD_MID_CORRECTION_AND_REVIEW'
+          assert plan['mid_master_sha256'] == '7d0d095f95fbc24129bab11f659645b712ba56727ef737765c4320dec2b4b641'
+          assert plan['mid_geometry_review_accepted'] is False
+          assert any('receipt not supplied' in reason.lower() for reason in plan['blocked_reasons'])
           assert plan['frames'][0]['status'] == 'MID_CORRECTION_REQUIRED'
           assert plan['frames'][1]['status'] == 'BLOCKED_UNTIL_MID_H2_ACCEPTED'
           assert plan['frames'][2]['status'] == 'BLOCKED_UNTIL_MID_H2_ACCEPTED'
