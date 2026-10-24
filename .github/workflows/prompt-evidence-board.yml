@@ -11,6 +11,8 @@ on:
       - 'bubble_break/test_prompt_trial_planner.py'
       - 'bubble_break/boundary_pedestrian_try_art.py'
       - 'bubble_break/test_boundary_pedestrian_try_art.py'
+      - 'bubble_break/boundary_pedestrian_try_art.py'
+      - 'bubble_break/test_boundary_pedestrian_try_art.py'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
       - 'bubble_break/test_prompt_failure_diagnosis.py'
@@ -18,6 +20,7 @@ on:
       - 'examples/prompt_attempt_manifest.example.json'
       - 'examples/prompt_matrix_minimal.example.json'
       - 'docs/PROMPT_*'
+      - 'docs/boundary_pedestrian/LOOPING_TRY_STORY.md'
       - '.github/workflows/prompt-evidence-board.yml'
   pull_request:
     paths:
@@ -26,6 +29,8 @@ on:
       - 'bubble_break/prompt_failure_diagnosis.py'
       - 'bubble_break/prompt_trial_planner.py'
       - 'bubble_break/test_prompt_trial_planner.py'
+      - 'bubble_break/boundary_pedestrian_try_art.py'
+      - 'bubble_break/test_boundary_pedestrian_try_art.py'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_failure_diagnosis.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
@@ -33,6 +38,7 @@ on:
       - 'examples/prompt_attempt_manifest.example.json'
       - 'examples/prompt_matrix_minimal.example.json'
       - 'docs/PROMPT_*'
+      - 'docs/boundary_pedestrian/LOOPING_TRY_STORY.md'
       - '.github/workflows/prompt-evidence-board.yml'
   workflow_dispatch:
 
