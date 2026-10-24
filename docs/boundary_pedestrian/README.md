@@ -74,7 +74,7 @@
 
 ## 無限輪迴 TRY 圖鑑
 
-[《邊界行人》無限輪迴 TRY 故事規格](LOOPING_TRY_STORY.md) 把各種合法 IMAGE／VIDEO 方法串進同一個六幕循環；[15 張輪迴抽樣圖](reincarnation_try/README.md) 先展示方法標籤如何融入畫面藝術。每張圖仍須以 manifest 的實際方法 ID 為準；標籤是所試方法，不等同幾何驗收通過。
+[《邊界行人》無限輪迴 TRY 故事規格](LOOPING_TRY_STORY.md) 把各種合法 IMAGE／VIDEO 方法串進同一個六幕循環；輪迴編譯器可把全量合法 ID 逐一編成六幕 Prompt 封包；[15 張輪迴抽樣圖](reincarnation_try/README.md) 先展示方法標籤如何融入畫面藝術。每張圖仍須以 manifest 的實際方法 ID 為準；標籤是所試方法，不等同幾何驗收通過。編譯器與字牌工具分別見 [loop planner](../../bubble_break/boundary_pedestrian_loop_planner.py) 和 [art renderer](../../bubble_break/boundary_pedestrian_try_art.py)。
 
 ## 使用方式
 
