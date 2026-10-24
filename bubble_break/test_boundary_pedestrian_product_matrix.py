@@ -14,6 +14,7 @@ from bubble_break.boundary_pedestrian_product_matrix import (
     VIDEO_METHODS,
     POSE_VARIANTS,
     build_image_configs,
+    compatible_video_methods,
     compile_product_matrix,
 )
 
@@ -89,7 +90,8 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
             "MULTI": 240,
         })
         self.assertEqual(sum(counts.values()), 18576)
-        self.assertEqual(sum(len(VIDEO_METHODS[config.geo_family]) for config in configs), 71856)
+        self.assertEqual(sum(len(compatible_video_methods(config)) for config in configs), 64944)
+        self.assertFalse(any("V-02" in compatible_video_methods(config) for config in configs if config.geo_family == "T" and config.contact != "H2"))
         self.assertEqual(len(POSE_VARIANTS), 4)
         self.assertEqual(len(STORY_ROUTES), 18)
         self.assertEqual(len(STORY_SERIES), 18)
@@ -129,7 +131,7 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
             catalog_doc.write_text("# synthetic prompt catalog\n", encoding="utf-8")
             outdir = root / "out"
             summary = compile_product_matrix(source_csv, outdir, catalog_doc, limit=4)
-            self.assertEqual(summary["full_cross_product_combinations"], 431136)
+            self.assertEqual(summary["full_cross_product_combinations"], 389664)
             self.assertEqual(summary["compiled_combinations"], 4)
             self.assertFalse(summary["full_product_compiled"])
             self.assertFalse(summary["external_generation_called"])
@@ -190,6 +192,7 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
             self.assertEqual(frames[0]["typography_variant"], "before")
             self.assertEqual(master["typography_variant"], "middle")
             self.assertEqual(frames[-1]["typography_variant"], "after")
+            self.assertTrue(all(frame["text_content_sha256"] == frames[0]["text_content_sha256"] for frame in frames))
             self.assertEqual(len(mv_shot_specs("S01-RAIN-TOKYO")), 24)
             self.assertEqual(len(mv_shot_specs("S01-INDUSTRIAL-RUINS")), 52)
 
