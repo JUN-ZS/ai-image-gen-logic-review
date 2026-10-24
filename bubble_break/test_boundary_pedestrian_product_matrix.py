@@ -9,8 +9,10 @@ import unittest
 from pathlib import Path
 
 from bubble_break.boundary_pedestrian_product_matrix import (
+    STORY_SERIES,
     STORY_ROUTES,
     VIDEO_METHODS,
+    POSE_VARIANTS,
     build_image_configs,
     compile_product_matrix,
 )
@@ -78,23 +80,28 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
         for config in configs:
             counts[config.geo_family] = counts.get(config.geo_family, 0) + 1
         self.assertEqual(counts, {
-            "T": 4032,
-            "T2": 288,
-            "CROSS": 144,
-            "ROD": 60,
-            "PLANT_S": 30,
-            "PLANT_O": 30,
-            "MULTI": 60,
+            "T": 16128,
+            "T2": 1152,
+            "CROSS": 576,
+            "ROD": 240,
+            "PLANT_S": 120,
+            "PLANT_O": 120,
+            "MULTI": 240,
         })
-        self.assertEqual(sum(counts.values()), 4644)
-        self.assertEqual(sum(len(VIDEO_METHODS[config.geo_family]) for config in configs), 17964)
-        self.assertEqual(len(STORY_ROUTES), 6)
-        self.assertEqual(17964 * len(STORY_ROUTES), 107784)
+        self.assertEqual(sum(counts.values()), 18576)
+        self.assertEqual(sum(len(VIDEO_METHODS[config.geo_family]) for config in configs), 71856)
+        self.assertEqual(len(POSE_VARIANTS), 4)
+        self.assertEqual(len(STORY_ROUTES), 18)
+        self.assertEqual(len(STORY_SERIES), 18)
+        self.assertEqual({row["style_id"] for row in STORY_SERIES.values()}, {"S01", "S02", "S03"})
+        self.assertEqual(len({row["world_id"] for row in STORY_SERIES.values()}), 18)
+        self.assertEqual(sum(1 for row in STORY_SERIES.values() if row["style_id"] == "S01"), 6)
+        self.assertEqual(71856 * 6, 431136)
 
     def test_h2_impact_pack_does_not_double_count_front(self) -> None:
         configs = build_image_configs(synthetic_rows())
         h2_pack_shots = [c.shot for c in configs if c.camera_pack == "T_H2_IMPACT4"]
-        self.assertEqual(len(h2_pack_shots), 192 * 3 * 3)
+        self.assertEqual(len(h2_pack_shots), 192 * 3 * 3 * 4)
         self.assertEqual(set(h2_pack_shots), {"LOW", "PEAK", "SIDE"})
         self.assertNotIn("FRONT", h2_pack_shots)
 
@@ -102,8 +109,9 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
         configs = build_image_configs(synthetic_rows())
         side = [c for c in configs if c.geo_family == "PLANT_S"]
         outer = [c for c in configs if c.geo_family == "PLANT_O"]
-        self.assertEqual(len(side), 30)
-        self.assertEqual(len(outer), 30)
+        self.assertEqual(len(side), 120)
+        self.assertEqual(len(outer), 120)
+        self.assertEqual({c.pose_id for c in side}, set(POSE_VARIANTS))
         self.assertEqual({c.contact for c in side}, {"PLANTED"})
         self.assertEqual({c.contact for c in outer}, {"PLANTED"})
 
@@ -121,7 +129,7 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
             catalog_doc.write_text("# synthetic prompt catalog\n", encoding="utf-8")
             outdir = root / "out"
             summary = compile_product_matrix(source_csv, outdir, catalog_doc, limit=4)
-            self.assertEqual(summary["full_cross_product_combinations"], 107784)
+            self.assertEqual(summary["full_cross_product_combinations"], 431136)
             self.assertEqual(summary["compiled_combinations"], 4)
             self.assertFalse(summary["full_product_compiled"])
             self.assertFalse(summary["external_generation_called"])
@@ -152,10 +160,10 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
             catalog_doc.write_text("catalog fixture\n", encoding="utf-8")
             # The full hash-ordered product is compiled in CI. This test verifies helper expansion counts directly.
             from bubble_break.boundary_pedestrian_product_matrix import ImageConfig, make_keyframes, mv_shot_specs
-            cfg = ImageConfig("T", "H2", "T192", "AX00__CAM01_TEST__M1", "W00", "S01", "FRONT", "M1", "I-04")
-            self.assertEqual(len(make_keyframes(cfg, "BP6-I20", "LOOP-X", "TRY-X")), 5)
-            self.assertEqual(len(mv_shot_specs("MV24")), 24)
-            self.assertEqual(len(mv_shot_specs("MV52")), 52)
+            cfg = ImageConfig("T", "H2", "T192", "AX00__CAM01_TEST__M1", "W00", "S01", "FRONT", "M1", "I-04", "P03")
+            self.assertEqual(len(make_keyframes(cfg, "S01-INDUSTRIAL-RUINS", "LOOP-X", "TRY-X")), 5)
+            self.assertEqual(len(mv_shot_specs("S01-RAIN-TOKYO")), 24)
+            self.assertEqual(len(mv_shot_specs("S01-INDUSTRIAL-RUINS")), 52)
 
 
 if __name__ == "__main__":
