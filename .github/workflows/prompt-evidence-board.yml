@@ -14,11 +14,19 @@ on:
       - 'bubble_break/boundary_pedestrian_loop_planner.py'
       - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
       - 'bubble_break/boundary_pedestrian_product_matrix.py'
+      - 'bubble_break/boundary_pedestrian_frame_triad.py'
+      - 'bubble_break/test_boundary_pedestrian_frame_triad.py'
+      - 'examples/boundary_pedestrian_frame_triad.example.json'
       - 'bubble_break/test_boundary_pedestrian_product_matrix.py'
       - 'bubble_break/boundary_pedestrian_try_art.py'
       - 'bubble_break/test_boundary_pedestrian_try_art.py'
       - 'bubble_break/boundary_pedestrian_loop_planner.py'
       - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/boundary_pedestrian_product_matrix.py'
+      - 'bubble_break/test_boundary_pedestrian_product_matrix.py'
+      - 'bubble_break/boundary_pedestrian_frame_triad.py'
+      - 'bubble_break/test_boundary_pedestrian_frame_triad.py'
+      - 'examples/boundary_pedestrian_frame_triad.example.json'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
       - 'bubble_break/test_prompt_failure_diagnosis.py'
@@ -49,6 +57,10 @@ on:
       - 'docs/boundary_pedestrian/**'
       - '.github/workflows/prompt-evidence-board.yml'
   workflow_dispatch:
+
+concurrency:
+  group: prompt-evidence-board-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -90,6 +102,7 @@ jobs:
           python -m unittest bubble_break/test_prompt_failure_diagnosis.py -v
           python -m unittest bubble_break/test_prompt_trial_planner.py -v
           python -m unittest bubble_break/test_boundary_pedestrian_try_art.py -v
+          python -m unittest bubble_break/test_boundary_pedestrian_frame_triad.py -v
           python -m unittest bubble_break/test_boundary_pedestrian_loop_planner.py -v
           python -m unittest bubble_break/test_boundary_pedestrian_product_matrix.py -v
       - name: Render an in-art Boundary Walker TRY label (no media generation claim)
