@@ -127,9 +127,9 @@ def build_svg(
     scale = max(0.45, min(width / 1920.0, height / 1080.0))
     p = PALETTES.get(str(metadata.get("style_id", "S01")), PALETTES["S01"])
     pad = max(18, round(36 * scale))
-    panel_w = round(width * 0.425)
-    panel_h = round(height * 0.765)
-    panel_y = round(height * 0.115)
+    panel_w = round(width * 0.44)
+    panel_h = round(height * 0.78)
+    panel_y = round(height * 0.10)
     panel_x = pad if metadata.get("panel_side") == "left" else width - panel_w - pad
     inset = round(30 * scale)
     tx = panel_x + inset
@@ -145,7 +145,7 @@ def build_svg(
     title_zh = "邊界行人"
     title_en = "THE BOUNDARY WALKER"
     series_line = f"{metadata.get('series_id') or 'SERIES-UNASSIGNED'}  ·  {metadata.get('world_label') or 'WORLD UNASSIGNED'}"
-    method_line = f"{metadata.get('geometry_family') or 'GEO.?'}  /  {metadata.get('contact_method') or metadata['method_id']}"
+    method_line = f"{metadata.get('geometry_family') or 'GEO.?'}  /  {metadata.get('contact_method') or '?'}  ·  {metadata.get('method_label') or metadata['method_id']}"
     camera_pose_line = f"CAM {metadata.get('camera_id') or 'CAM-NA'}  ·  POSE {metadata.get('pose_id') or 'P-NA'}"
     style_prompt_line = f"STYLE {metadata.get('style_id') or 'S-NA'}  ·  PROMPT {metadata.get('prompt_id') or 'PROMPT-NA'}"
     status_line = str(metadata["status"]).replace("_", " ")
@@ -351,7 +351,7 @@ def main() -> int:
         "source_sha256": sha256_bytes(source),
         "source_width": width,
         "source_height": height,
-        "poster_panel_area_fraction": 0.425 * 0.765,
+        "poster_panel_area_fraction": 0.44 * 0.78,
         "image_realization": "SOURCE_FILE_ATTACHED",
         "pixel_audit_status": "NOT_RUN",
         "visual_acceptance_status": "NOT_VERIFIED",
