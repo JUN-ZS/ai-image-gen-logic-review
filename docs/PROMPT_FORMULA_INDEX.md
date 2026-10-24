@@ -12,6 +12,7 @@
 0a. [《邊界行人》無限輪迴 TRY 故事規格](boundary_pedestrian/LOOPING_TRY_STORY.md) — 六幕因果、所有合法幾何／鏡頭／美術／影片方法、輪迴規則與可直接複製的 IMAGE／VIDEO Prompt
 0a1. [畫中 TRY 藝術字疊加器](../bubble_break/boundary_pedestrian_try_art.py) — 以確定文字排版 SVG 圖中字牌與影片 ASS 字幕，並記錄來源／藝術版 SHA
 0a2. [全量輪迴 Prompt 編譯器](../bubble_break/boundary_pedestrian_loop_planner.py) — 將合法變體 ID 交錯排隊，逐個編成六幕 LOOP/TRY 的完整 IMAGE／VIDEO 提示詞；只編譯，不冒充生成或驗收
+0a3. [高多樣性四軸乘積規格](boundary_pedestrian/FULL_PRODUCT_MATRIX.md) — 幾何／接觸 × 鏡頭／姿勢／風格 × 相容影片法 × 18 個固定風格／世界／角色系列；含 3D 海報字牌與 SHA-256 規格
 0b. [《邊界行人》六幕 IMAGE 圖庫](boundary_pedestrian/README.md) — I-20/I-21 母圖
 0c. [《邊界行人》×公式源代 26 鏡](boundary_pedestrian/mv26/README.md) — 6幕×多鏡乘出（非正式像素驗收）
 0d. [《邊界行人》×總庫四線變體乘積](boundary_pedestrian/VARIANT_CROSSWALK.md) — 合法上界與禁止混句
