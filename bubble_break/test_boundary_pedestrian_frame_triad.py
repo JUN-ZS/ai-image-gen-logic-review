@@ -13,6 +13,7 @@ from bubble_break.boundary_pedestrian_frame_triad import (
     label_text_sha256,
     sha256_file,
 )
+from bubble_break.boundary_pedestrian_try_art import text_content_sha256
 
 
 def package_fixture() -> dict:
@@ -108,6 +109,26 @@ class BoundaryPedestrianFrameTriadTests(unittest.TestCase):
         package["axes"]["geo_family"] = "MULTI"
         with self.assertRaises(ValueError):
             build_triad(package)
+
+    def test_triad_text_hash_matches_poster_renderer_signature(self) -> None:
+        label = package_fixture()["art_label_spec"]
+        act = label["acts"]["3"]
+        metadata = {
+            "story": label["story"],
+            "loop_id": label["loop_id"],
+            "try_id": label["try_id"],
+            "method_id": label["method_id"],
+            "method_label": label["method_label"],
+            "geometry_family": label["geometry_family"],
+            "contact_method": label["contact_method"],
+            "camera_id": label["camera_id"],
+            "pose_id": label["pose_id"],
+            "style_id": label["style_id"],
+            "series_id": label["series_id"],
+            "world_label": label["world_label"],
+            "prompt_id": act["prompt_id"],
+        }
+        self.assertEqual(label_text_sha256(label, "3"), text_content_sha256(metadata))
 
     def test_typography_signature_is_stable_for_same_try(self) -> None:
         label = package_fixture()["art_label_spec"]
