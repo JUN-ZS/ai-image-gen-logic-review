@@ -72,6 +72,10 @@
 
 ---
 
+## 無限輪迴 TRY 圖鑑
+
+[《邊界行人》無限輪迴 TRY 故事規格](LOOPING_TRY_STORY.md) 把各種合法 IMAGE／VIDEO 方法串進同一個六幕循環；[15 張輪迴抽樣圖](reincarnation_try/README.md) 先展示方法標籤如何融入畫面藝術。每張圖仍須以 manifest 的實際方法 ID 為準；標籤是所試方法，不等同幾何驗收通過。
+
 ## 使用方式
 
 1. 文檔閱讀：本 README 直接預覽。  
