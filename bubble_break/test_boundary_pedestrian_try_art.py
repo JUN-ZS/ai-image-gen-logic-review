@@ -1,13 +1,19 @@
 """Unit tests for deterministic Boundary Walker art labels."""
 from __future__ import annotations
 
+import hashlib
+import json
 import struct
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 from bubble_break.boundary_pedestrian_try_art import (
     build_ass,
     build_svg,
     image_size,
+    main,
     sha256_bytes,
     validate_status,
 )
@@ -99,6 +105,63 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
         self.assertIn("T-hammer end-face contact", ass)
         self.assertIn("REVIEW PENDING", ass)
         self.assertIn("Dialogue:", ass)
+
+    def test_product_label_manifest_drives_art_exactly_and_records_full_hashes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "frame.png"
+            source.write_bytes(self.source)
+            manifest = root / "label.json"
+            spec = {
+                "art_label_spec": {
+                    "story": "THE BOUNDARY WALKER",
+                    "loop_id": "LOOP-000123",
+                    "try_id": "TRY-ABC123",
+                    "series_id": "S01-RAIN-TOKYO",
+                    "world_label": "Rainy Tokyo / 雨夜東京",
+                    "method_id": "GEO.T",
+                    "method_label": "single T-hammer / H2 first contact",
+                    "geometry_family": "T",
+                    "contact_method": "H2",
+                    "camera_id": "T192-AX03-CAM07-M1",
+                    "pose_id": "P03",
+                    "style_id": "S01",
+                    "panel_side": "right",
+                    "status": "REVIEW_PENDING",
+                    "acts": {
+                        "3": {
+                            "act_id": "3",
+                            "prompt_id": "BPX-ABC-I-ACT3",
+                            "note": "ACT 3: 試法／碎裂",
+                        }
+                    },
+                }
+            }
+            manifest.write_text(json.dumps(spec, ensure_ascii=False), encoding="utf-8")
+            out = root / "poster.svg"
+            argv = [
+                "boundary_pedestrian_try_art.py",
+                "--image", str(source),
+                "--out", str(out),
+                "--label-manifest", str(manifest),
+                "--act-id", "3",
+            ]
+            with patch("sys.argv", argv):
+                self.assertEqual(main(), 0)
+            sidecar = json.loads(out.with_suffix(".manifest.json").read_text(encoding="utf-8"))
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            artwork_sha = hashlib.sha256(out.read_bytes()).hexdigest()
+            self.assertEqual(sidecar["source_sha256"], source_sha)
+            self.assertEqual(sidecar["artwork_sha256"], artwork_sha)
+            self.assertEqual(sidecar["loop_id"], "LOOP-000123")
+            self.assertEqual(sidecar["try_id"], "TRY-ABC123")
+            self.assertEqual(sidecar["prompt_id"], "BPX-ABC-I-ACT3")
+            self.assertEqual(sidecar["series_id"], "S01-RAIN-TOKYO")
+            self.assertGreater(sidecar["poster_panel_area_fraction"], 1 / 3)
+            svg = out.read_text(encoding="utf-8")
+            self.assertIn("TRY-ABC123", svg)
+            self.assertIn("Rainy Tokyo", svg)
+            self.assertIn("BPX-ABC-I-ACT3", svg)
 
     def test_ass_rejects_nonpositive_duration(self) -> None:
         with self.assertRaises(ValueError):
