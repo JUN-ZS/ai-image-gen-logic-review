@@ -109,3 +109,13 @@
 - 每 SET 抄同一世界  
 - 顯示 REVIEW PENDING / TRY 次數（除非你另開）
 
+
+---
+
+## 7. HUB 壓圖優先（2026-10-25 補）
+
+詳見 **`HUB_PRESS_ON_IMAGE_PRIORITY.md`**。
+
+下一輪旁分析行只優先 12 類：ROD± · PLANT_O · 五段相 · E_90/E_face · signed_gap · Crack±δt · reaction impulse · END_FACE≠CHEEK · ZERO-DRIFT · 軸 E 條。  
+公式晶片硬編碼；拒斥面 CHEEK｜HANDLE｜SHAFT；合法 `END_FACE_TO_END_FACE`。  
+嚴禁 TRY 次數、REVIEW PENDING。
