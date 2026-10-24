@@ -1,0 +1,7 @@
+id,method,hub_priority,phase_tags,pre_style,post_style,world
+H02_H2,GEO.T · H2,yes,PRE_NEAR|FIRST_CONTACT|REACTION,cold frost-etch cyan,hot molten cyan-fire,ARCTIC_AURORA_ICE
+H02_H1,GEO.T · H1,yes,signed_gap|air ripples,cold frost,hot ember gap,ARCTIC_AURORA_ICE
+H05_T2,GEO.T2 · FACE,yes,PRE_FAR|RECOIL|E_face|CORRECT_CROSSED,cold ice type,hot shatter type,ARCTIC_AURORA_ICE
+H07_ROD_POS,GEO.ROD · POS,yes,AXIS_90|E_90|GEOMETRY_PASS,cold pending,hot PASS,ARCTIC_AURORA_ICE
+H08_ROD_NEG,GEO.ROD · NEG · θ<35°,yes,SLIP|NEG FAILURE,cold pending,hot failure trail,ARCTIC_AURORA_ICE
+H10_PLANT_O,GEO.PLANT_O,yes,ZERO-DRIFT|F_axial|P∈盤,cold pending,hot ANCHOR,ARCTIC_AURORA_ICE
