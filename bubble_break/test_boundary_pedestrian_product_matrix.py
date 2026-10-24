@@ -185,7 +185,7 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
                 if frame["keyframe_id"] != "KF3":
                     self.assertEqual(frame["parent_keyframe_id"], "KF3")
                     self.assertEqual(frame["status"], "BLOCKED_UNTIL_KF3_H2_ACCEPTED")
-                    self.assertIn("do not generate this frame independently", frame["prompt"])
+                    self.assertIn("do not generate this frame independently", frame["prompt"].lower())
                     self.assertIn("camera", frame["prompt"].lower())
                     self.assertIn("hammer silhouette", frame["prompt"])
             self.assertEqual({frame["text_content_sha256"] for frame in frames}, {frames[0]["text_content_sha256"]})
