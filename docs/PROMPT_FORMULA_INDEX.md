@@ -8,7 +8,8 @@
 
 ## 建議閱讀順序
 
-0. [IMAGE／VIDEO 半公式＋完整 PROMPT 總庫](IMAGE_VIDEO_PROMPT_CATALOG.md)：按不同武器拓撲、接觸方法、鏡頭變體、影片時間軸與六幕 MV，直接複製每一種完整 Prompt。
+0. [IMAGE／VIDEO 半公式＋完整 PROMPT 總庫](IMAGE_VIDEO_PROMPT_CATALOG.md)
+0b. [《邊界行人》六幕 IMAGE 圖庫](boundary_pedestrian/README.md) — I-20/I-21 實際靜幀預覽（非正式像素驗收）：按不同武器拓撲、接觸方法、鏡頭變體、影片時間軸與六幕 MV，直接複製每一種完整 Prompt。
 1. [圖像 Prompt 公式教學](PROMPT_FORMULA_PLAYBOOK.md)：各互斥武器拓撲、單圖公式、負面約束和像素驗收。
 2. [影片 Prompt 公式教學](VIDEO_PROMPT_FORMULA_PLAYBOOK.md)：10 秒時間軸、五個狀態、母圖與遮罩、連續性硬閘門和 MV 敘事公式。
 3. [Prompt Evidence Board 使用指南](PROMPT_EVIDENCE_BOARD.md)：每次生成的原始圖、變量封包和教學／驗收板。

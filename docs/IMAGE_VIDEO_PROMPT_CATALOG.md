@@ -391,6 +391,20 @@ Create one single full-frame 16:9 geometry-test image of the selected pair of co
 
 **用途：**故事敘事路線，而非武器幾何驗收。每張圖只講一個可拍事件；角色身份要用同一參考圖鎖定。需要實際打擊時才從 I-02 至 I-05 選用對應拓撲。
 
+
+**預覽（會話生成 · 非正式驗收）**
+
+| 幕 | 預覽 |
+| --- | --- |
+| ACT 1 畫界 | ![I20-1](boundary_pedestrian/i20/act1_draw_boundary.jpg) |
+| ACT 2 保護 | ![I20-2](boundary_pedestrian/i20/act2_protect_sphere.jpg) |
+| ACT 3 碎裂 | ![I20-3](boundary_pedestrian/i20/act3_shatter_fall.jpg) |
+| ACT 4 假修 | ![I20-4](boundary_pedestrian/i20/act4_false_repair.jpg) |
+| ACT 5 一界 | ![I20-5](boundary_pedestrian/i20/act5_one_boundary.jpg) |
+| ACT 6 選擇 | ![I20-6](boundary_pedestrian/i20/act6_choose_dance.jpg) |
+
+完整圖庫與 SHA：[`boundary_pedestrian/README.md`](boundary_pedestrian/README.md)
+
 ### ACT 1 — 畫界：混亂中建立邊界
 
 ~~~text
@@ -430,6 +444,20 @@ Create one photorealistic cinematic 16:9 final music-video still on a rooftop co
 ## I-21｜《邊界行人》六幕：可愛 INS／粉彩藝術版
 
 **用途：**使用相同六幕因果，但以可愛、粉彩、社交媒體美學處理。只換風格與道具隱喻，不應把物理接觸規則混入柔性敘事鏡。
+
+
+**預覽（粉彩會話生成 · 非正式驗收）**
+
+| 幕 | 預覽 |
+| --- | --- |
+| ACT 1 | ![I21-1](boundary_pedestrian/i21/act1_pastel_yarn_line.jpg) |
+| ACT 2 | ![I21-2](boundary_pedestrian/i21/act2_candy_jar_protect.jpg) |
+| ACT 3 | ![I21-3](boundary_pedestrian/i21/act3_diamond_rain_shatter.jpg) |
+| ACT 4 | ![I21-4](boundary_pedestrian/i21/act4_claw_machine_fake_safety.jpg) |
+| ACT 5 | ![I21-5](boundary_pedestrian/i21/act5_pool_bandage.jpg) |
+| ACT 6 | ![I21-6](boundary_pedestrian/i21/act6_rooftop_rollers.jpg) |
+
+完整圖庫：[`boundary_pedestrian/README.md`](boundary_pedestrian/README.md)
 
 **將以下風格段落加在 I-20 的其中一幕 Prompt 結尾：**
 
@@ -669,6 +697,8 @@ Keep the nominated facet, its boundary, handle, grip and contact point readable.
 ~~~
 
 ## V-09｜3 分鐘《邊界行人》／Original Sin 敘事 MV 的製作 Prompt
+
+> 靜幀母圖見 [`boundary_pedestrian/`](boundary_pedestrian/)。寫實六幕可作 V-09 image-to-video 起點。
 
 **用途：**這是敘事剪輯方法，不是要模型一次生成完整 3 分鐘並幻想所有連續性。先生成 24 張關鍵卡或 50–54 個獨立鏡頭，再剪輯成影片。柔性敘事鏡不放武器；真正打擊鏡回到合適的專用武器 Prompt。
 

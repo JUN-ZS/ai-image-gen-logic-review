@@ -1,0 +1,93 @@
+{
+  "title": "邊界行人 Boundary Pedestrian — IMAGE evidence pack",
+  "asof": "2026-10-24",
+  "source_catalog": "docs/IMAGE_VIDEO_PROMPT_CATALOG.md I-20 / I-21 / V-09",
+  "evidence_grade": "IMAGE_GENERATED_IN_SESSION",
+  "pixel_audit_pass": false,
+  "notes": [
+    "Narrative-only stills; no weapon-contact geometry claimed.",
+    "I-20 photoreal + I-21 pastel Instagram variants.",
+    "Full ~36s I-20 MV stitch exists in chat session artifacts; video binary not committed (size).",
+    "Heroine face reference is identity lock only; third-party watermark may remain on ref crop."
+  ],
+  "files": [
+    {
+      "path": "docs/boundary_pedestrian/i20/act1_draw_boundary.jpg",
+      "rel": "i20/act1_draw_boundary.jpg",
+      "bytes": 612781,
+      "sha256": "54bf7f2c03cbb535770a65edd6a32cf478f71cff1b80b2da0455b790964a5195"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i20/act2_protect_sphere.jpg",
+      "rel": "i20/act2_protect_sphere.jpg",
+      "bytes": 611938,
+      "sha256": "6aef8c57306ecb2de292e5765af2d747fd002d0aa23922ed1fd56c04a66a5ad6"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i20/act3_shatter_fall.jpg",
+      "rel": "i20/act3_shatter_fall.jpg",
+      "bytes": 868062,
+      "sha256": "814faeace897039b962700f8b1fbff887653a0e02db4dac864d46a711de798e2"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i20/act4_false_repair.jpg",
+      "rel": "i20/act4_false_repair.jpg",
+      "bytes": 581770,
+      "sha256": "2c5bca9104d2efd12feef1316784fba590f74ec2d31a5a603f7f081ba53a76ad"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i20/act5_one_boundary.jpg",
+      "rel": "i20/act5_one_boundary.jpg",
+      "bytes": 591881,
+      "sha256": "d592aedc928fa75215ab1264d029caf12a59c3be545733f4defc9816cb170e48"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i20/act6_choose_dance.jpg",
+      "rel": "i20/act6_choose_dance.jpg",
+      "bytes": 632629,
+      "sha256": "01b842dac7e7256c4089bf1883cf51f6f5755933499f906dc1b0a91b75f4d383"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i21/act1_pastel_yarn_line.jpg",
+      "rel": "i21/act1_pastel_yarn_line.jpg",
+      "bytes": 529603,
+      "sha256": "830615de17c3e05256e3ede793d3895dbee2f464296bf1ae5bd88f9c17c25bd7"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i21/act2_candy_jar_protect.jpg",
+      "rel": "i21/act2_candy_jar_protect.jpg",
+      "bytes": 494589,
+      "sha256": "7b32d49bba23f3cae40c31e31dcbca82eef908bcc52f66154e6e66cfaa01ff2a"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i21/act3_diamond_rain_shatter.jpg",
+      "rel": "i21/act3_diamond_rain_shatter.jpg",
+      "bytes": 702805,
+      "sha256": "e3bd239b7c51625f83ee07f22cc57af45eefcabc31ee41f447b1a35f000277c9"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i21/act4_claw_machine_fake_safety.jpg",
+      "rel": "i21/act4_claw_machine_fake_safety.jpg",
+      "bytes": 586303,
+      "sha256": "dba2ea37240817845187aac7c28db81f62e794234152fb4406a16e87fed92efb"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i21/act5_pool_bandage.jpg",
+      "rel": "i21/act5_pool_bandage.jpg",
+      "bytes": 645018,
+      "sha256": "46d1f78f28c74929906d019a5168a67482912c6c103a5d39328ad490d7230b50"
+    },
+    {
+      "path": "docs/boundary_pedestrian/i21/act6_rooftop_rollers.jpg",
+      "rel": "i21/act6_rooftop_rollers.jpg",
+      "bytes": 641494,
+      "sha256": "a3fb2ad45f6af6acda83f56daf6e5c03a8915ce73303ef2917d692cd5caee516"
+    },
+    {
+      "path": "docs/boundary_pedestrian/ref/heroine_face_reference.jpg",
+      "rel": "ref/heroine_face_reference.jpg",
+      "bytes": 83386,
+      "sha256": "f612ec7e07d95f256d3bd352f73f98ca913074c87556aed58cfc3223a059ee81"
+    }
+  ]
+}
