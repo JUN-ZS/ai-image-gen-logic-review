@@ -13,10 +13,10 @@
 
 ## 固定的故事 DNA
 
-- **人物不變：**同一成年東亞女主，以已核准的角色參考圖鎖定身份。臉、長深棕髮、體型和服裝不因 TRY ID 改變。
-- **世界不變：**邊界是一個可見的圓環／裂縫／光線；邊界內的微型城邦、住民和內在生命是故事的道德中心。
+- **人物按系列固定、跨系列可變：**每個系列有自己的主角參考與角色 Bible；同一系列六幕保持身份連續，但跨系列可以換不同年齡、性別呈現、職業、服裝、髮型、身體輪廓或非人角色。不要把整個企劃鎖死成同一位東亞女主。
+- **世界按系列固定、跨系列可變：**系列內固定一個世界 Bible 和一種美術語言；跨系列可切換雨夜東京、雪社、水墨山社、海底地鐵、軌道列車、糖果玻璃城、紅線迷宮等不同世界。邊界的視覺象徵可隨世界重設，不限定永遠是同一個玻璃球。
 - **問題不變：**她試圖弄清楚，邊界是在保護生命，還是在把生命隔開？
-- **試法可變：**每次只在當前鏡頭使用一種互斥拓撲；鏡頭／美術可改外觀，不可以偷改物件物理。
+- **打法鎖住，其餘全開：**只鎖住本 TRY 的物件／指定接觸面／接觸點／因果狀態；武器外形可在不同 TRY 之間換 T、雙 T、厚十字、棒、種植圓柱、多面錘等家族，姿勢、角度、場景、角色、道具、風格和故事全都可以變。單一鏡頭不能把互斥拓撲硬混成一件武器。
 - **因果不變：**接觸前、首次接觸、接觸後、假修復、重新理解、選擇的時間順序不能倒置。
 - **結局可循環：**ACT 6 的邊界線／步伐／光點要能 match-cut 回下一輪 ACT 1。每輪世界有新變化，但不把上一輪的失敗偽裝成成功。
 
@@ -34,6 +34,12 @@
 ### 反覆不是單純複製
 
 每一輪至少有一個「主試法差異」：geometry family、contact state、camera axis、camera ID、windup、wash ID、style ID、video method 或 narrative motif 之一要不同。除非刻意做對照實驗，否則不允許連續兩輪的完整方法指紋相同。人物身份、世界因果和上一輪已發生的故事事實仍然保留。
+
+## 創作自由和同系列一致性是兩條不同規則
+
+**同一系列 = 同一風格／同一世界 Bible／同一主角連續；不同 TRY = 改變動作、鏡頭、構圖及選定的物件家族；跨系列 = 世界、人物、服裝、道具、色彩和故事隱喻都可以換。** 只有當前 TRY 的幾何／接觸／因果條件是硬鎖。這樣既能把每輪剪成可讀故事，也不會把所有創作收窄成「一位女主站在玻璃球前的六張相似圖」。
+
+新全量乘積規格：[FULL_PRODUCT_MATRIX.md](FULL_PRODUCT_MATRIX.md)。它把四個姿勢、18 個固定風格／世界／角色系列和相容的 IMAGE／VIDEO 方法一起相乘，並為每個組合輸出確定的 art_label_spec。每張成品的藝術字層應是大型浮動 3D 海報，不是角落水印；完整來源與作品 SHA-256 存入 sidecar。
 
 ## 讓總庫方法真正進入劇情
 
@@ -131,9 +137,9 @@ SVG 是帶有藝術字的作品版，JSON sidecar 是追溯記錄；ASS 是後�
 
 ## 每輪可直接套用的故事 IMAGE Prompt
 
-    Create one single 16:9 cinematic story frame for the ongoing looping film THE BOUNDARY WALKER. This frame belongs to LOOP {LOOP_ID}, TRY {TRY_ID}, ACT {ACT_ID}: {ACT_TITLE}.
+    Create one single 16:9 cinematic story frame for the ongoing looping film THE BOUNDARY WALKER. This frame belongs to SERIES {SERIES_ID}, WORLD {WORLD_ID}, LOOP {LOOP_ID}, TRY {TRY_ID}, ACT {ACT_ID}: {ACT_TITLE}.
 
-    Keep the same adult East Asian heroine from the supplied approved identity reference, with unchanged face, long dark-brown hair, body proportions and canonical outfit. Keep the same world: an immense threshold between an outer ruined city and a small living sanctuary protected inside a translucent boundary sphere. The visual story remains emotionally continuous with the prior accepted frame, but this loop uses the declared new method and must not simply duplicate the previous composition.
+    Use the selected series' own protagonist/character reference and world Bible. Keep that character recognizably consistent across the six acts inside this series; other series may change character, costume, props and world completely. Use the world setting declared for this series (for example rain-slick Tokyo, a snowbound society, ink-wash mountains, an underwater metro or a surreal mirror city), not a universal default ruin. The emotional cause-and-effect remains continuous within the selected loop, but this TRY must not duplicate the prior composition.
 
     Current method is exactly: {METHOD_ID}. Method description: {METHOD_DESCRIPTION}. Geometry family: {GEOMETRY_FAMILY}. Contact state: {CONTACT_STATE}. Camera: {CAMERA_METHOD}. Style: {STYLE_ID}. Narrative motif: {MOTIF_ID}. Follow only the declared method for this frame. Do not add a second weapon topology or contradictory contact rule.
 
@@ -147,7 +153,7 @@ SVG 是帶有藝術字的作品版，JSON sidecar 是追溯記錄；ASS 是後�
 
     Create one standalone 5–8 second cinematic clip for THE BOUNDARY WALKER, LOOP {LOOP_ID}, TRY {TRY_ID}, ACT {ACT_ID}. Use the supplied accepted parent frame and identity reference. Current method: {VIDEO_METHOD}. Underlying geometry family: {GEOMETRY_FAMILY}. Camera/action method: {CAMERA_METHOD}. Style: {STYLE_ID}.
 
-    Keep the same heroine, world landmarks, light direction, boundary shape and declared object topology. Animate only the action described for this shot. Preserve the causal state: {START_STATE} → {ACTION} → {END_STATE}. If this is an impact clip, preserve the selected active face, contact point P, opposing contact normals, and correct PRE/CONTACT/AFTER ordering. If it is a planted-cylinder clip, the planted anchor stays fixed. If it is a soft narrative clip, do not introduce a weapon impact.
+    Keep the selected series' own protagonist, world landmarks, lighting language and boundary symbolism consistent within this series; do not impose a universal heroine or universal ruined-city backdrop. Animate only the action described for this shot. Preserve the causal state: {START_STATE} → {ACTION} → {END_STATE}. If this is an impact clip, preserve the selected active face, contact point P, opposing contact normals, and correct PRE/CONTACT/AFTER ordering. If it is a planted-cylinder clip, the planted anchor stays fixed. If it is a soft narrative clip, do not introduce a weapon impact.
 
     Do not add extra weapons, extra limbs, new handles, topology changes, teleporting objects, unexplained camera cuts, random cracks or changes to the sanctuary residents. Keep the focal action readable and do not let particles or bloom hide the event.
 
