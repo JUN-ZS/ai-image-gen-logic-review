@@ -27,11 +27,14 @@ LOOP n:  畫界 → 保護 → 碎裂 → 假修 → 一界 → 選擇
 | `L4_ACT6_SURREAL` | LOOP4 | 6 | S-03 超現實 · 輪迴再開 |
 | `META_methods_as_karma.jpg` | META | — | 方法當業力總覽 |
 
-完整表：`ATLAS.csv` · `MANIFEST.json`
+完整表：`ATLAS.csv` · `MANIFEST.json`  
+完整輪迴規格與 IMAGE／VIDEO 完整 Prompt：[`../LOOPING_TRY_STORY.md`](../LOOPING_TRY_STORY.md)  
+精確排版藝術字：[`../../../../bubble_break/boundary_pedestrian_try_art.py`](../../../../bubble_break/boundary_pedestrian_try_art.py)
 
 ## 與 3.7k ID 的關係
 
 本圖鑑是 **敘事可讀的抽樣輪迴**，不是 3723 全量出圖。  
+新的藝術字工具由確定字串疊加文字，且會記錄來源／作品 SHA；工具本身不生成媒體，不判定幾何 PASS。
 全量 ID 見 [`../variants/`](../variants/)。  
 要把某一 ID 變成下一輪 TRY：複製該 ID 的 geo/contact/cam/style 槽，疊六幕 spine，並在 Prompt 要求藝術字標出 `TRY · …`。
 
