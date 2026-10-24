@@ -59,7 +59,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: prompt-evidence-board-${{ github.ref }}
+  group: prompt-evidence-board-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions:
