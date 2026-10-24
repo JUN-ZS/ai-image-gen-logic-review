@@ -1,0 +1,42 @@
+{
+  "combination_id": "BPX-H2-LOCKED-TRIAD-EXAMPLE",
+  "loop_id": "LOOP-H2-0001",
+  "try_id": "TRY-T-H2-0001",
+  "sweep_id": "FRAME-TRIAD-MASTER-FIRST",
+  "axes": {
+    "geo_family": "T",
+    "contact": "H2",
+    "camera_pack": "T192",
+    "camera": "X_RIGHT__CAM02_FRONT_THREE_QUARTER__M1",
+    "windup": "M1",
+    "shot": "FRONT",
+    "style": "S01",
+    "pose_id": "P01",
+    "series_id": "S01-INDUSTRIAL-RUINS",
+    "world_id": "WORLD-INDUSTRIAL-RUINS",
+    "video_method": "V-02"
+  },
+  "art_label_spec": {
+    "story": "THE BOUNDARY WALKER",
+    "loop_id": "LOOP-H2-0001",
+    "try_id": "TRY-T-H2-0001",
+    "series_id": "S01-INDUSTRIAL-RUINS",
+    "world_label": "Industrial Ruins / 工業遺城",
+    "method_id": "GEO.T",
+    "method_label": "T-hammer · H2 terminal end-face first contact at P",
+    "geometry_family": "T",
+    "contact_method": "H2",
+    "camera_id": "T192-X_RIGHT-CAM02-M1",
+    "pose_id": "P01",
+    "style_id": "S01",
+    "panel_side": "right",
+    "status": "REVIEW_PENDING",
+    "acts": {
+      "3": {
+        "act_id": "3",
+        "prompt_id": "BPX-H2-LOCKED-TRIAD-EXAMPLE-I-ACT3",
+        "video_prompt_id": "BPX-H2-LOCKED-TRIAD-EXAMPLE-V-ACT3"
+      }
+    }
+  }
+}
