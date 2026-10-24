@@ -29,7 +29,7 @@ LOOP n:  畫界 → 保護 → 碎裂 → 假修 → 一界 → 選擇
 
 完整表：`ATLAS.csv` · `MANIFEST.json`  
 完整輪迴規格與 IMAGE／VIDEO 完整 Prompt：[`../LOOPING_TRY_STORY.md`](../LOOPING_TRY_STORY.md)  
-精確排版藝術字：[`../../../../bubble_break/boundary_pedestrian_try_art.py`](../../../../bubble_break/boundary_pedestrian_try_art.py)
+精確排版藝術字：[`../../../bubble_break/boundary_pedestrian_try_art.py`](../../../../bubble_break/boundary_pedestrian_try_art.py)
 
 ## 與 3.7k ID 的關係
 
