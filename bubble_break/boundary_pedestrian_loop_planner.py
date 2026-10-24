@@ -123,6 +123,18 @@ def method_description(row: dict[str, str]) -> str:
     contact = clean(row.get("contact")) or "NA"
     description = GEO_DESCRIPTIONS.get(geo, f"Use the exact object topology registered as {geo}; do not add another topology.")
     contact_rule = CONTACT_RULES.get(contact, "Use a soft narrative state; no physical contact is implied.")
+    if geo in {"PLANT_O", "PLANT_S"}:
+        contact_rule = (
+            "ANCHOR CONTACT: the cylinder's nominated seat is already conformally planted against the sphere at P. "
+            "This is a fixed anchor, not a flying impact; do not show a swing, a gap-closing hit or a newly invented "
+            "terminal-face strike. Preserve the exact handle attachment location for this family."
+        )
+    elif geo == "MULTI":
+        contact_rule = (
+            "SELECTED FLAT-FACE CONTACT: only the nominated broad planar facet of the one multi-facet head meets "
+            "the boundary at P. The handle, head edge, rounded cheek and other facets remain clear; do not turn the "
+            "head into a T-hammer or a plus-sign cross."
+        )
     if geo == "ROD":
         if contact == "NEG":
             contact_rule += " The image/video must be filed as NEGATIVE_CONTROL."
