@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/JUN-ZS/ai-image-gen-logic-review/blob/main/schemas/prompt_attempt_manifest.schema.json",
+  "title": "Prompt Attempt Manifest",
+  "description": "Traceable per-attempt record for image/video prompt generation and visual audit. Manifest text is not proof that pixels obeyed it.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "attempt_id",
+    "branch",
+    "source_commit_sha",
+    "prompt_id",
+    "topology_id",
+    "stage_id",
+    "variables_changed",
+    "expected",
+    "observed",
+    "image_realization_status",
+    "pixel_audit_status",
+    "failure_reasons",
+    "next_change"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "attempt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_commit_sha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variant_id": {
+      "type": "string"
+    },
+    "topology_id": {
+      "type": "string",
+      "enum": [
+        "planted_cylinder_side_handle",
+        "t_hammer_terminal_face",
+        "dual_t_hammer_terminal_face_pair",
+        "original_sin_t_crossbar_upper_plane",
+        "original_sin_proxy_cross_upper_terminal_face",
+        "cylinder_cross_cap_pair",
+        "line_striker_orthogonal_negative_control",
+        "radial_multi_face_round_head",
+        "other"
+      ]
+    },
+    "stage_id": {
+      "type": "string"
+    },
+    "variables_changed": {
+      "oneOf": [
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "expected": {
+      "type": "object"
+    },
+    "observed": {
+      "type": "object",
+      "description": "Only values established by actual raster review; use UNVERIFIED where not inspected."
+    },
+    "image_realization_status": {
+      "type": "string",
+      "enum": [
+        "NOT_RUN",
+        "IMAGE_GENERATED",
+        "BLOCKED",
+        "SYNTHETIC_TEST_ONLY",
+        "UNKNOWN"
+      ]
+    },
+    "pixel_audit_status": {
+      "type": "string",
+      "enum": [
+        "NOT_RUN",
+        "PENDING",
+        "PASS",
+        "FAIL",
+        "UNVERIFIED"
+      ]
+    },
+    "continuity_status": {
+      "type": "string",
+      "enum": [
+        "NOT_RUN",
+        "PENDING",
+        "PASS",
+        "FAIL",
+        "UNVERIFIED"
+      ]
+    },
+    "failure_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_change": {
+      "type": "string"
+    },
+    "prompt_excerpt": {
+      "type": "string"
+    },
+    "image_width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "image_height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "contact_roi_norm": {
+      "type": "object",
+      "required": [
+        "x",
+        "y",
+        "w",
+        "h"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "w": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "h": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "review_receipt": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "reviewer": {
+          "type": "string"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "raster_sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "reviewed_at": {
+          "type": "string"
+        },
+        "checks": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "reviewer",
+        "verdict",
+        "raster_sha256"
+      ],
+      "additionalProperties": true
+    },
+    "raster_sha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "description": "SHA-256 computed from the exact reviewed source raster."
+    },
+    "failure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Structured reviewer/vision-audit failure codes. A code alone is not accepted unless the FAIL receipt is bound to the same raster SHA."
+    },
+    "diagnosis": {
+      "type": "object",
+      "description": "Rule-based next-change recommendation derived from structured reviewed observations. This is not an automatic visual diagnosis.",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "HOLD",
+            "REPAIR_PLAN_READY"
+          ]
+        },
+        "method": {
+          "type": "string"
+        },
+        "primary_failure_code": {
+          "type": "string"
+        },
+        "all_failure_codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "next_change": {
+          "type": "string"
+        },
+        "edit_only": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "freeze": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "repair_prompt_delta": {
+          "type": "string"
+        },
+        "expected_after_change": {
+          "type": "string"
+        },
+        "auto_visual_detection": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "primary_failure_code",
+        "next_change",
+        "repair_prompt_delta",
+        "auto_visual_detection"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "attempt_id": "T-HAMMER__X_RIGHT__CAM02__M1__H2__TRY0001",
+  "branch": "FILL_ACTUAL_BRANCH",
+  "source_commit_sha": "FILL_ACTUAL_COMMIT_SHA",
+  "prompt_id": "H2_first_contact",
+  "variant_id": "X_RIGHT__CAM02__M1",
+  "topology_id": "t_hammer_terminal_face",
+  "stage_id": "H2",
+  "variables_changed": {
+    "impact_axis": "X_RIGHT",
+    "camera": "CAM02_FRONT_THREE_QUARTER",
+    "windup_profile": "WINDUP_COMPACT_SNAP",
+    "H0_gap_units": 50,
+    "H2_gap_units": 0,
+    "H3_advance_units": 15
+  },
+  "expected": {
+    "active_surface": "terminal_end_face",
+    "contact_point_id": "P",
+    "expected_gap_units": 0,
+    "active_face_normal_dot_sphere_outward_normal": -1,
+    "handle_to_head_axis_angle_deg": 90,
+    "no_interpenetration": true
+  },
+  "observed": {
+    "active_surface": "UNVERIFIED",
+    "contact_point_id": "UNVERIFIED",
+    "measured_gap": "UNVERIFIED",
+    "handle_topology": "UNVERIFIED",
+    "contact_causality": "UNVERIFIED"
+  },
+  "image_realization_status": "NOT_RUN",
+  "pixel_audit_status": "NOT_RUN",
+  "continuity_status": "NOT_RUN",
+  "failure_reasons": [],
+  "next_change": "Attach the actual generated raster. Review the designated terminal face, point P, gap=0, handle rigidity, and absence of interpenetration. Change only the failed variable on the next attempt.",
+  "prompt_excerpt": "Single-frame H2 terminal-face contact proof; no text in the source raster."
+}

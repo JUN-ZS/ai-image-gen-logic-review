@@ -1,0 +1,229 @@
+name: Prompt Evidence Board and Trial Planner
+
+on:
+  push:
+    branches: ['docs/**', 'feat/**']
+    paths:
+      - 'bubble_break/prompt_evidence_board.py'
+      - 'bubble_break/prompt_attempt_packet.py'
+      - 'bubble_break/prompt_failure_diagnosis.py'
+      - 'bubble_break/prompt_trial_planner.py'
+      - 'bubble_break/test_prompt_trial_planner.py'
+      - 'bubble_break/boundary_pedestrian_try_art.py'
+      - 'bubble_break/test_boundary_pedestrian_try_art.py'
+      - 'bubble_break/boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/boundary_pedestrian_try_art.py'
+      - 'bubble_break/test_boundary_pedestrian_try_art.py'
+      - 'bubble_break/boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_prompt_evidence_board.py'
+      - 'bubble_break/test_prompt_attempt_packet.py'
+      - 'bubble_break/test_prompt_failure_diagnosis.py'
+      - 'schemas/prompt_attempt_manifest.schema.json'
+      - 'examples/prompt_attempt_manifest.example.json'
+      - 'examples/prompt_matrix_minimal.example.json'
+      - 'docs/PROMPT_*'
+      - 'docs/boundary_pedestrian/**'
+      - '.github/workflows/prompt-evidence-board.yml'
+  pull_request:
+    paths:
+      - 'bubble_break/prompt_evidence_board.py'
+      - 'bubble_break/prompt_attempt_packet.py'
+      - 'bubble_break/prompt_failure_diagnosis.py'
+      - 'bubble_break/prompt_trial_planner.py'
+      - 'bubble_break/test_prompt_trial_planner.py'
+      - 'bubble_break/boundary_pedestrian_try_art.py'
+      - 'bubble_break/test_boundary_pedestrian_try_art.py'
+      - 'bubble_break/boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_prompt_evidence_board.py'
+      - 'bubble_break/test_prompt_failure_diagnosis.py'
+      - 'bubble_break/test_prompt_attempt_packet.py'
+      - 'schemas/prompt_attempt_manifest.schema.json'
+      - 'examples/prompt_attempt_manifest.example.json'
+      - 'examples/prompt_matrix_minimal.example.json'
+      - 'docs/PROMPT_*'
+      - 'docs/boundary_pedestrian/**'
+      - '.github/workflows/prompt-evidence-board.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  traceability-and-audit-honesty:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify the exact local diagnosis module is imported
+        run: |
+          python - <<'PY'
+          import hashlib
+          import inspect
+          from pathlib import Path
+          import bubble_break
+          import bubble_break.prompt_failure_diagnosis as module
+          expected = (Path.cwd() / 'bubble_break' / 'prompt_failure_diagnosis.py').resolve()
+          actual = Path(module.__file__).resolve()
+          source = Path(actual).read_text(encoding='utf-8')
+          print(f'bubble_break package: {bubble_break.__file__}')
+          print(f'diagnosis module: {actual}')
+          print(f'diagnosis source SHA-256: {hashlib.sha256(source.encode("utf-8")).hexdigest()}')
+          print(f'numeric gap repair branch: {"by exactly {gap:g} units" in source}')
+          print(f'numeric followthrough repair branch: {"The raster-bound review measured H3 advance=" in source}')
+          assert actual == expected, 'Python imported diagnosis code from outside the checkout'
+          assert 'by exactly {gap:g} units' in source
+          assert 'The raster-bound review measured H3 advance=' in source
+          PY
+      - name: Run evidence-board, prompt-packet, diagnosis, and trial-planner tests
+        run: |
+          python -m unittest bubble_break/test_prompt_evidence_board.py -v
+          python -m unittest bubble_break/test_prompt_attempt_packet.py -v
+          python -m unittest bubble_break/test_prompt_failure_diagnosis.py -v
+          python -m unittest bubble_break/test_prompt_trial_planner.py -v
+          python -m unittest bubble_break/test_boundary_pedestrian_try_art.py -v
+          python -m unittest bubble_break/test_boundary_pedestrian_loop_planner.py -v
+      - name: Render an in-art Boundary Walker TRY label (no media generation claim)
+        run: |
+          python bubble_break/boundary_pedestrian_try_art.py \
+            --image docs/boundary_pedestrian/i20/act1_draw_boundary.jpg \
+            --out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001.svg \
+            --loop-id 001 \
+            --try-id 0001 \
+            --act-id 1 \
+            --method-id BP_SHOT \
+            --method-label "I-20 ACT1 / WIDE STORY FRAME" \
+            --prompt-id I-20 \
+            --style-id S-01 \
+            --note "本輪試法：用寬景畫出界線" \
+            --status IMAGE_GENERATED \
+            --ass-out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001.ass \
+            --duration-seconds 6
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('out/prompt_evidence_board/boundary_pedestrian')
+          svg = (root / 'loop001_try0001.svg').read_text(encoding='utf-8')
+          manifest = json.loads((root / 'loop001_try0001.manifest.json').read_text(encoding='utf-8'))
+          ass = (root / 'loop001_try0001.ass').read_text(encoding='utf-8')
+          assert 'THE BOUNDARY WALKER' in svg and 'TRY 0001' in svg and 'BP_SHOT' in svg
+          assert manifest['pixel_audit_status'] == 'NOT_RUN'
+          assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
+          assert 'BP_SHOT' in ass and 'TRY 0001' in ass
+          print('Artwork labels are deterministic; pixel and visual acceptance remain unverified.')
+          PY
+      - name: Compile every legal variant into a six-act loop prompt queue
+        run: |
+          python bubble_break/boundary_pedestrian_loop_planner.py \
+            --variants-csv docs/boundary_pedestrian/variants/VARIANT_IDS_FULL.csv \
+            --outdir out/prompt_evidence_board/boundary_pedestrian/loop_prompts
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+          root = Path('out/prompt_evidence_board/boundary_pedestrian/loop_prompts')
+          summary = json.loads((root / 'loop_plan_summary.json').read_text(encoding='utf-8'))
+          catalog = json.loads(Path('docs/boundary_pedestrian/variants/VARIANT_IDS_FULL_SUMMARY.json').read_text(encoding='utf-8'))
+          packets = [json.loads(line) for line in (root / 'loop_prompt_packets.jsonl').read_text(encoding='utf-8').splitlines()]
+          with (root / 'loop_index.csv').open(encoding='utf-8', newline='') as handle:
+              index = list(csv.DictReader(handle))
+          assert summary['source_total_variants'] == catalog['total_ids']
+          assert summary['compiled_variant_count'] == catalog['total_ids']
+          assert summary['full_sweep_compiled'] is True
+          assert summary['unique_variant_ids'] == catalog['total_ids']
+          assert summary['all_selected_variant_ids_once'] is True
+          assert summary['external_generation_called'] is False
+          assert summary['image_realization'] == 'NOT_RUN'
+          assert summary['pixel_audit_status'] == 'NOT_RUN'
+          assert summary['visual_acceptance_status'] == 'NOT_VERIFIED'
+          assert len(packets) == len(index) == catalog['total_ids']
+          assert len({p['variant_id'] for p in packets}) == catalog['total_ids']
+          assert all(len(p['acts']) == 6 for p in packets)
+          assert all(sum(a['is_primary_try'] for a in p['acts']) == 1 for p in packets)
+          assert all(p['status'] == 'PROMPT_READY' for p in packets)
+          hard = [p for p in packets if p['lane'] == 'HARD']
+          assert hard and all(p['primary_act'] == '3' for p in hard)
+          first_buckets = {p['catalog_row']['count_bucket'] for p in packets[:20]}
+          assert len(first_buckets) >= 5, f'initial trials do not diversify method buckets: {first_buckets}'
+          print(f"Compiled {len(packets)} catalog variants into {len(packets) * 6} act prompts; no media generation or audit pass claimed.")
+          PY
+      - name: Render standard and formula-first teaching board templates
+        run: |
+          python bubble_break/prompt_evidence_board.py \
+            --manifest examples/prompt_attempt_manifest.example.json \
+            --teaching-layout standard \
+            --out out/prompt_evidence_board/template.svg
+          python bubble_break/prompt_evidence_board.py \
+            --manifest examples/prompt_attempt_manifest.example.json \
+            --teaching-layout formula-first \
+            --out out/prompt_evidence_board/template_formula_first.svg
+      - name: Create the next image/teaching/video trial plan
+        run: |
+          python bubble_break/prompt_trial_planner.py \
+            --outdir out/prompt_evidence_board/next_trials \
+            --limit 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          plan = json.loads(Path('out/prompt_evidence_board/next_trials/trial_plan.json').read_text(encoding='utf-8'))
+          assert plan['plan_status'] == 'PLAN_READY'
+          assert [t['trial_id'] for t in plan['next_trials']] == ['IMG-FORMULA-01', 'IMG-TEACH-01', 'VIDEO-FORMULA-01']
+          assert {t['family'] for t in plan['next_trials']} == {'image_formula', 'image_teaching', 'video_formula'}
+          assert plan['plan_only'] is True and plan['external_generation_called'] is False
+          print('Preregistered trial plan covers image formula, image teaching-board layout, and video prompt formula; generation not claimed.')
+          PY
+      - name: Compile a traceable prompt-packet example
+        run: |
+          python bubble_break/prompt_attempt_packet.py \
+            --matrix examples/prompt_matrix_minimal.example.json \
+            --outdir out/prompt_evidence_board/demo_packets \
+            --branch "${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" \
+            --commit-sha "${GITHUB_SHA}"
+      - name: Compile the full 192-variant T-Hammer matrix and per-prompt packets
+        run: |
+          python bubble_break/t_hammer_multiview_swing_engine.py --outdir out/prompt_evidence_board/t_hammer_matrix
+          python bubble_break/prompt_attempt_packet.py \
+            --matrix out/prompt_evidence_board/t_hammer_matrix/t_hammer_multiview_swing_matrix.json \
+            --outdir out/prompt_evidence_board/t_hammer_packets \
+            --branch "${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" \
+            --commit-sha "${GITHUB_SHA}"
+      - name: Verify previews cannot claim an image PASS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('out/prompt_evidence_board/template.svg')
+          s = p.read_text(encoding='utf-8')
+          assert 'NO SOURCE RASTER ATTACHED' in s
+          assert 'NOT_RUN' in s
+          assert 'FORMULA ≠ PIXEL PROOF' in s
+          assert 'PLANNER REQUIRED' in s
+          assert 'NEXT TRIAL' in s
+          assert 'prompt_trial_planner.py' in s
+          f = Path('out/prompt_evidence_board/template_formula_first.svg').read_text(encoding='utf-8')
+          assert 'FORMULA / 公式拆解' in f
+          assert 'OUTPUT CONTRACT' in f
+          index = __import__('json').loads(Path('out/prompt_evidence_board/demo_packets/prompt_attempt_index.json').read_text(encoding='utf-8'))
+          assert index['attempt_count'] == 2
+          assert index['image_realization'] == 'NOT_RUN'
+          assert index['pixel_audit'] == 'NOT_RUN'
+          assert all(x['pixel_audit_status'] == 'NOT_RUN' for x in index['attempts'])
+          full_index = __import__('json').loads(Path('out/prompt_evidence_board/t_hammer_packets/prompt_attempt_index.json').read_text(encoding='utf-8'))
+          assert full_index['variant_count'] == 192
+          assert full_index['attempt_count'] == 768
+          assert full_index['image_realization'] == 'NOT_RUN'
+          assert full_index['pixel_audit'] == 'NOT_RUN'
+          assert len({x['attempt_id'] for x in full_index['attempts']}) == 768
+          print('Mini fixture: 2 packets. Full T-Hammer matrix: 192 variants / 768 per-prompt packets. No image/pixel PASS claimed.')
+          PY
+      - name: Upload evidence-board preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: prompt-trial-plan-and-teaching-board
+          path: out/prompt_evidence_board/
+          if-no-files-found: error
