@@ -1,0 +1,44 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "sweep_id": "SWEEP-001",
+  "source_catalog": "docs/boundary_pedestrian/variants/VARIANT_IDS_FULL.csv",
+  "source_catalog_sha256": "b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731",
+  "source_total_variants": 60,
+  "selected_start_index_zero_based": 0,
+  "buckets_filter": [
+    "VIDEO_GEO",
+    "VIDEO_I2V",
+    "VIDEO_BP"
+  ],
+  "compiled_variant_count": 60,
+  "formula_edition": "MASTER_PROMPT_v5_20261025",
+  "full_sweep_compiled": true,
+  "unique_variant_ids": 60,
+  "all_selected_variant_ids_once": true,
+  "prompts_per_loop": 6,
+  "bucket_counts": {
+    "VIDEO_BP": 18,
+    "VIDEO_GEO": 24,
+    "VIDEO_I2V": 18
+  },
+  "act_counts": {
+    "1": 6,
+    "2": 6,
+    "3": 30,
+    "4": 6,
+    "5": 6,
+    "6": 6
+  },
+  "media_counts": {
+    "VIDEO": 60
+  },
+  "loop_prompt_packets": "docs/boundary_pedestrian/prompt_tables_v5/VIDEO_60/loop_prompt_packets.jsonl",
+  "loop_index": "docs/boundary_pedestrian/prompt_tables_v5/VIDEO_60/loop_index.csv",
+  "prompt_compiled": true,
+  "external_generation_called": false,
+  "image_realization": "NOT_RUN",
+  "video_realization": "NOT_RUN",
+  "pixel_audit_status": "NOT_RUN",
+  "continuity_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED"
+}

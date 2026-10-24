@@ -32,6 +32,15 @@ PALETTES = {
     "S02": {"deep": "#311e42", "edge": "#ffb2cf", "metal": "#ffe49a", "ink": "#fff8ff", "shadow": "#9d5fba"},
     "S03": {"deep": "#101018", "edge": "#b9a4ff", "metal": "#f7d5ff", "ink": "#fff8ff", "shadow": "#473080"},
     "S04": {"deep": "#171f1b", "edge": "#a4d4ba", "metal": "#f1e6c5", "ink": "#f8f3e7", "shadow": "#3f5b4a"},
+    "S05": {"deep": "#120f0c", "edge": "#c45c4a", "metal": "#e8d5a3", "ink": "#f4efe6", "shadow": "#5a2a22"},
+    "S06": {"deep": "#0a0608", "edge": "#e8a040", "metal": "#f0d080", "ink": "#fff4d8", "shadow": "#6a2010"},
+}
+DIEGETIC_VFX = {
+    "none": {"stroke": "#ffffff", "glow": "#ffffff", "opacity": 0.0, "label": "NONE"},
+    "lightning": {"stroke": "#7ef0ff", "glow": "#3ad0ff", "opacity": 0.92, "label": "COILED_HAMMER_NEON_LIGHTNING"},
+    "fire": {"stroke": "#ff7a2a", "glow": "#ffd060", "opacity": 0.95, "label": "COMBUSTION_FIRE_MORPH"},
+    "graffiti": {"stroke": "#ff4fd8", "glow": "#7a5cff", "opacity": 0.88, "label": "PERSPECTIVE_STREET_GRAFFITI"},
+    "ice": {"stroke": "#b8f0ff", "glow": "#e8fbff", "opacity": 0.90, "label": "SHATTERED_ICE_RELIEF"},
 }
 
 
@@ -43,8 +52,24 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def l_sha12(metadata: dict[str, Any]) -> str:
+    raw = str(
+        metadata.get("mid_master_sha256")
+        or metadata.get("source_sha256")
+        or metadata.get("method_fingerprint")
+        or ""
+    ).strip().lower()
+    if not raw:
+        return "000000000000"
+    if raw.startswith("l-"):
+        return raw[2:14]
+    return raw[:12]
+
+
 def canonical_text_payload(metadata: dict[str, Any]) -> dict[str, str]:
-    """Words/IDs that must stay identical across PRE/MID/POST and the assembled video."""
+    """Words/IDs identical across PRE/MID/POST. v5 includes L-SHA12; omits status noise."""
+    sha12 = l_sha12(metadata)
+    world = str(metadata.get("world_label") or metadata.get("series_id") or "WORLD")
     return {
         "title": "邊界行人 / THE BOUNDARY WALKER",
         "loop_try": f"LOOP {metadata.get('loop_id', '')}  /  TRY {metadata.get('try_id', '')}",
@@ -56,7 +81,10 @@ def canonical_text_payload(metadata: dict[str, Any]) -> dict[str, str]:
             for key in ("style_id", "series_id", "world_label")
         ),
         "prompt_id": str(metadata.get("prompt_id") or ""),
+        "world_lsha": f"WORLD: {world} · L-{sha12}",
+        "l_sha12": f"L-{sha12}",
     }
+
 
 
 def text_content_sha256(metadata: dict[str, Any]) -> str:
@@ -168,6 +196,17 @@ def build_svg(
     metadata: dict[str, Any],
 ) -> str:
     metadata = dict(metadata)
+    if str(metadata.get("layout") or "plaque") == "diegetic":
+        from bubble_break.boundary_pedestrian_diegetic_text import build_diegetic_svg
+        return build_diegetic_svg(
+            source_bytes, mime_type, width, height, metadata,
+            text_fn=_text,
+            palettes=PALETTES,
+            treatments=TYPOGRAPHY_TREATMENTS,
+            vfx_table=DIEGETIC_VFX,
+            canonical_text_payload=canonical_text_payload,
+            text_content_sha256=text_content_sha256,
+        )
     metadata.setdefault("poster_panel_area_fraction", 0.44 * 0.78)
     metadata.setdefault("typography_variant", "middle")
     payload = canonical_text_payload(metadata)
@@ -237,7 +276,8 @@ def build_svg(
       {_text(tx, panel_y+round(420*scale), camera_pose_line, label_size, p['edge'], 750)}
       {_text(tx, panel_y+round(462*scale), style_prompt_line, label_size, p['ink'], 700)}
       {_text(tx, panel_y+round(510*scale), series_line, small_size, p['metal'], 750)}
-      <path d="M {tx} {panel_y+round(540*scale)} L {panel_right-inset} {panel_y+round(540*scale)}"
+      {_text(tx, panel_y+round(535*scale), payload.get('l_sha12', ''), small_size, p['edge'], 800)}
+      <path d="M {tx} {panel_y+round(555*scale)} L {panel_right-inset} {panel_y+round(555*scale)}"
             stroke="{p['edge']}" stroke-opacity="0.7" stroke-width="{max(1,round(1.5*scale))}"/>
       {_text(tx, panel_y+round(578*scale), f"STATUS  {status_line}", label_size, p['ink'], 850)}
       {_text(tx, panel_y+round(619*scale), f"SHA-256  {metadata['source_sha256'][:18]}…", small_size, p['edge'], 700)}
@@ -312,7 +352,10 @@ def build_ass(metadata: dict[str, Any], duration_seconds: float) -> str:
     title_text = ass_escape("邊界行人 / THE BOUNDARY WALKER")
     tryline = ass_escape(f"LOOP {metadata['loop_id']}  ·  TRY {metadata['try_id']}")
     method = ass_escape(f"{metadata['method_id']}  /  {metadata.get('method_label') or ''}")
-    world = ass_escape(f"{metadata.get('series_id') or 'SERIES'}  ·  {metadata.get('world_label') or 'WORLD'}")
+    world = ass_escape(
+        f"{metadata.get('series_id') or 'SERIES'}  ·  {metadata.get('world_label') or 'WORLD'}"
+        f"  ·  {canonical_text_payload(metadata).get('l_sha12', '')}"
+    )
     content_hash = str(metadata.get("text_content_sha256") or text_content_sha256(metadata))
     meta = ass_escape(
         f"GEO {metadata.get('geometry_family') or '?'} / CONTACT {metadata.get('contact_method') or '?'}"
@@ -365,6 +408,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--prompt-id", default="")
     parser.add_argument("--style-id", default="")
     parser.add_argument("--typography-variant", choices=["", "before", "middle", "after", "video-lock"], default="")
+    parser.add_argument("--layout", choices=["", "plaque", "diegetic"], default="")
+    parser.add_argument("--vfx-mode", choices=["", "none", "lightning", "fire", "graffiti", "ice"], default="")
+    parser.add_argument("--mid-master-sha256", default="")
     parser.add_argument("--note", default="")
     parser.add_argument("--panel-side", choices=["left", "right"], default="")
     parser.add_argument("--status", default="", choices=["", *sorted(ALLOWED_STATUSES)])
@@ -426,6 +472,9 @@ def main() -> int:
         "prompt_id": choose(args.prompt_id, "prompt_id"),
         "style_id": choose(args.style_id, "style_id", "S01"),
         "typography_variant": choose(args.typography_variant, "typography_variant", "middle"),
+        "layout": choose(args.layout, "layout", "plaque"),
+        "vfx_mode": choose(args.vfx_mode, "vfx_mode", ""),
+        "mid_master_sha256": choose(args.mid_master_sha256, "mid_master_sha256", ""),
         "panel_side": choose(args.panel_side, "panel_side", "right"),
         "status": status,
         "note": choose(args.note, "note", "每一次失敗，都帶來下一個試法。"),
@@ -433,7 +482,7 @@ def main() -> int:
         "source_sha256": sha256_bytes(source),
         "source_width": width,
         "source_height": height,
-        "poster_panel_area_fraction": 0.44 * 0.78,
+        "poster_panel_area_fraction": 0.0 if choose(args.layout, "layout", "plaque") == "diegetic" else 0.44 * 0.78,
         "image_realization": "SOURCE_FILE_ATTACHED",
         "pixel_audit_status": "NOT_RUN",
         "visual_acceptance_status": "NOT_VERIFIED",
@@ -441,6 +490,7 @@ def main() -> int:
     }
     metadata["canonical_text_payload"] = canonical_text_payload(metadata)
     metadata["text_content_sha256"] = text_content_sha256(metadata)
+    metadata["l_sha12"] = metadata["canonical_text_payload"]["l_sha12"]
     svg = build_svg(source, mime_type, width, height, metadata)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(svg, encoding="utf-8")
@@ -459,6 +509,9 @@ def main() -> int:
         "source_sha256": metadata["source_sha256"],
         "artwork_sha256": metadata["artwork_sha256"],
         "poster_panel_area_fraction": metadata["poster_panel_area_fraction"],
+        "layout": metadata.get("layout"),
+        "l_sha12": metadata.get("l_sha12"),
+        "vfx_mode": metadata.get("vfx_mode") or None,
         "pixel_audit_status": metadata["pixel_audit_status"],
         "visual_acceptance_status": metadata["visual_acceptance_status"],
         "ass_out": args.ass_out or None,

@@ -185,5 +185,48 @@ class BoundaryWalkerTryArtTests(unittest.TestCase):
             build_ass(self.metadata, 0)
 
 
+
+class DiegeticLayoutTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.source = png_header()
+        self.metadata = {
+            "story": "THE BOUNDARY WALKER",
+            "loop_id": "001",
+            "try_id": "0001",
+            "act_id": "3",
+            "method_id": "GEO.T",
+            "method_label": "T-hammer end-face contact",
+            "series_id": "S04-SNOW-TORII",
+            "world_label": "Snow Torii",
+            "geometry_family": "T",
+            "contact_method": "H2",
+            "camera_id": "CAM07",
+            "pose_id": "P03",
+            "prompt_id": "I-04",
+            "style_id": "S04",
+            "status": "REVIEW_PENDING",
+            "layout": "diegetic",
+            "vfx_mode": "lightning",
+            "source_sha256": sha256_bytes(self.source),
+            "mid_master_sha256": "abcdef0123456789deadbeef",
+            "pixel_audit_status": "NOT_RUN",
+            "visual_acceptance_status": "NOT_VERIFIED",
+        }
+
+    def test_diegetic_has_no_plate_and_has_lsha_and_vfx(self) -> None:
+        svg = build_svg(self.source, "image/png", 1920, 1080, self.metadata)
+        self.assertIn("diegetic-typography", svg)
+        self.assertIn("diegetic-vfx-lightning", svg)
+        self.assertIn("L-abcdef012345", svg)
+        self.assertNotIn("floating-3d-poster", svg)
+
+    def test_diegetic_pre_post_same_text_sha(self) -> None:
+        a = dict(self.metadata, typography_variant="before", vfx_mode="ice")
+        b = dict(self.metadata, typography_variant="after", vfx_mode="fire")
+        self.assertEqual(text_content_sha256(a), text_content_sha256(b))
+        self.assertIn("diegetic-vfx-ice", build_svg(self.source, "image/png", 1920, 1080, a))
+        self.assertIn("diegetic-vfx-fire", build_svg(self.source, "image/png", 1920, 1080, b))
+
+
 if __name__ == "__main__":
     unittest.main()

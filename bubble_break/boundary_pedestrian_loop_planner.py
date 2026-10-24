@@ -28,10 +28,24 @@ ACTS = {
     "6": ("選擇", "The heroine chooses to return to the boundary. Her final footstep forms an incomplete luminous ring that can match-cut to the next loop's opening step."),
 }
 STYLE_NAMES = {
-    "S01": "photoreal cinematic live action, motivated lighting, restrained bloom and believable materials",
-    "S02": "cute pastel editorial art, soft candy colors and refined social-magazine composition",
+    "S01": "photoreal cinematic live action, rainy neo-Tokyo or motivated urban night light, restrained bloom and believable materials",
+    "S02": "cute pastel INS editorial art, soft candy colors and refined social-magazine composition",
     "S03": "surrealist cinematic art, symbolic impossible space but clear central silhouette",
-    "S04": "restrained geometry-audit product photography, neutral light and inspectable silhouettes",
+    "S04": "high-contrast Japanese winter cinema, vermilion torii colonnade in powder snow, cold moonlight and warm paper lanterns",
+    "S05": "cursive ink wuxia cinema, splash-ink bamboo abyss, cinnabar seal accents, wind-swept martial robes",
+    "S06": "Caravaggio lava cathedral tenebrism, magma veins, single golden shaft of light, gilded bronze and basalt materials",
+}
+VIDEO_METHOD_SPECS = {
+    "V-01": "10-second single-scene continuous impact short; one unbroken camera; contact physics continuous; no hard cuts.",
+    "V-02": "Five complete keyframes KF1..KF5 with MID/H2 as sole master (KF3). KF1-KF2 are pre-states; KF4-KF5 are post-states derived only from KF3. Do not invent separate weapons/worlds per KF.",
+    "V-03": "Planted-cylinder fixed-anchor clip; contact seat never drifts; no flying swing.",
+    "V-04": "Image-to-video from accepted mother still; motion only; lock geometry identity and world.",
+    "V-05": "Dual T-hammer FACE collision temporal clip; two independent T hammers; end-faces meet; never fuse into H.",
+    "V-06": "Thick CROSS rounded end-cap collision temporal clip.",
+    "V-07": "Linear rod POS/NEG control temporal clip; 90-degree center-line rules hold.",
+    "V-08": "Multi-facet head selected-face temporal clip.",
+    "V-09": "Six-act narrative MV segment montage; story spine only unless a bound topology is named; no unbound precise geometry proof.",
+    "V-10": "Extended continuity pack; preserve match-cut footstep ring between acts.",
 }
 WASH_NAMES = {
     "W00": "neutral baseline framing; keep the whole declared event clearly visible",
@@ -171,17 +185,19 @@ def _base_prompt(row: dict[str, str], loop_id: str, try_id: str, act: str,
         f"CATALOG METHOD REFERENCES: {catalog_methods}. SOURCE CATALOG SHA-256: {source_sha}."
     )
     identity_world = (
-        "Keep the same adult East Asian heroine from the approved identity reference: long straight dark-brown hair, "
-        "unchanged face, body proportions and canonical outfit. Keep the same world: an outer ruined city and a small "
-        "living sanctuary inside a translucent spherical boundary. Preserve the story's moral question: is the boundary "
-        "protecting life, or separating the two sides? The heroine, world landmarks, lighting direction and circular "
-        "boundary motif must remain recognizably continuous with the previous and next act. "
+        "Identity lock: THE BOUNDARY WALKER / 邊界行人. Keep the same adult East Asian female Boundary Walker from the "
+        "approved face reference: long dark-brown hair, unchanged face, body proportions and series costume. "
+        "World lock: outer series world (style package) plus a translucent BOUNDARY SPHERE that contains a LIVING "
+        "miniature sanctuary with warm interior lights (never an empty glass planet). A luminous boundary line or ring "
+        "must remain readable. Preserve the moral question: is the boundary protecting life, or separating the two sides? "
+        "Heroine, landmarks, light direction and circular boundary motif stay continuous with previous and next acts. "
     )
     editorial = (
         f"Visual style: {style_text}. Framing method: {wash_description(wash)}. "
         f"Camera variant: {cam}. Shot variant: {shot}. The episode's method label is {primary_label}. "
         "Do not bake text, letters, numbers, subtitles, logos, UI or watermarks into the generated media; "
-        "an exact editorial title/method layer will be composited afterward from the same loop manifest. "
+        "v5 diegetic typography (variable glyph scale, zero plate, optional lightning/fire/graffiti/ice VFX, L-SHA12) "
+        "is composited afterward by boundary_pedestrian_try_art --layout diegetic from the same loop manifest. "
         "Keep corner negative-space available for that layer without covering the heroine's face, active contact "
         "surface, handles, boundary or fracture origin. One full-frame image, never a collage or contact sheet. "
     )
@@ -200,9 +216,11 @@ def _base_prompt(row: dict[str, str], loop_id: str, try_id: str, act: str,
 
     if row_media == "VIDEO":
         video_method = clean(row.get("video_method")) or "UNSPECIFIED"
+        video_spec = VIDEO_METHOD_SPECS.get(video_method, f"Catalog video method {video_method}; follow declared pipeline only.")
         video_intro = (
             f"Create one standalone 5–8 second cinematic clip, not an unbroken six-act movie. "
             f"The target media for this primary TRY is VIDEO using method {video_method}. "
+            f"Pipeline contract: {video_spec} "
             f"Do not change the method or silently substitute a different video workflow. "
         )
         if geo == "T_OR_MULTI":
@@ -271,6 +289,65 @@ def build_episode(row: dict[str, str], index: int, source_sha: str) -> dict[str,
             ) if is_primary else f"STORY_SPINE_ACT{act_id}",
             "prompt": prompt,
         })
+    method_fp = hashlib.sha256(
+        json.dumps({k: clean(row.get(k)) for k in sorted(REQUIRED_COLUMNS)}, sort_keys=True).encode("utf-8")
+    ).hexdigest()
+    l_sha = method_fp[:12]
+    art_label_spec = {
+        "story": "THE BOUNDARY WALKER",
+        "loop_id": loop_id,
+        "try_id": try_id,
+        "series_id": clean(row.get("style")) or "S01",
+        "world_label": style_description(clean(row.get("style")) or "S01")[:80],
+        "method_id": f"GEO.{clean(row.get('geo_family')) or 'NONE'}",
+        "method_label": primary_label,
+        "geometry_family": clean(row.get("geo_family")) or "NONE",
+        "contact_method": clean(row.get("contact")) or "NA",
+        "camera_id": short_camera(clean(row.get("cam"))),
+        "pose_id": clean(row.get("shot")) or "UNSPECIFIED",
+        "style_id": clean(row.get("style")) or "S01",
+        "prompt_id": clean(row.get("geo_catalog")) or clean(row.get("video_method")) or "STORY_SPINE",
+        "layout": "diegetic",
+        "vfx_mode": "lightning" if clean(row.get("lane")) == "HARD" else "ice",
+        "l_sha12": f"L-{l_sha}",
+        "status": "PROMPT_READY",
+        "acts": {a["act_id"]: {"act_id": a["act_id"], "prompt_id": a["prompt_id"]} for a in acts},
+    }
+    # PRE/MID/POST phase prompts only for HARD primary ACT3 geometry (v5 triad contract notes)
+    phases = None
+    if clean(row.get("lane")) == "HARD" and act == "3" and clean(row.get("geo_family")) not in {"NONE", "T_OR_MULTI", ""}:
+        mid_body = _base_prompt(row, loop_id, try_id, "3", True, source_sha)
+        phases = {
+            "MID_H2": {
+                "generation_order": 1,
+                "role": "CONTACT_MASTER",
+                "prompt": (
+                    "PHASE MID (t0 master). " + mid_body +
+                    " This raster becomes the sole parent for PRE and POST. "
+                    "Typography: clean master plate (no generative text); L-" + l_sha + "."
+                ),
+            },
+            "PRE_H1": {
+                "generation_order": 2,
+                "role": "PRE_NEAR",
+                "status_if_unlocked": "BLOCKED_UNTIL_MID_H2_ACCEPTED",
+                "prompt": (
+                    "PHASE PRE. Derive ONLY from accepted MID master. Same camera, crop, hammer topology, world, heroine. "
+                    "Only rewind along approach axis to leave a clear positive air gap; no contact, cracks, sparks. "
+                    "Same text payload will be overlaid with ice/glass diegetic treatment (before). L-" + l_sha + "."
+                ),
+            },
+            "POST_H3": {
+                "generation_order": 3,
+                "role": "FOLLOW_THROUGH",
+                "status_if_unlocked": "BLOCKED_UNTIL_MID_H2_ACCEPTED",
+                "prompt": (
+                    "PHASE POST. Derive ONLY from the same accepted MID master. Same camera and hammer. "
+                    "Small same-axis follow-through; cracks propagate from original P only. "
+                    "Same text payload overlaid with molten/fire diegetic treatment (after). L-" + l_sha + "."
+                ),
+            },
+        }
     return {
         "story": "THE BOUNDARY WALKER",
         "loop_id": loop_id,
@@ -281,12 +358,14 @@ def build_episode(row: dict[str, str], index: int, source_sha: str) -> dict[str,
         "primary_media": clean(row.get("media")).upper(),
         "lane": clean(row.get("lane")),
         "method_label": primary_label,
-        "method_fingerprint": hashlib.sha256(
-            json.dumps({k: clean(row.get(k)) for k in sorted(REQUIRED_COLUMNS)}, sort_keys=True).encode("utf-8")
-        ).hexdigest(),
+        "method_fingerprint": method_fp,
+        "l_sha12": f"L-{l_sha}",
+        "art_label_spec": art_label_spec,
+        "frame_phases": phases,
         "catalog_row": {k: clean(v) for k, v in row.items()},
         "acts": acts,
         "status": "PROMPT_READY",
+        "formula_edition": "MASTER_PROMPT_v5_20261025",
         "image_realization": "NOT_RUN",
         "video_realization": "NOT_RUN",
         "pixel_audit_status": "NOT_RUN",
@@ -343,8 +422,19 @@ def interleave_buckets(rows: Iterable[dict[str, str]]) -> list[dict[str, str]]:
     return output
 
 
-def compile_csv(csv_path: Path, outdir: Path, start_index: int = 0, limit: int = 0) -> dict[str, Any]:
+def compile_csv(
+    csv_path: Path,
+    outdir: Path,
+    start_index: int = 0,
+    limit: int = 0,
+    buckets: list[str] | None = None,
+) -> dict[str, Any]:
     rows, source_sha = load_rows(csv_path)
+    if buckets:
+        wanted = {b.strip() for b in buckets if b.strip()}
+        rows = [r for r in rows if clean(r.get("count_bucket")) in wanted]
+        if not rows:
+            raise ValueError("No rows match buckets: " + ", ".join(sorted(wanted)))
     ordered = interleave_buckets(rows)
     if start_index < 0 or start_index >= max(1, len(ordered)):
         raise ValueError("start_index must be within the catalog index range")
@@ -394,7 +484,9 @@ def compile_csv(csv_path: Path, outdir: Path, start_index: int = 0, limit: int =
         "source_catalog_sha256": source_sha,
         "source_total_variants": len(rows),
         "selected_start_index_zero_based": start_index,
+        "buckets_filter": list(buckets) if buckets else None,
         "compiled_variant_count": len(selected),
+        "formula_edition": "MASTER_PROMPT_v5_20261025",
         "full_sweep_compiled": start_index == 0 and len(selected) == len(rows),
         "unique_variant_ids": len({clean(r.get("id")) for r in selected}),
         "all_selected_variant_ids_once": len({clean(r.get("id")) for r in selected}) == len(selected),
@@ -423,11 +515,75 @@ def main() -> int:
     parser.add_argument("--outdir", required=True, help="folder for JSONL prompt packages, CSV index and summary")
     parser.add_argument("--start-index", type=int, default=0, help="zero-based offset into the deterministic interleaved queue")
     parser.add_argument("--limit", type=int, default=0, help="max variants to compile; 0 compiles every legal ID")
+    parser.add_argument(
+        "--bucket",
+        action="append",
+        default=[],
+        help="repeatable count_bucket filter, e.g. --bucket VIDEO_GEO --bucket HARD_DUAL48",
+    )
     args = parser.parse_args()
-    summary = compile_csv(Path(args.variants_csv), Path(args.outdir), args.start_index, args.limit)
+    summary = compile_csv(
+        Path(args.variants_csv),
+        Path(args.outdir),
+        args.start_index,
+        args.limit,
+        buckets=args.bucket or None,
+    )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+def export_primary_prompt_table(jsonl_path: Path, out_csv: Path, out_md: Path) -> dict[str, Any]:
+    """Flatten primary-act prompts from compiled JSONL into a review table (no media generation)."""
+    rows: list[dict[str, str]] = []
+    with jsonl_path.open(encoding="utf-8") as handle:
+        for line in handle:
+            packet = json.loads(line)
+            primary = next(a for a in packet["acts"] if a.get("is_primary_try"))
+            phases = packet.get("frame_phases") or {}
+            rows.append({
+                "loop_id": packet["loop_id"],
+                "try_id": packet["try_id"],
+                "variant_id": packet["variant_id"],
+                "lane": packet.get("lane", ""),
+                "media": packet.get("primary_media", ""),
+                "method_label": packet.get("method_label", ""),
+                "l_sha12": packet.get("l_sha12", ""),
+                "video_method": (packet.get("catalog_row") or {}).get("video_method", ""),
+                "geo_family": (packet.get("catalog_row") or {}).get("geo_family", ""),
+                "contact": (packet.get("catalog_row") or {}).get("contact", ""),
+                "style": (packet.get("catalog_row") or {}).get("style", ""),
+                "count_bucket": (packet.get("catalog_row") or {}).get("count_bucket", ""),
+                "primary_prompt": primary.get("prompt", ""),
+                "mid_phase_prompt": (phases.get("MID_H2") or {}).get("prompt", ""),
+                "pre_phase_prompt": (phases.get("PRE_H1") or {}).get("prompt", ""),
+                "post_phase_prompt": (phases.get("POST_H3") or {}).get("prompt", ""),
+                "status": packet.get("status", "PROMPT_READY"),
+                "external_generation_called": str(packet.get("external_generation_called", False)),
+            })
+    fieldnames = list(rows[0].keys()) if rows else []
+    out_csv.parent.mkdir(parents=True, exist_ok=True)
+    with out_csv.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    lines = [
+        "# Primary prompt table",
+        "",
+        f"Rows: **{len(rows)}** · status PROMPT_READY · external_generation_called false",
+        "",
+        "| # | variant_id | method | l_sha12 | media |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for i, r in enumerate(rows, 1):
+        lines.append(
+            f"| {i} | `{r['variant_id']}` | {r['method_label'][:60]} | `{r['l_sha12']}` | {r['media']} |"
+        )
+    lines.append("")
+    lines.append("Full English prompts are in the companion CSV (`primary_prompt` column).")
+    out_md.write_text(chr(10).join(lines) + chr(10), encoding="utf-8")
+    return {"rows": len(rows), "csv": str(out_csv), "md": str(out_md)}
