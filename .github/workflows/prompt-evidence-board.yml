@@ -320,7 +320,7 @@ jobs:
                       assert all(frame['parent_keyframe_id'] == 'KF3' and frame['status'] == 'BLOCKED_UNTIL_KF3_H2_ACCEPTED' for frame in keyframes if frame['keyframe_id'] != 'KF3')
                       assert len({frame['text_content_sha256'] for frame in keyframes}) == 1
                       assert {frame['typography_variant'] for frame in keyframes} == {'before', 'middle', 'after'}
-                      assert all('do not generate this frame independently' in frame['prompt'] for frame in keyframes if frame['keyframe_id'] != 'KF3')
+                      assert all('do not generate this frame independently' in frame['prompt'].lower() for frame in keyframes if frame['keyframe_id'] != 'KF3')
                   else:
                       assert len(rec['video_keyframes']) == 0
                   if method == 'V-09':
