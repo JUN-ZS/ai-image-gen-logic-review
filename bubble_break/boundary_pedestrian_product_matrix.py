@@ -543,7 +543,8 @@ def make_video_prompt(config: ImageConfig, video_method: str, route_id: str,
     )
 
 
-def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str) -> list[dict[str, Any]]:
+def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str,
+                   combo_id: str = "") -> list[dict[str, Any]]:
     """Compile one corrected H2 master first, then reference-locked temporal derivatives."""
     stages = [
         ("KF1", "0.0s PRE_FAR", "H0", "the same rigid hammer is farther back along the established approach axis; a wide positive air gap remains, with no cracks, sparks or contact shadow"),
@@ -604,7 +605,7 @@ def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str
             "is_h2_master": is_master,
             "requires_human_review_of_h2_master": not is_master,
             "typography_variant": {"KF1": "before", "KF2": "before", "KF3": "middle", "KF4": "after", "KF5": "after"}[frame_id],
-            "text_content_sha256": label_text_sha256(art_label_spec(config, "V-02", route_id, loop_id, try_id, f"KEYFRAME-{frame_id}"), "3"),
+            "text_content_sha256": label_text_sha256(art_label_spec(config, "V-02", route_id, loop_id, try_id, combo_id or f"{loop_id}-{try_id}"), "3"),
             "status": frame_status,
             "prompt": prompt,
         })
@@ -719,7 +720,7 @@ def compile_product_matrix(catalog_csv: Path, outdir: Path, catalog_doc: Path,
                     "video_prompt": make_video_prompt(config, video_method, series_id, loop_id, try_id, act, primary),
                     "primary_try": primary,
                 })
-            keyframes = make_keyframes(config, series_id, loop_id, try_id) if video_method == "V-02" else []
+            keyframes = make_keyframes(config, series_id, loop_id, try_id, combo_id) if video_method == "V-02" else []
             mv_shots = make_mv_shots(config, video_method, series_id, loop_id, try_id) if video_method == "V-09" else []
             record = {
                 "combination_id": combo_id,
