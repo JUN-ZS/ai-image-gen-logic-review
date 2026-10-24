@@ -20,7 +20,7 @@ on:
       - 'examples/prompt_attempt_manifest.example.json'
       - 'examples/prompt_matrix_minimal.example.json'
       - 'docs/PROMPT_*'
-      - 'docs/boundary_pedestrian/LOOPING_TRY_STORY.md'
+      - 'docs/boundary_pedestrian/**'
       - '.github/workflows/prompt-evidence-board.yml'
   pull_request:
     paths:
@@ -38,7 +38,7 @@ on:
       - 'examples/prompt_attempt_manifest.example.json'
       - 'examples/prompt_matrix_minimal.example.json'
       - 'docs/PROMPT_*'
-      - 'docs/boundary_pedestrian/LOOPING_TRY_STORY.md'
+      - 'docs/boundary_pedestrian/**'
       - '.github/workflows/prompt-evidence-board.yml'
   workflow_dispatch:
 
