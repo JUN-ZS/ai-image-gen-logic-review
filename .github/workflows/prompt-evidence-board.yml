@@ -128,7 +128,7 @@ jobs:
           assert manifest['source_sha256'] == hashlib.sha256(source_bytes).hexdigest()
           assert manifest['artwork_sha256'] == hashlib.sha256(svg_bytes).hexdigest()
           ass = (root / 'loop001_try0001.ass').read_text(encoding='utf-8')
-          assert 'THE BOUNDARY WALKER' in svg and 'TRY 0001' in svg and 'BP_SHOT' in svg
+          assert 'THE BOUNDARY WALKER' in svg and 'TRY 0001' in svg and 'SHOT.WIDE' in svg
           assert manifest['pixel_audit_status'] == 'NOT_RUN'
           assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
           assert manifest['poster_panel_area_fraction'] > (1 / 3)
