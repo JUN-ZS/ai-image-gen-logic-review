@@ -446,7 +446,7 @@ def make_image_prompt(config: ImageConfig, video_method: str, route_id: str,
         f"Character bible: {series['protagonist_description']}. Keep this protagonist recognizably consistent across this series' six acts, but allow other series to use different characters. "
         f"Set dressing and world: {series['world_description']}. Visual style {config.style}: {style}. {event} {shot_text} "
         f"{action_profile}. Make each act visually distinct: alter body silhouette, camera height, focal length, distance and screen direction according to the act profile; never reuse the same neutral standing pose across six acts. "
-        "The selected geometry/contact contract is locked only for this TRY: preserve its nominated active face, contact point and causal state exactly, while everything outside that physical contract (character, costume, props, setting, palette, storytelling, lighting and composition) may be creatively redesigned within the declared series. "
+        "The selected geometry/contact contract is the only locked variable for this TRY: preserve its nominated active face, contact point, object relationship and causal state exactly. Across different TRYs and series, freely redesign the protagonist, costume, props, world, narrative, lighting, palette and composition. Within this selected series alone, keep one consistent art direction, world bible and protagonist identity across its six connected acts. "
         "Use rich 3D cinematic depth, atmospheric perspective, believable material response and a recurring boundary motif. Keep the sanctuary safe in soft acts. "
         "Do not generate letters, numbers, captions, logos, interface labels or watermarks; a large exact 3D poster-style TRY typography layer will be composited afterward and may occupy up to one-third of the frame. Leave a clear planned title/method zone without hiding the active contact surface. "
         "One image only, not a collage. Prompt readiness is not image acceptance."
@@ -506,7 +506,7 @@ def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str
             "timestamp": timestamp,
             "prompt": (
                 f"Create one standalone full-frame 16:9 keyframe for THE BOUNDARY WALKER, LOOP {loop_id}, TRY {try_id}, "
-                f"video method V-02, {timestamp}. Use the approved heroine and scene references and exact topology: "
+                f"video method V-02, {timestamp}. Use this series' protagonist and world references, not a universal fixed heroine: "
                 f"{GEO_DESCRIPTIONS[config.geo_family]} Focus experiment contract for this frame: {stage_contract} "
                 f"Required state now: {state}. Story route: {story_route_text(route_id, '3')}. Camera/action: {camera_text(config)}. "
                 f"Style: {style_description(config.style)}. Story series: {story_route_text(route_id, '3')}. Protagonist: {STORY_SERIES[route_id]['protagonist_description']}. Pose: {pose_description(config)}. Preserve this series' face, outfit, world, sphere, anchor P, light and landmarks. "
