@@ -438,21 +438,8 @@ def main() -> int:
         "pixel_audit_status": "NOT_RUN",
         "visual_acceptance_status": "NOT_VERIFIED",
         "renderer": "boundary_pedestrian_try_art.py",
-        "canonical_text_payload": canonical_text_payload({
-            "loop_id": loop_id,
-            "try_id": try_id,
-            "method_id": method_id,
-            "method_label": metadata["method_label"],
-            "geometry_family": metadata["geometry_family"],
-            "contact_method": metadata["contact_method"],
-            "camera_id": metadata["camera_id"],
-            "pose_id": metadata["pose_id"],
-            "style_id": metadata["style_id"],
-            "series_id": metadata["series_id"],
-            "world_label": metadata["world_label"],
-            "prompt_id": metadata["prompt_id"],
-        }),
     }
+    metadata["canonical_text_payload"] = canonical_text_payload(metadata)
     metadata["text_content_sha256"] = text_content_sha256(metadata)
     svg = build_svg(source, mime_type, width, height, metadata)
     output_path.parent.mkdir(parents=True, exist_ok=True)
