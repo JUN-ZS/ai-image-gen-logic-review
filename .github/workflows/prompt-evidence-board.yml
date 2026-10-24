@@ -195,7 +195,6 @@ jobs:
           assert plan['frame_typography']['pre_and_post_visual_treatment_differs'] is True
           print('H2 master must be corrected and SHA-reviewed before either derivative can be produced.')
           PY
-          PY
       - name: Compile every legal variant into a six-act loop prompt queue
         run: |
           python bubble_break/boundary_pedestrian_loop_planner.py \
