@@ -13,6 +13,8 @@ on:
       - 'bubble_break/test_boundary_pedestrian_try_art.py'
       - 'bubble_break/boundary_pedestrian_loop_planner.py'
       - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/boundary_pedestrian_product_matrix.py'
+      - 'bubble_break/test_boundary_pedestrian_product_matrix.py'
       - 'bubble_break/boundary_pedestrian_try_art.py'
       - 'bubble_break/test_boundary_pedestrian_try_art.py'
       - 'bubble_break/boundary_pedestrian_loop_planner.py'
@@ -89,6 +91,7 @@ jobs:
           python -m unittest bubble_break/test_prompt_trial_planner.py -v
           python -m unittest bubble_break/test_boundary_pedestrian_try_art.py -v
           python -m unittest bubble_break/test_boundary_pedestrian_loop_planner.py -v
+          python -m unittest bubble_break/test_boundary_pedestrian_product_matrix.py -v
       - name: Render an in-art Boundary Walker TRY label (no media generation claim)
         run: |
           python bubble_break/boundary_pedestrian_try_art.py \
@@ -152,6 +155,69 @@ jobs:
           first_buckets = {p['catalog_row']['count_bucket'] for p in packets[:20]}
           assert len(first_buckets) >= 5, f'initial trials do not diversify method buckets: {first_buckets}'
           print(f"Compiled {len(packets)} catalog variants into {len(packets) * 6} act prompts; no media generation or audit pass claimed.")
+          PY
+      - name: Compile the true legal four-axis Boundary Walker cross-product
+        run: |
+          python bubble_break/boundary_pedestrian_product_matrix.py \
+            --variants-csv docs/boundary_pedestrian/variants/VARIANT_IDS_FULL.csv \
+            --catalog-doc docs/IMAGE_VIDEO_PROMPT_CATALOG.md \
+            --outdir out/prompt_evidence_board/boundary_pedestrian/product_matrix
+          python - <<'PY'
+          import csv
+          import gzip
+          import json
+          from pathlib import Path
+
+          root = Path('out/prompt_evidence_board/boundary_pedestrian/product_matrix')
+          s = json.loads((root / 'boundary_walker_product_summary.json').read_text(encoding='utf-8'))
+          assert s['image_geometry_camera_style_configs'] == 4644
+          assert s['compatible_geometry_camera_style_video_configs'] == 17964
+          assert s['story_route_factor'] == 6
+          assert s['full_cross_product_combinations'] == 107784
+          assert s['compiled_combinations'] == 107784 and s['full_product_compiled'] is True
+          assert s['unique_combination_ids'] == 107784 and s['all_combination_ids_unique'] is True
+          assert s['compiled_base_image_and_video_prompt_count'] == 1293408
+          assert s['video_keyframe_prompts_compiled'] == 120960
+          assert s['mv_shot_pairs_compiled'] == 798768
+          assert s['mv_shot_image_and_video_prompt_count'] == 1597536
+          assert s['external_generation_called'] is False
+          assert s['pixel_audit_status'] == 'NOT_RUN'
+          assert s['visual_acceptance_status'] == 'NOT_VERIFIED'
+          with (root / 'boundary_walker_product_index.csv').open(encoding='utf-8', newline='') as handle:
+              index_count = sum(1 for _ in csv.DictReader(handle))
+          assert index_count == 107784, index_count
+          package_count = 0
+          video_methods = {}
+          id_seen = set()
+          with gzip.open(root / 'boundary_walker_full_product.jsonl.gz', 'rt', encoding='utf-8') as handle:
+              for line in handle:
+                  rec = json.loads(line)
+                  package_count += 1
+                  assert rec['combination_id'] not in id_seen
+                  id_seen.add(rec['combination_id'])
+                  assert len(rec['acts']) == 6
+                  assert sum(a['primary_try'] for a in rec['acts']) == 1
+                  assert all(a['image_prompt'].startswith('Create one single') for a in rec['acts'])
+                  assert all('independently reviewable' in a['video_prompt'] for a in rec['acts'])
+                  assert rec['status'] == 'PROMPT_READY'
+                  assert rec['image_realization'] == 'NOT_RUN'
+                  assert rec['video_realization'] == 'NOT_RUN'
+                  assert rec['pixel_audit_status'] == 'NOT_RUN'
+                  assert rec['visual_acceptance_status'] == 'NOT_VERIFIED'
+                  method = rec['axes']['video_method']
+                  video_methods[method] = video_methods.get(method, 0) + 1
+                  if method == 'V-02':
+                      assert len(rec['video_keyframes']) == 5
+                  else:
+                      assert len(rec['video_keyframes']) == 0
+                  if method == 'V-09':
+                      assert len(rec['mv_shots']) == (52 if rec['axes']['story_route'] == 'MV52' else 24)
+                  else:
+                      assert len(rec['mv_shots']) == 0
+          assert package_count == 107784, package_count
+          assert len(id_seen) == 107784
+          print(f"Verified {package_count:,} unique legal geometry × camera/style × video × narrative combinations.")
+          print(f"Generated {s['compiled_base_image_and_video_prompt_count'] + s['video_keyframe_prompts_compiled'] + s['mv_shot_image_and_video_prompt_count']:,} complete prompt strings; no media generation or audit PASS claimed.")
           PY
       - name: Render standard and formula-first teaching board templates
         run: |
