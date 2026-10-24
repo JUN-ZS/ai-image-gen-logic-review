@@ -124,3 +124,7 @@
 ## 新一組 · 雪社 + 用戶臉孔
 
 [`one_try_BPX-000088F93006B67E/`](one_try_BPX-000088F93006B67E/) — S01-SNOW-SOCIETY · GEO.T · H2 · P03 · face ref lock · V-04。
+
+## H2 三幀 SET · 女主雨夜東京
+
+[`triad_female_rain_tokyo_H2/`](triad_female_rain_tokyo_H2/) — MID-first PRE/MID/POST; face lock; REVIEW_PENDING.

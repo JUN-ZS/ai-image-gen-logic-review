@@ -1,0 +1,20 @@
+[Script Info]
+Title: THE BOUNDARY WALKER — 3D TRY TITLE
+ScriptType: v4.00+
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Title,Microsoft JhengHei,48,&H00F8F5E8,&H000000FF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,2,0,1,4,6,7,54,54,48,1
+Style: Try,Arial,44,&H007ACDFF,&H00FFFFFF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,2,0,1,4,6,7,54,54,48,1
+Style: Meta,Arial,24,&H00FFFFFF,&H000000FF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,1,0,1,3,4,7,54,54,48,1
+Style: Status,Arial,20,&H00B0E8E8,&H000000FF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,1,0,1,3,4,7,54,54,48,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 2,0:00:00.00,0:00:03.50,Title,,0,0,0,,邊界行人 / THE BOUNDARY WALKER\N{\fs27\c&H00D8E6FF&}S01-RAIN-TOKYO  ·  Rainy Tokyo / 雨夜東京
+Dialogue: 2,0:00:00.00,0:00:06.00,Try,,0,0,0,,LOOP LOOP-TRIAD-001  ·  TRY TRY-FEMALE-H2-001\NGEO.T  /  T-hammer · H2 first contact · IMPACT4 · P04 · female face lock
+Dialogue: 1,0:00:00.00,0:00:06.00,Meta,,0,0,0,,GEO T / CONTACT H2 / CAM T_H2_IMPACT4-XZ_FALL-CAM08-LOW-M1 / POSE P04 / STYLE S01 / PROMPT BPX-TRIAD-FEMALE-RAIN-TOKYO-001-I-MID-H2 / TEXT SHA-256 5e4fdbaf27e1a0e404bbaea09864bc3dd22f248e17b26e5a2df850492a6a1442\N{\fs18}SHA-256 b0b2e78fd1572adde8…  ·  IMAGE GENERATED
