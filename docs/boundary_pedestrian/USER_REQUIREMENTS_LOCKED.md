@@ -119,3 +119,17 @@
 下一輪旁分析行只優先 12 類：ROD± · PLANT_O · 五段相 · E_90/E_face · signed_gap · Crack±δt · reaction impulse · END_FACE≠CHEEK · ZERO-DRIFT · 軸 E 條。  
 公式晶片硬編碼；拒斥面 CHEEK｜HANDLE｜SHAFT；合法 `END_FACE_TO_END_FACE`。  
 嚴禁 TRY 次數、REVIEW PENDING。
+
+
+---
+
+## 8. 字軌憲法（2026-10-25 補 · 上 HUB）
+
+詳見 **`TYPO_DOCTRINE_HUB.md`**。
+
+- **雙軌**：A 準字（SVG 寫死）／B 生動（RICH 模型，允許字形漂移）。  
+- **「SET-F 字效 REF」= 用法原則**，**禁止**硬抄 F 雨夜霓虹外觀。  
+- 每 SET 先定 **WORLD_TYPE_MATERIALS**，字用本世界物質發明。  
+- 字必須表達**當幀物理 INFO**（PRE 冷隙 · MID 接觸 · POST 熱跟進）。  
+- 流程：clean 三幀 → 本世界字場 → 可選 A sidecar → `L-{MID_SHA12}`。
+
