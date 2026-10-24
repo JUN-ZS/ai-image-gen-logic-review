@@ -246,15 +246,15 @@ jobs:
           root = Path('out/prompt_evidence_board/boundary_pedestrian/product_matrix')
           s = json.loads((root / 'boundary_walker_product_summary.json').read_text(encoding='utf-8'))
           assert s['image_geometry_camera_style_pose_configs'] == 18576
-          assert s['compatible_geometry_camera_style_pose_video_configs'] == 71856
+          assert s['compatible_geometry_camera_style_pose_video_configs'] == 64944
           assert s['pose_factor'] == 4
           assert s['story_series_factor_total'] == 18
           assert s['story_series_per_style'] == {'S01': 6, 'S02': 6, 'S03': 6}
-          assert s['full_cross_product_combinations'] == 431136
-          assert s['compiled_combinations'] == 431136 and s['full_product_compiled'] is True
-          assert s['unique_combination_ids'] == 431136 and s['all_combination_ids_unique'] is True
-          assert s['compiled_base_image_and_video_prompt_count'] == 5173632
-          assert s['video_keyframe_prompts_compiled'] == 483840
+          assert s['full_cross_product_combinations'] == 389664
+          assert s['compiled_combinations'] == 389664 and s['full_product_compiled'] is True
+          assert s['unique_combination_ids'] == 389664 and s['all_combination_ids_unique'] is True
+          assert s['compiled_base_image_and_video_prompt_count'] == 4675968
+          assert s['video_keyframe_prompts_compiled'] == 276480
           assert s['mv_shot_pairs_compiled'] == 3195072
           assert s['mv_shot_image_and_video_prompt_count'] == 6390144
           assert s['external_generation_called'] is False
@@ -262,7 +262,7 @@ jobs:
           assert s['visual_acceptance_status'] == 'NOT_VERIFIED'
           with (root / 'boundary_walker_product_index.csv').open(encoding='utf-8', newline='') as handle:
               index_count = sum(1 for _ in csv.DictReader(handle))
-          assert index_count == 431136, index_count
+          assert index_count == 389664, index_count
           package_count = 0
           video_methods = {}
           id_seen = set()
@@ -311,17 +311,27 @@ jobs:
                   video_methods[method] = video_methods.get(method, 0) + 1
                   if method == 'V-02':
                       assert len(rec['video_keyframes']) == 5
+                      keyframes = rec['video_keyframes']
+                      master = next(frame for frame in keyframes if frame['keyframe_id'] == 'KF3')
+                      assert master['is_h2_master'] is True
+                      assert master['generation_order'] == 1
+                      assert master['contact_state'] == 'H2'
+                      assert master['status'] == 'MID_CORRECTION_REQUIRED'
+                      assert all(frame['parent_keyframe_id'] == 'KF3' and frame['status'] == 'BLOCKED_UNTIL_KF3_H2_ACCEPTED' for frame in keyframes if frame['keyframe_id'] != 'KF3')
+                      assert len({frame['text_content_sha256'] for frame in keyframes}) == 1
+                      assert {frame['typography_variant'] for frame in keyframes} == {'before', 'middle', 'after'}
+                      assert all('do not generate this frame independently' in frame['prompt'] for frame in keyframes if frame['keyframe_id'] != 'KF3')
                   else:
                       assert len(rec['video_keyframes']) == 0
                   if method == 'V-09':
                       assert len(rec['mv_shots']) == series['mv_shots_if_v09']
                   else:
                       assert len(rec['mv_shots']) == 0
-          assert package_count == 431136, package_count
-          assert len(id_seen) == 431136
+          assert package_count == 389664, package_count
+          assert len(id_seen) == 389664
           assert len(series_seen) == 18 and len(world_seen) == 18 and pose_seen == {'P01', 'P02', 'P03', 'P04'}
           assert set(style_series_seen) == {'S01', 'S02', 'S03'}
-          print(f"Verified {package_count:,} unique legal geometry × camera/action × four poses × compatible video × style/world/character series combinations.")
+          print(f"Verified {package_count:,} unique legal geometry × camera/action × four poses × compatible video × style/world/character series combinations; V-02 only expands from H2 master rows.")
           print(f"Generated {s['compiled_base_image_and_video_prompt_count'] + s['video_keyframe_prompts_compiled'] + s['mv_shot_image_and_video_prompt_count']:,} complete prompt strings; no media generation or audit PASS claimed.")
           PY
       - name: Prepare compact full-product receipt without storing the multi-million-prompt payload
@@ -347,7 +357,7 @@ jobs:
           summary['output_packages_gzip'] = 'NOT_RETAINED_IN_ARTIFACT; regenerate with boundary_pedestrian_product_matrix.py'
           summary['output_index_csv'] = 'NOT_RETAINED_IN_ARTIFACT; regenerate with boundary_pedestrian_product_matrix.py'
           summary['artifact_sample_jsonl_gzip'] = str(receipt / 'first_32_full_prompt_packages.jsonl.gz')
-          summary['artifact_note'] = 'CI verified the complete 431,136-combination product in the runner; this artifact retains a 32-row full-prompt sample plus counts/series inventory to avoid Actions storage quota exhaustion. Re-run boundary_pedestrian_product_matrix.py to reproduce the complete JSONL.GZ.'
+          summary['artifact_note'] = 'CI verified the complete 389,664-combination product in the runner; this artifact retains a 32-row full-prompt sample plus counts/series inventory to avoid Actions storage quota exhaustion. Re-run boundary_pedestrian_product_matrix.py to reproduce the complete JSONL.GZ.'
           (receipt / 'full_product_verification_receipt.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           shutil.rmtree(root)
           shutil.rmtree(Path('out/prompt_evidence_board/boundary_pedestrian/loop_prompts'), ignore_errors=True)
