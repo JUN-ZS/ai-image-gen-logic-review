@@ -229,6 +229,17 @@ jobs:
                   assert rec['visual_acceptance_status'] == 'NOT_VERIFIED'
                   series_id = rec['axes']['series_id']
                   series = s['story_series'][series_id]
+                  label = rec['art_label_spec']
+                  assert label['loop_id'] == rec['loop_id'] and label['try_id'] == rec['try_id']
+                  assert label['series_id'] == series_id
+                  assert label['world_label'] == series['world_name']
+                  assert label['method_id'] == 'GEO.' + rec['axes']['geo_family']
+                  assert label['geometry_family'] == rec['axes']['geo_family']
+                  assert label['contact_method'] == rec['axes']['contact']
+                  assert label['pose_id'] == rec['axes']['pose_id']
+                  assert label['style_id'] == rec['axes']['style']
+                  assert set(label['acts']) == {'1', '2', '3', '4', '5', '6'}
+                  assert label['acts']['3']['prompt_id'] == rec['acts'][2]['image_prompt_id']
                   assert rec['axes']['style'] == series['style_id']
                   assert rec['axes']['pose_id'] in {'P01', 'P02', 'P03', 'P04'}
                   assert series_id in rec['acts'][0]['image_prompt']
