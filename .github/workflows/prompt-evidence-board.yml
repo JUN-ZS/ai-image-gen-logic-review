@@ -116,11 +116,17 @@ jobs:
             --ass-out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001.ass \
             --duration-seconds 6
           python - <<'PY'
+          import hashlib
           import json
           from pathlib import Path
           root = Path('out/prompt_evidence_board/boundary_pedestrian')
-          svg = (root / 'loop001_try0001.svg').read_text(encoding='utf-8')
+          svg_path = root / 'loop001_try0001.svg'
+          svg_bytes = svg_path.read_bytes()
+          svg = svg_bytes.decode('utf-8')
           manifest = json.loads((root / 'loop001_try0001.manifest.json').read_text(encoding='utf-8'))
+          source_bytes = Path('docs/boundary_pedestrian/i20/act1_draw_boundary.jpg').read_bytes()
+          assert manifest['source_sha256'] == hashlib.sha256(source_bytes).hexdigest()
+          assert manifest['artwork_sha256'] == hashlib.sha256(svg_bytes).hexdigest()
           ass = (root / 'loop001_try0001.ass').read_text(encoding='utf-8')
           assert 'THE BOUNDARY WALKER' in svg and 'TRY 0001' in svg and 'BP_SHOT' in svg
           assert manifest['pixel_audit_status'] == 'NOT_RUN'
@@ -269,9 +275,13 @@ jobs:
                       dst.write(line)
           summary['full_product_verified_in_ci'] = True
           summary['full_prompt_bundle_retained_in_artifact'] = False
-          summary['artifact_note'] = 'CI verified the complete 431,136-combination product in-memory; this artifact retains a 32-row full-prompt sample plus counts/series inventory to avoid Actions storage quota exhaustion. Re-run boundary_pedestrian_product_matrix.py to reproduce the complete JSONL.GZ.'
+          summary['output_packages_gzip'] = 'NOT_RETAINED_IN_ARTIFACT; regenerate with boundary_pedestrian_product_matrix.py'
+          summary['output_index_csv'] = 'NOT_RETAINED_IN_ARTIFACT; regenerate with boundary_pedestrian_product_matrix.py'
+          summary['artifact_sample_jsonl_gzip'] = str(receipt / 'first_32_full_prompt_packages.jsonl.gz')
+          summary['artifact_note'] = 'CI verified the complete 431,136-combination product in the runner; this artifact retains a 32-row full-prompt sample plus counts/series inventory to avoid Actions storage quota exhaustion. Re-run boundary_pedestrian_product_matrix.py to reproduce the complete JSONL.GZ.'
           (receipt / 'full_product_verification_receipt.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
           shutil.rmtree(root)
+          shutil.rmtree(Path('out/prompt_evidence_board/boundary_pedestrian/loop_prompts'), ignore_errors=True)
           print('Full product was verified; the uploaded artifact retains a 32-combination prompt sample and complete summary only.')
           PY
       - name: Render standard and formula-first teaching board templates
