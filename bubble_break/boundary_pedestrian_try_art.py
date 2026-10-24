@@ -295,22 +295,23 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--image", required=True, help="source PNG/JPEG; source pixels are embedded unchanged")
     parser.add_argument("--out", required=True, help="output SVG poster artwork")
-    parser.add_argument("--loop-id", required=True)
-    parser.add_argument("--try-id", required=True)
-    parser.add_argument("--act-id", required=True)
-    parser.add_argument("--method-id", required=True)
+    parser.add_argument("--label-manifest", default="", help="JSON containing art_label_spec, such as one line exported from the product matrix")
+    parser.add_argument("--loop-id", default="")
+    parser.add_argument("--try-id", default="")
+    parser.add_argument("--act-id", default="")
+    parser.add_argument("--method-id", default="")
     parser.add_argument("--method-label", default="")
-    parser.add_argument("--series-id", default="SERIES-UNASSIGNED")
-    parser.add_argument("--world-label", default="WORLD-UNASSIGNED")
+    parser.add_argument("--series-id", default="")
+    parser.add_argument("--world-label", default="")
     parser.add_argument("--geometry-family", default="")
     parser.add_argument("--contact-method", default="")
     parser.add_argument("--camera-id", default="")
     parser.add_argument("--pose-id", default="")
     parser.add_argument("--prompt-id", default="")
-    parser.add_argument("--style-id", default="S01")
-    parser.add_argument("--note", default="每一次失敗，都帶來下一個試法。")
-    parser.add_argument("--panel-side", choices=["left", "right"], default="right")
-    parser.add_argument("--status", default=DEFAULT_STATUS, choices=sorted(ALLOWED_STATUSES))
+    parser.add_argument("--style-id", default="")
+    parser.add_argument("--note", default="")
+    parser.add_argument("--panel-side", choices=["left", "right"], default="")
+    parser.add_argument("--status", default="", choices=["", *sorted(ALLOWED_STATUSES)])
     parser.add_argument("--manifest-out", default="")
     parser.add_argument("--ass-out", default="", help="optional video TRY typography layer")
     parser.add_argument("--duration-seconds", type=float, default=6.0)
@@ -328,25 +329,49 @@ def main() -> int:
     mime_type = mimetypes.guess_type(source_path.name)[0]
     if mime_type not in {"image/png", "image/jpeg"}:
         raise ValueError("Only PNG and JPEG sources are supported")
-    status = validate_status(args.status)
+    label_spec: dict[str, Any] = {}
+    act_spec: dict[str, Any] = {}
+    if args.label_manifest:
+        manifest_path = Path(args.label_manifest)
+        if not manifest_path.is_file():
+            raise FileNotFoundError(f"Label manifest does not exist: {manifest_path}")
+        loaded = json.loads(manifest_path.read_text(encoding="utf-8"))
+        label_spec = loaded.get("art_label_spec", loaded)
+        selected_act = args.act_id or str(label_spec.get("act_id") or "3")
+        acts = label_spec.get("acts") or {}
+        act_spec = acts.get(selected_act) or acts.get(str(selected_act)) or {}
+    else:
+        selected_act = args.act_id
+    def choose(cli_value: Any, spec_key: str, fallback: Any = "") -> Any:
+        if cli_value not in (None, ""):
+            return cli_value
+        return act_spec.get(spec_key) or label_spec.get(spec_key) or fallback
+
+    loop_id = choose(args.loop_id, "loop_id")
+    try_id = choose(args.try_id, "try_id")
+    act_id = choose(args.act_id, "act_id", selected_act)
+    method_id = choose(args.method_id, "method_id")
+    if not loop_id or not try_id or not act_id or not method_id:
+        raise ValueError("Provide --loop-id/--try-id/--act-id/--method-id or pass --label-manifest with these fields")
+    status = validate_status(args.status or choose("", "status", DEFAULT_STATUS))
     metadata: dict[str, Any] = {
-        "story": "THE BOUNDARY WALKER",
-        "loop_id": args.loop_id,
-        "try_id": args.try_id,
-        "act_id": args.act_id,
-        "method_id": args.method_id,
-        "method_label": args.method_label,
-        "series_id": args.series_id,
-        "world_label": args.world_label,
-        "geometry_family": args.geometry_family,
-        "contact_method": args.contact_method,
-        "camera_id": args.camera_id,
-        "pose_id": args.pose_id,
-        "prompt_id": args.prompt_id,
-        "style_id": args.style_id,
-        "panel_side": args.panel_side,
+        "story": label_spec.get("story") or "THE BOUNDARY WALKER",
+        "loop_id": loop_id,
+        "try_id": try_id,
+        "act_id": str(act_id),
+        "method_id": method_id,
+        "method_label": choose(args.method_label, "method_label"),
+        "series_id": choose(args.series_id, "series_id", "SERIES-UNASSIGNED"),
+        "world_label": choose(args.world_label, "world_label", "WORLD-UNASSIGNED"),
+        "geometry_family": choose(args.geometry_family, "geometry_family"),
+        "contact_method": choose(args.contact_method, "contact_method"),
+        "camera_id": choose(args.camera_id, "camera_id"),
+        "pose_id": choose(args.pose_id, "pose_id"),
+        "prompt_id": choose(args.prompt_id, "prompt_id"),
+        "style_id": choose(args.style_id, "style_id", "S01"),
+        "panel_side": choose(args.panel_side, "panel_side", "right"),
         "status": status,
-        "note": args.note,
+        "note": choose(args.note, "note", "每一次失敗，都帶來下一個試法。"),
         "source_path": str(source_path),
         "source_sha256": sha256_bytes(source),
         "source_width": width,
