@@ -74,7 +74,7 @@ class BoundaryWalkerLoopPlannerTests(unittest.TestCase):
         ))
         self.assertIn("fixed anchor, not a flying impact", description)
         self.assertIn("side-middle tangent", description)
-        self.assertNotIn("newly invented terminal-face strike", description)  # forbidden to invent one
+        self.assertNotIn("only the nominated terminal striking face touches", description)
 
     def test_multi_facet_head_uses_selected_broad_face(self) -> None:
         description = method_description(make_row(geo_family="MULTI", contact="H2"))
