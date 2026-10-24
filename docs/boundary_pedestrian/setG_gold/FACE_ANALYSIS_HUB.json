@@ -1,0 +1,74 @@
+{
+  "G01": {
+    "method": "GEO.T · H0",
+    "name_zh": "遠距蓄力 Clear Gap",
+    "strike_face": "T-END · FLAT CIRCULAR",
+    "recv_face": "SPHERE · MEMBRANE",
+    "force": "F→ · STRIKE VECTOR · NO CONTACT",
+    "gap": "GAP > 1.5×D",
+    "H": "H0",
+    "formula_pre": "打擊面=T端面 受面=球膜 間隙>1.5D F=0",
+    "formula_post": "H0→H? 跟進蓄力 打擊面仍遠 受面完好",
+    "analysis_line": "STRIKE:T-END∥  RECV:SPHERE  n∥v  GAP>1.5D  F=0  H0"
+  },
+  "G02": {
+    "method": "GEO.T · H2",
+    "name_zh": "首次端面正切 First Flat-Face",
+    "strike_face": "T-END · FLAT CIRCULAR",
+    "recv_face": "SPHERE · TANGENT POINT",
+    "force": "F_n · NORMAL AT TANGENT · FIRST CONTACT",
+    "gap": "GAP=0 · TANGENT",
+    "H": "H2",
+    "formula_pre": "打擊面=T端面 受面=球切點 PENDING 近隙",
+    "formula_post": "打擊面=T端面 受面=切點 星裂 衝擊環 H2 DONE",
+    "analysis_line": "STRIKE:T-END  RECV:TANGENT  n·v=1  GAP=0  ★MICRO  H2"
+  },
+  "G03": {
+    "method": "GEO.T2 · FACE",
+    "name_zh": "雙T端面相對",
+    "strike_face": "T1-END ∥ T2-END · FLAT↔FLAT",
+    "recv_face": "SPHERE · BETWEEN FACES",
+    "force": "F↔ · 180° OPPOSE · PLANAR INTERFACE",
+    "gap": "FACE∥FACE",
+    "H": "FACE",
+    "formula_pre": "打擊面1∥打擊面2 受面=夾球 PENDING",
+    "formula_post": "端面×端面 夾球衝擊 FACE DONE",
+    "analysis_line": "STRIKE:T1-END∥T2-END  RECV:MID-SPHERE  F↔180°  FACE"
+  },
+  "G04": {
+    "method": "GEO.CROSS · FACE",
+    "name_zh": "厚十字圓端蓋",
+    "strike_face": "CROSS · ROUNDED CAP",
+    "recv_face": "CAP ⊙ CAP / SPHERE",
+    "force": "F→ · CAP-TO-CAP POINT-SHOCK",
+    "gap": "CAP⊙CAP",
+    "H": "FACE",
+    "formula_pre": "打擊面=圓端蓋 受面=對蓋/球 CAP⊙CAP PENDING",
+    "formula_post": "蓋×蓋 點衝擊環 CROSS FACE DONE",
+    "analysis_line": "STRIKE:RND-CAP  RECV:CAP/SPHERE  ⊙POINT-SHOCK  CROSS"
+  },
+  "G05": {
+    "method": "GEO.PLANT_S",
+    "name_zh": "側柄種植圓柱",
+    "strike_face": "CYL · UPPER FLAT (load)",
+    "recv_face": "SPHERE · TANGENT ON TOP + GROUND RING",
+    "force": "F_axial · ANCHORED · ZERO FLY",
+    "gap": "PLANT FLUSH",
+    "H": "PLANT_S",
+    "formula_pre": "底面種植 上端面=打擊面 球受面 PENDING",
+    "formula_post": "底面FLUSH 上端面受球 SEALED F_axial",
+    "analysis_line": "STRIKE:CYL-TOP  RECV:SPHERE+RING  F_ax  PLANT_S  ANCHOR"
+  },
+  "G06": {
+    "method": "GEO.MULTI · H2",
+    "name_zh": "多向扁平面選面",
+    "strike_face": "MULTI · ONE SELECTED FLAT FACET",
+    "recv_face": "SPHERE · TANGENT PLANE",
+    "force": "F_n · FACET∥TANGENT · H2",
+    "gap": "FACET∥PLANE",
+    "H": "H2",
+    "formula_pre": "打擊面=選中扁平面 鄰面淨空 受面=球切面 PENDING",
+    "formula_post": "選面∥切面 H2 鄰面仍淨 MULTI DONE",
+    "analysis_line": "STRIKE:1-FACET  RECV:TANGENT  FACET∥n  H2  MULTI"
+  }
+}

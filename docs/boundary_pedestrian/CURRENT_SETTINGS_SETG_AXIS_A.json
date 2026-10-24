@@ -1,0 +1,29 @@
+{
+  "asof": "2026-10-25T01:26:00+08:00",
+  "story": "邊界行人｜THE BOUNDARY WALKER",
+  "set_id": "SET-G",
+  "set_aesthetic": "GOLD FOIL RUINED TEMPLE",
+  "set_note": "Opposite of SET-F rainy neon; one style per set",
+  "frame_contract": ["PRE", "MID", "POST"],
+  "text_policy": {
+    "try_count_shown": false,
+    "review_pending_shown": false,
+    "loop_id": "L-{mid_sha256_first12}",
+    "no_background_plate": true,
+    "position": "free_flow per element",
+    "size": "variable per glyph/phrase",
+    "pre_style": "cold porcelain/copper etch/frost gold",
+    "post_style": "hot fire/molten/scorch/kintsugi",
+    "same_string_pre_post": true,
+    "typeset_deterministic": "SVG/ASS/manifest preferred; AI world-bound as Track B"
+  },
+  "hub_face_rows_required": [
+    "打擊面", "受面", "STRIKE:", "RECV:", "n·v", "GAP", "F_n|F_axial|F_t|F_ortho"
+  ],
+  "axis_a_methods": [
+    "A01_H0", "A02_H1", "A03_H2", "A04_H3", "A05_T2",
+    "A06_CROSS", "A07_ROD_POS", "A08_ROD_NEG", "A09_PLANT_S", "A10_PLANT_O", "A11_MULTI"
+  ],
+  "local_artifact_root": "boundary_pedestrian_setG_gold/",
+  "status": "SETTINGS_LOCKED_ON_BRANCH · images optional follow-up · NOT full 3723 render"
+}
