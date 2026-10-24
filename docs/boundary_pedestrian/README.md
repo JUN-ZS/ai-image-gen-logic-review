@@ -77,3 +77,19 @@
 1. 文檔閱讀：本 README 直接預覽。  
 2. 生成：複製總庫對應 ACT 的完整英文 Prompt，附上 `ref/heroine_face_reference.jpg`。  
 3. 影片：V-09 路線以本靜幀作母圖 image-to-video，再拼接；**勿**把本圖庫當成武器幾何 PASS。
+
+---
+
+## 公式源代乘出包（26 鏡）
+
+把 `槌2.txt` 的 `MV_*` 鏡頭包 **串進六幕** 之後的完整靜幀：
+
+- 矩陣與預覽：[`mv26/README.md`](mv26/README.md)
+- 清單：[`mv26/MANIFEST.json`](mv26/MANIFEST.json)
+
+| 算法 | 結果 |
+| --- | --- |
+| 6 幕 × ~4 鏡（ACT3=6） | **26** 張 |
+| S4「24 卡」 | ACT3 只留 PACK_IMPACT_4 |
+| 再 × 粉彩 I-21 | 未跑（可再乘） |
+
