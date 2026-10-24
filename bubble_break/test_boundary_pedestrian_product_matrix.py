@@ -173,7 +173,23 @@ class BoundaryWalkerProductMatrixTests(unittest.TestCase):
             # The full hash-ordered product is compiled in CI. This test verifies helper expansion counts directly.
             from bubble_break.boundary_pedestrian_product_matrix import ImageConfig, make_keyframes, mv_shot_specs
             cfg = ImageConfig("T", "H2", "T192", "AX00__CAM01_TEST__M1", "W00", "S01", "FRONT", "M1", "I-04", "P03")
-            self.assertEqual(len(make_keyframes(cfg, "S01-INDUSTRIAL-RUINS", "LOOP-X", "TRY-X")), 5)
+            frames = make_keyframes(cfg, "S01-INDUSTRIAL-RUINS", "LOOP-X", "TRY-X")
+            self.assertEqual(len(frames), 5)
+            master = next(frame for frame in frames if frame["keyframe_id"] == "KF3")
+            self.assertEqual(master["generation_order"], 1)
+            self.assertTrue(master["is_h2_master"])
+            self.assertEqual(master["status"], "MID_CORRECTION_REQUIRED")
+            for frame in frames:
+                if frame["keyframe_id"] != "KF3":
+                    self.assertEqual(frame["parent_keyframe_id"], "KF3")
+                    self.assertEqual(frame["status"], "BLOCKED_UNTIL_KF3_H2_ACCEPTED")
+                    self.assertIn("do not generate this frame independently", frame["prompt"])
+                    self.assertIn("camera", frame["prompt"].lower())
+                    self.assertIn("hammer silhouette", frame["prompt"])
+            self.assertEqual({frame["text_content_sha256"] for frame in frames}, {frames[0]["text_content_sha256"]})
+            self.assertEqual(frames[0]["typography_variant"], "before")
+            self.assertEqual(master["typography_variant"], "middle")
+            self.assertEqual(frames[-1]["typography_variant"], "after")
             self.assertEqual(len(mv_shot_specs("S01-RAIN-TOKYO")), 24)
             self.assertEqual(len(mv_shot_specs("S01-INDUSTRIAL-RUINS")), 52)
 
