@@ -438,13 +438,14 @@ def make_image_prompt(config: ImageConfig, video_method: str, route_id: str,
         )
         shot_text = "Use the selected story route's act staging; keep negative space for a later editorial method stamp."
     series = STORY_SERIES[route_id]
-    pose_text = pose_description(config) if primary else ACT_CAMERA_PROFILES[act]
+    pose_text = pose_description(config) if primary else ""
+    action_profile = f"Primary action/body pose: {pose_text}" if primary else f"Act-specific camera/action profile: {ACT_CAMERA_PROFILES[act]}"
     return (
         f"Create one single full-frame 16:9 cinematic image for THE BOUNDARY WALKER, LOOP {loop_id}, TRY {try_id}, "
         f"SERIES {route_id}, WORLD {series['world_id']}, PROMPT {config.geometry_catalog or 'STORY-SPINE'}; ACT {act}: {act_title}. {route_text}. "
         f"Character bible: {series['protagonist_description']}. Keep this protagonist recognizably consistent across this series' six acts, but allow other series to use different characters. "
         f"Set dressing and world: {series['world_description']}. Visual style {config.style}: {style}. {event} {shot_text} "
-        f"Character action / body pose: {pose_text}. Make each act visually distinct: alter body silhouette, camera height, focal length, distance and screen direction according to the act profile; never reuse the same neutral standing pose across six acts. "
+        f"{action_profile}. Make each act visually distinct: alter body silhouette, camera height, focal length, distance and screen direction according to the act profile; never reuse the same neutral standing pose across six acts. "
         "The selected geometry/contact contract is locked only for this TRY: preserve its nominated active face, contact point and causal state exactly, while everything outside that physical contract (character, costume, props, setting, palette, storytelling, lighting and composition) may be creatively redesigned within the declared series. "
         "Use rich 3D cinematic depth, atmospheric perspective, believable material response and a recurring boundary motif. Keep the sanctuary safe in soft acts. "
         "Do not generate letters, numbers, captions, logos, interface labels or watermarks; a large exact 3D poster-style TRY typography layer will be composited afterward and may occupy up to one-third of the frame. Leave a clear planned title/method zone without hiding the active contact surface. "
@@ -595,8 +596,8 @@ def compile_product_matrix(catalog_csv: Path, outdir: Path, catalog_doc: Path,
     index_path = outdir / "boundary_walker_product_index.csv"
     index_fields = [
         "sequence", "combination_id", "loop_id", "try_id", "geo_family", "contact",
-        "camera_pack", "camera", "wash", "windup", "shot", "style", "video_method",
-        "story_route", "reference_catalog_ids",
+        "camera_pack", "camera", "wash", "windup", "pose_id", "shot", "style", "video_method",
+        "series_id", "world_id", "world_name", "protagonist", "reference_catalog_ids",
     ]
     bucket_count: Counter[str] = Counter()
     geometry_count: Counter[str] = Counter()
