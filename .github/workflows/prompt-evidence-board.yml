@@ -9,6 +9,8 @@ on:
       - 'bubble_break/prompt_failure_diagnosis.py'
       - 'bubble_break/prompt_trial_planner.py'
       - 'bubble_break/test_prompt_trial_planner.py'
+      - 'bubble_break/boundary_pedestrian_try_art.py'
+      - 'bubble_break/test_boundary_pedestrian_try_art.py'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
       - 'bubble_break/test_prompt_failure_diagnosis.py'
@@ -73,6 +75,36 @@ jobs:
           python -m unittest bubble_break/test_prompt_attempt_packet.py -v
           python -m unittest bubble_break/test_prompt_failure_diagnosis.py -v
           python -m unittest bubble_break/test_prompt_trial_planner.py -v
+          python -m unittest bubble_break/test_boundary_pedestrian_try_art.py -v
+      - name: Render an in-art Boundary Walker TRY label (no media generation claim)
+        run: |
+          python bubble_break/boundary_pedestrian_try_art.py \
+            --image docs/boundary_pedestrian/i20/act1_draw_boundary.jpg \
+            --out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001.svg \
+            --loop-id 001 \
+            --try-id 0001 \
+            --act-id 1 \
+            --method-id BP_SHOT \
+            --method-label "I-20 ACT1 / WIDE STORY FRAME" \
+            --prompt-id I-20 \
+            --style-id S-01 \
+            --note "本輪試法：用寬景畫出界線" \
+            --status IMAGE_GENERATED \
+            --ass-out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001.ass \
+            --duration-seconds 6
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('out/prompt_evidence_board/boundary_pedestrian')
+          svg = (root / 'loop001_try0001.svg').read_text(encoding='utf-8')
+          manifest = json.loads((root / 'loop001_try0001.manifest.json').read_text(encoding='utf-8'))
+          ass = (root / 'loop001_try0001.ass').read_text(encoding='utf-8')
+          assert 'THE BOUNDARY WALKER' in svg and 'TRY 0001' in svg and 'BP_SHOT' in svg
+          assert manifest['pixel_audit_status'] == 'NOT_RUN'
+          assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
+          assert 'BP_SHOT' in ass and 'TRY 0001' in ass
+          print('Artwork labels are deterministic; pixel and visual acceptance remain unverified.')
+          PY
       - name: Render standard and formula-first teaching board templates
         run: |
           python bubble_break/prompt_evidence_board.py \
