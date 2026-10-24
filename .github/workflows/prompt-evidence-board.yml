@@ -125,8 +125,17 @@ jobs:
             --style-id S01 \
             --panel-side right \
             --note "本輪試法：極廣角畫界；無硬接觸" \
+            --typography-variant before \
             --status IMAGE_GENERATED \
             --ass-out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001.ass \
+            --duration-seconds 6
+          python bubble_break/boundary_pedestrian_try_art.py \
+            --image docs/boundary_pedestrian/i20/act1_draw_boundary.jpg \
+            --out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001_after.svg \
+            --label-manifest out/prompt_evidence_board/boundary_pedestrian/loop001_try0001.manifest.json \
+            --act-id 1 \
+            --typography-variant after \
+            --ass-out out/prompt_evidence_board/boundary_pedestrian/loop001_try0001_after.ass \
             --duration-seconds 6
           python - <<'PY'
           import hashlib
@@ -140,16 +149,52 @@ jobs:
           source_bytes = Path('docs/boundary_pedestrian/i20/act1_draw_boundary.jpg').read_bytes()
           assert manifest['source_sha256'] == hashlib.sha256(source_bytes).hexdigest()
           assert manifest['artwork_sha256'] == hashlib.sha256(svg_bytes).hexdigest()
+          after_path = root / 'loop001_try0001_after.svg'
+          after_bytes = after_path.read_bytes()
+          after_svg = after_bytes.decode('utf-8')
+          after_manifest = json.loads((root / 'loop001_try0001_after.manifest.json').read_text(encoding='utf-8'))
           ass = (root / 'loop001_try0001.ass').read_text(encoding='utf-8')
+          ass_after = (root / 'loop001_try0001_after.ass').read_text(encoding='utf-8')
           assert 'THE BOUNDARY WALKER' in svg and 'TRY 0001' in svg and 'SHOT.WIDE' in svg
           assert manifest['pixel_audit_status'] == 'NOT_RUN'
           assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
           assert manifest['poster_panel_area_fraction'] > (1 / 3)
           assert manifest['source_sha256'] and len(manifest['source_sha256']) == 64
+          assert manifest['artwork_sha256'] == hashlib.sha256(svg_bytes).hexdigest()
           assert manifest['artwork_sha256'] and len(manifest['artwork_sha256']) == 64
           assert manifest['series_id'] == 'S01-RAIN-TOKYO'
+          assert manifest['typography_variant'] == 'before'
+          assert after_manifest['typography_variant'] == 'after'
+          assert after_manifest['source_sha256'] == manifest['source_sha256']
+          assert after_manifest['artwork_sha256'] == hashlib.sha256(after_bytes).hexdigest()
+          assert after_manifest['text_content_sha256'] == manifest['text_content_sha256']
+          assert svg != after_svg
+          assert ass == ass_after
           assert 'SHOT.WIDE' in ass and 'TRY 0001' in ass
-          print('Large 3D poster overlay is deterministic; full source/artwork SHA-256 recorded; pixel acceptance remains unverified.')
+          print('PRE/POST poster treatments differ visually; canonical text hash and video ASS remain identical; source/artwork SHA-256 recorded.')
+          PY
+      - name: Compile the H2 master-first frame triad (PRE/POST remain gated)
+        run: |
+          python bubble_break/boundary_pedestrian_frame_triad.py \
+            --package examples/boundary_pedestrian_frame_triad.example.json \
+            --outdir out/prompt_evidence_board/boundary_pedestrian/frame_triad
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('out/prompt_evidence_board/boundary_pedestrian/frame_triad')
+          plan = json.loads((root / 'frame_triad.json').read_text(encoding='utf-8'))
+          assert plan['status'] == 'HOLD_MID_CORRECTION_AND_REVIEW'
+          assert plan['frames'][0]['status'] == 'MID_CORRECTION_REQUIRED'
+          assert plan['frames'][1]['status'] == 'BLOCKED_UNTIL_MID_H2_ACCEPTED'
+          assert plan['frames'][2]['status'] == 'BLOCKED_UNTIL_MID_H2_ACCEPTED'
+          assert plan['frames'][1]['parent_frame_id'] == plan['frames'][2]['parent_frame_id'] == 'MID_H2'
+          assert plan['frame_typography']['pre_frame_variant'] == 'before'
+          assert plan['frame_typography']['post_frame_variant'] == 'after'
+          assert plan['frame_typography']['video_variant'] == 'video-lock'
+          assert plan['frame_typography']['same_words_across_all_frames_and_video'] is True
+          assert plan['frame_typography']['pre_and_post_visual_treatment_differs'] is True
+          print('H2 master must be corrected and SHA-reviewed before either derivative can be produced.')
+          PY
           PY
       - name: Compile every legal variant into a six-act loop prompt queue
         run: |
