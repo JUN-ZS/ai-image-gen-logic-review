@@ -59,3 +59,16 @@
 2) FINAL = clean + TYPE_LAYER（字最上）
 3) 唔好再 img2img 成品
 ```
+
+---
+
+## LOCK 對齊（2026-10-25）
+
+**主定稿**以 [`LOCKED_PIPELINE.md`](./LOCKED_PIPELINE.md) 為準：
+
+```text
+FINAL = 人清晰 PASTE（例 f9925b2a 類） + TYPE_LAYER（來自首張 HUD）置頂
+```
+
+`CLEAN + TYPE_LAYER` 僅作對照／備用，**唔再做主定稿**（除非用戶改鎖）。
+
