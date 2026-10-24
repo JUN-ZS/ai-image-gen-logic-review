@@ -81,7 +81,7 @@ class BoundaryPedestrianFrameTriadTests(unittest.TestCase):
             self.assertEqual(result["frames"][2]["parent_frame_id"], "MID_H2")
             self.assertTrue(all(frame["text_content_sha256"] == result["frame_typography"]["text_content_sha256"]
                                 for frame in result["frames"]))
-            self.assertIn("do not generate independently", result["frames"][1]["prompt"])
+            self.assertIn("do not generate independently", result["frames"][1]["prompt"].lower())
             self.assertIn("same accepted H2 mid-frame raster", result["frames"][2]["prompt"])
             self.assertIn("positive air gap", result["frames"][1]["prompt"])
             self.assertIn("same-axis H3 follow-through", result["frames"][2]["prompt"])
