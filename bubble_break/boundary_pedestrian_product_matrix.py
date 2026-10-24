@@ -413,14 +413,16 @@ def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str
         ("KF5", "10.0s END", "the outer shell breaks outward only if allowed by the selected state; the inner sanctuary remains safe"),
     ]
     frames = []
+    focus_by_frame = {"KF1": "H0", "KF2": "H1", "KF3": "H2", "KF4": "H3", "KF5": "H3"}
     for frame_id, timestamp, state in stages:
+        stage_contract = geometry_contract(config.geo_family, focus_by_frame[frame_id])
         frames.append({
             "keyframe_id": frame_id,
             "timestamp": timestamp,
             "prompt": (
                 f"Create one standalone full-frame 16:9 keyframe for THE BOUNDARY WALKER, LOOP {loop_id}, TRY {try_id}, "
                 f"video method V-02, {timestamp}. Use the approved heroine and scene references and exact topology: "
-                f"{GEO_DESCRIPTIONS[config.geo_family]} Focus experiment contract: {geometry_contract(config.geo_family, config.contact)} "
+                f"{GEO_DESCRIPTIONS[config.geo_family]} Focus experiment contract for this frame: {stage_contract} "
                 f"Required state now: {state}. Story route: {story_route_text(route_id, '3')}. Camera/action: {camera_text(config)}. "
                 f"Style: {style_description(config.style)}. Preserve face, outfit, sphere, anchor P, light and landmarks. "
                 "No topology change, no fake gap, no hidden contact seam, no text, no watermark. This is one keyframe only; acceptance requires actual image inspection."
@@ -430,10 +432,10 @@ def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str
 
 
 def mv_shot_specs(route_id: str) -> list[tuple[str, str, str, str]]:
-    cards = SHOT_CARDS_26 if route_id == "MV52" else SHOT_CARDS_26[:]
-    if route_id == "MV24":
+    cards = SHOT_CARDS_26[:]
+    if route_id != "MV52":
         cards = [x for x in SHOT_CARDS_26 if x[0] != "3" or x[1] in {"MV_3_1_FRONT", "MV_3_2_LOW", "MV_3_3_PEAK", "MV_3_4_SIDE"}]
-    # The 24-card method removes two ACT3 aftermath cards; the 26-source-shot method keeps all cards.
+    # Routes other than MV52 use four cards per act (24 total); MV52 keeps the two ACT3 aftermath cards and adds a distinct second camera pass.
     specs: list[tuple[str, str, str, str]] = []
     for act, shot_id, shot_desc in cards:
         specs.append((act, shot_id, shot_desc, "A"))
