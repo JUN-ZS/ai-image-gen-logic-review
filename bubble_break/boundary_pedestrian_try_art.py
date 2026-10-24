@@ -124,6 +124,8 @@ def build_svg(
     height: int,
     metadata: dict[str, Any],
 ) -> str:
+    metadata = dict(metadata)
+    metadata.setdefault("poster_panel_area_fraction", 0.44 * 0.78)
     scale = max(0.45, min(width / 1920.0, height / 1080.0))
     p = PALETTES.get(str(metadata.get("style_id", "S01")), PALETTES["S01"])
     pad = max(18, round(36 * scale))
