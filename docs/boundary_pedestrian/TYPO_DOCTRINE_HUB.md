@@ -192,3 +192,4 @@ SET-I 連續修復樣本：`setI_obsidian` cont 管線 · LOOP 以 MID clean SHA
 反覆 img2img 致人物 ghost → 用 clean 首幀 **extract 描裁** 貼回完成圖。  
 見 **`CHARACTER_SCAN_CROP_PASTE.md`**。Paste 後禁止再整圖 img2img。
 
+> 字層同理：見 **TYPE_SCAN_CROP_PASTE.md**（字從首字圖描出，貼在人上）。

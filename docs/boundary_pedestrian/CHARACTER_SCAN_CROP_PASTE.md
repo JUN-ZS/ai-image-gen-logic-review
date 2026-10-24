@@ -65,3 +65,5 @@ L2 SCAN-CROP paste（人物救回）  ← 本檔
 2) soft-edge alpha paste onto finished frame
 3) do not re-img2img after paste
 ```
+
+> 字層同理：見 **TYPE_SCAN_CROP_PASTE.md**（字從首字圖描出，貼在人上）。
