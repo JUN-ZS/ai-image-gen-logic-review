@@ -104,3 +104,7 @@
 ## 全量 ID / 已出圖對照
 
 [`variants/`](variants/) — `VARIANT_IDS_FULL.csv` + `GENERATED_ASSETS_CATALOG_MAP.csv`。
+
+## 輪迴 TRY 圖鑑（藝術字標方法）
+
+[`reincarnation_try/`](reincarnation_try/) — 同一六幕故事多輪方法輪換，畫面內標 TRY 方法碼。

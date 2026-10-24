@@ -12,7 +12,8 @@
 0b. [《邊界行人》六幕 IMAGE 圖庫](boundary_pedestrian/README.md) — I-20/I-21 母圖
 0c. [《邊界行人》×公式源代 26 鏡](boundary_pedestrian/mv26/README.md) — 6幕×多鏡乘出（非正式像素驗收）
 0d. [《邊界行人》×總庫四線變體乘積](boundary_pedestrian/VARIANT_CROSSWALK.md) — 合法上界與禁止混句
-0e. [全量 ID 展開 + 已出圖方法對照](boundary_pedestrian/variants/README.md) — 3723 IDs；GENERATED map：按不同武器拓撲、接觸方法、鏡頭變體、影片時間軸與六幕 MV，直接複製每一種完整 Prompt。
+0e. [全量 ID 展開 + 已出圖方法對照](boundary_pedestrian/variants/README.md) — 3723 IDs；GENERATED map
+0f. [《邊界行人》輪迴 TRY 圖鑑](boundary_pedestrian/reincarnation_try/README.md) — 同故事不同方法；畫面內藝術字標 TRY：按不同武器拓撲、接觸方法、鏡頭變體、影片時間軸與六幕 MV，直接複製每一種完整 Prompt。
 1. [圖像 Prompt 公式教學](PROMPT_FORMULA_PLAYBOOK.md)：各互斥武器拓撲、單圖公式、負面約束和像素驗收。
 2. [影片 Prompt 公式教學](VIDEO_PROMPT_FORMULA_PLAYBOOK.md)：10 秒時間軸、五個狀態、母圖與遮罩、連續性硬閘門和 MV 敘事公式。
 3. [Prompt Evidence Board 使用指南](PROMPT_EVIDENCE_BOARD.md)：每次生成的原始圖、變量封包和教學／驗收板。
