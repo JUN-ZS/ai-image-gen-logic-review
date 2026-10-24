@@ -8,12 +8,13 @@
 
 ## 建議閱讀順序
 
-0. [下一輪試驗排程器](PROMPT_TRIAL_PLANNER.md)：先決定要比較哪兩個公式／版式、一次測哪個因素、需要多少真實樣本和什麼證據才能判定。
-1. [Prompt Evidence Board 使用指南](PROMPT_EVIDENCE_BOARD.md)：每次生成的原始圖、變量封包和教學／驗收板；可輸出 standard／formula-first 版式。
-2. [圖像 Prompt 公式教學](PROMPT_FORMULA_PLAYBOOK.md)：各互斥武器拓撲、單圖公式、負面約束和像素驗收。
-3. [影片 Prompt 公式教學](VIDEO_PROMPT_FORMULA_PLAYBOOK.md)：10 秒時間軸、五個狀態、母圖與遮罩、連續性硬閘門和 MV 敘事公式。
-4. [失敗診斷器](../bubble_break/prompt_failure_diagnosis.py)：整理 SHA 綁定的觀察；它是設計試驗的證據輸入，不是全流程的「下一步答案」。
-5. [所有 Draft 與 Branch 對照表](PROMPT_BRANCH_DRAFT_CROSSWALK.md)：歷史 Prompt 草稿、互斥拓撲和證據狀態。
+0. [IMAGE／VIDEO 半公式＋完整 PROMPT 總庫](IMAGE_VIDEO_PROMPT_CATALOG.md)：按不同武器拓撲、接觸方法、鏡頭變體、影片時間軸與六幕 MV，直接複製每一種完整 Prompt。
+1. [圖像 Prompt 公式教學](PROMPT_FORMULA_PLAYBOOK.md)：各互斥武器拓撲、單圖公式、負面約束和像素驗收。
+2. [影片 Prompt 公式教學](VIDEO_PROMPT_FORMULA_PLAYBOOK.md)：10 秒時間軸、五個狀態、母圖與遮罩、連續性硬閘門和 MV 敘事公式。
+3. [Prompt Evidence Board 使用指南](PROMPT_EVIDENCE_BOARD.md)：每次生成的原始圖、變量封包和教學／驗收板。
+4. [下一輪試驗排程器](PROMPT_TRIAL_PLANNER.md)：比較公式和教學版式時，預先定義對照組、試驗組、凍結項和驗收規則。
+5. [失敗診斷器](../bubble_break/prompt_failure_diagnosis.py)：整理 SHA 綁定的觀察；它是試驗證據輸入，不是全流程的「下一步答案」。
+6. [所有 Draft 與 Branch 對照表](PROMPT_BRANCH_DRAFT_CROSSWALK.md)：歷史 Prompt 草稿、互斥拓撲和證據狀態。
 
 ## 三個常見任務的正確入口
 
