@@ -11,8 +11,12 @@ on:
       - 'bubble_break/test_prompt_trial_planner.py'
       - 'bubble_break/boundary_pedestrian_try_art.py'
       - 'bubble_break/test_boundary_pedestrian_try_art.py'
+      - 'bubble_break/boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
       - 'bubble_break/boundary_pedestrian_try_art.py'
       - 'bubble_break/test_boundary_pedestrian_try_art.py'
+      - 'bubble_break/boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
       - 'bubble_break/test_prompt_failure_diagnosis.py'
@@ -31,6 +35,8 @@ on:
       - 'bubble_break/test_prompt_trial_planner.py'
       - 'bubble_break/boundary_pedestrian_try_art.py'
       - 'bubble_break/test_boundary_pedestrian_try_art.py'
+      - 'bubble_break/boundary_pedestrian_loop_planner.py'
+      - 'bubble_break/test_boundary_pedestrian_loop_planner.py'
       - 'bubble_break/test_prompt_evidence_board.py'
       - 'bubble_break/test_prompt_failure_diagnosis.py'
       - 'bubble_break/test_prompt_attempt_packet.py'
@@ -82,6 +88,7 @@ jobs:
           python -m unittest bubble_break/test_prompt_failure_diagnosis.py -v
           python -m unittest bubble_break/test_prompt_trial_planner.py -v
           python -m unittest bubble_break/test_boundary_pedestrian_try_art.py -v
+          python -m unittest bubble_break/test_boundary_pedestrian_loop_planner.py -v
       - name: Render an in-art Boundary Walker TRY label (no media generation claim)
         run: |
           python bubble_break/boundary_pedestrian_try_art.py \
@@ -110,6 +117,41 @@ jobs:
           assert manifest['visual_acceptance_status'] == 'NOT_VERIFIED'
           assert 'BP_SHOT' in ass and 'TRY 0001' in ass
           print('Artwork labels are deterministic; pixel and visual acceptance remain unverified.')
+          PY
+      - name: Compile every legal variant into a six-act loop prompt queue
+        run: |
+          python bubble_break/boundary_pedestrian_loop_planner.py \
+            --variants-csv docs/boundary_pedestrian/variants/VARIANT_IDS_FULL.csv \
+            --outdir out/prompt_evidence_board/boundary_pedestrian/loop_prompts
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+          root = Path('out/prompt_evidence_board/boundary_pedestrian/loop_prompts')
+          summary = json.loads((root / 'loop_plan_summary.json').read_text(encoding='utf-8'))
+          catalog = json.loads(Path('docs/boundary_pedestrian/variants/VARIANT_IDS_FULL_SUMMARY.json').read_text(encoding='utf-8'))
+          packets = [json.loads(line) for line in (root / 'loop_prompt_packets.jsonl').read_text(encoding='utf-8').splitlines()]
+          with (root / 'loop_index.csv').open(encoding='utf-8', newline='') as handle:
+              index = list(csv.DictReader(handle))
+          assert summary['source_total_variants'] == catalog['total_ids']
+          assert summary['compiled_variant_count'] == catalog['total_ids']
+          assert summary['full_sweep_compiled'] is True
+          assert summary['unique_variant_ids'] == catalog['total_ids']
+          assert summary['all_selected_variant_ids_once'] is True
+          assert summary['external_generation_called'] is False
+          assert summary['image_realization'] == 'NOT_RUN'
+          assert summary['pixel_audit_status'] == 'NOT_RUN'
+          assert summary['visual_acceptance_status'] == 'NOT_VERIFIED'
+          assert len(packets) == len(index) == catalog['total_ids']
+          assert len({p['variant_id'] for p in packets}) == catalog['total_ids']
+          assert all(len(p['acts']) == 6 for p in packets)
+          assert all(sum(a['is_primary_try'] for a in p['acts']) == 1 for p in packets)
+          assert all(p['status'] == 'PROMPT_READY' for p in packets)
+          hard = [p for p in packets if p['lane'] == 'HARD']
+          assert hard and all(p['primary_act'] == '3' for p in hard)
+          first_buckets = {p['catalog_row']['count_bucket'] for p in packets[:20]}
+          assert len(first_buckets) >= 5, f'initial trials do not diversify method buckets: {first_buckets}'
+          print(f"Compiled {len(packets)} catalog variants into {len(packets) * 6} act prompts; no media generation or audit pass claimed.")
           PY
       - name: Render standard and formula-first teaching board templates
         run: |
