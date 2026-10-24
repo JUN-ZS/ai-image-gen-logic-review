@@ -198,8 +198,8 @@ GEO.MULTI × {H0,H2} × WASH10 × STYLE × ACT3
 | **P0** | 六幕母圖 I-20 + I-21 | 12 ✅ |
 | **P1** | mv26 公式鏡串六幕 | 26 ✅ |
 | **P2** | SOFT × S-03 超現實 | ~20–26 |
-| **P3** | ACT3 × MULTI × H2 × WASH×3 × S-01 | 3 |
-| **P4** | ACT3 × T × H2 × I-18 抽樣 8 × S-01 | 8 |
+| **P3** | ACT3 × MULTI × H2 × WASH×3 × S-01 | 3 ✅ `hard_samples/p3_multi` |
+| **P4** | ACT3 × T × H2 × I-18 抽樣 8 × S-01 | 8 ✅ `hard_samples/p4_t_h2` |
 | **P5** | ACT3 × T2/CROSS × I-19 抽樣 4 × S-01 | 4 |
 | **P6** | planted / T / BP 短片抽樣 | ~8 clips |
 | **P7** | 192 全量（僅 H2 + S-01 + ACT3） | 需佇列 |

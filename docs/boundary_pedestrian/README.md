@@ -96,3 +96,7 @@
 ## 四線變體乘積
 
 見 [`VARIANT_CROSSWALK.md`](VARIANT_CROSSWALK.md)（SOFT/HARD 隔離、192/48/10/六幕合法上界）。
+
+## HARD 抽樣（P3/P4）
+
+[`hard_samples/`](hard_samples/) — MULTI×3 洗圖 + T×H2×8 軸。
