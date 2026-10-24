@@ -50,15 +50,49 @@
 |---|---:|
 | 基礎幾何 × 相機／動作 × 風格 | 4,644 |
 | 加入 4 種姿勢 | 18,576 |
-| 與相容影片方法配對 | 71,856 |
-| 與風格相符的六系列世界／角色配對（每風格六系列） | **431,136 LOOP／TRY** |
-| 六幕 × IMAGE／VIDEO 基本完整 Prompt | 5,173,632 |
-| V-02 五關鍵幀額外完整 Prompt | 483,840 |
+| 與相容影片方法配對 | 64,944 |
+| 與風格相符的六系列世界／角色配對（每風格六系列） | **389,664 LOOP／TRY** |
+| 六幕 × IMAGE／VIDEO 基本完整 Prompt | 4,675,968 |
+| V-02 五關鍵幀額外完整 Prompt | 276,480 |
 | V-09 24／52 鏡頭卡 | 3,195,072 組 shot |
 | 每鏡各自完整 IMAGE + VIDEO Prompt | 6,390,144 |
-| **合計完整 Prompt 字串** | **12,047,616** |
+| **合計完整 Prompt 字串** | **11,342,592** |
 
 公式不是盲目把互斥幾何亂乘：T192 只用於 T 槌；48 視角矩陣用於雙 T／厚十字；WASH10 用於線形棒、種植圓柱與多面圓頭；V-03 只用於種植圓柱家族；V-05／06／07／08 分別對應雙 T／厚十字／線形棒／多面圓頭。H2 的 FRONT 已由 T192 前視覆蓋，H2 補充包只新增 LOW／PEAK／SIDE。
+
+
+## H2 中幀先修正，再派生前後幀：同機位、同槌形、只推進時間
+
+V-02 只配對 **T 槌 H2** 的產品列。它不會把 H0、H1 或 H3 當成獨立中幀再各自亂生五張圖。
+
+固定生成順序：
+
+1. **MID_H2（先做）**：以候選 H2 中幀作 image-edit 母圖，只修正錯誤的 T 槌／接觸幾何。要求單一剛性 T 槌、橫槌頭與柄的 90° 中點接合、指定端面在 P 首先接觸、零縫隙、無穿插；原機位、裁切、透視、背景、角色、握法與光線鎖死。通過人眼幾何檢查後，保存此中幀的 SHA-256 與 HUMAN_ACCEPTED 收據。
+2. **PRE_H1（由中幀倒推）**：必須把同一份已驗收 MID_H2 raster 當唯一母圖，不能獨立 text-to-image。只沿已定義的碰撞軸把同一把槌和握柄手部倒退極小距離，留下明確正間隙；不能換機位、裁切、槌頭比例、柄長、場景或人物。
+3. **POST_H3（由同一中幀推進）**：同樣以被驗收的 MID_H2 作母圖，只沿原碰撞軸作小幅跟進；裂縫從原接觸點 P 延展，不能新增撞擊點、穿球、改槌形或改機位。
+
+如果 MID_H2 沒有 SHA 相符的人類幾何驗收收據，PRE 和 POST 的狀態就是 BLOCKED_UNTIL_MID_H2_ACCEPTED。單純有 Prompt 不會自動解鎖派生，也不會把「已編譯」當作「已生成／已通過」。
+
+### 前後幀字牌：同一組字，兩種藝術處理
+
+- PRE：before，冷玻璃／冰晶邊光，較薄的青色刻線浮雕。
+- MID：middle，中性銀金屬與穩定的中心字牌。
+- POST：after，暖熔金／琥珀箔、較深的 3D 擠出和火星高光。
+- 合成 VIDEO：video-lock，整段影片固定一套中性字牌外觀；文字內容、LOOP／TRY、方法名稱和 Prompt ID 不變。
+
+每一幀的 poster renderer 記錄同一 text_content_sha256。前後幀可以改字的材質、顏色、厚度和光影，但不得改任何字或編號；ASS 影片層採固定樣式，不會在連續影片中閃爍切換字體風格。
+
+執行 triad 提示詞編譯器：
+
+~~~bash
+python bubble_break/boundary_pedestrian_frame_triad.py \
+  --package examples/boundary_pedestrian_frame_triad.example.json \
+  --mid-image path/to/candidate_or_corrected_H2.png \
+  --review-receipt path/to/H2_human_review.json \
+  --outdir out/boundary_pedestrian/frame_triad
+~~~
+
+review receipt 需綁定同一份 image_sha256、review_status HUMAN_ACCEPTED，並把必要項目（正確 T 拓撲、指定端面在 P 首次接觸、零間隙、無穿插、相機／裁切／槌形／背景鎖定）逐項核為 true。收據 SHA 不符或漏一個檢查，前後幀仍保持 BLOCKED。此工具只輸出可追溯 Prompt，不呼叫影像服務。
 
 ## 每張作品的藝術字：佔畫面三分之一、浮雕 3D 海報
 
