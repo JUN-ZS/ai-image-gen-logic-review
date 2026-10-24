@@ -32,3 +32,17 @@ boundary_pedestrian_setH_arctic/
 1. 禁止用 imagine 生成方法名漢字
 2. 必須帶 heroine lock 參考
 3. 字只走 typeset 軌
+
+## v2 · 世界融入 + 物理綁定（2026-10-25）
+
+用戶：字一定要美麗地融入世界；前後幀字要表達跟圖的 INFO 和物理關係。
+
+### 改動
+- **無底板** solid panel 取消
+- 字 = 冰霜 glow 浮雕層，位置流動、可旋轉，貼場景氣流／打擊軸／碎裂場
+- **PRE**：`PRE_NEAR` · `signed_gap ≫ 0` · `F_n→0` · `Crack=0` · STRIKE pending · RECV far
+- **MID**：`FIRST_CONTACT` · `GAP=0` · `n·v=1` · `F_n` · shock-ring · REJECT CHEEK…
+- **POST**：`REACTION` · `Crack≫0 +δt` · impulse 力鏈 END→HEAD→HANDLE→GROUND · follow-through
+
+字形仍 **WenQuanYi 寫死**，非模型拼。女主鎖不變。
+產物：`typeset_world/out/H02_H2_{pre,mid,post}_WORLD.jpg`
