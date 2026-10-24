@@ -542,32 +542,72 @@ def make_video_prompt(config: ImageConfig, video_method: str, route_id: str,
     )
 
 
-def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str) -> list[dict[str, str]]:
+def make_keyframes(config: ImageConfig, route_id: str, loop_id: str, try_id: str) -> list[dict[str, Any]]:
+    """Compile one corrected H2 master first, then reference-locked temporal derivatives."""
     stages = [
-        ("KF1", "0.0s PRE_FAR", "the active face is aligned with a wide positive air gap; pristine boundary, no effects"),
-        ("KF2", "2.0s PRE_NEAR", "the rigid object is closer but a positive air gap remains; no contact or cracks"),
-        ("KF3", "4.5s CONTACT", "the declared contact face touches at P with zero gap and no penetration; first micro-cracks start at P only"),
-        ("KF4", "7.0s MID_SHOCK", "cracks and shock ripple expand from the same P; the same rigid object follows through"),
-        ("KF5", "10.0s END", "the outer shell breaks outward only if allowed by the selected state; the inner sanctuary remains safe"),
+        ("KF1", "0.0s PRE_FAR", "H0", "the same rigid hammer is farther back along the established approach axis; a wide positive air gap remains, with no cracks, sparks or contact shadow"),
+        ("KF2", "2.0s PRE_NEAR", "H1", "the same rigid hammer is only slightly farther back along the established approach axis; a small but clearly positive air gap remains, with no contact effects"),
+        ("KF3", "4.5s CONTACT", "H2", "the corrected nominated terminal end face touches at P with zero gap and no interpenetration; first fine cracks originate at P only"),
+        ("KF4", "7.0s MID_SHOCK", "H3", "the exact same rigid hammer follows through a small distance along the existing approach axis; cracks expand from the same P"),
+        ("KF5", "10.0s END", "H3", "show the later aftermath from the same locked camera and hammer master; only the already-established crack propagation may advance from P"),
     ]
-    frames = []
-    focus_by_frame = {"KF1": "H0", "KF2": "H1", "KF3": "H2", "KF4": "H3", "KF5": "H3"}
-    for frame_id, timestamp, state in stages:
-        stage_contract = geometry_contract(config.geo_family, focus_by_frame[frame_id])
+    series = STORY_SERIES[route_id]
+    frames: list[dict[str, Any]] = []
+    for frame_id, timestamp, contact_state, required_state in stages:
+        is_master = frame_id == "KF3"
+        if is_master:
+            temporal_prompt = (
+                "MASTER GENERATION ORDER 1 — correct the H2 middle frame first. Use the provided candidate H2 image as an image-edit source, "
+                "not as loose inspiration. Correct only T-hammer topology and contact: exactly one rigid T-hammer, a straight crossbar and "
+                "one straight handle attached at the crossbar midpoint at 90 degrees; only the nominated flat terminal face touches at P; "
+                "zero gap and no interpenetration; first fine cracks start at P. Preserve the candidate camera, crop, lens perspective, world, "
+                "character, grip, lighting, sphere and all background landmarks. Do not redesign, re-angle, reframe or change the weapon proportions. "
+                "If the geometry cannot be corrected without changing the camera or hammer shape, stop for human review."
+            )
+            frame_status = "MID_CORRECTION_REQUIRED"
+            parent_frame_id = None
+            generation_order = 1
+        else:
+            direction = "rewind the exact same rigid hammer/connected grip along the existing approach axis" if frame_id in {"KF1", "KF2"} else "advance the exact same rigid hammer/connected grip along the established approach axis"
+            temporal_prompt = (
+                f"DERIVATIVE GENERATION — MUST use accepted KF3 H2 raster {loop_id}/{try_id} as the sole parent/reference image; do not generate this frame independently from text. "
+                "Generation is blocked until the corrected H2 master has a SHA-bound HUMAN_ACCEPTED review receipt for terminal-face contact at P, zero gap, no interpenetration, correct T topology, and locked camera/hammer silhouette. "
+                "Keep the master camera position/orientation, perspective, focal length, 16:9 crop, framing, horizon, sphere size/location, character identity, world landmarks, lighting direction, color grade, material, hand grip and T-hammer shape identical. "
+                f"Only advance the temporal state: {direction} by the minimum physically plausible amount needed to show the requested state. "
+                "Do not rotate the camera, zoom, reframe, alter the T crossbar or handle dimensions, create a new hammer, change the grip arbitrarily, or invent a second contact point. "
+                "PRE frames must have a positive air gap and absolutely no contact effects. POST frames retain the same original contact point P and show only same-axis follow-through / crack progression. "
+                "If camera or hammer-silhouette registration cannot be maintained, mark this derivative BLOCKED instead of inventing a replacement composition."
+            )
+            frame_status = "BLOCKED_UNTIL_KF3_H2_ACCEPTED"
+            parent_frame_id = "KF3"
+            generation_order = 2 if frame_id in {"KF1", "KF2"} else 3
+        stage_contract = geometry_contract(config.geo_family, contact_state)
+        prompt = (
+            f"THE BOUNDARY WALKER, SERIES {route_id}, LOOP {loop_id}, TRY {try_id}; {frame_id} at {timestamp}. "
+            f"Use this series' protagonist and world references, not a universal fixed heroine: {series['protagonist_description']}. "
+            f"World bible: {series['world_description']}. Style {config.style}: {style_description(config.style)}. "
+            f"Exact geometry: {GEO_DESCRIPTIONS[config.geo_family]}. State contract: {stage_contract}. "
+            f"Required temporal state: {required_state}. Camera/action lock: {camera_text(config)}; pose: {pose_description(config)}. "
+            f"{temporal_prompt} "
+            "No lettering is generated in the raster; use the exact same canonical text payload from the TRY manifest for all frames and the video. "
+            "Still-frame typography may use separate BEFORE / MIDDLE / AFTER material treatments after generation, but must not change any words or IDs. "
+            "The video itself uses one stable VIDEO-LOCK typography treatment and one unchanged text-content SHA-256. "
+            "This is a prompt package, not a claim that an image was generated or approved."
+        )
         frames.append({
             "keyframe_id": frame_id,
             "timestamp": timestamp,
-            "prompt": (
-                f"Create one standalone full-frame 16:9 keyframe for THE BOUNDARY WALKER, LOOP {loop_id}, TRY {try_id}, "
-                f"video method V-02, {timestamp}. Use this series' protagonist and world references, not a universal fixed heroine: "
-                f"{GEO_DESCRIPTIONS[config.geo_family]} Focus experiment contract for this frame: {stage_contract} "
-                f"Required state now: {state}. Story route: {story_route_text(route_id, '3')}. Camera/action: {camera_text(config)}. "
-                f"Style: {style_description(config.style)}. Story series: {story_route_text(route_id, '3')}. Protagonist: {STORY_SERIES[route_id]['protagonist_description']}. Pose: {pose_description(config)}. Preserve this series' face, outfit, world, sphere, anchor P, light and landmarks. "
-                "No topology change, no fake gap, no hidden contact seam, no text, no watermark. This is one keyframe only; acceptance requires actual image inspection."
-            ),
+            "contact_state": contact_state,
+            "generation_order": generation_order,
+            "parent_keyframe_id": parent_frame_id,
+            "is_h2_master": is_master,
+            "requires_human_review_of_h2_master": not is_master,
+            "typography_variant": {"KF1": "before", "KF2": "before", "KF3": "middle", "KF4": "after", "KF5": "after"}[frame_id],
+            "text_content_sha256": label_text_sha256(art_label_spec(config, "V-02", route_id, loop_id, try_id, f"KEYFRAME-{frame_id}"), "3"),
+            "status": frame_status,
+            "prompt": prompt,
         })
     return frames
-
 
 def mv_shot_specs(route_id: str) -> list[tuple[str, str, str, str]]:
     cards = SHOT_CARDS_26[:]
