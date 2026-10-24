@@ -163,6 +163,22 @@ SVG 是帶有藝術字的作品版，JSON sidecar 是追溯記錄；ASS 是後�
 6. 不論成功或失敗都保留。失敗會推動 ACT 4 假修與 ACT 5 新理解；下一輪改方法，不是偷偷放寬接觸規則。
 7. 第一輪所有合法 ID 走完才標記 SWEEP 1 COMPLETE。下一輪採用新 seed 或新敘事 motif，並區分新組合／重試，不把「重新出圖」冒充新方法。
 
+## 把 3,723 個合法 ID 編成可跑的輪迴 Prompt 封包
+
+輪迴提示詞編譯器是 bubble_break/boundary_pedestrian_loop_planner.py。它讀取 variants/VARIANT_IDS_FULL.csv，以固定、可重現的交錯桶順序排出方法，讓最初幾輪不會先把同一種方法全部跑完。每一個變體 ID 對應一個 LOOP/TRY，並輸出六幕 Prompt：該變體的指定 ACT 是唯一主 TRY，其餘五幕是同風格的故事脊柱，保持人物與因果相連。
+
+    python bubble_break/boundary_pedestrian_loop_planner.py \
+      --variants-csv docs/boundary_pedestrian/variants/VARIANT_IDS_FULL.csv \
+      --outdir out/boundary_pedestrian/loop_prompts
+
+完整編譯會產生：
+
+- loop_prompt_packets.jsonl：每行一個 LOOP，內含六幕各自完整、可複製的 IMAGE／VIDEO Prompt，以及來源 variant ID、主試法、方法指紋和狀態欄位。
+- loop_index.csv：把 LOOP／TRY 對回原始 catalog row，方便篩選幾何、接觸態、鏡頭、洗圖、風格與 VIDEO 方法。
+- loop_plan_summary.json：記錄來源 CSV SHA、總數、覆蓋數、各方法桶數、各幕／媒體數和生成／審核狀態。
+
+編譯器採用可重現順序，不隨機掉行，也不把同一來源 ID 當新方法。預設編譯所有合法 ID；可用 --limit 先做小樣本，或用 --start-index 接續分段。它只準備 Prompt，不呼叫圖像／影片服務。正確的結果狀態仍是 PROMPT_READY、IMAGE／VIDEO NOT_RUN、PIXEL_AUDIT NOT_RUN、VISUAL_ACCEPTANCE NOT_VERIFIED。
+
 ## 從一輪接到下一輪
 
 ACT 6 的最後鏡頭以女主再次踏上發光邊界作結。她的腳印形成不閉合的圓；下一輪 ACT 1 從同一圓弧、同一方向的腳步開始，但邊界另一側的世界、光色、鏡頭／試法牌已有變化。方法字牌在剪接點切換成新的 TRY_ID，讓觀眾一眼知道故事回來了，這次試法不一樣。
