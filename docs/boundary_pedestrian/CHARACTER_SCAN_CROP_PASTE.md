@@ -86,3 +86,19 @@ After CLEAN PRE/MID/POST: immediately extract_subject each frame →
 refine alpha (no ghost, no noisy rim) → save cutouts_clean.
 L2 PASTE only from those cutouts onto HUD_GEN. Never re-extract from HUD.
 ```
+
+---
+
+## 6. 切層兼下一幀 REF（防糊 · 2026-10-25 補鎖）
+
+```text
+PRE_clean → extract CUT_PRE
+PRE: HUD(PRE) → PASTE CUT_PRE
+MID_clean = ref(PRE_clean + CUT_PRE as sharp identity)   # 唔單靠 img2img 上一幀
+MID → extract CUT_MID → HUD → PASTE CUT_MID
+POST_clean = ref(MID_clean + CUT_MID)
+POST → extract CUT_POST → HUD → PASTE CUT_POST
+```
+
+- 切層用途雙重：**貼回有字圖** + **REF 下一 clean**（臉／斗篷／槌清晰，減少糊化）
+- 根人示範：PRE clean `3987dba4…`
