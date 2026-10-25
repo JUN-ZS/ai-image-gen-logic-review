@@ -102,3 +102,12 @@ POST → extract CUT_POST → HUD → PASTE CUT_POST
 
 - 切層用途雙重：**貼回有字圖** + **REF 下一 clean**（臉／斗篷／槌清晰，減少糊化）
 - 根人示範：PRE clean `3987dba4…`
+
+
+---
+
+## 7. 身份金牌（層層遞法 · 鎖）
+
+- `CUT_PRE` + `FACE_PRE` = 全 SET 唯一合法臉
+- 下一幀 ref **必須**夾帶；只餵上一幀 = 違規（錯例 POST `37d24d2f`）
+- 詳見 `LAYERED_CHAIN_LOCK.md`

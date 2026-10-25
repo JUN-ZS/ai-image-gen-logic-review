@@ -142,3 +142,14 @@
 - 目標：**無疊影、無噪邊**；棋盤 QA
 - L2 只用呢批；禁止從 HUD 描人
 - pose／depth proxy **唔入主流程**（效果差，用戶否決）
+
+---
+
+## LOCK 追加 · 2026-10-25 · 層層遞法
+
+- clean → CROP → 有字 HUD → PASTE 本幀 cut → TYPE 最上
+- 切層雙用：貼字 + REF 下一幀
+- **身份金牌 = PRE cut + PRE face**；下一幀 ref 必夾；不可只靠上一幀
+- 臉 ≠ PRE → 作廢重做 clean
+- 錯例：`37d24d2f` 作廢
+- 詳見 `LAYERED_CHAIN_LOCK.md`

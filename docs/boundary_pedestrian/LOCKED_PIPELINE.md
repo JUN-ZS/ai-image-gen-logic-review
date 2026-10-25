@@ -16,6 +16,8 @@ clean 鏈定人景 →【立刻 CROP 三人切層】→ 首張有字 HUD → 人
 **禁止** 等鬼影先救——**L0 完即描人**。  
 **禁止** 將 pose／depth proxy control 當主流程（實驗效果差，已否決）。
 
+**層層遞法**（已鎖）：見 `LAYERED_CHAIN_LOCK.md` —— clean→CROP→有字→PASTE；切層 REF 下一幀；**身份必夾 PRE 根人 cut／face**（不可只靠上一幀）。
+
 ---
 
 ## 1. 層級（由底到面）
@@ -115,13 +117,11 @@ FINAL = alpha_composite(PASTE, TYPE_LAYER)
 ## 5. 下一 AI 最短口令
 
 ```text
-LOCKED_PIPELINE:
-A world+heroine → B clean PRE→MID→POST →
-B2 IMMEDIATE extract+refine cutouts_clean (no ghost/noise edge) →
-C one HUD_GEN per frame →
-D PASTE only from cutouts_clean →
-E TYPE isolate → on PASTE top → stop.
-No img2img after FINAL. No TRY count. No pose/depth control main path.
+LOCKED_PIPELINE + LAYERED_CHAIN_LOCK:
+A world+heroine → B ROOT=PRE_clean → CUT_PRE+FACE_PRE →
+  MID/POST clean = ref(prev_scene + CUT_PRE + FACE_PRE [+ prev CUT pose]) →
+  each frame: extract CUT → HUD → PASTE same CUT → TYPE top → stop.
+Face must match PRE or abort. No img2img after FINAL. No TRY count.
 LOOP=L-SHA12(mid_clean).
 ```
 
@@ -133,3 +133,4 @@ LOOP=L-SHA12(mid_clean).
 |----|------|
 | 2026-10-25 | 初鎖 L0–L3；定稿=人清晰 PASTE+字置頂 |
 | 2026-10-25 | **B2 強制：L0 起即 CROP；refine 無疊影噪邊；否決 pose/depth 主流程** |
+| 2026-10-25 | **層層遞法鎖**：CROP→有字貼回；切層 REF 下一幀；身份必帶 PRE face（`LAYERED_CHAIN_LOCK.md`） |
