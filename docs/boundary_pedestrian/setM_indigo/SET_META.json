@@ -1,0 +1,46 @@
+{
+  "set": "SET-M",
+  "world": "INDIGO_FOG_BRIDGE",
+  "method": "GEO.T · H2",
+  "loop": "L-cc3ab14e34b0",
+  "mid_sha256": "cc3ab14e34b0ca594aa1e1e52701686a4810254fcd70cc66efb272b12678cb76",
+  "pipeline": "LOCKED A B B2 C D E F",
+  "frames": {
+    "pre": {
+      "clean": "b076235b4fa6d8c7f8d98ea690929296b5f3cf24ef8ca5c8957439172722042a",
+      "hud": "78f43ac3e6adb6773a1de66aeac5ae3324c7d77125cadc3da6a845081f148e4e",
+      "cut": "3fa7810e0c3583a0acaea9a5e80dad5208a069db4112463b8c3015e7ce073dfa",
+      "paste": "a0ba05d9e65095626974b224d9d63ae60be8d9d2f9d5d18409e36f84a38a2b82",
+      "type": "0771f010cb5b9ca194e19bf342f9e433d69671caafef1cdfed91331b8ddfb1f4",
+      "final": "aaba4c7df62e9df623505ab212952af7da84d1600a5a9287cdb02083b5026bdc",
+      "assets": {
+        "clean": "3987dba4-bea7-47d1-a38a-0228d7020adf.jpg",
+        "hud": "d67b0685-8ac8-4378-ae21-f045483396f6.jpg"
+      }
+    },
+    "mid": {
+      "clean": "cc3ab14e34b0ca594aa1e1e52701686a4810254fcd70cc66efb272b12678cb76",
+      "hud": "c3c470f7890b7f1380d625208989680cb8beb84515fb10d35b9479764c24f160",
+      "cut": "c5587b89fb9d85151fc357859b4c9014f978ebb61d66e03604e776e83b8e02ba",
+      "paste": "56bc721974c250347de8b17c7678982d530e03df1be160db167c99e6738d0500",
+      "type": "379c842f350e2d235851fa790e01e5c36f0068a55746e92ba2ef8ea885d83e72",
+      "final": "488a549c93eb466da3a69e790ca32260bd00dc409ccf5ffac4c858993d617abf",
+      "assets": {
+        "clean": "bfce85ec-17ca-4637-801f-5f8a3577e6cd.jpg",
+        "hud": "5ea52c95-e38a-4d1e-a565-9da6ee79ac66.jpg"
+      }
+    },
+    "post": {
+      "clean": "9b2ed0e7383144d5f80c24004e3fb43c4eedabb33425b0bbbff7ca7875bfba17",
+      "hud": "fd06656aeb504df66b97364e31bffc0124f8bf6b6bbd187fe3ec50ddb7292738",
+      "cut": "0adccbfaf629a5960b97db4fa582a5126fa00a5f5011252a89817b31cc2eaad8",
+      "paste": "b8ac9c535592e58a96bb3f225639807cbdb9a60e23b857042e9febfdcfb8099a",
+      "type": "0dae5fe0497465b3e59c58ac5217b88c36b5150ea02fcd4811c6d0b64f347028",
+      "final": "134cf1cfa97cdbf6b8ef8ee8aaae4f669e0df30fdba6fa5c08ac46ae5906e4cc",
+      "assets": {
+        "clean": "bedde3dd-a579-468c-8de3-d3ef826b34c1.jpg",
+        "hud": "c71148b0-2ba9-4e71-b2cc-13d8bf9e1c86.jpg"
+      }
+    }
+  }
+}
