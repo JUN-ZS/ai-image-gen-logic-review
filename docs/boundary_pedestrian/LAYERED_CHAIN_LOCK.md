@@ -109,6 +109,7 @@ PRE_FACE crop 抽出
 - 身份以 **女主臉** 為幾何細節源；角度／光以 PRE crop 為準  
 - 貼回用羽化 + 局部色溫匹配，唔整圖 img2img  
 - 產物：`face_hd/HD_FACE_MASTER.jpg` · `*_FINAL_HD.jpg`
-- **貼回首選**：FINAL + HD_FACE_MASTER → `imagine_reference_to_image`「只換臉、其餘不動、無硬框」  
-  （純像素橢圓貼易有貼紙框；seamless 換臉更穩）
-- 女主臉鎖示例：`f43b9123…`；SET-N HD master：`d3206802…` / `cae1cf94…`
+- **貼回必須原像素**：HD_FACE_MASTER 裁臉 → LANCZOS 縮放 → 橢圓羽化 alpha **只動 alpha**，RGB 唔 blur、唔再喂模型  
+- **禁止** 用 `imagine_reference_to_image` / img2img 做最終貼臉（會模糊、不對齊）— seamless 僅實驗，不作 FINAL  
+- 色溫：只允許通道 mean gain，保留 HD 局部像素結構  
+- 女主臉鎖：`f43b9123…`；SET-N HD master：`276a67e0…` / `d3206802…`
