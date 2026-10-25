@@ -1,0 +1,17 @@
+{
+  "set": "SET-N",
+  "world": "GOLDEN_RICE_TERRACE",
+  "method": "GEO.T · H2",
+  "loop": "L-ebbe6b21c151",
+  "mid_sha256": "ebbe6b21c1518ed876885b3aec2c5110d83574fc83885a5692ebe8b305fc7352",
+  "pipeline": "LAYERED_CHAIN_LOCK",
+  "root_pre": "d225b616-2be3-4f9f-b4e7-3a1049714ebc",
+  "assets": {
+    "pre_clean": "d225b616",
+    "pre_hud": "f97783c8",
+    "mid_clean": "3292401b",
+    "mid_hud": "4e2d653b",
+    "post_clean": "87319fec",
+    "post_hud": "da518837"
+  }
+}
