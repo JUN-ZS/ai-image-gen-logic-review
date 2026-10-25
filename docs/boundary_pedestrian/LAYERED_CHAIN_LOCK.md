@@ -1,5 +1,42 @@
 # 層層遞法 LOCK（CROP → 有字貼回 → 切層 REF 下一幀）
 
+---
+
+## 0. L0 全抽首圖部署（先於一切有字圖）
+
+> **應先在沒有字的圖時，就做全抽的首圖部署。**
+
+```text
+L0_CLEAN（無字／無 HUD／無標題）
+  ↓ 立刻 FULL EXTRACT
+  woman | hammer | sphere | face | bg | …
+  ↓ 各層獨立放大修正（同像素源）
+  L0_DEPLOY 物件庫
+  ↓ pure collage 還原無字主圖
+  L0_DEPLOY_COLLAGE_NOTEXT
+  ↓ 之後才
+  TYPE / HUD / 藝術字 頂層
+```
+
+### 強制順序
+1. 先出 **L0_CLEAN**（禁止字、禁止 ANALYSIS_HUD、禁止標題）
+2. **立刻**對 L0 做 every-object 全抽（首圖部署）
+3. 每物件在自己 cutout 上修／放大（不跨源貼局部）
+4. pure collage 組成 `L0_DEPLOY_NOTEXT`
+5. **然後**才加字／HUD／TYPE
+
+### 禁止
+- 禁止以已有字／HUD 的 FINAL 作為第一次全抽來源
+- 禁止未建 L0 物件庫就上藝術字
+- 禁止跨 cutout 貼臉／貼局部（拼貼只整層）
+
+### 產物路徑（SET-N 示例）
+- `l0_deploy/L0_CLEAN_ROOT.jpg`
+- `l0_deploy/cutouts/OBJ_*.png`
+- `l0_deploy/L0_DEPLOY_COLLAGE_NOTEXT.jpg`
+- `l0_deploy/manifest/L0_DEPLOY_MANIFEST.json`
+
+
 > **狀態：LOCKED · 2026-10-25**  
 > 用戶確認：「這層層遞法可鎖」  
 > 示範：SET-M 根人 PRE `3987dba4…`；錯臉 POST `37d24d2f…` **作廢**；修正後身份 = PRE_CUT + PRE_FACE。
