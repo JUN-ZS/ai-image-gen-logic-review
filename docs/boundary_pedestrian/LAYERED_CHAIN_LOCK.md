@@ -113,3 +113,20 @@ PRE_FACE crop 抽出
 - **禁止** 用 `imagine_reference_to_image` / img2img 做最終貼臉（會模糊、不對齊）— seamless 僅實驗，不作 FINAL  
 - 色溫：只允許通道 mean gain，保留 HD 局部像素結構  
 - 女主臉鎖：`f43b9123…`；SET-N HD master：`276a67e0…` / `d3206802…`
+
+---
+
+## 6. FACE_HD · warp 對齊再原像素貼
+
+```text
+HD_FACE_MASTER 裁臉
+  + PRE_FACE_REF 模板匹配定位（每幀 SEARCH 窗）
+  → 3 點 affine（雙眼+鼻比例）warp HD 像素
+  → 橢圓 alpha（只動 alpha）
+  → 通道 mean gain 色溫
+  → 合成回 chain_final 原圖
+```
+
+- **必須** `cv2.warpAffine(..., INTER_LANCZOS4)` + 原像素合成；**禁止** model seamless 做 FINAL  
+- 模板：`PRE_FACE_REF`（同 SET 姿態）  
+- 產物：`face_hd/*_FINAL_WARP.jpg` · `*_WARP_ZOOM.jpg`
