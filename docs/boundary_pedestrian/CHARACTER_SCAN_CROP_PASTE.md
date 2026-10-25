@@ -1,69 +1,88 @@
-# 人物 SCAN-CROP / 描邊裁切 → 貼回完成圖（消 img2img 疊影）
+# 人物 SCAN-CROP / 描邊裁切 → 貼回（消疊影）· **LOCKED**
 
-> 問題：人物在 **反覆 img2img / multi-REF** 後出現**疊影、重影、ghost**。  
-> 解法：用**首次 clean 生成**的人物做 extract（scan crop），再 **alpha 貼**到完成圖（HUD／字層）上。
+> **狀態：LOCKED · 2026-10-25**  
+> 問題：人物在 **反覆 img2img / multi-REF** 後出現**疊影、重影、ghost、噪邊**。  
+> 解法：**L0 clean 一出就 CROP／描人**，之後全程只用呢批 cutout 做 L2 PASTE。
 
 ---
 
-## 1. 管線
+## 0. 硬規則（鎖死）
 
 ```text
-1. PRE clean   = 首次定稿人物（女主鎖 + 世界）
-2. MID/POST    = 只以上一 clean 推進時間（幀連）
-3. 完成層      = only-add HUD / 字（可令人物微漂、疊影）
-4. SCAN CROP   = imagine_extract_subject( clean_frame ) → RGBA cutout
-5. PASTE       = alpha_composite( 完成層, soft_edge(cutout) )
-6. 輸出        = 完成圖場景 + 首次人物清晰輪廓
+1. 必須在 CLEAN 鏈完成後、進 Step C 之前（或 C 之後立刻），對 PRE／MID／POST
+   各做一次 extract——「一開始就描」，唔好等鬼影先救。
+2. cutout 只來自對應 clean 幀（同幀對貼），禁止用 PRE 人貼 POST。
+3. 邊緣必須 refine：去白底、去毛刺、輕羽化、去白邊污染——目標「無疊影、無噪邊」。
+4. L2 PASTE 只用這批 cutouts_clean，禁止從 HUD_GEN 再描人。
+5. PASTE 後禁止整圖 img2img。
 ```
 
-### 為何有效
-
-| 層 | 來源 | 保留 |
-|----|------|------|
-| 場景／VFX／HUD／字 | 完成圖 | 箭咀、HOT、3D 字、碎裂 |
-| 人物（+當幀槌姿） | **clean 首幀 extract** | 無疊影臉／衣 |
-
-Cutout 與完成圖 **同分辨率、同構圖對齊**（extract 全幅透明底）→ 貼 (0,0) 即可。
-
 ---
 
-## 2. 技術細節
-
-- 工具：`imagine_extract_subject`（subject 指「the woman with the hammer」）  
-- 邊緣：`MinFilter` 收邊 + `GaussianBlur(1–3)` 羽化，減少白邊  
-- 同幀對貼：PRE cut→PRE HUD，MID cut→MID HUD（**唔好**用 PRE 人貼 POST 姿）  
-- 槌／球：若 extract 連武器一齊出，貼上會蓋住部分接觸 HUD——可接受；要保留接觸標可改「只裁身體」或分兩層
-
----
-
-## 3. 與既有層關係
+## 1. 管線（更新）
 
 ```text
-L0 clean 鏈
-L1 HUD / DEPTH type（完成層）
-L2 SCAN-CROP paste（人物救回）  ← 本檔
-（可選）L3 SVG 準字 sidecar
+L0 CLEAN  PRE → MID → POST（無字）
+    ↓ 立刻
+CUT_PRE  = extract(PRE_clean,  woman+hammer；唔包球)
+CUT_MID  = extract(MID_clean,  woman+hammer；唔包球)
+CUT_POST = extract(POST_clean, woman+hammer；碎裂幀可保附着 VFX，但要修 alpha）
+    ↓ refine_alpha（見 §2）
+cutouts_clean/*.png
+    ↓ 之後
+L1 HUD_GEN（可鬼影）
+L2 PASTE = alpha_composite(HUD_GEN, soft_edge(CUT_same_frame))
+L3 TYPE  叠最上
 ```
 
-**禁止**：paste 之後再整圖 img2img（會再次疊影）。
+### 為何一開始就描
+
+| 舊做法 | 新鎖 |
+|--------|------|
+| 等 HUD 鬼影先 extract | **L0 定稿即 extract 存檔** |
+| 每次救火重描 | **一 SET 三幀 cutout 固定資產** |
+| 從 HUD 描人 | **只從 clean 描** |
 
 ---
 
-## 4. SET-J 示範
-
-- cutouts：`boundary_pedestrian_setJ_porcelain/cutouts/`  
-- pasted：`…/pasted/J01_*_PASTE.jpg`  
-- 對照：上 HUD 原圖 / 下 paste 救回
-
----
-
-## 5. 一鍵口令（給下一 AI）
+## 2. 邊緣 refine（鎖死參數意圖）
 
 ```text
-若完成圖人物有 ghost：
-1) extract subject from matching CLEAN frame
-2) soft-edge alpha paste onto finished frame
-3) do not re-img2img after paste
+1. 白底 → alpha 0（含近白 fringe）
+2. MinFilter(3) → MaxFilter(3~5) → MinFilter(3)  去毛刺、閉合小缺口
+3. GaussianBlur(0.5~0.8) 輕羽化——禁止大 blur（會疊影暈邊）
+4. 半透明邊緣去白污染：高亮度 fringe 壓暗 RGB
+5. alpha < 閾 → RGB 清 0
+6. 禁止過狠 erode（會穿面／穿斗篷）
+7. POST：可保附着碎裂光；遠飄純噪可清；穿洞要 fill 回
 ```
 
-> 字層同理：見 **TYPE_SCAN_CROP_PASTE.md**（字從首字圖描出，貼在人上）。
+QA：棋盤格預覽（checker）睇邊；有雙邊／毛刺 → 重 refine，唔好帶病 PASTE。
+
+---
+
+## 3. extract subject 用語
+
+| 幀 | subject 建議 |
+|----|----------------|
+| PRE | woman and T-hammer only, not the floating sphere |
+| MID | woman and T-hammer only, not the sphere |
+| POST | woman holding the metal hammer（附着碎裂可接受；再 refine） |
+
+---
+
+## 4. 與 LOCKED_PIPELINE
+
+- 本檔 = **Step D 專則** + **L0 末強制 cutout 資產化**  
+- 主序見 `LOCKED_PIPELINE.md`  
+- SET-L 示範：`setL_copper/cutouts_clean/`
+
+---
+
+## 5. 下一 AI 口令
+
+```text
+After CLEAN PRE/MID/POST: immediately extract_subject each frame →
+refine alpha (no ghost, no noisy rim) → save cutouts_clean.
+L2 PASTE only from those cutouts onto HUD_GEN. Never re-extract from HUD.
+```

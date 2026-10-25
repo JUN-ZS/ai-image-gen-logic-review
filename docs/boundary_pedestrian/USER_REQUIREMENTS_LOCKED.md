@@ -133,3 +133,12 @@
 - 字必須表達**當幀物理 INFO**（PRE 冷隙 · MID 接觸 · POST 熱跟進）。  
 - 流程：clean 三幀 → 本世界字場 → 可選 A sidecar → `L-{MID_SHA12}`。
 
+
+---
+
+## LOCK 追加 · 2026-10-25 · L0 起 CROP
+
+- CLEAN PRE／MID／POST **一出完即** extract + refine → `cutouts_clean`
+- 目標：**無疊影、無噪邊**；棋盤 QA
+- L2 只用呢批；禁止從 HUD 描人
+- pose／depth proxy **唔入主流程**（效果差，用戶否決）

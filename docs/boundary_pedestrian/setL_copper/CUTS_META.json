@@ -1,0 +1,18 @@
+{
+  "source_clean": {
+    "PRE": "dbc52674-107e-4fd8-add2-e58d466985c8",
+    "MID": "58eda4f3-ed1c-4c98-a5b7-b265aca29196",
+    "POST": "1cabb620-6817-4c2c-bbd6-79938cf2bedc"
+  },
+  "raw_extract": {
+    "PRE": "bfcc2270-8601-49b3-afe6-8f3bdf61c137",
+    "MID": "57ce5c3a-3df7-4ce9-b9df-2da525c71724",
+    "POST": "7ceb0e23-7ec0-45a7-85e2-ea1430283d19"
+  },
+  "rule": "CROP at L0 start; alpha refine: white-out, min/max despeckle, soft edge decontam, POST strip cyan burst",
+  "files": {
+    "PRE": "/workspace/artifacts/boundary_pedestrian_setL_copper/cutouts_clean/PRE_CUT.png",
+    "MID": "/workspace/artifacts/boundary_pedestrian_setL_copper/cutouts_clean/MID_CUT.png",
+    "POST": "/workspace/artifacts/boundary_pedestrian_setL_copper/cutouts_clean/POST_CUT.png"
+  }
+}

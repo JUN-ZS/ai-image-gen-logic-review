@@ -2,10 +2,19 @@
   "lock_status": "LOCKED",
   "lock_date": "2026-10-25",
   "pipeline_doc": "docs/boundary_pedestrian/LOCKED_PIPELINE.md",
-  "final_stack": "PASTE_clear_person + TYPE_LAYER_from_first_HUD",
+  "final_stack": "PASTE_from_L0_cutouts + TYPE_LAYER_from_first_HUD",
+  "mandatory_after_clean": "B2_immediate_extract_refine_cutouts_clean",
+  "cutout_rules": {
+    "when": "immediately after CLEAN PRE/MID/POST",
+    "source": "clean_only",
+    "never_extract_from": "HUD_GEN",
+    "edge": "refine_alpha_no_ghost_no_noisy_rim",
+    "qa": "checkerboard_preview"
+  },
   "example_post_paste_asset": "f9925b2a-b626-4974-b8fe-d9f89a74a22c",
-  "example_set": "SET-J PORCELAIN_MOON_COURT GEO.T H2",
+  "example_set_l_cutouts": "docs/boundary_pedestrian/setL_copper (cutouts_clean path in artifacts)",
   "forbidden_after_final": ["img2img_whole_frame"],
+  "forbidden_main_path": ["pose_depth_proxy_control_as_primary"],
   "forbidden_labels": ["TRY_count", "REVIEW PENDING"],
   "loop_id_rule": "L- + sha256(mid_clean)[0:12]"
 }
