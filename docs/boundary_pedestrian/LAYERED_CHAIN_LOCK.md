@@ -93,3 +93,19 @@ next clean = ref(prev_scene + CUT_PRE + FACE_PRE [+ optional prev CUT for pose])
 Never next-frame without PRE face. Abort if face ≠ PRE.
 No img2img after FINAL.
 ```
+
+---
+
+## 5. 高清臉：抽出 → 放大對齊女主 → 縮貼回（FACE_HD）
+
+```text
+PRE_FACE crop 抽出
+  + 女主臉鎖 (heroine portrait)
+  → HD_FACE_MASTER（高清身份）
+  → 軟邊 alpha cut
+  → 按幀 face box 縮貼回 PRE/MID/POST（FINAL 或 CLEAN）
+```
+
+- 身份以 **女主臉** 為幾何細節源；角度／光以 PRE crop 為準  
+- 貼回用羽化 + 局部色溫匹配，唔整圖 img2img  
+- 產物：`face_hd/HD_FACE_MASTER.jpg` · `*_FINAL_HD.jpg`
