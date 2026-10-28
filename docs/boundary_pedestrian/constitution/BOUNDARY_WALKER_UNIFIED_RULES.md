@@ -4159,3 +4159,56 @@ BASE 全幅 → 反推 blur_text_zone → 同構優 donor + 結構閘
 
 
 
+
+---
+
+## 0.12.29 雙錨中密（DAMD · Dual-Anchor Mid-Densify · **LOCK**）
+
+> asof 2026-10-28 · 用戶：「給這插幀憲法一個技名再入憲」  
+> **正名：雙錨中密** · **碼：DAMD** · 粵：**錨密／中密**  
+> 詳附件：`DAMD_DUAL_ANCHOR_MID_DENSIFY_01229.md` · `DAMD_DUAL_ANCHOR_MID_DENSIFY_NAME.md`
+
+### 招名
+
+| 語 | 名 |
+|----|-----|
+| 正名 | **雙錨中密** |
+| 英／碼 | **Dual-Anchor Mid-Densify** · **DAMD** |
+| 一句 | 先 FT 雙錨 · 頭尾中加密 · 本段加中 · SoftRef 姿 ⊕ Hard 貼 ⊕ Verify · 禁 OIDV |
+| 別名 | HTM · RPF · 正反推插幀 |
+
+### 鐵序
+
+```
+CONST_F0 短 → 先 FT → 雙錨 → HTM/進度 mid → Verify → Paste_臉 → 入列
+失敗：Kill · 段殺重 mid · 禁長文 · 禁全樹重跑
+加插：只本段頭尾
+```
+
+### 合法幀
+
+```
+F_t 合法 ⇔ SoftRef_姿(Head,Tail,t) ⊕ Paste_臉(F0)
+         ∧ Topo(F0) ∧ Mono(δ) ∧ ¬拼版 ∧ ¬OIDV
+```
+
+### 病毒（插幀域）
+
+| 碼 | 名 |
+|----|-----|
+| **OIDV** | 過干預降智毒（長文代硬閘） |
+| **GFV** | 重影臉毒（soft 當貼） |
+| E-01…E-05 | 改物／繞路／拼版／糊 |
+
+### 樣板
+
+| 跑 | 註 |
+|----|-----|
+| ZOOM20 | `40edb55a`→`ce06e08c` · 純 zoom 穩 |
+| RAISE30 | 示 E-02 · `RAISE30_DIAG_CONST.md` |
+
+### 黑名單（摘）
+
+E-DAMD-01 soft＝貼 · E-DAMD-03 全樹重跑 · E-DAMD-05 OIDV 長文 · E-DAMD-07 δ 非單調稱完成
+
+*END §0.12.29 · 雙錨中密 / DAMD · asof 2026-10-28*

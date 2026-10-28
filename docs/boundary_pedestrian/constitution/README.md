@@ -19,6 +19,7 @@
 | 白噪殺 | WNK | §0.12.26.D |
 | 噪折成光 | N2R | §0.12.26.O |
 | 字糊反推對換 | TBRS | §0.12.28（備案） |
+| **雙錨中密** | **DAMD** | **§0.12.29 LOCK** |
 
 ## 本批檔案
 
@@ -46,6 +47,8 @@
 - `MESH_STITCH_FORMULA_V5.md`
 - `REVERSE_MESH_RANGE_RULE.md`
 - `GRID60_PATH1E_LOCK.md`
+- `DAMD_DUAL_ANCHOR_MID_DENSIFY_NAME.md`
+- `DAMD_DUAL_ANCHOR_MID_DENSIFY_01229.md`
 
 ## 不在本批
 
@@ -58,5 +61,9 @@
 1. 以 `BOUNDARY_WALKER_UNIFIED_RULES.md` 為單一操作入口  
 2. 改憲走 PR；禁 silent rewrite `main`  
 3. 新招：正名 → 附件 → 總憲 LOCK 段 → §11 修訂
+
+## 2026-10-28 補
+
+- **§0.12.29 雙錨中密 / DAMD**：插幀憲法正名入憲（HTM/RPF 收束）
 
 *Generated for push · do not treat as frozen base without TAKE card if used under ecosystem rails.*
