@@ -70,3 +70,19 @@ T0 L0 → T1 SIAX×1 → T3 Hybrid → Ref(hybrid,a8b) 臉鎖 → 停
 - g_face≈0.88 · g_body≈0.72 · g_bg≈0.40 · 眼白 M≈0
 - 樣板 **L-9441d3d22539**
 - 詳 `SIAX_HYBRID_FACELOCK_S1HL.md`
+
+---
+
+## S1HL 一升 · OOM 選路（2026-10-29）
+
+T1 前必選 PATH（見 `SIAX_HYBRID_FACELOCK_S1HL_OOM_NOTES.md`）：
+
+| PATH | 做法 |
+|------|------|
+| **P0 STRIP_S1HL** 預設 | tile128/band96 · siax memmap only · Hybrid strip→VIEW/HD · T3 a8b |
+| P1 ROI | 只升 ROI 再勾形拼 |
+| P2 S=2 | 先 2× 預覽 |
+| P3 GRID_CELL | 好格 only |
+| 禁 | FULL float×3 · 雙 hyb.mm · OOM 同構重試 · 二升救 |
+
+失敗黑名單：E-GS-04 · 04b · 04c · 04d · 04e

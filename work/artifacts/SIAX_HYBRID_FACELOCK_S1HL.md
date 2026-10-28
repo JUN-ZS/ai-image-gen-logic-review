@@ -46,3 +46,33 @@ I_lock = Ref(hybrid, a8b)
 
 ## 樣板
 L-9441d3d22539 · 母 68ff · a8b 標準面
+
+---
+
+## OOM 失敗備註（2026-10-29T04:10:00+08:00 · 必讀再一升）
+
+> 詳：`SIAX_HYBRID_FACELOCK_S1HL_OOM_NOTES.md`
+
+### 實敗
+
+| 版 | 死法 | 碼 |
+|----|------|-----|
+| v1 | 全幅 float×3 | **137 OOM** |
+| v2 | siax.mm + hyb.mm 雙 FULL | I/O／峰值 |
+| **v3** | siax.mm only · Hybrid strip→VIEW/HD | **PASS** · 樣板 abe76 |
+
+### 下次一升 · 先選路（勿默認死法）
+
+| 優先 | 路 | 一句 |
+|------|-----|------|
+| **P0** | STRIP_S1HL | tile+memmap+strip 混（預設） |
+| **P1** | ROI_S1HL | 只升臉／甲／械 |
+| **P2** | S2_BAND | 先 2× 預覽 |
+| **P3** | GRID_CELL | 好格 donor only |
+| **P4** | XHL | 外折 donor（待解） |
+| **禁** | FULL_F64_×3 | E-GS-04/04b/04c |
+
+**規則：** OOM 後 **只換 PATH**，禁止同構加碼重試；禁止用二升救 OOM（E-GS-47）。
+
+### 擴黑名單
+E-GS-04b · 04c · 04d · 04e（見 OOM_NOTES）

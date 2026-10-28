@@ -2039,6 +2039,21 @@ rules/
 
 *END §0.12.15 · asof 2026-10-26T14:05:00Z · L 補 2026-10-28T07:06:55Z*
 
+
+#### 0.12.15.L.OOM 一升 OOM 備註（2026-10-29T04:10:00+08:00）
+
+> 詳附件 `SIAX_HYBRID_FACELOCK_S1HL_OOM_NOTES.md` · `GRID_SIAX_DO_NOT_REPEAT` E-GS-04 族
+
+| 死法 | 碼 | 下次先走 |
+|------|-----|----------|
+| 全幅 float×3／雙 memmap FULL | 137 / I/O | **P0 STRIP**：siax.mm only + Hybrid strip→VIEW/HD |
+| 同構重試加碼 | 再 137 | **換 PATH** P1 ROI / P2 S=2 / P3 GRID / P4 XHL |
+| 用二升救 OOM | 違招 | **禁** E-GS-47 · E-GS-04e |
+
+**擴 ID：** E-GS-04b · 04c · 04d · 04e  
+**正典 v3 樣板：** SET-S abe76 S1HL strip · T3 `be436496…`
+
+
 ### 0.12.16 PIXEL 每點記認與控制法（PIXEL_CTRL · 眼白鐵律 · 外科）
 
 > **用戶確立（2026-10-26）：**  
