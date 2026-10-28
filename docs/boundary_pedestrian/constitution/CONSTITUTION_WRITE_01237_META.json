@@ -1,0 +1,17 @@
+{
+  "section": "0.12.37",
+  "code": "SCD",
+  "name_zh": "衣槽清掃毒",
+  "name_en": "Slot-Clear Detox",
+  "status": "LOCK",
+  "asof": "2026-10-29",
+  "role": ["detox_function", "anti_old_base_lock_kill_donor"],
+  "neighbors": ["ETZ_01236", "ZYF_01235", "S1_pose_swap", "N2R", "WNK", "OIDV"],
+  "sample": {
+    "S0": "81fb2a71-27df-4b5b-9798-dff4f6cfba79",
+    "S1": "313c104e-133b-4120-806e-db54add3b932",
+    "donor": "37750d0d-2c9a-472d-b2f8-7744e9d1270d",
+    "S2_star": "46b207f0-0185-4b52-a7bf-c05959d2c801"
+  },
+  "user_request": "把這入憲成掃毒功能和加到反殺用舊底鎖毒死的模DONOR"
+}

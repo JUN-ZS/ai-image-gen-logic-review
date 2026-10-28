@@ -4594,3 +4594,35 @@ BASE `75f5f419` → 趨勢 `a4b74a57`/`e93f77ee` → 正衣 `090a9ce3` → S1 `7
 未抽衣全圖修 · 正衣當 BASE/姿主 · 合時重雕衣拓 · densify 帶臉 · 治標不返環
 
 *END §0.12.36 · ETZ · LOCK*
+
+
+---
+
+## §0.12.37 衣槽清掃毒（SLOT_CLEAR_DETOX / SCD · **LOCK** · asof 2026-10-29）
+
+> **用戶：** 入憲成掃毒功能 + 反殺舊底鎖毒死模 DONOR  
+> **正名：衣槽清掃毒** · **碼 SCD** · Slot-Clear Detox  
+> **別名：** 睡衣清槽 · 兩步換衣
+
+### 一句
+人槽（臉／姿／杖）硬鎖；衣槽先中性化（睡衣等 CLEAR_BUF）再 Ref 空正衣 donor 寫入——**掃舊甲殘語，反殺舊底鎖死模 donor**。
+
+### 鐵序
+```
+S0 PERSON → S1 CLEAR_BUF（中性衣）→ S2 Ref(清槽人, 正衣_empty) → S3 驗
+```
+
+### 反殺
+| 毒 | 反 |
+|----|-----|
+| 舊底／舊甲佔衣槽 · 新 donor 寫不進 | 強制 S1 清槽再 S2 |
+| 甲→正衣一步語衝突 | 兩步 |
+| 失敗改硬貼臉 | 禁 · 掃在衣槽 |
+
+### 附件
+`SLOT_CLEAR_DETOX_SCD_01237.md` · `SLOT_CLEAR_DETOX_SCD_NAME.md` · `SLOT_CLEAR_DETOX_DO_NOT_REPEAT.md` · `CLOTHES_SWAP_WHY_PAJAMA.md`
+
+### 黑名單
+E-SCD-01…06（一步硬衝、複雜清槽、丟杖、有人 donor、貼臉當掃、BASE 衣不可洗）
+
+*END §0.12.37 · 衣槽清掃毒 / SCD · LOCK*

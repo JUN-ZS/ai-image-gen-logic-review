@@ -33,3 +33,4 @@
 > **抽衣 → 就正 → 正衣 lock → 合新；壞則反推哪環，不在全圖硬修。**
 
 *work/boundary-walker-canvas*
+| §0.12.37 | 衣槽清掃毒 SCD | SLOT_CLEAR_DETOX_SCD_01237.md | 掃毒·反殺舊底鎖死 donor |
