@@ -34,3 +34,21 @@ Ref([CLEAR, ZHENGYI_090a], change clothes only)
 
 ## 連動
 SCD §0.12.37 · ETZ E2 · ZYF · S1 同姿換衣
+
+---
+
+## 姿漂備註（F-POSE · 與 SCD 同）
+
+> 試錯：`9486` ZPS 後變全身立 · 姿主 `60a` 是舉杖半身側望 → **動作不一樣＝姿漂** 非正衣問題。
+
+| 要 | 不要 |
+|----|------|
+| `Keep EXACT same pose crop head turn staff height grip` | 只寫 keep face |
+| 半身姿主 → 半身出 | 半身姿主 → 無聲變全身大裙構（除非接受構變）|
+| 走／舉／坐 **分開** 樣板 | 跨 GOU-B 新構 與 ZPS 掃衣 混比 |
+
+**殺樣板：** 姿主 `60a` + donor `4b74` → 姿鎖 ★ `91e9`（舉杖同動作）  
+**走姿另軌：** `bf2e` → `1e1b`（本來另一動作，不算 9486 失敗）
+
+### 一句
+> **ZPS 成功＝衣對 + 姿仍是姿主；衣對姿漂＝F-POSE-01 未過閘。**

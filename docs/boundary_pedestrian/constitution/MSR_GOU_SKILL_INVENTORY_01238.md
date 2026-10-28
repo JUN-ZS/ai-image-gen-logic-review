@@ -115,6 +115,8 @@ B: ROI→GEN 模板→atlas 模庫→HF 律動對位→Ref 新構合體
 | F-CLO-01 | 甲→正衣一步 · 舊網幽靈 | SCD 清槽 或 donor 已強則 **ZPS 直換** |
 | F-CLO-02 | 有人舊圖當 donor | 空正衣板 only |
 | F-CLO-03 | SCD 清槽清掉要留的甲手套 | 手套屬甲則 **直換優先** 或清槽 prompt 保留 gloves |
+| **F-POSE-01** | **姿漂**：換衣後姿／構／杖／頭變 | 人槽硬鎖 EXACT pose·crop·staff·head · 見 SCD §0.12.37.E |
+| **F-POSE-02** | **兩軌混比**（走 vs 舉當同失敗） | GOU-B 姿可Ω 與 SCD/ZPS 保姿 **分開鎖** · 勿混比 |
 | F-V5-01 | CHEAT_B／full-RGB 蓋 | 禁 · 結構區 lap 持平或↑ |
 
 ### E4 · 路選錯
@@ -134,7 +136,8 @@ B: ROI→GEN 模板→atlas 模庫→HF 律動對位→Ref 新構合體
 [ ] BASE 全幅 · virus=false
 [ ] 正衣/REF_PLATE role=lock · 非 BASE
 [ ] OTL0 短指紋 · RML 短
-[ ] 掃 F-MSR / F-GOU / F-OTL / F-FACE / F-CLO / F-ROUTE
+[ ] 掃 F-MSR / F-GOU / F-OTL / F-FACE / F-CLO / F-POSE / F-ROUTE
+[ ] 換衣後姿＝姿主？半身未無聲變全身？
 [ ] 對稱？→ 正衣板 · 非全圖 Soft · 非半齊當完成
 [ ] 合衣？→ donor 強 ZPS 直換 · 舊網鎖 SCD
 [ ] 臉？→ α0 或 gen 鎖 · 禁疊毒貼當主
@@ -151,6 +154,8 @@ B: ROI→GEN 模板→atlas 模庫→HF 律動對位→Ref 新構合體
 | 模底合體 | 75f5f419 |
 | 正衣 donor | 090a9ce3 · 37750d0d |
 | ZPS 直換★ | d026c44b |
+| 姿鎖舉杖★（F-POSE 殺） | 91e9fbbd · 姿主 60a · donor 4b74 |
+| 走姿鎖 | 1e1ba893 · 姿主 bf2e |
 | GOU 板例 | 杖 e7dff0 · 甲 c6bd86 · 臉 1fed35 · 握 77f820 |
 
 ---

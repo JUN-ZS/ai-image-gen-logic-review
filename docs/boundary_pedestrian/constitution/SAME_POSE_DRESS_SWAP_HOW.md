@@ -59,3 +59,9 @@ LOCK= face, hands, staff_OTL0, camera
 FREE= garment surface + optional cape/skirt topo
 PROOF= face_ncc高 · weapon_Δ低 · torso_Δ高
 ```
+
+---
+## 姿漂（F-POSE-01）備註 · asof 2026-10-29
+同姿換衣 **失敗判** 不只「衣不對」：若衣對而姿／構／杖位變 → 仍 FAIL。
+必寫：EXACT same pose, crop, head turn, staff height and grip。
+GOU-B 新構（姿可Ω）與 同姿掃衣 **分軌** · 見 SCD §0.12.37.E。

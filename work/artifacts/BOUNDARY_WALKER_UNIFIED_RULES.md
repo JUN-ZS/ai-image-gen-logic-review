@@ -4,6 +4,8 @@
 > **ASOF:** 2026-10-26T18:50:00Z
 
 > **地位：** 唯一操作總憲。  
+> **物格 L0 OTL0 LOCK：** §0.12.31 · 正名「**物格 L0**」· **Topo(F0)=唯一物真** · Ω 只投影不重生 · 創造不得覆蓋 · P0 > **首幀追尾 HTFC LOCK：** §0.12.32 · 正名「**首幀追尾**」· 先雙錨再 **F0→FT 極細正推** · **強制連動 OTL0** · 樣板 `0b9d`/`41f9` · 附件 `HEAD_TAIL_FORWARD_CHASE_NAME.md`  
+Kill／P1 記帳 · 樣板 F0 `0b9d87d8…` · FT_PASS `41f91ded…` · KILL `74d9ae53…` · 附件 `OBJECT_TOPO_L0_NAME.md`  
 > **新 SET 第一步 LOCK：** §0.0 · ST0 環境概念圖 → ST1 對型鎖臉創新 IP（退地·多角度·槌創意）  
 > **標準面 LOCK：** `a8b78fe5-2654-4f6f-84e3-c1dfbee61004`（§0.10 · 全專輯）  
 > **首 IP LOCK：** §0.5.1 無底圖 + 多角度 IP 包（先於全幅鎖臉）  
@@ -4159,3 +4161,493 @@ BASE 全幅 → 反推 blur_text_zone → 同構優 donor + 結構閘
 
 
 
+
+---
+
+## 0.12.29 雙錨中密（DAMD · Dual-Anchor Mid-Densify · **LOCK**）
+
+> asof 2026-10-28 · 用戶：「給這插幀憲法一個技名再入憲」  
+> **正名：雙錨中密** · **碼：DAMD** · 粵：**錨密／中密**  
+> 詳附件：`DAMD_DUAL_ANCHOR_MID_DENSIFY_01229.md` · `DAMD_DUAL_ANCHOR_MID_DENSIFY_NAME.md`
+
+### 招名
+
+| 語 | 名 |
+|----|-----|
+| 正名 | **雙錨中密** |
+| 英／碼 | **Dual-Anchor Mid-Densify** · **DAMD** |
+| 一句 | 先 FT 雙錨 · 頭尾中加密 · 本段加中 · SoftRef 姿 ⊕ Hard 貼 ⊕ Verify · 禁 OIDV |
+| 別名 | HTM · RPF · 正反推插幀 |
+
+### 鐵序
+
+```
+CONST_F0 短 → 先 FT → 雙錨 → HTM/進度 mid → Verify → Paste_臉 → 入列
+失敗：Kill · 段殺重 mid · 禁長文 · 禁全樹重跑
+加插：只本段頭尾
+```
+
+### 合法幀
+
+```
+F_t 合法 ⇔ SoftRef_姿(Head,Tail,t) ⊕ Paste_臉(F0)
+         ∧ Topo(F0) ∧ Mono(δ) ∧ ¬拼版 ∧ ¬OIDV
+```
+
+### 病毒（插幀域）
+
+| 碼 | 名 |
+|----|-----|
+| **OIDV** | 過干預降智毒（長文代硬閘） |
+| **GFV** | 重影臉毒（soft 當貼） |
+| E-01…E-05 | 改物／繞路／拼版／糊 |
+
+### 樣板
+
+| 跑 | 註 |
+|----|-----|
+| ZOOM20 | `40edb55a`→`ce06e08c` · 純 zoom 穩 |
+| RAISE30 | 示 E-02 · `RAISE30_DIAG_CONST.md` |
+
+### 黑名單（摘）
+
+E-DAMD-01 soft＝貼 · E-DAMD-03 全樹重跑 · E-DAMD-05 OIDV 長文 · E-DAMD-07 δ 非單調稱完成
+
+*END §0.12.29 · 雙錨中密 / DAMD · asof 2026-10-28*
+
+---
+
+# §0.12.31 物格 L0（OBJECT_TOPO_L0 / OTL0 · **LOCK**）
+
+> asof 2026-10-28T12:03:00Z HKT  
+> **用戶：**「入憲 §物格 L0」· 先解 `740b95a6`：創造性平衡是否容許武器不一致 · 格物鎖置於何處  
+> **正名：物格 L0** · **OTL0** · Object Topology L0  
+> **LOCK：** 是  
+> 附件名卡：`OBJECT_TOPO_L0_NAME.md`
+
+---
+
+## 1. 鐵則（一句）
+
+```
+Topo(F0) = 唯一物真
+Ω 只投影 · 不重生
+創造不得覆蓋物格
+P0 拓裂 → Kill · 永不入列／入雙錨
+P1 殘差 → 可記帳 · 不得升格為「憲容許改物」
+```
+
+**否：** 因創造性平衡而容許武器不一致。  
+**是：** 一致 = 拓／件數／部件身份；創造只動 **L1 Ω**（姿、鏡頭、節奏）與 **L2 美**。
+
+---
+
+## 2. 地位分層（由高到低 · 不可顛倒）
+
+| 層 | 名 | 內容 | 可否被下層覆蓋 |
+|----|-----|------|----------------|
+| **L0-A** | **物格** | 部件清單 · 拓 · 開合 · 件數 · 握區 | **否** |
+| **L0-B** | **臉格** | a8b／F0 臉身份 | **否** |
+| **L0-C** | **毒表** | E-01 · 偽尾錨 · OIDV · GFV… | 觸發即 Kill／回滾 |
+| **L1** | **Ω** | yaw · zoom · raise · 時間 δ | 只投影 L0 · 不重生 |
+| **L2** | **創作／美** | 光 · 構圖 · 細節密度 · 情緒 | **最低** · 永不得回改 L0 |
+
+```
+執行序：
+  格物(F0) → 寫 CONST_F0.物
+  → 每候選幀 Verify(Topo)
+  → 過閘才入列／入雙錨
+  → 再談 Ω 正推／反推／DAMD mid
+  → 最後才談靚唔靚
+```
+
+**格物鎖 = 憲法根（L0）· 與身份同階 · 高於 Ω · 遠高於「好不好看」。**
+
+---
+
+## 3. CONST_F0.物 必寫欄（正推輸出）
+
+| 欄 | 說明 | 例（晶月杖 F0 `0b9d`） |
+|----|------|------------------------|
+| `parts` | 部件圖 | open_crescent_C · disc_hub_1 · shaft_spear · hub_spikes |
+| `topo` | 接法 | 環—單轂—桿 剛接 · 禁第二轂 |
+| `open` | 開合／弧向 | C 開向 · 尖向 |
+| `count` | 件數約束 | hub=1 · 禁加翼當新件 |
+| `grip` | 握區 | shaft_mid（可 Ω 調高／低 · 不得改握「環本體」若 F0 非此） |
+| `Ω_物` | 允許 | SE(3) 剛體 + 透視 · 跟相機／轉身 |
+| `禁` | 硬禁 | retopo · 換開合當新 mesh · 加件 · 雙轂 · Soft 近景重雕當「同一把」 |
+
+短指紋（步間只傳此 · 防 OIDV）：
+
+```
+物指紋 = 開月C+單轂+桿+轂刺 · 握桿 · Ω=剛體投影
+```
+
+---
+
+## 4. 殘差等級
+
+| 級 | 名 | 例 | 憲處理 |
+|----|-----|-----|--------|
+| **P0** | 拓裂 | 雙轂 · 換刃型 · 加件 · 偽尾重雕 | **Kill** · 不入列 · 不入雙錨 |
+| **P1** | 剛體／投影殘 | 弧向略轉 · 近景比例漂 · 握高變（拓仍同） | **可入備錨** · 記 `δ_物` · 物真相仍 F0 |
+| **P2** | 風格 | 反光多寡 · 布皺 | 忽略或 L2 |
+
+### 備錨標註範式（例 `740b95a6`）
+
+```text
+status: FT_ALT
+topo: PASS
+δ: grip_height↑, crescent_arc_project≠F0_exact
+use: 姿/鏡頭錨；物真相仍 F0
+forbid: 把 δ 當「憲容許改物」或「創造性平衡例外」
+```
+
+---
+
+## 5. Verify 閘（入列前強制）
+
+```
+Verify(frame, F0) =
+  parts_match
+  ∧ hub_count==1（或 F0 件數）
+  ∧ no_extra_parts
+  ∧ no_retopo_class_change
+  ∧ grip_zone ∈ Ω
+```
+
+| 時機 | 必須 |
+|------|------|
+| 出 FT 候選 | Verify 過才當尾錨 |
+| 出 mid／正推幀 | Verify 過才入時間序 |
+| 近景 ZOOM | **尤嚴**（模型易為填畫面重雕） |
+
+**E-DAMD-08 偽尾錨：** FT 未過 `Topo(F0)` 不得入雙錨；已入者全鏈中段作廢重跑。
+
+---
+
+## 6. 創造性邊界（明確）
+
+| 可（Ω／L2） | 不可（假創造） |
+|-------------|---------------|
+| 轉身 yaw、dolly、ZOOM 裁切 | 為填近景 **重生** 一把更滿的武器 |
+| 握高／握低（Ω 寫明） | 「更靚所以不一致」 |
+| 光帶、棚光、表情微變 | 長文堆砌「一定要同一把」替代拓閘（OIDV） |
+| 構圖節奏 | Soft 全圖 gen 跳過 Verify |
+
+**模型生成先驗 ≠ 憲內創造。**
+
+---
+
+## 7. 與鄰條
+
+| 條 | 關係 |
+|----|------|
+| **DAMD** 雙錨中密 | 雙錨入列前 **必須** 本節 Verify；壞 FT = 偽尾 |
+| **OIDV** §0.12.30 | 物格用 **短指紋** · 禁每幀灌滿法律文 |
+| **E-01** 改物 | P0 實例 · 本節為根閘 |
+| **a8b 臉** | 同 L0 階 · 臉／物雙硬鎖 |
+
+---
+
+## 8. 除毒流程（尾／物已壞）
+
+```
+1. Kill 偽尾與繼發 mid
+2. 重讀 CONST_F0.物（正推部件圖）
+3. 多步小 yaw → 正面 → ZOOM · 每步 Verify
+4. 可選：身/臉 Soft · 物區 HARD 剛貼／warp
+5. PASS 才入 FT · 再 DAMD 正推／mid
+```
+
+---
+
+## 9. 樣板（2026-10-28 晶月杖跑）
+
+| 角色 | id 短 | 判 |
+|------|--------|-----|
+| F0 物真 | `0b9d87d8` | 格物源 |
+| KILL 偽尾 | `74d9ae53` | P0／重雕 · E-DAMD-08 |
+| FT_PASS | `41f91ded` | 正面 ZOOM · 拓 PASS |
+| FT_ALT | `740b95a6` | 拓 PASS · P1 殘差記帳 · **非**改物合法 |
+
+---
+
+## 10. 黑名單加碼
+
+| 碼 | 禁 |
+|----|-----|
+| **E-OTL0-01** | 以創造／美觀覆蓋物拓 |
+| **E-OTL0-02** | 未 Verify 入雙錨／時間序 |
+| **E-OTL0-03** | 把 P1 殘差升格為「憲容許不一致」 |
+| **E-OTL0-04** | 近景 Soft 全圖重雕物當同一把 |
+| **E-DAMD-08** | 偽尾錨（未過拓之 FT） |
+
+*END §0.12.31 · 物格 L0 / OTL0 · LOCK*
+
+---
+
+# §0.12.32 首幀追尾（HEAD_TAIL_FORWARD_CHASE / HTFC · **LOCK**）
+
+> asof 2026-10-28T12:15:00Z HKT  
+> **用戶：**「那連動它的這首幀追尾技法,也入憲技法」  
+> **正名：首幀追尾** · **HTFC** · Head-to-Tail Forward Chase  
+> **LOCK：** 是  
+> **連動硬依賴：** §0.12.31 **物格 L0（OTL0）** · §0.12.29 **雙錨中密（DAMD）**  
+> 名卡：`HEAD_TAIL_FORWARD_CHASE_NAME.md`
+
+---
+
+## 0.12.32.A 招名
+
+| 語 | 名 |
+|----|-----|
+| **正名** | **首幀追尾** |
+| 粵／短 | **頭追尾** · **首追** |
+| 英／碼 | **Head-to-Tail Forward Chase** · **HTFC** |
+| 一句 | 先合格雙錨 → **由 F0 極細正推** 追至 FT → 每步 OTL0 Verify |
+| 禁稱 | 無尾先追 · 偽尾當終點 · soft 全圖當已鎖物 · 長憲灌每幀 |
+
+---
+
+## 0.12.32.B 地位（在插幀族內）
+
+```
+DAMD（雙錨中密）= 插幀總殼
+  ├─ HTM 頭尾中加密      （二分 mid）
+  ├─ 本段加中            （只動局部頭尾）
+  └─ HTFC 首幀追尾       （正推細 t：F0→FT）  ← 本節
+OTL0 物格 L0             = 全程 L0 根閘（連動強制）
+```
+
+**HTFC 不是另開山頭，是 DAMD 的正推密模 + OTL0 硬綁。**
+
+---
+
+## 0.12.32.C 鐵序（不可顛倒）
+
+```
+H0  格物 F0 → CONST_F0.物（OTL0 短指紋）
+H1  先出 FT 候選（終態：正面／ZOOM／動作…）
+H2  Verify_Topo(FT, F0)     # OTL0 · 不過 → Kill · 禁入錨
+H3  雙錨 = {F0, FT_PASS}    # 可記 FT_ALT（P1）但物真仍 F0
+H4  正推序列：t = ε, 2ε, … → 1
+      每幀：
+        SoftRef_姿(F0, FT, t)   # 只姿／鏡／Ω
+        ⊕ 短指紋（非長文）
+        → Verify_Topo + Mono(δ)
+        → 可選 Paste_臉(F0) HARD
+        → 入列 or Kill
+H5  視覺重排（t% 語≠視覺時）+ 段殺重 mid（DAMD）
+H6  交付：時間序格 · 膠片 · 輪播 · META
+```
+
+**錯序禁：**
+- 無合格 FT 就「追」
+- 偽尾（未過 OTL0）當終點
+- 先密中間再補尾
+- 每幀灌滿憲文（OIDV）
+
+---
+
+## 0.12.32.D 與「反推補前幀」分流
+
+| | 尾先反補（RPF 系） | **首幀追尾 HTFC** |
+|--|-------------------|-------------------|
+| 起點 | FT 倒推回 F0 | **F0 正推到 FT** |
+| 體感 | 由終態貼回 | 由首態細步追終態 |
+| 共用 | 雙錨 · OTL0 · Verify · 短指紋 · 禁偽尾 | 同 |
+| 選用 | 終態姿極難、宜先釘尾 | **終態已合格 · 要從首看出漸變** |
+
+用戶 2026-10-28 改序：「出頭尾後，**再由頭幀**依憲極細膩推到尾」→ 本招。
+
+---
+
+## 0.12.32.E Ω／δ（正推約束）
+
+```
+Ω ⊆ DAMD.Ω ∧ OTL0.Ω_物
+δ 必須單調趨 FT（例：yaw→front↑ · zoom↑ · 禁先過頂再落若本軌禁）
+物：只 SE(3) 投影 · 不重生（OTL0）
+```
+
+短指紋例：
+
+```
+物=開月C+單轂+桿 · 握桿 · Ω=yaw→正+zoom · mono
+```
+
+---
+
+## 0.12.32.F 連動 OTL0（強制）
+
+| 步 | OTL0 要求 |
+|----|-----------|
+| H1–H2 | FT 必須 **Topo PASS**；P0 Kill；P1 可 FT_ALT 記帳 |
+| H4 每幀 | Verify 物格；E-01／E-OTL0-04 近景重雕 → Kill |
+| 偽尾 | **E-DAMD-08** · 全鏈中段作廢 |
+| 創造 | **不得** 以美觀放水武器不一致（E-OTL0-01） |
+
+---
+
+## 0.12.32.G 失敗與除毒
+
+```
+不: 加長 prompt · 全 20 幀重跑當唯一手段
+要: Kill 毒幀/偽尾 → 重 FT（多步小 yaw）→ 只重壞段 (A,B) mid 或 重跑壞 t 帶
+```
+
+| 碼 | 禁（HTFC 加） |
+|----|----------------|
+| **E-HTFC-01** | 無 FT_PASS 即正推 |
+| **E-HTFC-02** | 以 t% 數值代替視覺單調（不重排、不 Kill） |
+| **E-HTFC-03** | 把 P1 備錨當可改物依據 |
+| **E-HTFC-04** | 跳過 OTL0 稱「已追尾完成」 |
+
+---
+
+## 0.12.32.H 樣板（2026-10-28）
+
+| 項 | 值 |
+|----|-----|
+| F0 | `0b9d87d8-4219-4ee0-8d49-a1713aadc16f`（3/4 背 · 晶月杖） |
+| KILL 偽尾 | `74d9ae53`（E-01／未 Verify） |
+| FT_PASS | `41f91ded`（正面 ZOOM · 拓 PASS） |
+| FT_ALT | `740b95a6`（拓 PASS · P1 · 矛尖同向） |
+| 跑 | `DAMD20_FWD` · 先雙錨後極細正推 · 教訓：偽尾先 Kill 再追 |
+
+---
+
+## 0.12.32.I 一刀參數卡
+
+```
+MODE=HTFC
+F0=
+FT=                 # 必須 OTL0 PASS
+CONST_F0_SHORT=     # 物拓/握/Ω/δ
+N=16..24            # 極細：ε≈1/N
+PUSH=forward_t      # F0→FT
+PASTE_FACE=true
+VERIFY=topo,mono_delta,single
+OTL0=required
+FAIL=kill_segment_or_retarget_FT
+PROMPT=short_fingerprint_only
+```
+
+*END §0.12.32 · 首幀追尾 / HTFC · LOCK · asof 2026-10-28*
+
+
+---
+
+## §0.12.35 正衣先行 / 宏圖正衣棧（LOCK · asof 2026-10-28）
+
+> **用戶：** 試錯入憲 + 連動技能命名入憲  
+> **正名：正衣先行** · **ZYF** · 棧 **宏圖正衣棧 MSR-ZYF**  
+> **總程：宏圖層律 MSR**
+
+### 鐵則
+先另板一次生成對稱／材質正確的「正衣」；再合入姿與全圖。禁全圖 Soft 硬修對稱。正衣 role=lock／donor · 非 BASE。
+
+### 試錯結論（摘）
+另生 `8f09` 能對稱 → 證明應 **正衣先行**；全圖／SDS 獨航／OIDV／病毒母／CHEAT_B 均 FAIL。樣板：正衣 `410a93c1` · 合新 `7ea48628` · BASE `209e202d`。
+
+### 附件
+`ZHENGYI_FIRST_01235.md` · `ZHENGYI_FIRST_NAME.md` · `ZHENGYI_FIRST_DO_NOT_REPEAT.md` · `MACRO_SCALE_RHYTHM_MSR.md` · `MSR_ZYF_STACK_NAME.md`
+
+### 黑名單
+E-ZYF-01…05（全圖修對稱、無正衣合、正衣當 BASE、合時重雕、flip 代 Verify）
+
+---
+
+## §0.12.36 抽衣就正循環 · ETZ（LOCK · asof 2026-10-29）
+
+> **用戶：**「不,是那抽衣出來就正的循環試反.推憲」  
+> **正名：抽衣就正循環** · **碼 ETZ** · Extract-To-Zhengyi  
+> **地位：** LOCK · ZYF §0.12.35 上游 **製板循環**
+
+### 一句
+抽出衣語 → 洗到對稱／材質正 → 鎖正衣 → 合新；合失敗按環反推（E0/E1/E2/E3），**不在全圖 Soft 硬修**。
+
+### 循環
+```
+E0 EXTRACT  抽衣／自圖找衣語／世界一次空衣板 → DRAFT_GARM ≠ BASE
+E1 CORRECT  flipavg+GEN · N2R 洗 · 趨勢 donor → 正衣 role=zhengyi_lock
+E2 WEAR     S1 同姿換衣 | GOU densify→ECC→V5 | MSR L5 · 臉貼 BASE · OTL0
+E3 DIAG     臉毒→貼臉 · 網糊→ROI densify 臉α=0 · 衣歪→回 E1 · 姿漂→[0]=有人
+```
+
+### 與 ZYF
+| ZYF | ETZ |
+|-----|-----|
+| 先正衣再合 | 正衣從哪來、怎麼洗正、合壞怎麼反 |
+
+### 樣板鏈
+BASE `75f5f419` → 趨勢 `a4b74a57`/`e93f77ee` → 正衣 `090a9ce3` → S1 `7bd968c2` → 密網 `20099492` · 同姿成功因 `a6eca7c8`
+
+### 試錯（摘）
+正衣當[0]開新構＝姿漂；V5當換衣＝語不真；密網吃臉＝臉病毒；合後網<正衣＝全幅稀釋 → ROI densify only。
+
+### 附件
+`EXTRACT_TO_ZHENGYI_ETZ_01236.md` · `EXTRACT_TO_ZHENGYI_ETZ_NAME.md` · `EXTRACT_TO_ZHENGYI_ETZ_DO_NOT_REPEAT.md` · `CONSTITUTION_WRITE_01236_META.json`
+
+### 禁
+未抽衣全圖修 · 正衣當 BASE/姿主 · 合時重雕衣拓 · densify 帶臉 · 治標不返環
+
+*END §0.12.36 · ETZ · LOCK*
+
+
+---
+
+## §0.12.37 衣槽清掃毒（SLOT_CLEAR_DETOX / SCD · **LOCK** · asof 2026-10-29）
+
+> **用戶：** 入憲成掃毒功能 + 反殺舊底鎖毒死模 DONOR  
+> **正名：衣槽清掃毒** · **碼 SCD** · Slot-Clear Detox  
+> **別名：** 睡衣清槽 · 兩步換衣
+
+### 一句
+人槽（臉／姿／杖）硬鎖；衣槽先中性化（睡衣等 CLEAR_BUF）再 Ref 空正衣 donor 寫入——**掃舊甲殘語，反殺舊底鎖死模 donor**。
+
+### 鐵序
+```
+S0 PERSON → S1 CLEAR_BUF（中性衣）→ S2 Ref(清槽人, 正衣_empty) → S3 驗
+```
+
+### 反殺
+| 毒 | 反 |
+|----|-----|
+| 舊底／舊甲佔衣槽 · 新 donor 寫不進 | 強制 S1 清槽再 S2 |
+| 甲→正衣一步語衝突 | 兩步 |
+| 失敗改硬貼臉 | 禁 · 掃在衣槽 |
+
+### 附件
+`SLOT_CLEAR_DETOX_SCD_01237.md` · `SLOT_CLEAR_DETOX_SCD_NAME.md` · `SLOT_CLEAR_DETOX_DO_NOT_REPEAT.md` · `CLOTHES_SWAP_WHY_PAJAMA.md`
+
+### 黑名單
+E-SCD-01…06（一步硬衝、複雜清槽、丟杖、有人 donor、貼臉當掃、BASE 衣不可洗）
+
+*END §0.12.37 · 衣槽清掃毒 / SCD · LOCK*
+
+
+---
+
+## §0.12.38 宏圖密網總表（MSI · **LOCK** · asof 2026-10-29）
+
+> **用戶：** 連動技能＋總技能入憲 · 失敗試錯做生成備註  
+> **正名：宏圖密網總表** · **碼 MSI**
+
+### 總技能
+**MSR** 宏圖層律 · **GOU_MESH** 勾勾密網 · **GOU-B 反構模底** · **ZYF** 正衣先行 · **MSR-ZYF** 棧
+
+### 連動（摘）
+OTL0 · RML · GOU T0–12 · N2R · WNK · V5 · WHOLE · GCS · PIXEL · S1HL · VIRUS禁 · OIDV禁 · SDS=MAP · SCD · ETZ · ZPS  
+（HTFC／DAMD＝時間軸鄰 · 非單幀密網主幹）
+
+### 生成備註
+失敗碼 **F-MSR-*** · **F-GOU-*** · **F-OTL/FACE/CLO/ROUTE-*** → 見 `MSR_GOU_SKILL_INVENTORY_01238.md` §E  
+生成前檢查卡 §F · 黑名單 `MSR_GOU_FAIL_NOTES_DO_NOT_REPEAT.md`
+
+*END §0.12.38 · MSI · LOCK*
+
+## §0.12.37.I 姿漂（F-POSE）· 掛 SCD/ZPS
+- 掃衣必須姿＝姿主 · 見 SLOT_CLEAR_DETOX_SCD_01237.md §I
+- F-POSE-01 姿漂 · F-POSE-02 兩軌混比

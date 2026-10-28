@@ -32,3 +32,9 @@
 - 單幀密網走 HTFC
 - SDS 獨航
 - 無正衣硬合對稱
+
+## 姿 · F-POSE（掃衣／ZPS／SCD）
+- **F-POSE-01 姿漂**：換衣後姿／構／杖／頭變 → 人槽未硬鎖 · prompt 必寫 EXACT pose crop staff head
+- **F-POSE-02 兩軌混比**：GOU-B 故意新構（走）≠ SCD/ZPS 保姿掃衣（舉）· 勿當同一失敗
+- 姿漂≠正衣毒 · 勿 Soft 全圖拉姿
+- 樣板：60a→91e9 舉杖鎖 · bf2e→1e1b 走鎖 · 禁 9486 當舉杖結果

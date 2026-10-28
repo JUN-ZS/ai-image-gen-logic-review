@@ -4627,29 +4627,6 @@ E-SCD-01…06（一步硬衝、複雜清槽、丟杖、有人 donor、貼臉當�
 
 *END §0.12.37 · 衣槽清掃毒 / SCD · LOCK*
 
-### §0.12.37 補 · 試換成功樣板 ZPS（asof 2026-10-29）
-正衣 `090a` × 人 `355e` → 直換 ★`d026` 成功（葉紋轉移·人槽鎖）。  
-donor 已強 → **直換優先**；舊網鎖死才 SCD。附件：`ZHENGYI_PERSON_SWAP_ZPS_SAMPLE.md`
-### 鐵序
-```
-S0 PERSON → S1 CLEAR_BUF（中性衣）→ S2 Ref(清槽人, 正衣_empty) → S3 驗
-```
-
-### 反殺
-| 毒 | 反 |
-|----|-----|
-| 舊底／舊甲佔衣槽 · 新 donor 寫不進 | 強制 S1 清槽再 S2 |
-| 甲→正衣一步語衝突 | 兩步 |
-| 失敗改硬貼臉 | 禁 · 掃在衣槽 |
-
-### 附件
-`SLOT_CLEAR_DETOX_SCD_01237.md` · `SLOT_CLEAR_DETOX_SCD_NAME.md` · `SLOT_CLEAR_DETOX_DO_NOT_REPEAT.md` · `CLOTHES_SWAP_WHY_PAJAMA.md`
-
-### 黑名單
-E-SCD-01…06（一步硬衝、複雜清槽、丟杖、有人 donor、貼臉當掃、BASE 衣不可洗）
-
-*END §0.12.37 · 衣槽清掃毒 / SCD · LOCK*
-
 
 ---
 
@@ -4670,3 +4647,7 @@ OTL0 · RML · GOU T0–12 · N2R · WNK · V5 · WHOLE · GCS · PIXEL · S1HL 
 生成前檢查卡 §F · 黑名單 `MSR_GOU_FAIL_NOTES_DO_NOT_REPEAT.md`
 
 *END §0.12.38 · MSI · LOCK*
+
+## §0.12.37.I 姿漂（F-POSE）· 掛 SCD/ZPS
+- 掃衣必須姿＝姿主 · 見 SLOT_CLEAR_DETOX_SCD_01237.md §I
+- F-POSE-01 姿漂 · F-POSE-02 兩軌混比
