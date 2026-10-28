@@ -1,0 +1,13 @@
+{
+  "type": "VIDEO_REF_NOT_I2V",
+  "method": "imagine_reference_to_video (不用 I2V)",
+  "ref_still": "cce4ad3a-3ac9-425b-8057-459f0682c211",
+  "video_asset": "b0859a06-1cd8-4927-9e67-d86c665e9aa1",
+  "duration_s": 10,
+  "beats": [
+    "t≈0.0001s: 球在被打的光下，無損，輕震",
+    "中: 武器另一邊擊球；外型維持 + 描邊發光",
+    "後: 大破碎"
+  ],
+  "sha256": "2e1edf9e36026a32692fa57e848e5fa91ba1ef36479d3c11a7e665f2a7b76b85"
+}

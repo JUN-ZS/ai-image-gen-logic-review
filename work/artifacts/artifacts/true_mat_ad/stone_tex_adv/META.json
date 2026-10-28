@@ -1,0 +1,14 @@
+{
+  "asof": "2026-10-26T18:09:56Z",
+  "L": "L-57d2f32cbf14",
+  "correct_ref": "495fff5d = REAL_MAT_V3_2304 exact",
+  "base": "REAL_MAT_V3_FULL",
+  "rejected_wrong_ref": "a9de/2314 soft i2i",
+  "method": "structure-lock multi-scale + mineral grit flat-only + DETAIL6 HF residual; no plate paste",
+  "metrics": {
+    "lap_new": 2695.1,
+    "glyph_new": 2660.7,
+    "mean_abs": 3.31,
+    "pct_gt8": 11.3
+  }
+}

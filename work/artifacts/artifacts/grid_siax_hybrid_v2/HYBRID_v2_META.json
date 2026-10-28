@@ -1,0 +1,22 @@
+{
+  "asof": "2026-10-26T13:52:22Z",
+  "retune": "face higher / text extreme high",
+  "GAINS": {
+    "face": 0.62,
+    "metal": 0.8,
+    "text": 0.98,
+    "fire": 0.72,
+    "flat": 0.45
+  },
+  "SKIN_SUPPRESS": 0.45,
+  "text_roi_push": "+0.35 M + conf/det floor",
+  "mix_mean": 0.459969733442579,
+  "mix_face": 0.22935756295919418,
+  "mix_text": 0.9800001680850983,
+  "prev_v1": {
+    "face": 0.11,
+    "text": 0.38
+  },
+  "L": "L-46bec424e96f",
+  "constitution": "NOT written"
+}

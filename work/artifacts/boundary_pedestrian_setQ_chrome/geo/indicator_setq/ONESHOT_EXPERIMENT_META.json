@@ -1,0 +1,48 @@
+{
+  "experiment": "ONESHOT scene+text vs 2PASS vector→diegetic",
+  "set": "SET-Q",
+  "method": "GEO.T · H2",
+  "L": "L-dfa1b1dabb57",
+  "oneshot_assets": {
+    "PRE": "a4c066d2-91b5-4848-8885-e8e33e12dc9b",
+    "MID": "efe4e95e-6dee-408f-8a6c-c54f2c6380b1",
+    "POST": "ea514dc8-8aaf-4735-b92f-b5e36951d2d9"
+  },
+  "twopass_assets": {
+    "PRE": "279a7d16-6311-404c-890c-7139fccf0f7b",
+    "MID": "7457164a-8374-47ca-8a94-a7d06ed8bea8",
+    "POST": "f1b7a402-f041-48d0-8a54-04d46a7bfa53"
+  },
+  "ocr_score": {
+    "ONESHOT_PRE": {
+      "effect": "BEST",
+      "strings": "mostly OK (TANGENT/GAP/bottom); missing 打擊面=T-END detail"
+    },
+    "ONESHOT_MID": {
+      "effect": "HIGH",
+      "strings": "FAIL M-END drift on strike/recv/banner"
+    },
+    "ONESHOT_POST": {
+      "effect": "BEST visual HOT",
+      "strings": "partial — C-T-END / C-TANGENT drift; F_n OUT excellent"
+    },
+    "2PASS_MID": {
+      "effect": "HIGH",
+      "strings": "PASS exact T-END"
+    },
+    "2PASS_POST": {
+      "effect": "HIGH",
+      "strings": "PASS exact + HOT"
+    },
+    "2PASS_PRE": {
+      "effect": "MED",
+      "strings": "PASS with residual M ghost"
+    }
+  },
+  "conclusion": {
+    "best_visual_effect": "ONESHOT (scene+text co-generated) — lines/glyphs fuse with chrome/fire lighting",
+    "best_string_accuracy": "2PASS (TEXT_SET vector skeleton → diegetic) or hybrid",
+    "recommended_default": "HYBRID: ONESHOT for hero frame look, then TEXT_SET exact glyph residual only on failed tokens (T-END), OR ONESHOT + OCR gate → if M-END FAIL fall back 2PASS",
+    "rule_proposal": "ST3.G mode ONESHOT allowed when OCR gate passes; else 2PASS. PRE often ONESHOT OK; MID T-END high risk in ONESHOT."
+  }
+}

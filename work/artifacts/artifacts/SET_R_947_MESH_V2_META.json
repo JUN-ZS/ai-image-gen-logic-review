@@ -1,0 +1,46 @@
+{
+  "asof": "2026-10-27T07:37:04Z",
+  "L": "L-4d94fa0ce193",
+  "source": "947cf5b2 NATIVE",
+  "fix": "V2 GEN-dominant armor stitch (not structure-lock cheat). α TORSO0.92 CHEST0.90 SHOULDER0.55",
+  "stats": {
+    "TORSO": {
+      "cc": 0.8657,
+      "amax": 0.92,
+      "mad_vs_base": 10.72,
+      "mad_vs_gen": 9.94,
+      "mad_upper_vs_base": 10.79,
+      "lap": 1650.8,
+      "alpha_mean": 0.5414
+    },
+    "CHEST": {
+      "cc": 0.6972,
+      "amax": 0.9,
+      "mad_vs_base": 14.08,
+      "mad_vs_gen": 15.17,
+      "mad_upper_vs_base": 11.91,
+      "lap": 1966.6,
+      "alpha_mean": 0.4531
+    },
+    "SHOULDER": {
+      "cc": 0.6863,
+      "amax": 0.55,
+      "mad_vs_base": 13.66,
+      "mad_vs_gen": 17.37,
+      "mad_upper_vs_base": 8.71,
+      "lap": 1127.7,
+      "alpha_mean": 0.3031
+    }
+  },
+  "bytes": 30112628,
+  "size": [
+    4608,
+    6912
+  ],
+  "gens": {
+    "TORSO": "99563ca2",
+    "CHEST": "8058bf3b",
+    "SHOULDER": "80aecc41"
+  },
+  "weapon_face": "hard lock from native"
+}

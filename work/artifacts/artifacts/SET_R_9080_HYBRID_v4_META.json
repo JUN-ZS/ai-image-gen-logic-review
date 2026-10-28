@@ -1,0 +1,67 @@
+{
+  "asof": "2026-10-26T14:09:43Z",
+  "version": "v4",
+  "user_request": "face gain 0.5, 皮膚壓制+conf門檻提高, 字邊極清",
+  "GAINS": {
+    "face": 0.5,
+    "metal": 0.8,
+    "text": 0.98,
+    "fire": 0.72,
+    "flat": 0.45
+  },
+  "SKIN_SUPPRESS": 0.8,
+  "CONF_MIN": 0.4,
+  "TEXT_EDGE_BOOST": true,
+  "mix_face": 0.1490660011768341,
+  "mix_text": 0.9295252710580826,
+  "mix_mean": 0.4258598951356752,
+  "proof_face": [
+    {
+      "name": "Lan vs v4 face",
+      "psnr": 33.84,
+      "mean_abs": 3.334,
+      "max_abs": 61.0,
+      "pct_gt8": 8.8
+    },
+    {
+      "name": "v3 vs v4 face",
+      "psnr": 28.47,
+      "mean_abs": 5.557,
+      "max_abs": 137.0,
+      "pct_gt8": 18.38
+    },
+    {
+      "name": "v4 vs Siax face",
+      "psnr": 24.85,
+      "mean_abs": 8.296,
+      "max_abs": 205.0,
+      "pct_gt8": 29.87
+    }
+  ],
+  "proof_text": [
+    {
+      "name": "Lan vs v4 text",
+      "psnr": 21.23,
+      "mean_abs": 10.902,
+      "max_abs": 219.0,
+      "pct_gt8": 30.29
+    },
+    {
+      "name": "v3 vs v4 text",
+      "psnr": 24.96,
+      "mean_abs": 6.691,
+      "max_abs": 167.0,
+      "pct_gt8": 19.02
+    },
+    {
+      "name": "v4 vs Siax text",
+      "psnr": 26.09,
+      "mean_abs": 6.025,
+      "max_abs": 159.0,
+      "pct_gt8": 16.87
+    }
+  ],
+  "constitution_ref": "§0.12.15 PROOF gate",
+  "L": "L-80c0b312df08",
+  "constitution_written_this_run": false
+}

@@ -1,0 +1,647 @@
+{
+  "pipeline": "GRID24_FACE_REF",
+  "L0": "e51cdaa3-af68-4fe7-8487-bbd4b939c267",
+  "IP_HD": "9c2dbc34-e1b4-4056-985f-68066a789950",
+  "STD": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "overlap": 0.1,
+  "layout": "6x4",
+  "W0": 1792,
+  "H0": 1008,
+  "FACE_HEAD": [
+    580,
+    52,
+    844,
+    317
+  ],
+  "cells": [
+    {
+      "id": "r0c0",
+      "r": 0,
+      "c": 0,
+      "core": [
+        0,
+        0,
+        298,
+        252
+      ],
+      "box": [
+        0,
+        0,
+        327,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        277
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r0c0.jpg"
+    },
+    {
+      "id": "r0c1",
+      "r": 0,
+      "c": 1,
+      "core": [
+        298,
+        0,
+        597,
+        252
+      ],
+      "box": [
+        268,
+        0,
+        626,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.010588306476009923,
+      "face_cover": 0.03260869565217391,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        277
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r0c1.jpg"
+    },
+    {
+      "id": "r0c2",
+      "r": 0,
+      "c": 2,
+      "core": [
+        597,
+        0,
+        896,
+        252
+      ],
+      "box": [
+        567,
+        0,
+        925,
+        277
+      ],
+      "face_dom": true,
+      "face_frac": 0.3247080652643043,
+      "face_cover": 1.0,
+      "mode": "FACE_REF",
+      "size": [
+        358,
+        277
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r0c2.jpg"
+    },
+    {
+      "id": "r0c3",
+      "r": 0,
+      "c": 3,
+      "core": [
+        896,
+        0,
+        1194,
+        252
+      ],
+      "box": [
+        866,
+        0,
+        1223,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        277
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r0c3.jpg"
+    },
+    {
+      "id": "r0c4",
+      "r": 0,
+      "c": 4,
+      "core": [
+        1194,
+        0,
+        1493,
+        252
+      ],
+      "box": [
+        1164,
+        0,
+        1522,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        277
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r0c4.jpg"
+    },
+    {
+      "id": "r0c5",
+      "r": 0,
+      "c": 5,
+      "core": [
+        1493,
+        0,
+        1792,
+        252
+      ],
+      "box": [
+        1463,
+        0,
+        1792,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        329,
+        277
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r0c5.jpg"
+    },
+    {
+      "id": "r1c0",
+      "r": 1,
+      "c": 0,
+      "core": [
+        0,
+        252,
+        298,
+        504
+      ],
+      "box": [
+        0,
+        226,
+        327,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r1c0.jpg"
+    },
+    {
+      "id": "r1c1",
+      "r": 1,
+      "c": 1,
+      "core": [
+        298,
+        252,
+        597,
+        504
+      ],
+      "box": [
+        268,
+        226,
+        626,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0017146966093257371,
+      "face_cover": 0.00577639751552795,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r1c1.jpg"
+    },
+    {
+      "id": "r1c2",
+      "r": 1,
+      "c": 2,
+      "core": [
+        597,
+        252,
+        896,
+        504
+      ],
+      "box": [
+        567,
+        226,
+        925,
+        529
+      ],
+      "face_dom": true,
+      "face_frac": 0.05258402935265594,
+      "face_cover": 0.17714285714285713,
+      "mode": "FACE_REF",
+      "size": [
+        358,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r1c2.jpg"
+    },
+    {
+      "id": "r1c3",
+      "r": 1,
+      "c": 3,
+      "core": [
+        896,
+        252,
+        1194,
+        504
+      ],
+      "box": [
+        866,
+        226,
+        1223,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r1c3.jpg"
+    },
+    {
+      "id": "r1c4",
+      "r": 1,
+      "c": 4,
+      "core": [
+        1194,
+        252,
+        1493,
+        504
+      ],
+      "box": [
+        1164,
+        226,
+        1522,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r1c4.jpg"
+    },
+    {
+      "id": "r1c5",
+      "r": 1,
+      "c": 5,
+      "core": [
+        1493,
+        252,
+        1792,
+        504
+      ],
+      "box": [
+        1463,
+        226,
+        1792,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        329,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r1c5.jpg"
+    },
+    {
+      "id": "r2c0",
+      "r": 2,
+      "c": 0,
+      "core": [
+        0,
+        504,
+        298,
+        756
+      ],
+      "box": [
+        0,
+        478,
+        327,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r2c0.jpg"
+    },
+    {
+      "id": "r2c1",
+      "r": 2,
+      "c": 1,
+      "core": [
+        298,
+        504,
+        597,
+        756
+      ],
+      "box": [
+        268,
+        478,
+        626,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r2c1.jpg"
+    },
+    {
+      "id": "r2c2",
+      "r": 2,
+      "c": 2,
+      "core": [
+        597,
+        504,
+        896,
+        756
+      ],
+      "box": [
+        567,
+        478,
+        925,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r2c2.jpg"
+    },
+    {
+      "id": "r2c3",
+      "r": 2,
+      "c": 3,
+      "core": [
+        896,
+        504,
+        1194,
+        756
+      ],
+      "box": [
+        866,
+        478,
+        1223,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r2c3.jpg"
+    },
+    {
+      "id": "r2c4",
+      "r": 2,
+      "c": 4,
+      "core": [
+        1194,
+        504,
+        1493,
+        756
+      ],
+      "box": [
+        1164,
+        478,
+        1522,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r2c4.jpg"
+    },
+    {
+      "id": "r2c5",
+      "r": 2,
+      "c": 5,
+      "core": [
+        1493,
+        504,
+        1792,
+        756
+      ],
+      "box": [
+        1463,
+        478,
+        1792,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        329,
+        303
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r2c5.jpg"
+    },
+    {
+      "id": "r3c0",
+      "r": 3,
+      "c": 0,
+      "core": [
+        0,
+        756,
+        298,
+        1008
+      ],
+      "box": [
+        0,
+        730,
+        327,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        278
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r3c0.jpg"
+    },
+    {
+      "id": "r3c1",
+      "r": 3,
+      "c": 1,
+      "core": [
+        298,
+        756,
+        597,
+        1008
+      ],
+      "box": [
+        268,
+        730,
+        626,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        278
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r3c1.jpg"
+    },
+    {
+      "id": "r3c2",
+      "r": 3,
+      "c": 2,
+      "core": [
+        597,
+        756,
+        896,
+        1008
+      ],
+      "box": [
+        567,
+        730,
+        925,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        278
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r3c2.jpg"
+    },
+    {
+      "id": "r3c3",
+      "r": 3,
+      "c": 3,
+      "core": [
+        896,
+        756,
+        1194,
+        1008
+      ],
+      "box": [
+        866,
+        730,
+        1223,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        278
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r3c3.jpg"
+    },
+    {
+      "id": "r3c4",
+      "r": 3,
+      "c": 4,
+      "core": [
+        1194,
+        756,
+        1493,
+        1008
+      ],
+      "box": [
+        1164,
+        730,
+        1522,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        358,
+        278
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r3c4.jpg"
+    },
+    {
+      "id": "r3c5",
+      "r": 3,
+      "c": 5,
+      "core": [
+        1493,
+        756,
+        1792,
+        1008
+      ],
+      "box": [
+        1463,
+        730,
+        1792,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        329,
+        278
+      ],
+      "path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/r3c5.jpg"
+    }
+  ],
+  "face_ref_ids": [
+    "r0c2",
+    "r1c2"
+  ],
+  "FACE_FAT_path": "boundary_pedestrian_setR_obsidian/grid24_face/1_cells/FACE_FAT.jpg"
+}

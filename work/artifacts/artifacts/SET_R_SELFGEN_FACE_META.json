@@ -1,0 +1,17 @@
+{
+  "asof": "2026-10-27T18:34:43Z",
+  "user": "不要用舊圖,用這張自己全對位再生(參考)正確光",
+  "base": "25541d36≈N2LS 本圖",
+  "gen": "239d7cd1 self face i2i",
+  "method": "self-crop → image_to_image same-comp light bake → ECC paste; NO old 2bef",
+  "ecc": 0.9773444468668046,
+  "mad": 6.317253589630127,
+  "box": [
+    1532,
+    542,
+    3075,
+    2153
+  ],
+  "out_mb": 33.81,
+  "L": "L-7b01d48da896"
+}

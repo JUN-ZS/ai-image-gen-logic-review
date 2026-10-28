@@ -1,0 +1,22 @@
+{
+  "pipeline": "GRID24_FACE_REF",
+  "variant": "cell_FACE_REF → FACE_FAT HD → model facepass on M1",
+  "L0_base": "e51cdaa3-af68-4fe7-8487-bbd4b939c267",
+  "user": "不行,GRID FACE",
+  "STD": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "IP_HD": "9c2dbc34-e1b4-4056-985f-68066a789950",
+  "hd_FACE_FAT": "c89143a0-6b5e-4fa5-915f-0daed105e599",
+  "hd_r0c2": "569e285b-fd05-4a51-8200-26e32809ecee",
+  "mid_asset": "63fe27ba-3c2c-408a-a2f1-ac2944ad8828",
+  "mid_alt": "b23b541a-50ea-4ff9-89fc-9921c91f8408",
+  "face_lap_before": 643.4654812664429,
+  "face_lap_after": 621.8957634037921,
+  "L": "L-3d0fd02c745d",
+  "sha256": "3d0fd02c745d2ce4bbf36284ce85019e00d71467ffcfb7bb0451607a86ab6df3",
+  "method": "GEO.T · H2",
+  "weapon": "W0",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2",
+  "text": "NONE",
+  "person_cut_source": "MID_ONLY",
+  "grid": "6x4 overlap0.1 face_dom=r0c2 + FACE_FAT"
+}

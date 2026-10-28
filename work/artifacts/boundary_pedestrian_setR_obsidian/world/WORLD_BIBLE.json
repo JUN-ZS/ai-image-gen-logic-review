@@ -1,0 +1,41 @@
+{
+  "set": "SET-R",
+  "world_code": "OBSIDIAN_ORBIT",
+  "title_zh": "黑曜軌道 · 邊界行人",
+  "title_en": "OBSIDIAN ORBIT · THE BOUNDARY WALKER",
+  "concept": {
+    "one_liner": "破碎的環形黑曜石天體軌道，重力殘線把水銀與星砂吊成靜止瀑布；生命球是懸浮在軌道缺口的玻璃星核。",
+    "palette": [
+      "#0B0E14",
+      "#1A1F2E",
+      "#4B6BFB-void-blue",
+      "#C0C8D8-mercury",
+      "#E8F0FF-starfrost",
+      "#8B5A2B-bronze-edge"
+    ],
+    "architecture": [
+      "巨大斷裂的黑曜石環（orbital ring fragments）",
+      "垂直靜止的水銀瀑布（mercury still-fall）",
+      "漂浮的星砂台階與薄刃橋",
+      "地平線是彎曲的空洞星空，非洞穴"
+    ],
+    "physics_mood": "低重力 · 時間黏滯 · 接觸瞬間會折彎附近光弧",
+    "not": [
+      "chrome cave clone",
+      "generic cyber city",
+      "forest",
+      "plain studio only for world"
+    ]
+  },
+  "method_default": "GEO.T · H2",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "stages_plan": [
+    "ST0_WORLD",
+    "ST1_IP_NO_BG_MULTI",
+    "ST2_FULLFRAME",
+    "ST3_G",
+    "ST4",
+    "ST5",
+    "ST_G"
+  ]
+}

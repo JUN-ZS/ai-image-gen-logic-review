@@ -1,0 +1,67 @@
+{
+  "asof": "2026-10-26T14:44:41Z",
+  "trial": "D2v2 local-percentile iris + D7 hist-match forced HF",
+  "proof": {
+    "D2_iris_n": 88976,
+    "D2_sclera_n": 47260,
+    "D2_pupil_n": 66381,
+    "D2_overlap_iris_ew": 0,
+    "D2_ew_ST": {
+      "name": "ew→ST",
+      "n": 47713,
+      "mean_abs": 0.18,
+      "pct_gt8": 0.88
+    },
+    "D2_iris_vs_ST": {
+      "name": "iris→ST",
+      "n": 88976,
+      "mean_abs": 10.618,
+      "pct_gt8": 54.36
+    },
+    "D2_iris_vs_base": {
+      "name": "iris→base",
+      "n": 88976,
+      "mean_abs": 4.758,
+      "pct_gt8": 16.99
+    },
+    "D2_iris_vs_a8b": {
+      "name": "iris→a8b",
+      "n": 83125,
+      "mean_abs": 67.2,
+      "pct_gt8": 97.96
+    },
+    "D7_core_vs_ST": {
+      "name": "core→ST",
+      "n": 1077803,
+      "mean_abs": 7.926,
+      "pct_gt8": 30.55
+    },
+    "D7_core_vs_base": {
+      "name": "core→base",
+      "n": 1077803,
+      "mean_abs": 3.37,
+      "pct_gt8": 10.77
+    },
+    "D7_core_vs_a8b": {
+      "name": "core→a8b",
+      "n": 1015832,
+      "mean_abs": 58.905,
+      "pct_gt8": 90.58
+    },
+    "D7_remeasure": {
+      "mean_abs": 8.044,
+      "pct_gt8": 31.02
+    },
+    "D7_vs_base_remeasure": {
+      "mean_abs": 3.261,
+      "pct_gt8": 10.15
+    },
+    "D7_vs_a8b_remeasure": {
+      "mean_abs": 60.218
+    },
+    "M7_mean": 0.32849299907684326,
+    "conf_mean": 0.28812655806541443
+  },
+  "ALPHA": 0.85,
+  "L": "L-59a34d438a0c"
+}

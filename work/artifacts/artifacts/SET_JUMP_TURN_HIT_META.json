@@ -1,0 +1,16 @@
+{
+  "type": "VIDEO_REF",
+  "action": "跳起轉身打球",
+  "refs": [
+    "802401c9 standing 望球",
+    "cce4ad3a aerial impact"
+  ],
+  "video": "e145de48-c0d5-473c-8e38-c2685f15bf37",
+  "beats": [
+    "站姿蓄力",
+    "跳起離台",
+    "空中轉身",
+    "揮槌擊球火花"
+  ],
+  "sha256": "3890454faa1909cfc88e386bad1a13987259c99ef5939e90c1bc3670d61bb6ed"
+}

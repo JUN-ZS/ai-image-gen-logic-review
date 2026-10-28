@@ -1,0 +1,51 @@
+{
+  "asof": "2026-10-26T20:06:53Z",
+  "trial": "CLOTHES_ONLY_MERGE",
+  "user": "先只合併衣服看圖,不改武器",
+  "base": "SET_R_SIAX_CHEST_MESH_HD",
+  "armor_gens": [
+    "08d603d1 denser chest",
+    "852cbf7a shoulder",
+    "e1aa24a9 skirt"
+  ],
+  "weapon": "HARD LOCK from base x<0.42 — no weapon GEN",
+  "stats": {
+    "chest": {
+      "cc": 0.363,
+      "M": 0.736,
+      "d": 26.8,
+      "box": [
+        630,
+        159,
+        1575,
+        1095
+      ]
+    },
+    "shoulder": {
+      "cc": 0.241,
+      "M": 0.787,
+      "d": 30.5,
+      "box": [
+        911,
+        239,
+        1641,
+        1095
+      ]
+    },
+    "skirt": {
+      "cc": 0.172,
+      "M": 0.701,
+      "d": 30.6,
+      "box": [
+        630,
+        1035,
+        1624,
+        1972
+      ]
+    }
+  },
+  "delta_weapon": 0.3886571228504181,
+  "delta_clothes": 21.50404930114746,
+  "L": "L-59ab2b699b6e",
+  "mb": 2.44
+}

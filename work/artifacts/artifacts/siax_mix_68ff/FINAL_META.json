@@ -1,0 +1,24 @@
+{
+  "asof": "2026-10-27T21:41:18Z",
+  "src": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+  "pipeline": "SIAX4x + HYBRID_strong_face + PATH1E plate→ECC §0.12.15/17",
+  "size": [
+    4608,
+    6912
+  ],
+  "mb": 28.49,
+  "L": "L-4c1252295f68",
+  "ECC_cc": 0.3545441812244045,
+  "face_roi_4x": [
+    2000,
+    1040,
+    3040,
+    2080
+  ],
+  "core_mean_abs_vs_plate": 25.737,
+  "core_mean_abs_vs_hybrid": 84.78,
+  "g_face_peak": 0.97,
+  "plate": "1a52a607-0154-43d0-9904-041446ea2730",
+  "a8b": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "hybrid_L": "L-c775c998b66d"
+}

@@ -1,0 +1,40 @@
+{
+  "set": "SET-O",
+  "pipeline": "IP_FIRST → PATH1E_HD → PERSON+SCENE MID",
+  "locked": true,
+  "asof": "2026-10-25T10:04:21Z",
+  "steps": [
+    "S0 refs original face+body",
+    "S0.5 IP no-bg studio plate",
+    "S0.6 PATH1E face HD on IP",
+    "S0.7 transparent cutout",
+    "S1 LOCK MID person+scene from IP_HD",
+    "S1b PATH1E face hard paste on MID"
+  ],
+  "ip": {
+    "raw_studio": "ca76c7e4-8c4b-47e7-99af-9829dffaa5c6",
+    "hd_path1e": "00731656-c158-4e0f-a5f7-9a2979578a2a",
+    "cut_raw": "932cbbef-7c5c-43bd-b122-415e1f0081a6",
+    "cut_hd": "ce87c6e0-d8aa-4e26-8802-bb1e6e7ee8eb",
+    "face_ref": "8dcdc006-dae3-46b6-a469-785ecd56580f",
+    "face_hd_ref": "7f4b6f3b-02cf-4804-a563-0cbffa4ef010",
+    "body_ref": "9dde1cbf-3523-4404-9980-169a5df8e3ff"
+  },
+  "mid_asset_id": "caf4f6d7-b293-4c35-9b30-d128f1ea00fd",
+  "mid_path1e_file": "boundary_pedestrian_setO_jade/chain_clean/MID_CLEAN_v2_PATH1E_FACE.jpg",
+  "mid_sha256": "1ca33c5e3c15b82c964f85bdebd7bb71a783bc88236483812224d474396997ba",
+  "L": "L-1ca33c5e3c15",
+  "world_code": "ABYSSAL_JADE",
+  "weapon_topology": "GEO.T single T-hammer",
+  "contact_state_mid": "H2 first flat contact",
+  "person_cut_source": "IP_HD_THEN_MID",
+  "path1e_face_ecc": 0.26762726983577073,
+  "path1e_face_roi": [
+    501,
+    80,
+    860,
+    423
+  ],
+  "pre_post_allowed": false,
+  "note": "PRE/POST not generated yet — only after this FRAME_LOCK.locked=true"
+}

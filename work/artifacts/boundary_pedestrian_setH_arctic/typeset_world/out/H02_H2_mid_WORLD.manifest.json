@@ -1,0 +1,128 @@
+{
+  "frame": "mid",
+  "method_id": "GEO.T · H2",
+  "loop_id": "L-7ab89829778f",
+  "world": "ARCTIC_AURORA_ICE",
+  "heroine_id": "BW_HEROINE_SET_H_V1",
+  "typeset": "world_integrated_v2",
+  "source_sha256": "7ab89829778f0a2280cfd7156d42107cd15042a0f80588d32fe3ac11ec784b24",
+  "physics_binding": [
+    {
+      "k": "title_zh",
+      "text": "邊界行人",
+      "x": 0.62,
+      "y": 0.16,
+      "size": 52,
+      "weight": 900,
+      "rotate": 5,
+      "role": "title"
+    },
+    {
+      "k": "title_en",
+      "text": "THE BOUNDARY WALKER",
+      "x": 0.63,
+      "y": 0.22,
+      "size": 15,
+      "weight": 700,
+      "rotate": 4,
+      "role": "chip"
+    },
+    {
+      "k": "method",
+      "text": "GEO.T · H2",
+      "x": 0.58,
+      "y": 0.48,
+      "size": 34,
+      "weight": 900,
+      "rotate": -6,
+      "role": "method"
+    },
+    {
+      "k": "phase",
+      "text": "FIRST_CONTACT",
+      "x": 0.55,
+      "y": 0.38,
+      "size": 26,
+      "weight": 900,
+      "rotate": -5,
+      "role": "method"
+    },
+    {
+      "k": "gap",
+      "text": "GAP = 0",
+      "x": 0.68,
+      "y": 0.58,
+      "size": 30,
+      "weight": 900,
+      "rotate": 8,
+      "role": "title"
+    },
+    {
+      "k": "nv",
+      "text": "n · v = 1",
+      "x": 0.7,
+      "y": 0.66,
+      "size": 22,
+      "weight": 800,
+      "rotate": 7,
+      "role": "chip"
+    },
+    {
+      "k": "fn",
+      "text": "F_n  ·  luminous shock-ring",
+      "x": 0.52,
+      "y": 0.74,
+      "size": 17,
+      "weight": 700,
+      "rotate": 3,
+      "role": "chip"
+    },
+    {
+      "k": "strike",
+      "text": "STRIKE: END_FACE ∥  RECV: TANGENT",
+      "x": 0.05,
+      "y": 0.9,
+      "size": 16,
+      "weight": 700,
+      "rotate": 0,
+      "role": "chip"
+    },
+    {
+      "k": "crack",
+      "text": "Crack ≫ 0  (onset)",
+      "x": 0.08,
+      "y": 0.18,
+      "size": 20,
+      "weight": 800,
+      "rotate": -7,
+      "role": "chip"
+    },
+    {
+      "k": "reject",
+      "text": "REJECT: CHEEK · HANDLE · SHAFT",
+      "x": 0.05,
+      "y": 0.96,
+      "size": 14,
+      "weight": 650,
+      "rotate": 0,
+      "role": "chip"
+    },
+    {
+      "k": "loop",
+      "text": "LOOP L-7ab89829778f  ·  WORLD ARCTIC_AURORA_ICE",
+      "x": 0.35,
+      "y": 0.08,
+      "size": 13,
+      "weight": 700,
+      "rotate": 0,
+      "role": "chip"
+    }
+  ],
+  "no_plate": true,
+  "forbidden": [
+    "TRY_count",
+    "REVIEW PENDING",
+    "solid_backdrop_panel"
+  ],
+  "artwork_sha256": "5d5852e7440e4af557fc1d209913d9adcac0a36e431a5c118efeeba2ab344b37"
+}

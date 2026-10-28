@@ -1,0 +1,80 @@
+{
+  "asof": "2026-10-26T18:03:04Z",
+  "trial": "STONE_FIX_v2_structure_lock_HF",
+  "L": "L-845aa44b3092",
+  "diagnosis": {
+    "wrong_plate": "a9de/2314 is 2000x992 smaller than src 2949x1452 — upscale kills detail",
+    "wrong_upscale": "2x hybrid then down invented USM plastic; plate_raw→box lap 3280→871",
+    "misalign": "ncc≈0.64 glyph drift",
+    "texture": "i2i softens glyph edges; content-paste + USM ≠ real mineral grain"
+  },
+  "method": "ECC align + LP100% from src + plate HF only on flat stone + glyph hard src + mild self-detail",
+  "scores": [
+    {
+      "name": "e52b",
+      "path": "/workspace/artifacts/imagine_images/e52b18ef-2691-494b-acb4-d0cd2b70bd30.jpg",
+      "ncc0": 0.6928613781929016,
+      "ncc_ecc": 0.8817132115364075,
+      "ecc_cc": 0.8818091150779855,
+      "lap_raw": 2315.0266977508954,
+      "lap_to_src": 615.5825233457695,
+      "lap_ecc": 615.7155800219862,
+      "glyph_ecc": 909.1690863660634
+    },
+    {
+      "name": "v2a",
+      "path": "/workspace/artifacts/imagine_images/9bfa59c4-7c4a-44c3-88e1-3eee440cfe70.jpg",
+      "ncc0": 0.6877596378326416,
+      "ncc_ecc": 0.7203918099403381,
+      "ecc_cc": 0.7384411208588035,
+      "lap_raw": 3387.661022957236,
+      "lap_to_src": 895.8043637088479,
+      "lap_ecc": 875.0690720668237,
+      "glyph_ecc": 1359.4331952210662
+    },
+    {
+      "name": "v1_bad",
+      "path": "/workspace/artifacts/imagine_images/2314ef43-a062-4027-a3cd-5b2932eddc5a.jpg",
+      "ncc0": 0.6423946619033813,
+      "ncc_ecc": 0.6644936800003052,
+      "ecc_cc": 0.6764217650559733,
+      "lap_raw": 3280.659792204264,
+      "lap_to_src": 870.8552183308345,
+      "lap_ecc": 862.9992600645996,
+      "glyph_ecc": 1318.246197634729
+    },
+    {
+      "name": "v2b",
+      "path": "/workspace/artifacts/imagine_images/80b286d9-623f-4273-a111-0d66ae0a7140.jpg",
+      "ncc0": 0.6232768297195435,
+      "ncc_ecc": 0.6350618004798889,
+      "ecc_cc": 0.6493684904392514,
+      "lap_raw": 4029.878150404364,
+      "lap_to_src": 1060.9962164185613,
+      "lap_ecc": 1046.9021301775872,
+      "glyph_ecc": 1555.0448737704303
+    }
+  ],
+  "best": {
+    "name": "e52b",
+    "path": "/workspace/artifacts/imagine_images/e52b18ef-2691-494b-acb4-d0cd2b70bd30.jpg",
+    "ncc0": 0.6928613781929016,
+    "ncc_ecc": 0.8817132115364075,
+    "ecc_cc": 0.8818091150779855,
+    "lap_raw": 2315.0266977508954,
+    "lap_to_src": 615.5825233457695,
+    "lap_ecc": 615.7155800219862,
+    "glyph_ecc": 909.1690863660634
+  },
+  "metrics": {
+    "lap_src": 1421.1,
+    "lap_new": 2064.4,
+    "glyph_src": 2238.7,
+    "glyph_new": 3221.0,
+    "mean_abs": 2.46,
+    "pct_gt8": 5.5,
+    "ncc_final": 0.9975,
+    "ecc_cc": 0.8818
+  },
+  "honesty": "If texture still AI-soft, true mineral needs real photo donor or better A plate at native res; v2 fixes blur/align path"
+}

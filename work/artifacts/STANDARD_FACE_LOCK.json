@@ -1,0 +1,23 @@
+{
+  "role": "STANDARD_FACE_ALL_ALBUMS",
+  "status": "LOCKED",
+  "asset_id": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "sha256": "f612ec7e07d95f256d3bd352f73f98ca913074c87556aed58cfc3223a059ee81",
+  "sha12": "f612ec7e07d9",
+  "L_face": "FACE-f612ec7e07d9",
+  "scope": "ALL SETs / ALL albums / ALL LOOP / grid60 / FREE / IP / PATH1E",
+  "use": [
+    "PATH1E face donor (primary)",
+    "IP no-bg generation face ref",
+    "reference_to_image identity lock",
+    "FREE / ET frames face upgrade"
+  ],
+  "supersedes": [
+    "b41e0072-ccf5-41ee-97ef-2fd1b7ad75d2",
+    "87536f45-e6b1-4b30-a470-dadf7ce53c86",
+    "any arctic/high-bun or other album faces"
+  ],
+  "note_zh": "用戶指定：她才是所有專輯的標準面。之後任何 SET 女主臉以此為唯一正典。",
+  "asof": "2026-10-25T15:12:55Z",
+  "rule": "BOUNDARY_WALKER_UNIFIED_RULES.md §0.10"
+}

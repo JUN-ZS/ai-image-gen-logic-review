@@ -1,0 +1,151 @@
+{
+  "source": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+  "L0": [
+    1792,
+    1008
+  ],
+  "layout": "2x3",
+  "n": 6,
+  "overlap": 0.22,
+  "ox": 131,
+  "oy": 110,
+  "cells": [
+    {
+      "id": "r00c00",
+      "r": 0,
+      "c": 0,
+      "core": [
+        0,
+        0,
+        597,
+        504
+      ],
+      "box": [
+        0,
+        0,
+        728,
+        614
+      ],
+      "size": [
+        728,
+        614
+      ],
+      "crop": "boundary_pedestrian_setO_jade/grid6_fat/1_cells/r00c00.jpg"
+    },
+    {
+      "id": "r00c01",
+      "r": 0,
+      "c": 1,
+      "core": [
+        597,
+        0,
+        1194,
+        504
+      ],
+      "box": [
+        466,
+        0,
+        1325,
+        614
+      ],
+      "size": [
+        859,
+        614
+      ],
+      "crop": "boundary_pedestrian_setO_jade/grid6_fat/1_cells/r00c01.jpg"
+    },
+    {
+      "id": "r00c02",
+      "r": 0,
+      "c": 2,
+      "core": [
+        1194,
+        0,
+        1792,
+        504
+      ],
+      "box": [
+        1063,
+        0,
+        1792,
+        614
+      ],
+      "size": [
+        729,
+        614
+      ],
+      "crop": "boundary_pedestrian_setO_jade/grid6_fat/1_cells/r00c02.jpg"
+    },
+    {
+      "id": "r01c00",
+      "r": 1,
+      "c": 0,
+      "core": [
+        0,
+        504,
+        597,
+        1008
+      ],
+      "box": [
+        0,
+        394,
+        728,
+        1008
+      ],
+      "size": [
+        728,
+        614
+      ],
+      "crop": "boundary_pedestrian_setO_jade/grid6_fat/1_cells/r01c00.jpg"
+    },
+    {
+      "id": "r01c01",
+      "r": 1,
+      "c": 1,
+      "core": [
+        597,
+        504,
+        1194,
+        1008
+      ],
+      "box": [
+        466,
+        394,
+        1325,
+        1008
+      ],
+      "size": [
+        859,
+        614
+      ],
+      "crop": "boundary_pedestrian_setO_jade/grid6_fat/1_cells/r01c01.jpg"
+    },
+    {
+      "id": "r01c02",
+      "r": 1,
+      "c": 2,
+      "core": [
+        1194,
+        504,
+        1792,
+        1008
+      ],
+      "box": [
+        1063,
+        394,
+        1792,
+        1008
+      ],
+      "size": [
+        729,
+        614
+      ],
+      "crop": "boundary_pedestrian_setO_jade/grid6_fat/1_cells/r01c02.jpg"
+    }
+  ],
+  "overlap_stats": {
+    "max": 4.0,
+    "mean": 1.5744844675064087,
+    "multi_frac": 0.44684488378684806
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "method_id": "GEO.T · H2",
+  "geometry_family": "GEO.T",
+  "contact_method": "H2 FIRST CONTACT · END_FACE",
+  "world_label": "ARCTIC_AURORA_ICE",
+  "loop_id": "L-7ab89829778f",
+  "series_id": "SET-H",
+  "heroine_id": "BW_HEROINE_SET_H_V1",
+  "note": "每一次失敗，都帶來下一個試法。",
+  "chips": "PHASE PRE_NEAR · signed_gap>0 · Crack=0",
+  "renderer": "setH_try_art_typeset_v1",
+  "forbidden": [
+    "TRY_count",
+    "REVIEW PENDING"
+  ],
+  "typography_variant": "before",
+  "panel_side": "left",
+  "source_sha256": "e4c924215fc501d3c08dc2892cb559f006fa497b70f0393f4ae8c7cc9af3ae35",
+  "source_width": 1792,
+  "source_height": 1008,
+  "artwork_sha256": "351c6023d094ed9870a6f4c209026fcd2e67e7cdf58e4cdd782e4f0105bb3e15",
+  "svg_sha256": "7ac9dc3794a35514a861a4702e051e2ebfcf1aa19c961d63c705703aa909c062"
+}

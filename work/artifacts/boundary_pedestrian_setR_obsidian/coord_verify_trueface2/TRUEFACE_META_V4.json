@@ -1,0 +1,27 @@
+{
+  "F_d": [
+    648,
+    118,
+    92,
+    108
+  ],
+  "F_s": [
+    175,
+    70,
+    200,
+    250
+  ],
+  "s_face": 0.44578021490416103,
+  "s_eff": 0.4444444444444444,
+  "place": [
+    646.0,
+    112.0
+  ],
+  "delta_face": 23.031837463378906,
+  "delta_feat": 23.093233108520508,
+  "delta_cring": 0.0,
+  "delta_wrong_left": 0.0,
+  "delta_hairL": 0.0,
+  "kill_wall_x": 620,
+  "method": "V4 tight-right FACE_CROP_DIRECT + hard kill wall"
+}

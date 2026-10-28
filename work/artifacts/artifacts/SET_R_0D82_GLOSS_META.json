@@ -1,0 +1,30 @@
+{
+  "asof": "2026-10-27T17:55:30Z",
+  "user": "0d829648 正反推原圖光源,光追區域加成,平滑光澤新石面",
+  "cur": "0d829648 VANISH",
+  "light_orig": [
+    "SIAX_HYBRID",
+    "ARMORCHAIN"
+  ],
+  "reverse": [
+    "L_field",
+    "fire centroid",
+    "atten 1/(1+r2)",
+    "Blinn",
+    "Fresnel",
+    "3-bounce R"
+  ],
+  "forward": [
+    "bilateral smooth stone",
+    "soft gloss",
+    "regional L boost",
+    "warm near fire"
+  ],
+  "out_mb": 33.99,
+  "size": [
+    4608,
+    6912
+  ],
+  "move": "LT_GLOSS_STONE",
+  "L": "L-6fbc20124ce5"
+}

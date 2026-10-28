@@ -1,0 +1,21 @@
+{
+  "kind": "GRID24_HD_CELLS_PATH1E_S3",
+  "L0": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+  "grid": "6x4=24",
+  "S": 3,
+  "size": [
+    5376,
+    3024
+  ],
+  "method": "memmap strip init + per-cell paste + assembly-primary PATH1E HF",
+  "ecc_std": 0.3215623237268895,
+  "gates": {
+    "face_lap": 280.0664367675781,
+    "center_lap": 431.4172668457031,
+    "full_lap": 235.115966796875,
+    "face_lap_pass": false
+  },
+  "sha256": "e69d78087aa6389720d44cb96c46224d9be7888550a9ab900807ae6964a6b88f",
+  "L_code": "L-e69d78087aa6",
+  "asof": "2026-10-25T15:42:51Z"
+}

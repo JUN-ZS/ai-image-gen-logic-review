@@ -1,0 +1,12 @@
+{"id":"F01","frame":"pre","style":"ice","loop":"L-546119e75b2e","fx":" title:7 en:2 method:6 loop:2 world:0 cam:0","layout":{"title":[790,433,96],"method":[169,288,33],"loop":[496,138,24]}}
+{"id":"F01","frame":"post","style":"metal","loop":"L-546119e75b2e","fx":" title:2 en:1 method:1 loop:2 world:2 cam:4","layout":{"title":[320,230,58],"method":[235,257,20],"loop":[963,811,22]}}
+{"id":"F02","frame":"pre","style":"ice","loop":"L-d4890246f4f1","fx":" title:4 en:5 method:5 loop:3 world:4 cam:0","layout":{"title":[862,590,86],"method":[420,615,22],"loop":[309,315,16]}}
+{"id":"F02","frame":"post","style":"metal","loop":"L-d4890246f4f1","fx":" title:2 en:5 method:4 loop:5 world:6 cam:7","layout":{"title":[349,139,90],"method":[198,128,40],"loop":[319,273,16]}}
+{"id":"F03","frame":"pre","style":"ice","loop":"L-668b0ffb9db9","fx":" title:6 en:3 method:2 loop:3 world:3 cam:3","layout":{"title":[613,525,103],"method":[404,730,36],"loop":[1214,477,20]}}
+{"id":"F03","frame":"post","style":"metal","loop":"L-668b0ffb9db9","fx":" title:0 en:7 method:3 loop:5 world:0 cam:5","layout":{"title":[118,386,89],"method":[94,715,42],"loop":[503,617,18]}}
+{"id":"F04","frame":"pre","style":"ice","loop":"L-e185fc04cebb","fx":" title:4 en:0 method:6 loop:2 world:6 cam:2","layout":{"title":[97,442,103],"method":[552,818,24],"loop":[689,585,21]}}
+{"id":"F04","frame":"post","style":"metal","loop":"L-e185fc04cebb","fx":" title:0 en:0 method:6 loop:3 world:0 cam:5","layout":{"title":[75,548,84],"method":[740,334,26],"loop":[792,224,14]}}
+{"id":"F05","frame":"pre","style":"ice","loop":"L-273feb9920b1","fx":" title:7 en:6 method:6 loop:6 world:1 cam:5","layout":{"title":[522,656,103],"method":[617,510,35],"loop":[1163,858,15]}}
+{"id":"F05","frame":"post","style":"metal","loop":"L-273feb9920b1","fx":" title:4 en:5 method:3 loop:0 world:3 cam:7","layout":{"title":[199,159,82],"method":[264,589,39],"loop":[242,702,23]}}
+{"id":"F06","frame":"pre","style":"ice","loop":"L-96cb558c7f61","fx":" title:6 en:2 method:7 loop:3 world:4 cam:1","layout":{"title":[366,160,76],"method":[48,357,40],"loop":[281,595,22]}}
+{"id":"F06","frame":"post","style":"metal","loop":"L-96cb558c7f61","fx":" title:2 en:3 method:7 loop:0 world:0 cam:1","layout":{"title":[774,390,58],"method":[477,311,34],"loop":[777,63,18]}}

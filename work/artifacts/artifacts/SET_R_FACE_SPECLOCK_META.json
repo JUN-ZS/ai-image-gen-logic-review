@@ -1,0 +1,20 @@
+{
+  "asof": "2026-10-27T18:28:19Z",
+  "user": "2bef SPECULAR_LOCK 正推貼現用全圖臉",
+  "base": "SET_R_FACE_LT_FULL_q100.jpg",
+  "donor": "2befbe5e P3",
+  "ncc": 0.4039296805858612,
+  "ecc": 0.8550298922148303,
+  "L_before": 107.8142318725586,
+  "L_after": 115.36890411376953,
+  "mad": 7.204133987426758,
+  "face_box": [
+    806,
+    276,
+    1497,
+    967
+  ],
+  "out_mb": 33.57,
+  "method": "tight face NCC+AFFINE ECC; L-rel+spec peaks+screen; keep identity a/b",
+  "L": "L-cf24e6316e45"
+}

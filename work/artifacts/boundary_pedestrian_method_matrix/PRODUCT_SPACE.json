@@ -1,0 +1,35 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "product_total": 3723,
+  "axes": {
+    "A_IMAGE_geometry_contact": {
+      "T x H0/H1/H2/H3 x cam x wind x style": 2304,
+      "T H2 IMPACT4 4-shot pack": 768,
+      "T2 FACE dual 48": 144,
+      "CROSS FACE dual 48": 144,
+      "ROD POS/NEG x wash/style": 60,
+      "MULTI H0/H2": 60,
+      "PLANT_S": 72,
+      "PLANT_O": 30,
+      "SOFT narrative acts x styles": 81
+    },
+    "B_IMAGE_camera_art": {
+      "T192": "8 axis × 12 cam × 2 windup × 4H × 3 style = 2304",
+      "DUAL48": "4 axis × 12 cam × T2|CROSS = 288",
+      "WASH10": "W01-W10 on ROD family sample rows",
+      "STYLE": "S01 photoreal / S02 pastel / S03 surreal (S04 audit exists in docs)"
+    },
+    "C_VIDEO": {
+      "VIDEO_GEO": 24,
+      "VIDEO_I2V": 18,
+      "VIDEO_BP six-act MV segments": 18,
+      "methods": "V-01 10s, V-02 KF5, V-03 plant, V-04 I2V, V-05..V-08 geo videos, V-09 BP, V-10 teach"
+    },
+    "D_narrative_loop": {
+      "rule": "Each catalog variant becomes one LOOP/TRY with 6 act prompts; only primary act carries the hard method; companions stay soft spine",
+      "compiled_act_prompts": 22338
+    }
+  },
+  "not_claiming": "3723 media already generated; this matrix is a diversity SAMPLE board only",
+  "sample_slots": 20
+}

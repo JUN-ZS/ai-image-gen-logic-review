@@ -1,0 +1,38 @@
+{
+  "asof": "2026-10-27T07:49:27Z",
+  "L": "L-9168908bc3b9",
+  "formula": "V5: plate=base+α*(gen_MF-base_MF)+β*base_HF",
+  "killed": [
+    "CHEAT_A V1",
+    "CHEAT_B V3 full-color",
+    "CHEAT_C V4 soft-HF replace"
+  ],
+  "skip": "80aecc41",
+  "stats": {
+    "TORSO": {
+      "cc": 0.8657,
+      "gain": 1.15,
+      "beta": 0.25,
+      "mad": 5.38,
+      "lap_in": 3899.0,
+      "lap_out": 4289.6,
+      "gold_in": 0.163,
+      "gold_out": 0.166,
+      "alpha_mean": 0.642
+    },
+    "CHEST": {
+      "cc": 0.7054,
+      "gain": 1.25,
+      "beta": 0.3,
+      "mad": 8.34,
+      "lap_in": 4348.7,
+      "lap_out": 4900.5,
+      "gold_in": 0.19,
+      "gold_out": 0.194,
+      "alpha_mean": 0.582
+    }
+  },
+  "bytes": 30423963,
+  "mad_v3": 3.8159725666046143,
+  "mad_v5": 2.1879818439483643
+}

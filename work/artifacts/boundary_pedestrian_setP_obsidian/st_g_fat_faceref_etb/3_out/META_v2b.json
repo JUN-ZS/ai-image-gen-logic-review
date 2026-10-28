@@ -1,0 +1,47 @@
+{
+  "pipeline": "FAT_FACE_REF_v2b_CLEAN",
+  "L0": "6f544750-6f70-4b4a-974b-5b50e394f9f1",
+  "S": 2,
+  "method": "B",
+  "FACE_REF_cells": [
+    "f02 only"
+  ],
+  "ENHANCE_cells": [
+    "f00",
+    "f01",
+    "f10",
+    "f11",
+    "f12"
+  ],
+  "weights": {
+    "f02": 1.25,
+    "f01": 0.85,
+    "others": 1.0
+  },
+  "PATH1E": "ECC_FAIL_UNSHARP_ONLY",
+  "ecc": 0.0,
+  "no_ghost": "no raw f02 paste; identity from f02 cell weight in B + optional STD HF",
+  "gates": {
+    "face_lap": 139.48159790039062,
+    "center_lap": 220.99420166015625,
+    "full_lap": 338.2379455566406,
+    "mean_conf": 0.799161821603775,
+    "confs": {
+      "f00": 0.7990895509719849,
+      "f01": 0.7387222051620483,
+      "f02": 0.827397882938385,
+      "f10": 0.8189502954483032,
+      "f11": 0.7271267175674438,
+      "f12": 0.8836842775344849
+    },
+    "ecc": 0.0,
+    "path1e": "ECC_FAIL_UNSHARP_ONLY"
+  },
+  "L": "L-fa3af794d05b",
+  "sha256": "fa3af794d05bf96490d3958fbfd9041ead5d93daca545618a5519aa95df2bd2f",
+  "size": [
+    3584,
+    2016
+  ],
+  "asof": "2026-10-25T17:17:53Z"
+}

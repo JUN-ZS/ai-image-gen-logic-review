@@ -1,0 +1,20 @@
+{
+  "fix": "ghost_face_from_blend",
+  "method": "hard paste f80 face only into GRID final",
+  "ecc": 0.21740425149899514,
+  "cc_note": "low_ecc_direct",
+  "face_box": [
+    1134,
+    128,
+    1776,
+    770
+  ],
+  "center_lap": 916.9162110037324,
+  "face_lap": 216.22697004987367,
+  "sha256": "9f3d3bcb9d8c1f17c7c87d41d155343e1188beec4a1fc400cba2e7bd9cffc47c",
+  "L": "L-9f3d3bcb9d8c",
+  "size": [
+    3584,
+    2016
+  ]
+}

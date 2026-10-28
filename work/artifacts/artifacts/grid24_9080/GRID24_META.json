@@ -1,0 +1,40 @@
+{
+  "asof": "2026-10-26T12:42:28Z",
+  "L0": "90807317-4e7d-4646-9f98-ac6c59208d08",
+  "layout": "6x4 DEFAULT-24 ω=0.09",
+  "S": 2,
+  "out_px": [
+    2304,
+    3456
+  ],
+  "method": "GRID24_ENHANCE + SIA MKD light · face enhance-only · formula B · §0.12.13",
+  "hd_ids": [
+    "dc26e0bc-9a00-4ead-af6c-55bb2739db85",
+    "ea8aac81-eccf-4aee-8704-93fd1bfc5b46",
+    "6be99a13-ac02-4134-976a-eec93c497001",
+    "7b46b103-7594-4786-9bdb-495ca28cc5f3",
+    "f622e5ba-aa89-4aa4-a2ca-3236979daaa4",
+    "5cb475cd-b7eb-4be3-98ed-5d85a5f78226",
+    "9806d9f3-0d65-499e-8092-473e729d190a",
+    "57909c3e-5556-4ca4-adba-95dac1e401dc",
+    "d0caaa96-e8df-4095-ade4-4685a862bc63",
+    "4be2e5dd-e54c-4edf-81fe-f500fe022640",
+    "c0eb3065-5f9d-4433-976d-2146748e6bd7",
+    "d9858dbc-ee07-4f7f-bcfe-bf6dbe5abd8e",
+    "b8fcafb4-05af-4295-9818-03d69030c11d",
+    "f2bbea67-efaf-45f4-a670-a59eff519b92",
+    "945ede24-98d1-4f7d-b8d6-d8e5c96e54d6",
+    "18289936-bc25-4fd9-9094-d720cef11eb6",
+    "69c52095-e2f1-4ae1-94f6-e453e579f3d6",
+    "dc769666-8ffa-4dc6-ba7f-1accbc39e765",
+    "155074fa-53be-4051-b0b1-eab5b3ba7e8b",
+    "e76c2b91-ef7f-4acc-b4b8-45509b0d15b8",
+    "7f513571-02e7-436f-b742-1ded289bae5c",
+    "e01f009a-6665-4e23-b337-37f6df52aa48",
+    "3f3e95bb-4e09-4c29-b011-9e43ac7d3bb7",
+    "020a5596-da5b-45a2-8caf-5a1a1803f93b"
+  ],
+  "center_weight_mean": 0.9455899675125694,
+  "L": "L-6bfe190a6ecc",
+  "sha": "6bfe190a6ecca95d77e6e458d917707b8b953252956546b0f83d8f6642a7cfcd"
+}

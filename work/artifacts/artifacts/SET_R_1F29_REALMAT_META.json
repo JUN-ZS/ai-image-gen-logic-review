@@ -1,0 +1,47 @@
+{
+  "asof": "2026-10-27T15:43:37Z",
+  "user": "真實感主目標 生真實圖正反推 升清只是伴隨",
+  "kpi": "realism (photoreal mat) not lap",
+  "pipeline": [
+    "1 GEN pure REAL plates (basalt/lava/fire photo)",
+    "2 FWD: scene crop + real plates → reference_to_image material rebuild",
+    "3 REV: ECC + gou shape + realism_blend (L macro base, micro/color donor) into hybrid FULL"
+  ],
+  "pure_plates": [
+    "f9b0baf5 basalt",
+    "f3dde69d lava",
+    "79975f12 fire"
+  ],
+  "forward": [
+    "3207951b stone",
+    "730c6901 fire"
+  ],
+  "results": [
+    {
+      "name": "stone_mid",
+      "ecc": 0.6169,
+      "alpha_mean": 0.633,
+      "fill": 0.9,
+      "kpi": "realism not lap"
+    },
+    {
+      "name": "fire_title",
+      "ecc": 0.474,
+      "alpha_mean": 0.411,
+      "fill": 0.513,
+      "kpi": "realism not lap"
+    }
+  ],
+  "out_mb": 33.85,
+  "size": [
+    4608,
+    6912
+  ],
+  "constitution": [
+    "REAL_MAT",
+    "§0.12.25 GOU",
+    "正推 FWD",
+    "反推 REV RANGE"
+  ],
+  "L": "L-e71b803293e9"
+}

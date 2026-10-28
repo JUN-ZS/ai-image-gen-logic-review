@@ -1,0 +1,21 @@
+{
+  "asof": "2026-10-27T16:17:01Z",
+  "user": "把計算好的光源貼到啞面石V2(8978)上；上代光源計算仍有用",
+  "base_matte": "SET_R_1F29_STONE_V2 / 8978bc25",
+  "method": [
+    "啞面 albedo/拓樸 = V2 原樣",
+    "反推 light/fire/spec 自 hybrid+GEN（上代有用）",
+    "正推 diffuse暖光 + specular lobe 貼上啞面",
+    "HF 拓樸鎖回啞面（out_lp + matte_hf）"
+  ],
+  "light_mean": 0.9449,
+  "fire_mean": 0.3806,
+  "spec_mean": 0.0751,
+  "lobe_mean": 0.1664,
+  "out_mb": 35.49,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-1186f92df119"
+}

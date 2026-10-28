@@ -1,0 +1,12 @@
+{
+  "asof": "2026-10-27T10:07:36Z",
+  "box": [
+    2490,
+    1100,
+    3390,
+    3500
+  ],
+  "alpha_mean": 0.123,
+  "mad": 1.11,
+  "method": "hard rim CONST2X edge-only magick composite"
+}

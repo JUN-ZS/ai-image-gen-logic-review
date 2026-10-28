@@ -1,0 +1,15 @@
+{
+  "note": "No native ControlNet API \u2014 used EDGE/DEPTH proxy maps as reference conditioning",
+  "mae_body_vs_clean": {
+    "free_original_pack": 28.870527267456055,
+    "ctrl_edge_depth": 25.177785873413086,
+    "ctrl_edge_only": 15.338299751281738,
+    "ending_drift": 50.984230041503906
+  },
+  "assets": {
+    "clean": "1cabb620...",
+    "free_pack": "262f8f99...",
+    "edge_depth": "fbe84fe9...",
+    "edge_only": "17a923dc..."
+  }
+}

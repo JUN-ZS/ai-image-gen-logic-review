@@ -1,0 +1,22 @@
+{
+  "asof": "2026-10-27T08:04:54Z",
+  "L": "L-d53c75f7bed0",
+  "proof": "FULL canvas base ONLY — not local crop virus",
+  "base": "/workspace/artifacts/artifacts/from_947/FULL_V5_HFONLY_q100.jpg",
+  "base_tag": "V5_full_mesh_on_947",
+  "base_size": [
+    4608,
+    6912
+  ],
+  "base_bytes": 30423963,
+  "out_size": [
+    9216,
+    13824
+  ],
+  "out_bytes": 23464456,
+  "method": "band-LANCZOS 2x of FULL poster (raw stream → ffmpeg) OOM-safe",
+  "virus_ban": "§0.12.23 VIRUS_LOCAL_BASE — no b47031a9/local as base",
+  "head_mean": 85.5028290333995,
+  "stone_mean": 78.50177071130976,
+  "has_full_poster": true
+}

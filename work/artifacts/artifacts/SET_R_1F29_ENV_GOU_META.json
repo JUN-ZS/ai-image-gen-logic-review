@@ -1,0 +1,118 @@
+{
+  "asof": "2026-10-27T14:43:51Z",
+  "constitution": "§0.12.25 GOU · T0-T12 火石字",
+  "user_base": "1f290afc-af64-4aaa-b9a3-007106979346",
+  "virus_local_base": false,
+  "zones": [
+    {
+      "name": "fire_title",
+      "mode": "tmpl0.48+aff0.82",
+      "ncc": 0.8223,
+      "fill": 0.73,
+      "alpha_mean": 0.327,
+      "lap": [
+        4159.5,
+        4670.9
+      ],
+      "box_full": [
+        120,
+        40,
+        2180,
+        900
+      ]
+    },
+    {
+      "name": "stone_mid",
+      "mode": "tmpl0.42+aff0.94",
+      "ncc": 0.9421,
+      "fill": 0.953,
+      "alpha_mean": 0.444,
+      "lap": [
+        5482.0,
+        6822.6
+      ],
+      "box_full": [
+        400,
+        2100,
+        1900,
+        2900
+      ]
+    },
+    {
+      "name": "ground_fire",
+      "mode": "tmpl0.46+aff0.90",
+      "ncc": 0.9024,
+      "fill": 0.802,
+      "alpha_mean": 0.323,
+      "lap": [
+        4439.5,
+        5218.4
+      ],
+      "box_full": [
+        300,
+        2550,
+        2000,
+        3199
+      ]
+    },
+    {
+      "name": "stone_bot",
+      "mode": "tmpl0.35+aff0.90",
+      "ncc": 0.8995,
+      "fill": 0.639,
+      "alpha_mean": 0.311,
+      "lap": [
+        3925.1,
+        4720.4
+      ],
+      "box_full": [
+        200,
+        2800,
+        2097,
+        3444
+      ]
+    },
+    {
+      "name": "text_left",
+      "mode": "tmpl0.59+aff0.93",
+      "ncc": 0.9275,
+      "fill": 0.82,
+      "alpha_mean": 0.465,
+      "lap": [
+        5031.6,
+        6043.1
+      ],
+      "box_full": [
+        40,
+        1100,
+        700,
+        1899
+      ]
+    },
+    {
+      "name": "text_right",
+      "mode": "fallback_full",
+      "ncc": 0.7605,
+      "fill": 0.707,
+      "alpha_mean": 0.282,
+      "lap": [
+        3896.8,
+        4045.3
+      ],
+      "box_full": [
+        1600,
+        1150,
+        2260,
+        1850
+      ]
+    }
+  ],
+  "out_2304": "SET_R_1F29_ENV_GOU_2304.jpg",
+  "out_full": "/workspace/artifacts/artifacts/SET_R_1F29_ENV_GOU_FULL_q100.jpg",
+  "out_mb": 19.81,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-0ec0289ceb67"
+}

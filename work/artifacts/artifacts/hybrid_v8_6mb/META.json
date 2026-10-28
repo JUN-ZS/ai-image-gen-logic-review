@@ -1,0 +1,71 @@
+{
+  "asof": "2026-10-26T15:49:17Z",
+  "trial": "DETAIL6 size+detail on METAL_BITE",
+  "methods": [
+    "keep 4608x6912 native (not upscale-fake)",
+    "extra Siax residual HF only where det/edge high (metal/stone/text/fire)",
+    "USM+microcontrast grain zones",
+    "JPEG q98–100 + 4:4:4 subsampling=0 for ≥6MB bitrate",
+    "eye white HARD→ST; skin/face oil kill"
+  ],
+  "sizes_bytes": {
+    "q98": 21612028,
+    "q100": 36508753,
+    "3072": 10258210,
+    "2304": 5066662
+  },
+  "primary": "/workspace/artifacts/artifacts/SET_R_9080_DETAIL6_FULL.jpg",
+  "primary_MB": 36.51,
+  "proof": {
+    "armor": {
+      "hf": {
+        "d6": 13.86,
+        "v8": 8.67,
+        "siax": 7.37,
+        "d6_v8": 5.192,
+        "d6_sx": 6.496
+      },
+      "clar": {
+        "d6": 199.0,
+        "v8": 125.39,
+        "siax": 88.08,
+        "d6_v8": 73.611,
+        "d6_sx": 110.918
+      }
+    },
+    "text": {
+      "hf": {
+        "d6": 10.4,
+        "v8": 6.0,
+        "siax": 4.68,
+        "d6_v8": 4.405,
+        "d6_sx": 5.724
+      },
+      "clar": {
+        "d6": 138.06,
+        "v8": 79.33,
+        "siax": 47.97,
+        "d6_v8": 58.731,
+        "d6_sx": 90.093
+      }
+    },
+    "sphere": {
+      "hf": {
+        "d6": 12.94,
+        "v8": 7.65,
+        "siax": 6.1,
+        "d6_v8": 5.295,
+        "d6_sx": 6.841
+      },
+      "clar": {
+        "d6": 174.85,
+        "v8": 102.72,
+        "siax": 65.68,
+        "d6_v8": 72.129,
+        "d6_sx": 109.173
+      }
+    }
+  },
+  "L": "L-7fcd14aab71a",
+  "constitution": "§0.12.15-18"
+}

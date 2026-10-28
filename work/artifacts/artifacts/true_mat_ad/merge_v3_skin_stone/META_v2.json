@@ -1,0 +1,19 @@
+{
+  "asof": "2026-10-26T18:17:22Z",
+  "trial": "MERGE_V3_SKIN_STONE_v2",
+  "L": "L-7a12271c172f",
+  "correct_ref": "495=REAL_MAT_V3",
+  "base": "STONE_TEX_ADV_FULL",
+  "face_method": "ECC dual-donor (SKIN_REDO+P3) structure-lock mid+HF plate-dom on skin; eye hard S; stone untouched",
+  "metrics": {
+    "face_src": 1120.8,
+    "face_new": 1287.9,
+    "zone_src": 1195.0,
+    "zone_new": 1693.3,
+    "zone_skin": 5053.9,
+    "mean_abs": 2.32,
+    "pct_gt8": 8.5,
+    "ncc": 0.9952,
+    "pass_gate": true
+  }
+}

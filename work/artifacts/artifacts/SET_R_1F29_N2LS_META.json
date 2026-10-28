@@ -1,0 +1,15 @@
+{
+  "asof": "2026-10-27T17:02:44Z",
+  "user": "光學收回和轉化要包含白噪線轉成新光面",
+  "mother": "SIAX_HYBRID max white noise",
+  "core": "白噪線質量 cand → dilate 新微光面 surf → Blinn 著色 glint → 2x收回",
+  "not_kill": true,
+  "scale": 2,
+  "out_mb": 32.73,
+  "size": [
+    4608,
+    6912
+  ],
+  "move": "N2LS NOISE_LINE→LIGHT_SURFACE via OPTIX_UP_DOWN",
+  "L": "L-cfbccce51622"
+}

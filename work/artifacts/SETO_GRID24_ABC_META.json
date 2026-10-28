@@ -1,0 +1,54 @@
+{
+  "kind": "GRID24_ABC_COMPARE",
+  "S": 3,
+  "n": 24,
+  "size": [
+    5376,
+    3024
+  ],
+  "formula": "out=where(w>eps, acc/w, struct)",
+  "results": {
+    "A_float32_full": {
+      "ok": true,
+      "sec": 5.43,
+      "peak_rss_mb": 842.8,
+      "face_lap": 332.47,
+      "center_lap": 515.7,
+      "full_lap": 282.53,
+      "assembly_lap": 248.91,
+      "L_code": "L-a71961f4e9fa",
+      "file": "SETO_GRID24_A_float32_full_FINAL.jpg",
+      "note": "全幅 float32 acc+weight 一次"
+    },
+    "B_float64_strip": {
+      "ok": true,
+      "sec": 4.39,
+      "peak_rss_mb": 845.9,
+      "face_lap": 332.44,
+      "center_lap": 515.67,
+      "full_lap": 282.49,
+      "assembly_lap": 248.87,
+      "L_code": "L-3f85caec9d14",
+      "file": "SETO_GRID24_B_float64_strip_FINAL.jpg",
+      "note": "分條 float64，公式等價"
+    },
+    "C_float64_memmap": {
+      "ok": true,
+      "sec": 48.33,
+      "peak_rss_mb": 708.3,
+      "face_lap": 332.44,
+      "center_lap": 515.67,
+      "full_lap": 282.49,
+      "assembly_lap": 248.87,
+      "L_code": "L-3f85caec9d14",
+      "file": "SETO_GRID24_C_float64_memmap_FINAL.jpg",
+      "note": "disk memmap float64；與 B 位元級同圖"
+    }
+  },
+  "pairwise": {
+    "A_vs_B_mean_abs": "~1.0 (float32 vs f64 + jpeg)",
+    "B_vs_C": "identical sha",
+    "C_vs_A": 1.01
+  },
+  "verdict": "A/B/C 全成功；畫質近等；B 最快；C RSS 略低但最慢；預載 24 paste 會把 peak 抬到 ~800MB"
+}

@@ -1,0 +1,72 @@
+{"id":"F01","frame":"pre","style":"ice","loop":"L-546119e75b2e","notes":" title:mode=5 fx=3 chars=4
+mode=5 fx=3 n=4 en:mode=3 fx=1 chars=17
+mode=3 fx=1 n=17 method:mode=3 fx=3 chars=15
+mode=3 fx=3 n=15 loop:mode=3 fx=5 chars=14
+mode=3 fx=5 n=14 world:mode=0 fx=5 chars=16
+mode=0 fx=5 n=16"}
+{"id":"F01","frame":"post","style":"metal","loop":"L-546119e75b2e","notes":" title:mode=1 fx=2 chars=4
+mode=1 fx=2 n=4 en:mode=0 fx=3 chars=17
+mode=0 fx=3 n=17 method:mode=3 fx=1 chars=15
+mode=3 fx=1 n=15 loop:mode=3 fx=0 chars=14
+mode=3 fx=0 n=14 world:mode=1 fx=2 chars=16
+mode=1 fx=2 n=16"}
+{"id":"F02","frame":"pre","style":"ice","loop":"L-d4890246f4f1","notes":" title:mode=3 fx=2 chars=4
+mode=3 fx=2 n=4 en:mode=0 fx=1 chars=17
+mode=0 fx=1 n=17 method:mode=1 fx=2 chars=20
+mode=1 fx=2 n=20 loop:mode=1 fx=1 chars=14
+mode=1 fx=1 n=14 world:mode=1 fx=3 chars=16
+mode=1 fx=3 n=16"}
+{"id":"F02","frame":"post","style":"metal","loop":"L-d4890246f4f1","notes":" title:mode=1 fx=5 chars=4
+mode=1 fx=5 n=4 en:mode=3 fx=0 chars=17
+mode=3 fx=0 n=17 method:mode=1 fx=4 chars=20
+mode=1 fx=4 n=20 loop:mode=0 fx=0 chars=14
+mode=0 fx=0 n=14 world:mode=3 fx=2 chars=16
+mode=3 fx=2 n=16"}
+{"id":"F03","frame":"pre","style":"ice","loop":"L-668b0ffb9db9","notes":" title:mode=5 fx=3 chars=4
+mode=5 fx=3 n=4 en:mode=0 fx=4 chars=17
+mode=0 fx=4 n=17 method:mode=2 fx=0 chars=18
+mode=2 fx=0 n=18 loop:mode=4 fx=2 chars=14
+mode=4 fx=2 n=14 world:mode=1 fx=4 chars=16
+mode=1 fx=4 n=16"}
+{"id":"F03","frame":"post","style":"metal","loop":"L-668b0ffb9db9","notes":" title:mode=4 fx=1 chars=4
+mode=4 fx=1 n=4 en:mode=5 fx=1 chars=17
+mode=5 fx=1 n=17 method:mode=3 fx=0 chars=18
+mode=3 fx=0 n=18 loop:mode=3 fx=3 chars=14
+mode=3 fx=3 n=14 world:mode=4 fx=4 chars=16
+mode=4 fx=4 n=16"}
+{"id":"F04","frame":"pre","style":"ice","loop":"L-e185fc04cebb","notes":" title:mode=2 fx=3 chars=4
+mode=2 fx=3 n=4 en:mode=3 fx=5 chars=17
+mode=3 fx=5 n=17 method:mode=2 fx=3 chars=16
+mode=2 fx=3 n=16 loop:mode=2 fx=5 chars=14
+mode=2 fx=5 n=14 world:mode=5 fx=5 chars=16
+mode=5 fx=5 n=16"}
+{"id":"F04","frame":"post","style":"metal","loop":"L-e185fc04cebb","notes":" title:mode=4 fx=5 chars=4
+mode=4 fx=5 n=4 en:mode=2 fx=0 chars=17
+mode=2 fx=0 n=17 method:mode=3 fx=3 chars=16
+mode=3 fx=3 n=16 loop:mode=3 fx=4 chars=14
+mode=3 fx=4 n=14 world:mode=0 fx=2 chars=16
+mode=0 fx=2 n=16"}
+{"id":"F05","frame":"pre","style":"ice","loop":"L-273feb9920b1","notes":" title:mode=1 fx=1 chars=4
+mode=1 fx=1 n=4 en:mode=4 fx=3 chars=17
+mode=4 fx=3 n=17 method:mode=4 fx=4 chars=20
+mode=4 fx=4 n=20 loop:mode=2 fx=1 chars=14
+mode=2 fx=1 n=14 world:mode=2 fx=0 chars=16
+mode=2 fx=0 n=16"}
+{"id":"F05","frame":"post","style":"metal","loop":"L-273feb9920b1","notes":" title:mode=1 fx=5 chars=4
+mode=1 fx=5 n=4 en:mode=2 fx=3 chars=17
+mode=2 fx=3 n=17 method:mode=1 fx=4 chars=20
+mode=1 fx=4 n=20 loop:mode=5 fx=3 chars=14
+mode=5 fx=3 n=14 world:mode=0 fx=5 chars=16
+mode=0 fx=5 n=16"}
+{"id":"F06","frame":"pre","style":"ice","loop":"L-96cb558c7f61","notes":" title:mode=5 fx=0 chars=4
+mode=5 fx=0 n=4 en:mode=2 fx=5 chars=17
+mode=2 fx=5 n=17 method:mode=2 fx=5 chars=17
+mode=2 fx=5 n=17 loop:mode=2 fx=0 chars=14
+mode=2 fx=0 n=14 world:mode=1 fx=5 chars=16
+mode=1 fx=5 n=16"}
+{"id":"F06","frame":"post","style":"metal","loop":"L-96cb558c7f61","notes":" title:mode=1 fx=3 chars=4
+mode=1 fx=3 n=4 en:mode=0 fx=1 chars=17
+mode=0 fx=1 n=17 method:mode=3 fx=2 chars=17
+mode=3 fx=2 n=17 loop:mode=5 fx=4 chars=14
+mode=5 fx=4 n=14 world:mode=3 fx=5 chars=16
+mode=3 fx=5 n=16"}

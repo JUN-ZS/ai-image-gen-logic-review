@@ -1,0 +1,173 @@
+{
+  "doc": "BOUNDARY_WALKER_UNIFIED_RULES.md",
+  "asof": "2026-10-26T03:05:00Z",
+  "one_liner": "LOCK MID first → cut person from MID only → PRE/POST time+text only → PATH1E for face HD → diegetic same-copy text",
+  "set_o_structure_fail": true,
+  "set_o_text_ok": true,
+  "path1e_locked": true,
+  "unified": true,
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "grid_hd_chain": {
+    "section": "0.12",
+    "mandatory_for_final_hd": true,
+    "default": {
+      "n": 24,
+      "layout": "6x4",
+      "overlap": 0.08,
+      "assemble": "B_float64_strip",
+      "S_prefer": 2,
+      "S_max": 3,
+      "path1e_after": true,
+      "gate_center_lap": 400
+    },
+    "fast_optional": {
+      "n": 6,
+      "layout": "2x3",
+      "overlap": 0.22,
+      "note": "seamless ok, lap usually fail — draft only"
+    },
+    "formula": "out = where(w>eps, acc/w, struct); w = edge * core_w * conf",
+    "methods": [
+      "A_float32_full",
+      "B_float64_strip",
+      "C_float64_memmap"
+    ],
+    "default_method": "B",
+    "stage_id": "ST_G",
+    "after": "ST4",
+    "before": "ST5"
+  },
+  "stages_order": [
+    "ST0_REF",
+    "ST1_IP",
+    "ST2_MID_LOCK",
+    "ST3_GEO_AUDIT",
+    "ST4_DTpm",
+    "ST_G_GRID_HD",
+    "ST5_ET_TYPE",
+    "ST6_FREE_CAM",
+    "ST7_GATE",
+    "ST8_FINAL"
+  ],
+  "grid_face_ref": {
+    "family": "GRID_FACE_REF",
+    "definition": "face_dominant: Ref(cell, IP_HD, a8b); else Enhance; B assemble; PATH1E",
+    "aliases": {
+      "GRID_FACE_REF": "parent / any layout",
+      "GRID24_FACE_REF": "DEFAULT-24 + face ref + B + PATH1E (FINAL default)",
+      "FAT_FACE_REF": "FAT-6 only branch of GRID_FACE_REF — NOT the name for the whole formula including 24",
+      "GRID24": "24 without face ref",
+      "FAT6": "fat 6 without face ref"
+    },
+    "default_for_set_final": "GRID24_FACE_REF",
+    "section": "0.12.12"
+  },
+  "FULLFRAME_FACE_LOCK": {
+    "rule": "a8b_first_plus_immediate_PATH1E",
+    "asset_ids_order": [
+      "a8b",
+      "IP.FACE_CLOSE|IP_HD",
+      "IP.ACTION?",
+      "SCENE_last?"
+    ],
+    "ok_templates": [
+      "2ce5fabe-8de3-42a2-bab9-727d63c834c8",
+      "f1d38afd-17cb-476e-b354-6d77e153d6ca"
+    ],
+    "path1e_variant_example": "f80c51c8-3611-45e7-87ae-a6fccb811703",
+    "fail_scene_first": "f5bedf13-d489-440a-bfb6-d374c56ec6df",
+    "user_ack": "2026-10-26T02:17 好,對了,入全憲"
+  },
+  "GRID24_ENHANCE": {
+    "section": "0.12.13",
+    "face_cell_mode": "ENHANCE_ONLY",
+    "forbid_face_ref_on_cells": true,
+    "default_hd": true
+  },
+  "GRID_FACE_REF_status": "EXPERIMENT_ONLY",
+  "FAT_FACE_REF_status": "EXPERIMENT_ONLY",
+  "per_set_pipeline": [
+    "ST0 REF a8b",
+    "ST1 IP",
+    "ST2 FULLFRAME_FACE_LOCK MID",
+    "ST3 GEO",
+    "ST4 PRE/POST fullframe face lock",
+    "ST5 ET on locked face",
+    "ST_G GRID24_ENHANCE face cells no FACE_REF",
+    "PATH1E single donor residual",
+    "ST7 GATE",
+    "ST8 FINAL"
+  ],
+  "PRIMARY_IP_PACK": {
+    "section": "0.5.1",
+    "no_bg": true,
+    "multi_angle": true,
+    "min_angles": [
+      "IP.FRONT",
+      "IP.FRONT_FULL",
+      "IP.ACTION",
+      "IP.FACE_CLOSE"
+    ],
+    "recommended_angles": [
+      "IP.FRONT",
+      "IP.FRONT_FULL",
+      "IP.THREE_Q",
+      "IP.SIDE",
+      "IP.BACK_3Q",
+      "IP.ACTION",
+      "IP.FACE_CLOSE"
+    ],
+    "forbid_as_primary_ip": [
+      "scene_plates",
+      "ET_frames",
+      "GRID_finals",
+      "fullframe_locked_with_bg"
+    ],
+    "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "rule": "First IP = no background + multi-angle references; not a single in-scene still"
+  },
+  "ASOF": "2026-10-26T02:17:00Z",
+  "STANDARD_FACE": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "latest_section": "0.14",
+  "GEO_INDICATOR": true,
+  "refs": [
+    "f0caf896-b056-4dd8-8aca-a9f7cbaa38a3",
+    "78a0a9f1-1e11-45bb-9972-f29b3cc37e54",
+    "2a869e73-31c6-4b92-af18-0c999f34eca9",
+    "53f2be80-1b46-45c2-ab88-577e4b525c06",
+    "fd235ae4-73d0-43ca-8484-929989d46b7e",
+    "d96c66cd-163e-47be-84a6-6d718e62cd4f",
+    "a51850bc-bb1c-4188-bf9f-61b3956d7b82"
+  ],
+  "0.12.24": {
+    "asof": "2026-10-27T08:49:06Z",
+    "section": "0.12.24 WHOLE_COLLAGE_ALIGN",
+    "user_request": "先把這些錯補位和新的解救發現寫入憲",
+    "killed": [
+      "PATCH_UPPER_ONLY",
+      "REV_AS_CONTENT",
+      "FACE_RECT_Y024",
+      "ECC_EUCLID_ONLY_as_final",
+      "EXPAND_BOX_RESCALE"
+    ],
+    "rescued": [
+      "REVERSE_RANGE_ONLY",
+      "OLD_V5_HYBRID_CONTENT",
+      "AFFINE_ECC_ALIGN",
+      "WHOLE_COLLAGE_UNIFORM"
+    ],
+    "proof_L": [
+      "L-b9a649404dfc",
+      "L-6be8d4e2514f"
+    ],
+    "proof_asset_whole": "6201efd4-55d6-42dd-8b76-1e63e97ec3c6",
+    "constitution_files": [
+      "BOUNDARY_WALKER_UNIFIED_RULES.md",
+      "WHOLE_COLLAGE_ALIGN_01224.md",
+      "REVERSE_MESH_RANGE_RULE.md",
+      "MESH_STITCH_FORMULA_V5.md"
+    ],
+    "L": "L-f570b45c9752"
+  },
+  "0.12.24_asof": "2026-10-27T08:49:06Z"
+}

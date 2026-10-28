@@ -1,0 +1,121 @@
+{
+  "asof": "2026-10-26T18:23:00Z",
+  "title": "TRUE_FACE_DO_NOT_REPEAT + CORRECT_PROCESS",
+  "do_not_repeat": {
+    "wrong_F_d": [
+      {
+        "id": "E-TF-01",
+        "box": [
+          528,
+          102,
+          105,
+          118
+        ],
+        "hit": "neck/C-ring",
+        "status": "FORBIDDEN"
+      },
+      {
+        "id": "E-TF-02",
+        "box": [
+          492,
+          154
+        ],
+        "hit": "left hair/weapon",
+        "status": "FORBIDDEN"
+      },
+      {
+        "id": "E-TF-03",
+        "box": [
+          535,
+          108,
+          95,
+          108
+        ],
+        "hit": "old SOFT too left",
+        "status": "FORBIDDEN"
+      },
+      {
+        "id": "E-TF-04",
+        "box": [
+          615,
+          118,
+          125,
+          140
+        ],
+        "hit": "too left weak",
+        "status": "NOT_CANON"
+      },
+      {
+        "id": "E-TF-05",
+        "box": "copper_disk_haar",
+        "hit": "C-ring copper",
+        "status": "FORBIDDEN"
+      },
+      {
+        "id": "E-TF-06",
+        "box": "chest_skin_score",
+        "hit": "cleavage",
+        "status": "FORBIDDEN"
+      }
+    ],
+    "pixel_ratio_bugs": [
+      "E-PR-01",
+      "E-PR-02",
+      "E-PR-03",
+      "E-PR-04",
+      "E-PR-05",
+      "E-PR-06",
+      "E-PR-07",
+      "E-PR-08"
+    ],
+    "flow_bugs": [
+      "E-FLOW-01",
+      "E-FLOW-02",
+      "E-FLOW-03",
+      "E-FLOW-04",
+      "E-FLOW-05"
+    ]
+  },
+  "correct_process": {
+    "steps": [
+      "T0_VERIFY_CRING",
+      "T1_LOCK_TRUE_FACE",
+      "T2_PIXEL_V4",
+      "T3_V5_OPTIONAL",
+      "T4_DELIVER"
+    ],
+    "F_d_lock": [
+      648,
+      118,
+      92,
+      108
+    ],
+    "kill_wall_x": 620,
+    "mode": "FACE_CROP_DIRECT",
+    "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "final_asset_v5": "314f3660-eb42-49a0-b091-c2287632d8a4"
+  },
+  "constitution": "§0.12.14.D · §0.12.14.F",
+  "E-FLOW-06": {
+    "asof": "2026-10-26T18:44:00Z",
+    "user": "用這的母圖去改, 因為你用了疊上疊的圖, 層層模糊了, (回想我憲, 並引用不能以後再重滔)",
+    "cite": [
+      "E-FLOW-06",
+      "E-FLOW-07",
+      "TRUE_FACE_CORRECT_PROCESS 母圖法則",
+      "§0.12.14.F dst=2455522d",
+      "§0.13 單次全幅"
+    ],
+    "wrong_chain": [
+      "ce2961b6",
+      "510f82da",
+      "d33bbd06",
+      "7c180b12",
+      "dbea357d"
+    ],
+    "mother": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "donor": "2dae8d6e / a8b78fe5",
+    "action": "single Edit from mother only; no stack"
+  }
+}

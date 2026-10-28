@@ -1,0 +1,70 @@
+{
+  "asof": "2026-10-27T06:33:51Z",
+  "source_asset": "947cf5b2-1ca3-498a-b006-86158573c572",
+  "via": "extract_subject cutout",
+  "method": "rembg human + geo env override + outline each",
+  "stats": [
+    {
+      "id": 0,
+      "name": "background",
+      "frac": 0.4678,
+      "n": 0
+    },
+    {
+      "id": 1,
+      "name": "hair",
+      "frac": 0.0871,
+      "n": 1
+    },
+    {
+      "id": 2,
+      "name": "body_skin",
+      "frac": 0.0105,
+      "n": 6
+    },
+    {
+      "id": 3,
+      "name": "face_skin",
+      "frac": 0.0039,
+      "n": 1
+    },
+    {
+      "id": 4,
+      "name": "armor_clothes",
+      "frac": 0.0202,
+      "n": 6
+    },
+    {
+      "id": 5,
+      "name": "weapon",
+      "frac": 0.169,
+      "n": 1
+    },
+    {
+      "id": 6,
+      "name": "fire_fx",
+      "frac": 0.0735,
+      "n": 6
+    },
+    {
+      "id": 7,
+      "name": "cracked_sphere",
+      "frac": 0.0132,
+      "n": 1
+    },
+    {
+      "id": 8,
+      "name": "stone_base",
+      "frac": 0.1548,
+      "n": 6
+    },
+    {
+      "id": 9,
+      "name": "debris",
+      "frac": 0.0,
+      "n": 0
+    }
+  ],
+  "n_instances": 28,
+  "L": "L-fe58873d1620"
+}

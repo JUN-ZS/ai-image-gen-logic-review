@@ -1,0 +1,2435 @@
+{
+  "asof": "2026-10-26T03:15:00Z",
+  "title": "GEO_INDICATOR_TEXT_SET",
+  "purpose": "Blind-skillful generation of directional/indicator typography without sample-image copy",
+  "citation_chain": {
+    "primary_geometry_dict": "FACE_ANALYSIS_HUB.json",
+    "primary_formula_md": "HUB_MASTER_FORMULAS_v5.md (E-01 exact strings, E-02 VFX modules, §5 T_diegetic, Axis A contracts)",
+    "typeset_engine": "boundary_pedestrian_try_art.py (deterministic glyphs, text_content_sha256)",
+    "repo": "JUN-ZS/ai-image-gen-logic-review",
+    "branch_pr": "docs/unified-image-video-prompt-formulas-20261023 / PR#9",
+    "visual_concept_refs_only": [
+      "f0caf896-b056-4dd8-8aca-a9f7cbaa38a3",
+      "78a0a9f1-1e11-45bb-9972-f29b3cc37e54",
+      "2a869e73-31c6-4b92-af18-0c999f34eca9",
+      "53f2be80-1b46-45c2-ab88-577e4b525c06",
+      "fd235ae4-73d0-43ca-8484-929989d46b7e",
+      "d96c66cd-163e-47be-84a6-6d718e62cd4f",
+      "a51850bc-bb1c-4188-bf9f-61b3956d7b82"
+    ],
+    "note": "Visual refs lock CONCEPT (directionality/indicator), NOT layout. Blind gen uses catalog+recipe only."
+  },
+  "Σ_text_poster_E01": [
+    "邊界行人",
+    "THE BOUNDARY WALKER",
+    "Method(v)",
+    "CAM · STYLE · PROMPT_ID",
+    "WORLD: W · L-{h12}"
+  ],
+  "Σ_geo_indicator": "see catalog[*].phases[*].Σ_geo",
+  "label_grammar": {
+    "strike_zh": "打擊面={strike_short}",
+    "recv_zh": "受面={recv_short}",
+    "force_arc": "{force_token}",
+    "nv": "{nv_token}",
+    "gap": "{gap_token}",
+    "method_head": "{method}",
+    "brand": "邊界行人",
+    "loop": "LOOP L-{h12}",
+    "hot_module": "HOT labels",
+    "cold_module": "COLD etch"
+  },
+  "phase_style": {
+    "PRE": {
+      "palette": "COLD",
+      "E": [
+        "VFX_COILED_LIGHTNING",
+        "VFX_GROUND_GRAFFITI_INTACT",
+        "COLD_ETCH_ON_SPHERE"
+      ],
+      "arrow_color": "cyan",
+      "label_weight": "thin_glow"
+    },
+    "MID": {
+      "palette": "CRITICAL",
+      "E": [
+        "VFX_HUD_CYAN_NET",
+        "CROSSHAIR_CONTACT",
+        "FULL_DIRECTION_GRID"
+      ],
+      "arrow_color": "cyan_white",
+      "label_weight": "full"
+    },
+    "POST": {
+      "palette": "HOT",
+      "E": [
+        "VFX_COMBUSTION_FIRE",
+        "HOT_ARROW",
+        "VFX_GROUND_GRAFFITI_SHATTER"
+      ],
+      "arrow_color": "red_gold",
+      "label_weight": "bold_hot"
+    }
+  },
+  "blind_recipe": {
+    "name": "GEO_INDICATOR_BLIND_COMPILE",
+    "principle": "Never copy sample image layout. Compile labels from FACE_ANALYSIS_HUB fields only.",
+    "inputs": [
+      "method_id | FACE_ANALYSIS row",
+      "phase ∈ {PRE,MID,POST}",
+      "h12 = SHA256(I_MID)[0:12]",
+      "HL.* pixel anchors from clean frame"
+    ],
+    "steps": [
+      "1. Load row R from FACE_ANALYSIS_HUB (or TEXT_SET catalog) by method",
+      "2. Σ_geo ← {method, 邊界行人, analysis_line(phase), 打擊面=strike_short, 受面=recv_short, force_token, gap_token(phase), n·v, LOOP L-h12}",
+      "3. Style(θ) ← PHASE_STYLE[phase] (COLD/CRITICAL/HOT) — materials from HUB E-02",
+      "4. For each draw_op: place label/arrow with endpoint ON HL.* anchor (never floating UI)",
+      "5. Prefer deterministic SVG/vector bake; secondary diegetic pass must keep exact strings",
+      "6. Gate: G-DIR G-LINE G-PHASE G-LOOP G-FAKE (see §0.14.9)"
+    ],
+    "omit": [
+      "TRY_COUNT",
+      "REVIEW_PENDING",
+      "invented geometry",
+      "copy of sample plate positions"
+    ],
+    "sources_cited": [
+      "boundary_pedestrian_setG_gold/FACE_ANALYSIS_HUB.json",
+      "boundary_pedestrian_setG_gold/HUB_MASTER_FORMULAS_v5.md §E-01 §E-02 §5 §A-01..A-09",
+      "bubble_break/boundary_pedestrian_try_art.py · canonical_text_payload",
+      "JUN-ZS/ai-image-gen-logic-review PR#9 LOOPING_TRY_STORY + try_art"
+    ]
+  },
+  "catalog": {
+    "G01": {
+      "id": "G01",
+      "method": "GEO.T · H0",
+      "name_zh": "遠距蓄力 Clear Gap",
+      "strike_face": "T-END · FLAT CIRCULAR",
+      "recv_face": "SPHERE · MEMBRANE",
+      "force": "F→ · STRIKE VECTOR · NO CONTACT",
+      "gap": "GAP > 1.5×D",
+      "H": "H0",
+      "formula_pre": "打擊面=T端面 受面=球膜 間隙>1.5D F=0",
+      "formula_post": "H0→H? 跟進蓄力 打擊面仍遠 受面完好",
+      "analysis_line_canonical": "STRIKE:T-END∥  RECV:SPHERE  n∥v  GAP>1.5D  F=0  H0",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n∥v  GAP>1.5D  H0",
+          "Σ_geo": {
+            "s_title": "GEO.T · H0",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n∥v  GAP>1.5D  H0",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=MEMBRANE",
+            "s_force": "F=0 AIR",
+            "s_gap": "GAP>1.5D",
+            "s_nv": "n∥v",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=MEMBRANE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F=0 AIR",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n∥v"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP>1.5D"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H0"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "COLD_ETCH",
+              "anchor": "HL.SPHERE",
+              "text": "COLD etch: 邊界行人; GEO.T · H0"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n∥v  GAP>1.5D  H0",
+          "Σ_geo": {
+            "s_title": "GEO.T · H0",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n∥v  GAP=GAP > 1.5×D  H0",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=MEMBRANE",
+            "s_force": "F=0 AIR",
+            "s_gap": "GAP>1.5D",
+            "s_nv": "n∥v",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=MEMBRANE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F=0 AIR",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n∥v"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP>1.5D"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H0"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n∥v  GAP_STILL_OPEN  H0",
+          "Σ_geo": {
+            "s_title": "GEO.T · H0",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n∥v  GAP=0  H0",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=MEMBRANE",
+            "s_force": "F=0 AIR",
+            "s_gap": "GAP_STILL_OPEN",
+            "s_nv": "n∥v",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=MEMBRANE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F=0 AIR",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n∥v"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP_STILL_OPEN"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H0"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        }
+      }
+    },
+    "G02": {
+      "id": "G02",
+      "method": "GEO.T · H2",
+      "name_zh": "首次端面正切 First Flat-Face",
+      "strike_face": "T-END · FLAT CIRCULAR",
+      "recv_face": "SPHERE · TANGENT POINT",
+      "force": "F_n · NORMAL AT TANGENT · FIRST CONTACT",
+      "gap": "GAP=0 · TANGENT",
+      "H": "H2",
+      "formula_pre": "打擊面=T端面 受面=球切點 PENDING 近隙",
+      "formula_post": "打擊面=T端面 受面=切點 星裂 衝擊環 H2 DONE",
+      "analysis_line_canonical": "STRIKE:T-END  RECV:TANGENT  n·v=1  GAP=0  ★MICRO  H2",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP→0 PENDING  H2",
+          "Σ_geo": {
+            "s_title": "GEO.T · H2",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP→0 PENDING  H2",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_n",
+            "s_gap": "GAP→0 PENDING",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP→0 PENDING"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H2"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "COLD_ETCH",
+              "anchor": "HL.SPHERE",
+              "text": "COLD etch: 邊界行人; GEO.T · H2"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2",
+          "Σ_geo": {
+            "s_title": "GEO.T · H2",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_n",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H2"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n OUT  n·v=1  GAP=0 FOLLOW  H2",
+          "Σ_geo": {
+            "s_title": "GEO.T · H2",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:TANGENT  F_n OUT  n·v=1  GAP=0 FOLLOW  H2",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_n OUT",
+            "s_gap": "GAP=0 FOLLOW",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H2"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        }
+      }
+    },
+    "G03": {
+      "id": "G03",
+      "method": "GEO.T2 · FACE",
+      "name_zh": "雙T端面相對",
+      "strike_face": "T1-END ∥ T2-END · FLAT↔FLAT",
+      "recv_face": "SPHERE · BETWEEN FACES",
+      "force": "F↔ · 180° OPPOSE · PLANAR INTERFACE",
+      "gap": "FACE∥FACE",
+      "H": "FACE",
+      "formula_pre": "打擊面1∥打擊面2 受面=夾球 PENDING",
+      "formula_post": "端面×端面 夾球衝擊 FACE DONE",
+      "analysis_line_canonical": "STRIKE:T1-END∥T2-END  RECV:MID-SPHERE  F↔180°  FACE",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:T1//T2  RECV:BETWEEN  F↔180°  n·v=±1  FACE∥FACE PENDING  FACE",
+          "Σ_geo": {
+            "s_title": "GEO.T2 · FACE",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T1//T2  RECV:BETWEEN  F↔180°  n·v=±1  GAP=FACE∥FACE PENDING  FACE",
+            "s_strike": "打擊面=T1//T2",
+            "s_recv": "受面=BETWEEN",
+            "s_force": "F↔180°",
+            "s_gap": "FACE∥FACE PENDING",
+            "s_nv": "n·v=±1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T1//T2"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=BETWEEN"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F↔180°",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=±1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "FACE∥FACE PENDING"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T2 · FACE"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            },
+            {
+              "op": "PARALLEL_MARK",
+              "text": "打擊面1//打擊面2"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.CONTACT",
+              "text": "受面=BETWEEN"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:T1//T2  RECV:BETWEEN  F↔180°  n·v=±1  GAP=0 FACE∥  FACE",
+          "Σ_geo": {
+            "s_title": "GEO.T2 · FACE",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T1//T2  RECV:BETWEEN  F↔180°  n·v=±1  GAP=0  FACE",
+            "s_strike": "打擊面=T1//T2",
+            "s_recv": "受面=BETWEEN",
+            "s_force": "F↔180°",
+            "s_gap": "GAP=0 FACE∥",
+            "s_nv": "n·v=±1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T1//T2"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=BETWEEN"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F↔180°",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=±1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 FACE∥"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T2 · FACE"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            },
+            {
+              "op": "PARALLEL_MARK",
+              "text": "打擊面1//打擊面2"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.CONTACT",
+              "text": "受面=BETWEEN"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:T1//T2  RECV:BETWEEN  F↔180°  n·v=±1  GAP=0  FACE",
+          "Σ_geo": {
+            "s_title": "GEO.T2 · FACE",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T1//T2  RECV:BETWEEN  F↔180°  n·v=±1  GAP=0  FACE",
+            "s_strike": "打擊面=T1//T2",
+            "s_recv": "受面=BETWEEN",
+            "s_force": "F↔180°",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=±1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T1//T2"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=BETWEEN"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F↔180°",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=±1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T2 · FACE"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            },
+            {
+              "op": "PARALLEL_MARK",
+              "text": "打擊面1//打擊面2"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.CONTACT",
+              "text": "受面=BETWEEN"
+            }
+          ]
+        }
+      }
+    },
+    "G04": {
+      "id": "G04",
+      "method": "GEO.CROSS · FACE",
+      "name_zh": "厚十字圓端蓋",
+      "strike_face": "CROSS · ROUNDED CAP",
+      "recv_face": "CAP ⊙ CAP / SPHERE",
+      "force": "F→ · CAP-TO-CAP POINT-SHOCK",
+      "gap": "CAP⊙CAP",
+      "H": "FACE",
+      "formula_pre": "打擊面=圓端蓋 受面=對蓋/球 CAP⊙CAP PENDING",
+      "formula_post": "蓋×蓋 點衝擊環 CROSS FACE DONE",
+      "analysis_line_canonical": "STRIKE:RND-CAP  RECV:CAP/SPHERE  ⊙POINT-SHOCK  CROSS",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:RND-CAP  RECV:CAP/SPHERE  F→  n·v=?  GAP_PENDING(CAP⊙CAP)  FACE",
+          "Σ_geo": {
+            "s_title": "GEO.CROSS · FACE",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:RND-CAP  RECV:CAP/SPHERE  F→  n·v=?  GAP=CAP⊙CAP  FACE",
+            "s_strike": "打擊面=RND-CAP",
+            "s_recv": "受面=CAP/SPHERE",
+            "s_force": "F→",
+            "s_gap": "GAP_PENDING(CAP⊙CAP)",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=RND-CAP"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=CAP/SPHERE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F→",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP_PENDING(CAP⊙CAP)"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.CROSS · FACE"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:RND-CAP  RECV:CAP/SPHERE  F→  n·v=?  GAP=0  FACE",
+          "Σ_geo": {
+            "s_title": "GEO.CROSS · FACE",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:RND-CAP  RECV:CAP/SPHERE  F→  n·v=?  GAP=CAP⊙CAP  FACE",
+            "s_strike": "打擊面=RND-CAP",
+            "s_recv": "受面=CAP/SPHERE",
+            "s_force": "F→",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=RND-CAP"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=CAP/SPHERE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F→",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.CROSS · FACE"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:RND-CAP  RECV:CAP/SPHERE  F→  n·v=?  GAP=0  FACE",
+          "Σ_geo": {
+            "s_title": "GEO.CROSS · FACE",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:RND-CAP  RECV:CAP/SPHERE  F→  n·v=?  GAP=0  FACE",
+            "s_strike": "打擊面=RND-CAP",
+            "s_recv": "受面=CAP/SPHERE",
+            "s_force": "F→",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=RND-CAP"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=CAP/SPHERE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F→",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.CROSS · FACE"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        }
+      }
+    },
+    "G05": {
+      "id": "G05",
+      "method": "GEO.PLANT_S",
+      "name_zh": "側柄種植圓柱",
+      "strike_face": "CYL · UPPER FLAT (load)",
+      "recv_face": "SPHERE · TANGENT ON TOP + GROUND RING",
+      "force": "F_axial · ANCHORED · ZERO FLY",
+      "gap": "PLANT FLUSH",
+      "H": "PLANT_S",
+      "formula_pre": "底面種植 上端面=打擊面 球受面 PENDING",
+      "formula_post": "底面FLUSH 上端面受球 SEALED F_axial",
+      "analysis_line_canonical": "STRIKE:CYL-TOP  RECV:SPHERE+RING  F_ax  PLANT_S  ANCHOR",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:CYL-TOP  RECV:TANGENT  F_axial  n·v=?  GAP=PLANT APPROACH  PLANT_S",
+          "Σ_geo": {
+            "s_title": "GEO.PLANT_S",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:CYL-TOP  RECV:TANGENT  F_axial  n·v=?  GAP=PLANT APPROACH  PLANT_S",
+            "s_strike": "打擊面=CYL-TOP",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_axial",
+            "s_gap": "GAP=PLANT APPROACH",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=CYL-TOP"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_axial",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=PLANT APPROACH"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.PLANT_S"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "HOT_ARROW",
+              "anchor": "HL.FORCE",
+              "text": "HOT labels"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:CYL-TOP  RECV:TANGENT  F_axial  n·v=?  GAP=0 PLANT  PLANT_S",
+          "Σ_geo": {
+            "s_title": "GEO.PLANT_S",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:CYL-TOP  RECV:TANGENT  F_axial  n·v=?  GAP=0  PLANT_S",
+            "s_strike": "打擊面=CYL-TOP",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_axial",
+            "s_gap": "GAP=0 PLANT",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=CYL-TOP"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_axial",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 PLANT"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.PLANT_S"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            },
+            {
+              "op": "HOT_ARROW",
+              "anchor": "HL.FORCE",
+              "text": "HOT labels"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:CYL-TOP  RECV:TANGENT  F_axial  n·v=?  GAP=0 FLUSH  PLANT_S",
+          "Σ_geo": {
+            "s_title": "GEO.PLANT_S",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:CYL-TOP  RECV:TANGENT  F_axial  n·v=?  GAP=0  PLANT_S",
+            "s_strike": "打擊面=CYL-TOP",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_axial",
+            "s_gap": "GAP=0 FLUSH",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=CYL-TOP"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_axial",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 FLUSH"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.PLANT_S"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "HOT_ARROW",
+              "anchor": "HL.FORCE",
+              "text": "HOT labels"
+            }
+          ]
+        }
+      }
+    },
+    "G06": {
+      "id": "G06",
+      "method": "GEO.MULTI · H2",
+      "name_zh": "多向扁平面選面",
+      "strike_face": "MULTI · ONE SELECTED FLAT FACET",
+      "recv_face": "SPHERE · TANGENT PLANE",
+      "force": "F_n · FACET∥TANGENT · H2",
+      "gap": "FACET∥PLANE",
+      "H": "H2",
+      "formula_pre": "打擊面=選中扁平面 鄰面淨空 受面=球切面 PENDING",
+      "formula_post": "選面∥切面 H2 鄰面仍淨 MULTI DONE",
+      "analysis_line_canonical": "STRIKE:1-FACET  RECV:TANGENT  FACET∥n  H2  MULTI",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:1-FACET  RECV:TANGENT  F_n  n·v=?  GAP→0 PENDING  H2",
+          "Σ_geo": {
+            "s_title": "GEO.MULTI · H2",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:1-FACET  RECV:TANGENT  F_n  n·v=?  GAP=FACE∥FACE PENDING  H2",
+            "s_strike": "打擊面=1-FACET",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_n",
+            "s_gap": "GAP→0 PENDING",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=1-FACET"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP→0 PENDING"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.MULTI · H2"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "COLD_ETCH",
+              "anchor": "HL.SPHERE",
+              "text": "COLD etch: 邊界行人; GEO.MULTI · H2"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:1-FACET  RECV:TANGENT  F_n  n·v=?  GAP=0 FACE∥  H2",
+          "Σ_geo": {
+            "s_title": "GEO.MULTI · H2",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:1-FACET  RECV:TANGENT  F_n  n·v=?  GAP=0  H2",
+            "s_strike": "打擊面=1-FACET",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_n",
+            "s_gap": "GAP=0 FACE∥",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=1-FACET"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 FACE∥"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.MULTI · H2"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:1-FACET  RECV:TANGENT  F_n  n·v=?  GAP=0  H2",
+          "Σ_geo": {
+            "s_title": "GEO.MULTI · H2",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:1-FACET  RECV:TANGENT  F_n  n·v=?  GAP=0  H2",
+            "s_strike": "打擊面=1-FACET",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F_n",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=1-FACET"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.MULTI · H2"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        }
+      }
+    },
+    "G02b": {
+      "id": "G02b",
+      "method": "GEO.T · H1",
+      "name_zh": "極近逼近 Micro Gap",
+      "strike_face": "T-END · FLAT CIRCULAR",
+      "recv_face": "SPHERE · MEMBRANE",
+      "force": "F≈0 AIR · PRE-IMPACT TENSION",
+      "gap": "GAP=2–10mm · MICRO",
+      "H": "H1",
+      "formula_pre": "打擊面=T端面 受面=球膜 氣隙2–10mm F=0 AIR 未接觸",
+      "formula_post": "H1→H2 PENDING 氣隙→0 受面仍完好",
+      "analysis_line_canonical": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n·v=1  GAP=2–10mm  H1",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n·v=1  GAP=2–10mm  H1",
+          "Σ_geo": {
+            "s_title": "GEO.T · H1",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n·v=1  GAP=2–10mm  H1",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=MEMBRANE",
+            "s_force": "F=0 AIR",
+            "s_gap": "GAP=2–10mm",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=MEMBRANE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F=0 AIR",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=2–10mm"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H1"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "COLD_ETCH",
+              "anchor": "HL.SPHERE",
+              "text": "COLD etch: 邊界行人; GEO.T · H1"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n·v=1  GAP=2–10mm  H1",
+          "Σ_geo": {
+            "s_title": "GEO.T · H1",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n·v=1  GAP=0  H1",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=MEMBRANE",
+            "s_force": "F=0 AIR",
+            "s_gap": "GAP=2–10mm",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=MEMBRANE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F=0 AIR",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=2–10mm"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H1"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n·v=1  GAP→0  H1",
+          "Σ_geo": {
+            "s_title": "GEO.T · H1",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:MEMBRANE  F=0 AIR  n·v=1  GAP=0  H1",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=MEMBRANE",
+            "s_force": "F=0 AIR",
+            "s_gap": "GAP→0",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=MEMBRANE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F=0 AIR",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP→0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H1"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        }
+      }
+    },
+    "G02c": {
+      "id": "G02c",
+      "method": "GEO.T · H3",
+      "name_zh": "跟進碎裂 Follow-Through Shatter",
+      "strike_face": "T-END · FLAT CIRCULAR · PAST TANGENT",
+      "recv_face": "SPHERE · SHELL SPIDERWEB",
+      "force": "F_n OUT · FOLLOW-THROUGH",
+      "gap": "GAP=0 FOLLOW",
+      "H": "H3",
+      "formula_pre": "打擊面=T端面 受面=殼 初裂後跟進",
+      "formula_post": "打擊面過切面 受面=SHELL 蛛網裂 飛屑沿v F_n OUT",
+      "analysis_line_canonical": "STRIKE:T-END  RECV:SHELL  F_n OUT  n·v=1  GAP=0 FOLLOW  H3",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:SHELL  F_n  n·v=1  GAP=0 PRE-FOLLOW  H3",
+          "Σ_geo": {
+            "s_title": "GEO.T · H3",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:SHELL  F_n  n·v=1  GAP=GAP=0 FOLLOW  H3",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=SHELL",
+            "s_force": "F_n",
+            "s_gap": "GAP=0 PRE-FOLLOW",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=SHELL"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 PRE-FOLLOW"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H3"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:SHELL  F_n  n·v=1  GAP=0 FOLLOW  H3",
+          "Σ_geo": {
+            "s_title": "GEO.T · H3",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:SHELL  F_n  n·v=1  GAP=0  H3",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=SHELL",
+            "s_force": "F_n",
+            "s_gap": "GAP=0 FOLLOW",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=SHELL"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 FOLLOW"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H3"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:T-END  RECV:SHELL  F_n  n·v=1  GAP=0 FOLLOW  H3",
+          "Σ_geo": {
+            "s_title": "GEO.T · H3",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:T-END  RECV:SHELL  F_n  n·v=1  GAP=0 FOLLOW  H3",
+            "s_strike": "打擊面=T-END",
+            "s_recv": "受面=SHELL",
+            "s_force": "F_n",
+            "s_gap": "GAP=0 FOLLOW",
+            "s_nv": "n·v=1",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=T-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=SHELL"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_n",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=1"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 FOLLOW"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.T · H3"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "HOT_ARROW",
+              "anchor": "HL.FORCE",
+              "text": "HOT labels"
+            }
+          ]
+        }
+      }
+    },
+    "G05b": {
+      "id": "G05b",
+      "method": "GEO.PLANT_O",
+      "name_zh": "外端接柄種植",
+      "strike_face": "CYL · BOTTOM FLAT (plant) / OUTER-END HANDLE",
+      "recv_face": "SPHERE · CROWN / GROUND ANCHOR",
+      "force": "F_axial · COAXIAL PLANT",
+      "gap": "PLANT FLUSH",
+      "H": "PLANT_O",
+      "formula_pre": "底面種植 外端柄同軸 受面=頂 PENDING",
+      "formula_post": "底面FLUSH 頂受球 SEALED F_axial DONE",
+      "analysis_line_canonical": "STRIKE:BOTTOM  RECV:CROWN  F_axial DONE  PLANT_O",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:BOTTOM  RECV:CROWN  F_axial  n·v=?  GAP=PLANT APPROACH  PLANT_O",
+          "Σ_geo": {
+            "s_title": "GEO.PLANT_O",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:BOTTOM  RECV:CROWN  F_axial  n·v=?  GAP=PLANT APPROACH  PLANT_O",
+            "s_strike": "打擊面=BOTTOM",
+            "s_recv": "受面=CROWN",
+            "s_force": "F_axial",
+            "s_gap": "GAP=PLANT APPROACH",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=BOTTOM"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=CROWN"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_axial",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=PLANT APPROACH"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.PLANT_O"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "HOT_ARROW",
+              "anchor": "HL.FORCE",
+              "text": "HOT labels"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:BOTTOM  RECV:CROWN  F_axial  n·v=?  GAP=0 PLANT  PLANT_O",
+          "Σ_geo": {
+            "s_title": "GEO.PLANT_O",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:BOTTOM  RECV:CROWN  F_axial  n·v=?  GAP=0  PLANT_O",
+            "s_strike": "打擊面=BOTTOM",
+            "s_recv": "受面=CROWN",
+            "s_force": "F_axial",
+            "s_gap": "GAP=0 PLANT",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=BOTTOM"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=CROWN"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_axial",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 PLANT"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.PLANT_O"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            },
+            {
+              "op": "HOT_ARROW",
+              "anchor": "HL.FORCE",
+              "text": "HOT labels"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:BOTTOM  RECV:CROWN  F_axial  n·v=?  GAP=0 FLUSH  PLANT_O",
+          "Σ_geo": {
+            "s_title": "GEO.PLANT_O",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:BOTTOM  RECV:CROWN  F_axial  n·v=?  GAP=0  PLANT_O",
+            "s_strike": "打擊面=BOTTOM",
+            "s_recv": "受面=CROWN",
+            "s_force": "F_axial",
+            "s_gap": "GAP=0 FLUSH",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=BOTTOM"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=CROWN"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_axial",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0 FLUSH"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.PLANT_O"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "HOT_ARROW",
+              "anchor": "HL.FORCE",
+              "text": "HOT labels"
+            }
+          ]
+        }
+      }
+    },
+    "G07": {
+      "id": "G07",
+      "method": "GEO.ROD · POS",
+      "name_zh": "90°線形棒正控制",
+      "strike_face": "ROD · FLAT TERMINAL",
+      "recv_face": "ROD SIDE / SPHERE TANGENT",
+      "force": "F→ · 90° ORTHOGONAL LOCK",
+      "gap": "END⊥SIDE",
+      "H": "ROD_POS",
+      "formula_pre": "棒端→對側/球 90° 未鎖",
+      "formula_post": "棒端座入 90° 正控 DONE",
+      "analysis_line_canonical": "STRIKE:ROD-END  RECV:SIDE/SPHERE  90° LOCK  ROD_POS",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:ROD-END  RECV:TANGENT  F→  n·v=?  GAP_PENDING(END⊥SIDE)  ROD_POS",
+          "Σ_geo": {
+            "s_title": "GEO.ROD · POS",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:ROD-END  RECV:TANGENT  F→  n·v=?  GAP=END⊥SIDE  ROD_POS",
+            "s_strike": "打擊面=ROD-END",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F→",
+            "s_gap": "GAP_PENDING(END⊥SIDE)",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=ROD-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F→",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP_PENDING(END⊥SIDE)"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.ROD · POS"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:ROD-END  RECV:TANGENT  F→  n·v=?  GAP=0  ROD_POS",
+          "Σ_geo": {
+            "s_title": "GEO.ROD · POS",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:ROD-END  RECV:TANGENT  F→  n·v=?  GAP=END⊥SIDE  ROD_POS",
+            "s_strike": "打擊面=ROD-END",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F→",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=ROD-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F→",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.ROD · POS"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:ROD-END  RECV:TANGENT  F→  n·v=?  GAP=0  ROD_POS",
+          "Σ_geo": {
+            "s_title": "GEO.ROD · POS",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:ROD-END  RECV:TANGENT  F→  n·v=?  GAP=0  ROD_POS",
+            "s_strike": "打擊面=ROD-END",
+            "s_recv": "受面=TANGENT",
+            "s_force": "F→",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=ROD-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=TANGENT"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F→",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.ROD · POS"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        }
+      }
+    },
+    "G08": {
+      "id": "G08",
+      "method": "GEO.ROD · NEG",
+      "name_zh": "線形棒負控制滑偏",
+      "strike_face": "ROD · FLAT TERMINAL",
+      "recv_face": "SPHERE · GLANCING",
+      "force": "F_oblique · SLIP <35°",
+      "gap": "GLANCE",
+      "H": "ROD_NEG",
+      "formula_pre": "棒斜掠 銳角未正控",
+      "formula_post": "滑偏火花 切向軌 負控 FAIL-BY-DESIGN",
+      "analysis_line_canonical": "STRIKE:ROD-END  RECV:GLANCE  <35° SLIP  ROD_NEG",
+      "phases": {
+        "PRE": {
+          "style": {
+            "palette": "COLD",
+            "E": [
+              "VFX_COILED_LIGHTNING",
+              "VFX_GROUND_GRAFFITI_INTACT",
+              "COLD_ETCH_ON_SPHERE"
+            ],
+            "arrow_color": "cyan",
+            "label_weight": "thin_glow"
+          },
+          "analysis_line": "STRIKE:ROD-END  RECV:SPHERE  F_oblique  n·v=?  GAP_PENDING(GLANCE)  ROD_NEG",
+          "Σ_geo": {
+            "s_title": "GEO.ROD · NEG",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:ROD-END  RECV:SPHERE  F_oblique  n·v=?  GAP=GLANCE  ROD_NEG",
+            "s_strike": "打擊面=ROD-END",
+            "s_recv": "受面=SPHERE",
+            "s_force": "F_oblique",
+            "s_gap": "GAP_PENDING(GLANCE)",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=ROD-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=SPHERE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_oblique",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP_PENDING(GLANCE)"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.ROD · NEG"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        },
+        "MID": {
+          "style": {
+            "palette": "CRITICAL",
+            "E": [
+              "VFX_HUD_CYAN_NET",
+              "CROSSHAIR_CONTACT",
+              "FULL_DIRECTION_GRID"
+            ],
+            "arrow_color": "cyan_white",
+            "label_weight": "full"
+          },
+          "analysis_line": "STRIKE:ROD-END  RECV:SPHERE  F_oblique  n·v=?  GAP=0  ROD_NEG",
+          "Σ_geo": {
+            "s_title": "GEO.ROD · NEG",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:ROD-END  RECV:SPHERE  F_oblique  n·v=?  GAP=GLANCE  ROD_NEG",
+            "s_strike": "打擊面=ROD-END",
+            "s_recv": "受面=SPHERE",
+            "s_force": "F_oblique",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=ROD-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=SPHERE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_oblique",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.ROD · NEG"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            },
+            {
+              "op": "CROSSHAIR",
+              "anchor": "HL.CONTACT"
+            }
+          ]
+        },
+        "POST": {
+          "style": {
+            "palette": "HOT",
+            "E": [
+              "VFX_COMBUSTION_FIRE",
+              "HOT_ARROW",
+              "VFX_GROUND_GRAFFITI_SHATTER"
+            ],
+            "arrow_color": "red_gold",
+            "label_weight": "bold_hot"
+          },
+          "analysis_line": "STRIKE:ROD-END  RECV:SPHERE  F_oblique  n·v=?  GAP=0  ROD_NEG",
+          "Σ_geo": {
+            "s_title": "GEO.ROD · NEG",
+            "s_brand": "邊界行人",
+            "s_line": "STRIKE:ROD-END  RECV:SPHERE  F_oblique  n·v=?  GAP=0  ROD_NEG",
+            "s_strike": "打擊面=ROD-END",
+            "s_recv": "受面=SPHERE",
+            "s_force": "F_oblique",
+            "s_gap": "GAP=0",
+            "s_nv": "n·v=?",
+            "s_loop": "LOOP L-{h12}"
+          },
+          "draw_ops": [
+            {
+              "op": "LABEL",
+              "anchor": "HL.STRIKE",
+              "text": "打擊面=ROD-END"
+            },
+            {
+              "op": "LABEL",
+              "anchor": "HL.RECV",
+              "text": "受面=SPHERE"
+            },
+            {
+              "op": "ARROW_FORCE",
+              "token": "F_oblique",
+              "along": "HL.AXIS"
+            },
+            {
+              "op": "NORMAL_MARK",
+              "token": "n·v=?"
+            },
+            {
+              "op": "GAP_MARK",
+              "token": "GAP=0"
+            },
+            {
+              "op": "METHOD_HEAD",
+              "text": "GEO.ROD · NEG"
+            },
+            {
+              "op": "BRAND",
+              "text": "邊界行人"
+            },
+            {
+              "op": "LOOP",
+              "text": "LOOP L-{h12}"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "E02_modules_allowed_on_indicator": [
+    "VFX_COILED_LIGHTNING (PRE brand/method optional)",
+    "VFX_COMBUSTION_FIRE (POST method optional)",
+    "VFX_GROUND_GRAFFITI (analysis_line on ground)",
+    "VFX_WORLD_ADAPTIVE",
+    "COLD_ETCH",
+    "HOT_ARROW"
+  ],
+  "compile_fn_pseudocode": "\ndef compile_geo_indicator(method_id, phase, h12, anchors):\n    R = TEXT_SET.catalog[method_id]\n    S = R.phases[phase]\n    strings = {k: v.replace('{h12}', h12) for k,v in S['Σ_geo'].items()}\n    ops = []\n    for op in S['draw_ops']:\n        ops.append(bind(op, anchors, strings))  # endpoints on HL.*\n    return strings, ops, S['style']\n"
+}

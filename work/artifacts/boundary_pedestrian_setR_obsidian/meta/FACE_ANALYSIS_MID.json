@@ -1,0 +1,11 @@
+{
+  "method": "GEO.T · H2",
+  "strike_face": "T-END · FLAT CIRCULAR (W0 C-ring prop)",
+  "recv_face": "SPHERE · TANGENT POINT",
+  "force": "F_n · NORMAL AT TANGENT · FIRST CONTACT",
+  "gap": "GAP≈0 · TANGENT",
+  "H": "H2",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  n·v≈1  GAP≈0  ★MICRO  H2",
+  "I_MID": "7c19c324-0b00-4880-93ff-78f22280f34a",
+  "L": "L-a1a1f6da2612"
+}

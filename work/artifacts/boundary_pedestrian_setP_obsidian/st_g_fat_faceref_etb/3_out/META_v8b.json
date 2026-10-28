@@ -1,0 +1,15 @@
+{
+  "pipeline": "v8b_AplusB_pure",
+  "gates": {
+    "face_lap": 173.37600708007812,
+    "center_lap": 52.774810791015625,
+    "ecc": 0.8059686211441445,
+    "before": 254.7398223876953,
+    "full_lap": 356.58050537109375,
+    "alpha_c": 1.0000001192092896
+  },
+  "L": "L-5055286a7769",
+  "sha256": "5055286a7769602f536b2f4ec07f0ff660bc5ffb522c8b8d01924029d910565d",
+  "formula": "v7 base + pure ImagineB ECC face only alpha=1 core, NO f02 HF",
+  "asof": "2026-10-25T17:25:44Z"
+}

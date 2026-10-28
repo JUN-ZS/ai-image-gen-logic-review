@@ -1,0 +1,2144 @@
+# 《邊界行人》全集合一規則總憲
+## BOUNDARY_WALKER_UNIFIED_RULES.md
+
+> **ASOF:** 2026-10-26T17:46:00Z
+
+> **地位：** 唯一操作總憲。  
+> **新 SET 第一步 LOCK：** §0.0 · ST0 環境概念圖 → ST1 對型鎖臉創新 IP（退地·多角度·槌創意）  
+> **標準面 LOCK：** `a8b78fe5-2654-4f6f-84e3-c1dfbee61004`（§0.10 · 全專輯）  
+> **首 IP LOCK：** §0.5.1 無底圖 + 多角度 IP 包（先於全幅鎖臉）  
+> **全幅鎖臉 LOCK：** §0.13（樣板 `2ce5fabe…` · SET-Q v2 `f1d38afd…`）· **asset_ids 必須 a8b 最前** · 即 PATH1E · GRID 臉格禁止再 FACE_REF（§0.12.13）  
+> **PIXEL_RATIO 臉回原圖 LOCK：** §0.12.14 · **座標已校正**（`s_face`/`s_eff`/FACE_CROP_DIRECT · pad≤0.12 · 禁銅盤）· 樣板 face `569e285b…` → M1 · SET-R
+> **ST2 禁止：** scene-first 弱權 a8b（SET-Q v1 `f5bedf13…` = FAIL · 不像女主／不清）  
+> 之後任何 SET（含 SET-O 重做、grid60、字層、PRE/MID/POST）**先讀本文**，再動圖。  
+> **來源合併：** HUB_MASTER_FORMULAS_v5 · C-01 零跳幀 · E-01/E-02 生動字 · PATH1E 臉鎖 · LAYERED_CHAIN · 女主連續 · 方法幾何契約  
+> **SET-O 失敗點（已核實）：** 未先「鎖死第一張 MID」就 img2img 推 PRE/POST → 人物／機位／槌姿漂移（PRE↔MID mean|Δ|≈29–33，POST↔MID ≈40–50）。**禁止再犯。**
+
+---
+
+## 0. 一句話總則
+
+```
+★ 新 SET 第一步（§0.0 · 強制）：
+  ST0 先出 **環境背景概念圖**（無人／可空舞台 · WORLD_BIBLE）
+  → ST1 再出 **對型女主鎖臉 IP**：大師級創新造型 · **退地（無底）** · **多角度** · **槌／武器有創意**（§0.5.1 · a8b）
+→ 再全幅鎖臉 L0（§0.13 · **a8b 必須 asset_ids[0]** · 2ce5 類 · 一人一姿）
+→ ST2 當幀 **即 PATH1E**（a8b donor／identity plate · 臉清）
+→ 只從這張 L0 抽人／切裁／建 mask
+→ PRE／POST 只能改「時間 ±δt」，不得重抽人
+→ 字：ST5 雙 ET 疊在已鎖臉上（字不改骨相）
+→ HD：ST_G GRID 只升景／字／材質（臉格禁止再 FACE_REF · §0.12.13）
+→ 臉 residual：PATH1E 單 donor 硬貼 a8b（§0.10–0.11） **或** PIXEL_RATIO 臉格回原圖（§0.12.14 · 有 GRID 臉板時優先）
+→ 幾何：公式方向線 + HIGHLIGHT 物件（§0.9）
+→ **指標字：** ST3.G GEO_INDICATOR（方向性／指標性標註 · §0.14 · 與 ST5 FREE 海報字分流）
+```
+
+**不是：** 各幀各自 text-to-image 再「看起來像同一人」。  
+**是：** 一張錨點圖的結構繼承。
+
+---
+
+## 0.0 新 SET 第一步（強制 · ST0 環境 + ST1 創新 IP）
+
+> **用戶確立（2026-10-26）：**  
+> 「要求先有**環境背景概念圖**，和**對型造型的女主鎖臉 IP** 的**大師級創新造型**（**退地**、**多角度**、**槌有創意**）← **進憲第一步**」  
+> 任何新 SET **不得**跳過本節直接 ST2 全幅鎖臉或直接文生完成圖。
+
+### 0.0.1 順序（不可顛倒）
+
+```
+ST0  WORLD_CONCEPT     環境背景概念圖（先）
+  →  ST1  HEROINE_IP   對型 · 鎖臉 · 大師創新造型 IP（後）
+  →  才允許 ST2 FULLFRAME_FACE_LOCK / MID
+```
+
+| 步 | 代號 | 必須產出 | 禁止 |
+|----|------|----------|------|
+| **ST0** | **WORLD** | ≥2 張環境概念（建立鏡頭 + 可打舞台）+ `WORLD_BIBLE.json` | 無人可，**禁止**先用完成打泡圖當世界；禁止無 WORLD 就 IP 進景 |
+| **ST1** | **IP** | **退地**多角度 IP 包 + 創新服裝 + **創意武器／槌** + 臉鎖 a8b | 有景劇照當 IP；小黑裙／舊槌無腦複刻冒充「新造型」；缺角度 |
+
+### 0.0.2 ST0 · 環境背景概念圖（WORLD_CONCEPT）
+
+**定義：** 本 SET 世界的 **視覺憲法草稿**—— palettes、空間結構、生命球位置、光色、物理情緒——**先於人物定稿**。
+
+| 產物 | 要求 |
+|------|------|
+| `WORLD_ESTABLISH` | 廣角建立；可無人；展示世界「一眼可識」 |
+| `WORLD_STAGE` | 可放置女主的空舞台／平台／接觸空域（球可在，人可不在） |
+| `WORLD_BIBLE.json` | one_liner · palette · architecture · physics_mood · not（禁止複刻列表） |
+| 可選 | 材質特寫、球 alone、光向研究 |
+
+**硬規則：**
+
+1. ST0 **可以無人**；若有人只能極小剪影，**不得**當女主身份源。  
+2. 世界須有**本 SET 獨特概念**（不得無腦複製上一 SET 洞穴／同一套鉻洞除非用戶明示繼承）。  
+3. 生命球／邊界球在世界中的位置與材質要在 bible 寫死，供 ST2 繼承。  
+4. ST0 未寫 `WORLD_BIBLE` + 至少 1 張 establish → **不得**開 ST1 造型定稿（可並行草稿，但 canon 順序仍 ST0→ST1）。
+
+### 0.0.3 ST1 · 對型女主鎖臉 IP（大師級創新 · 退地 · 多角度 · 槌有創意）
+
+**對型** = 服裝／武器／氣質 **對齊本 SET 世界**（ST0 bible），不是通用棚拍模特。  
+**鎖臉** = 身份唯一溯 **標準面 a8b**（§0.10）。  
+**退地** = **NO_BG**（§0.5.1）：純棚／透明 cutout，**無環境球洞字**。  
+**多角度** = 最低 `FRONT + FRONT_FULL + ACTION + FACE_CLOSE`；完整建議 ≥6（§0.5.1 表）。  
+**槌有創意** = 武器外形 **本 SET 創新**，但仍須可映射方法幾何契約（例：裂環槌仍可定義 `T-END` 以跑 `GEO.T · H2`）。
+
+| 子項 | 強制 |
+|------|------|
+| 臉 | `Ref/I2I` 必帶 **a8b**；FACE_CLOSE 為 PATH1E donor |
+| 造型 | **大師級創新**：輪廓／材質／結構至少一項明顯新於上一 SET；禁止「只換色小黑裙」當創新 |
+| 武器 | **創意槌／械**：寫入 `HEROINE_DESIGN.json`（name · topology · strike_face 映射） |
+| 角度包 | `IP_PACK_MANIFEST.json` · `no_bg=true` · 標 canon / 降級（武器漂形者不入 master） |
+| 對型檢查 | 人眼：IP 氣質與 WORLD palette／材質 **同世界**；否則 FAIL 重做 ST1 |
+
+**公式：**
+
+```
+ST0:  WORLD_* = ConceptArt(WORLD_BIBLE)     # 無人或空舞台
+ST1:  for angle in IP_PACK:
+        IP[angle] = Ref(a8b, optional prior IP same outfit,
+                        prompt = NO_BG + 對型創新造型 + 創意武器 + angle)
+      → IP_FACE_CLOSE / IP_FRONT_FULL / IP_ACTION 為 master
+      → extract_subject 可選
+```
+
+### 0.0.4 閘門（第一步未過不得 ST2）
+
+```
+[ ] ST0 ≥1 establish + WORLD_BIBLE.one_liner
+[ ] ST0 有本 SET 獨特世界記號（非無標籤複刻）
+[ ] ST1 no_bg=true；無球／洞／字燒進 IP
+[ ] ST1 臉 = a8b 可指認
+[ ] ST1 ≥ FRONT + FRONT_FULL + ACTION + FACE_CLOSE
+[ ] ST1 服裝創新可陳述（對型世界）
+[ ] ST1 武器創意可陳述 + strike_face 可映射方法
+[ ] IP_PACK_MANIFEST + HEROINE_DESIGN 已寫
+```
+
+未過 → `SET_BOOT = FAIL`，禁止 ST2 全幅鎖臉、禁止標 FINAL。
+
+### 0.0.5 與後段
+
+| 後段 | 依賴 |
+|------|------|
+| ST2 全幅鎖臉 §0.13 | `asset_ids = [a8b, IP_FACE_CLOSE, IP_FRONT_FULL/ACTION…, WORLD_STAGE 可後]` |
+| ST4 新動作 §0.7 | 用 ST1 IP.ACTION 等 REF 出淨姿 |
+| ST3.G §0.14 | 武器 strike_face 用 HEROINE_DESIGN 映射 |
+| SET-R 實證 | `boundary_pedestrian_setR_obsidian`：WORLD 黑曜軌道 + IP 軌道祭司／裂環槌 |
+
+### 0.0.6 修訂
+
+- **2026-10-26T15:52:00Z：** 用戶「環境概念 + 對型鎖臉創新 IP（退地多角度槌創意）←進憲第一步」→ 本節 §0.0 強制 ST0→ST1。
+
+*END §0.0*
+
+---
+
+## 1. 鎖幀順序（強制流水線 · 不可跳步）
+
+| 步 | 名稱 | 允許做 | 禁止做 |
+|----|------|--------|--------|
+| **S0** | 女主／世界 ref 就位 | 讀 HEROINE_LOCK、世界板 | 無 ref 就開生 |
+| **S1** | **LOCK MID** | 只生 **一張** 淨圖母版；寫 SHA；寫 `LOCKED=true` | 同時生 PRE/POST；MID 帶字 |
+| **S2** | **AUDIT MID** | 人眼 + 像素：幾何接觸是否一眼可讀 | 未 audit 就推 ±δt |
+| **S3** | **CUT 人** | **只從 MID** 切 person matte / face ROI / head ROI | 從 PRE 或 POST 抽人；從另一 SET 亂貼未對齊人 |
+| **S4** | PRE = f(MID, −δt) | 結構鎖 MID；只回撥時間 + PRE 字態 | 換機位、換衣服、重生成整個人、改武器拓撲 |
+| **S5** | POST = f(MID, +δt) | 結構鎖 MID；只前進時間 + POST 字態 | 同上 |
+| **S6** | **ST5 雙 ET 字印** | ET-A(PRE)+ET-B(POST) 同文異態；可選 FREE ST6；見 §0.8–0.9 | TRY 次數、REVIEW PENDING、遮死 HL.CONTACT |
+| **S7** | **GRID HD（景／字）+ 臉 residual** | **§0.13 已全幅鎖臉 → §0.12 GRID 只 Enhance 非臉 → PATH1E 單 donor** | 對臉格再 FACE_REF；無 cells 空升；PATH1B soft |
+| **S8** | 閘門 + MANIFEST | 通過閘門才標 FINAL | 未過閘叫 FINAL |
+
+### 1.1 「鎖死第一張」的操作定義
+
+MID 鎖定後，寫入 `FRAME_LOCK.json` 且整 SET 只讀不改：
+
+- `mid_asset_id` / `mid_sha256` / `L = L-<sha12>`
+- `camera_contract` frozen
+- `weapon_topology` + `contact_state_mid`
+- `heroine_id` / `world_code`
+- `person_cut_source = MID_ONLY`
+- `locked = true`
+
+**未寫 `locked:true` → 不得生 PRE/POST，不得抽人。**
+
+### 1.2 抽人規則（核心）
+
+1. **唯一合法源：** 已鎖定的 MID（或 MID 的 lossless 裁切）。  
+2. **合法產物：** person cutout、face ROI、head ROI、edge matte、depth/canny 控制圖。  
+3. **用途：** 給 PRE/POST 結構控制／paste 校準；給 PATH1E face ROI。  
+4. **非法：** 先抽「好看的人」再無 ECC 亂貼；從 PRE 抽人貼回 MID；每幀各自重抽女主（會換骨）。
+
+---
+
+## 2. PRE / MID / POST 物理契約（C-01）
+
+| 幀 | 時間 | 接觸 | 字 |
+|----|------|------|-----|
+| PRE | t0−δt | 有間隙、球未裂 | 凝聚態（閃電纏槌、完整塗鴉…） |
+| MID | t0 | 臨界接觸（如 H2） | **禁止字**（淨母版） |
+| POST | t0+δt | 跟進、碎裂、飛濺 | 釋放態（同文 · 烈焰／裂地…） |
+
+**可變：** 間距、裂紋、水花、字材質、粒子。  
+**不可變：** 機位、焦距、構圖重心、服裝、世界、武器拓撲、女主身份與骨相。
+
+### 2.1 連感閘門（未過不得 FINAL）
+
+相對 **同一張 LOCKED MID**：
+
+| 閘 | 建議閾 | SET-O 實測 |
+|----|--------|------------|
+| 全圖 mean\|Δ\| PRE↔MID | ≤ 18（字區可 mask） | ≈ 29 ❌ |
+| 人物 ROI mean\|Δ\| | ≤ 15（扣字與球） | ≈ 33 ❌ |
+| 右背景 mean\|Δ\| | ≤ 12 | PRE≈31 / POST≈50 ❌ |
+| 主體 bbox IoU | ≥ 0.85 | 未鎖 |
+| 臉 LP-SSIM | ≥ 0.90 | — |
+
+實作：PRE/POST **必須以 MID 為主參考**；prompt 只寫時間與字；改動要低；必要時 **ECC 把人貼回 MID 骨架** 再補特效。
+
+---
+
+## 3. 生動字契約（E-01 + E-02）
+
+### 3.1 允許字串（拆散、亂位、句內字級可變）
+
+1. 邊界行人  
+2. THE BOUNDARY WALKER  
+3. 打法 GEO.…（H2/FACE 可巨型）  
+4. CAM · STYLE · PROMPT_ID  
+5. WORLD: … · L-\<MID_SHA12\>
+
+**禁止上畫：** TRY-xxxx、REVIEW PENDING。
+
+### 3.2 特效模組（同文異態 · 全套要有才叫字齊）
+
+| ID | 形態 | 典型幀 |
+|----|------|--------|
+| VFX_COILED_LIGHTNING | 繞槌 NEON 閃電字 | PRE |
+| VFX_COMBUSTION_FIRE | 空中烈焰／熔岩字 | POST |
+| VFX_GROUND_GRAFFITI | 地面透視塗鴉 | PRE+POST |
+| VFX_WORLD_ADAPTIVE | 隨世界材質 | 任一 |
+
+無底背色塊。`L-` 必須 = MID SHA12，禁止 FINAL 留 PLACEHOLDER。
+
+---
+
+## 4. 方法幾何
+
+一變體一種接觸律；鏡頭可變，不得偷改接觸幾何。  
+T·H0/H1/H2/H3 · T2·FACE · CROSS·FACE · ROD · PLANT · MULTI。  
+同 SET 世界風格鎖死。
+
+---
+
+## 5. 臉 HD · PATH1E（已 LOCK）
+
+專章：`boundary_pedestrian_setN_golden/grid60/RULES/PATH1E_LOCK.md`
+
+- ECC 模型臉硬貼 + edge + person matte  
+- 禁 1B soft / 1D ORB 鬼影  
+- sharp≥400 · LP-SSIM≥0.90 · skyΔ≤5  
+- face ROI **必須來自 LOCKED MID 對應區**，不是另抽無關特寫硬塞  
+- 解鎖：用戶說「解鎖 1E」
+
+---
+
+## 6. 分層鏈 LAYERED_CHAIN_LOCK
+
+```
+chain_clean → chain_hud → chain_paste → chain_final
+```
+
+FINAL 不覆蓋唯一 MID 母版檔。
+
+---
+
+## 7. 女主連續
+
+`heroine_lock/` face+body；新 SET 繼承；生成帶 ref；禁純文生換臉。
+
+---
+
+## 8. 每 SET 必勾清單
+
+```
+[ ] S1 MID LOCK + SHA + L- 寫入 FRAME_LOCK.json
+[ ] S2 MID 幾何可讀
+[ ] S3 人／臉 matte 只從 MID 切
+[ ] S4 PRE 繼承 MID；字=凝聚態
+[ ] S5 POST 繼承 MID；字=同文釋放態
+[ ] S6 L- 正確；無 PLACEHOLDER；無 REVIEW PENDING
+[ ] 連感閘門通過（或標 FAIL 重做）
+[ ] 方法矩陣：各法各自 MID lock
+[ ] HD 臉：PATH1E only
+[ ] SET_META + LOOP + sheets
+```
+
+---
+
+## 9. SET-O 違規紀錄（Obs）
+
+| 項 | 結果 |
+|----|------|
+| 先 LOCK MID 再抽人 | **否** |
+| 人物 ROI 漂移 | **~33**（門檻 ≤15） |
+| 字模組 | 閃電／火／塗鴉 **有** |
+| L- 最終 | L-dcc66a60d5e2 |
+| 結論 | **字齊、鎖未死 → 結構 FAIL** |
+
+重做：凍結 MID `ab069d6e…` → 自 MID 切人 → PRE/POST 極低改動只改間距／碎裂／字 → 必要 ECC 回貼。
+
+---
+
+## 10. 文件地圖
+
+| 檔 | 角色 |
+|----|------|
+| **本文** | **唯一總操作憲（全集合一）** |
+| **§0.0 本文** | **新 SET 第一步：ST0 環境概念 + ST1 對型創新 IP** |
+| HUB_MASTER_FORMULAS_v5.md | 長篇詞庫詳參 |
+| PATH1E_LOCK.md | 臉 HD 專章 |
+| §0.12 本文 | **GRID 高清連鎖（每 SET 標準過程）** |
+| §0.12.13 / §0.13 | **全幅鎖臉 + GRID 只升景字（每 SET 正式臉質）** |
+| **§0.12.14 本文** | **PIXEL_RATIO 臉格 HD 回原圖（比例對位 residual）** |
+| **§0.14 本文** | **GEO_INDICATOR 方向性／指標性字層（每方法教學／審核程序）** |
+| SETO_GRID*_META.json | 該輪 GRID OBS |
+| 各 SET_META.json | 該輪 OBS，不覆寫總憲 |
+| HEROINE_LOCK.json | 女主 ref |
+
+**問：規則是否要全集合在一文？→ 是。本文即唯一集合入口；其餘為專章附件。**
+
+---
+
+## 11. 修訂
+
+- **2026-10-26T16:30:00Z：** 新增 **§0.12.14 PIXEL_RATIO_FACE_REINSERT**（像素比例表 · scale_iso · place_tl · 橢圓羽化回原圖）；樣板 SET-R face `569e285b…` → M1 `e51cdaa3…`；禁低 conf ECC 硬扭。用戶：「進憲,寫進全文規則」。
+- **2026-10-26T15:52:00Z：** **§0.0 新 SET 第一步** 入憲：先環境背景概念圖，再對型女主鎖臉 IP（大師創新·退地·多角度·槌有創意）。用戶：「…←進憲第一步」。同步 §0.9 ST0/ST1、§0.5.1、必勾清單。
+- **2026-10-26T15:40:00Z：** **§0.14.14 PRE 混成管線** 入憲：diegetic 只做線材質；面標／analysis_line 用 TEXT_SET 向量寫死；MID/POST diegetic 一次可過；T-END→M-END 漂字黑名單 + G-PRE-HYBRID/G-TOKEN。OBS：SET-Q diegetic。用戶確認寫進 §0.14。
+- **2026-10-26T03:15:00Z：** §0.14.13 引用原文（FACE_ANALYSIS_HUB · HUB v5 E-01/E-02 · try_art）→ `GEO_INDICATOR_TEXT_SET.json` 盲生成 CompileFields。用戶：「找到引用原文…盲能靈巧地生成」
+- **2026-10-26T03:15:00Z：** 新增 **§0.14 GEO_INDICATOR_TYPE（方向性／指標性字層）** 為每 SET 新程序；樣板 ref 鎖定 f0caf896／78a0a9f1 方法表／A02–A05 三聯／a51850bc HOT labels。與 §0.8 FREE 海報字分流。用戶：「這一 set 的文字概念要寫進憲的新一程序中,太有方向性,指標性了」
+- **2026-10-26T02:17:00Z：** **§0.13 強化 a8b-first + 即 PATH1E**；寫死 SET-Q v1 `f5bedf13` FAIL（scene-first · 不像女主·不清）；SET-Q v2 `f1d38afd` / PATH1E `f80c51c8` 入正典樣板。用戶：「好,對了,入全憲」。
+- **2026-10-26T01:51Z：** **§0.5.1 首 IP = 無底圖 + 多角度包**（IP.FRONT/FULL/THREE_Q/SIDE/BACK/ACTION/FACE_CLOSE）；禁止有景劇照當首 IP。用戶：「人物的首IP，應該是沒底圖和有各種IP參考角度的」
+- **2026-10-26T01:44Z：** 新增 **§0.13 FULLFRAME_FACE_LOCK** + **§0.12.13 GRID24_ENHANCE（臉格禁止 FACE_REF）**；以 `2ce5fabe` 類全幅鎖臉為每 SET L0；字 ET 疊；GRID 只升景／字。降級 GRID_FACE_REF／FAT_FACE_REF 為實驗。用戶：「寫進全文的每一 SET 程序裡」
+- **2026-10-25T16:35Z：** 新增 **§0.12 GRID 高清連鎖**（24 預設／6 肥疊／A·B·C 組裝／PATH1E 接駁）；ST_G 插入每 SET 階段；用戶「把這方法寫進全文，即每 SET 都會用的過程」
+- 改總憲：用戶說「修訂總憲」+ 條號  
+- 改 PATH1E：用戶說「解鎖 1E」  
+- 試驗標 EXPERIMENT，不得冒充 FINAL
+
+---
+
+*END UNIFIED RULES*
+
+
+---
+
+## 0.5 修訂 · IP 女主先出（2026-10-25T10:04:21Z · 用戶確立）
+
+> **2026-10-26 進憲第一步補強：** 新 SET **必須先 ST0 環境概念圖，再 ST1 本節 IP**——見 **§0.0**（對型 · 大師創新 · 退地 · 多角度 · 槌有創意）。§0.5 細則服務於 ST1，不得跳過 ST0。
+
+
+> **2026-10-26T01:51 補強（用戶）：** 人物的**首 IP** 必須是 **沒有底圖／沒有場景** 的，並且要有 **各種 IP 參考角度**（多視角包），不是一張有景全身就當唯一 IP。
+
+**新強制前綴（在 S1 LOCK MID / 全幅鎖臉之前）：**
+
+| 步 | 名稱 | 內容 |
+|----|------|------|
+| **S0.5** | **IP 無底圖多角度包** | 用**標準面 a8b**（+ 既有 body ref）生成 **無環境底板** IP 組：純棚灰／純色／透明 cutout · **禁止場景球／字／洞穴當 IP 底** |
+| **S0.5b** | **多角度覆蓋** | 同一套服裝／身份，至少備齊下表角度（見 §0.5.1）；每張仍無底圖 |
+| **S0.6** | **PATH1E 升人臉質** | 對 **主正面 IP**（及必要角度）做 PATH1E 硬升臉（a8b donor · 禁 soft wash） |
+| **S0.7** | **透明 cutout 鎖定** | 每張角度 extract subject → `IP_CUT_*.png`；主資產 `IP_CUT_HD` + 角度庫 |
+| **S1** | LOCK MID | **才** 用人+景：以 **IP 包（多角度）+ a8b** 為 ref 生成景中人／全幅鎖臉 |
+
+> 禁止：直接在有景圖裡重抽人再補臉。  
+> 禁止：把「有底圖的完成圖／2ce5 類全幅」誤當 **首 IP**（那是 ST2 產物，不是 ST1 IP）。  
+> 人物身份只從 **無底圖 IP 鏈 + a8b** 繼承。
+
+SET-O 已執行：IP_RAW → IP_PATH1E_HD → CUT_HD → MID_v2 (`L-1ca33c5e3c15`)。
+
+### 0.5.1 首 IP 定義（NO_BG · MULTI_ANGLE）
+
+**首 IP（PRIMARY IP PACK）=**
+
+```
+無底圖（NO_BG · 退地）
+  + 標準面 a8b 身份（鎖臉）
+  + 對型本 SET 世界（§0.0 ST0 bible）
+  + 大師級創新造型（服裝輪廓／材質／結構至少一項新）
+  + 創意武器／槌（外形創新 + strike_face 可映射方法）
+  + 多參考角度（MULTI_ANGLE）
+  ≠ 單張有景劇照
+  ≠ 單張已 ET 字圖
+  ≠ GRID 完成圖
+  ≠ 無腦複刻上一 SET 服裝／舊實心方錘（除非用戶明示繼承）
+```
+
+#### 無底圖（強制）
+
+| 允許底板 | 禁止底板 |
+|----------|----------|
+| 純棚灰／中性無縫紙 | 生命球、洞穴、黑水晶世界 |
+| 透明 RGBA cutout | 地面倒影場景、火字、塗鴉地 |
+| 極簡單色（不搶身份） | 任何可讀「世界故事」背景 |
+| 僅角色＋可選武器道具 | 已燒進景的 L0／ET／GRID 圖 |
+
+#### 多角度包（最低集合 · 每 SET）
+
+| ID | 角度 | 用途 |
+|----|------|------|
+| **IP.FRONT** | 正面／3/4 近臉～半身 | 身份主鎖、PATH1E 主 donor 來源 |
+| **IP.FRONT_FULL** | 正面全身 | ST2 全身構圖 ref |
+| **IP.THREE_Q** | 3/4 側面 | 打泡常用機位 |
+| **IP.SIDE** | 正側（左或右） | 側面 FREE／軸向動作 |
+| **IP.BACK_3Q** | 背 3/4 或過肩 | 背後廣角／跟進 |
+| **IP.ACTION** | 本 SET 關鍵動作（舉槌／蓄力／揮擊）無景 | ST4 新動作 ref（§0.7） |
+| **IP.FACE_CLOSE** | 臉部大特寫（仍無景） | 近距 PATH1E／臉質對照 |
+
+**建議可加：** 仰角臉、俯角臉、濕髮特寫、持械左右手交換——有則寫進 `IP_PACK_MANIFEST.json`。
+
+**數量下限：** 至少 **IP.FRONT + IP.FRONT_FULL + IP.ACTION + IP.FACE_CLOSE** 四張；完整 SET 建議 ≥6 角度。
+
+#### 生成公式
+
+```
+for angle in IP_PACK_ANGLES:
+  IP[angle] = RefToImage(
+    [ a8b78fe5,           # 標準面身份主
+      (optional body),    # 體型／服裝 continuity
+      (optional prior IP same outfit) ],
+    prompt = seamless studio OR transparent;
+             NO scene, NO sphere, NO cave, NO text;
+             angle = <angle>; outfit = SET wardrobe;
+             single solid person
+  )
+  → PATH1E on face if needed
+  → extract_subject → IP_CUT[angle]
+```
+
+#### 產物與命名
+
+```
+heroine_lock/setX/
+  IP_PACK_MANIFEST.json
+  IP_FRONT.jpg / IP_FRONT_FULL.jpg / IP_THREE_Q.jpg / ...
+  IP_FACE_CLOSE.jpg
+  IP_ACTION_<pose>.jpg
+  IP_CUT_*.png
+  IP_HD = 主正面 PATH1E 後（或 FRONT_FULL 升臉後）
+```
+
+`IP_PACK_MANIFEST.json` 必含：`angles[]`、`no_bg=true`、`standard_face=a8b`、各 asset_id、本 SET 服裝鎖定。
+
+#### 與後段關係
+
+| 後段 | 如何用 IP 包 |
+|------|----------------|
+| ST2 全幅鎖臉 §0.13 | **`Ref(a8b, IP.FACE_CLOSE/IP_HD, IP.ACTION…, 景錨最後)`** · a8b 最前 · 即 PATH1E |
+| ST4 新動作 §0.7 | 以 **IP.ACTION / 無底多角度** REF 出乾淨姿，禁疊影 |
+| ST5 ET | 底圖已是全幅鎖臉；ref 仍帶 IP_HD + a8b |
+| ST_G | 不再生 IP；只升景字 |
+
+#### 違規
+
+| 違規 | 判定 |
+|------|------|
+| 只有一張「有球有景」當 IP | **FAIL · 非首 IP** |
+| IP 自帶世界底再 cutout 當正典 | **FAIL**（cut 前就該無景） |
+| 缺 FRONT / FACE_CLOSE 就進 ST2 | **FAIL** |
+| 用 ET／GRID 完成圖回寫當 IP_HD | **FAIL** |
+
+*END §0.5.1 · asof 2026-10-26T01:51:00Z*
+
+
+## 0.6 真女主鎖定（2026-10-25T10:13:56Z）
+
+- **唯一合法女主臉：** asset `b41e0072-ccf5-41ee-97ef-2fd1b7ad75d2`（用戶指定）
+- 先前 arctic／高髻 IP **作廢**
+- 全景必須 **REF 此女主 IP** 進去，不可另抽臉
+- 連貫打泡：先 LOCK MID，再 ±δt 推 PRE/POST（C-01）
+
+---
+
+## 0.7 禁止人物疊影 · 必須用高清 IP REF 出新動作（2026-10-25T10:16:50Z · 用戶 Obs）
+
+### 違規案例（寫死）
+
+- 資產：`86bc3e56-a757-418a-aa84-9445e7e48677`（舊 POST）
+- 現象：**人物疊影 / 雙重殘影**（像兩層人糊在一起），不是乾淨的單一實體跟進動作
+- 根因：對上一幀做弱結構 i2i「時間推進」，模型把 **舊姿 + 新姿** 疊在一起；**沒有**用高清女主 IP REF 去 **REF 出一個新的乾淨動作姿態**
+- 判定：**結構 FAIL · 禁止當 FINAL · 禁止當連貫打泡樣板**
+
+### 正確做法（強制）
+
+```
+高清 IP REF（PATH1E 後的無背景女主 / cutout）
+  + 真女主臉 ref
+  + （可選）LOCKED MID 只作「世界/機位/構圖」錨
+  → reference_to_image 生成「新動作」單人實體幀
+  → 一人、一姿、無疊影、無半透明殘肢
+```
+
+| 允許 | 禁止 |
+|------|------|
+| 用 **HD IP REF** 出 PRE 蓄力姿、MID 接觸姿、POST 跟進姿 | 只靠 MID→POST 的糊 i2i 造成 **雙人疊影** |
+| MID 鎖世界；人物身份每幀從 IP 繼承 | 把 cutout **半透明疊**在舊人上當「新動作」 |
+| 單人實體不透明度 100% | 殘影、鬼影、雙手臂、雙軀幹 |
+| 球／水花／碎裂可大變 | 人物骨相／臉漂成另一人 |
+
+### 閘門（疊影）
+
+- 目視：不得有第二套輪廓／半透明第二人  
+- 若 residual 熱圖在人物區出現「雙輪廓帶」→ FAIL  
+- 標記：`GHOST_PERSON = FAIL` 不得入 `chain_final`
+
+### 與 §0.5 / §0.6 的關係
+
+1. 真女主臉 `b41e0072`（§0.6）  
+2. IP 無背景 + PATH1E（§0.5）  
+3. **新動作必須由該 IP REF 出**（本節）— 不是疊影式時間糊推  
+4. PATH1E 只升臉，**不負責**用疊層製造動作
+
+
+---
+
+## 0.8 極藝術 FREE 字層 · 背後邏輯公式（非抄圖）
+
+> **用戶釐清（2026-10-25）：** 先前生成的 FREE 變角字圖（Dutch 仰角、俯角火字、側面閃電、極近特寫、背後廣角）**只是「文字藝術自由程度」的參考樣本**，不是要逐張複製的樣板。真正要鎖的是：那些字是怎麼被「算」出來的——即 HUB §5 / E-01·E-02 的同文異態公式。
+
+### 0.8.1 核心原則
+
+```
+字內容 = 固定集合 Σ_text（精確字串，禁止模型自由拼字）
+字形態 = 單字級隨機縮放 + 三維附著映射 + 相位材質算子
+同文異態 = 同一 Σ_text，在 PRE / POST 用不同 Material(θ_phase) 與 Φ_3D
+FREE 度 = 空間散佈、字級對比、附著曲線、材質、鏡頭角度 全開
+         ≠ 發明新字串、≠ 抄某一張樣板的排版、≠ 加底框、≠ 出現 TRY / REVIEW
+```
+
+### 0.8.2 密碼學輪迴 ID 與合法文字集合
+
+設 LOCKED MID 的 SHA-256 前 12 碼為 \( h_{12} = \mathrm{SHA256}(I_{\mathrm{MID}})_{[0:12]} \)，則：
+
+\[
+\mathrm{LOOP\_ID} = \texttt{"L-"} \,\Vert\, h_{12}
+\]
+
+畫面合法文字集合（**嚴格排除** `TRY_COUNT` 與 `REVIEW_PENDING`）：
+
+\[
+\Sigma_{\mathrm{text}}(v) = \Big\{\;
+s_1:\texttt{"邊界行人"},\;\;
+s_2:\texttt{"THE BOUNDARY WALKER"},\;\;
+s_3:\mathrm{Method}(v),\;\;
+s_4:\mathrm{Meta}(v),\;\;
+s_5:\texttt{"WORLD: "} \Vert W \Vert \texttt{" · L-"} \Vert h_{12}
+\;\Big\}
+\]
+
+其中：
+- \( s_3 = \mathrm{Method}(v) \) 例：`GEO.T · H2`、`GEO.T2 · FACE`（核心詞 H2 / FACE 可巨型）
+- \( s_4 = \mathrm{Meta}(v) \) 例：`CAM · STYLE · PROMPT_ID`
+- 五條可拆散到不同空間位置，句內字級可變
+
+### 0.8.3 單字級隨機 + 三維附著算子 \( \mathcal{T}_{\mathrm{diegetic}} \)
+
+對每個字串 \( s_m = (c_{m,1},\dots,c_{m,L_m}) \in \Sigma_{\mathrm{text}}(v) \)，每個 Glyph \( c_{m,j} \) 獨立：
+
+- 字級縮放 \( \alpha_{m,j} \sim U(0.55,\, 2.40) \)
+- 旋轉 \( \phi_{m,j} \) 可小幅隨機
+- 三維附著映射 \( \Phi_{3D} \) 擇一或多：
+  - \( \Phi_{\mathrm{spline}} \)：繞槌軸／槌頭的圓柱纏繞曲線
+  - \( \Phi_{\mathrm{homography}} \)：地面／崖壁的透視投影
+  - \( \Phi_{\mathrm{fluid}} \)：衝擊波／飛濺粒子場沿向量拖曳
+
+\[
+\mathcal{T}_{\mathrm{diegetic}}\big(\Sigma_{\mathrm{text}},\, \theta_{\mathrm{phase}}\big)
+= \sum_{m=1}^{5}
+\mathcal{V}_{\mathrm{VFX}}\!\left(
+  \bigoplus_{j=1}^{L_m}
+  \Phi_{3D}^{(m,j)}\Big(
+    \mathrm{Glyph}(c_{m,j}),\;
+    \mathrm{Scale}=\alpha_{m,j},\;
+    \mathrm{Rot}=\phi_{m,j}
+  \Big)
+  \;\Bigg\vert\;
+  \mathrm{Material}=\mathcal{E}(\theta_{\mathrm{phase}}),\;
+  \mathrm{BgPlate}=\varnothing
+\right)
+\]
+
+**硬約束：**
+- \( \mathrm{BgPlate}=\varnothing \)（無底背色塊、無 UI 框）
+- Glyph 必須是精確字串，不准模型自由拼寫
+- 總視覺權重可偏海報式，但不得遮死接觸點判讀
+
+### 0.8.4 同文異態 · 相位材質 \( \mathcal{E}(\theta_{\mathrm{phase}}) \)
+
+| 相位 | \( \theta \) | 典型 \( \mathcal{E} \) | 附著傾向 |
+|------|--------------|------------------------|----------|
+| PRE | \( t_0-\delta t \) | 凝聚態：VFX_COILED_LIGHTNING（繞槌霓虹閃電）／完整塗鴉 | \( \Phi_{\mathrm{spline}} \) 纏槌、完整 \( \Phi_{\mathrm{homography}} \) |
+| MID | \( t_0 \) | **禁止字**（淨母版） | — |
+| POST | \( t_0+\delta t \) | 釋放態：VFX_COMBUSTION_FIRE（空中烈焰／熔岩）／裂地塗鴉 | \( \Phi_{\mathrm{fluid}} \) 沿衝擊、碎裂 \( \Phi_{\mathrm{homography}} \) |
+| 任一 | — | VFX_WORLD_ADAPTIVE（隨世界材質：冰／墨／銅／玉…） | 任意 |
+
+**同文** = \( \Sigma_{\mathrm{text}} \) 不變；**異態** = Material + \( \Phi_{3D} \) 隨相位與鏡頭自由變。
+
+### 0.8.5 FREE 度的合法範圍（對照先前樣板）
+
+先前 5 張 FREE 變角圖的合法自由來自：
+
+1. 鏡頭 \( \mathcal{C}_{\mathrm{cam}} \) 極端（Dutch 仰、俯角、側面長鏡、極近、背後廣角）
+2. \( \alpha_{m,j} \) 的大對比（H2 巨型、單字忽大忽小）
+3. \( \Phi_{3D} \) 選擇（纏槌 vs 地刻 vs 空中火字）
+4. \( \mathcal{E}(\theta) \) 材質（閃電 / 火 / 濕地塗鴉 / 崖刻）
+5. 空間散佈（字可拆到槌、崖、水面、球、地）
+
+**不合法的「自由」：**
+- 抄某一張的排版位置當固定模板
+- 發明 \( \Sigma_{\mathrm{text}} \) 以外的字串
+- 出現 TRY-xxxx / REVIEW PENDING
+- 加矩形底框或 UI 色塊
+- 用字層當藉口改人物骨相或武器拓撲
+
+### 0.8.6 實作路徑（優先序）
+
+1. **首選：** 程式排版骨架（SVG / 3D 文字）→ 材質 bake → 疊在 chain_hud；字準由排版器保證。
+2. **次選：** diegetic 二 pass（以 LOCKED 淨圖為底，只注入 \( \mathcal{T}_{\mathrm{diegetic}} \)），事後 OCR／人眼抽查字串。
+3. **禁止：** 純 text-to-image 讓模型同時生人、景、字（字必漂、人必漂）。
+
+### 0.8.7 與其他條款的關係
+
+- §0.5 / §0.6：人物身份只從 IP / 真女主繼承；字層不改人。
+- §0.7：字層不得造成人物疊影（字是物理材質，不是第二個人）。
+- §2 C-01：MID 淨圖無字；PRE/POST 才掛 \( \mathcal{T}_{\mathrm{diegetic}} \)。
+- L- 必須等於該 SET 的 MID SHA12，禁止 PLACEHOLDER。
+
+**結論：** 極藝術 FREE 的「自由」是 \( \mathcal{T}_{\mathrm{diegetic}} \) 的參數空間（字級、附著、材質、鏡頭），不是視覺樣板的複製，也不是字串集合的擴張。
+
+*END §0.8*
+
+---
+
+## 0.9 SET 全階段管線 · 雙 ET 文字印 · 公式方向線 · HIGHLIGHT（回收舊概念）
+
+> **用戶（2026-10-25 22:58）：** FREE 字可做成 SET 的一個階段；**兩 ET 文字印**要寫進全文；並把先前說過的 **公式方向線** 與 **HIGHLIGHT 物品** 一併拿回總憲。
+
+### 0.9.1 一 SET 的強制階段（STAGE）
+
+每個 SET 依序執行；跳步 = 結構 FAIL。
+
+| STAGE | 代號 | 內容 | 產物 |
+|-------|------|------|------|
+| **ST0** | **WORLD** | **§0.0 第一步：** 環境背景概念圖（establish + stage）+ `WORLD_BIBLE`；可無人；本 SET 世界獨特 | `WORLD_*` · `WORLD_BIBLE` |
+| **ST1** | **IP** | **§0.0 第一步：** **對型**大師創新造型 · **退地** · **多角度** · **槌／械有創意** · 臉鎖 a8b（§0.5.1）→ PATH1E 主臉 → cutout | `IP_PACK` · `HEROINE_DESIGN` · `IP_HD` · `IP_CUT_*` |
+| **ST2** | MID_LOCK | **全幅鎖臉** 淨圖母版：`Ref(**a8b 最前**, IP 包, 景錨可後)` 一人一姿（**2ce5 類** · §0.13）→ **即 PATH1E**；寫 SHA；`L-` | `I_MID` · `FRAME_LOCK` · `FULLFRAME_FACE_LOCK` |
+| **ST3** | GEO_AUDIT | 公式方向線 + HIGHLIGHT；接觸是否一眼可讀 | `GEO_OVERLAY`（可關） |
+| **ST3.G** | **GEO_INDICATOR** | **方向性／指標性字層**（§0.14）：analysis_line 上畫、力矢、法線、GAP、HOT/COLD、方法頭、LOOP；可出 PRE|MID|POST 三聯 | `I_*_GEO` · `GEO_INDICATOR_META` |
+| **ST4** | ±δt | HD IP REF 出 PRE/POST 新動作；**全幅再鎖臉**；禁疊影 | `I_PRE` · `I_POST` |
+| **ST5** | **ET_TYPE** | **雙 ET 文字印**疊在已鎖臉淨幀上（同文異態；字不改人） | `I_PRE_ET` · `I_POST_ET` |
+| **ST_G** | **GRID_HD** | **§0.12 + §0.12.13**：切格→**非臉格 Enhance**→B 組裝→PATH1E residual；**臉格禁止再 FACE_REF** | `I_*_GRID` · `GRID_META` |
+| **ST6** | FREE_CAM（可選） | 極藝術變角 + 同一 Σ_text + 同一 L- | `FREE_*` 系列 |
+| **ST7** | GATE | 連感閘 · 疊影閘 · 字串閘 · 幾何閘 | MANIFEST |
+| **ST8** | FINAL | 過閘才入 `chain_final` | FINAL 三連 / sheets |
+
+- **ST2 必須全幅鎖臉**（§0.13 · 實證 OK：`2ce5fabe…`）。  
+- **ST5 = 正式字階段**（字疊在已鎖臉上；不是可有可無的裝飾）。  
+- **ST_G 在 ST5 之後**（先字後 GRID 亦可：字掛淨鎖臉幀；GRID 只升景／字銳度）。  
+- **ST6 = FREE 變角字** 是 ST5 的擴張，參數空間見 §0.8。  
+- MID（ST2）**禁止字**；字只掛 PRE/POST（及 FREE 擴張幀）。
+- **ST3.G GEO_INDICATOR**（§0.14）可掛在 PRE/MID/POST **審核／教學幀**；MID 藝術淨母版仍無字，但 **GEO.AUDIT / GEO.TRIPTYCH 的 MID 格允許指標字**。
+- ST5 FREE 海報字與 ST3.G 指標字 **分流**：指標優先幾何可讀。
+
+與舊 SET-L 對照：`A world+heroine`→ST0/1；`B clean`→ST2/4；`C HUD` 可併入 ST3；`D paste`→可選 paste 層；`E TYPE`→**ST5**；`F SHA`→ST7/8。
+
+---
+
+### 0.9.2 兩 ET 文字印（Dual ET Type Print）
+
+**定義：** 同一 \(\Sigma_{\text{text}}\)、同一 \(L-\)，在 **PRE** 與 **POST** 各印一版，**材質／特效極大不同**（同文異態），之後 VIDEO 可做 ET-A → ET-B morph，字串不變。
+
+| ET | 幀 | 相位 \(\theta\) | 典型 \(\mathcal{E}\)（不限死） | 附著傾向 |
+|----|----|-----------------|--------------------------------|----------|
+| **ET-A** | PRE | \(t_0-\delta t\) | 凝聚態：冰玻璃／霜霓虹／VFX_COILED_LIGHTNING 纏槌… | \(\Phi_{\mathrm{spline}}\)、完整 \(\Phi_{\mathrm{homography}}\) |
+| **ET-B** | POST | \(t_0+\delta t\) | 釋放態：熔火／金屬霓虹／VFX_COMBUSTION_FIRE、裂地塗鴉… | \(\Phi_{\mathrm{fluid}}\)、碎裂 \(\Phi_{\mathrm{homography}}\) |
+| — | MID | \(t_0\) | **無字**（淨母版） | — |
+
+**硬規則：**
+
+1. **同文：** \(\Sigma_{\text{text}}\) 五元素完全相同（§0.8.2）；禁止 TRY 次數、禁止 REVIEW PENDING 上畫。  
+2. **異態：** ET-A 與 ET-B 的 \(\mathcal{E}\)、\(\Phi_{3D}\)、字級 \(\alpha\)、空間錨點必須**明顯不同**（不是只換顏色）。  
+3. **無底背：** \(\mathrm{BgPlate}=\varnothing\)。  
+4. **亂走合法：** 各字串位置／大小獨立抽 seed（可重現），不鎖死同一海報框。  
+5. **不遮接觸：** 字不得蓋死 STRIKE 面、受面、接觸點（見 HIGHLIGHT）。  
+6. **實作優先：** 排版器 SVG/3D 寫死字串 → 材質 bake；次選 diegetic 二 pass + OCR 抽查。
+
+**公式：**
+
+\[
+\begin{aligned}
+I_{\mathrm{PRE}}^{\mathrm{ET}} &= I_{\mathrm{PRE}} \oplus \mathcal{T}_{\mathrm{diegetic}}(\Sigma_{\mathrm{text}},\,\theta_{\mathrm{A}}) \\
+I_{\mathrm{POST}}^{\mathrm{ET}} &= I_{\mathrm{POST}} \oplus \mathcal{T}_{\mathrm{diegetic}}(\Sigma_{\mathrm{text}},\,\theta_{\mathrm{B}}) \\
+\theta_{\mathrm{A}} &\neq \theta_{\mathrm{B}},\quad
+\Sigma_{\mathrm{text}} \text{ identical},\quad
+\mathrm{BgPlate}=\varnothing
+\end{aligned}
+\]
+
+VIDEO 閉環：字串 \(s_m(t)\) 恒定，僅 \(\mathcal{E}(t)\) 在 A→B 之間 morph。
+
+---
+
+
+
+### 0.9.2b ST5 必須 IP 臉 REF（2026-10-25 · 用戶 Obs 訂正）
+
+**違規（SET-P 初版 ST5）：** 對 PRE/POST 只做 `image_to_image` 加字 → **沒有**把 `IP_HD` / 標準面 a8b 當 ref → 臉漂、身份脫鏈。
+
+**正確 ST5 公式（強制）：**
+
+```
+I_PRE^ET  = RefToImage( [ I_PRE, IP_HD, STANDARD_FACE_a8b ],  T_diegetic(Σ, ET-A) )
+I_POST^ET = RefToImage( [ I_POST, IP_HD, STANDARD_FACE_a8b ], T_diegetic(Σ, ET-B) )
+```
+
+| 禁止 | 必須 |
+|------|------|
+| 純 i2i 只加字 | `reference_to_image` 且 **IP_HD 在 asset_ids** |
+| 字 pass 換臉 | 第一張鎖景／姿；第二張起鎖 **IP 人臉身份** |
+| 跳過 ST1 IP | ST5 之前必有 `IP_PATH1E_HD` |
+
+ST6 FREE 同理：每張 FREE 字圖都要帶 IP_HD（+ a8b）ref，不得只 i2i 舊幀。
+
+*END §0.9.2b*
+
+### 0.9.3 公式方向線（Formula Direction Lines）
+
+來自 FACE_ANALYSIS / 軸 A 接觸契約，**幾何可讀的教學／審核線**，不是裝飾花紋。
+
+對每個硬接觸變體 \(v\) 必須能寫出一條 **analysis_line**（可畫在 GEO_OVERLAY，或只寫進 manifest）：
+
+```
+STRIKE:<打擊面>  RECV:<受面>  n·v / F  GAP  H-state
+```
+
+| 符號 | 意義 | 畫面方向線 |
+|------|------|------------|
+| **STRIKE** | 打擊面（如 T-END 平面、RND-CAP、FACET） | 面法線 \(n_{\mathrm{strike}}\) 箭頭 |
+| **RECV** | 受面（球膜、切點、對端面） | 面法線 \(n_{\mathrm{recv}}\) 或切點標記 |
+| **\(\vec{v}\)** / **STRIKE_AXIS** | 打擊軸／動量方向 | 粗方向線：柄→槌面→目標 |
+| **\(\vec{F}\)** | 力型（F→ 單向、F↔ 對向、F_n 法向、F_axial…） | 力箭頭（可與 \(\vec{v}\) 重合或對向） |
+| **GAP** | 間隙（>1.5D / mm 級 / =0） | 虛線間隙標註（PRE）或「GAP=0」 |
+| **H** | H0/H1/H2/H3 / FACE / PLANT… | 狀態標籤（可只在 manifest） |
+
+**相位：**
+
+- PRE：方向線示意**即將**接觸（GAP>0，F 未達或 F=0）。  
+- MID：方向線過接觸點，\(n\cdot v \approx 1\) 或契約規定的對向/軸向。  
+- POST：方向線沿**跟進向量**（飛屑、裂紋主軸與 \(\vec{v}\) 一致）。
+
+**約束：**
+
+- 方向線**不得改寫**接觸拓撲；只解釋 \(\mathcal{G}_{\mathrm{hard}}\)。  
+- 鏡頭變角時，方向線隨 3D 世界旋轉，**不**重新定義方法。  
+- 成品藝術圖可關 overlay；**審核板／GEO_AUDIT 階段建議開**。
+
+---
+
+### 0.9.4 HIGHLIGHT 物品（必標幾何物件）
+
+畫面（或 overlay／manifest）必須能指出下列 **HIGHLIGHT 物件**，否則幾何閘 FAIL：
+
+| ID | 物件 | 作用 |
+|----|------|------|
+| **HL.STRIKE** | 打擊面本體 | 槌端面／端蓋／選中扁平面 —— 誰在打 |
+| **HL.RECV** | 受面本體 | 球膜／切點／對端面 —— 誰被打 |
+| **HL.SPHERE** | 生命球／邊界球 | 完整度：PRE 未裂、MID 微裂、POST 碎裂 |
+| **HL.CONTACT** | 接觸點／接觸環 | H2 切點、FACE 介面、CAP⊙CAP 點衝擊環 |
+| **HL.WEAPON** | 武器拓撲整體 | T / T2 / CROSS / ROD / PLANT / MULTI 外形可讀 |
+| **HL.AXIS** | 打擊軸線段 | 與公式方向線 \(\vec{v}\) 一致 |
+| **HL.FORCE** | 力箭頭 | F→ / F↔ / F_n / F_axial（見 FACE_ANALYSIS force 欄） |
+| **HL.GAP** | 間隙可視化 | 僅 PRE/H0/H1 必要 |
+
+**HIGHLIGHT 與字層關係：**
+
+- 字（ET）**優先避讓** HL.CONTACT、HL.STRIKE、HL.RECV。  
+- 方法名 `GEO.… · H…` 可巨型，但不得假冒已通過像素幾何驗收。  
+- PATH1E 升臉**不得**抹掉 HL 可讀性。
+
+**FACE_ANALYSIS 欄位（寫入 SET_META / 每變體）：**
+
+```json
+{
+  "method": "GEO.T · H2",
+  "strike_face": "T-END · FLAT CIRCULAR",
+  "recv_face": "SPHERE · TANGENT POINT",
+  "force": "F_n · NORMAL AT TANGENT · FIRST CONTACT",
+  "gap": "GAP=0 · TANGENT",
+  "H": "H2",
+  "formula_pre": "...",
+  "formula_post": "...",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  n·v=1  GAP=0  ★MICRO  H2"
+}
+```
+
+---
+
+### 0.9.5 合成公式（階段總覽）
+
+\[
+\begin{aligned}
+I_{\mathrm{MID}} &= \mathrm{Render}(\mathcal{S},\,\mathcal{C},\,\mathrm{Pose}(t_0),\,\mathcal{G}_{\mathrm{hard}},\,\mathrm{Text}=\varnothing) \\
+I_{\mathrm{PRE}} &= \mathrm{RefIP}\big(I_{\mathrm{MID}},\, t_0-\delta t,\, \mathrm{Gap}>0\big) \quad\text{（§0.7 禁疊影）} \\
+I_{\mathrm{POST}} &= \mathrm{RefIP}\big(I_{\mathrm{MID}},\, t_0+\delta t,\, \mathrm{Crack}\gg 0\big) \\
+I_{\mathrm{PRE}}^{\mathrm{ET}} &= I_{\mathrm{PRE}} \oplus \mathcal{T}_{\mathrm{diegetic}}(\Sigma_{\mathrm{text}},\,\mathrm{ET\text{-}A}) \\
+I_{\mathrm{POST}}^{\mathrm{ET}} &= I_{\mathrm{POST}} \oplus \mathcal{T}_{\mathrm{diegetic}}(\Sigma_{\mathrm{text}},\,\mathrm{ET\text{-}B}) \\
+O_{\mathrm{GEO}} &= \mathrm{Draw}\big(\mathrm{HL.*},\,\vec{v},\,\vec{F},\,\mathrm{GAP}\big) \quad\text{（ST3 可選）}
+\end{aligned}
+\]
+
+---
+
+### 0.9.6 更新後的每 SET 必勾清單（取代 §8 實務勾選）
+
+```
+[ ] ST0 **環境背景概念圖** + WORLD_BIBLE（§0.0 · 先於 IP 定稿）
+[ ] ST1 **對型·退地·多角度·創意槌** 女主鎖臉 IP 包（≥ FRONT+FULL+ACTION+FACE_CLOSE）+ a8b + HEROINE_DESIGN（§0.0 · §0.5.1）
+[ ] ST2 MID **全幅鎖臉** Ref(**a8b 最前**, IP 包, 景) · 2ce5 類 · **即 PATH1E** · 目視=女主非漂臉 · SHA + L- + FRAME_LOCK.locked + FULLFRAME_FACE_LOCK
+[ ] ST3 analysis_line + HIGHLIGHT 物件可指認（overlay 可關，manifest 必有）
+[ ] ST3.G（每方法建議）GEO_INDICATOR：方向線+指標字齊 · 同 analysis_line 跨 PRE/MID/POST · 無假幾何 · §0.14
+[ ] ST4 PRE/POST 由 HD IP REF 新動作；**全幅再鎖臉**；無疊影；連感閘
+[ ] ST5 雙 ET 文字印疊在鎖臉幀：同 Σ_text · ET-A≠ET-B · 無底背 · 無 TRY/REVIEW · L- 正確 · **字不改臉**
+[ ] ST_G GRID HD：DEFAULT-24 + 公式 B；**臉格禁止 FACE_REF**（只 Enhance 景／字）；PATH1E 單 donor residual；center-lap≥400；GRID_META（§0.12.13）
+[ ] 若有 GRID／FACE_FAT 升清臉板要回原構：走 **§0.12.14 PIXEL_RATIO**（表+scale_iso+place_tl；禁低 conf ECC）；寫 PIXEL_RATIO_META
+[ ] ST6（可選）FREE 變角：只變 Φ 與 E，不抄樣板；每張仍全幅鎖臉
+[ ] 字不遮 HL.CONTACT / HL.STRIKE / HL.RECV
+[ ] ST7 閘門全過才 ST8 FINAL
+```
+
+### 0.9.7 與舊條款索引
+
+| 概念 | 條文 |
+|------|------|
+| IP 先出 · 無底多角度 | **§0.5 · §0.5.1** |
+| 真女主 | §0.6 |
+| 禁疊影 | §0.7 |
+| T_diegetic FREE 公式 | §0.8 |
+| SET 階段 + 雙 ET + 方向線 + HIGHLIGHT | **§0.9（本節）** |
+| **GEO_INDICATOR 方向性指標字** | **§0.14** |
+| GRID HD 每 SET 過程 | **§0.12** |
+| 全幅鎖臉 + 有字有臉質 | **§0.13 · §0.12.13** |
+| 接觸幾何母版 | HUB 軸 A · FACE_ANALYSIS_HUB.json |
+| 分層 clean→hud→paste→final | §6 LAYERED_CHAIN |
+
+*END §0.9*
+
+---
+
+## 0.10 全專輯標準面 LOCK（STANDARD FACE · ALL ALBUMS）
+
+> **用戶指定（2026-10-25T15:12:55Z）：** 她（asset `a8b78fe5-2654-4f6f-84e3-c1dfbee61004`）**才是所有專輯的標準面**。  
+> 之後任何 SET／album／LOOP／grid60／FREE／IP／PATH1E **只准用此臉**。
+
+### 正典
+
+| 欄位 | 值 |
+|------|-----|
+| asset_id | `a8b78fe5-2654-4f6f-84e3-c1dfbee61004` |
+| SHA256 | `f612ec7e07d95f256d3bd352f73f98ca913074c87556aed58cfc3223a059ee81` |
+| FACE-L | `FACE-f612ec7e07d9` |
+| 檔 | `heroine_lock/STANDARD_FACE.jpg` · `STANDARD_FACE_LOCK.json` |
+| 地位 | **LOCKED · 全專輯唯一女主臉** |
+
+### 強制用途
+
+1. **PATH1E** 臉 donor（首選近臉）  
+2. **ST1 IP** 無背景女主的 face ref  
+3. **ST4/ST5/ST6** 任何 reference 出人／升臉  
+4. 新專輯開工：S0 必讀本 LOCK，禁止另抽「更好看的臉」
+
+### 廢止／降級（不得再當正典）
+
+- `b41e0072-…`（前一版指定照）→ 歷史 ref，**非**標準面  
+- `87536f45-…` 等 PATH1E plate → 可作中間件，**身份源**仍必須溯到 a8b  
+- 高髻／arctic／他專輯漂臉 → **全部作廢**
+
+### 與其他條款
+
+- **覆蓋 §0.6「真女主」**：標準面 = a8b（本節）  
+- §0.5 IP 先出：IP 必須 REF 本標準面  
+- §0.7 禁疊影：升臉仍只 PATH1E／硬貼  
+- §0.8–0.9 FREE／雙 ET：字層不改標準面  
+
+### 解鎖
+
+僅當用戶明確說「解鎖標準面」或指定新 asset 替換時，才可改 `STANDARD_FACE_LOCK.json`。
+
+*END §0.10*
+
+---
+
+## 0.11 遠距 PATH1E · 羽化與邊界微調（FAR-FIELD）
+
+> **觸發：** 女主在畫面中很小（如 elevated / 鳥瞰 / 地塗鴉全景 `b0b6e9bb` 類）時，近距 PATH1E 的固定羽化 32–40px 會 **吃掉整張臉** 或在邊界留下硬貼餅／光暈錯位。  
+> **原則：** 羽化與 ROI **隨臉像素高度縮放**；遠距優先 HEAD_ROI；邊界與世界大氣做輕柔接邊，**臉內部仍硬混**（禁 PATH1B 全面軟洗）。
+
+### 0.11.1 尺度定義
+
+設近距參考臉高 \(h_{\mathrm{near}}\approx 380\,\mathrm{px}\)（MID 半身級），當前臉高 \(h_f\)：
+
+\[
+s = \frac{h_f}{h_{\mathrm{near}}}
+\]
+
+| 檔位 | \(s\) | 典型 |
+|------|-------|------|
+| NEAR | \(s \ge 0.55\) | 半身／特寫 |
+| MID | \(0.35 \le s < 0.55\) | 全身中景 |
+| FAR | \(0.18 \le s < 0.35\) | 全景小人物 |
+| TINY | \(s < 0.18\) | 極遠；可改 **只升頭+肩** 或放棄臉 HF |
+
+本例（地塗鴉 1E）：\(h_f \approx 120\mathrm{px},\; s\approx 0.316\) → **FAR**。
+
+### 0.11.2 可調參數公式（寫進腳本）
+
+\[
+\begin{aligned}
+f_{\mathrm{feather}} &= \mathrm{clamp}\big(\mathrm{round}(0.12\, h_f),\; 2,\; \min(40,\, 0.22\, h_f)\big) \\
+m_{\mathrm{roi}} &= \mathrm{clamp}(0.25 + 0.2(1-s),\; 0.15,\; 0.45) \\
+\alpha_{\mathrm{mix}} &= \begin{cases}
+0.92 & s\ge 0.45 \\
+0.78 & 0.25\le s<0.45 \\
+0.65 & s<0.25
+\end{cases} \\
+c_{\mathrm{color}} &= \begin{cases} 0.25 & s\ge 0.45 \\ 0.45 & s<0.45 \end{cases} \\
+\tau_{\mathrm{conf}} &= \begin{cases} 0.35 & s\ge 0.40 \\ 0.55 & s<0.40 \end{cases}
+\end{aligned}
+\]
+
+| 參數 | 近距預設 (PATH1E_LOCK) | 遠距調法 | 作用 |
+|------|------------------------|----------|------|
+| **feather_px** | 32–40 | \(f_{\mathrm{feather}}\propto h_f\) | 貼邊羽化；遠距必須縮小，否則整臉被羽化掉 |
+| **ROI** | FACE_ROI | \(s<0.35\) 改 **HEAD_ROI**（含髮際） | 小臉用頭包絡，減貼歪 |
+| **roi_margin** | 固定 | \(m_{\mathrm{roi}}\) 相對臉放大 | 邊界留髮／耳，避免切頭 |
+| **mix_interior** | 0.92–1.0 | 遠距可降至 0.65–0.78 | 與環境光接色；**內部仍硬**，不是 multiband 軟洗 |
+| **color_match** | ≤0.4 | 遠距可到 0.45 | 統一洞穴青光，減「貼上的臉」 |
+| **conf_hf** | >0.35 才 HF 注入 | 遠距 **>0.55** 或 **關 HF** | 小臉 HF 易出噪點／鬼邊 |
+| **ECC min** | ≥0.85 | 遠距可 ≥0.70 | 像素少時對齊更難 |
+| **edge_world_blur** | 0 | 0–3 px 僅 **matte 外環** | 人物輪廓與霧/水輕接；**不**糊臉心 |
+| **gate face lap** | ≥400 | \(\ge \max(80,\,400\sqrt{s})\) | 絕對銳度隨像素數放寬，防誤殺 |
+
+### 0.11.3 邊界效果（boundary）三層
+
+1. **Hard core**（臉心 \(\alpha_{\mathrm{mix}}\)）：標準面 donor 高頻保留  
+2. **Feather ring**（寬 \(f_{\mathrm{feather}}\)）：只在 matte 邊緣 alpha 漸變  
+3. **World lip**（可選 `edge_world_blur`）：人物外輪廓與場景大氣；**禁止**對 face interior 做 Gaussian  
+
+錯誤：加大 feather 想「柔邊」卻用全圖 blur → 遠距直接毀臉。  
+正確：feather **變窄**（跟 \(h_f\)），world lip **只在外環**。
+
+### 0.11.4 遠距操作順序
+
+```
+1. 偵測 face_h_px / s
+2. 選 FACE_ROI 或 HEAD_ROI；expand by m_roi
+3. 標準面 a8b → pose-matched plate（可略放大 plate 再 ECC）
+4. ECC warp；分數達 ecc_min
+5. Hard paste：interior α_mix · edge feather_px · person matte
+6. color_match ≤ c_color
+7. HF inject 僅 conf>τ_conf；遠距預設可 SKIP
+8. 可選：matte 外 1–3px world lip
+9. 閘：無雙臉、無餅邊、字/球/槌未漂
+```
+
+### 0.11.5 本例建議值（`b0b6e9bb` 類 FAR）
+
+```json
+{
+  "face_h_px": 120,
+  "scale_vs_near": 0.316,
+  "feather_px": 14,
+  "roi_margin_frac": 0.387,
+  "mix_interior": 0.78,
+  "color_match_strength": 0.45,
+  "conf_hf_min": 0.55,
+  "use_HEAD_ROI": true,
+  "ecc_min": 0.85,
+  "edge_world_blur_px": 2,
+  "gate_face_lap_min": 224
+}
+```
+
+### 0.11.6 與 Imagine 近似 1E
+
+若無像素腳本、只用 `reference_to_image`：  
+- prompt 寫明 **only face/head, keep body scale tiny, no enlarge person**  
+- 遠距勿強求毛孔級；優先 **身份輪廓 + 光色統一**  
+- 要硬邊再進腳本 PATH1E FAR 參數表  
+
+*END §0.11 · asof 2026-10-25T15:18:51Z*
+
+
+---
+
+## 0.12 GRID 高清連鎖（每 SET 標準過程 · GRID HD CHAIN）
+
+> **用戶確立（2026-10-25～26）：** 任何要進 HD／過 lap 閘的成圖，**必須**走本節 GRID 連鎖，不得只靠 Imagine 全圖 i2i 空升或「看起來像 1E」。  
+> **實證：** GRID24 + 真 HD cells + 公式 B 可過 center-lap；GRID6 肥疊可無縫但 lap 不足；A/B/C 三緩衝公式等價。
+
+### 0.12.1 在 SET 管線中的位置
+
+GRID 是 **HD 細化階段**，掛在母版／關鍵幀鎖定之後：
+
+```
+ST2 MID_LOCK = ★ 全幅鎖臉 L0（§0.13 · 2ce5 類）
+  → ST4 PRE/POST 淨幀（全幅再鎖臉）
+  → ST5 雙 ET 字印（字疊鎖臉幀；不改骨相）
+  → ★ ST_G：GRID HD CHAIN（本節 + §0.12.13）← 只升景／字／材質
+  → G4 PATH1E 單 donor residual（可選）
+  → ST7 閘門（含 face/center lap）
+```
+
+| 觸發 | 動作 |
+|------|------|
+| 要下載大圖／過 lap≥400 | **必跑 ST_G** |
+| 僅草稿構圖 | 可跳 ST_G，不得標 FINAL HD |
+| 臉遠距 | ST_G 後再套 §0.11 FAR PATH1E |
+| 臉近距 | ST_G 後套 PATH1E NEAR |
+
+**禁止：**  
+- 無 HD cells 只 Lanczos×3 當 FINAL  
+- 用 Imagine 全圖「enhance」冒充 GRID  
+- 未寫 `GRID_META.json` 就標 `PATH1E_GRID_FINAL`
+
+---
+
+### 0.12.2 一鍵過程（每 SET 同一套）
+
+```
+G0  選定 L0 = **已全幅鎖臉** 的幀（§0.13 · SHA 已寫 · 臉質達 2ce5 類）
+G1  切格：core 地籍 + box 往「有像素」方向外擴 overlap
+G2  每格 Imagine HD = **Enhance only**（鎖定構圖；升景／字／材質 micro-detail）
+     ★ 臉格 / face_dominant 格：**禁止** 再 FACE_REF（禁止 Ref(cell, a8b, IP) 重生臉）
+G3  組裝：struct = Lanczos(L0) ；acc/weight 加權融合 HD
+G4  PATH1E residual：標準面 a8b **單 donor** 硬貼；ECC 閘；禁多源疊臉
+G5  量測 lap / conf / 接縫；寫 GRID_META + L-
+G6  過閘 → ST8 FINAL（字已在 ST5 完成）
+```
+
+**L0 來源硬規則：** 必須是 **已全幅鎖臉** 的幀（§0.13 + §1 S1／§0.9 ST2），禁止對未 lock／未鎖臉的漂圖做 GRID 當正典。  
+**臉身份硬規則：** 臉在 G0 已鎖死；GRID **不得**再對臉格做 identity REF（見 §0.12.13）。
+
+---
+
+### 0.12.3 切格幾何（core + 肥疊埋疊）
+
+#### 符號
+
+| 符號 | 意義 |
+|------|------|
+| \(W_0,H_0\) | L0 寬高 |
+| \(n_r \times n_c\) | 列×行格數 |
+| \(\omega\) | overlap 比例（相對 core 邊長） |
+| core | 無重疊責任區（地籍） |
+| box | core 外擴後的抽描窗（clamp 在圖內） |
+
+#### 外擴方向（「往有像素延伸」）
+
+```
+box = core ± (ox, oy)
+ox = ω · core_w    oy = ω · core_h
+x0 = max(0, cx0-ox)  x1 = min(W0, cx1+ox)   # 無像素處不外插
+```
+
+角落／邊緣格只向圖內擴 → 邊界自然形成 **multi-cover 埋疊帶**。
+
+#### 推薦佈局（每 SET 預設）
+
+| 檔位 | 格數 | 佈局 | \(\omega\) | 用途 |
+|------|------|------|------------|------|
+| **DEFAULT** | **24** | **6×4** | **0.08～0.10** | **每 SET 正式 HD**；易過 lap |
+| FAST | 6 | 2×3 或 3×2 | **0.18～0.25 肥疊** | 省成本、驗無縫；**不保證** lap≥400 |
+| SET-N 級 | 60 | 10×6 | 0.08～0.10 | 最高細；時間／費用最大 |
+
+**設計意圖（用戶假設 · 已驗證）：**
+
+> 格往有像素方向延伸 → 相鄰 box 重疊 → 拼回時邊界有埋疊區  
+> → 程式用權重減弱 + 羽化 → **無縫融合**。
+
+| 假設 | 結論 |
+|------|------|
+| 肥疊可無縫 | ✅（GRID6 \(\omega=0.22\)，multi-cover ≈45%，最高 4 層） |
+| 無縫 = 過 lap 閘 | ❌（GRID6 S3 center-lap≈97；GRID24 S3≈515～551） |
+
+**無縫靠 overlap；銳利靠格密 + 真 HD 像素密度。**
+
+#### 權重（埋疊區融合）
+
+\[
+\begin{aligned}
+w_{\mathrm{edge}} &= \mathrm{clip}\big(\mathrm{dist\_to\_box\_edge}/f_{\mathrm{feather}},\,0,\,1\big) \\
+w_{\mathrm{core}} &= \mathrm{falloff}(\mathrm{dist\_outside\_core}) \quad\text{（core 內=1，環上降到 0）} \\
+\mathrm{conf} &= 1 - \mathrm{clip}(\|\mathrm{LP}(\mathrm{HD})-\mathrm{LP}(\mathrm{L0_{up}})\|/40,\,0,\,1) \\
+w &= w_{\mathrm{edge}}\cdot w_{\mathrm{core}}\cdot (0.5 + 0.5\,\mathrm{conf})
+\end{aligned}
+\]
+
+- **DEFAULT 24：** \(f_{\mathrm{feather}}\approx 0.07\cdot\min(b_w,b_h)\)  
+- **FAST 6 肥疊：** \(f_{\mathrm{feather}}\approx 0.12\sim0.15\cdot\min(b_w,b_h)\)，必開 \(w_{\mathrm{core}}\)
+
+---
+
+### 0.12.4 組裝公式（acc + weight + struct）
+
+\[
+\begin{aligned}
+\mathrm{struct} &= \mathrm{Lanczos}(I_{\mathrm{L0}},\, S) \\
+\mathrm{paste} &= \mathrm{LP}(\mathrm{L0_{up}}) + \mathrm{HF}(\mathrm{HD})\cdot\mathrm{mix} \\
+\mathrm{acc} &\mathrel{+}= \mathrm{paste}\cdot w,\quad
+\mathrm{weight} \mathrel{+}= w \\
+I_{\mathrm{asm}} &= \begin{cases}
+\mathrm{acc}/\mathrm{weight} & \mathrm{weight}>\varepsilon \\
+\mathrm{struct} & \text{otherwise}
+\end{cases}
+\end{aligned}
+\]
+
+**禁止** 重疊區「後格直接蓋前格」當正典（僅草稿可）。
+
+#### 三種實作（A/B/C · 均已實測等價）
+
+| 代號 | 做法 | RAM（S=3 · 5376×3024） | 速度 | 地位 |
+|------|------|------------------------|------|------|
+| **A** | 全幅 float32 acc+weight | ~195MB 緩衝 + 預載 | 快 | 可用 |
+| **B** | **分條 float64**（推薦） | ~30–50MB／條 | **最快** | **每 SET 預設** |
+| **C** | disk memmap float64 | RSS 較低、磁碟大 | 慢 ~10× | 記憶體極緊時 |
+
+**預設：B。** A/B/C 畫質近等（mean abs ≈1 灰階；B≡C 可同 SHA）。
+
+#### 倍率 S
+
+| S | 輸出 | 組裝 | lap 傾向 |
+|---|------|------|----------|
+| 2 | 2×L0 | 可全幅或分條 | **穩過閘**（24 格） |
+| 3 | 3×L0（如 1792→5376） | **必分條／memmap** | 數字易被大 ROI 拉低；閘用 **center-face** |
+
+**OOM 主因是 S=3 全幅 float64×3，不是格數 n。**  
+n=24 或 60 皆可，只要用 B/C。
+
+---
+
+### 0.12.5 每格 HD（G2）
+
+```
+prompt 要旨：
+  enhance to maximum photoreal micro detail
+  exact same framing / composition / colors / text / objects
+  no crop, no reframe, no add/remove
+```
+
+| 規則 | 說明 |
+|------|------|
+| 輸入 | G1 的 box crop（原像素） |
+| 輸出 | 登記 asset；寫 `hd_assets.json` |
+| conf | 組裝時算；conf 低 → HF 少注入，避免鬼邊 |
+| 大格風險 | FAST-6 單格面積大，易漂構圖；本 SET 實測 conf 仍可 ~0.85，但 HF 密度不足 |
+
+---
+
+### 0.12.6 PATH1E 接在 GRID 之後（G4）
+
+1. \(I_{\mathrm{asm}}\) 上取 FACE_ROI / HEAD_ROI（§0.11 依 s）  
+2. 標準面 **a8b78fe5…** 製 pose plate  
+3. ECC：≥0.85 可較強 HF；**<0.85 禁止硬換臉** → assembly 臉優先 + 弱 HF  
+4. 羽化：NEAR 寬／FAR 窄（§0.11）  
+5. 禁 PATH1B soft wash、禁雙臉疊影  
+6. 若 residual donor 是 **GRID 臉格 HD** 而非裸 a8b：改走 **§0.12.14 PIXEL_RATIO**（比例對位），勿與多源 PATH1E 混用  
+
+**閘門（GRID 後）：**
+
+| 閘 | DEFAULT-24 | FAST-6 | 說明 |
+|----|------------|--------|------|
+| center-face lap | **≥400** | 參考用 | **主閘** |
+| full face ROI lap | ≥400 理想 | 常被羽化邊緣拉低 | 輔閘 |
+| conf mean | ≥0.55 | ≥0.55 | 結構鎖 |
+| GHOST_PERSON | FAIL 禁 FINAL | 同 | §0.7 |
+| 無 HD 空升 | lap ~80–100 | 同 | **必 FAIL** |
+
+---
+
+### 0.12.7 實測摘要（寫死對照 · SET-O near L0）
+
+L0 = `6d3b6bcb…`（1792×1008 近面槌球）
+
+| 方案 | center lap | face lap | 無縫 | 過閘 |
+|------|------------|----------|------|------|
+| 空升 S3 無 cells | ~87 | — | — | ❌ |
+| **GRID24 S2** | **~519–832** | 高 | ✅ | ✅ |
+| **GRID24 S3 分塊 B** | **~431–551** | ~280–355 | ✅ | center ✅ |
+| **GRID6 肥疊 S2** | ~192 | ~163 | ✅ | ❌ |
+| **GRID6 肥疊 S3** | ~97 | ~84 | ✅ | ❌ |
+
+**結論入憲：** 每 SET 正式 HD = **DEFAULT-24 + 公式 B + PATH1E**；FAST-6 僅草稿／接縫實驗。
+
+---
+
+### 0.12.8 產物與命名（每 SET）
+
+```
+boundary_pedestrian_setX_*/grid*/
+  cells_manifest.json     # core/box/ω/n
+  1_cells/*.jpg
+  2_hd/hd_assets.json
+  3_out/FINAL_GRID{24|6}_* .jpg
+  3_out/META_GRID*.json
+SETO_GRID24_*_FINAL.jpg   # 或 SET 代號前綴
+GRID_META 必含：L0_id, n, ω, S, method(A|B|C), confs, laps, L-sha12
+```
+
+---
+
+### 0.12.9 更新後的 SET 必勾（GRID 段）
+
+```
+[ ] G0 L0 = LOCKED 幀（有 FRAME_LOCK）
+[ ] G1 切格：DEFAULT-24（或註明 FAST-6）；manifest 含 core/box/ω
+[ ] G2 每格 HD + hd_assets.json
+[ ] G3 公式 B（或 A/C）acc/weight；禁止純後蓋前當 FINAL
+[ ] G4 PATH1E 標準面 a8b；ECC 規則
+[ ] G5 center-lap≥400（DEFAULT）；寫 GRID_META + L-
+[ ] G6 過閘才進字層／FINAL
+```
+
+### 0.12.10 與其他條款索引
+
+| 概念 | 條文 |
+|------|------|
+| 標準面 a8b | §0.10 |
+| PATH1E NEAR/FAR | §5 · §0.11 · PATH1E_LOCK.md |
+| 禁疊影 | §0.7 |
+| SET 總階段 | §0.9（ST_G 插入 ST4 後、ST5 前） |
+| 組裝 A/B/C | **§0.12.4** |
+| 肥疊無縫 vs 銳利 | **§0.12.3 / 0.12.7** |
+| 全幅鎖臉 · 臉格禁 REF | **§0.12.13 / §0.13** |
+| **PIXEL_RATIO 臉格回原圖** | **§0.12.14** |
+
+
+
+### 0.12.11 肥疊大格 + 鎖臉 REF 再裝回（FAT_FACE_REF）· **降級為實驗**
+
+> **用戶（2026-10-26）：** 肥疊時，在**大格／大圖**裡用原女主鎖臉去 REF 生那格，再 acc/weight 裝回。  
+> **2026-10-26 01:44 覆寫：** 正式每 SET **禁止**以本節取代 §0.13 全幅鎖臉。本節僅 **實驗／急救**（L0 臉已崩且無法重鎖全幅時）。正式路徑見 **§0.12.13 / §0.13**。
+
+**流程：**
+
+```
+G1  肥疊切格（ω≈0.18–0.25 · 如 2×3）
+G2a 格 ∩ FACE_ROI 且 臉占主導 → reference_to_image([cell, IP_HD, a8b])
+G2b 純背景／純身無臉 → 普通 enhance（禁止硬塞臉 ref）
+G3  公式 B 裝回（肥羽化 f∝0.12–0.15·min(bw,bh)）
+G4  可選 PATH1E 輕 residual
+```
+
+| 規則 | 說明 |
+|------|------|
+| **鎖臉進大格** | 含臉大格用 IP+a8b REF，身份在 stitch 前已鎖 |
+| **禁身格硬 REF 臉** | 半身／無頭 crop 若塞臉 ref 會**重生出整頭** → 疊影；只 enhance |
+| **conf 閘** | 漂構圖格 conf 低 → 權重自動讓位給 struct／鄰格 |
+| **與 DEFAULT-24** | 24 格亦可：只對 face_hit 格做 REF；正式 HD 仍建議 24 過 lap |
+
+**公式：**
+
+\[
+I_{\mathrm{cell}}^{\mathrm{HD}} =
+\begin{cases}
+\mathrm{Ref}(\mathrm{cell},\,\mathrm{IP}_{\mathrm{HD}},\,a8b) & \mathrm{face\_dominant}(cell) \\
+\mathrm{Enhance}(\mathrm{cell}) & \text{otherwise}
+\end{cases}
+\quad\to\quad
+I_{\mathrm{asm}}=\mathrm{acc}/w
+\]
+
+*END §0.12.11*
+
+
+### 0.12.12 命名簡稱對照（GRID 臉鎖家族）
+
+> **用戶（2026-10-26）：** 問  
+> `DEFAULT-24|FAT-6 + face_dominant:Ref(IP,a8b) + 其餘 Enhance + B + PATH1E`  
+> 是否簡稱 **FAT_FACE_REF**？
+
+**答：不完全是。** 分層如下：
+
+| 簡稱 | 全名 | 含什麼 | 不含／限制 |
+|------|------|--------|------------|
+| **FAT_FACE_REF** | 肥疊 + 鎖臉 REF 裝回 | **僅**肥疊佈局（如 2×3 · ω≈0.18–0.25）+ face_dominant 格 Ref(IP,a8b) + 其餘 Enhance + B 裝回（+可選 PATH1E） | **不**含 DEFAULT-24；不保證 lap≥400 |
+| **GRID24_FACE_REF** | 24 格 + 鎖臉 REF 裝回 | **DEFAULT-24**（6×4 · ω≈0.08–0.10）+ face_dominant Ref + 其餘 Enhance + B + PATH1E | 正式過閘首選 |
+| **GRID_FACE_REF** | **總稱（母名）** | 任意格數（24 或 6 或 60）只要走「臉格 Ref · 他格 Enhance · B · PATH1E」 | 用此名時必須再標 layout |
+| **FAT6** | 純肥疊 | 6 格肥疊 + Enhance（**無**臉 Ref） | 舊實驗 |
+| **GRID24** | 純 24 格 | 24 格 Enhance + B + PATH1E（**無**臉 Ref） | SET-P 初版 ST_G |
+
+**你列的那條完整公式：**
+
+```
+(DEFAULT-24 | FAT-6)
+  + face_dominant 格：Ref(cell, IP_HD, a8b)
+  + 其餘格：Enhance
+  + B 裝回
+  + PATH1E
+```
+
+→ 正式簡稱應叫 **GRID_FACE_REF**（母流程）。  
+→ 再加佈局後綴：
+
+| 寫法 | 意思 |
+|------|------|
+| **GRID_FACE_REF · 24** 或 **GRID24_FACE_REF** | 過閘正式版 |
+| **GRID_FACE_REF · FAT6** 或 **FAT_FACE_REF** | 肥疊草稿／身份先鎖版 |
+
+**預設每 SET 正式 HD：** `FULLFRAME_FACE_LOCK`（§0.13）→ `GRID24_ENHANCE`（§0.12.13 · 臉格不 REF）  
+**GRID_FACE_REF / FAT_FACE_REF：** **降級實驗**，不得當正式 FINAL 預設  
+**肥疊實驗／省格：** `FAT_FACE_REF` 僅急救
+
+```
+GRID_FACE_REF          ← 母名（必含：臉格Ref + 他格Enhance + B + PATH1E）
+├── GRID24_FACE_REF    ← 正式 FINAL（DEFAULT-24）
+└── FAT_FACE_REF       ← 肥疊分支（FAT-6），≠ 整條母公式的唯一簡稱
+```
+
+*END §0.12.12 · asof 2026-10-25T17:10:00Z*
+
+
+
+
+### 0.12.13 正式路徑：GRID 只升景／字 · 臉格禁止再 FACE_REF（每 SET）
+
+> **用戶確立（2026-10-26T01:44Z）：**  
+> 「有字 + 有這張臉質」：應以 **`2ce5fabe` 類全幅鎖臉** 為 L0 人，**字用 ET 疊**，**GRID 只升景／字**、**不對臉格再 FACE_REF**。  
+> **寫進全文每一 SET 程序（本節 + §0.13）。**
+
+#### 為什麼（Obs 寫死）
+
+| 資產／案例 | 結果 | 根因 |
+|------------|------|------|
+| **`2ce5fabe-8de3-42a2-bab9-727d63c834c8`** | **OK · 臉質正典樣板** | **單次全幅** `Ref(景, a8b, IP_HD)`；無切格；無 B 平均；無雙格搶臉 |
+| GRID24_FACE_REF / FAT_FACE_REF 完成圖 | 臉漂／鬼影／糊 | 臉被切成碎格 → 格級再 identity REF → 拼回平均 → 身份斷鏈 |
+| 誤用衍生板 `2d3416e0` 當 REF | 全錯臉 | 身份源不是 a8b |
+
+**一句話：**  
+> OK 張 = 全幅一次鎖臉。  
+> 廢張 = 切格 → 格級重生臉 → 拼回。
+
+#### 每 SET 強制順序（有字 + 這張臉質）
+
+```
+① FULLFRAME_FACE_LOCK（§0.13）
+     I_L0 = RefToImage( [ a8b78fe5, IP_HD/FACE_CLOSE, IP.ACTION?, scene_last? ] )  # a8b 最前 · §0.13
+     → 一人、一姿、無疊影、臉 = 專輯標準面質
+     → 寫 FULLFRAME_FACE_LOCK.json · locked=true
+
+② ST5 ET 字疊（§0.9.2 / 0.9.2b）
+     I_ET = RefToImage( [ I_L0, IP_HD, a8b ], T_diegetic(Σ, ET-*) )
+     → 第一張鎖景+已鎖臉；字材質變化；**禁止換骨相**
+     → 字用 ET 疊，不是靠 GRID 生字
+
+③ ST_G GRID24_ENHANCE（本節）
+     切 DEFAULT-24 · 公式 B
+     每一格（含臉格）：**Enhance only**
+     ★ 禁止：face_dominant 格 Ref(cell, a8b, IP)
+     ★ 禁止：多格各自 FACE_REF 再 stitch
+     目標：升球／槌／字邊緣／材質／背景 HF；**繼承 L0 臉像素結構**
+
+④ G4 PATH1E residual（可選）
+     僅 a8b **單 donor** ECC 硬貼
+     禁多 donor、禁 plate 衍生板當身份主源
+```
+
+#### 公式
+
+\[
+\begin{aligned}
+I_{\mathrm{L0}} &= \mathrm{Ref}\big(a8b,\, \mathrm{IP}_{\mathrm{HD}},\, \mathrm{scene?}\big)
+  \quad\text{（全幅 · §0.13）} \\
+I_{\mathrm{ET}} &= I_{\mathrm{L0}} \oplus \mathcal{T}_{\mathrm{diegetic}}(\Sigma,\theta)
+  \quad\text{（字疊 · 人臉已鎖）} \\
+I_{\mathrm{cell}}^{\mathrm{HD}} &= \mathrm{Enhance}(\mathrm{cell})
+  \quad \forall\,\mathrm{cell}\quad\text{（含臉格 · 禁止格級 FACE\_REF）} \\
+I_{\mathrm{GRID}} &= \mathrm{B\text{-}assemble}(\{I_{\mathrm{cell}}^{\mathrm{HD}}\},\, I_{\mathrm{ET}}) \\
+I_{\mathrm{FINAL}} &= \mathrm{PATH1E}_{\mathrm{single\text{-}donor}}(I_{\mathrm{GRID}},\, a8b)
+  \quad\text{（可選 residual）}
+\end{aligned}
+\]
+
+#### 禁止清單（違規 = 結構 FAIL）
+
+| 禁止 | 替代 |
+|------|------|
+| 對 face_dominant 格 `Ref(cell, a8b, IP)` 再重生臉 | 全幅鎖臉後格內 **Enhance** |
+| 多臉格（r0c4+r1c4…）各出一張臉再 B 平均 | 單一 L0 臉結構繼承 |
+| 用後製衍生銳臉板（如 `2d3416e0`）當身份主 REF | 只准 **a8b** + **IP_HD** |
+| 先 GRID 漂臉再 PATH1E 救 | 先 §0.13 再 GRID |
+| 無全幅鎖臉就標 FINAL「有這張臉質」 | 必須有 `FULLFRAME_FACE_LOCK` |
+
+#### 命名
+
+| 簡稱 | 意思 | 地位 |
+|------|------|------|
+| **FULLFRAME_FACE_LOCK** | 全幅 **a8b-first** Ref(a8b,IP,景?) + **即 PATH1E** | **每 SET 身份正典** |
+| **GRID24_ENHANCE** | 24 格全 Enhance + B（**無**格級 FACE_REF） | **每 SET 正式 HD** |
+| GRID24_FACE_REF / FAT_FACE_REF | 格級臉 REF | **實驗／急救 only** |
+| **2ce5 類** | 臉質達標樣板 `2ce5fabe-…` | 審核對照 |
+
+#### 閘門加一條
+
+```
+[ ] FULLFRAME_FACE_LOCK.locked == true（L0 臉已全幅鎖）
+[ ] GRID_META.face_cell_mode == "ENHANCE_ONLY"（無 FACE_REF 格）
+[ ] 目視臉 ≈ 2ce5 類 / a8b（非衍生板）
+[ ] GHOST_PERSON == OK
+[ ] center-lap ≥ 400（DEFAULT-24）
+```
+
+*END §0.12.13*
+
+
+---
+
+
+
+### 0.12.14 PIXEL_RATIO · 臉格 HD 回原圖對位（PIXEL_RATIO_FACE_REINSERT）
+
+> **用戶確立（2026-10-26T16:26～16:30Z · SET-R）：** 表／像素比例把 GRID 臉格 HD 回貼原構圖。  
+> **用戶審核（2026-10-26T17:46Z）：**「對位法要修正，放大和縮小時的各座標計算法要審核」→ **本節座標公式已校正**（見 0.12.14.C）。
+
+#### 地位
+
+| 角色 | 說明 |
+|------|------|
+| **正式 residual 路徑之一** | 已有 GRID／FACE_FAT 升清臉板，要 **回原圖**（保留 L0 姿／槌／球／景） |
+| **與 PATH1E** | PATH1E = a8b donor 硬貼；本節 = **已升清臉板** 按 **像素比例** 回貼 |
+| **與 §0.12.13** | 正式 HD 仍 GRID24_ENHANCE 臉格不 REF；本節處理 **已存在 HD 臉板** 回全幅 |
+| **禁** | 無偵測亂貼；低 conf ECC 硬扭；銅盤當臉；過寬 expand 拉進武器成鬼臉 |
+
+#### 輸入／輸出
+
+| 端 | 符號 | 例（SET-R） |
+|----|------|-------------|
+| **src** | 臉格／FACE_FAT HD | `569e285b…` 1600×1232 |
+| **dst** | 原圖全幅（姿景母版） | `e51cdaa3…` 1792×1008 |
+| **out** | 原構 + 比例貼臉 | `FINAL_RATIO_*` · `PIXEL_RATIO_META` |
+
+---
+
+#### 0.12.14.A 座標空間（必須標明 · 禁止混用）
+
+| 符號 | 空間 | 原點 | 單位 |
+|------|------|------|------|
+| **D** | dst 全圖 | 左上 (0,0) | px · 尺寸 \(W_d\times H_d\) |
+| **S** | src 原生全圖 | 左上 | \(W_s\times H_s\) |
+| **S′** | src 經等向縮放後 | 與 D 同一像素尺 | 見 \(s_{\mathrm{eff}}\) |
+| **C** | 某 cell 在 D 的裁窗 | cell 左上 = \((x_0,y_0)\) | 尺寸 \(b_w\times b_h\) |
+| **C↑** | cell 放大 \(U\) 倍 | C 左上×\(U\) | \(U b_w\times U b_h\) |
+| **F_d** | 女主臉框 in **D** | — | \((x_d,y_d,w_d,h_d)\) · \(c_d=(x_d+\tfrac{w_d}{2},\,y_d+\tfrac{h_d}{2})\) |
+| **F_s** | 女主臉框 in **S** | — | 同理 \(c_s\) |
+
+**硬規則：** 每一行變換必須寫 `MODE` + 起訖空間。禁止把 C↑ 座標直接當 D 用，禁止把 letterbox 512 板當 S 而不還原 pad。
+
+---
+
+#### 0.12.14.B 兩種合法 MODE
+
+| MODE | 適用 | 變換 |
+|------|------|------|
+| **FULL_SRC_PLACE** | src 是 **整格／整幅** 且 F_s 已驗證為真臉 | 整張 S 等向縮放 → 平移使 \(c_s\mapsto c_d\) → 只貼 paste_roi |
+| **FACE_CROP_DIRECT** | **軟身份**（a8b／近臉板）· **首選** | 只裁 F_s+小 pad → 縮到臉尺 → 中心對 F_d → 橢圓貼 |
+
+急救身份加重 → **FACE_CROP_DIRECT**。  
+GRID 臉格整格回貼 → **FULL_SRC_PLACE**。
+
+---
+
+#### 0.12.14.C 校正後公式（放大／縮小座標）
+
+##### C1 · 臉尺度（等向）
+
+\[
+s_{\mathrm{face}}
+= \sqrt{\Big(\frac{w_d}{w_s}\Big)\Big(\frac{h_d}{h_s}\Big)}
+\quad\text{（幾何平均；方臉時 = 算術平均）}
+\]
+
+若必須「框內完整塞入」且禁止裁切 donor 臉：改用 \(s_{\mathrm{fit}}=\min(w_d/w_s,\,h_d/h_s)\)。  
+**禁止** 對 x/y 用不同 scale（會拉臉）。
+
+##### C2 · 整圖縮放後必須重算 \(s_{\mathrm{eff}}\)（修整數漂移）
+
+```
+nw, nh = floor(W_s * s_face), floor(H_s * s_face)   # 或 PIL LANCZOS 實得尺寸
+s_eff  = 0.5 * (nw/W_s + nh/H_s)                    # ★ 用實得尺寸，勿再用裸 s_face 做 place
+```
+
+**Obs：** 用 float `s_face` 算 `place_tl`、卻用 `int(W*s)` 出圖 → 中心可漂 **~0.3–0.5px**（小臉更明顯）。**放大／縮小後一律重算 \(s_{\mathrm{eff}}\)。**
+
+##### C3 · FULL_SRC_PLACE 對位
+
+\[
+\begin{aligned}
+\mathrm{place\_tl}
+&= c_d - c_s\cdot s_{\mathrm{eff}} \\
+p_D
+&= p_S\cdot s_{\mathrm{eff}} + \mathrm{place\_tl} \\
+p_S
+&= (p_D - \mathrm{place\_tl}) / s_{\mathrm{eff}}
+\end{aligned}
+\]
+
+**閘：** \(|\,c_s\mapsto c_d\,| < 0.5\,\mathrm{px}\)（中心 round-trip）。
+
+paste 切片（D 的 paste_roi → S′ → 再對應到縮放後圖素）：
+
+\[
+\begin{aligned}
+\mathrm{paste\_roi}_D &= \mathrm{expand}(F_d;\; pad\le 0.12) \quad\text{★ 校正：舊 } s_x{=}0.35,\,s_{yt}{=}0.55 \text{ 過寬，易吞武器／C 環致鬼臉} \\
+\mathrm{roi}_{S'} &= \mathrm{paste\_roi}_D - \mathrm{place\_tl}
+\end{aligned}
+\]
+
+##### C4 · FACE_CROP_DIRECT（首選軟貼）
+
+```
+1. crop_S = expand(F_s, pad_s ≤ 0.12)          # 在 S
+2. s = s_face(F_d, F_s)
+3. crop' = Lanczos(crop_S, scale=s)            # 得到實得尺寸後可微調
+4. c_s_in_crop = c_s - crop_S.tl
+5. place_crop_tl = c_d - c_s_in_crop * s       # 臉心對臉心
+6. 只在 expand(F_d, pad_d ≤ 0.12) 上橢圓羽化貼入
+7. 靠武器／C 環一側：mask *= hammer_kill（左或右線性歸零）
+```
+
+##### C5 · FAT 格 · 放大 \(U\) 再縮回（座標）
+
+```
+cell box in D:  B = (x0,y0,x1,y1) ,  size (bw, bh)
+face in D:      F_d = (x,y,w,h)
+
+# ★ 必須先變到 C，再乘 U（禁止 face_D * U）
+face_C   = (x - x0,  y - y0,  w, h)
+face_C↑  = (face_C.x * U, face_C.y * U, face_C.w * U, face_C.h * U)
+
+# 在 C↑ 上處理（Enhance / soft donor）後：
+back = Lanczos(C↑, size=(bw, bh))     # 等向縮回
+# 貼回 D：
+I_D.paste(back, (x0, y0), feather_mask)
+
+# 中心 round-trip（應為 0）:
+c_reinsert = face_C↑.center / U + (x0, y0)  ==  c_d
+```
+
+##### C6 · GRID 切格外擴（回顧 · 與組裝一致）
+
+```
+core = (cx0,cy0,cx1,cy1)
+ox, oy = ω * core_w, ω * core_h
+box = ( max(0,cx0-ox), max(0,cy0-oy), min(W,cx1+ox), min(H,cy1+oy) )
+# local(C) ↔ D:
+p_D = p_local + (box.x0, box.y0)
+p_local = p_D - (box.x0, box.y0)
+```
+
+只向圖內擴，不外插空白。
+
+---
+
+#### 0.12.14.D 已審核之錯誤（Obs · 必須避開）
+
+| # | 錯誤 | 後果 | 校正 |
+|---|------|------|------|
+| 1 | `s_iso` 算術平均 + 非方臉 | 一軸 size_err | \(s_{\mathrm{face}}=\sqrt{s_x s_y}\) |
+| 2 | float `s` 算 place、int resize 出圖 | 中心漂 | resize 後 **重算 \(s_{\mathrm{eff}}\)** 再 place |
+| 3 | expand `sx=0.35, syt=0.55` | 吞 C 環／槌 → **鬼臉** | pad≤0.12 + hammer_kill |
+| 4 | Haar 把銅盤當 F_s／F_d | 整臉貼歪 | skin+位置先驗；必要人工鎖框 |
+| 5 | FAT：`face_D * U` 未減 cell 原點 | 臉飛出格 | 先 `face_C=face_D-cell_tl` |
+| 6 | 512 letterbox 板當 S | place_tl 含黑邊偏移 | 禁止；或先逆 letterbox |
+| 7 | FULL_SRC 與 FACE_CROP 混用未標 MODE | 雙重偏移 | 單一 MODE 鏈 |
+
+---
+
+#### 0.12.14.E 操作順序（校正版）
+
+```
+R0  dst = 原圖姿／景（未毀構圖）
+R1  src = 臉格 HD 或 a8b 板；MODE = FULL_SRC | FACE_CROP_DIRECT
+R2  偵測 F_d、F_s（拒銅盤：skin_score + 上半身 cx 帶）；寫比例表
+R3  s_face → resize → s_eff → place_tl（或 FACE_CROP 鏈）
+R4  paste_roi pad≤0.12；color_match；橢圓+m hammer_kill
+R5  閘：|c_s→c_d|<0.5px；outside_chg≈0；無雙臉；槌／球未漂
+R6  PIXEL_RATIO_META + 可選 L-
+```
+
+#### 閘門
+
+```
+[ ] META 含：MODE, src_id, dst_id, F_s, F_d, s_face, s_eff, place_tl, paste_roi
+[ ] center round-trip < 0.5 px
+[ ] outside_chg ≈ 0
+[ ] GHOST_PERSON == OK
+[ ] 身份 ≈ a8b；姿景繼承 dst
+```
+
+#### 產物
+
+```
+…/pixel_ratio/
+  PIXEL_RATIO_METHOD.json
+  PIXEL_RATIO_COORD_CORRECTED.json   # 本審核
+  FINAL_RATIO_ON_{DST}.jpg
+  COORD_AUDIT_DIAGRAM.jpg
+  RESULT_META.json
+```
+
+#### 簡稱
+
+| 簡稱 | 意思 |
+|------|------|
+| **PIXEL_RATIO** | 本節全流程 |
+| **FACE_CROP_DIRECT** | C4 軟身份 |
+| **FULL_SRC_PLACE** | C3 整格回貼 |
+| **s_eff** | 縮放後實得尺度（必用） |
+
+*END §0.12.14 · asof 2026-10-26T17:46:00Z*
+
+
+---
+
+## 0.13 全幅鎖臉 FULLFRAME_FACE_LOCK（每 SET 身份正典 · 2ce5 類）
+
+> **用戶（2026-10-26）：** 以 `2ce5fabe` 類全幅鎖臉為 L0 人；字 ET 疊；GRID 不對臉再 REF。  
+> **用戶確認（2026-10-26T02:17 · SET-Q）：** 「好,對了,入全憲」——採納 **a8b-first + 即 PATH1E** 為 ST2 唯一合法法；否決 scene-first 弱鎖。  
+> **地位：** 與 §0.10 標準面 a8b 並列——**a8b 是臉身份源；本節是「把 a8b 鎖進全幅構圖」的唯一合法程序。**
+
+### 0.13.1 正典樣板
+
+| 欄位 | 值 |
+|------|-----|
+| 樣板 asset（OK） | `2ce5fabe-8de3-42a2-bab9-727d63c834c8` |
+| SET-Q v2 LOCK（OK） | `f1d38afd-17cb-476e-b354-6d77e153d6ca`（用戶 02:17 確認） |
+| SET-Q PATH1E 變體 | `f80c51c8-3611-45e7-87ae-a6fccb811703` |
+| identity plate 例 | `49568425-f48f-4cf3-beb3-233ce85d03b9`（a8b 鎖進 pose） |
+| 為何 OK | **a8b 身份權最重** · 單次全幅 · 可再 PATH1E；無切格平均；骨相=標準面 |
+| 身份 ref | **僅** `a8b78fe5-…`（標準面）+ **無底** IP 包（FACE_CLOSE / FRONT / ACTION…） |
+| 禁止混入 | 後製衍生 plate 當身份主；**有景完成圖當身份主** |
+
+### 0.13.1b 失敗樣板（寫死 · 禁止再犯）
+
+| 資產 | 判定 | 根因 |
+|------|------|------|
+| **`f5bedf13-d489-440a-bfb6-d374c56ec6df`**（SET-Q ST2 v1） | **FAIL · 不像女主 · 不清** | **scene-first**：景／動作權 > a8b；臉成「泛東亞女」；**無即 PATH1E** |
+| 任何「景放 asset_ids[0] 且無 a8b 最前」的全幅 | **FAIL** | 模型優先跟構圖錨的臉 |
+| 有景劇照當唯一 IP 再進 ST2 | **FAIL** | 違反 §0.5.1 |
+
+**用戶原話（對 v1）：**「可能第一張你用錯方法, 根本不像女主,又不清」→ **方法錯，不是偶然。**
+
+### 0.13.2 強制公式（每張要有「人」的淨幀）
+
+#### A. asset_ids 順序（硬鎖 · 不可互換優先級）
+
+```
+asset_ids = [
+  a8b78fe5-…,              # [0] ★ 標準面 · 身份主 · 必須最前
+  IP.FACE_CLOSE 或 IP_HD,  # [1] 無底近臉／主正面 IP（同人）
+  IP.ACTION / THREE_Q /…,  # [2+] 無底多角度（姿／體）
+  SCENE_OR_POSE_ANCHOR     # 最後：構圖／世界／舊姿錨（可選；權最低）
+]
+```
+
+| 順位 | 角色 | 可省略？ |
+|------|------|----------|
+| **[0] a8b** | 身份主 | **不可** |
+| [1] 無底 FACE_CLOSE / IP_HD | 同人近臉／半身 | 極少數已有 a8b 特寫可併，仍建議有 |
+| [2+] 無底 ACTION 等 | 姿／體 | 可按姿需要 |
+| 末位 SCENE | 只鎖機位／球／洞穴 | 可；**禁止**當 [0] |
+
+**禁止寫成：** `[ SCENE, a8b, IP ]`（這就是 `f5bedf13` 失敗式）。  
+**允許急救重鎖：** 舊 FAIL 全幅只作 **末位構圖錨**，a8b 仍必須 [0]。
+
+#### B. 生成 + 即 PATH1E（ST2 不可拆）
+
+```
+# 前提：ST1 IP_PACK 已齊（無底圖 · 多角度 · §0.5.1）
+
+# B1 全幅 identity（a8b-first）
+I_mid_raw = reference_to_image(
+  asset_ids = [ a8b, IP.FACE_CLOSE|IP_HD, IP.ACTION?, SCENE? ],
+  prompt    = full-frame 16:9; lock face to first refs (a8b);
+              single solid person; no ghost; no text; no reframe portrait
+)
+
+# B2 identity plate（pose-matched · a8b 最前）
+Plate = reference_to_image(
+  asset_ids = [ a8b, face_crop_from_I_mid_raw, IP.FACE_CLOSE ],
+  prompt    = exact a8b identity; keep crop pose/lighting; sharp pores
+)
+
+# B3 即 PATH1E（當幀必須做；不得留到「之後再說」）
+I_MID = PATH1E_hard_paste(
+  structure = I_mid_raw,
+  donor     = Plate 或 a8b,
+  ECC ≥ 0.85（NEAR）/ 遠距見 §0.11,
+  mix_interior ≥ 0.90（NEAR）,
+  edge feather only · person matte
+)
+
+# B4 閘
+assert 目視臉 ≈ a8b / 2ce5 類（非「另一個女生」）
+assert 清晰：face lap 達檔位門檻；無 soft plastic 糊
+assert GHOST_PERSON == OK
+→ 寫 FRAME_LOCK + FULLFRAME_FACE_LOCK + SHA + L-
+```
+
+**產物寫入：**
+
+```json
+{
+  "FULLFRAME_FACE_LOCK": true,
+  "locked": true,
+  "method": "a8b_first + multi_angle_IP + immediate_PATH1E",
+  "asset_ids_order": ["a8b", "IP.FACE_CLOSE|IP_HD", "IP.ACTION?", "SCENE_last?"],
+  "l0_asset_id": "<I_MID>",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "identity_plate": "<Plate optional>",
+  "path1e_done_on_st2": true,
+  "quality_ref": "2ce5fabe-8de3-42a2-bab9-727d63c834c8",
+  "fail_examples": ["f5bedf13-d489-440a-bfb6-d374c56ec6df"],
+  "forbidden_identity_refs": ["2d3416e0-a435-44d4-a16b-6306fc798a19"]
+}
+```
+
+### 0.13.3 與 ST 對接（每 SET）
+
+| STAGE | 全幅鎖臉 |
+|-------|----------|
+| ST1 | 無底多角度 IP；**a8b 最前** 生每角 |
+| ST2 MID | **必須** FULLFRAME_FACE_LOCK = **a8b-first + 即 PATH1E** |
+| ST4 PRE/POST | 新動作後 **再** 全幅鎖臉（Ref 時 **a8b 仍最前或緊跟主構圖後的身份位**；始終帶 a8b+IP） |
+| ST5 ET | 以 **已 PATH1E 鎖臉** 淨幀為底疊字；ref 仍帶 a8b+IP；**禁止**用未鎖 FAIL 幀當母版硬升 |
+| ST_G | **不得**對臉格 FACE_REF（§0.12.13） |
+| ST6 FREE | 每張變角後仍全幅鎖臉 |
+
+### 0.13.4 審核閘（ST2 未過不得 ST4）
+
+```
+[ ] asset_ids[0] == a8b78fe5…（或 log 證明 a8b 為身份主權）
+[ ] 無底 IP.FACE_CLOSE 或 IP_HD 在 ref 列
+[ ] path1e_done_on_st2 == true（或等價 ECC 硬貼完成）
+[ ] 目視 = 女主（對 a8b），不是「像的路人」
+[ ] 臉清晰（非 soft／塑膠糊）
+[ ] 一人一姿 · GHOST_PERSON OK · MID 無字
+[ ] FRAME_LOCK.locked == true · L- 已寫
+[ ] 未使用 f5bedf13 類 FAIL 當正典 L0
+```
+
+### 0.13.5 覆蓋關係
+
+| 舊條款 | 本節效果 |
+|--------|----------|
+| §0.12.11 FAT_FACE_REF | **降級實驗**；正式用 §0.13→§0.12.13 |
+| §0.12.12 GRID_FACE_REF 為預設 | **撤銷預設**；預設改 FULLFRAME + GRID24_ENHANCE |
+| §0.9.2b ST5 IP 臉 REF | **保留**；且底圖必須已是全幅鎖臉 + 1E |
+| §0.10 a8b | **不變**；本節規定 **如何把 a8b 鎖進全幅**（含 **最前順位**） |
+| 舊文 `Ref(景, a8b, IP)` 寫法 | **改讀** `Ref(a8b, IP…, 景?)`；景不得身份主位 |
+
+### 0.13.6 解鎖
+
+僅當用戶明確說「解鎖全幅鎖臉」或「允許格級 FACE_REF 急救」時，才可啟用 §0.12.11 實驗路徑，且產出必須標 `EXPERIMENT`，不得冒充 FINAL。
+
+*END §0.13 · asof 2026-10-26T02:17:00Z*
+
+
+*END §0.12 · asof 2026-10-26T01:44:00Z*
+
+
+---
+
+## 0.14 GEO_INDICATOR_TYPE · 方向性／指標性字層（每 SET 新程序）
+
+> **用戶（2026-10-26T03:05）：** 本 SET 參考圖的文字概念「太有方向性、指標性了」——**必須寫進總憲成新程序**。  
+> **性質：** 這不是 §0.8 極藝術 FREE 海報字，也不是單純裝飾 HUD；而是 **把接觸幾何契約（analysis_line · HIGHLIGHT · 力／法線／GAP）直接印成可讀指標系統**。  
+> **樣板 ref（只鎖概念，不抄像素排版）：**  
+> - 俯視對撞指標場：`f0caf896-b056-4dd8-8aca-a9f7cbaa38a3`（GEO.T2 · FACE · F↔180° · 打擊面1//2 · 受面=BETWEEN）  
+> - 方法總表三聯：`78a0a9f1-1e11-45bb-9972-f29b3cc37e54`  
+> - PRE|MID|POST 指標三聯：`2a869e73…`（A05 T2）· `53f2be80…`（A04 H3）· `fd235ae4…`（A03 H2）· `d96c66cd…`（A02 H1）  
+> - HOT 軸向指標：`a51850bc-bb1c-4188-bf9f-61b3956d7b82`（GEO.PLANT_0 · 大紅箭 · F_axial）
+
+### 0.14.1 一句話定義
+
+```
+GEO_INDICATOR = 方向線 + 力矢 + 法線 + GAP/接觸狀態 + 打擊面/受面標籤
+              + 方法頭 Method(v) + LOOP L-
+              全部錨在真實幾何上（不是飄在空中的文案）
+```
+
+| 對照 | FREE 海報字 §0.8 / ST5–ST6 | **GEO_INDICATOR §0.14 / ST3.G** |
+|------|---------------------------|--------------------------------|
+| 目的 | 藝術感染 · 世界材質字 | **教學／審核／方向判讀** |
+| 主句 | Σ_text 五條可散佈 | **analysis_line + 面標 + 力標** |
+| 形狀 | 3D 水晶／火／塗鴉 glyph | **箭頭、弧、平行線、十字準星、HOT/COLD 標** |
+| 允許 UI 感 | 禁底框（BgPlate=∅） | **允許極薄 HUD 框／角標**（審核板合法） |
+| 是否改幾何 | 禁 | **禁**（只解釋，不發明接觸） |
+| 與人 | 不改骨相 | 不改骨相；遠景可無近臉 |
+
+### 0.14.2 合法指標字串集合 \(\Sigma_{\mathrm{geo}}(v)\)
+
+對方法 \(v\)（例 `GEO.T · H2`、`GEO.T2 · FACE`、`GEO.PLANT_0`）固定：
+
+\[
+\Sigma_{\mathrm{geo}}(v)=\Big\{\;
+\begin{aligned}
+&s_{\mathrm{title}}:\ \mathrm{Method}(v),\\
+&s_{\mathrm{brand}}:\ \texttt{邊界行人},\\
+&s_{\mathrm{line}}:\ \mathrm{analysis\_line}(v),\\
+&s_{\mathrm{strike}}:\ \texttt{打擊面=}\Vert\mathrm{STRIKE}(v),\\
+&s_{\mathrm{recv}}:\ \texttt{受面=}\Vert\mathrm{RECV}(v),\\
+&s_{\mathrm{force}}:\ \mathrm{ForceToken}(v),\\
+&s_{\mathrm{gap}}:\ \mathrm{GapToken}(v),\\
+&s_{\mathrm{nv}}:\ n\cdot v\ \mathrm{token},\\
+&s_{\mathrm{loop}}:\ \texttt{LOOP L-}\Vert h_{12}
+\end{aligned}
+\Big\}
+\]
+
+**analysis_line 正規形（強制可解析）：**
+
+```
+STRIKE:<面碼>  RECV:<面碼>  <F-token>  <n·v-token>  GAP=<…>  <H-state>
+```
+
+例（從樣板抽象，非抄圖）：
+
+| 方法 | analysis_line 例 |
+|------|------------------|
+| GEO.T · H1 | `STRIKE:T-END RECV:SPHERE F=0 AIR n·v=1 GAP=2~10mm H1` |
+| GEO.T · H2 | `STRIKE:T-END RECV:TANGENT Fn n·v=1 GAP=0 ★MICRO H2` |
+| GEO.T · H3 | `STRIKE:T-END RECV:SHELL Fn OUT n·v=1 GAP=0 FOLLOW H3` |
+| GEO.T2 · FACE | `STRIKE:T1//T2 RECV:MID F↔180° n·v=±1 受面=BETWEEN` |
+| GEO.PLANT_0 | `STRIKE:BOTTOM RECV:CROWN F_axial DONE` |
+| GEO.MULTI | `STRIKE:FACET RECV:TANGENT …` |
+
+**ForceToken 字典（指標性 · 必須方向可讀）：**
+
+| Token | 畫法 | 含義 |
+|-------|------|------|
+| `F→` / `F_n` / `Fn` | 單向粗箭 | 法向衝擊 |
+| `F↔` / `F↔180°` | 對向雙箭或半圓弧 | 對撞／FACE 對向 |
+| `F_axial` | 軸向箭（常配 HOT 紅箭） | 軸壓／落槌 |
+| `F=0 AIR` | 虛線或標註 | 未接觸／氣隙 |
+| `n·v=1` / `n·v=±1` | 沿法線標 | 法向對齊 |
+| `GAP=0` / `GAP>0` / `GAP→0` | 虛線間隙或數值 | 間隙狀態 |
+| `//` | 平行標 | 雙打擊面平行（T1//T2） |
+| `BETWEEN` | 中心準星 | 受面夾在兩打擊面之間 |
+
+**禁止上畫：** `TRY-xxxx`、`REVIEW PENDING`、與 \(\mathcal{G}_{\mathrm{hard}}\) 矛盾的假方向、假 GAP。
+
+### 0.14.3 方向算子 \(\mathcal{T}_{\mathrm{indicator}}\)（背後公式 · 非抄樣板）
+
+\[
+\mathcal{T}_{\mathrm{indicator}}(v,\theta)=
+\mathrm{Draw}\Big(
+  \underbrace{\vec{v},\vec{F},n_{\mathrm{strike}},n_{\mathrm{recv}}}_{\text{方向幾何}},\;
+  \underbrace{\mathrm{crosshair}(\mathrm{HL.CONTACT})}_{\text{準星}},\;
+  \underbrace{\mathrm{Labels}(\Sigma_{\mathrm{geo}})}_{\text{錨點標籤}},\;
+  \underbrace{\mathrm{Style}(\theta)}_{\text{相位風格}}
+\Big)
+\]
+
+**錨點規則（指標性核心）：**
+
+1. **每條標籤必須指向真實物件**（HL.STRIKE / HL.RECV / HL.CONTACT / HL.GAP / HL.AXIS），禁止懸空文案堆角。  
+2. **箭頭／弧的端點**落在打擊面法線或力線上，不得只「好看」。  
+3. **方法頭** `Method(v)` 通常頂欄或主視野外安全區；**LOOP L-** 底角或對角。  
+4. **平行／對向**用 `//` 與 `F↔` 明確畫出，不只寫字。  
+5. **準星**（crosshair／同心圓）僅標 HL.CONTACT；不得蓋死接觸像素判讀。
+
+### 0.14.4 相位風格 \(\mathrm{Style}(\theta)\)（同指標 · 異態）
+
+| 相位 | 指標風格 | 樣板抽象 |
+|------|----------|----------|
+| **PRE** | **COLD**：青／白蝕刻、氣隙虛線、`GAP>0`、`F=0 AIR`、球上可 COLD etch 契約短句 | A02/A03 PRE |
+| **MID** | **CRITICAL**：完整方向網、`GAP=0`、準星最亮、`n·v` 達標、面標齊 | A05 MID 俯視網 |
+| **POST** | **HOT**：火／熔線、`Fn OUT`、飛屑沿 \(\vec{v}\)、可 `HOT labels` 紅箭 | A04 POST · PLANT 紅箭 |
+| **AUDIT 俯視** | 青 HUD 角框 + 全場力弧（可無近臉） | f0caf896 類 |
+
+**同文異態：** 同一 `analysis_line` 與同一組 STRIKE/RECV 名；只變 `Style(θ)` 與 GAP/F 是否「已發生」。
+
+### 0.14.5 HOT labels / COLD etch（指標子模組）
+
+| 模組 | 觸發 | 畫法 | 禁 |
+|------|------|------|----|
+| **HOT labels** | POST、PLANT 軸完成、H3 釋放 | 高飽和箭頭（常紅）+ 短標（`HOT` / `F_axial DONE` / `火`）指向力作用點 | 箭指錯面 |
+| **COLD etch** | PRE／H1 微隙 | 冷色蝕刻印在球膜或槌端面：契約短句 + Method | 蝕刻改寫幾何 |
+| **SPIDERWEB callout** | H3 殼裂 | 標 `受面=SHELL` + 裂紋主軸與 \(\vec{v}\) 一致 | 裂紋方向與力矛盾 |
+
+### 0.14.6 產物形態（每方法可選組合）
+
+| 產物 ID | 形態 | 用途 |
+|---------|------|------|
+| **GEO.TRIPTYCH** | PRE\|MID\|POST 三聯，同 \(\Sigma_{\mathrm{geo}}\) | 方法教學主條 |
+| **GEO.AUDIT_TOP** | 單張俯視／軸測全場指標網 | 對撞／FACE／雙槌審核 |
+| **GEO.SHEET** | 多方法縮略表（A01…） | 專輯索引（樣板 78a0a9f1 類） |
+| **GEO.SINGLE** | 單幀嵌入指標（藝術成圖可減量） | 成圖可讀幾何 |
+
+### 0.14.7 在 SET 管線中的位置（ST3.G）
+
+```
+ST2 MID_LOCK（全幅鎖臉 · 無字）
+  → ST3 GEO_AUDIT（manifest 寫 analysis_line + HL.*）
+  → ★ ST3.G GEO_INDICATOR（本節）
+        可對 PRE/MID/POST 淨幀疊 T_indicator
+        或單獨出 GEO.TRIPTYCH / GEO.AUDIT_TOP
+  → ST4 ±δt 動作（若尚未）
+  → ST5 雙 ET 海報字（§0.8 · 可與指標並存，但層級分開）
+  → ST_G GRID（升景／字／線銳度；臉格仍禁 FACE_REF）
+```
+
+**層級：**
+
+```
+chain_clean（無字）
+  → chain_geo_indicator（§0.14 · 方向／指標）
+  → chain_hud / ET 海報字（§0.8 · 可選）
+  → chain_final
+```
+
+**並存規則：**
+
+- 同一幀可同時有 GEO_INDICATOR + FREE 海報字，但 **指標層優先保證幾何可讀**；FREE 字不得壓死箭頭端點與準星。  
+- 純審核板可 **只跑 §0.14、不跑 ST5**。  
+- 純海報藝術可 **只跑 ST5、ST3.G 減量到 manifest-only**——但方法矩陣 SET 建議至少一條 GEO.TRIPTYCH。
+
+### 0.14.8 實作優先序
+
+1. **首選：** 向量／SVG／3D 註解層 bake（方向準、字串死、可重現 seed）。  
+2. **次選：** diegetic 二 pass：LOCKED 淨圖 + 只注入 \(\mathcal{T}_{\mathrm{indicator}}\)；OCR／人眼核對 analysis_line。  
+3. **PRE 混成（強制預設 · §0.14.14）：** diegetic **只做線材質／能量軌**；**面標＋analysis_line 字串**一律 `TEXT_SET` 向量寫死（禁止模型自由拼 `T-END`）。  
+4. **MID／POST：** diegetic 一次 pass 可過（OBS 2026-10-26）；仍須 G-LINE 閘；FAIL 時退回混成。  
+5. **禁止：** 純文生同時發明「看起來像物理」的假箭頭；禁止無 MID lock 就畫指標；禁止 PRE 全字 diegetic 指望模型自寫 `T-END`。
+
+### 0.14.9 閘門（GEO_INDICATOR）
+
+| 閘 | 通過條件 |
+|----|----------|
+| **G-DIR** | 每條力／法線箭可指到真實 HL 物件 |
+| **G-LINE** | analysis_line 與 Method(v) 一致；STRIKE/RECV 名與畫面標一致 |
+| **G-PHASE** | PRE 不得畫成已碎裂完成；POST 不得仍是大 GAP 未接觸（除非方法定義如此） |
+| **G-LOOP** | `LOOP L-` = 本方法 LOCKED MID sha12 |
+| **G-FAKE** | 無與 \(\mathcal{G}_{\mathrm{hard}}\) 矛盾的方向／間隙 |
+| **G-FACE** | 若幀含女主近臉：身份仍鎖 a8b；指標 pass 不改骨相 |
+| **G-PRE-HYBRID** | PRE FINAL：`glyph_source=TEXT_SET` + `line_source=diegetic|vector` 寫入 META；面標非模型拼字 |
+| **G-TOKEN** | 無漂字黑名單：`M-END`/`D-END`/`DANGENT`/`C-T-END`/`D-T-END` 等（§0.14.14） |
+
+未過閘 → `GEO_INDICATOR = FAIL`，不得標 FINAL 教學板。
+
+### 0.14.10 與其他條款
+
+| 條款 | 關係 |
+|------|------|
+| §0.8 FREE | **分流**：FREE=藝術字；本節=指標字 |
+| §0.9.3 方向線 | 本節 = 方向線的 **完整字層程序化** |
+| §0.9.4 HIGHLIGHT | 本節標籤的 **錨點必選表** |
+| §0.12 GRID | 可對 GEO 幀做 GRID 升線／字銳度；臉規仍 §0.12.13 |
+| §0.13 全幅鎖臉 | 含人幀先鎖臉再疊指標 |
+| C-01 | 指標不改機位／武器拓撲；只解釋 |
+
+### 0.14.11 每 SET 必勾（ST3.G）
+
+```
+[ ] 每方法寫死 analysis_line + STRIKE/RECV/Force/GAP
+[ ] 至少 1 條 GEO.TRIPTYCH 或 1 張 GEO.AUDIT_TOP（方法矩陣 SET）
+[ ] 箭頭／標籤錨在 HL.*；無懸空文案
+[ ] PRE=COLD／MID=CRITICAL／POST=HOT 相位不亂
+[ ] LOOP L- 正確；無 TRY/REVIEW
+[ ] 與 ST5 FREE 分層；指標可讀優先
+[ ] GEO_INDICATOR_META.json 寫入方法、analysis_line、ref 樣板 ID（概念溯源）
+[ ] PRE = 混成（線 diegetic + TEXT_SET 面標寫死 · §0.14.14）；MID/POST diegetic 一次 + G-LINE/G-TOKEN；無 M-END 黑名單
+```
+
+### 0.14.12 樣板資產索引（概念鎖 · 非排版鎖）
+
+| asset_id | 概念角色 |
+|----------|----------|
+| `f0caf896-b056-4dd8-8aca-a9f7cbaa38a3` | 俯視 FACE 對撞全場指標網 |
+| `78a0a9f1-1e11-45bb-9972-f29b3cc37e54` | 多方法 PRE\|MID\|POST 總表 |
+| `2a869e73-31c6-4b92-af18-0c999f34eca9` | A05 T2 三聯 |
+| `53f2be80-1b46-45c2-ab88-577e4b525c06` | A04 H3 三聯 |
+| `fd235ae4-73d0-43ca-8484-929989d46b7e` | A03 H2 三聯 + COLD etch |
+| `d96c66cd-163e-47be-84a6-6d718e62cd4f` | A02 H1 微隙三聯 |
+| `a51850bc-bb1c-4188-bf9f-61b3956d7b82` | PLANT HOT 軸向指標 |
+
+
+
+### 0.14.13 引用原文 → 盲生成公式（TEXT_SET LOCK）
+
+> **用戶（2026-10-26T03:11）：** 找到他用的**引用原文**而生出這字的公式，研究 ref 到程序的文字 SET 中，**盲也能靈巧地生成**。
+
+#### 引用鏈（OBSERVED · 非記憶）
+
+| 層 | 原文位置 | 角色 |
+|----|----------|------|
+| **幾何字典** | `boundary_pedestrian_setG_gold/FACE_ANALYSIS_HUB.json` | 每方法：`method` · `strike_face` · `recv_face` · `force` · `gap` · `H` · `formula_pre/post` · **`analysis_line`** |
+| **公式聖經** | `boundary_pedestrian_setG_gold/HUB_MASTER_FORMULAS_v5.md` | **§E-01** 精確字串契約 · **§E-02** 無上限 diegetic VFX · **§5** \(T_{\mathrm{diegetic}}\) · **軸 A** GEO 契約全文 |
+| **排版引擎** | `bubble_break/boundary_pedestrian_try_art.py`（倉庫 PR#9） | `canonical_text_payload` · `text_content_sha256` · **字由排版寫死，不靠模型拼字** |
+| **倉庫** | `JUN-ZS/ai-image-gen-logic-review` · branch `docs/unified-image-video-prompt-formulas-20261023` · **PR #9** | LOOP 編譯器 + TRY art 正典來源 |
+| **視覺概念 ref** | §0.14.12 七 asset | **只鎖方向性／指標性概念**，禁止抄排版座標 |
+
+#### 為什麼樣板圖「像指標」——原文已寫死
+
+樣板（f0caf896 等）不是靈感亂畫，而是把 **FACE_ANALYSIS_HUB 的欄位**直接可視化：
+
+```
+analysis_line  → 畫面主句（STRIKE:… RECV:… F… n·v… GAP… H）
+strike_face    → 「打擊面=…」錨在 HL.STRIKE
+recv_face      → 「受面=…」錨在 HL.RECV
+force          → 力矢／弧（F→ / F_n / F↔180° / F_axial / F=0 AIR）
+gap + phase    → PRE 虛線隙 / MID GAP=0 / POST FOLLOW
+formula_pre|post → COLD etch（PRE）/ HOT labels（POST）文案源
+method         → 頂欄 GEO.… · H…
+L-h12          → LOOP 角標（E-01 淨化契約 · 禁 TRY 次數）
+```
+
+#### 盲生成算子（不看樣板圖）
+
+\[
+\begin{aligned}
+R &\leftarrow \mathrm{FACE\_ANALYSIS\_HUB}[v] \\
+\Sigma_{\mathrm{geo}}(v,\theta) &\leftarrow \mathrm{CompileFields}(R,\theta,h_{12}) \\
+\mathrm{Style}(\theta) &\leftarrow \{\mathrm{PRE}{=}\mathrm{COLD},\;\mathrm{MID}{=}\mathrm{CRITICAL},\;\mathrm{POST}{=}\mathrm{HOT}\} \\
+I^{\mathrm{GEO}} &\leftarrow I^{\mathrm{raw}} \oplus \mathcal{T}_{\mathrm{indicator}}\big(\Sigma_{\mathrm{geo}},\,\mathrm{Style}(\theta),\,\mathrm{HL.*}\big)
+\end{aligned}
+\]
+
+**CompileFields 規則（寫死）：**
+
+1. `s_title = R.method`  
+2. `s_brand = "邊界行人"`  
+3. `s_line = rebuild(STRIKE:short(R.strike), RECV:short(R.recv), ForceToken(R.force), NvToken(R), GapToken(R.gap, θ), R.H)`  
+4. `s_strike / s_recv` = 中文面標  
+5. `s_loop = "LOOP L-" ‖ h12`  
+6. **draw_ops** 每條 endpoint 必須綁 `HL.*`（禁止懸空）  
+7. **Omit** = `TRY_COUNT` · `REVIEW_PENDING`（E-01）
+
+#### 文字 SET 正典檔（程序只讀此檔）
+
+```
+GEO_INDICATOR_TEXT_SET.json          ← 根目錄鏡像
+boundary_pedestrian_setQ_chrome/geo/GEO_INDICATOR_TEXT_SET.json
+boundary_pedestrian_setQ_chrome/geo/FACE_ANALYSIS_HUB_EXPANDED.json
+```
+
+檔內含：
+
+- `citation_chain`（上表）  
+- `catalog[G01…]` 每方法 PRE/MID/POST 的 **Σ_geo + draw_ops + style**  
+- `blind_recipe` 六步編譯  
+- `compile_fn_pseudocode`  
+
+**之後任何 SET 的 ST3.G：**  
+只調 `compile_geo_indicator(method_id, phase, h12, anchors)` → 得到字串與繪圖 op → SVG bake 或 diegetic 二 pass。  
+**禁止**打開樣板 JPEG 抄位置。
+
+#### 與 E-01／E-02 的接線
+
+| E-01 海報 Σ_text | GEO_INDICATOR Σ_geo |
+|-----------------|---------------------|
+| 邊界行人 / THE BOUNDARY WALKER | brand 可共用；英文主標可選 |
+| Method(v) | **method 頭 + analysis_line**（指標主體） |
+| CAM·STYLE·PID | 審核板可加；藝術成圖可減 |
+| WORLD·L- | **LOOP L- 必有** |
+| E-02 閃電／火／塗鴉 | 可包在 brand/method 上，**不得取代**方向箭與面標 |
+
+#### 修訂
+
+- **2026-10-26T03:15:00Z：** 引用原文鏈 + `GEO_INDICATOR_TEXT_SET.json` 入憲；盲生成 CompileFields 鎖定。
+
+*END §0.14.13*
+
+---
+
+### 0.14.14 PRE 混成管線 · diegetic 線材 + TEXT_SET 面標寫死（OBS LOCK）
+
+> **OBS（SET-Q · GEO.T · H2 · 2026-10-26 diegetic 二 pass）：**  
+> **MID／POST diegetic 一次過關**（字準＋鉻線／火線融合可接受）。  
+> **PRE 模型反覆把 `T-END` 漂成 `M-END`／`D-END`／`DANGENT`**——即使 prompt 寫死、二次校正仍漂。  
+> **之後 PRE 預設：diegetic 只做線材質，面標用 TEXT_SET 向量寫死（混成）。**
+
+#### 分層責任
+
+| 層 | 誰做 | 內容 | 禁止 |
+|----|------|------|------|
+| **L_line** | diegetic / Imagine 材質 pass | 力矢、法線、GAP 虛線、準星、鉻電弧／冰線 **無契約字或僅非 OCR 光跡** | 讓模型生成 `打擊面=` / `受面=` / 底欄 analysis_line |
+| **L_glyph** | **TEXT_SET 向量 bake**（CompileFields → SVG/PIL） | `打擊面=T-END` · `受面=TANGENT` · `s_line` · `GEO.T · H2` · `邊界行人` · `LOOP L-` · GAP token | 模型自由拼字；抄樣板座標 |
+| **L_face** | a8b 鎖 | 身份不變 | 指標 pass 改骨相 |
+
+#### 合成公式（PRE 強制）
+
+```
+I_PRE^line = I_PRE^raw ⊕ T_indicator^lines-only (Style=COLD, HL.*)
+I_PRE^GEO  = I_PRE^line ⊕ BakeGlyphs( Σ_geo(PRE), anchors )
+```
+
+- `T_indicator^lines-only`：只允許電弧／箭桿／準星／膜面高光，**不**輸出可 OCR 的契約字元。  
+- `BakeGlyphs`：字串 **100%** 來自 `GEO_INDICATOR_TEXT_SET` · catalog 對應 method · phase=PRE。  
+- 錨點：`HL.STRIKE` / `HL.RECV` / `HL.CONTACT` / 底欄安全區（§0.14.3 draw_ops）。
+
+#### MID／POST 預設
+
+| 相位 | 預設路徑 | 退回條件 |
+|------|----------|----------|
+| **MID** | diegetic **一次**（線+字可同 pass） | G-LINE / G-TOKEN FAIL（出現 `M-END` 等）→ 改走 PRE 同款混成 |
+| **POST** | diegetic **一次**（HOT 火線+字） | 同上；`C-T-END` / `D-T-END` 視為 FAIL |
+| **PRE** | **必須混成**（上式） | 不得以「純 diegetic 全字」標 FINAL |
+
+#### 已知漂字黑名單（OCR／人眼即 FAIL）
+
+```
+M-END · D-END · DANGENT · M-TANGENT · C-T-END · C-TANGENT · D-T-END · D-TANGENT
+STRIKE:M-END · RECV:M-END · 打擊面=M-* · 受面=M-*
+```
+
+合法面標（H2 例）：**僅** `T-END` · `TANGENT`（及 TEXT_SET 該 method 寫死之 short form）。
+
+#### 與 ONESHOT／FACE-ONLY 的關係
+
+| 模式 | 地位 |
+|------|------|
+| **ONESHOT 景+字同生** | 允許草稿／hero 效果；**不得**無 G-LINE 當 FINAL；PRE 仍建議混成 |
+| **FACE-ONLY 只 a8b** | 僅 IP／單張海報實驗；**禁止**當 SET 連貫 GEO 默認 |
+| **2PASS 向量→diegetic** | 字準優先 |
+| **PRE 混成（本節）** | **PRE FINAL 預設** |
+
+#### 閘門補強
+
+- **G-PRE-HYBRID：** PRE FINAL 必須有 `glyph_source=TEXT_SET` 與 `line_source=diegetic|vector` 記錄於 `GEO_INDICATOR_META`。  
+- **G-TOKEN / G-LINE：** 任一黑名單 token → FAIL（含 MID/POST diegetic）。  
+- 未過 → 不得標 `GEO_INDICATOR=ok` 教學板。
+
+#### SET-Q 實證索引
+
+| 幀 | 路徑 | 結果 |
+|----|------|------|
+| MID diegetic | `7457164a…` / `c4cf53a6…` | **PASS 一次** |
+| POST diegetic | `f1b7a402…` / `604a6f8b…` | **PASS 一次** |
+| PRE diegetic 全字 | `f7572a0e…` → `fdc80c60…` → `3bd2139c…` | **反覆 T→M/D 漂** |
+| PRE 混成／外科寫死 | `279a7d16…` + TEXT_SET bake | **面標可校正** |
+
+#### 修訂
+
+- **2026-10-26T15:40:00Z：** 入憲 PRE 混成；MID/POST diegetic 一次默認；漂字黑名單；G-PRE-HYBRID / G-TOKEN。
+
+*END §0.14.14*
+
+*END §0.14 · asof 2026-10-26T15:40:00Z*
+
+
+### 0.12.14.x true-face lock (2026-10-26)
+- C-ring strip clean ≠ face done. Ghost ROI (528,102) is WRONG.
+- True camera face F_d≈(608,100,122,140); eyes~(630–700,150); NOT copper/neck.
+- PIXEL FACE_CROP_DIRECT: center_ok, delta_cring=0, but frontal a8b on aerial → sticker risk.
+- Prefer imagine_reference_to_image([2455,a8b]) for pose-correct identity; lock F_d for audit only.
+- User signal bb5fb0fa:「要是改對臉的」→ change true face after C-ring verify.

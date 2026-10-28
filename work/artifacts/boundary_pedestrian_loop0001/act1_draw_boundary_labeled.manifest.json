@@ -1,0 +1,22 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "0001",
+  "try_id": "0001",
+  "act_id": "1",
+  "method_id": "GEO.T",
+  "method_label": "COMPANION · story spine (primary is ACT3 H2)",
+  "prompt_id": "STORY_SPINE_ACT1",
+  "style_id": "S-01",
+  "status": "REVIEW_PENDING",
+  "note": "畫界 · 本輪主試法印記首次出現",
+  "source_path": "boundary_pedestrian_loop0001/act1_draw_boundary_base.jpg",
+  "source_sha256": "6f4176d11ed58ae2c119025360ffaefca7a89348fdb846bb843daccd93964f15",
+  "source_width": 1792,
+  "source_height": 1008,
+  "image_realization": "SOURCE_FILE_ATTACHED",
+  "pixel_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "renderer": "boundary_pedestrian_try_art.py",
+  "artwork_path": "boundary_pedestrian_loop0001/act1_draw_boundary_labeled.svg",
+  "artwork_sha256": "676f139850ddb1187398f58bdcbec7248fa35cbcb8147e07e3037813552097d9"
+}

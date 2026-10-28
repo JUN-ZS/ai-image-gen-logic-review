@@ -1,0 +1,42 @@
+{
+  "pipeline": "PIXEL_RATIO §0.12.14",
+  "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "dst_face": [
+    427,
+    77,
+    138,
+    138
+  ],
+  "expand_tight": true,
+  "primary": "a8b",
+  "primary_donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "scale_iso": 0.525223880597015,
+  "paste_roi": [
+    388,
+    14,
+    603,
+    245
+  ],
+  "sha256": "5ce79db3da0bb2460340522045df411a16d9a945a7fd69cee656fc58913a590b",
+  "L_candidate": "L-5ce79db3da0b",
+  "raw_lap": 2215.1253156932685,
+  "primary_lap": 898.0387935253989,
+  "variants": [
+    {
+      "name": "a8b",
+      "scale": 0.525223880597015,
+      "lap": 898.0387935253989
+    },
+    {
+      "name": "grid_face",
+      "scale": 0.2706923076923077,
+      "lap": 834.1949564796307
+    },
+    {
+      "name": "grid_face2",
+      "scale": 0.2866802443991854,
+      "lap": 820.0893312989235
+    }
+  ],
+  "anti_ghost": "tighter expand sx=0.28 syt=0.45 syb=0.22 + stronger feather + alpha≤0.88"
+}

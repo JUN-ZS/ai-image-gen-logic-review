@@ -1,0 +1,256 @@
+{
+  "goal": "\u6539\u5c0d\u81c9 = true camera-facing face, not C-ring",
+  "user_ref": "bb5fb0fa C-ring strip clean but face not changed",
+  "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "final_asset": "32aa7b70-5352-4dd6-a110-36ca20e5ce83",
+  "F_d_lock": [
+    608,
+    100,
+    122,
+    140
+  ],
+  "method": "imagine_reference_to_image pose-correct + PIXEL_RATIO proof",
+  "metrics_ref": {
+    "delta_face": 7.300936698913574,
+    "delta_cring": 7.448312282562256,
+    "delta_wrong_left": 7.648541450500488,
+    "delta_full": 9.017962455749512
+  },
+  "pixel_ratio_best": {
+    "chosen": "TF_A_a88",
+    "meta": {
+      "F_d": [
+        608,
+        100,
+        122,
+        140
+      ],
+      "F_s": [
+        145,
+        55,
+        250,
+        310
+      ],
+      "s_face": 0.4694540411735674,
+      "s_eff": 0.47021505376344086,
+      "place": [
+        598.4677419354839,
+        82.54
+      ],
+      "paste_roi": [
+        596,
+        86,
+        146,
+        168
+      ],
+      "crop_S": [
+        120,
+        24,
+        300,
+        372
+      ],
+      "nw_nh": [
+        141,
+        175
+      ],
+      "center_err": [
+        0.0,
+        0.0
+      ],
+      "center_ok": true,
+      "delta_face": 75.80103302001953,
+      "delta_cring": 0.0,
+      "delta_wrong_left": 0.0,
+      "alpha": 0.88,
+      "pad": 0.1
+    },
+    "all": {
+      "TF_A_a82": {
+        "F_d": [
+          608,
+          100,
+          122,
+          140
+        ],
+        "F_s": [
+          145,
+          55,
+          250,
+          310
+        ],
+        "s_face": 0.4694540411735674,
+        "s_eff": 0.47021505376344086,
+        "place": [
+          598.4677419354839,
+          82.54
+        ],
+        "paste_roi": [
+          596,
+          86,
+          146,
+          168
+        ],
+        "crop_S": [
+          120,
+          24,
+          300,
+          372
+        ],
+        "nw_nh": [
+          141,
+          175
+        ],
+        "center_err": [
+          0.0,
+          0.0
+        ],
+        "center_ok": true,
+        "delta_face": 70.68987274169922,
+        "delta_cring": 0.0,
+        "delta_wrong_left": 0.0,
+        "alpha": 0.82,
+        "pad": 0.1
+      },
+      "TF_A_a88": {
+        "F_d": [
+          608,
+          100,
+          122,
+          140
+        ],
+        "F_s": [
+          145,
+          55,
+          250,
+          310
+        ],
+        "s_face": 0.4694540411735674,
+        "s_eff": 0.47021505376344086,
+        "place": [
+          598.4677419354839,
+          82.54
+        ],
+        "paste_roi": [
+          596,
+          86,
+          146,
+          168
+        ],
+        "crop_S": [
+          120,
+          24,
+          300,
+          372
+        ],
+        "nw_nh": [
+          141,
+          175
+        ],
+        "center_err": [
+          0.0,
+          0.0
+        ],
+        "center_ok": true,
+        "delta_face": 75.80103302001953,
+        "delta_cring": 0.0,
+        "delta_wrong_left": 0.0,
+        "alpha": 0.88,
+        "pad": 0.1
+      },
+      "TF_B_a82": {
+        "F_d": [
+          615,
+          105,
+          115,
+          132
+        ],
+        "F_s": [
+          145,
+          55,
+          250,
+          310
+        ],
+        "s_face": 0.4425731213505125,
+        "s_eff": 0.4434408602150538,
+        "place": [
+          605.983870967742,
+          88.52
+        ],
+        "paste_roi": [
+          603,
+          92,
+          139,
+          158
+        ],
+        "crop_S": [
+          120,
+          24,
+          300,
+          372
+        ],
+        "nw_nh": [
+          133,
+          165
+        ],
+        "center_err": [
+          0.0,
+          0.0
+        ],
+        "center_ok": true,
+        "delta_face": 70.67696380615234,
+        "delta_cring": 0.0,
+        "delta_wrong_left": 0.0,
+        "alpha": 0.82,
+        "pad": 0.1
+      },
+      "TF_D_a80": {
+        "F_d": [
+          612,
+          98,
+          118,
+          138
+        ],
+        "F_s": [
+          145,
+          55,
+          250,
+          310
+        ],
+        "s_face": 0.4583842591453791,
+        "s_eff": 0.45983870967741935,
+        "place": [
+          602.0241935483871,
+          81.47
+        ],
+        "paste_roi": [
+          600,
+          84,
+          142,
+          166
+        ],
+        "crop_S": [
+          120,
+          24,
+          300,
+          372
+        ],
+        "nw_nh": [
+          138,
+          171
+        ],
+        "center_err": [
+          0.0,
+          0.0
+        ],
+        "center_ok": true,
+        "delta_face": 69.2127456665039,
+        "delta_cring": 0.0,
+        "delta_wrong_left": 0.0,
+        "alpha": 0.8,
+        "pad": 0.1
+      }
+    }
+  },
+  "note": "eyes~(630-700,150); chin~230; NOT neck; NOT C-ring copper"
+}

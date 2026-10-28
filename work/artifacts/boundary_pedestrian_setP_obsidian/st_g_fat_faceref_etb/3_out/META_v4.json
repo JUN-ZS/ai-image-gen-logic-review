@@ -1,0 +1,18 @@
+{
+  "pipeline": "FAT_FACE_REF_v4_SHARP",
+  "gates": {
+    "face_lap": 61.0386962890625,
+    "center_lap": 72.52989196777344,
+    "full_lap": 340.63623046875,
+    "ecc": 0.9271734953976704,
+    "imagine_ref": "189fa02d-cdca-4941-a4d9-3291499ed007"
+  },
+  "L": "L-a43f92f938c2",
+  "sha256": "a43f92f938c276a1395dd2c1c3dc6b33af4521071599d36f705f608587bfdd04",
+  "size": [
+    3584,
+    2016
+  ],
+  "asof": "2026-10-25T17:21:25Z",
+  "fix": "Imagine full REF face (a8b+IP+f02) → ECC paste S2 + unsharp"
+}

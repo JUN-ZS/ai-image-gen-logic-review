@@ -1,0 +1,18 @@
+{
+  "pipeline": "v9_AplusB_HD_PLATE",
+  "gates": {
+    "face_lap": 886.6094970703125,
+    "center_lap": 1029.9150390625,
+    "plate_lap": 1220.95849609375,
+    "ecc": 0.0,
+    "mode": "HF_ONLY",
+    "full_lap": 426.6723327636719,
+    "alpha_c": 0.9999998807907104
+  },
+  "L": "L-506090adf674",
+  "sha256": "506090adf674512cf10fa2fbf71fdc2c7318c2687315dd6dbc119378735da735",
+  "plate": "2d3416e0 sharp IP face",
+  "base": "v7 S2",
+  "formula": "v7 S2 + ECC(HD face plate from B+a8b+IP) alpha=1 core",
+  "asof": "2026-10-25T17:26:33Z"
+}

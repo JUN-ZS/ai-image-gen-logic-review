@@ -1,0 +1,30 @@
+{
+  "asof": "2026-10-27T08:49:06Z",
+  "section": "0.12.24 WHOLE_COLLAGE_ALIGN",
+  "user_request": "先把這些錯補位和新的解救發現寫入憲",
+  "killed": [
+    "PATCH_UPPER_ONLY",
+    "REV_AS_CONTENT",
+    "FACE_RECT_Y024",
+    "ECC_EUCLID_ONLY_as_final",
+    "EXPAND_BOX_RESCALE"
+  ],
+  "rescued": [
+    "REVERSE_RANGE_ONLY",
+    "OLD_V5_HYBRID_CONTENT",
+    "AFFINE_ECC_ALIGN",
+    "WHOLE_COLLAGE_UNIFORM"
+  ],
+  "proof_L": [
+    "L-b9a649404dfc",
+    "L-6be8d4e2514f"
+  ],
+  "proof_asset_whole": "6201efd4-55d6-42dd-8b76-1e63e97ec3c6",
+  "constitution_files": [
+    "BOUNDARY_WALKER_UNIFIED_RULES.md",
+    "WHOLE_COLLAGE_ALIGN_01224.md",
+    "REVERSE_MESH_RANGE_RULE.md",
+    "MESH_STITCH_FORMULA_V5.md"
+  ],
+  "L": "L-f570b45c9752"
+}

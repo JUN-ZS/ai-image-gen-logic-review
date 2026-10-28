@@ -1,0 +1,16 @@
+{
+  "asof": "2026-10-27T08:01:29Z",
+  "section": "§0.12.23 VIRUS_LOCAL_BASE",
+  "user_diagnosis": "問題幾乎解決 — 曾用單一局部圖再放大限死底圖邏輯成病毒",
+  "virus_example_asset": "b47031a9-99ed-4b91-b94a-c730e9e8b555",
+  "virus_example_size": "1440x1376 torso-only",
+  "legal_base": "full native only e.g. 947cf5b2 4608x6912",
+  "legal_gen": "crop FROM base only",
+  "formula": "V5 MF bandpass + keep base HF",
+  "related_cheats": [
+    "CHEAT_A",
+    "CHEAT_B",
+    "CHEAT_C",
+    "TOXIC_PLATE_80aecc41"
+  ]
+}

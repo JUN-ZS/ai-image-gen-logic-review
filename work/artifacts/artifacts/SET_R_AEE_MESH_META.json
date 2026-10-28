@@ -1,0 +1,35 @@
+{
+  "asof": "2026-10-27T09:06:13Z",
+  "L": "L-837dcd37ce79",
+  "user": "衣服網紋重組, 放大生成, 再拚回",
+  "base_asset": "aee81db8-2cb0-49a8-8fba-747b2fa5874a",
+  "gen_torso": "b802640b-4e4c-4f12-a8c9-eea765af1d99",
+  "gen_chest": "f9237e9c-5f11-4c7b-a91e-1bf938b46a94",
+  "constitution": [
+    "§0.12.24 WHOLE",
+    "V5 MF",
+    "AFFINE",
+    "RANGE only",
+    "§0.12.23 full base",
+    "GEN from BASE crop"
+  ],
+  "ncc": 0.921,
+  "ecc_cc": 0.9237,
+  "lap_box": [
+    3883.5,
+    4954.3
+  ],
+  "mad": 3.46,
+  "box": [
+    648,
+    622,
+    1791,
+    2142
+  ],
+  "out_2x_px": [
+    4608,
+    6912
+  ],
+  "out_mb": 29.82,
+  "gen_upscale_before_warp": "2x Lanczos+HF then down to box"
+}

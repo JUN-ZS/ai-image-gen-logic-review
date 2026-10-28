@@ -1,0 +1,30 @@
+{
+  "asof": "2026-10-27T08:34:00Z",
+  "L": "L-70481813ba31",
+  "diagnosis": "Not feather. 無=upper half inside box missed by face-rect lock + weak armor_id. 邊框=match box.",
+  "method": "reverse GEN mesh PIXEL range from d8 thr(p35) → map ECC → multi-band MF paste; face oval; 無 boost",
+  "killed_prev": [
+    "L-17da full-RGB soft lap crash",
+    "REV2 inject0.11 too weak"
+  ],
+  "box": [
+    1391,
+    1391,
+    3754,
+    3784
+  ],
+  "ncc": 0.6065,
+  "ecc": 0.6087,
+  "lap_upper": [
+    3022.2,
+    2882.1
+  ],
+  "lap_lower": [
+    6535.8,
+    6199.0
+  ],
+  "mad": 6.34,
+  "inject_mean": 0.074,
+  "range_mean": 0.104,
+  "bytes": 31768993
+}

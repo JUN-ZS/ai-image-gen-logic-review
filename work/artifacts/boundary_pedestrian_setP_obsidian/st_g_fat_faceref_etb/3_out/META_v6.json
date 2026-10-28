@@ -1,0 +1,13 @@
+{
+  "pipeline": "FAT_FACE_REF_v6_CLEAN_HARD",
+  "gates": {
+    "face_lap": 230.31297302246094,
+    "center_lap": 413.42279052734375,
+    "full_lap": 365.770751953125,
+    "donor_lap": 786.4675903320312
+  },
+  "L": "L-867d13c4a9fc",
+  "sha256": "867d13c4a9fcd97295ca783ff9c42a38523d068fddacf30ba8d397dc918d2a16",
+  "donor": "59763bdc f02 FACE_REF only",
+  "asof": "2026-10-25T17:22:13Z"
+}

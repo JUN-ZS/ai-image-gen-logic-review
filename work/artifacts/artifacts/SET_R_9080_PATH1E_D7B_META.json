@@ -1,0 +1,42 @@
+{
+  "asof": "2026-10-26T14:52:29Z",
+  "trial": "D7-B v4 pose-matched plate + ECC PATH1E",
+  "plate_asset": "44d18362-906a-4659-b162-f162cc5a51df",
+  "proof": {
+    "conf_score": 0.7817109227180481,
+    "ecc_cc": 0.980287651419575,
+    "align_tag": "inv",
+    "plate": "44d18362-906a-4659-b162-f162cc5a51df",
+    "D7_core_vs_base": {
+      "name": "core→base",
+      "n": 588695,
+      "mean_abs": 6.183,
+      "pct_gt8": 21.12
+    },
+    "D7_core_vs_plate": {
+      "name": "core→plate",
+      "n": 539989,
+      "mean_abs": 5.132,
+      "pct_gt8": 15.96
+    },
+    "D7_core_vs_ST": {
+      "name": "core→ST",
+      "n": 588695,
+      "mean_abs": 10.594,
+      "pct_gt8": 39.92
+    },
+    "D2_ew_vs_ST": {
+      "name": "ew→ST",
+      "n": 32182,
+      "mean_abs": 0.177,
+      "pct_gt8": 0.62
+    },
+    "D2_iris_n": 52155,
+    "D2_overlap": 0,
+    "alpha_mean": 0.5833951234817505,
+    "conf_mean": 0.6910254955291748
+  },
+  "mix": 0.92,
+  "gate": "PATH1E_OK",
+  "L": "L-fc0a2fa7b8a9"
+}

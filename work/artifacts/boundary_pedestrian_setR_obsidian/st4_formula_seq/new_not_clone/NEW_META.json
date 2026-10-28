@@ -1,0 +1,27 @@
+{
+  "obs": "611e6adc 與 07830c7e 構圖近似（正面全身+環端打球）→ 用戶拒同構",
+  "fix": "不拿舊 STRIKE 幀當 primary ref；只用 a8b + W0 + world；強制新機位",
+  "new_assets": [
+    {
+      "id": "N1",
+      "asset": "e88537f1-1219-4d91-bb88-46cc368b0dcd",
+      "note": "後側衝刺·銅圓黑月正打"
+    },
+    {
+      "id": "N2",
+      "asset": "4b69ced1-544c-4d0f-9ee8-95596d12fa3d",
+      "note": "高位砸爆·環月中心"
+    },
+    {
+      "id": "N3",
+      "asset": "1f888d6a-3295-460c-b962-e0c701f28cb0",
+      "note": "特寫銅月·蛛網裂"
+    },
+    {
+      "id": "N4",
+      "asset": "b0d398f2-87f2-4caf-86ac-51c4d8f009d8",
+      "note": "側影·銅圓黑月公式"
+    }
+  ],
+  "formula": "STRIKE:銅圓黑月  RECV:TANGENT  GAP=0  H2"
+}

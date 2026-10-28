@@ -1,0 +1,51 @@
+{
+  "asof": "2026-10-26T21:02:00Z",
+  "version": "v2",
+  "method": "GrabCut+rules+contour each",
+  "stats": [
+    {
+      "id": 0,
+      "name": "background",
+      "frac": 0.1855,
+      "n": 0
+    },
+    {
+      "id": 1,
+      "name": "hair",
+      "frac": 0.2287,
+      "n": 28
+    },
+    {
+      "id": 2,
+      "name": "body_skin",
+      "frac": 0.1393,
+      "n": 88
+    },
+    {
+      "id": 3,
+      "name": "face_skin",
+      "frac": 0.0558,
+      "n": 25
+    },
+    {
+      "id": 4,
+      "name": "armor_clothes",
+      "frac": 0.3151,
+      "n": 83
+    },
+    {
+      "id": 5,
+      "name": "weapon",
+      "frac": 0.0756,
+      "n": 4
+    },
+    {
+      "id": 6,
+      "name": "fire_fx",
+      "frac": 0.0,
+      "n": 0
+    }
+  ],
+  "L": "L-a2001e732cfd",
+  "n_instances": 228
+}

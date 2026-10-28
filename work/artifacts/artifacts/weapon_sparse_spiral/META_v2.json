@@ -1,0 +1,41 @@
+{
+  "asof": "2026-10-26T20:01:55Z",
+  "trial": "WEAPON_SPARSE_SPIRAL_v2_GEO_HIGH_ALPHA",
+  "user": "全桿邏輯疏螺旋、零網、weapon mask 高α",
+  "method": [
+    "geo vertical shaft band",
+    "alpha 0.88-0.98",
+    "sparse spiral GEN top/mid/bot/full",
+    "hand+gold protect",
+    "ZERO diamond mesh on pole"
+  ],
+  "stats": {
+    "w_full": {
+      "cc": 0.464,
+      "M": 0.214,
+      "a_mean": 0.185,
+      "d": 7.9
+    },
+    "w_top": {
+      "cc": 0.377,
+      "M": 0.222,
+      "a_mean": 0.208,
+      "d": 11.8
+    },
+    "w_mid": {
+      "cc": 0.434,
+      "M": 0.17,
+      "a_mean": 0.157,
+      "d": 8.0
+    },
+    "w_bot": {
+      "cc": 0.3,
+      "M": 0.288,
+      "a_mean": 0.274,
+      "d": 12.6
+    }
+  },
+  "L": "L-584e5187407e",
+  "mb": 2.44,
+  "mb_2x": 7.44
+}

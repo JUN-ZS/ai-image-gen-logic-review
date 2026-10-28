@@ -1,0 +1,96 @@
+{
+  "asof": "2026-10-26T14:16:15Z",
+  "version": "v5",
+  "user_ask": "臉再混對值；只有gain0.82+ROI+0.28+skin0.25能調？眼白爆怪PIXEL",
+  "answer_face_params_not_only_three": true,
+  "face_mix_knobs": {
+    "CORE_triad": {
+      "face_gain": 0.82,
+      "face_roi_push": 0.28,
+      "skin_suppress": 0.25
+    },
+    "EXTENDED_also_tunable": {
+      "FACE_M_CAP": 0.88,
+      "FACE_DET_FLOOR": 0.35,
+      "FACE_CONF_FLOOR": 0.55,
+      "FACE_COLOR_PULL": 0.06,
+      "EYE_WHITE_M_MAX": 0.12,
+      "EYE_HF_KILL": 0.85,
+      "CONF_MIN_GLOBAL": 0.22,
+      "detail_weight_formula": "0.25+0.75*det",
+      "conf_weight_formula": "0.15+0.85*conf_w",
+      "M_formula": "g * det_w * skin_w * conf_term + ROI_push; then eye_white cap"
+    }
+  },
+  "GAINS": {
+    "face": 0.82,
+    "metal": 0.8,
+    "text": 0.98,
+    "fire": 0.72,
+    "flat": 0.45
+  },
+  "mix_face": 0.550483912229538,
+  "mix_eye_white": 0.42548205703496933,
+  "mix_text": 0.9472477287054062,
+  "proof_face": [
+    {
+      "name": "Lan vs v5 face",
+      "psnr": 31.05,
+      "mean_abs": 3.819,
+      "max_abs": 120.0,
+      "pct_gt8": 9.99
+    },
+    {
+      "name": "v3 vs v5 face",
+      "psnr": 36.97,
+      "mean_abs": 2.423,
+      "max_abs": 46.0,
+      "pct_gt8": 3.4
+    },
+    {
+      "name": "v4 vs v5 face",
+      "psnr": 31.47,
+      "mean_abs": 3.587,
+      "max_abs": 109.0,
+      "pct_gt8": 9.39
+    },
+    {
+      "name": "v5 vs Siax face",
+      "psnr": 29.47,
+      "mean_abs": 5.299,
+      "max_abs": 101.0,
+      "pct_gt8": 18.14
+    }
+  ],
+  "proof_eye": [
+    {
+      "name": "Lan vs v5 eye",
+      "psnr": 31.78,
+      "mean_abs": 3.505,
+      "max_abs": 103.0,
+      "pct_gt8": 8.12
+    },
+    {
+      "name": "v3 vs v5 eye",
+      "psnr": 37.3,
+      "mean_abs": 2.357,
+      "max_abs": 37.0,
+      "pct_gt8": 2.93
+    },
+    {
+      "name": "v4 vs v5 eye",
+      "psnr": 32.3,
+      "mean_abs": 3.2,
+      "max_abs": 94.0,
+      "pct_gt8": 7.34
+    },
+    {
+      "name": "Siax vs v5 eye",
+      "psnr": 30.12,
+      "mean_abs": 4.938,
+      "max_abs": 73.0,
+      "pct_gt8": 16.28
+    }
+  ],
+  "L": "L-e1daeef70521"
+}

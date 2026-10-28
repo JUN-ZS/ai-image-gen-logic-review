@@ -1,0 +1,54 @@
+{
+  "set": "SET-B",
+  "style": "3D IMAX poster typography composited onto cinematic one-sheets",
+  "no_video": true,
+  "loop_start": 11,
+  "frames": [
+    {
+      "file": "SETB_01_TRY0011_T_H2_3dposter.jpg",
+      "try": "TRY-0011",
+      "method": "GEO.T · H2",
+      "act": "試法"
+    },
+    {
+      "file": "SETB_02_TRY0012_T2_FACE_3dposter.jpg",
+      "try": "TRY-0012",
+      "method": "GEO.T2 · FACE",
+      "act": "再試"
+    },
+    {
+      "file": "SETB_03_TRY0013_CROSS_3dposter.jpg",
+      "try": "TRY-0013",
+      "method": "GEO.CROSS · FACE",
+      "act": "再試"
+    },
+    {
+      "file": "SETB_04_TRY0014_PLANT_S_3dposter.jpg",
+      "try": "TRY-0014",
+      "method": "GEO.PLANT_S",
+      "act": "再試"
+    },
+    {
+      "file": "SETB_05_TRY0015_S02_3dposter.jpg",
+      "try": "TRY-0015",
+      "method": "SOFT · S02 · 一界",
+      "act": "一界"
+    },
+    {
+      "file": "SETB_06_TRY0016_S03_3dposter.jpg",
+      "try": "TRY-0016",
+      "method": "SOFT · S03 · 選擇",
+      "act": "選擇"
+    }
+  ],
+  "typography": {
+    "main_en": "3D extruded gold chrome THE BOUNDARY WALKER",
+    "main_zh": "3D gold/cyan 邊界行人 · 無間輪迴",
+    "try_badge": "per-TRY 3D metal badge top-left",
+    "method": "cut black bg → alpha composite over poster safe zones",
+    "model_does_not_spell_method_ids": true
+  },
+  "status": "ART_3D_POSTER_COMPOSITED",
+  "pixel_audit": "NOT_RUN",
+  "asof": "2026-10-24T14:01:39.808499+00:00"
+}

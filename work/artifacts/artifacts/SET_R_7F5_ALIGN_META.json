@@ -1,0 +1,19 @@
+{
+  "method": "ZOOM+ECC+FEATHER+SSIM",
+  "zoom_ncc": 0.829,
+  "affine_ncc": 0.9457,
+  "box": [
+    688,
+    642,
+    1667,
+    1765
+  ],
+  "full": "aee81db8",
+  "gen": "6b398fb4",
+  "out_mb": 33.29,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-align-fix"
+}

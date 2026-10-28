@@ -1,0 +1,21 @@
+{
+  "pipeline": "PIXEL_RATIO_FACE_REINSERT",
+  "face_hd": "569e285b-fd05-4a51-8200-26e32809ecee",
+  "full_ref": "63fe27ba-3c2c-408a-a2f1-ac2944ad8828",
+  "orig_m1": "e51cdaa3-af68-4fe7-8487-bbd4b939c267",
+  "result_asset_pending": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+  "scale_iso": 0.16923076923076924,
+  "place_tl": [
+    579.15,
+    79.77
+  ],
+  "paste_roi": [
+    637,
+    90,
+    786,
+    253
+  ],
+  "sha256": "8d4f1c46b61b4d71f5c3985ac5795df882574cf001ebec24b1882ee77e1182ee",
+  "L_candidate": "L-8d4f1c46b61b",
+  "formula": "scale_iso=avg(dst_face/src_face); place_tl=dst_c-src_c*scale; expand+ellipse"
+}

@@ -1,0 +1,42 @@
+{
+  "set": "SET-O",
+  "kind": "FREE_ART_ANGLE_TEXT",
+  "L": "L-08d1743fbd6a",
+  "locked_mid": "634afc74-f693-48d8-86c8-79c48415f85b",
+  "method": "HD_IP_REF + free camera + diegetic E-01/E-02 type",
+  "no_ghost": true,
+  "frames": [
+    {
+      "name": "DUTCH_LOW",
+      "asset": "02e0f72a-faf5-4f8a-8b51-07d2359d69c5",
+      "note": "Dutch low · lightning 邊界行人 · GEO.T H2"
+    },
+    {
+      "name": "TOPDOWN_POST",
+      "asset": "28d84b1e-243f-4c91-981c-f886582aa3b9",
+      "note": "Overhead · fire 邊界行人 · water THE BOUNDARY WALKER"
+    },
+    {
+      "name": "PROFILE_PRE",
+      "asset": "b6152898-41d5-42fa-a976-814179a01cc0",
+      "note": "Profile PRE · lightning + ground graffiti"
+    },
+    {
+      "name": "MACRO_H2",
+      "asset": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+      "note": "Macro contact · face + GEO.T·H2 on hammer"
+    },
+    {
+      "name": "REAR_WIDE",
+      "asset": "6d729178-8029-48d3-8489-d88ace1d0e2a",
+      "note": "Rear wide · fire + ground GEO.T·H2"
+    }
+  ],
+  "type_modules": [
+    "VFX_COILED_LIGHTNING",
+    "VFX_COMBUSTION_FIRE",
+    "VFX_GROUND_GRAFFITI",
+    "VFX_WORLD_ADAPTIVE"
+  ],
+  "asof": "2026-10-25T10:23:21Z"
+}

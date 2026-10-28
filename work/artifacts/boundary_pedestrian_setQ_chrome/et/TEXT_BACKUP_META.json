@@ -1,0 +1,8 @@
+{
+  "source_et": "fe82f7d0-2ff2-48ed-98d1-35531e6bac63",
+  "source_clean": "61902455-e795-4908-9114-7d547675399d",
+  "role": "TEXT_BACKUP_SPARE_NOT_MASTER",
+  "note": "extracted residual vs clean POST; not used as face master",
+  "mean_diff": 57.273841857910156,
+  "text_mask_frac": 0.7016751036352041
+}

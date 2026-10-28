@@ -1,0 +1,44 @@
+{
+  "asof": "2026-10-27T06:50:22Z",
+  "source": "28abefc3-3547-4173-aaed-2f7c3c2cc4f4",
+  "version": "v2",
+  "method": "2x crop + GEN i2i denser mesh + ECC + plate α + HF inject + armor unsharp + weapon lock Δ=0",
+  "gens": {
+    "CHEST": "9d7cdc50",
+    "TORSO": "68bf0b4a",
+    "SHOULDER": "f351961b"
+  },
+  "stats": {
+    "TORSO": {
+      "cc": 0.9393,
+      "amax": 0.88,
+      "lap_b": 3973.5,
+      "lap_g": 1944.0,
+      "lap_o": 6542.6
+    },
+    "CHEST": {
+      "cc": 0.8429,
+      "amax": 0.85,
+      "lap_b": 3877.1,
+      "lap_g": 4766.1,
+      "lap_o": 10644.5
+    },
+    "SHOULDER": {
+      "cc": 0.9325,
+      "amax": 0.4,
+      "lap_b": 3462.3,
+      "lap_g": 2683.4,
+      "lap_o": 4345.2
+    }
+  },
+  "weapon_delta": 0.0,
+  "lap_torso": [
+    3973.5,
+    9616.1
+  ],
+  "lap_chest": [
+    3877.1,
+    9313.0
+  ],
+  "L": "L-a58519f47b46"
+}

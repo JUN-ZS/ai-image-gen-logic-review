@@ -1,0 +1,11 @@
+{
+  "asof": "2026-10-26T18:43:15Z",
+  "trial": "FACE_GENMIX_v1",
+  "L": "L-90961cfbcd33",
+  "method": "imagine_reference_to_image(structure, d4d2, 2bef) regenerate — NOT pixel paste of plates",
+  "gen": "7e87efdd-5f8b-4385-992b-ce7ef53b90a7",
+  "gen_wide": "0128d1c9-df18-4bcf-a599-34306821d2d1",
+  "params_mix": "白 from d4d2 ref / 自然 from 2bef ref / no grain no brown",
+  "ecc": 0.8560190482371925,
+  "base": "DETAIL6_FULL structure lock stitch"
+}

@@ -1,0 +1,23 @@
+{
+  "asof": "2026-10-27T16:06:17Z",
+  "user": "GEN板2x二次拓樸再貼；不接受白噪線與模糊",
+  "gen_secondary": "0a7df65f",
+  "kill_white_frac": 0.0082,
+  "kill_final": 0.0345,
+  "ecc": 0.7262,
+  "alpha_mean": 0.873,
+  "fill_hard": 0.917,
+  "siax_gain": 0.38,
+  "out_mb": 35.25,
+  "size": [
+    4608,
+    6912
+  ],
+  "gates": [
+    "no white noise lines",
+    "no meaningless blur",
+    "edge-aware only",
+    "SIAX mild+white HF kill"
+  ],
+  "L": "L-620123e3a03a"
+}

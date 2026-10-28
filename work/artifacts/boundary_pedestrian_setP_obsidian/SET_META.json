@@ -1,0 +1,67 @@
+{
+  "set": "SET-P",
+  "world": "obsidian",
+  "world_code": "WORLD:OBSIDIAN",
+  "method": "GEO.T · H2",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  n·v=1  GAP=0  ★MICRO  H2",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "stages": [
+    "ST0",
+    "ST1",
+    "ST2",
+    "ST3",
+    "ST4",
+    "ST_G",
+    "ST5",
+    "ST7",
+    "ST8"
+  ],
+  "pipeline": "BOUNDARY_WALKER_UNIFIED_RULES §0.9 + §0.12",
+  "asof": "2026-10-25T16:59:04Z",
+  "locked": true,
+  "status": "ST6_FREE_DONE",
+  "L_mid": "L-3f0d0d1f4c34",
+  "mid_asset": "fc3dde8b-4590-4713-b24d-094bb71b05e1",
+  "ip_hd": "21a606e1-9fba-448b-97bd-7cb1f90f6d75",
+  "pre": "eb69dc46-d6b3-4b8a-90f4-14e92c8e9d9e",
+  "post": "ccbc567a-894c-4add-9d89-43a26bcaa7a0",
+  "grid_L": "L-8f70f28fb198",
+  "grid_gates": {
+    "ecc": 0.0,
+    "face_lap": 828.084716796875,
+    "center_lap": 980.9247436523438,
+    "full_lap": 1129.8592529296875,
+    "assembly_lap": 1096.74072265625,
+    "mean_conf": 0.8708485960960388
+  },
+  "gate_center_pass": true,
+  "et_a": "f952403a-460b-4a7f-9bc7-8a3ab00bf22b",
+  "et_b": "b10d4cfe-7581-403a-8223-a3c8b36a9a62",
+  "stages_done": [
+    "ST0",
+    "ST1",
+    "ST2",
+    "ST3",
+    "ST4",
+    "ST_G",
+    "ST5",
+    "ST6"
+  ],
+  "notes": [
+    "ST_G DEFAULT-24 B S2 center_lap=980 PASS",
+    "ST5 dual ET same Sigma text L-3f0d0d1f4c34",
+    "PRE gap imperfect (sphere hole) — OBS for next lock",
+    "PATH1E ECC failed on wide ROI; assembly lap carried face"
+  ],
+  "st6_free": {
+    "FREE01_DUTCH_LOW": "bad41c1b-ceb9-4237-b0c9-886877923693",
+    "FREE02_TOP_FIRE": "55817e56-44bc-426a-b967-eca9b110445d",
+    "FREE03_SIDE_LONG": "8638f9c0-1248-4916-8128-f346ddba8232",
+    "FREE04_MACRO_FACE": "0004799f-5236-4eea-aa8a-ed4a18bb719a",
+    "FREE05_BEHIND_WIDE": "714e5877-6d15-44f8-93c2-6bebdab75d3d"
+  },
+  "et_a_v1_wrong": "9bf14cce-e818-4482-a70e-53af92bf9839",
+  "et_b_v1_wrong": "6f544750-6f70-4b4a-974b-5b50e394f9f1",
+  "et_fix": "v2_IPREF",
+  "et_fail_lesson": "ST5 must reference_to_image with IP_HD+a8b; pure i2i text pass FAIL"
+}

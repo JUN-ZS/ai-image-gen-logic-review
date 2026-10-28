@@ -1,0 +1,20 @@
+{
+  "set": "SET-Q",
+  "stage": "ST3.G diegetic materialize + ENLARGE WORDS",
+  "method": "GEO.T · H2",
+  "L": "L-dfa1b1dabb57",
+  "pass1": "vector GEO_INDICATOR",
+  "pass2": "imagine diegetic chrome/fire lines + enlarged glyphs",
+  "pass2b": "PRE surgical T-END/TANGENT fix (model likes M-END drift)",
+  "files": {
+    "PRE": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_PRE_DIEGETIC_ENLARGE.jpg",
+    "MID": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_MID_DIEGETIC_ENLARGE.jpg",
+    "POST": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_POST_DIEGETIC_ENLARGE.jpg",
+    "TRIPTYCH": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_TRIPTYCH_DIEGETIC_ENLARGE.jpg"
+  },
+  "obs": {
+    "MID": "best — exact T-END/TANGENT + diegetic rails",
+    "POST": "best — HOT fire F_n OUT enlarged",
+    "PRE": "bottom analysis_line exact; mid labels surgically forced T-END"
+  }
+}

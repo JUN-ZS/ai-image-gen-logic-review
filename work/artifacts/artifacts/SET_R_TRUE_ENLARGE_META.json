@@ -1,0 +1,19 @@
+{
+  "asof": "2026-10-26T20:32:15Z",
+  "trial": "TRUE_ENLARGE_NO_REDESIGN",
+  "user": "為什麼出這麼多錯圖? 我要像038→71這樣升,只是再放大做",
+  "admission": "prior i2i GEN redesigned filigree/pose → wrong images; this run uses ONLY enlarge+HF plate",
+  "method": [
+    "enlarge 71c2 / 977d 2x strip + mild unsharp",
+    "full figure: ECC 71+977 as HF plate only (LF structure kept)",
+    "NO imagine redesign of armor shapes",
+    "weapon hard lock x<0.42"
+  ],
+  "delta_weapon": 0.1829477846622467,
+  "delta_clothes": 6.985599517822266,
+  "ecc_71": 0.071,
+  "L": "L-90654068ebac",
+  "mb_71_2x": 3.92,
+  "mb_full": 2.36,
+  "mb_full_2x": 7.12
+}

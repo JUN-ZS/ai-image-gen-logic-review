@@ -1,0 +1,59 @@
+{
+  "asof": "2026-10-26T15:16:13Z",
+  "trial": "GRID_CLEAN_v1: accurate class → only good-donor mix → 言清",
+  "G": {
+    "TEXT": 0.99,
+    "METAL": 0.94,
+    "FIRE": 0.85,
+    "FACE_FEAT": 0.9,
+    "SKIN": 0.22,
+    "FLAT": 0.35,
+    "EW": 0.0
+  },
+  "proof": {
+    "face": {
+      "hf_d": -0.833,
+      "clar_d": -0.412,
+      "hf": {
+        "g": 4.82,
+        "s": 5.65,
+        "l": 3.76
+      },
+      "clar": {
+        "g": 70.88,
+        "s": 71.29,
+        "l": 48.13
+      }
+    },
+    "text": {
+      "hf_d": -0.152,
+      "clar_d": 11.205,
+      "hf": {
+        "g": 4.53,
+        "s": 4.68,
+        "l": 2.71
+      },
+      "clar": {
+        "g": 59.17,
+        "s": 47.96,
+        "l": 17.47
+      }
+    },
+    "armor": {
+      "hf_d": -1.585,
+      "clar_d": -5.355,
+      "hf": {
+        "g": 5.78,
+        "s": 7.37,
+        "l": 3.17
+      },
+      "clar": {
+        "g": 82.75,
+        "s": 88.1,
+        "l": 24.3
+      }
+    }
+  },
+  "L": "L-6fb3f0816139",
+  "thesis": "GRID=map of good zones; mix writes only good donor; EW ban → clean clear"
+}

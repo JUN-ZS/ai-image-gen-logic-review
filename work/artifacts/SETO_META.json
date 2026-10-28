@@ -1,0 +1,78 @@
+{
+  "set": "SET-O",
+  "set_id": "SET-O",
+  "world": "ABYSSAL JADE CATHEDRAL",
+  "world_code": "ABYSSAL_JADE",
+  "opposite_of": "SET-N GOLDEN_RICE_TERRACE",
+  "palette": [
+    "#041a14",
+    "#0b3d33",
+    "#12f7a0",
+    "#5ef2ff",
+    "#ff6a1a",
+    "#0a0f12"
+  ],
+  "style_lock": "photoreal bioluminescent jade abyssal cathedral night",
+  "method_primary": "GEO.T · H2 FIRST CONTACT",
+  "methods_present": [
+    "GEO.T·H0",
+    "GEO.T·H2",
+    "GEO.T2·FACE",
+    "GEO.ROD·POS",
+    "GEO.PLANT_S"
+  ],
+  "frame_contract": [
+    "PRE",
+    "MID",
+    "POST"
+  ],
+  "pipeline": "LAYERED_CHAIN_LOCK",
+  "diegetic_text": {
+    "contract": "E-01",
+    "vfx_modules": [
+      "VFX_COILED_LIGHTNING",
+      "VFX_COMBUSTION_FIRE",
+      "VFX_GROUND_GRAFFITI",
+      "VFX_WORLD_ADAPTIVE"
+    ],
+    "same_copy": true,
+    "no_review_pending": true,
+    "strings": [
+      "邊界行人",
+      "THE BOUNDARY WALKER",
+      "GEO.T · H2 FIRST CONTACT",
+      "CAM01 · S01 · O-H2-001",
+      "WORLD: ABYSSAL JADE · L-dcc66a60d5e2"
+    ]
+  },
+  "loop": "L-dcc66a60d5e2",
+  "mid_sha256": "dcc66a60d5e2bfafc12131caec82ee1fb04e526dc092bcab6facf38a92de520c",
+  "face_lock_note": "PATH1E locked for grid60 face HD reassembly; SET-O base frames 1792x1008; apply PATH1E if upscaling face",
+  "path1e_lock": "boundary_pedestrian_setN_golden/grid60/RULES/PATH1E_LOCK.md",
+  "assets": {
+    "mid_clean": "ab069d6e-d1bb-4788-86e1-5e24c162c0b2",
+    "pre_type": "bd9bdc53-e75d-4f1c-b01a-16af4e3e8d7a",
+    "post_type": "3348ab86-27b5-41b1-a6be-eeddb64654cc",
+    "h0": "64b36369-a81d-485e-a90c-2957cf3e9aa8",
+    "t2": "c983e57c-2a42-4abb-9ff4-9b658a79df33",
+    "rod": "2786eaa0-1c2b-4491-b75b-c7e2793f483a",
+    "plant": "af625c2b-b027-4fc5-a37a-32a6229a7972",
+    "heroine_face": "8dcdc006-dae3-46b6-a469-785ecd56580f",
+    "heroine_body": "9dde1cbf-3523-4404-9980-169a5df8e3ff",
+    "hd_face": "7f4b6f3b-02cf-4804-a563-0cbffa4ef010",
+    "pre_final": "bd9bdc53-e75d-4f1c-b01a-16af4e3e8d7a",
+    "post_final": "3348ab86-27b5-41b1-a6be-eeddb64654cc"
+  },
+  "asof": "2026-10-25T09:49:03Z",
+  "checklist": {
+    "pre_mid_post": true,
+    "diegetic_neon_lightning": true,
+    "diegetic_fire": true,
+    "diegetic_ground_graffiti": true,
+    "method_matrix_H0_H2_T2_ROD_PLANT": true,
+    "no_review_pending_on_frame": true,
+    "L_sha_loop": true,
+    "heroine_lock_refs": true,
+    "path1e_rules_referenced": true
+  }
+}

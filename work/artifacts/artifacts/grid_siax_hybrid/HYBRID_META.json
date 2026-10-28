@@ -1,0 +1,23 @@
+{
+  "asof": "2026-10-26T13:27:23Z",
+  "title": "GRID pixel-define × selective Siax HF (not full-arm)",
+  "constitution": "NOT written — trial",
+  "L0": "90807317",
+  "formula": "out = LP(Lanczos4x) + HF(Siax)*M; M=GRID_gain×detail×(1-0.75skin)×conf",
+  "GRID_gains": {
+    "face": 0.28,
+    "metal": 0.78,
+    "text": 0.92,
+    "fire": 0.7,
+    "flat": 0.45
+  },
+  "mix_mean_global": 0.2609054126909801,
+  "mix_face_est": 0.11076376959681511,
+  "mix_text_est": 0.37798518935839337,
+  "meaning": "Siax only donates excellent HF pixels where GRID+pixel say need; face/skin/low-conf stay clean Lanczos",
+  "L": "L-5206213d296b",
+  "out_px": [
+    4608,
+    6912
+  ]
+}

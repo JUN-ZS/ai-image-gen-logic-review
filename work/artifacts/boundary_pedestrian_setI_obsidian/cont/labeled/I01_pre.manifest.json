@@ -1,0 +1,15 @@
+{
+  "frame": "pre",
+  "method": "GEO.T · H3",
+  "loop": "L-9ac37f0147f2",
+  "world": "OBSIDIAN_VOLCANO_NIGHT",
+  "pipeline": "CHAIN clean PRE→MID→POST then SVG overlay only (no img2img typo)",
+  "source_sha256": "7ca4d78d6a203e05a47786ac3cce97867df7b029f9f1812a7e83e75492f92e7b",
+  "art_sha256": "7fa989c3cd4246accd97c319db816165404d8a665c17fafdb6932d594722ccd1",
+  "continuity": "base pixels from chain; type is pure overlay",
+  "forbidden": [
+    "TRY_count",
+    "REVIEW PENDING",
+    "img2img mid-stream retype"
+  ]
+}

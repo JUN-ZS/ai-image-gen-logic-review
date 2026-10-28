@@ -1,0 +1,32 @@
+{
+  "asof": "2026-10-27T08:29:17Z",
+  "L": "L-17da7b838d2b",
+  "diagnosis": "Not feather: face-lock y<0.24 killed upper chest; armor_id missed glossy upper",
+  "fix": "reverse GEN pixels from d8 + tight face lock y0.055-0.155 + upper_boost alpha + mesh_score armor_id",
+  "user_curve": "無 above / 有 below mid-chest",
+  "box": [
+    1391,
+    1391,
+    3754,
+    3784
+  ],
+  "expanded_pad_up": 430,
+  "ncc": 0.6065,
+  "ecc_cc": 0.6087,
+  "lap_upper": [
+    3022.2,
+    1010.5
+  ],
+  "lap_lower": [
+    6535.8,
+    1993.3
+  ],
+  "mad": 26.37,
+  "gain_rgb": 0.72,
+  "gain_mf": 0.95,
+  "bytes": 32250472,
+  "size": [
+    4608,
+    6912
+  ]
+}

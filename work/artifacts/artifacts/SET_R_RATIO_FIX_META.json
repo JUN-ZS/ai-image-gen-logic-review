@@ -1,0 +1,45 @@
+{
+  "asof": "2026-10-27T19:04:49Z",
+  "user": "ratio也錯了",
+  "kill": "EXPAND_BOX_RESCALE / anisotropic stretch donor to box",
+  "fix": "isotropic multi-scale template + euclid/affine (reject sx≠sy>8%) + WHOLE V5",
+  "constitution": [
+    "§0.12.24 EXPAND_BOX_RESCALE KILL",
+    "§0.12.23 native GEN",
+    "ratio lock isotropic"
+  ],
+  "stats": [
+    {
+      "name": "person",
+      "tmpl": 0.8453798890113831,
+      "ecc": 0.9600243699711081,
+      "mode": "affine",
+      "sc": 0.8005380530973452,
+      "aspect_donor": 0.6017699115044248,
+      "box": [
+        739,
+        209,
+        1609,
+        1656
+      ],
+      "ratio_lock": "isotropic"
+    },
+    {
+      "name": "face",
+      "tmpl": 0.46674665808677673,
+      "ecc": 0.4807170973203385,
+      "mode": "euclid",
+      "sc": 0.4568253393665158,
+      "aspect_donor": 1.0705882352941176,
+      "box": [
+        819,
+        341,
+        1484,
+        962
+      ],
+      "ratio_lock": "isotropic"
+    }
+  ],
+  "out_mb": 31.52,
+  "L": "L-f3894c374f1b"
+}

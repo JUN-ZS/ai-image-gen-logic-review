@@ -1,0 +1,16 @@
+{
+  "asof": "2026-10-26T18:37:09Z",
+  "trial": "FACE_WHITE_NAT_v2",
+  "L": "L-a395c62f2002",
+  "note": "白 from d4d2 color/LP denoise+fair push; 自然 HF from 2bef recolored; NO brown NO grain",
+  "rgb": [
+    147.75450134277344,
+    105.21149444580078,
+    82.72990417480469
+  ],
+  "fair": {
+    "L_boost": 10.0,
+    "a": 140.0,
+    "b": 145.0
+  }
+}

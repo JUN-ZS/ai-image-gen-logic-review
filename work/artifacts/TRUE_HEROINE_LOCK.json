@@ -1,0 +1,20 @@
+{
+  "set": "SET-O",
+  "true_heroine_asset": "b41e0072-ccf5-41ee-97ef-2fd1b7ad75d2",
+  "pipeline": "TRUE_FACE → PATH1E → IP no-bg → cutout → REF into scene continuous bubble-hit PRE/MID/POST",
+  "method_doc": "LAYERED_CHAIN SET-L style + C-01 MID-first + PATH1E",
+  "locked": true,
+  "L": "L-08d1743fbd6a",
+  "mid_sha256": "08d1743fbd6af45e8548dd89d58ec44cb00daecb35a3abf9a53eb317083cb4f9",
+  "mid_asset": "634afc74-f693-48d8-86c8-79c48415f85b",
+  "pre_asset": "fb32bcc0-12e6-4eee-9933-840459dac13b",
+  "post_asset": "86bc3e56-a757-418a-aa84-9445e7e48677",
+  "ip_hd": "affaa47f-7b8d-4814-b9d0-e2ca06a33b5f",
+  "ip_cut": "8a7d9e7f-bac1-495f-9ffa-146e0c7d9429",
+  "face_hd": "87536f45-e6b1-4b30-a470-dadf7ce53c86",
+  "contact": "GEO.T · H2 continuous bubble-hit",
+  "drift_pre_mid": 11.62516940369898,
+  "drift_post_mid": 16.062356800359034,
+  "asof": "2026-10-25T10:13:33Z",
+  "note": "User corrected: b41e0072 is the only legal heroine face. Previous arctic/high-bun IP superseded."
+}

@@ -1,0 +1,42 @@
+{
+  "asof": "2026-10-27T16:23:52Z",
+  "user": "色相錯了,色溫問題,要正/反推出正確",
+  "reverse": [
+    "冷岩 a,b from 啞面非火區",
+    "近火 a,b from hybrid warm_zone",
+    "錯溫 delta vs 啞面"
+  ],
+  "forward": [
+    "L 啞面+近火 ref+spec",
+    "a,b 冷區鎖啞面;近火向ref;火ref",
+    "HF鎖啞面",
+    "cold閘"
+  ],
+  "cold_matte_ab": [
+    133.71,
+    137.14
+  ],
+  "cold_wrong_ab": [
+    135.7,
+    146.28
+  ],
+  "cold_fixed_ab": [
+    133.41,
+    136.76
+  ],
+  "warm_ref_ab": [
+    130.06,
+    130.37
+  ],
+  "warm_fixed_ab": [
+    129.33,
+    129.88
+  ],
+  "delta_b_wrong": 9.15,
+  "out_mb": 35.09,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-a166300b8f6a"
+}

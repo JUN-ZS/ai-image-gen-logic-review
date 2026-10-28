@@ -1,0 +1,21 @@
+{
+  "kind": "GRID24_HD_CELLS_PATH1E",
+  "L0": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+  "grid": "6x4=24",
+  "S": 2,
+  "size": [
+    3584,
+    2016
+  ],
+  "n_hd_cells": 24,
+  "ecc": 0.39050002873296186,
+  "gates": {
+    "face_lap": 283.3808898925781,
+    "center_lap": 357.783447265625,
+    "full_lap": 347.00048828125
+  },
+  "sha256": "5583301ffb142a228f509cc098543cedd60c8b1f3dc338c247b8fae12623e8f0",
+  "L_code": "L-5583301ffb14",
+  "note": "S=2 for memory; 24 Imagine HD cells LP+HF conf assembly + PATH1E",
+  "asof": "2026-10-25T15:39:18Z"
+}

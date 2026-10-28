@@ -1,0 +1,697 @@
+{
+  "pipeline": "GRID24_FACE_REF",
+  "L0": "6f544750-6f70-4b4a-974b-5b50e394f9f1",
+  "IP_HD": "21a606e1-9fba-448b-97bd-7cb1f90f6d75",
+  "STD": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "PLATE_HD": "2d3416e0-a435-44d4-a16b-6306fc798a19",
+  "overlap": 0.1,
+  "layout": "6x4",
+  "W0": 1792,
+  "H0": 1008,
+  "FACE_HEAD": [
+    1200,
+    40,
+    1700,
+    520
+  ],
+  "cells": [
+    {
+      "id": "r0c0",
+      "r": 0,
+      "c": 0,
+      "core": [
+        0,
+        0,
+        298,
+        252
+      ],
+      "box": [
+        0,
+        0,
+        327,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r0c0.jpg",
+      "asset_id": "c9f153c4-44a7-40ed-add3-2725a6fe9afd"
+    },
+    {
+      "id": "r0c1",
+      "r": 0,
+      "c": 1,
+      "core": [
+        298,
+        0,
+        597,
+        252
+      ],
+      "box": [
+        269,
+        0,
+        626,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r0c1.jpg",
+      "asset_id": "f3794c83-8a31-4717-9d05-389fa9ed7b69"
+    },
+    {
+      "id": "r0c2",
+      "r": 0,
+      "c": 2,
+      "core": [
+        597,
+        0,
+        896,
+        252
+      ],
+      "box": [
+        568,
+        0,
+        925,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r0c2.jpg",
+      "asset_id": "820ad0af-2b0e-42e0-bbcf-a039b60eb837"
+    },
+    {
+      "id": "r0c3",
+      "r": 0,
+      "c": 3,
+      "core": [
+        896,
+        0,
+        1194,
+        252
+      ],
+      "box": [
+        867,
+        0,
+        1223,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.0552772482050866,
+      "face_cover": 0.0227125,
+      "mode": "ENHANCE",
+      "size": [
+        356,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r0c3.jpg",
+      "asset_id": "c7a58dcb-28a6-4f64-89bf-ac0b815a8eba"
+    },
+    {
+      "id": "r0c4",
+      "r": 0,
+      "c": 4,
+      "core": [
+        1194,
+        0,
+        1493,
+        252
+      ],
+      "box": [
+        1165,
+        0,
+        1522,
+        277
+      ],
+      "face_dom": true,
+      "face_frac": 0.7717137396474836,
+      "face_cover": 0.317975,
+      "mode": "FACE_REF",
+      "size": [
+        357,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r0c4.jpg",
+      "asset_id": "41b51d0f-7f14-4577-ad4d-a90a4e2b8ca0"
+    },
+    {
+      "id": "r0c5",
+      "r": 0,
+      "c": 5,
+      "core": [
+        1493,
+        0,
+        1792,
+        252
+      ],
+      "box": [
+        1464,
+        0,
+        1792,
+        277
+      ],
+      "face_dom": false,
+      "face_frac": 0.6156115171260016,
+      "face_cover": 0.23305,
+      "mode": "ENHANCE",
+      "size": [
+        328,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r0c5.jpg",
+      "asset_id": "947a6bf8-93e5-455b-8480-a2546c8e28e0"
+    },
+    {
+      "id": "r1c0",
+      "r": 1,
+      "c": 0,
+      "core": [
+        0,
+        252,
+        298,
+        504
+      ],
+      "box": [
+        0,
+        227,
+        327,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r1c0.jpg",
+      "asset_id": "33ec181c-0070-42a2-9d62-04832d0b8215"
+    },
+    {
+      "id": "r1c1",
+      "r": 1,
+      "c": 1,
+      "core": [
+        298,
+        252,
+        597,
+        504
+      ],
+      "box": [
+        269,
+        227,
+        626,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r1c1.jpg",
+      "asset_id": "8c5f832a-7ba5-4da5-bc06-2e801636a98e"
+    },
+    {
+      "id": "r1c2",
+      "r": 1,
+      "c": 2,
+      "core": [
+        597,
+        252,
+        896,
+        504
+      ],
+      "box": [
+        568,
+        227,
+        925,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r1c2.jpg",
+      "asset_id": "a45e59e1-8cab-457c-a024-49268010f552"
+    },
+    {
+      "id": "r1c3",
+      "r": 1,
+      "c": 3,
+      "core": [
+        896,
+        252,
+        1194,
+        504
+      ],
+      "box": [
+        867,
+        227,
+        1223,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.06268137510231415,
+      "face_cover": 0.028079166666666665,
+      "mode": "ENHANCE",
+      "size": [
+        356,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r1c3.jpg",
+      "asset_id": "8d8649de-394f-4e0c-9877-ecdf7c79a17a"
+    },
+    {
+      "id": "r1c4",
+      "r": 1,
+      "c": 4,
+      "core": [
+        1194,
+        252,
+        1493,
+        504
+      ],
+      "box": [
+        1165,
+        227,
+        1522,
+        529
+      ],
+      "face_dom": true,
+      "face_frac": 0.875081158291131,
+      "face_cover": 0.39310833333333334,
+      "mode": "FACE_REF",
+      "size": [
+        357,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r1c4.jpg",
+      "asset_id": "34de9e64-88c2-45bf-ba0d-9288fed520e2"
+    },
+    {
+      "id": "r1c5",
+      "r": 1,
+      "c": 5,
+      "core": [
+        1493,
+        252,
+        1792,
+        504
+      ],
+      "box": [
+        1464,
+        227,
+        1792,
+        529
+      ],
+      "face_dom": false,
+      "face_frac": 0.6980697787110322,
+      "face_cover": 0.2881166666666667,
+      "mode": "ENHANCE",
+      "size": [
+        328,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r1c5.jpg",
+      "asset_id": "330b355b-baef-405c-a420-ccdf56bb1092"
+    },
+    {
+      "id": "r2c0",
+      "r": 2,
+      "c": 0,
+      "core": [
+        0,
+        504,
+        298,
+        756
+      ],
+      "box": [
+        0,
+        479,
+        327,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r2c0.jpg",
+      "asset_id": "1cd19c70-fcc6-41c0-b5c8-35b9f16675e0"
+    },
+    {
+      "id": "r2c1",
+      "r": 2,
+      "c": 1,
+      "core": [
+        298,
+        504,
+        597,
+        756
+      ],
+      "box": [
+        269,
+        479,
+        626,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r2c1.jpg",
+      "asset_id": "c6910ac1-8687-4b09-b6f2-5300fb38dce9"
+    },
+    {
+      "id": "r2c2",
+      "r": 2,
+      "c": 2,
+      "core": [
+        597,
+        504,
+        896,
+        756
+      ],
+      "box": [
+        568,
+        479,
+        925,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r2c2.jpg",
+      "asset_id": "a987702d-b535-4c54-b66e-6949fea1b345"
+    },
+    {
+      "id": "r2c3",
+      "r": 2,
+      "c": 3,
+      "core": [
+        896,
+        504,
+        1194,
+        756
+      ],
+      "box": [
+        867,
+        479,
+        1223,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.008771113922166828,
+      "face_cover": 0.003929166666666667,
+      "mode": "ENHANCE",
+      "size": [
+        356,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r2c3.jpg",
+      "asset_id": "cf6478d4-1bb1-4dcd-90ef-a28c3e344cc8"
+    },
+    {
+      "id": "r2c4",
+      "r": 2,
+      "c": 4,
+      "core": [
+        1194,
+        504,
+        1493,
+        756
+      ],
+      "box": [
+        1165,
+        479,
+        1522,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.12245162965848591,
+      "face_cover": 0.05500833333333333,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r2c4.jpg",
+      "asset_id": "4c67b9a9-7bcc-498d-8eda-0c1e35504178"
+    },
+    {
+      "id": "r2c5",
+      "r": 2,
+      "c": 5,
+      "core": [
+        1493,
+        504,
+        1792,
+        756
+      ],
+      "box": [
+        1464,
+        479,
+        1792,
+        781
+      ],
+      "face_dom": false,
+      "face_frac": 0.09768211920529801,
+      "face_cover": 0.04031666666666667,
+      "mode": "ENHANCE",
+      "size": [
+        328,
+        302
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r2c5.jpg",
+      "asset_id": "d65d57e4-c7e8-42f3-a584-6115d62879eb"
+    },
+    {
+      "id": "r3c0",
+      "r": 3,
+      "c": 0,
+      "core": [
+        0,
+        756,
+        298,
+        1008
+      ],
+      "box": [
+        0,
+        731,
+        327,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        327,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r3c0.jpg",
+      "asset_id": "19083ce5-5efa-4060-b9de-4b272f5e8cd5"
+    },
+    {
+      "id": "r3c1",
+      "r": 3,
+      "c": 1,
+      "core": [
+        298,
+        756,
+        597,
+        1008
+      ],
+      "box": [
+        269,
+        731,
+        626,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r3c1.jpg",
+      "asset_id": "772e5358-b1e2-4e15-b4b3-1c03f5964c64"
+    },
+    {
+      "id": "r3c2",
+      "r": 3,
+      "c": 2,
+      "core": [
+        597,
+        756,
+        896,
+        1008
+      ],
+      "box": [
+        568,
+        731,
+        925,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r3c2.jpg",
+      "asset_id": "b3d31ebe-6e09-4375-b210-803cfe8defed"
+    },
+    {
+      "id": "r3c3",
+      "r": 3,
+      "c": 3,
+      "core": [
+        896,
+        756,
+        1194,
+        1008
+      ],
+      "box": [
+        867,
+        731,
+        1223,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        356,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r3c3.jpg",
+      "asset_id": "958901c0-ad77-496d-b777-9fd4fea7a3c5"
+    },
+    {
+      "id": "r3c4",
+      "r": 3,
+      "c": 4,
+      "core": [
+        1194,
+        756,
+        1493,
+        1008
+      ],
+      "box": [
+        1165,
+        731,
+        1522,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        357,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r3c4.jpg",
+      "asset_id": "d191f838-236d-4991-991f-828d001e5b05"
+    },
+    {
+      "id": "r3c5",
+      "r": 3,
+      "c": 5,
+      "core": [
+        1493,
+        756,
+        1792,
+        1008
+      ],
+      "box": [
+        1464,
+        731,
+        1792,
+        1008
+      ],
+      "face_dom": false,
+      "face_frac": 0.0,
+      "face_cover": 0.0,
+      "mode": "ENHANCE",
+      "size": [
+        328,
+        277
+      ],
+      "path": "boundary_pedestrian_setP_obsidian/st_g_grid24_faceref_etb/1_cells/r3c5.jpg",
+      "asset_id": "c5f23e6a-c57e-49bd-87c6-460ec08431a8"
+    }
+  ],
+  "face_ref_ids": [
+    "r0c4",
+    "r1c4"
+  ],
+  "cell_assets": {
+    "r0c0": "c9f153c4-44a7-40ed-add3-2725a6fe9afd",
+    "r0c1": "f3794c83-8a31-4717-9d05-389fa9ed7b69",
+    "r0c2": "820ad0af-2b0e-42e0-bbcf-a039b60eb837",
+    "r0c3": "c7a58dcb-28a6-4f64-89bf-ac0b815a8eba",
+    "r0c4": "41b51d0f-7f14-4577-ad4d-a90a4e2b8ca0",
+    "r0c5": "947a6bf8-93e5-455b-8480-a2546c8e28e0",
+    "r1c0": "33ec181c-0070-42a2-9d62-04832d0b8215",
+    "r1c1": "8c5f832a-7ba5-4da5-bc06-2e801636a98e",
+    "r1c2": "a45e59e1-8cab-457c-a024-49268010f552",
+    "r1c3": "8d8649de-394f-4e0c-9877-ecdf7c79a17a",
+    "r1c4": "34de9e64-88c2-45bf-ba0d-9288fed520e2",
+    "r1c5": "330b355b-baef-405c-a420-ccdf56bb1092",
+    "r2c0": "1cd19c70-fcc6-41c0-b5c8-35b9f16675e0",
+    "r2c1": "c6910ac1-8687-4b09-b6f2-5300fb38dce9",
+    "r2c2": "a987702d-b535-4c54-b66e-6949fea1b345",
+    "r2c3": "cf6478d4-1bb1-4dcd-90ef-a28c3e344cc8",
+    "r2c4": "4c67b9a9-7bcc-498d-8eda-0c1e35504178",
+    "r2c5": "d65d57e4-c7e8-42f3-a584-6115d62879eb",
+    "r3c0": "19083ce5-5efa-4060-b9de-4b272f5e8cd5",
+    "r3c1": "772e5358-b1e2-4e15-b4b3-1c03f5964c64",
+    "r3c2": "b3d31ebe-6e09-4375-b210-803cfe8defed",
+    "r3c3": "958901c0-ad77-496d-b777-9fd4fea7a3c5",
+    "r3c4": "d191f838-236d-4991-991f-828d001e5b05",
+    "r3c5": "c5f23e6a-c57e-49bd-87c6-460ec08431a8"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "asof": "2026-10-26T17:21:29Z",
+  "trial": "TRUE_MAT_A_to_D_v1",
+  "L": "L-fb919705fd61",
+  "pipeline": "A gen MAT plates → B hybrid2x upscale → C HF stitch structure-lock → D PROOF",
+  "plates": {
+    "skin": {
+      "size": [
+        2592,
+        3040
+      ],
+      "M": 0.4745052643120289,
+      "mb": 3.7,
+      "lap_src": 606.9,
+      "lap_hyb": 809.9
+    },
+    "armor": {
+      "size": [
+        2816,
+        2816
+      ],
+      "M": 0.4782000258564949,
+      "mb": 5.16,
+      "lap_src": 4207.9,
+      "lap_hyb": 4339.7
+    },
+    "sphere": {
+      "size": [
+        2528,
+        3136
+      ],
+      "M": 0.49814900383353233,
+      "mb": 5.19,
+      "lap_src": 2586.6,
+      "lap_hyb": 3139.9
+    },
+    "stone": {
+      "size": [
+        4000,
+        1984
+      ],
+      "M": 0.4977000951766968,
+      "mb": 5.48,
+      "lap_src": 2315.0,
+      "lap_hyb": 2740.0
+    },
+    "fire": {
+      "size": [
+        3712,
+        2144
+      ],
+      "M": 0.4726049800713857,
+      "mb": 4.87,
+      "lap_src": 1228.8,
+      "lap_hyb": 1466.0
+    }
+  },
+  "stitch": [
+    {
+      "name": "skin",
+      "ncc": -0.037,
+      "dx": -20,
+      "dy": 20,
+      "mean_abs": 7.6,
+      "pct_gt8": 25.6,
+      "lap_before": 1997.0,
+      "lap_after": 214.7,
+      "M_mean": 0.078,
+      "visible_delta": true
+    },
+    {
+      "name": "armor",
+      "ncc": 0.863,
+      "dx": -1,
+      "dy": -1,
+      "mean_abs": 12.48,
+      "pct_gt8": 38.1,
+      "lap_before": 3090.2,
+      "lap_after": 3953.0,
+      "M_mean": 0.574,
+      "visible_delta": true
+    },
+    {
+      "name": "sphere",
+      "ncc": 0.596,
+      "dx": -2,
+      "dy": 2,
+      "mean_abs": 22.16,
+      "pct_gt8": 60.1,
+      "lap_before": 3713.4,
+      "lap_after": 5252.2,
+      "M_mean": 0.592,
+      "visible_delta": true
+    },
+    {
+      "name": "stone",
+      "ncc": 0.549,
+      "dx": -2,
+      "dy": -1,
+      "mean_abs": 17.35,
+      "pct_gt8": 59.1,
+      "lap_before": 1117.5,
+      "lap_after": 1412.3,
+      "M_mean": 0.578,
+      "visible_delta": true
+    },
+    {
+      "name": "fire",
+      "ncc": 0.82,
+      "dx": -1,
+      "dy": 0,
+      "mean_abs": 12.66,
+      "pct_gt8": 48.3,
+      "lap_before": 410.6,
+      "lap_after": 739.4,
+      "M_mean": 0.583,
+      "visible_delta": true
+    }
+  ],
+  "all_visible_delta": true,
+  "sizes_MB": {
+    "full_q98": 19.48,
+    "full_q100": 30.73
+  },
+  "honesty": "If any region mean|Δ|<4 or pct_gt8<8 → mark WEAK, do not claim material success",
+  "skin_status": "SKIP_REVERTED — plate framing mismatch ncc=-0.037, lap 1997→214 blur; skin ROI restored from base",
+  "all_visible_delta_material_regions": true,
+  "honest_note": "skin plate was tight face re-frame, not same composition; do not claim skin material success"
+}

@@ -1,0 +1,16 @@
+{
+  "asof": "2026-10-27T21:55:22Z",
+  "src_facelock": "e002eca0-a025-4657-9ac9-f816e0730e99",
+  "src_orig": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+  "a8b": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "pipeline": "Ref(hybrid,a8b) face lock → TRUE SIAX4x → HYBRID mix §0.12.15/17",
+  "size": [
+    4608,
+    6912
+  ],
+  "mb": 22.96,
+  "L": "L-9441d3d22539",
+  "g_face": 0.88,
+  "g_body": 0.72,
+  "g_bg": 0.4
+}

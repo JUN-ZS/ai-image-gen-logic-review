@@ -1,0 +1,27 @@
+{
+  "asof": "2026-10-26T17:08:38Z",
+  "trial": "FACE_PLATE_SIAX_HYBRID_STITCH_v1",
+  "L": "L-fd2508cb1b86",
+  "plate_ref": "c27b9082-b124-42af-892d-5f9c3a925603",
+  "method": "gen face plate → strip Siax4x (5184x6080) → hybrid Lanczos LP + Siax HF (eye-lock/skin pore) → resize to box → feather stitch into GEN_MAT GRID full",
+  "OOM_safe": true,
+  "sizes": {
+    "full_q98_MB": 19.13,
+    "full_q100_MB": 28.32,
+    "face_hyb4x_MB": 11.04,
+    "face_hyb4x_q100_MB": 22.17,
+    "face_hyb_px": [
+      5184,
+      6080
+    ],
+    "canvas_px": [
+      4608,
+      6912
+    ],
+    "box_px": [
+      1291,
+      1521
+    ],
+    "M_mean": 0.3167626311381658
+  }
+}

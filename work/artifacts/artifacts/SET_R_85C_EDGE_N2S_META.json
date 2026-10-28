@@ -1,0 +1,35 @@
+{
+  "asof": "2026-10-27T20:57:26Z",
+  "src_asset": "85cffbba-7b47-42b3-9d6c-b2b4aa5a4936",
+  "technique": "§0.12.26 EDGE_FRAME_N2S · kill=noise∩¬spec · NOISE→REFRACT micro-glint",
+  "targets": [
+    "person",
+    "weapon",
+    "clothes",
+    "armor_outer_frame"
+  ],
+  "size": [
+    4608,
+    6912
+  ],
+  "out_mb": 35.38,
+  "kill_frac_half": 0.07611724476755401,
+  "spec_frac_half": 0.0940232767489712,
+  "ba_mean_abs": {
+    "face": 0.8534392714500427,
+    "armor": 4.03045129776001,
+    "weapon": 4.240321636199951,
+    "cloth": 4.1755290031433105
+  },
+  "L": "L-8ba8a11908fc",
+  "FULL": "/workspace/artifacts/artifacts/SET_R_85C_EDGE_N2S_FULL_q100.jpg",
+  "assets": {
+    "FULL": "79ba818b-2099-46a0-b52c-299d89e239ae",
+    "VIEW": "e234ecca-9f7f-4bea-a3ae-f9ac8f93beed",
+    "RG_SCAN": "77029fd5-e5f8-48bf-b3ee-e3d9dad3fc82",
+    "BA_armor": "317db729-f962-4dbd-aaad-83475730677b",
+    "BA_weapon": "591ee625-1444-4563-b4c7-4acd54f89f69",
+    "BA_cloth": "f0c8a824-861d-4a7d-83cd-ae7b5ffcbbd4"
+  },
+  "note_zh": "§0.12.26 外框白噪：kill=noise∩¬spec；綠=真反光留；紅=白噪框殺；近光 residual 可轉暖微折射"
+}

@@ -1,0 +1,76 @@
+{
+  "asof": "2026-10-27T18:41:52Z",
+  "move": "SELF_FIRE_REGEN ALL objects",
+  "user": "全圖物件放大再自火正生",
+  "n_regions": 9,
+  "order": [
+    "fire_title",
+    "ground_fire",
+    "stone_mid",
+    "sphere",
+    "text_left",
+    "text_right",
+    "weapon",
+    "torso",
+    "face"
+  ],
+  "stats": [
+    {
+      "name": "fire_title",
+      "ecc": 0.3688343157758669,
+      "mad": 24.92026710510254,
+      "alpha": 0.55
+    },
+    {
+      "name": "ground_fire",
+      "ecc": 0.8093731708347448,
+      "mad": 30.004467010498047,
+      "alpha": 0.8
+    },
+    {
+      "name": "stone_mid",
+      "ecc": 0.7453974289946532,
+      "mad": 23.58327865600586,
+      "alpha": 0.85
+    },
+    {
+      "name": "sphere",
+      "ecc": 0.8826297563375402,
+      "mad": 24.0585880279541,
+      "alpha": 0.82
+    },
+    {
+      "name": "text_left",
+      "ecc": 0.9686100986489916,
+      "mad": 23.265850067138672,
+      "alpha": 0.75
+    },
+    {
+      "name": "text_right",
+      "ecc": 0.9779534158106585,
+      "mad": 18.73353385925293,
+      "alpha": 0.75
+    },
+    {
+      "name": "weapon",
+      "ecc": 0.8679182429069136,
+      "mad": 19.03774642944336,
+      "alpha": 0.72
+    },
+    {
+      "name": "torso",
+      "ecc": 0.9101940164632484,
+      "mad": 13.354612350463867,
+      "alpha": 0.78
+    },
+    {
+      "name": "face",
+      "ecc": 0.8589380748634592,
+      "mad": 15.876788139343262,
+      "alpha": 0.88
+    }
+  ],
+  "out_mb": 31.28,
+  "base": "SET_R_SELFGEN_FACE_FULL_q100.jpg",
+  "L": "L-cb945cc5b582"
+}

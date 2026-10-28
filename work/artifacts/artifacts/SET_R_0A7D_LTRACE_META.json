@@ -1,0 +1,17 @@
+{
+  "asof": "2026-10-27T17:25:18Z",
+  "user": "ref 0a7df65f 用最新光追加強貼上",
+  "ref": "0a7df65f-179b-4dad-9438-052dd594e52b",
+  "move": "LTRACE 5-bounce energy transfer + ECC paste stone_mid",
+  "E_noise": 116363.02,
+  "take": 103973.81,
+  "boost": 103973.85,
+  "ratio": 0.894,
+  "ecc": 0.7249,
+  "out_mb": 32.46,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-d857819b9d5e"
+}

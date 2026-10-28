@@ -1,0 +1,39 @@
+{
+  "asof": "2026-10-26T19:23:35Z",
+  "trial": "ARMOR_LOCAL_GEN_ORNAMENT_v1",
+  "user": "局部放大生成花紋高級策略,不是硬提升邊線,而是真的生成",
+  "method": [
+    "1.6x local crop",
+    "i2i GENERATE new filigree/mesh/scale patterns",
+    "ECC stitch cloth-metal mask",
+    "face lock",
+    "2x strip AVOID OOM",
+    "NO edge-only USM"
+  ],
+  "gens": {
+    "chest": "23937c14-96b0-43c2-b1df-af9b932565b8.jpg",
+    "shoulder_R": "5060fae9-074d-4ff6-ba0f-d4d1ba499470.jpg",
+    "sleeve_L": "af21d00e-0ab9-4cb7-9210-0e6ec4e8f544.jpg",
+    "waist": "6c639d51-f3c9-4277-81f9-2dc1559928f3.jpg"
+  },
+  "stats": {
+    "chest": [
+      0.6536659947485008,
+      15.942998886108398
+    ],
+    "shoulder_R": [
+      0.7943888806055689,
+      12.084451675415039
+    ],
+    "sleeve_L": [
+      0.7985767890547458,
+      14.123416900634766
+    ],
+    "waist": [
+      0.6165814303228436,
+      16.120121002197266
+    ]
+  },
+  "L": "L-c891e015e37d",
+  "full_mb": 22.58
+}

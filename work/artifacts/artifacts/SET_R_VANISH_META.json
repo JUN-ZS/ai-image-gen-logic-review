@@ -1,0 +1,14 @@
+{
+  "asof": "2026-10-27T17:34:52Z",
+  "user": "sample白噪線點要變不見,光澤要分到",
+  "sample_ref": "8ff8fa6d-02e5-412b-882b-57fc320178fb",
+  "idea": "VANISH_GLOSS: detect dots/lines → inpaint vanish → E→soft gloss_field redistribute",
+  "not_previous": "not keep residual dots; not only boost without remove",
+  "E_sum": 103516.84,
+  "boost_sum": 93524.91,
+  "E_left": 9991.97,
+  "dots": 30253,
+  "ecc": 0.7105,
+  "out_mb": 32.26,
+  "L": "L-9dc466fb7fcc"
+}

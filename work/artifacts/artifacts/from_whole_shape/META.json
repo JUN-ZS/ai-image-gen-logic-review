@@ -1,0 +1,19 @@
+{
+  "asof": "2026-10-27T10:23:59Z",
+  "constitution": "反推=DETECT改動(SIAX/混生); 拼=自邊界形狀 絕非方框",
+  "box_search_only": [
+    1376,
+    1288,
+    3328,
+    3528
+  ],
+  "shape_fill_ratio": 0.568,
+  "shape_area_frac": 0.416,
+  "self_bound_frac": 0.447,
+  "affine_ncc": 0.9771,
+  "alpha_mean": 0.227,
+  "lap_armor": [
+    1592.4,
+    2086.1
+  ]
+}

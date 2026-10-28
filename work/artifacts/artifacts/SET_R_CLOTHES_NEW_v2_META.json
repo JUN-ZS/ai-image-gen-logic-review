@@ -1,0 +1,38 @@
+{
+  "asof": "2026-10-26T20:16:27Z",
+  "trial": "CLOTHES_NEW_v2_DENSE_GOLD",
+  "user": "效果不錯,不要改武器,試來一新的",
+  "refs": [
+    "28abefc3 poster",
+    "977d244f armor donor"
+  ],
+  "base": "SET_R_CLOTHES_ONLY",
+  "method": "local GEN denser gold filigree + clothes-only stitch + weapon hard lock x<0.42",
+  "stats": {
+    "chest": {
+      "cc": 0.767,
+      "M": 0.758,
+      "d": 17.1
+    },
+    "shoulder": {
+      "cc": 0.624,
+      "M": 0.784,
+      "d": 18.4
+    },
+    "arm": {
+      "cc": 0.042,
+      "M": 0.801,
+      "d": 38.1
+    },
+    "skirt": {
+      "cc": 0.091,
+      "M": 0.673,
+      "d": 35.1
+    }
+  },
+  "delta_weapon": 0.005273248068988323,
+  "delta_clothes": 12.462593078613281,
+  "L": "L-363ad2fd2b45",
+  "mb": 2.45,
+  "mb_2x": 7.33
+}

@@ -1,0 +1,18 @@
+{
+  "asof": "2026-10-26T18:44:00Z",
+  "rule": "E-FLOW-06/07 · 母圖單次",
+  "mother_dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "donor": "2dae8d6e-8144-4a96-b6a6-be67b2465f38",
+  "final": "cce4ad3a-3ac9-425b-8057-459f0682c211",
+  "sha256": "4f9c8d1a6a876a202aa6ef0c7eb471b1f3b45470000cd6832840f87e64ee4066",
+  "pipeline": "ONE Ref([2455,a8b]) only — no stack on dbea/ce/7c",
+  "expression": "望球",
+  "forbidden_chain": [
+    "ce2961b6",
+    "510f82da",
+    "d33bbd06",
+    "7c180b12",
+    "dbea357d"
+  ],
+  "cite": "TRUE_FACE_DO_NOT_REPEAT E-FLOW-06/07 · CORRECT_PROCESS 母圖法則"
+}

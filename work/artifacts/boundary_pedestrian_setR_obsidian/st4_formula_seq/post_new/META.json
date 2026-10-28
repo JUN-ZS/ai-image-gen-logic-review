@@ -1,0 +1,38 @@
+{
+  "stage": "POST_NEW_COPPER_MOON",
+  "seeds": [
+    {
+      "lab": "SEED A F2",
+      "asset": "ffee964f-b641-455b-9af9-14bdaa0e9a87"
+    },
+    {
+      "lab": "SEED B aerial",
+      "asset": "bbaae2b1-c628-4a95-aa68-22b70fde7ea3"
+    }
+  ],
+  "posts": [
+    {
+      "id": "P1",
+      "lab": "P1 站姿銅月碎",
+      "asset": "6bcaa837-dad1-4091-86f1-b29f090ea191"
+    },
+    {
+      "id": "P2",
+      "lab": "P2 飛撲銅月碎",
+      "asset": "0a79cb6f-5cc1-4e95-a403-57469a64ef5c"
+    },
+    {
+      "id": "P3",
+      "lab": "P3 過肩碎",
+      "asset": "f190cf4b-18fa-48ff-a305-56b9ff3ce167"
+    },
+    {
+      "id": "P4",
+      "lab": "P4 背影銅月碎",
+      "asset": "ce6f0848-985f-4d08-bcb8-f56ec3e0f3ce"
+    }
+  ],
+  "story": "圓已右移 → 公式 → 銅圓黑月敲碎玻璃泡",
+  "formula": "STRIKE:銅圓黑月  RECV:TANGENT  GAP=0  H2",
+  "primary_recommend": "P2 0a79cb6f 或 P4 ce6f0848（銅月最清楚）"
+}

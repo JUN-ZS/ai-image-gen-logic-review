@@ -1,0 +1,21 @@
+{
+  "status": "CLEAN_REDO — discarded old dual-B 401fe9ad and old face sheet 8b526e2f",
+  "source_only": "d225b616-2be3-4f9f-b4e7-3a1049714ebc",
+  "source_sha256": "9218039331c6ff11c2027f2d953360d4230a32a86e1b73c72c5cb0474911a86a",
+  "method": "6x4 GRID + feather weighted paste + same-source semantic ROIs",
+  "forbid": [
+    "cross-base face paste",
+    "hierarchy FINAL as detail B",
+    "old dual-LM sheet"
+  ],
+  "grid": {
+    "cols": 6,
+    "rows": 4,
+    "overlap": 0.22,
+    "upscale": 2.5,
+    "cells": 24
+  },
+  "paste": "accum += hd*alpha; out=accum/weight",
+  "mean_abs_diff_vs_L0": 2.453585624694824,
+  "sha_final": "1f0707846e2c661635a5bb733f72c4510b305c0570b94ea7aef52c37a3bfd3a4"
+}

@@ -1,0 +1,22 @@
+{
+  "stage": "ST5_TYPE + ST3.G_TYPE",
+  "asof": "2026-10-26T12:09:29Z",
+  "base": "cad1d080 ST3 FACELOCK (I_MID a8b)",
+  "Σ_text": [
+    "邊界行人",
+    "THE BOUNDARY WALKER",
+    "GEO.T · H2",
+    "STRIKE:T-END",
+    "RECV:TANGENT",
+    "n·v≈1 GAP≈0 ★MICRO",
+    "WORLD: OBSIDIAN_ORBIT",
+    "LOOP L-d3ef4a5ffdc6"
+  ],
+  "plates": {
+    "TYPE_GEO_MID": "3847ecc2-1f56-4937-93f1-99d79bb11efb",
+    "TYPE_ET_A_COLD": "aca0bf41-772e-4ea3-8688-31b06b2d2eab",
+    "TYPE_ET_B_HOT": "0c634374-e45b-4938-ad6b-1e04acfebbb3"
+  },
+  "note": "同文異態 · 字不改骨相 · 無 TRY/REVIEW · 禁遮臉與 CONTACT",
+  "constitution": "§0.8 E-01/E-02 · §0.9 ST5 · §0.14 GEO_INDICATOR"
+}

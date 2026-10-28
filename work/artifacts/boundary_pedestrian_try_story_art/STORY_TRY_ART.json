@@ -1,0 +1,129 @@
+{
+  "title": "邊界行人 · 無間輪迴 · TRY 藝術字故事軸",
+  "principle": [
+    "底圖無字：模型不負責拼方法名",
+    "藝術字層確定性疊加：文泉驛正黑 + 電影海報框（金邊/青底）",
+    "每幀標 LOOP / TRY / ACT / METHOD；狀態 REVIEW PENDING",
+    "方法可換、人物世界連續；柔性幕不塞武器",
+    "字牌≠幾何 PASS"
+  ],
+  "story_spine": "畫界→保護→試法→假修→一界→選擇，再 match-cut 回畫界",
+  "chain": [
+    {
+      "beat": 1,
+      "loop": "0001",
+      "try": "TRY-0001",
+      "act": 1,
+      "method": "GEO.T H0",
+      "title": "畫界·遠隙"
+    },
+    {
+      "beat": 2,
+      "loop": "0001",
+      "try": "TRY-0001",
+      "act": 2,
+      "method": "GEO.T H1",
+      "title": "保護·近隙"
+    },
+    {
+      "beat": 3,
+      "loop": "0001",
+      "try": "TRY-0001",
+      "act": 3,
+      "method": "GEO.T H2",
+      "title": "試法·首次接觸"
+    },
+    {
+      "beat": 4,
+      "loop": "0001",
+      "try": "TRY-0001",
+      "act": 4,
+      "method": "GEO.T H3",
+      "title": "假修前·跟進"
+    },
+    {
+      "beat": 5,
+      "loop": "0002",
+      "try": "TRY-0002",
+      "act": 3,
+      "method": "GEO.T2 FACE",
+      "title": "再試·雙T"
+    },
+    {
+      "beat": 6,
+      "loop": "0003",
+      "try": "TRY-0003",
+      "act": 3,
+      "method": "GEO.CROSS FACE",
+      "title": "再試·厚十字"
+    },
+    {
+      "beat": 7,
+      "loop": "0004",
+      "try": "TRY-0004",
+      "act": 3,
+      "method": "GEO.ROD POS",
+      "title": "再試·正控制"
+    },
+    {
+      "beat": 8,
+      "loop": "0004",
+      "try": "TRY-0004",
+      "act": 4,
+      "method": "GEO.ROD NEG",
+      "title": "假修·負控制"
+    },
+    {
+      "beat": 9,
+      "loop": "0005",
+      "try": "TRY-0005",
+      "act": 3,
+      "method": "GEO.PLANT_S",
+      "title": "再試·側柄"
+    },
+    {
+      "beat": 10,
+      "loop": "0006",
+      "try": "TRY-0006",
+      "act": 3,
+      "method": "GEO.PLANT_O",
+      "title": "再試·外端柄"
+    },
+    {
+      "beat": 11,
+      "loop": "0007",
+      "try": "TRY-0007",
+      "act": 3,
+      "method": "GEO.MULTI H2",
+      "title": "再試·多面頭"
+    },
+    {
+      "beat": 12,
+      "loop": "0008",
+      "try": "TRY-0008",
+      "act": 5,
+      "method": "SOFT S02",
+      "title": "一界·粉彩"
+    },
+    {
+      "beat": 13,
+      "loop": "0009",
+      "try": "TRY-0009",
+      "act": 6,
+      "method": "SOFT S03",
+      "title": "選擇·超現實"
+    },
+    {
+      "beat": 14,
+      "loop": "0010",
+      "try": "TRY-0010",
+      "act": 3,
+      "method": "W04 ROD",
+      "title": "鏡頭試法"
+    }
+  ],
+  "asof": "2026-10-24T13:55:26.031608+00:00",
+  "media_status": "ART_LABEL_COMPOSITED",
+  "pixel_audit": "NOT_RUN",
+  "visual_acceptance": "NOT_VERIFIED"
+}

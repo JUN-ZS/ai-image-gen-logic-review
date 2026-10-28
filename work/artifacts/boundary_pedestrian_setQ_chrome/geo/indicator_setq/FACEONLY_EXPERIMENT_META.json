@@ -1,0 +1,21 @@
+{
+  "mode": "FACE_ONLY_REF",
+  "ref": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004 only (no scene plate)",
+  "assets": {
+    "PRE": "701aa1f1-5881-425a-9aed-693edd06d9f4",
+    "MID": "820abbe3-01ff-4e2b-ada3-274a9fae758d",
+    "POST": "a5602af7-36a4-4013-a928-40f5023a1ef2"
+  },
+  "obs": {
+    "face": "good lock to a8b",
+    "effect": "HIGH diegetic light/fire",
+    "pose_continuity": "WEAK vs SET-Q locked swing (new poses each)",
+    "string_accuracy": "FAIL — D-END / M-END / D-T-END drift worse than scene-ref ONESHOT",
+    "hammer_sphere": "unstable (POST almost loses hammer)"
+  },
+  "vs": {
+    "scene+face ONESHOT": "better pose continuity + slightly better strings",
+    "face-only": "strongest free composition; worst contract strings; weaker SET continuity"
+  },
+  "verdict": "Face-only OK for new IP hero keyart; NOT default for SET continuity GEO.T. Prefer scene plate + a8b for SET-Q."
+}

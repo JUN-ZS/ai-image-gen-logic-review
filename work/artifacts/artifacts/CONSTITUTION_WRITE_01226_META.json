@@ -1,0 +1,47 @@
+{
+  "asof": "2026-10-27T16:28:38Z",
+  "section": "§0.12.26 STONE_FIRE_LIGHT_CTEMP",
+  "user": "把過程和試錯入憲",
+  "end_state_L": "L-a166300b8f6a",
+  "end_state_asset": "f9dedda8-90fc-4cb9-8228-33eb3dc71386",
+  "matte_parent": "8978bc25-47e6-46b7-8a58-805defef1e81",
+  "cold_lab_proof": {
+    "matte_ab": [
+      133.71,
+      137.14
+    ],
+    "wrong_ab": [
+      135.7,
+      146.28
+    ],
+    "fixed_ab": [
+      133.41,
+      136.76
+    ]
+  },
+  "files": [
+    "BOUNDARY_WALKER_UNIFIED_RULES.md",
+    "STONE_FIRE_LIGHT_CTEMP_01226.md",
+    "STONE_FIRE_DO_NOT_REPEAT.md",
+    "CONSTITUTION_WRITE_01226_META.json"
+  ],
+  "do_not_repeat": [
+    "E-SF-01",
+    "E-SF-02",
+    "E-SF-03",
+    "E-SF-04",
+    "E-SF-05",
+    "E-SF-06",
+    "E-SF-07",
+    "E-SF-08",
+    "E-SF-09",
+    "E-SF-10"
+  ],
+  "related": [
+    "§0.12.23",
+    "§0.12.24",
+    "§0.12.25",
+    "§0.12.18",
+    "甲成功鏈"
+  ]
+}

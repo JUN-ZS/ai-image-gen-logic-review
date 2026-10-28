@@ -1,0 +1,34 @@
+{
+  "asof": "2026-10-27T08:35:31Z",
+  "L": "L-69406c9e4ec2",
+  "user": "有/無 + curve + 邊框; not feather; reverse hybrid pixels for range paste",
+  "diagnosis": "無 upper missed: face-rect lock y<0.24 + armor_id failed on glossy; 邊框=template box",
+  "method": "paste_range=max(BASE armor_id, d8 reverse mesh thr); MF from d8 + self-HF/micro (lap up); face oval",
+  "killed": [
+    "feather-misdiagnosis",
+    "full-RGB soft L-17da",
+    "expand-box ncc crash"
+  ],
+  "box": [
+    1391,
+    1391,
+    3754,
+    3784
+  ],
+  "lap_upper": [
+    3022.2,
+    6448.2
+  ],
+  "lap_lower": [
+    6535.8,
+    12288.8
+  ],
+  "mad": 10.02,
+  "gate_mean": 0.394,
+  "bytes": 32693081,
+  "size": [
+    4608,
+    6912
+  ],
+  "note": "Imagine GEN for native 無 crop blocked this turn; self-micro + reverse range used"
+}

@@ -1,0 +1,156 @@
+{
+  "mode": "FAT6_FACE_REF",
+  "L0": "fc3dde8b-4590-4713-b24d-094bb71b05e1",
+  "IP_HD": "21a606e1-9fba-448b-97bd-7cb1f90f6d75",
+  "STD": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "overlap": 0.22,
+  "layout": "2x3",
+  "face_roi_L0": [
+    980,
+    40,
+    1680,
+    720
+  ],
+  "cells": [
+    {
+      "id": "f00",
+      "r": 0,
+      "c": 0,
+      "core": [
+        0,
+        0,
+        597,
+        504
+      ],
+      "box": [
+        0,
+        0,
+        728,
+        614
+      ],
+      "face_hit": false,
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_fat_faceref/1_cells/f00.jpg",
+      "size": [
+        728,
+        614
+      ]
+    },
+    {
+      "id": "f01",
+      "r": 0,
+      "c": 1,
+      "core": [
+        597,
+        0,
+        1194,
+        504
+      ],
+      "box": [
+        466,
+        0,
+        1325,
+        614
+      ],
+      "face_hit": true,
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_fat_faceref/1_cells/f01.jpg",
+      "size": [
+        859,
+        614
+      ]
+    },
+    {
+      "id": "f02",
+      "r": 0,
+      "c": 2,
+      "core": [
+        1194,
+        0,
+        1792,
+        504
+      ],
+      "box": [
+        1063,
+        0,
+        1792,
+        614
+      ],
+      "face_hit": true,
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_fat_faceref/1_cells/f02.jpg",
+      "size": [
+        729,
+        614
+      ]
+    },
+    {
+      "id": "f10",
+      "r": 1,
+      "c": 0,
+      "core": [
+        0,
+        504,
+        597,
+        1008
+      ],
+      "box": [
+        0,
+        394,
+        728,
+        1008
+      ],
+      "face_hit": false,
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_fat_faceref/1_cells/f10.jpg",
+      "size": [
+        728,
+        614
+      ]
+    },
+    {
+      "id": "f11",
+      "r": 1,
+      "c": 1,
+      "core": [
+        597,
+        504,
+        1194,
+        1008
+      ],
+      "box": [
+        466,
+        394,
+        1325,
+        1008
+      ],
+      "face_hit": true,
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_fat_faceref/1_cells/f11.jpg",
+      "size": [
+        859,
+        614
+      ]
+    },
+    {
+      "id": "f12",
+      "r": 1,
+      "c": 2,
+      "core": [
+        1194,
+        504,
+        1792,
+        1008
+      ],
+      "box": [
+        1063,
+        394,
+        1792,
+        1008
+      ],
+      "face_hit": true,
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_fat_faceref/1_cells/f12.jpg",
+      "size": [
+        729,
+        614
+      ]
+    }
+  ],
+  "W0": 1792,
+  "H0": 1008
+}

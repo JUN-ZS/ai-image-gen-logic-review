@@ -1,0 +1,24 @@
+{
+  "pipeline": "PIXEL_RATIO §0.12.14",
+  "dst": "bbaae2b1-c628-4a95-aa68-22b70fde7ea3",
+  "dst_face_CORRECT": [
+    432,
+    85,
+    116,
+    116
+  ],
+  "note": "first auto pick was wrong (mid-body false face); corrected to upper face 116px",
+  "primary_pixel": "6e83c5f9-f466-4941-9888-bff543d3edc8",
+  "primary_name": "grid_face2",
+  "scale_iso": 0.23625254582484725,
+  "paste_roi": [
+    387,
+    21,
+    592,
+    238
+  ],
+  "sha256": "0f48481b553bbdb2e0bb157391fcea070fc29000c71472cc1f158afef7ac82df",
+  "L_candidate": "L-0f48481b553b",
+  "model_face_a8b": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "model_face_grid": "b0a88efd-4a2f-48bb-bd81-fc91ea06cac8"
+}

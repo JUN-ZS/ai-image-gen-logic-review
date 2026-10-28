@@ -1,0 +1,27 @@
+{
+  "F_d": [
+    628,
+    112,
+    112,
+    128
+  ],
+  "F_s": [
+    160,
+    55,
+    230,
+    290
+  ],
+  "s_face": 0.4636081683201165,
+  "s_eff": 0.4640396210163652,
+  "place": [
+    624.1388888888889,
+    100.82558139534883
+  ],
+  "delta_face": 25.411666870117188,
+  "delta_feat": 31.39747428894043,
+  "delta_cring": 0.0,
+  "delta_wrong_left": 0.0,
+  "alpha_center": 0.94,
+  "alpha_edge": 0.62,
+  "method": "FACE_CROP_DIRECT V3 strong identity + color match + radial"
+}

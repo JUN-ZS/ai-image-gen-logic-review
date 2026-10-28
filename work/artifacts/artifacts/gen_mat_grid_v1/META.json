@@ -1,0 +1,39 @@
+{
+  "asof": "2026-10-26T16:28:04Z",
+  "trial": "GEN_MAT_GRID_v2",
+  "L": "L-7173fcc1c738",
+  "sizes_MB": {
+    "FULL_q95.jpg": 13.28,
+    "FULL_q98.jpg": 19.31,
+    "FULL_q100.jpg": 32.17
+  },
+  "proof_vs_REAL_MAT": {
+    "face": {
+      "hf_new": 10.61,
+      "hf_rm": 9.4,
+      "d": 1.201
+    },
+    "cloth": {
+      "hf_new": 14.32,
+      "hf_rm": 17.13,
+      "d": -2.812
+    },
+    "sphere": {
+      "hf_new": 15.39,
+      "hf_rm": 19.19,
+      "d": -3.796
+    },
+    "text": {
+      "hf_new": 13.63,
+      "hf_rm": 15.52,
+      "d": -1.886
+    },
+    "fire": {
+      "hf_new": 10.2,
+      "hf_rm": 9.62,
+      "d": 0.585
+    }
+  },
+  "pipeline": "裁原圖→Imagine生成真實素材板→混法逐步放大→拼入GRID全圖",
+  "beat_ref": "9ba19888 REAL_MAT"
+}

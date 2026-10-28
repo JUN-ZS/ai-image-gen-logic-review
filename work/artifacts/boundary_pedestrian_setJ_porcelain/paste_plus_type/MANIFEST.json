@@ -1,0 +1,29 @@
+[
+  {
+    "frame": "pre",
+    "base": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/pasted/J01_pre_PASTE.jpg",
+    "base_note": "clear person PASTE (user: stack type onto this)",
+    "base_sha256": "5b597b098f221a2aeceef1e852873879c91114d362dc30cb2531f71095095681",
+    "type_from": "first HUD gen isolated vs clean",
+    "final_sha256": "28089224318740da5c9dfa1c5b0a77ba39647d8266439c9b1d1cc4a10f1cd742",
+    "order": "PASTE(clear person) + TYPE_LAYER on top"
+  },
+  {
+    "frame": "mid",
+    "base": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/pasted/J01_mid_PASTE_v2.jpg",
+    "base_note": "clear person PASTE (user: stack type onto this)",
+    "base_sha256": "97882c86f71b9ad65b42bb3f170b8494e0e6685de906cbd1ff82dc1885859d20",
+    "type_from": "first HUD gen isolated vs clean",
+    "final_sha256": "e1fb4282b36f20e8306df9ce95148e89f48c85f38d19061aa27dbdc06e725706",
+    "order": "PASTE(clear person) + TYPE_LAYER on top"
+  },
+  {
+    "frame": "post",
+    "base": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/pasted/J01_post_PASTE_v2.jpg",
+    "base_note": "clear person PASTE (user: stack type onto this)",
+    "base_sha256": "b3d702160a042e3ca03db33be86d452169a8cc3b20da8634862a1467a6ee83df",
+    "type_from": "first HUD gen isolated vs clean",
+    "final_sha256": "6beaf7878b48b4a15f2e0b94ec7287f9c52c9f3d4e3d8b63e5247b552751204c",
+    "order": "PASTE(clear person) + TYPE_LAYER on top"
+  }
+]

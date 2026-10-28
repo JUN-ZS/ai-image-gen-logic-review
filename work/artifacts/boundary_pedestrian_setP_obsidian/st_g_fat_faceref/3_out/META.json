@@ -1,0 +1,33 @@
+{
+  "mode": "FAT6_FACE_REF",
+  "S": 2,
+  "overlap": 0.22,
+  "method": "B",
+  "rule": "face_hit cells: ref_to_image([cell, IP_HD, a8b]); bg: enhance; assemble feather; light PATH1E",
+  "gates": {
+    "face_lap": 65.71577453613281,
+    "center_lap": 121.61821746826172,
+    "full_lap": 143.01077270507812,
+    "mean_conf": 0.7607937951882681,
+    "confs": {
+      "f00": 0.8766511082649231,
+      "f01": 0.8296073079109192,
+      "f02": 0.9076039791107178,
+      "f10": 0.8562477231025696,
+      "f11": 0.20807087421417236,
+      "f12": 0.8865817785263062
+    }
+  },
+  "L": "L-5989eb546c6b",
+  "sha256": "5989eb546c6bfb6d5995e376f98b074c6f73899e9f4bb40e95bbb089aeb75031",
+  "size": [
+    3584,
+    2016
+  ],
+  "obs": [
+    "f01/f02 face REF worked — lock face into large cell before stitch",
+    "f11 body crop + face REF reintroduced head — conf dump 0.35× required",
+    "RULE: only FACE_DOMINANT crops get face REF; body-only = enhance only"
+  ],
+  "asof": "2026-10-25T17:04:29Z"
+}

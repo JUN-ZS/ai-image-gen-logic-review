@@ -1,0 +1,17 @@
+{
+  "asof": "2026-10-26T12:14:33Z",
+  "refs": [
+    "802401c9 standing",
+    "cce4ad3a aerial"
+  ],
+  "clean": [
+    "72339da4",
+    "79fa7eec"
+  ],
+  "type": [
+    "f72d9076 PRE cyan",
+    "023b59a0 POST fire",
+    "2c8876f7 DUTCH lightning",
+    "25003678 IMPACT shatter"
+  ]
+}

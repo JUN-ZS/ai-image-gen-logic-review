@@ -1,0 +1,58 @@
+{
+  "asof": "2026-10-26T14:36:59Z",
+  "user": "記到憲的除錯,再發現",
+  "constitution_written": "§0.12.16 + E-GS-08..11",
+  "findings": [
+    {
+      "id": "D1_surgical_integrity",
+      "desc": "非 mask 區 ctrl vs base 應≈0",
+      "mean_abs": 0.12505081295967102,
+      "pct_gt8": 0.0,
+      "ok": true
+    },
+    {
+      "id": "D2_iris_still_near_siax",
+      "desc": "虹膜區仍貼近 Siax？(可能過銳/假紋)",
+      "n": 0,
+      "ctrl_vs_siax": null,
+      "ctrl_vs_st": null,
+      "note": "若 vs_siax 低且 vs_st 高 → 虹膜仍吃 Siax 過多"
+    },
+    {
+      "id": "D3_fire_bleed_face",
+      "desc": "臉框內火色像素比例（背景火滲？）",
+      "frac": 0.0,
+      "mean_fire_lum": 0,
+      "risk": "low"
+    },
+    {
+      "id": "D4_mask_false_positive",
+      "desc": "mask 強但非眼區（臉頰高光／甲？）",
+      "n": 0,
+      "frac_of_mask": 0.0,
+      "risk": "low"
+    },
+    {
+      "id": "D5_text_edge_energy",
+      "desc": "字帶邊緣能量 ST/CTRL/Siax（CTRL 應近 Siax 高）",
+      "st": 34.223838806152344,
+      "ctrl": 33.946495056152344,
+      "siax": 36.417755126953125,
+      "ctrl_over_st": 0.9918962121009827
+    },
+    {
+      "id": "D6_eye_mask_asymmetry",
+      "desc": "左右眼 mask 量不對稱？",
+      "left_mean": 0.024197271093726158,
+      "right_mean": 0.030192388221621513,
+      "ratio": 0.8014361262321472,
+      "risk": "low"
+    },
+    {
+      "id": "D7_face_core_vs_ST",
+      "desc": "臉核(非眼白) ctrl 離 ST 多少（Hybrid 殘留）",
+      "mean_abs": 9.40355396270752,
+      "pct_gt8": 29.992541178908112
+    }
+  ]
+}

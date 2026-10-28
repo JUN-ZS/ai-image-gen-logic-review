@@ -1,0 +1,13 @@
+{
+  "asof": "2026-10-27T20:58:17Z",
+  "technique": "§0.12.26 KILL_NOISE_NOT_SPEC ×2 (edge residual + dark-adjacent fringe) person/armor/weapon",
+  "src_asset": "85cffbba-7b47-42b3-9d6c-b2b4aa5a4936",
+  "pass2_kill": 5206,
+  "size": [
+    4608,
+    6912
+  ],
+  "out_mb": 38.091037,
+  "L": "L-621bf95ee22c",
+  "rg_legend": "RED=kill · GREEN=spec keep"
+}

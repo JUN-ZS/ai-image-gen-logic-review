@@ -1,0 +1,58 @@
+{
+  "stage": "ST3",
+  "asof": "2026-10-26T12:05:00Z",
+  "method_face": "PIXEL_RATIO V4 FACE_CROP_DIRECT · §0.12.14 + §0.12.14.F latest",
+  "mother": "I_MID 7c19c324 / frames/I_MID.jpg (ST2 LOCK · 單次 · E-FLOW-06)",
+  "donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "F_d": [
+    840,
+    100,
+    130,
+    160
+  ],
+  "F_s": [
+    120,
+    50,
+    300,
+    380
+  ],
+  "s_face": 0.427149,
+  "s_eff": 0.427717,
+  "place_tl": [
+    830.58,
+    85.9
+  ],
+  "kill_wall_x": 832,
+  "pad": 0.08,
+  "alpha_center": 0.9,
+  "metrics": {
+    "d_face": 45.364,
+    "d_cring_proxy": 0.0,
+    "d_outside": 0.0187
+  },
+  "geo": {
+    "method": "GEO.T · H2",
+    "analysis_line": "STRIKE:T-END  RECV:TANGENT  n·v≈1  GAP≈0  ★MICRO  H2",
+    "contact_px": [
+      960,
+      390
+    ],
+    "HL": [
+      "FACE",
+      "CONTACT",
+      "STRIKE",
+      "SPHERE",
+      "WEAPON",
+      "AXIS",
+      "FORCE"
+    ]
+  },
+  "outputs": {
+    "I_MID_ST3_FACELOCK": "frames/I_MID_ST3_FACELOCK.jpg",
+    "I_MID_ST3_GEO": "frames/I_MID_ST3_GEO.jpg",
+    "sha_v4": "bc511f8c26d21381c0e68d7191904a122b32b1517136b5ced4154fb5086282c7",
+    "sha_geo": "92612688b94b75e83f44a46dacf5376d81e5a7183847a05442942e89bbdefb05",
+    "L": "L-bc511f8c26d2"
+  },
+  "note": "ST3 用最新 PIXEL V4 鎖臉出新圖，再掛 GEO 指標；不疊上疊"
+}

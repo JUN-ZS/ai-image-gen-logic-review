@@ -1,0 +1,66 @@
+{
+  "lock_id": "GRID60_PATH1E",
+  "status": "LOCKED",
+  "asof": "2026-10-25T09:42:23Z",
+  "method": "PATH1E",
+  "method_name": "CLEAN_HD_FACE_HARD_PASTE",
+  "default_variant": "CLEAN",
+  "forbidden": [
+    "PATH1B",
+    "PATH1C",
+    "PATH1D",
+    "ORB_FULL_RGB_CLOSEUP",
+    "SOFT_MULTIBAND_FACE_ONLY"
+  ],
+  "allowed_variants_on_request": [
+    "PATH1E_HF",
+    "PATH1F"
+  ],
+  "canvas": {
+    "S": 3,
+    "W": 5376,
+    "H": 3024
+  },
+  "face_roi_l0": [
+    700,
+    40,
+    1120,
+    430
+  ],
+  "head_roi_l0": [
+    640,
+    0,
+    1180,
+    500
+  ],
+  "face_roi_final": [
+    2100,
+    120,
+    3360,
+    1290
+  ],
+  "head_roi_final": [
+    1920,
+    0,
+    3540,
+    1500
+  ],
+  "ecc_min": 0.85,
+  "ssim_min": 0.55,
+  "sharp_min": 400,
+  "lp_ssim_min": 0.9,
+  "sky_delta_max": 5.0,
+  "edge_feather_px": 36,
+  "interior_mix_min": 0.92,
+  "canonical_file": "boundary_pedestrian_setN_golden/grid60/3_out/FINAL_PATH1E_CLEAN_HD_FACE.jpg",
+  "sha256": "355bfec974e3b2b7f7e03548e133050c6b6807559a4395dc84c8b9c1d0116faf",
+  "L": "L-355bfec974e3",
+  "imagine_asset_clean": "a2141161-5a72-4a64-b51f-53912f5b8519",
+  "imagine_asset_hf": "4c4c9ca6-c9f5-4da6-81b9-23f5b6b191bd",
+  "rules_md": "boundary_pedestrian_setN_golden/grid60/RULES/PATH1E_LOCK.md",
+  "unlock_phrase": [
+    "解鎖 1E",
+    "改用 1F",
+    "unlock PATH1E"
+  ]
+}

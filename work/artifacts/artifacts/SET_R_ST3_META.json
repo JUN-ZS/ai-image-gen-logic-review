@@ -1,0 +1,18 @@
+{
+  "stage": "ST3",
+  "asof": "2026-10-26T12:07:03Z",
+  "face_pipeline": "PIXEL_RATIO V4 → V5 hair-only once",
+  "mother": "I_MID ST2",
+  "donor": "a8b78fe5",
+  "F_d": [
+    840,
+    100,
+    130,
+    160
+  ],
+  "geo": "GEO.T · H2",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  n·v≈1  GAP≈0  ★MICRO  H2",
+  "L": "L-d3ef4a5ffdc6",
+  "FACELOCK_asset": "b5c63235-d3b5-49e0-8dc8-f219f6623370",
+  "sha": "d3ef4a5ffdc64da26011244f83dd70d7100fa1992df3928bdd27dd9e087214bd"
+}

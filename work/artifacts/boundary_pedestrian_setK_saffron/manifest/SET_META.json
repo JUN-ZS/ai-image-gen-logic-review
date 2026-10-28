@@ -1,0 +1,28 @@
+{
+  "set": "SET-K",
+  "world": "SAFFRON_SAND_MONASTERY",
+  "method": "GEO.T · H3",
+  "loop": "L-ba68d33a44fd",
+  "mid_sha256": "ba68d33a44fd76570f2f7e903bc1a52a80505e877c7ad767fa0603eae6f360be",
+  "pipeline": "LOCKED_PIPELINE",
+  "frames": {
+    "pre": {
+      "clean_sha": "2f2a7148bce14b1a688ac9f63d3c7afffe4d0d5525cda7b8b1998c4cd095c02f",
+      "hud_sha": "4583e35b3eb69c07477233d4a2db1f9b2412808524e09b1f71fd8c5336246139",
+      "paste_sha": "c36b3a576aa162549007f85389d34f3064c3ebf66c86b49b6e0e94e88c03cc78",
+      "final_sha": "0c72cc52a510b9d1143aee88cb0a5f666f4ed6b9d207c0000f90ab34c8c6e24d"
+    },
+    "mid": {
+      "clean_sha": "ba68d33a44fd76570f2f7e903bc1a52a80505e877c7ad767fa0603eae6f360be",
+      "hud_sha": "7df3663a9f928f59c090c95ee9298c12cf8133f52d43543284cc95ac79e1ed65",
+      "paste_sha": "10802581e4c92a6e05c4d426b0c223a5345397f6c6245932928c1c6d39d18924",
+      "final_sha": "944bf42066ab4b2fad250aca90c49965f6dc3ba697c91e6f84688e07eb1ad16e"
+    },
+    "post": {
+      "clean_sha": "0d7215cb0f208db1daad76b0c4614b20253c8f2ff41ea853eea5d897a0a2fbc7",
+      "hud_sha": "3103bad262b3ceb9e6059d7d31e8576cf721401d7b4f4b1aa4ac8ed65852a282",
+      "paste_sha": "e9e11dbd38369c1974050213e081cc7766b63d6549e961b81391250af393ae17",
+      "final_sha": "2739713d47ca5ca0569677b031f0334db0220a7ab252e33487faf8daccea786b"
+    }
+  }
+}

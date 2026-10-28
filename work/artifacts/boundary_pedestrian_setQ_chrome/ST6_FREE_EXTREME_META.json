@@ -1,0 +1,36 @@
+{
+  "stage": "ST6_FREE_EXTREME",
+  "asof": "2026-10-26T02:30:00Z",
+  "asset_id": "e659ac23-d363-411a-a2df-c794ac382d56",
+  "parent_mid_path1e": "f80c51c8-3611-45e7-87ae-a6fccb811703",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "L": "L-dfa1b1dabb57",
+  "Sigma_text": [
+    "邊界行人",
+    "THE BOUNDARY WALKER",
+    "GEO.T · H2",
+    "CAM · STYLE · PROMPT_ID",
+    "WORLD: CHROME_MIRROR · L-dfa1b1dabb57"
+  ],
+  "T_diegetic": {
+    "phase": "POST_release",
+    "E": "VFX_WORLD_ADAPTIVE_crystal_chrome_ice",
+    "Phi": [
+      "fluid_shatter",
+      "spline_lightning"
+    ],
+    "alpha_range": [
+      0.55,
+      2.4
+    ],
+    "BgPlate": "empty"
+  },
+  "rules": [
+    "§0.8 FREE formula",
+    "§0.9 ST6",
+    "§0.10 a8b face",
+    "§0.13 no face re-ref in later GRID"
+  ],
+  "sha256": "5707176078ad41f3d40b0c735718f1a6a0e2f872714f374b936425751c689293",
+  "note": "極藝術 FREE · same Σ as controlled ET · not layout-copy of 88d913"
+}

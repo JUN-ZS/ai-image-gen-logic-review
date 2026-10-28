@@ -1,0 +1,37 @@
+{
+  "F_d": [
+    625,
+    108,
+    115,
+    130
+  ],
+  "F_s": [
+    155,
+    50,
+    240,
+    300
+  ],
+  "s_face": 0.45567410381641055,
+  "s_eff": 0.45686554204911933,
+  "place": [
+    618.9956896551724,
+    93.50539568345323
+  ],
+  "nw_nh": [
+    127,
+    159
+  ],
+  "center_err": [
+    0.0,
+    0.0
+  ],
+  "delta_face": 13.548940658569336,
+  "delta_feat": 15.779057502746582,
+  "delta_cring": 0.0,
+  "delta_wrong_left": 0.0,
+  "alpha_center": 0.88,
+  "alpha_edge": 0.55,
+  "pad": 0.08,
+  "method": "FACE_CROP_DIRECT + color-match + radial alpha + edge reblend",
+  "note": "true camera face from PROBE 640-730,120-230; not C-ring not neck"
+}

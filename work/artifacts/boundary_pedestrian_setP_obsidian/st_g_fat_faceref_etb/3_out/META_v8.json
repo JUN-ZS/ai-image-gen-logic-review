@@ -1,0 +1,22 @@
+{
+  "pipeline": "FAT_FACE_REF_v8_AplusB",
+  "formula": "v7_S2 base + ImagineB face ECC + f02 HF + single-layer alpha>=0.95",
+  "gates": {
+    "face_lap": 224.54922485351562,
+    "center_lap": 350.48944091796875,
+    "before_face_lap": 213.34146118164062,
+    "full_lap": 366.0434875488281,
+    "ecc": 0.8309558520630826,
+    "alpha_center_mean": 0.9996005296707153,
+    "B": "189fa02d",
+    "base": "v7",
+    "HF": "f02 59763bdc"
+  },
+  "L": "L-0c9b8c137bba",
+  "sha256": "0c9b8c137bbae269f9b03d50a5f4a6c72a669c07032a24afa69922e8088c6c76",
+  "size": [
+    3584,
+    2016
+  ],
+  "asof": "2026-10-25T17:25:18Z"
+}

@@ -1,0 +1,31 @@
+{
+  "asof": "2026-10-26T20:02:45Z",
+  "trial": "WEAPON_SPARSE_SPIRAL_v3_NOECC_GEO",
+  "user": "全桿邏輯疏螺旋、零網、weapon mask 高α",
+  "note": "skipped ECC (pattern change breaks align); geo shaft band alpha 0.90-0.99",
+  "stats": {
+    "w_full": {
+      "M": 0.182,
+      "a_mean": 0.16,
+      "d": 5.9
+    },
+    "w_top": {
+      "M": 0.218,
+      "a_mean": 0.206,
+      "d": 12.1
+    },
+    "w_mid": {
+      "M": 0.168,
+      "a_mean": 0.156,
+      "d": 7.9
+    },
+    "w_bot": {
+      "M": 0.351,
+      "a_mean": 0.339,
+      "d": 14.6
+    }
+  },
+  "L": "L-5ea01ba8b7df",
+  "mb": 2.43,
+  "mb_2x": 7.41
+}

@@ -1,0 +1,18 @@
+{
+  "virus_diagnosis": true,
+  "wrong_base_was": "SET_R_SELFGEN_FACE_FULL_q100.jpg (already face-GEN stacked on N2LS = 假底/中間鏈)",
+  "constitution": "§0.12.23 VIRUS_LOCAL_BASE + 已拼假底禁作 BASE",
+  "correct_base": "1f290afc native 2304→4608 Lanczos only",
+  "box_person": [
+    1474,
+    414,
+    3225,
+    3317
+  ],
+  "box_face": [
+    1658,
+    552,
+    2949,
+    2073
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "GRID_PATH1E_NEAR",
+  "pipeline": [
+    "L0",
+    "S=3 structure Lanczos",
+    "pose plate ECC",
+    "hard paste feather",
+    "optional HF conf"
+  ],
+  "L0": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+  "plate": "db29e080-5616-4db6-842f-dbee740896ac",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "S": 3,
+  "size": [
+    5376,
+    3024
+  ],
+  "FACE_ROI_L0": [
+    40,
+    20,
+    900,
+    980
+  ],
+  "FACE_CORE_FINAL": [
+    249,
+    405,
+    2571,
+    2796
+  ],
+  "feather_px": 40,
+  "mix_interior": 0.95,
+  "ecc_score": 0.3117413706523586,
+  "ssim": 0.5314304706833517,
+  "gates": {
+    "face_lap": 39.67612858171921,
+    "face_lap_pass": false,
+    "sky_delta": 0.0,
+    "sky_pass": true,
+    "lp_ssim": 0.8552770565515553,
+    "ecc_pass": true
+  },
+  "sha256": "991746a023fac066e4eb6c037ec59d955364d6144a82f733e301fd5ddce38ef3",
+  "L_code": "L-991746a023fa",
+  "note": "60-cell HD tiles not available for this L0; structure = S=3 L0 upscale; PATH1E face hard paste is full. True 60-cell needs HD cell assets.",
+  "asof": "2026-10-25T15:30:15Z"
+}

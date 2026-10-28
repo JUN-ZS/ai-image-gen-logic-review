@@ -1,0 +1,25 @@
+{
+  "set": "SET-R",
+  "status": "ST1_OK_WEAPON_W0",
+  "weapon_lock": {
+    "user": "這把",
+    "asset": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "name": "RING-CLEAVER W0",
+    "strike_face": "T-END bronze disk in C-gap"
+  },
+  "no_bg": true,
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "IP_BODY_MASTER": "4e75a2ab-c7b9-4c64-8088-39f5a2f4e46b",
+  "IP_HD": "9c2dbc34-e1b4-4056-985f-68066a789950",
+  "IP_ACTION": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+  "angles": {
+    "WEAPON_PROP": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "IP_FRONT_FULL": "4e75a2ab-c7b9-4c64-8088-39f5a2f4e46b",
+    "IP_ACTION": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+    "IP_BACK_3Q": "fdd07f76-a2c4-4e6b-82bf-742aa40a85e1",
+    "IP_SIDE": "01b7ea7f-1f5d-4433-9097-d0a9ceee268a",
+    "IP_FACE_CLOSE": "9c2dbc34-e1b4-4056-985f-68066a789950",
+    "IP_FRONT_ALT": "2ce551c4-68ec-43b7-a6cd-84eaf55681c7"
+  },
+  "constitution": "§0.0 ST1 · §0.5.1"
+}

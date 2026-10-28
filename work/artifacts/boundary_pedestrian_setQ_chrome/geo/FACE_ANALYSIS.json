@@ -1,0 +1,15 @@
+{
+  "method": "GEO.T · H2",
+  "strike_face": "T-END · FLAT",
+  "recv_face": "SPHERE · TANGENT",
+  "force": "F_n",
+  "gap_pre": "GAP→0 PENDING",
+  "gap_mid": "GAP=0",
+  "gap_post": "GAP=0",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2",
+  "L": "L-dfa1b1dabb57",
+  "GEO_INDICATOR": true,
+  "text_set": "GEO_INDICATOR_TEXT_SET.json",
+  "catalog_id": "G02",
+  "out_dir": "boundary_pedestrian_setQ_chrome/geo/indicator_setq"
+}

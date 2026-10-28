@@ -1,0 +1,563 @@
+{
+  "L0": "90807317-4e7d-4646-9f98-ac6c59208d08",
+  "W0": 1152,
+  "H0": 1728,
+  "nr": 4,
+  "nc": 6,
+  "omega": 0.09,
+  "S": 2,
+  "cells": [
+    {
+      "idx": 0,
+      "r": 0,
+      "c": 0,
+      "core": [
+        0.0,
+        0.0,
+        192.0,
+        432.0
+      ],
+      "box": [
+        0,
+        0,
+        209,
+        470
+      ],
+      "size": [
+        209,
+        470
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c00_r0c0.jpg"
+    },
+    {
+      "idx": 1,
+      "r": 0,
+      "c": 1,
+      "core": [
+        192.0,
+        0.0,
+        384.0,
+        432.0
+      ],
+      "box": [
+        174,
+        0,
+        401,
+        470
+      ],
+      "size": [
+        227,
+        470
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c01_r0c1.jpg"
+    },
+    {
+      "idx": 2,
+      "r": 0,
+      "c": 2,
+      "core": [
+        384.0,
+        0.0,
+        576.0,
+        432.0
+      ],
+      "box": [
+        366,
+        0,
+        593,
+        470
+      ],
+      "size": [
+        227,
+        470
+      ],
+      "face_dom": true,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c02_r0c2.jpg"
+    },
+    {
+      "idx": 3,
+      "r": 0,
+      "c": 3,
+      "core": [
+        576.0,
+        0.0,
+        768.0,
+        432.0
+      ],
+      "box": [
+        558,
+        0,
+        785,
+        470
+      ],
+      "size": [
+        227,
+        470
+      ],
+      "face_dom": true,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c03_r0c3.jpg"
+    },
+    {
+      "idx": 4,
+      "r": 0,
+      "c": 4,
+      "core": [
+        768.0,
+        0.0,
+        960.0,
+        432.0
+      ],
+      "box": [
+        750,
+        0,
+        977,
+        470
+      ],
+      "size": [
+        227,
+        470
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c04_r0c4.jpg"
+    },
+    {
+      "idx": 5,
+      "r": 0,
+      "c": 5,
+      "core": [
+        960.0,
+        0.0,
+        1152.0,
+        432.0
+      ],
+      "box": [
+        942,
+        0,
+        1152,
+        470
+      ],
+      "size": [
+        210,
+        470
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c05_r0c5.jpg"
+    },
+    {
+      "idx": 6,
+      "r": 1,
+      "c": 0,
+      "core": [
+        0.0,
+        432.0,
+        192.0,
+        864.0
+      ],
+      "box": [
+        0,
+        393,
+        209,
+        902
+      ],
+      "size": [
+        209,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c06_r1c0.jpg"
+    },
+    {
+      "idx": 7,
+      "r": 1,
+      "c": 1,
+      "core": [
+        192.0,
+        432.0,
+        384.0,
+        864.0
+      ],
+      "box": [
+        174,
+        393,
+        401,
+        902
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c07_r1c1.jpg"
+    },
+    {
+      "idx": 8,
+      "r": 1,
+      "c": 2,
+      "core": [
+        384.0,
+        432.0,
+        576.0,
+        864.0
+      ],
+      "box": [
+        366,
+        393,
+        593,
+        902
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": true,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c08_r1c2.jpg"
+    },
+    {
+      "idx": 9,
+      "r": 1,
+      "c": 3,
+      "core": [
+        576.0,
+        432.0,
+        768.0,
+        864.0
+      ],
+      "box": [
+        558,
+        393,
+        785,
+        902
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": true,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c09_r1c3.jpg"
+    },
+    {
+      "idx": 10,
+      "r": 1,
+      "c": 4,
+      "core": [
+        768.0,
+        432.0,
+        960.0,
+        864.0
+      ],
+      "box": [
+        750,
+        393,
+        977,
+        902
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c10_r1c4.jpg"
+    },
+    {
+      "idx": 11,
+      "r": 1,
+      "c": 5,
+      "core": [
+        960.0,
+        432.0,
+        1152.0,
+        864.0
+      ],
+      "box": [
+        942,
+        393,
+        1152,
+        902
+      ],
+      "size": [
+        210,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c11_r1c5.jpg"
+    },
+    {
+      "idx": 12,
+      "r": 2,
+      "c": 0,
+      "core": [
+        0.0,
+        864.0,
+        192.0,
+        1296.0
+      ],
+      "box": [
+        0,
+        825,
+        209,
+        1334
+      ],
+      "size": [
+        209,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c12_r2c0.jpg"
+    },
+    {
+      "idx": 13,
+      "r": 2,
+      "c": 1,
+      "core": [
+        192.0,
+        864.0,
+        384.0,
+        1296.0
+      ],
+      "box": [
+        174,
+        825,
+        401,
+        1334
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c13_r2c1.jpg"
+    },
+    {
+      "idx": 14,
+      "r": 2,
+      "c": 2,
+      "core": [
+        384.0,
+        864.0,
+        576.0,
+        1296.0
+      ],
+      "box": [
+        366,
+        825,
+        593,
+        1334
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c14_r2c2.jpg"
+    },
+    {
+      "idx": 15,
+      "r": 2,
+      "c": 3,
+      "core": [
+        576.0,
+        864.0,
+        768.0,
+        1296.0
+      ],
+      "box": [
+        558,
+        825,
+        785,
+        1334
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c15_r2c3.jpg"
+    },
+    {
+      "idx": 16,
+      "r": 2,
+      "c": 4,
+      "core": [
+        768.0,
+        864.0,
+        960.0,
+        1296.0
+      ],
+      "box": [
+        750,
+        825,
+        977,
+        1334
+      ],
+      "size": [
+        227,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c16_r2c4.jpg"
+    },
+    {
+      "idx": 17,
+      "r": 2,
+      "c": 5,
+      "core": [
+        960.0,
+        864.0,
+        1152.0,
+        1296.0
+      ],
+      "box": [
+        942,
+        825,
+        1152,
+        1334
+      ],
+      "size": [
+        210,
+        509
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c17_r2c5.jpg"
+    },
+    {
+      "idx": 18,
+      "r": 3,
+      "c": 0,
+      "core": [
+        0.0,
+        1296.0,
+        192.0,
+        1728.0
+      ],
+      "box": [
+        0,
+        1257,
+        209,
+        1728
+      ],
+      "size": [
+        209,
+        471
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c18_r3c0.jpg"
+    },
+    {
+      "idx": 19,
+      "r": 3,
+      "c": 1,
+      "core": [
+        192.0,
+        1296.0,
+        384.0,
+        1728.0
+      ],
+      "box": [
+        174,
+        1257,
+        401,
+        1728
+      ],
+      "size": [
+        227,
+        471
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c19_r3c1.jpg"
+    },
+    {
+      "idx": 20,
+      "r": 3,
+      "c": 2,
+      "core": [
+        384.0,
+        1296.0,
+        576.0,
+        1728.0
+      ],
+      "box": [
+        366,
+        1257,
+        593,
+        1728
+      ],
+      "size": [
+        227,
+        471
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c20_r3c2.jpg"
+    },
+    {
+      "idx": 21,
+      "r": 3,
+      "c": 3,
+      "core": [
+        576.0,
+        1296.0,
+        768.0,
+        1728.0
+      ],
+      "box": [
+        558,
+        1257,
+        785,
+        1728
+      ],
+      "size": [
+        227,
+        471
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c21_r3c3.jpg"
+    },
+    {
+      "idx": 22,
+      "r": 3,
+      "c": 4,
+      "core": [
+        768.0,
+        1296.0,
+        960.0,
+        1728.0
+      ],
+      "box": [
+        750,
+        1257,
+        977,
+        1728
+      ],
+      "size": [
+        227,
+        471
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c22_r3c4.jpg"
+    },
+    {
+      "idx": 23,
+      "r": 3,
+      "c": 5,
+      "core": [
+        960.0,
+        1296.0,
+        1152.0,
+        1728.0
+      ],
+      "box": [
+        942,
+        1257,
+        1152,
+        1728
+      ],
+      "size": [
+        210,
+        471
+      ],
+      "face_dom": false,
+      "path": "/workspace/artifacts/artifacts/grid24_9080/cells/c23_r3c5.jpg"
+    }
+  ]
+}

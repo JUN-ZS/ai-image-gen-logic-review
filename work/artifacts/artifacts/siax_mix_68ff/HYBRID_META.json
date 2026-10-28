@@ -1,0 +1,26 @@
+{
+  "asof": "2026-10-27T21:40:35Z",
+  "src": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+  "pipeline": "TRUE_SIAX4x + HYBRID_mix §0.12.15 (banded)",
+  "size": [
+    4608,
+    6912
+  ],
+  "mb": 27.7,
+  "siax_mb": 28.67,
+  "g_face": 0.82,
+  "g_body": 0.72,
+  "g_bg": 0.4,
+  "face_roi_4x": [
+    2000,
+    1040,
+    3040,
+    2080
+  ],
+  "face_mean_abs_vs_lp": 2.062,
+  "face_mean_abs_vs_siax": 1.825,
+  "face_pct_gt8_vs_lp": 2.78,
+  "L": "L-c775c998b66d",
+  "plate_asset": "1a52a607-0154-43d0-9904-041446ea2730",
+  "a8b": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004"
+}

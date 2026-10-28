@@ -1,0 +1,128 @@
+{
+  "frame": "pre",
+  "method_id": "GEO.T · H2",
+  "loop_id": "L-7ab89829778f",
+  "world": "ARCTIC_AURORA_ICE",
+  "heroine_id": "BW_HEROINE_SET_H_V1",
+  "typeset": "world_integrated_v2",
+  "source_sha256": "e4c924215fc501d3c08dc2892cb559f006fa497b70f0393f4ae8c7cc9af3ae35",
+  "physics_binding": [
+    {
+      "k": "title_zh",
+      "text": "邊界行人",
+      "x": 0.06,
+      "y": 0.18,
+      "size": 58,
+      "weight": 900,
+      "rotate": -4,
+      "role": "title"
+    },
+    {
+      "k": "title_en",
+      "text": "THE BOUNDARY WALKER",
+      "x": 0.07,
+      "y": 0.24,
+      "size": 16,
+      "weight": 700,
+      "rotate": -3,
+      "role": "chip"
+    },
+    {
+      "k": "method",
+      "text": "GEO.T · H2",
+      "x": 0.12,
+      "y": 0.42,
+      "size": 36,
+      "weight": 900,
+      "rotate": -8,
+      "role": "method"
+    },
+    {
+      "k": "phase",
+      "text": "PHASE  PRE_NEAR",
+      "x": 0.58,
+      "y": 0.22,
+      "size": 22,
+      "weight": 800,
+      "rotate": 3,
+      "role": "chip"
+    },
+    {
+      "k": "gap",
+      "text": "signed_gap ≫ 0",
+      "x": 0.62,
+      "y": 0.72,
+      "size": 28,
+      "weight": 850,
+      "rotate": 6,
+      "role": "method"
+    },
+    {
+      "k": "fn",
+      "text": "F_n → 0   n·v → 1",
+      "x": 0.55,
+      "y": 0.8,
+      "size": 18,
+      "weight": 700,
+      "rotate": 4,
+      "role": "chip"
+    },
+    {
+      "k": "strike",
+      "text": "STRIKE: END_FACE  (pending)",
+      "x": 0.08,
+      "y": 0.88,
+      "size": 17,
+      "weight": 700,
+      "rotate": 0,
+      "role": "chip"
+    },
+    {
+      "k": "recv",
+      "text": "RECV: sphere membrane  (far)",
+      "x": 0.08,
+      "y": 0.93,
+      "size": 16,
+      "weight": 650,
+      "rotate": 0,
+      "role": "chip"
+    },
+    {
+      "k": "crack",
+      "text": "Crack = 0",
+      "x": 0.72,
+      "y": 0.55,
+      "size": 20,
+      "weight": 750,
+      "rotate": -12,
+      "role": "chip"
+    },
+    {
+      "k": "world",
+      "text": "WORLD · ARCTIC_AURORA_ICE",
+      "x": 0.55,
+      "y": 0.12,
+      "size": 14,
+      "weight": 700,
+      "rotate": 2,
+      "role": "chip"
+    },
+    {
+      "k": "loop",
+      "text": "LOOP L-7ab89829778f",
+      "x": 0.62,
+      "y": 0.96,
+      "size": 14,
+      "weight": 700,
+      "rotate": 0,
+      "role": "chip"
+    }
+  ],
+  "no_plate": true,
+  "forbidden": [
+    "TRY_count",
+    "REVIEW PENDING",
+    "solid_backdrop_panel"
+  ],
+  "artwork_sha256": "f9a4b6b4fcd2edfad5507ecfb53038f62d9da77e4ada87f576e43121b90d55ca"
+}

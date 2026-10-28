@@ -1,0 +1,20 @@
+{
+  "L": "L-6be8d4e2514f",
+  "mode": "WHOLE_COLLAGE",
+  "ncc": 0.8002,
+  "lap_whole": [
+    4743,
+    6139
+  ],
+  "lap_upper": [
+    2996,
+    3887
+  ],
+  "lap_lower": [
+    6493,
+    8394
+  ],
+  "mad": 9.21,
+  "user": "整體拼貼 not upper-only",
+  "bytes": 32395056
+}

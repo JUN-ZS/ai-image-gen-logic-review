@@ -1,0 +1,30 @@
+{
+  "kind": "FREE_v2_PATH1E",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "L_face": "FACE-f612ec7e07d9",
+  "L_set": "L-08d1743fbd6a",
+  "method": "imagine reference face upgrade approx PATH1E (scene lock + standard face)",
+  "frames": [
+    {
+      "name": "LIGHTNING_1E",
+      "asset_1e": "145c9525-3c27-4f13-845f-ec65d31c8b59",
+      "source_free": "5c79310b-9051-4637-8d94-3169223485c4"
+    },
+    {
+      "name": "FIRE_1E",
+      "asset_1e": "19c6b667-57b0-493a-8256-d757ee5a95d9",
+      "source_free": "3c0311de-7010-4492-aca0-310ea4ed8c72"
+    },
+    {
+      "name": "GRAFFITI_1E",
+      "asset_1e": "b0b6e9bb-e5cb-4916-ba13-6cd1da19cfa1",
+      "source_free": "ca9333d2-9d64-4efd-861d-37052bcb52df"
+    },
+    {
+      "name": "JADE_1E",
+      "asset_1e": "686c9366-4496-4797-8f0a-e277e39839d3",
+      "source_free": "fdb57cf3-fc08-4626-a55c-51c6276d0f51"
+    }
+  ],
+  "asof": "2026-10-25T15:14:34Z"
+}

@@ -1,0 +1,43 @@
+{
+  "set": "SET-R",
+  "stage": "ST4_FORMULA_SERIES_v3",
+  "seed": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+  "promise": "不騙新圖幀 · 不餵 611e/07830 同構",
+  "story": "球被敲右移 → 公式 → 銅圓黑月敲碎玻璃泡",
+  "formula": "STRIKE:銅圓黑月  RECV:TANGENT  F_n  GAP=0  H2",
+  "frames": [
+    {
+      "id": "F0_PRE",
+      "asset": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+      "beat": "未打到 GAP>0 · 起點"
+    },
+    {
+      "id": "F1_PUSH",
+      "asset": "b0815d2f-982c-471d-9091-68b34014a8c3",
+      "beat": "盤端敲 · 球右移"
+    },
+    {
+      "id": "F2_FLIP",
+      "asset": "ffee964f-b641-455b-9af9-14bdaa0e9a87",
+      "beat": "球在右 · 換握蓄力"
+    },
+    {
+      "id": "F3_MOON",
+      "asset": "574ca7cf-ae02-438c-9c08-f47741c1ee34",
+      "beat": "公式 · 銅圓黑月打爆"
+    },
+    {
+      "id": "F4_SHATTER",
+      "asset": "ab1139d4-6249-40e8-b1c9-3f2d9a8551ce",
+      "beat": "銅圓黑月 · 右球碎裂"
+    }
+  ],
+  "alts": {
+    "F3_alt_aerial": "bbaae2b1-c628-4a95-aa68-22b70fde7ea3",
+    "F4_alt_rear": "a314178c-016d-44d1-9f81-b5b53c948daa"
+  },
+  "reject_twins": [
+    "611e6adc-51ab-40a3-baad-31fe41c236d0",
+    "07830c7e-88be-4f87-bc7d-69b1a9c18245"
+  ]
+}

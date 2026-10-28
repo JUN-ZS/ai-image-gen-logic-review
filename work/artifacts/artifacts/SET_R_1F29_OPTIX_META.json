@@ -1,0 +1,27 @@
+{
+  "asof": "2026-10-27T16:42:43Z",
+  "user": "放大做光學運算補足正反推,放大去做再收回",
+  "scale": 2,
+  "optix_res": [
+    3080,
+    1680
+  ],
+  "note": "3x OOM→2x banded memmap AVOID OOM",
+  "pipeline": [
+    "crop",
+    "2x Lanczos band",
+    "REV cand@hi",
+    "Blinn N·H^40 optical",
+    "FWD micro-flat+glint",
+    "GEN mix",
+    "收回 AREA+HF",
+    "FULL"
+  ],
+  "out_mb": 34.06,
+  "size": [
+    4608,
+    6912
+  ],
+  "move": "OPTIX_UP_COMPUTE_DOWN",
+  "L": "L-e0252c2a5d6c"
+}

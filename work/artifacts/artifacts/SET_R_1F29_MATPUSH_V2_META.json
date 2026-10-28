@@ -1,0 +1,17 @@
+{
+  "asof": "2026-10-27T15:36:29Z",
+  "user": "stone_mid + fire 收勾 HF α再咬",
+  "L_prev_stone": "stone lap 5829->6529 fill 0.815",
+  "fire": {
+    "lap": [
+      3688.8,
+      3426.6
+    ],
+    "alpha_mean": 0.182,
+    "fill": 0.389,
+    "fill_hard": 0.193,
+    "ecc": 0.6617
+  },
+  "out_mb": 36.5,
+  "L": "L-18d1a9096f98"
+}

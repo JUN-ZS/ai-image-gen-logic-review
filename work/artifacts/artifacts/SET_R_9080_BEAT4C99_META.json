@@ -1,0 +1,80 @@
+{
+  "asof": "2026-10-26T18:23:43Z",
+  "trial": "BEAT_4c99_v1",
+  "L": "L-9ccfe9aad423",
+  "rival": "4c99ea4b ≈ SIAX4x_FULL pure Siax",
+  "method": "DETAIL6 structure + SKIN face HF + MERGE stone + selective edge SIAX HF",
+  "scoreboard": {
+    "face": {
+      "lap_beat": 2054.5,
+      "lap_siax": 664.5,
+      "clar_beat": 77.43,
+      "clar_siax": 64.89,
+      "hf_beat": 6.523,
+      "hf_siax": 4.348,
+      "win_clar": true,
+      "win_lap": true,
+      "win": true
+    },
+    "facezone": {
+      "lap_beat": 3007.4,
+      "lap_siax": 668.0,
+      "clar_beat": 90.26,
+      "clar_siax": 62.51,
+      "hf_beat": 8.523,
+      "hf_siax": 4.415,
+      "win_clar": true,
+      "win_lap": true,
+      "win": true
+    },
+    "stone": {
+      "lap_beat": 2668.3,
+      "lap_siax": 261.4,
+      "clar_beat": 106.6,
+      "clar_siax": 60.48,
+      "hf_beat": 8.696,
+      "hf_siax": 3.39,
+      "win_clar": true,
+      "win_lap": true,
+      "win": true
+    },
+    "title": {
+      "lap_beat": 1747.0,
+      "lap_siax": 305.7,
+      "clar_beat": 68.67,
+      "clar_siax": 50.18,
+      "hf_beat": 5.53,
+      "hf_siax": 3.04,
+      "win_clar": true,
+      "win_lap": true,
+      "win": true
+    },
+    "armor": {
+      "lap_beat": 3597.2,
+      "lap_siax": 729.9,
+      "clar_beat": 91.88,
+      "clar_siax": 66.66,
+      "hf_beat": 8.008,
+      "hf_siax": 4.668,
+      "win_clar": true,
+      "win_lap": true,
+      "win": true
+    },
+    "sphere": {
+      "lap_beat": 5364.7,
+      "lap_siax": 654.5,
+      "clar_beat": 122.42,
+      "clar_siax": 72.63,
+      "hf_beat": 11.0,
+      "hf_siax": 4.889,
+      "win_clar": true,
+      "win_lap": true,
+      "win": true
+    }
+  },
+  "wins": 6,
+  "n": 6,
+  "pass_gate": true,
+  "constitution": "E-GS-14 clarity not HF total",
+  "mb": 22.66
+}

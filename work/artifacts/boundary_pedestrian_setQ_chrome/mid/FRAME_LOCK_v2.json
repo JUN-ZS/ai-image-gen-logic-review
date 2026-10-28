@@ -1,0 +1,20 @@
+{
+  "supersedes": "f5bedf13-d489-440a-bfb6-d374c56ec6df",
+  "reason": "user: first MID wrong method, not heroine, not clear",
+  "scene_base": "81712ce6-820e-4335-b866-c1d8d75f708d",
+  "identity_donor": "49568425-f48f-4cf3-beb3-233ce85d03b9",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "method": "a8b-first fullframe rebuild + PATH1E hard paste",
+  "ecc": 0.8275499040778366,
+  "face_box": [
+    582,
+    79,
+    873,
+    370
+  ],
+  "lap_face": 1505.5192309963275,
+  "sha256": "fd902cd7ba000f3ba2364fc7c7a25b0e856cc5359ecb6f661344627fe6f21182",
+  "L": "L-fd902cd7ba00",
+  "locked": true,
+  "FULLFRAME_FACE_LOCK": true
+}

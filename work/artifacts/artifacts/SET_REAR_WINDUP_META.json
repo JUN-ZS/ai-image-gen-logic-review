@@ -1,0 +1,15 @@
+{
+  "type": "VIDEO_FIRST_LAST",
+  "change": "向後蓄力武器 → 轉身跳起敲球 · 環境崩塌",
+  "first": "802401c9",
+  "last": "cce4ad3a",
+  "video": "787685aa-3930-41e6-8a9a-67a57d8d566a",
+  "beats": [
+    "站姿",
+    "武器向後蓄力",
+    "跳起+轉身",
+    "敲球火花",
+    "環境崩塌"
+  ],
+  "sha256": "ee8ccd77fa85cc223785ec75218edd99c1150cd4a078f4fb7176a2efca180816"
+}

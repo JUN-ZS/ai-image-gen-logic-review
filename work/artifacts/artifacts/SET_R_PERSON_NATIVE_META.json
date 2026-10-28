@@ -1,0 +1,40 @@
+{
+  "asof": "2026-10-27T18:58:27Z",
+  "user": "人也不對,是否鎖了病毒底?",
+  "virus_yes": true,
+  "diagnosis": "BASE=SELFGEN_FACE_FULL 已拼臉假底 + 雙重 face GEN → 人漂",
+  "fix": "crop/GEN from 1f290afc native; BASE=N2LS; WHOLE+GOU; no SELFGEN base",
+  "constitution": [
+    "§0.12.23 VIRUS",
+    "§0.12.24 WHOLE",
+    "§0.12.25 GOU"
+  ],
+  "stats": [
+    {
+      "name": "person",
+      "tmpl": 0.9239543676376343,
+      "ecc": 0.9574478488542827,
+      "mode": "affine",
+      "box": [
+        738,
+        208,
+        1610,
+        1657
+      ]
+    },
+    {
+      "name": "face",
+      "tmpl": 0.45102187991142273,
+      "ecc": 0.5877683886372654,
+      "mode": "affine",
+      "box": [
+        823,
+        341,
+        1478,
+        953
+      ]
+    }
+  ],
+  "out_mb": 31.58,
+  "L": "L-a78acb0c028f"
+}

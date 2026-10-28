@@ -1,0 +1,229 @@
+{
+  "asof": "2026-10-26T17:46:00Z",
+  "status": "CORRECTED after audit",
+  "bugs": [
+    {
+      "id": 1,
+      "bug": "s_iso arithmetic mean on non-square face → axis size mismatch",
+      "fix": "s_face = sqrt((wd/ws)*(hd/hs)) geometric mean; or min(sx,sy) if must fit"
+    },
+    {
+      "id": 2,
+      "bug": "place_tl with float s but Image.resize int(W*s) → center drift",
+      "fix": "s_eff after resize; recompute place_tl with s_eff"
+    },
+    {
+      "id": 3,
+      "bug": "paste expand sx=0.35 syt=0.55 pulls weapon/C-ring → ghost face",
+      "fix": "pad≤0.12 + asymmetric hammer_kill on prop side"
+    },
+    {
+      "id": 4,
+      "bug": "Haar false face (copper disk) as F_s/F_d",
+      "fix": "skin_score+position prior; manual lock if needed"
+    },
+    {
+      "id": 5,
+      "bug": "FAT: face*U without subtracting cell origin",
+      "fix": "face_C=face_D-cell_tl; face_Cup=face_C*U; reinsert /U + cell_tl"
+    },
+    {
+      "id": 6,
+      "bug": "512 letterbox plate as src without inverse pad",
+      "fix": "never use padded square as S; use native or undo letterbox"
+    },
+    {
+      "id": 7,
+      "bug": "space mixing FULL_SRC_PLACE + FACE_CROP without tags",
+      "fix": "declare MODE=FULL_SRC|FACE_CROP_DIRECT; one transform chain"
+    }
+  ],
+  "spaces": {
+    "D": "dst full (W_d,H_d)",
+    "S": "src full native (W_s,H_s)",
+    "S_eff": "src after int resize (nw,nh) with s_eff",
+    "C": "cell crop in D",
+    "C_up": "cell * U"
+  },
+  "formulas": {
+    "s_face": "sqrt( (w_d/w_s) * (h_d/h_s) )",
+    "s_eff_after_resize": "0.5 * (nw/W_s + nh/H_s)  # or (nw/W_s) if only X tracked",
+    "place_tl": "c_d - c_s * s_eff",
+    "S_to_D": "p_D = p_S * s_eff + place_tl",
+    "D_to_S": "p_S = (p_D - place_tl) / s_eff",
+    "FACE_CROP_DIRECT": {
+      "crop_S": "expand(F_s, pad≤0.12)",
+      "scale": "s_face",
+      "place": "c_d - c_s_in_crop * s_face",
+      "mask": "ellipse on F_d + hammer_kill"
+    },
+    "FAT": {
+      "face_C": "(x-x0, y-y0, w, h)",
+      "face_Cup": "face_C * U",
+      "reinsert_center_D": "face_Cup_center / U + (x0,y0)"
+    },
+    "GRID_box": "clamp(core ± ω*core_size, image)",
+    "GRID_local_to_D": "local + box_origin"
+  },
+  "gates": {
+    "center_roundtrip_px": 0.5,
+    "outside_paste_delta": 0.5,
+    "GHOST_PERSON": "OK"
+  },
+  "proofs": {
+    "SET_R_FACE_M1": {
+      "center_rt": {
+        "s": 0.16923076923076924,
+        "tl": [
+          579.1538461538462,
+          79.76923076923076
+        ],
+        "S_to_D_err": [
+          0.0,
+          0.0
+        ],
+        "D_to_S_err": [
+          2.2737367544323206e-13,
+          0.0
+        ],
+        "ok": 1
+      },
+      "box_map": {
+        "mapped_box": [
+          668.0,
+          139.0,
+          88.0,
+          88.0
+        ],
+        "expected": [
+          668,
+          139,
+          88,
+          88
+        ],
+        "size_err": [
+          0.0,
+          0.0
+        ],
+        "center_err": [
+          0.0,
+          0.0
+        ],
+        "note": "size_err should be ~0 if sx≈sy; if face not square, iso scale cannot match both w and h"
+      },
+      "quant": {
+        "s": 0.16923076923076924,
+        "s_eff": [
+          0.16875,
+          0.16883116883116883
+        ],
+        "nw": 270,
+        "nh": 208,
+        "drift_if_mismatch": [
+          0.34554507992004346,
+          0.26851273726273917
+        ],
+        "fix": "After int(resize), recompute s_eff = 0.5*(nw/Ws+nh/Hs) and place_tl with s_eff"
+      }
+    },
+    "AIR_a8b": {
+      "center_rt": {
+        "s": 0.41533722714460836,
+        "tl": [
+          449.2534362223038,
+          59.24237934957095
+        ],
+        "S_to_D_err": [
+          0.0,
+          0.0
+        ],
+        "D_to_S_err": [
+          5.684341886080802e-14,
+          0.0
+        ],
+        "ok": 1
+      },
+      "box_map": {
+        "mapped_box": [
+          524.8448115626225,
+          105.34481156262248,
+          111.3103768747551,
+          111.31037687475506
+        ],
+        "expected": [
+          528,
+          102,
+          105,
+          118
+        ],
+        "size_err": [
+          6.310376874755093,
+          6.689623125244935
+        ],
+        "center_err": [
+          0.0,
+          0.0
+        ],
+        "note": "size_err should be ~0 if sx≈sy; if face not square, iso scale cannot match both w and h"
+      },
+      "quant": {
+        "s": 0.41533722714460836,
+        "s_eff": [
+          0.4148148148148148,
+          0.4143968871595331
+        ],
+        "nw": 224,
+        "nh": 213,
+        "drift_if_mismatch": [
+          0.23111486574930495,
+          0.17918715857143752
+        ],
+        "fix": "After int(resize), recompute s_eff = 0.5*(nw/Ws+nh/Hs) and place_tl with s_eff"
+      }
+    },
+    "FAT_U3": {
+      "face_C": [
+        28,
+        32,
+        105,
+        118
+      ],
+      "face_Cup": [
+        84,
+        96,
+        315,
+        354
+      ],
+      "reinsert_center": [
+        580.5,
+        161.0
+      ],
+      "err": [
+        0.0,
+        0.0
+      ],
+      "ok": 1
+    },
+    "FACE_CROP_DIRECT_air": {
+      "s": 0.41533722714460836,
+      "src_crop": [
+        149.84,
+        88.488,
+        482.16,
+        409.55199999999996
+      ],
+      "dst_expand": [
+        517.5,
+        93.74,
+        643.5,
+        231.21
+      ],
+      "place_tl_crop": [
+        511.48756633765186,
+        95.99473990514306
+      ],
+      "method": "FACE_CROP_DIRECT"
+    }
+  },
+  "preferred_mode": "FACE_CROP_DIRECT for soft identity (a8b); FULL_SRC_PLACE only when src is full-frame GRID cell with verified F_s"
+}

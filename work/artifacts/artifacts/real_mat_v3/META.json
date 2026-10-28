@@ -1,0 +1,36 @@
+{
+  "asof": "2026-10-26T16:07:42Z",
+  "trial": "REAL_MAT_v3",
+  "proof": {
+    "face": {
+      "hf_d": 0.953,
+      "mean_d": 3.181
+    },
+    "cloth": {
+      "hf_d": 3.319,
+      "mean_d": 8.828
+    },
+    "fire": {
+      "hf_d": 1.102,
+      "mean_d": 3.961
+    },
+    "sphere": {
+      "hf_d": 3.278,
+      "mean_d": 11.063
+    },
+    "spec": {
+      "hf_d": 1.414,
+      "mean_d": 3.571
+    }
+  },
+  "L": "L-fed06bcfe48d",
+  "size_MB": 18.85,
+  "layers": [
+    "leather cloth",
+    "metal",
+    "fire chroma",
+    "spec/reflect",
+    "skin pores mid",
+    "Siax weak-pixel fill"
+  ]
+}

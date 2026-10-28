@@ -1,0 +1,52 @@
+{
+  "asof": "2026-10-27T19:16:17Z",
+  "user": "好.做 人格憲正解",
+  "constitution": [
+    "§0.12.23 BASE=N2LS self-crop",
+    "§0.12.24 pure V5",
+    "ECC_MIN=0.75 skip if fail",
+    "isotropic",
+    "no CHEAT_B"
+  ],
+  "ECC_MIN": 0.75,
+  "GAIN_FACE": 0.55,
+  "GAIN_PERSON": 0.48,
+  "stats": [
+    {
+      "name": "person",
+      "tmpl": 0.5971500873565674,
+      "ecc": 0.9599077261216967,
+      "mode": "affine",
+      "sc": 0.8730064590800479,
+      "box": [
+        648,
+        214,
+        1653,
+        1722
+      ],
+      "gain": 0.48,
+      "face_mode": false,
+      "status": "PASS",
+      "fill": 0.9509719307969436
+    },
+    {
+      "name": "face",
+      "tmpl": 0.8782522678375244,
+      "ecc": 0.935828252857081,
+      "mode": "affine",
+      "sc": 0.543495018975332,
+      "box": [
+        782,
+        243,
+        1521,
+        1034
+      ],
+      "gain": 0.55,
+      "face_mode": true,
+      "status": "PASS",
+      "fill": 0.8716548997603281
+    }
+  ],
+  "out_mb": 31.41,
+  "L": "L-8dc48986cf31"
+}

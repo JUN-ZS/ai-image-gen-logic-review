@@ -1,0 +1,34 @@
+{
+  "method": "GRID_FEATHER + DUAL_BASE_LANDMARK_ALIGN",
+  "base_A_layout": "d225b616-2be3-4f9f-b4e7-3a1049714ebc",
+  "base_B_detail": "401fe9ad-6815-44a7-b839-68850121b9d7",
+  "grid": {
+    "cols": 6,
+    "rows": 4,
+    "cells": 24,
+    "overlap": 0.2,
+    "upscale": 2.0
+  },
+  "paste_math": "accum += cell_hd * feather_alpha; out = accum / weight  (coordinate-perfect)",
+  "landmarks": {
+    "mode": "68-style anchors (face box + eyes) + ORB refine",
+    "note": "MediaPipe FaceLandmarker ready when libEGL available; same affine paste path",
+    "n_anchors_A": 68,
+    "n_anchors_B": 68,
+    "n_orb": 40,
+    "face_A": [
+      780,
+      129,
+      82,
+      82
+    ],
+    "face_B": [
+      798,
+      247,
+      105,
+      105
+    ]
+  },
+  "feather": "edge distance ramp + core boost + Gaussian; ellipse for semantic ROIs",
+  "sha_final": "bfe6ef2cb22f4dccab40557a40cf1a57bc71e9e7eec00dc12444c81eb539b8c4"
+}

@@ -1,0 +1,14 @@
+{
+  "asof": "2026-10-27T18:08:59Z",
+  "user": "5871ebc9 人臉加輕光追和反光",
+  "base": "OPTIX_MLC ≈ 5871ebc9",
+  "face_box": [
+    829,
+    345,
+    1474,
+    1036
+  ],
+  "mode": "light face L-trace + soft skin gloss",
+  "out_mb": 33.29,
+  "L": "L-0ae82775e991"
+}

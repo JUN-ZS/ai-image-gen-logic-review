@@ -1,0 +1,29 @@
+[
+  {
+    "frame": "pre",
+    "method": "diff+chroma isolate from first HUD gen → paste on clean",
+    "clean_sha256": "07239c248a2b7955c94bf31ca941719857e0b948fef3a573d9239b6c0f67391a",
+    "hud_src_sha256": "997c5f1ca1d17a3a520ba1dcc73051a979e150379c803d1bd6a9a94aa9bd3b94",
+    "type_layer_sha256": "8d142b5bd214beeb9a84f5552193ab2cb56036af9a578ae9995164519db30499",
+    "final_sha256": "eb98346148744f2c9b5c00334b2e7e9e5f3113ac240cccb4f5be761cf8b9b002",
+    "order": "clean base + type layer on top (character never from HUD)"
+  },
+  {
+    "frame": "mid",
+    "method": "diff+chroma isolate from first HUD gen → paste on clean",
+    "clean_sha256": "a7e62587e029c2339a51c82258a0381294eba2cb7762de721c973e6ec58829dd",
+    "hud_src_sha256": "2118336dcde58815f5deac837bfcae4c47d10fa20a755692afb96aeb6f2d6b56",
+    "type_layer_sha256": "cd7c829fa737fc463af773b2c5d5a900673ccd787abd96ef48ac5adcd91cc221",
+    "final_sha256": "3cbc3cde517d4409526e79f61155bf71cf314b5f0d1e464f23a3f38c0510433e",
+    "order": "clean base + type layer on top (character never from HUD)"
+  },
+  {
+    "frame": "post",
+    "method": "diff+chroma isolate from first HUD gen → paste on clean",
+    "clean_sha256": "04b35f4f1941aa909e97aa7e7ddd5caf3af6a4986847498a94ff11d8edeb7bc0",
+    "hud_src_sha256": "78a178a1ed50be7e2ffb9ad625d9cdef57200af49dd2bdf231987b884528d429",
+    "type_layer_sha256": "fa7d17797747dbc0e91a64f1879a4f95cfd96536c8bb04d5f6dfc601f894f6e7",
+    "final_sha256": "ab9934afef5d3fc61a5a254688920ee8ec178a762348a899561d9b665a8cdffa",
+    "order": "clean base + type layer on top (character never from HUD)"
+  }
+]

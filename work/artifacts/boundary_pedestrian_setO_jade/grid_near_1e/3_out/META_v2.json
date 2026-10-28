@@ -1,0 +1,31 @@
+{
+  "kind": "GRID_PATH1E_NEAR_v2",
+  "L0": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+  "size": [
+    5376,
+    3024
+  ],
+  "S": 3,
+  "FACE_CORE_L0": [
+    160,
+    60,
+    820,
+    920
+  ],
+  "feather_px": 40,
+  "mix": 0.96,
+  "ecc_plate": 0.46026897631612934,
+  "ecc_near1e": 0.983361416732673,
+  "gates": {
+    "face_lap": 55.908660731945766,
+    "center_lap": 86.89427499001488,
+    "face_lap_pass": false,
+    "sky_delta": 0.0,
+    "sky_pass": true
+  },
+  "sha256": "f84eb8f170bc318c47e8a97c33292c6e6991d3e32a1c1f62061d8f99205e6d86",
+  "L_code": "L-f84eb8f170bc",
+  "chain": "L0→S3 structure→ECC plate/near1e→hard paste 0.96→HF conf std/L0",
+  "missing_vs_SETN_grid60": "no 60-cell HD tile residual for body/scene (structure is Lanczos S3 only)",
+  "asof": "2026-10-25T15:31:43Z"
+}

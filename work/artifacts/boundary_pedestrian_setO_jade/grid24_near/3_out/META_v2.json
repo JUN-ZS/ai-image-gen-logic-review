@@ -1,0 +1,21 @@
+{
+  "kind": "GRID24_HD_CELLS_PATH1E_v2",
+  "L0": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+  "grid": "6x4=24",
+  "S": 2,
+  "size": [
+    3584,
+    2016
+  ],
+  "path1e_mode": "assembly_primary_HF_only_when_ECC_low",
+  "ecc_std": 0.32407799123060166,
+  "gates": {
+    "face_lap": 519.2430419921875,
+    "center_lap": 831.8939819335938,
+    "full_lap": 442.9085998535156
+  },
+  "sha256": "1a23cd4f911ec26f22ff6b87caace08f31be943708f50085b6e76f9d84afb1d4",
+  "L_code": "L-1a23cd4f911e",
+  "asof": "2026-10-25T15:39:48Z",
+  "note": "v1 had double-face ghost (ECC 0.39 plate hard paste). v2: 24cell face geometry locked, std HF residual only."
+}

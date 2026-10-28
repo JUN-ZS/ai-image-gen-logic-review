@@ -1,0 +1,18 @@
+{
+  "method": "PATH1E",
+  "base": "61902455-e795-4908-9114-7d547675399d",
+  "donor_plate": "f5ab567d-8d5e-45d1-9c1b-2d7d53990144",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "ecc": 0.995885256775188,
+  "face_box": [
+    508,
+    59,
+    837,
+    388
+  ],
+  "mix_interior": 0.92,
+  "feather_px": 39,
+  "lap_face_before": 1277.3571751432316,
+  "lap_face_after": 1465.2344857404094,
+  "sha256": "74376e4d8dbe29eb624771730569d4c7dd83eb2525949096dc107d5c7e9c5828"
+}

@@ -1,0 +1,30 @@
+{
+  "asof": "2026-10-26T12:18:30Z",
+  "mode": "POSTER 字圖 · REF series ALL (batched ≤5)",
+  "series_refs_used": [
+    "802401c9",
+    "cce4ad3a",
+    "72339da4",
+    "79fa7eec",
+    "25003678",
+    "f72d9076",
+    "2c8876f7",
+    "aca0bf41",
+    "023b59a0",
+    "0c634374",
+    "3847ecc2"
+  ],
+  "posters": {
+    "POSTER 2:3 主海報": "cdd2f4d8-0fd0-4004-aef5-2eec920fbbc8",
+    "POSTER 青電 寬": "2250d7ef-10d3-4c6f-9d3e-e69c50e3f049",
+    "POSTER 火擊破": "776aa397-4df6-42d0-9786-5080e41b6d83",
+    "POSTER 雙相 PRE|POST": "4bf2804a-5363-4932-9b93-db8510dfc316"
+  },
+  "Σ": [
+    "邊界行人",
+    "THE BOUNDARY WALKER",
+    "GEO.T · H2",
+    "OBSIDIAN_ORBIT",
+    "STRIKE THE BOUNDARY"
+  ]
+}

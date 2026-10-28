@@ -1,0 +1,24 @@
+{
+  "asof": "2026-10-26T19:13:04Z",
+  "trial": "ARMOR_MAT_PLATE_v1",
+  "source": "1f5f86ae / SET_R_C9_NAT_CLEAR",
+  "user": "服裝材質和像素不滿意, 用我的方法升材質和清晰, 不要OOM",
+  "method": [
+    "i2i real metal plates same-ish crop",
+    "ECC stitch plate-dominant metal mask",
+    "face hard lock",
+    "global metal multi-scale strips",
+    "2x strip export AVOID OOM"
+  ],
+  "plates": {
+    "torso": "5e21b4e4-4057-4f91-b02c-de3a9996b975",
+    "arm": "041a3f75-0718-4c80-ba9c-37ffdafbbc4e"
+  },
+  "ecc": {
+    "torso": 0.7793458852403329,
+    "arm": 0.9109196288929121
+  },
+  "L": "L-f3e6f02999fb",
+  "full_mb": 22.21,
+  "constitution_ref": "§0.12.20 A→D material path for armor · metal mask not skin"
+}

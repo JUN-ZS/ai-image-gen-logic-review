@@ -1,0 +1,12 @@
+{
+  "asof": "2026-10-27T06:39:06Z",
+  "source_asset": "42a38740-3b65-418b-bd61-1fac09d6ed75",
+  "request": "把武器勾走",
+  "method": "polyline spine corridor ring->ball contact + metal + excludes",
+  "weapon_frac": 0.0355,
+  "n_contours": 1,
+  "contour_areas": [
+    164246.5
+  ],
+  "L": "L-2d00f05c3604"
+}

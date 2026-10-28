@@ -1,0 +1,93 @@
+{
+  "asof": "2026-10-27T15:29:32Z",
+  "user": "石和火 真GEN材質 正推進",
+  "true_gen_material": true,
+  "base": "SIAX hybrid 2304 → push → 2x FULL",
+  "formula": "GEN plate + ECC + gou irregular α + HF push",
+  "constitution": [
+    "§0.12.15",
+    "§0.12.24",
+    "§0.12.25 GOU",
+    "person lock fire"
+  ],
+  "zones": [
+    {
+      "name": "fire_title",
+      "mode": "fire",
+      "ecc": 0.6579,
+      "lap": [
+        3688.8,
+        3044.4
+      ],
+      "alpha_mean": 0.332,
+      "fill": 0.61,
+      "box2304": [
+        120,
+        40,
+        2180,
+        900
+      ],
+      "gen": "bc1eb4fb-b666-420e-9ba6-227758ddf0ca.jpg"
+    },
+    {
+      "name": "stone_mid",
+      "mode": "stone",
+      "ecc": 0.624,
+      "lap": [
+        5829.3,
+        3217.6
+      ],
+      "alpha_mean": 0.683,
+      "fill": 0.984,
+      "box2304": [
+        400,
+        2100,
+        1900,
+        2900
+      ],
+      "gen": "0bf28957-371b-4510-aa75-1988926d8894.jpg"
+    },
+    {
+      "name": "ground_fire",
+      "mode": "stone",
+      "ecc": 0.6566,
+      "lap": [
+        3103.0,
+        3467.7
+      ],
+      "alpha_mean": 0.696,
+      "fill": 0.978,
+      "box2304": [
+        300,
+        2550,
+        2000,
+        3199
+      ],
+      "gen": "71436417-78cc-41d2-b033-6d1eb4734991.jpg"
+    },
+    {
+      "name": "stone_bot",
+      "mode": "ice",
+      "ecc": 0.5567,
+      "lap": [
+        2917.1,
+        2278.7
+      ],
+      "alpha_mean": 0.651,
+      "fill": 0.958,
+      "box2304": [
+        200,
+        2800,
+        2097,
+        3444
+      ],
+      "gen": "8cf7b960-6d8a-4c5c-bfbb-bd72a7a20290.jpg"
+    }
+  ],
+  "out_mb": 35.85,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-78f7df31f8d0"
+}

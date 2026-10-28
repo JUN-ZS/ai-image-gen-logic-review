@@ -1,0 +1,54 @@
+{
+  "asof": "2026-10-27T06:31:35Z",
+  "version": "v5",
+  "source_asset": "947cf5b2-1ca3-498a-b006-86158573c572",
+  "source_file": "/workspace/artifacts/artifacts/SET_R_9080_FACE_GENMIX_FULL.jpg",
+  "method": "GrabCut person (rembg failed ~5%) + multi-class + big-contour",
+  "person_frac": 1.0,
+  "stats": [
+    {
+      "id": 0,
+      "name": "background",
+      "frac": 0.0,
+      "n": 0
+    },
+    {
+      "id": 1,
+      "name": "hair",
+      "frac": 0.1121,
+      "n": 1
+    },
+    {
+      "id": 2,
+      "name": "body_skin",
+      "frac": 0.0852,
+      "n": 4
+    },
+    {
+      "id": 3,
+      "name": "face_skin",
+      "frac": 0.1359,
+      "n": 1
+    },
+    {
+      "id": 4,
+      "name": "armor_clothes",
+      "frac": 0.2043,
+      "n": 2
+    },
+    {
+      "id": 5,
+      "name": "weapon",
+      "frac": 0.4625,
+      "n": 1
+    },
+    {
+      "id": 6,
+      "name": "fire_fx",
+      "frac": 0.0,
+      "n": 0
+    }
+  ],
+  "n_instances": 9,
+  "L": "L-c0aaf28adb32"
+}

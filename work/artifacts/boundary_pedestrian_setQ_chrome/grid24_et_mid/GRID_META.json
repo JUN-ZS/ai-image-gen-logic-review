@@ -1,0 +1,18 @@
+{
+  "L0_ET": "e649a380-4625-4b40-82b5-b269202da4d6",
+  "L0_PATH1E_clean": "f80c51c8-3611-45e7-87ae-a6fccb811703",
+  "S": 2,
+  "size": [
+    3584,
+    2016
+  ],
+  "mode": "GRID24_ENHANCE",
+  "face_cell_mode": "ENHANCE_ONLY_then_face_protect_f80",
+  "r2c3": "moderation_skip_use_L0",
+  "center_lap": 903.0170510819911,
+  "face_lap": 189.456461385994,
+  "L0_face_lap": 118.84623745062926,
+  "sha256": "93904c14b7f0f0dae1ccd292419f75f2e5f7a76d380adba95579123f11b03254",
+  "L": "L-93904c14b7f0",
+  "pipeline": "f80 PATH1E -> ET text e649 -> GRID24_ENHANCE S2 face protect"
+}

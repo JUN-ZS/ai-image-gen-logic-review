@@ -1,0 +1,40 @@
+{
+  "asof": "2026-10-26T20:25:58Z",
+  "trial": "ARMOR_MESH_SAFE_UPGRADE",
+  "rule": "UPGRADE_SAFE: same LF structure, HF mesh only, local plate, ECC gate, weapon hard lock",
+  "base": "SET_R_CLOTHES_ONLY",
+  "donor": "71c21828 SIAX chest",
+  "stats": {
+    "chest": {
+      "cc": 0.885,
+      "M": 0.651,
+      "d": 11.2,
+      "mode": "plate"
+    },
+    "shoulder": {
+      "cc": 0.775,
+      "M": 0.667,
+      "d": 14.3,
+      "mode": "plate"
+    },
+    "torso": {
+      "cc": 0.777,
+      "M": 0.676,
+      "d": 15.2,
+      "mode": "plate"
+    },
+    "skirt": {
+      "cc": 0.663,
+      "M": 0.626,
+      "d": 16.9,
+      "mode": "plate"
+    }
+  },
+  "delta_weapon": 0.005208092741668224,
+  "delta_clothes": 8.124387741088867,
+  "chest_lap_before": 5456.158203125,
+  "chest_lap_after": 4211.658203125,
+  "L": "L-a74f6cdc56f9",
+  "mb": 2.31,
+  "mb_2x": 6.93
+}

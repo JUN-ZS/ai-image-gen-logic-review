@@ -1,0 +1,24 @@
+{
+  "lock": "SOFT_a8b identity-heavy v2",
+  "pipeline": "PIXEL_RATIO SOFT alpha=0.85 + hard left hammer_kill + right-shifted ellipse",
+  "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "dst_face": [
+    535,
+    108,
+    95,
+    108
+  ],
+  "paste_roi": [
+    529,
+    99,
+    643,
+    228
+  ],
+  "scale_iso": 0.3787313432835821,
+  "alpha": 0.85,
+  "delta_cring": 0.0,
+  "delta_face": 12.671812057495117,
+  "sha256": "d00c0783bb9bf114f841b5896be3fb8ddf143451c9657d2baf41178f851d9316",
+  "L_lock": "L-d00c0783bb9b"
+}

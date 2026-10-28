@@ -1,0 +1,15 @@
+{
+  "set_id": "SET-I",
+  "world": "OBSIDIAN_VOLCANO_NIGHT",
+  "style_lock": "volcanic basalt / magma calligraphy / ash-smoke type (world-native)",
+  "typo_doctrine": "SET-F taught USAGE principles only — free position, no plate, diegetic materials, physics-bound PRE/POST, ~1/3 density, master invention per world. NEVER hard-copy SET-F rainy neon graffiti look.",
+  "method_sample": "GEO.T · H3",
+  "heroine_lock": "BW_HEROINE_SET_H_V1",
+  "loop_mid_sha12": "L-bdc34d8cb667",
+  "frames": {
+    "pre": "aa1f7fe7-c498-46d0-95d8-d8ff5afc3087",
+    "mid": "00ce5e93-9f7e-45b0-a502-ff75b3920df5",
+    "post": "aa0b2e70-d481-4b8a-8943-b90dfe60167b"
+  },
+  "forbidden": ["TRY_count", "REVIEW PENDING", "hard-copy SET-F visual type"]
+}

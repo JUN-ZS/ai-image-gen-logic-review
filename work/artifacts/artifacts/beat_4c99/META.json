@@ -1,0 +1,97 @@
+{
+  "asof": "2026-10-26T18:24:03Z",
+  "trial": "BEAT_4C99",
+  "L": "L-b654be8ae3ec",
+  "rival": "4c99ea4b-16cf-4f99-8459-1972d18f3d71 ≈ SIAX4x_FULL pure Siax",
+  "base": "DETAIL6 + SKIN face HF structure-lock",
+  "wins": "5/5",
+  "siax": {
+    "face": {
+      "lap": 664.5,
+      "clar": 126.6
+    },
+    "fz": {
+      "lap": 766.9,
+      "clar": 138.7
+    },
+    "stone": {
+      "lap": 261.4,
+      "clar": 100.0
+    },
+    "title": {
+      "lap": 327.3,
+      "clar": 74.7
+    },
+    "armor": {
+      "lap": 856.0,
+      "clar": 164.5
+    }
+  },
+  "detail6": {
+    "face": {
+      "lap": 1704.9,
+      "clar": 195.6
+    },
+    "fz": {
+      "lap": 1918.0,
+      "clar": 227.6
+    },
+    "stone": {
+      "lap": 2679.7,
+      "clar": 362.1
+    },
+    "title": {
+      "lap": 1749.3,
+      "clar": 183.5
+    },
+    "armor": {
+      "lap": 5538.9,
+      "clar": 527.4
+    }
+  },
+  "beat": {
+    "face": {
+      "lap": 2002.7,
+      "clar": 203.7
+    },
+    "fz": {
+      "lap": 2475.0,
+      "clar": 245.0
+    },
+    "stone": {
+      "lap": 2680.5,
+      "clar": 360.9
+    },
+    "title": {
+      "lap": 1792.1,
+      "clar": 184.0
+    },
+    "armor": {
+      "lap": 5530.7,
+      "clar": 525.1
+    }
+  },
+  "deltas": {
+    "face": {
+      "clar": 77.1,
+      "lap": 1338.2
+    },
+    "fz": {
+      "clar": 106.3,
+      "lap": 1708.1
+    },
+    "stone": {
+      "clar": 260.9,
+      "lap": 2419.1
+    },
+    "title": {
+      "clar": 109.3,
+      "lap": 1464.8
+    },
+    "armor": {
+      "clar": 360.6,
+      "lap": 4674.7
+    }
+  },
+  "constitution": "§0.12.18 E-GS-14 勝過=清晰/字可讀 非HF總量"
+}

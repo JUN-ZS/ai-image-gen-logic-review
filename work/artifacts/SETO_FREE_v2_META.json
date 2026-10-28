@@ -1,0 +1,40 @@
+{
+  "set": "SET-O",
+  "kind": "FREE_ART_v2_FORMULA",
+  "rule": "§0.8 T_diegetic · not prior FREE layout copy",
+  "L": "L-08d1743fbd6a",
+  "sigma_text": [
+    "邊界行人",
+    "THE BOUNDARY WALKER",
+    "GEO.T · H2",
+    "WORLD:ABYSSAL_JADE · L-08d1743fbd6a"
+  ],
+  "frames": [
+    {
+      "name": "PRE_SPLINE_LIGHTNING",
+      "asset": "5c79310b-9051-4637-8d94-3169223485c4",
+      "phi_or_E": "Φ_spline · E=coiled lightning"
+    },
+    {
+      "name": "POST_FLUID_FIRE",
+      "asset": "3c0311de-7010-4492-aca0-310ea4ed8c72",
+      "phi_or_E": "Φ_fluid · E=combustion fire"
+    },
+    {
+      "name": "HOM_GRAFFITI",
+      "asset": "ca9333d2-9d64-4efd-861d-37052bcb52df",
+      "phi_or_E": "Φ_homography ground graffiti"
+    },
+    {
+      "name": "WORLD_ADAPT_JADE",
+      "asset": "fdb57cf3-fc08-4626-a55c-51c6276d0f51",
+      "phi_or_E": "E=jade adaptive · heroine+type"
+    },
+    {
+      "name": "WORLD_ADAPT_TYPE_ONLY",
+      "asset": "df5771b0-191c-46b3-bc10-5e12d6afafa6",
+      "phi_or_E": "E=jade pure type (optional showcase)"
+    }
+  ],
+  "asof": "2026-10-25T14:46:27Z"
+}

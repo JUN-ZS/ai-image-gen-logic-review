@@ -1,0 +1,14 @@
+{
+  "type": "VIDEO",
+  "mother_still": "cce4ad3a-3ac9-425b-8057-459f0682c211",
+  "mother_root": "2455522d (母圖單次 · 禁疊上疊 E-FLOW-06)",
+  "video_asset": "76914daf-f07a-495d-9294-58c0f509e0cd",
+  "duration_s": 10,
+  "beats": [
+    "t0–1s: 球在被打的光下，無損但輕震",
+    "中段: 女主用槌的另一邊打到球上",
+    "後段: 大破碎 / 飛晶"
+  ],
+  "sha256": "97b5cb2999aef4b3d3de40601feeaf5f92435c448a9c1d08d58e5abfde63275b",
+  "note": "I2V from mother-once still only; no stack edit before video"
+}

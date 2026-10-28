@@ -1,0 +1,31 @@
+{
+  "set": "SET-R",
+  "stage": "ST4_PRE_POST",
+  "mid_lock_asset": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+  "mid_file": "frames/I_MID.jpg",
+  "PRE": {
+    "asset": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+    "alt": "a29ed948-d5b3-43b7-ba35-512b4424725f",
+    "contract": "GAP>0 · no spark · sphere intact · swing anticipation · 未打到圓",
+    "analysis_line": "STRIKE:T-END approaching  RECV:TANGENT  GAP>0  H2"
+  },
+  "MID": {
+    "asset": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+    "contract": "disk T-END contact · GAP=0 · spark",
+    "analysis_line": "STRIKE:T-END  RECV:TANGENT  GAP=0  H2"
+  },
+  "POST": {
+    "asset": "07830c7e-88be-4f87-bc7d-69b1a9c18245",
+    "alt": "b0917eaf-721f-455b-bd1a-070736899394",
+    "contract": "OTHER end = C-RING strike · sphere shatter · mass to RIGHT · 另一頭打爆圓右移",
+    "analysis_line": "STRIKE:RING-END  RECV:TANGENT  shatter  sphere→R  H2"
+  },
+  "sha": {
+    "PRE": "b66470bbece86ebd854ed6a0ccf43cf74ef16d1cec1d506abe4d5bcc93d19f0c",
+    "MID": "8d4f1c46b61b4d71f5c3985ac5795df882574cf001ebec24b1882ee77e1182ee",
+    "POST": "5a3e906b81cd677c2a27f8407f177749ab83619dd6028c0706b4c9d84bf6c4da"
+  },
+  "person_cut_source": "MID_ONLY",
+  "text": "NONE",
+  "weapon": "W0"
+}

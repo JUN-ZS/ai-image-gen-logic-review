@@ -1,0 +1,21 @@
+{
+  "asof": "2026-10-27T19:44:53Z",
+  "section": "§0.12.27",
+  "name_zh": "細格對換",
+  "name_en": "GRID_CELL_SWAP",
+  "alias": "GCS",
+  "user": "給這找錯除毒的成功過程給招名(寫入憲)",
+  "chain": [
+    "CLEAN L-8dc48986cf31",
+    "GRID48 L-c27dacaa89f4",
+    "FINE L-ea2a6b0f2778",
+    "CELL8 L-db350bf16fa9"
+  ],
+  "final_asset": "092a9e12-286c-4719-af7f-275ace5218e7",
+  "files": [
+    "/workspace/artifacts/artifacts/GRID_CELL_SWAP_01227.md",
+    "/workspace/artifacts/GRID_CELL_SWAP_01227.md",
+    "/workspace/artifacts/BOUNDARY_WALKER_UNIFIED_RULES.md"
+  ],
+  "L": "L-78c635b7f365"
+}

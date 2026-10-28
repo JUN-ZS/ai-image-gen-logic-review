@@ -1,0 +1,10 @@
+{
+  "request": "先改對表情(是望球那邊)要原女主級重生成",
+  "expression": "gaze toward crystal sphere on RIGHT — NOT camera",
+  "pipeline": "2455 pose + a8b → 望球 regen → identity lock [7c,a8b]",
+  "wrong_gaze_ref": "ce2961b6 (looked at camera)",
+  "gaze_pose_asset": "7c180b12-b00b-424a-9170-18139f274772",
+  "final_asset": "dbea357d-2034-438b-be35-9980e295556f",
+  "donor": "2dae8d6e-8144-4a96-b6a6-be67b2465f38",
+  "note": "原女主級: full face regenerate a8b identity; head/eyes toward sphere"
+}

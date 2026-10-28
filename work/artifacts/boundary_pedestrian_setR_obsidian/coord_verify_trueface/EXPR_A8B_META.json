@@ -1,0 +1,19 @@
+{
+  "request": "先改對表情, 再更貼 a8b 特寫級",
+  "refs": [
+    "ed7cd6b0-2a2d-4d6f-9105-3ea228588d5c",
+    "2dae8d6e-8144-4a96-b6a6-be67b2465f38"
+  ],
+  "base_clean": "d33bbd06-a1ec-477b-b598-64569776b0d5",
+  "step1_expr": "510f82da-ce4e-4c5f-95cb-271aa79a92e5",
+  "step2_closeup": "ce2961b6-fbd3-40d2-93da-c20a91720738",
+  "expression_target": "a8b calm soft serene gaze, soft lips, large dark eyes",
+  "identity": "a8b close-up level",
+  "F_d_lock": [
+    648,
+    118,
+    92,
+    108
+  ],
+  "note": "no overlay boxes; single face; C-ring kept"
+}

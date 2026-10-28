@@ -1,0 +1,24 @@
+{
+  "asof": "2026-10-27T16:36:10Z",
+  "user": "白噪線點轉化成精細正確折射光面,非消滅; 最多噪圖正反可GEN",
+  "mother": "SET_R_1F29_SIAX_HYBRID_2304 (max noise score)",
+  "gen": "8bc44390-1188-4a0f-8ffc-a9c5ca9d13b8",
+  "logic": [
+    "反推 cand=白噪線質量",
+    "GEN 轉成微面折射",
+    "algo 正推 energy→暖glint",
+    "cand區 fuse 非刪",
+    "HF鎖母拓樸"
+  ],
+  "cand_mean_before": 0.058,
+  "cand_mean_after": 0.0584,
+  "energy_mean": 0.0454,
+  "ecc": 0.7865,
+  "out_mb": 33.84,
+  "size": [
+    4608,
+    6912
+  ],
+  "technique": "NOISE→REFRACT (轉化 not 消滅)",
+  "L": "L-06f22d5402af"
+}

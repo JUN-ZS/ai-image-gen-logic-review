@@ -1,0 +1,34 @@
+{
+  "pipeline": "PIXEL_RATIO §0.12.14 REAL face (not copper disk FP)",
+  "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "dst_face_REAL": [
+    528,
+    102,
+    105,
+    118
+  ],
+  "dst_face_FALSE_disk": [
+    426,
+    78,
+    137,
+    137
+  ],
+  "primary": "HYBRID_HFg+SOFTa8b",
+  "primary_lap": 1696.9581769635843,
+  "raw_lap": 1964.4412514937246,
+  "paste_roi": [
+    515,
+    92,
+    645,
+    233
+  ],
+  "sha256": "e81368156089b0aca818ef5d42ef191ffd6e669e7b3708513d90c09e0edf7af5",
+  "L_candidate": "L-e81368156089",
+  "scores": {
+    "HF_a8b": 1789.318392792143,
+    "HF_g2": 1792.1061121394189,
+    "SOFT_a8b": 1508.7775910602998,
+    "SOFT_g2": 1478.489004490922,
+    "HYBRID_HFg+SOFTa8b": 1696.9581769635843
+  }
+}

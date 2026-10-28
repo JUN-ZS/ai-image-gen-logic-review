@@ -1,0 +1,38 @@
+{
+  "asof": "2026-10-27T08:18:58Z",
+  "L": "L-bd9269270026",
+  "donor": "d8d40da5-b6bc-40cd-ac44-b578e6b4d453",
+  "base": "FULL_V5 4608x6912 ONLY (no local virus)",
+  "formula": "V5: plate=base+α*(gen_MF-base_MF)+β*base_HF after scale+ECC",
+  "box": [
+    1369,
+    1369,
+    3775,
+    3801
+  ],
+  "scale_px": 1.7284,
+  "ncc_search": 0.7385607957839966,
+  "ncc_before": 0.6277,
+  "ncc_after": 0.6472,
+  "ecc_cc": 0.6487,
+  "phase": [
+    0.077,
+    -0.431
+  ],
+  "lap_in": 4705.1,
+  "lap_out": 5637.7,
+  "mad": 8.2,
+  "alpha_mean": 0.597,
+  "gain": 1.2,
+  "beta": 0.28,
+  "honest_align": true,
+  "bytes": 32111912,
+  "size": [
+    4608,
+    6912
+  ],
+  "bans": [
+    "CHEAT_B full-RGB",
+    "VIRUS_LOCAL_BASE"
+  ]
+}

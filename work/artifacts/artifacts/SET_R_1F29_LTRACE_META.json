@@ -1,0 +1,24 @@
+{
+  "asof": "2026-10-27T17:19:10Z",
+  "user": "非壓低白噪;依大區光度算可轉多少噪→適應加光;分層遞迴光追",
+  "principles": [
+    "1/(1+r^2) atten",
+    "Lambert N·L",
+    "Blinn N·H",
+    "Fresnel",
+    "region energy budget transfer",
+    "4-bounce recurse"
+  ],
+  "E_noise_sum": 52248.52,
+  "take_sum": 42442.14,
+  "boost_sum": 42442.13,
+  "E_left_sum": 9806.4,
+  "transfer_ratio": 0.812,
+  "out_mb": 33.64,
+  "size": [
+    4608,
+    6912
+  ],
+  "move": "LTRACE",
+  "L": "L-5945c0c77712"
+}

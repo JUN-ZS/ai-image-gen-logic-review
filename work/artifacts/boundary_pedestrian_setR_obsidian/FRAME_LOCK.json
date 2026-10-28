@@ -1,0 +1,31 @@
+{
+  "set": "SET-R",
+  "world_code": "OBSIDIAN_ORBIT",
+  "stage": "ST2_MID_LOCK",
+  "LOCKED": true,
+  "locked_at": "2026-10-26T12:01:00Z",
+  "I_MID_file": "frames/I_MID.jpg",
+  "I_MID_asset": "7c19c324-0b00-4880-93ff-78f22280f34a",
+  "sha256": "a1a1f6da2612349782714493b92bba2fe53bb409d44200551edae959cfebe1a8",
+  "L": "L-a1a1f6da2612",
+  "method": "GEO.T · H2",
+  "person_cut_source": "MID_ONLY",
+  "FULLFRAME_FACE_LOCK": true,
+  "asset_ids_order": [
+    "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "9c2dbc34-e1b4-4056-985f-68066a789950",
+    "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+    "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "df2a2226-91ba-40eb-a59d-d00c801ed4e8"
+  ],
+  "refs": {
+    "a8b": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "IP_FACE_CLOSE": "9c2dbc34-e1b4-4056-985f-68066a789950",
+    "IP_ACTION": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+    "WEAPON_W0": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "WORLD_STAGE": "df2a2226-91ba-40eb-a59d-d00c801ed4e8"
+  },
+  "pose": "t0 critical contact · GAP≈0 · gaze toward sphere",
+  "text": "NONE · clean MID plate",
+  "constitution": "§0.9 ST2 · §0.13 FULLFRAME_FACE_LOCK a8b-first"
+}

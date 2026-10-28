@@ -1,0 +1,23 @@
+{
+  "pipeline": "FAT_FACE_REF_v3_FACEFIX",
+  "L0": "6f544750-6f70-4b4a-974b-5b50e394f9f1",
+  "donor": "59763bdc-1ecb-4098-9191-6236d9a60b1c",
+  "path": "BLEND_ECC_MID",
+  "ecc": 0.7452128762588426,
+  "gates": {
+    "face_lap": 230.42657470703125,
+    "center_lap": 457.4830627441406,
+    "donor_face_lap": 438.5010986328125,
+    "before_face_lap": 136.2053985595703,
+    "ecc": 0.7452128762588426,
+    "path": "BLEND_ECC_MID",
+    "full_lap": 364.81268310546875
+  },
+  "L": "L-3def8dbcdbbf",
+  "sha256": "3def8dbcdbbfe5e1eea53f1210170f68da31fb23309ae2cd41ca1ce22078580e",
+  "size": [
+    3584,
+    2016
+  ],
+  "asof": "2026-10-25T17:20:36Z"
+}

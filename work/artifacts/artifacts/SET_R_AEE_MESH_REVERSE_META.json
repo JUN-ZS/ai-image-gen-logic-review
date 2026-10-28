@@ -1,0 +1,22 @@
+{
+  "asof": "2026-10-27T09:16:23Z",
+  "L": "L-a9e4860e9e68",
+  "version": "REVERSE_v2_sharp_foundation",
+  "user": "大圖網紋做根基,座標反推,全圖勾出貼入密網",
+  "formula": "plate=mesh_foundation*α_mesh(0.98 armor)+full_struct*α_struct",
+  "ncc": 0.7344,
+  "lap_roi": [
+    1459.2,
+    1566.8,
+    1425.4
+  ],
+  "mesh_a_mean": 0.482,
+  "box": [
+    1296,
+    1244,
+    3582,
+    4284
+  ],
+  "out_mb": 32.21,
+  "note": "killed V5 dilute; mesh HF restored after Lab; armor nearly pure GEN mesh"
+}

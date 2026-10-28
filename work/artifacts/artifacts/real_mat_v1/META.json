@@ -1,0 +1,32 @@
+{
+  "asof": "2026-10-26T15:59:39Z",
+  "trial": "REAL_MAT_v2",
+  "donors": [
+    "brushed metal",
+    "scratched metal",
+    "volcanic",
+    "obsidian",
+    "cracked rock",
+    "granite"
+  ],
+  "proof": {
+    "armor": {
+      "hf_d": 2.635,
+      "mean_d": 7.549
+    },
+    "text": {
+      "hf_d": 2.799,
+      "mean_d": 10.073
+    },
+    "sphere": {
+      "hf_d": 4.152,
+      "mean_d": 12.381
+    },
+    "face": {
+      "hf_d": 0.048,
+      "mean_d": 0.296
+    }
+  },
+  "L": "L-7e5daba9f453",
+  "size_MB": 18.05
+}

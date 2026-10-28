@@ -1,0 +1,50 @@
+{
+  "set_id": "SET-Q",
+  "world": "CHROME_MIRROR",
+  "no_bg": true,
+  "multi_angle": true,
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "body_seed": "21a606e1-9fba-448b-97bd-7cb1f90f6d75",
+  "asof": "2026-10-26T01:53:00Z",
+  "angles": [
+    {
+      "id": "IP.FACE_CLOSE",
+      "asset_id": "c33c10f0-3a79-4d35-8038-1d036ff11a87",
+      "role": "face_primary",
+      "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FACE_CLOSE_c33c10f0.jpg"
+    },
+    {
+      "id": "IP.FRONT",
+      "asset_id": "56e5c458-7817-4e68-855e-9caf481e1295",
+      "role": "half_body",
+      "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FRONT_56e5c458.jpg"
+    },
+    {
+      "id": "IP.FRONT_FULL",
+      "asset_id": "09eb5c04-1068-43d1-a54d-e3e508a5aa39",
+      "role": "full_body",
+      "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FRONT_FULL_09eb5c04.jpg"
+    },
+    {
+      "id": "IP.ACTION",
+      "asset_id": "6ed663e5-6413-46a0-a168-555ba39087cb",
+      "role": "hammer_raise",
+      "IP_HD": true,
+      "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_ACTION_6ed663e5.jpg"
+    },
+    {
+      "id": "IP.THREE_Q",
+      "asset_id": "5d1e56a1-f7eb-4bd5-9d8e-53677059dc6b",
+      "role": "three_quarter",
+      "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_THREE_Q_5d1e56a1.jpg"
+    },
+    {
+      "id": "IP.SIDE",
+      "asset_id": "d8acce60-f2a5-4007-8a25-1609a170b852",
+      "role": "profile",
+      "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_SIDE_d8acce60.jpg"
+    }
+  ],
+  "IP_HD": "6ed663e5-6413-46a0-a168-555ba39087cb",
+  "min_ok": true
+}

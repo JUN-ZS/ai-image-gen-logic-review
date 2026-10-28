@@ -1,0 +1,28 @@
+{
+  "asof": "2026-10-27T08:31:15Z",
+  "L": "L-99e7cc32fcb8",
+  "version": "V2 reverse-MF",
+  "diagnosis": "curve 無/有 = face-lock+armor_id, NOT feather; V1 full-RGB reverse lap crash",
+  "formula": "plate=base+α*1.35*(gen_MF-base_MF)+β*base_HF; upper_boost; tight face",
+  "lap_upper": [
+    3022.2,
+    3830.7
+  ],
+  "lap_lower": [
+    6535.8,
+    8245.7
+  ],
+  "lap_full": [
+    4778.2,
+    6037.6
+  ],
+  "mad": 14.24,
+  "ecc_cc": 0.6087,
+  "bytes": 32568707,
+  "box": [
+    1391,
+    1391,
+    3754,
+    3784
+  ]
+}

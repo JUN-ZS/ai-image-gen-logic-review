@@ -1,0 +1,74 @@
+{
+  "audit": "honest",
+  "src": "c27b9082 gen face plate (AI img2img crop, NOT photo texture)",
+  "hyb": "0c700e6a face_HYB_VIEW (Siax4x hybrid downscaled preview)",
+  "metrics": [
+    {
+      "zone": "full",
+      "lap_src": 1892.3,
+      "lap_hyb": 1575.8,
+      "hf_src": 8.24,
+      "hf_hyb": 8.18,
+      "mean_abs": 2.13,
+      "lap_delta": -316.5
+    },
+    {
+      "zone": "face",
+      "lap_src": 1224.5,
+      "lap_hyb": 894.1,
+      "hf_src": 6.68,
+      "hf_hyb": 6.43,
+      "mean_abs": 2.01,
+      "lap_delta": -330.3
+    },
+    {
+      "zone": "skin_cheek",
+      "lap_src": 1124.2,
+      "lap_hyb": 709.7,
+      "hf_src": 6.0,
+      "hf_hyb": 5.44,
+      "mean_abs": 1.91,
+      "lap_delta": -414.5
+    },
+    {
+      "zone": "eye",
+      "lap_src": 523.4,
+      "lap_hyb": 342.2,
+      "hf_src": 4.55,
+      "hf_hyb": 4.13,
+      "mean_abs": 1.7,
+      "lap_delta": -181.2
+    },
+    {
+      "zone": "armor",
+      "lap_src": 4431.2,
+      "lap_hyb": 3709.6,
+      "hf_src": 12.04,
+      "hf_hyb": 11.97,
+      "mean_abs": 2.5,
+      "lap_delta": -721.6
+    },
+    {
+      "zone": "hair",
+      "lap_src": 274.9,
+      "lap_hyb": 269.4,
+      "hf_src": 5.51,
+      "hf_hyb": 5.6,
+      "mean_abs": 1.9,
+      "lap_delta": -5.5
+    }
+  ],
+  "pct_near8": 92.88425925925927,
+  "cheek_microvar_src": 217.2742919921875,
+  "cheek_microvar_hyb": 183.5325469970703,
+  "verdict": [
+    "FAIL: skin/cheek not clearer — no real pore material",
+    "WEAK: armor detail gain small"
+  ],
+  "truth": [
+    "c27b9082 is an AI re-render of the face crop, not scanned/photographed real material.",
+    "0c700e6a is mild hybrid of that same AI plate (M~0.28 face) — mostly same pixels, not a new material layer.",
+    "Real material path claimed earlier (REAL_MAT external tiling) was rejected by user; gen-plate path did not produce photo-grade pores/leather/metal separate plates.",
+    "To actually generate real MATERIAL: need either (1) photo texture donors or (2) dedicated material-only gen plates (pores/leather/metal/fire) at macro scale, then hybrid stitch — not face beauty re-render."
+  ]
+}

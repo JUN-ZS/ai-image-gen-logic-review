@@ -1,0 +1,13 @@
+{
+  "asof": "2026-10-27T07:26:07Z",
+  "L": "L-33fd416b0d31",
+  "source": "947cf5b2 NATIVE 4608x6912",
+  "method": "CDN full → native crop GEN denser mesh → ECC structure-lock stitch → weapon lock → JPEG q100",
+  "size": [
+    4608,
+    6912
+  ],
+  "bytes": 30499316,
+  "weapon_delta": 0.0,
+  "note": "no 1152 steal path"
+}

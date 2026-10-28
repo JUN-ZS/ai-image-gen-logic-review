@@ -1,0 +1,28 @@
+{
+  "fire_title": {
+    "box": [
+      100,
+      20,
+      2200,
+      920
+    ],
+    "fill": 0.331,
+    "path_extract": "/workspace/artifacts/artifacts/from_1f29_origbound/EXTRACT_fire_title.jpg",
+    "path_mask": "/workspace/artifacts/artifacts/from_1f29_origbound/MASK_fire_title.png",
+    "path_cutout": "/workspace/artifacts/artifacts/from_1f29_origbound/CUTOUT_fire_title.jpg",
+    "path_bound": "/workspace/artifacts/artifacts/from_1f29_origbound/BOUND_fire_title.jpg"
+  },
+  "stone_mid": {
+    "box": [
+      380,
+      2080,
+      1920,
+      2920
+    ],
+    "fill": 0.921,
+    "path_extract": "/workspace/artifacts/artifacts/from_1f29_origbound/EXTRACT_stone_mid.jpg",
+    "path_mask": "/workspace/artifacts/artifacts/from_1f29_origbound/MASK_stone_mid.png",
+    "path_cutout": "/workspace/artifacts/artifacts/from_1f29_origbound/CUTOUT_stone_mid.jpg",
+    "path_bound": "/workspace/artifacts/artifacts/from_1f29_origbound/BOUND_stone_mid.jpg"
+  }
+}

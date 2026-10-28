@@ -1,0 +1,4 @@
+- SET-O 真女主臉鎖定為 asset b41e0072；先前高髻／arctic IP 作廢 [2026-10-25]
+- 總憲 BOUNDARY_WALKER_UNIFIED_RULES.md 已含 §0.5 IP 先出、§0.6 真女主、§0.7 禁疊影、§0.8 極藝術 FREE 字公式（同文異態 Σ_text + T_diegetic）[2026-10-25]
+- 字層 FREE 度只參考先前 5 張變角圖的自由程度，不抄其排版；邏輯以 HUB §5 / E-01·E-02 公式為準 [2026-10-25]
+- SET-O L- 目前為 L-08d1743fbd6a；舊 POST 86bc3e56 標記 FAIL_GHOST_PERSON [2026-10-25]

@@ -1,0 +1,541 @@
+{
+  "source": "fc3dde8b-4590-4713-b24d-094bb71b05e1",
+  "L0": [
+    1792,
+    1008
+  ],
+  "layout": "4x6",
+  "n": 24,
+  "overlap": 0.1,
+  "cells": [
+    {
+      "id": "r00c00",
+      "r": 0,
+      "c": 0,
+      "core": [
+        0,
+        0,
+        298,
+        252
+      ],
+      "box": [
+        0,
+        0,
+        327,
+        277
+      ],
+      "size": [
+        327,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r00c00.jpg"
+    },
+    {
+      "id": "r00c01",
+      "r": 0,
+      "c": 1,
+      "core": [
+        298,
+        0,
+        597,
+        252
+      ],
+      "box": [
+        269,
+        0,
+        626,
+        277
+      ],
+      "size": [
+        357,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r00c01.jpg"
+    },
+    {
+      "id": "r00c02",
+      "r": 0,
+      "c": 2,
+      "core": [
+        597,
+        0,
+        896,
+        252
+      ],
+      "box": [
+        568,
+        0,
+        925,
+        277
+      ],
+      "size": [
+        357,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r00c02.jpg"
+    },
+    {
+      "id": "r00c03",
+      "r": 0,
+      "c": 3,
+      "core": [
+        896,
+        0,
+        1194,
+        252
+      ],
+      "box": [
+        867,
+        0,
+        1223,
+        277
+      ],
+      "size": [
+        356,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r00c03.jpg"
+    },
+    {
+      "id": "r00c04",
+      "r": 0,
+      "c": 4,
+      "core": [
+        1194,
+        0,
+        1493,
+        252
+      ],
+      "box": [
+        1165,
+        0,
+        1522,
+        277
+      ],
+      "size": [
+        357,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r00c04.jpg"
+    },
+    {
+      "id": "r00c05",
+      "r": 0,
+      "c": 5,
+      "core": [
+        1493,
+        0,
+        1792,
+        252
+      ],
+      "box": [
+        1464,
+        0,
+        1792,
+        277
+      ],
+      "size": [
+        328,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r00c05.jpg"
+    },
+    {
+      "id": "r01c00",
+      "r": 1,
+      "c": 0,
+      "core": [
+        0,
+        252,
+        298,
+        504
+      ],
+      "box": [
+        0,
+        227,
+        327,
+        529
+      ],
+      "size": [
+        327,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r01c00.jpg"
+    },
+    {
+      "id": "r01c01",
+      "r": 1,
+      "c": 1,
+      "core": [
+        298,
+        252,
+        597,
+        504
+      ],
+      "box": [
+        269,
+        227,
+        626,
+        529
+      ],
+      "size": [
+        357,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r01c01.jpg"
+    },
+    {
+      "id": "r01c02",
+      "r": 1,
+      "c": 2,
+      "core": [
+        597,
+        252,
+        896,
+        504
+      ],
+      "box": [
+        568,
+        227,
+        925,
+        529
+      ],
+      "size": [
+        357,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r01c02.jpg"
+    },
+    {
+      "id": "r01c03",
+      "r": 1,
+      "c": 3,
+      "core": [
+        896,
+        252,
+        1194,
+        504
+      ],
+      "box": [
+        867,
+        227,
+        1223,
+        529
+      ],
+      "size": [
+        356,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r01c03.jpg"
+    },
+    {
+      "id": "r01c04",
+      "r": 1,
+      "c": 4,
+      "core": [
+        1194,
+        252,
+        1493,
+        504
+      ],
+      "box": [
+        1165,
+        227,
+        1522,
+        529
+      ],
+      "size": [
+        357,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r01c04.jpg"
+    },
+    {
+      "id": "r01c05",
+      "r": 1,
+      "c": 5,
+      "core": [
+        1493,
+        252,
+        1792,
+        504
+      ],
+      "box": [
+        1464,
+        227,
+        1792,
+        529
+      ],
+      "size": [
+        328,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r01c05.jpg"
+    },
+    {
+      "id": "r02c00",
+      "r": 2,
+      "c": 0,
+      "core": [
+        0,
+        504,
+        298,
+        756
+      ],
+      "box": [
+        0,
+        479,
+        327,
+        781
+      ],
+      "size": [
+        327,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r02c00.jpg"
+    },
+    {
+      "id": "r02c01",
+      "r": 2,
+      "c": 1,
+      "core": [
+        298,
+        504,
+        597,
+        756
+      ],
+      "box": [
+        269,
+        479,
+        626,
+        781
+      ],
+      "size": [
+        357,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r02c01.jpg"
+    },
+    {
+      "id": "r02c02",
+      "r": 2,
+      "c": 2,
+      "core": [
+        597,
+        504,
+        896,
+        756
+      ],
+      "box": [
+        568,
+        479,
+        925,
+        781
+      ],
+      "size": [
+        357,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r02c02.jpg"
+    },
+    {
+      "id": "r02c03",
+      "r": 2,
+      "c": 3,
+      "core": [
+        896,
+        504,
+        1194,
+        756
+      ],
+      "box": [
+        867,
+        479,
+        1223,
+        781
+      ],
+      "size": [
+        356,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r02c03.jpg"
+    },
+    {
+      "id": "r02c04",
+      "r": 2,
+      "c": 4,
+      "core": [
+        1194,
+        504,
+        1493,
+        756
+      ],
+      "box": [
+        1165,
+        479,
+        1522,
+        781
+      ],
+      "size": [
+        357,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r02c04.jpg"
+    },
+    {
+      "id": "r02c05",
+      "r": 2,
+      "c": 5,
+      "core": [
+        1493,
+        504,
+        1792,
+        756
+      ],
+      "box": [
+        1464,
+        479,
+        1792,
+        781
+      ],
+      "size": [
+        328,
+        302
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r02c05.jpg"
+    },
+    {
+      "id": "r03c00",
+      "r": 3,
+      "c": 0,
+      "core": [
+        0,
+        756,
+        298,
+        1008
+      ],
+      "box": [
+        0,
+        731,
+        327,
+        1008
+      ],
+      "size": [
+        327,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r03c00.jpg"
+    },
+    {
+      "id": "r03c01",
+      "r": 3,
+      "c": 1,
+      "core": [
+        298,
+        756,
+        597,
+        1008
+      ],
+      "box": [
+        269,
+        731,
+        626,
+        1008
+      ],
+      "size": [
+        357,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r03c01.jpg"
+    },
+    {
+      "id": "r03c02",
+      "r": 3,
+      "c": 2,
+      "core": [
+        597,
+        756,
+        896,
+        1008
+      ],
+      "box": [
+        568,
+        731,
+        925,
+        1008
+      ],
+      "size": [
+        357,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r03c02.jpg"
+    },
+    {
+      "id": "r03c03",
+      "r": 3,
+      "c": 3,
+      "core": [
+        896,
+        756,
+        1194,
+        1008
+      ],
+      "box": [
+        867,
+        731,
+        1223,
+        1008
+      ],
+      "size": [
+        356,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r03c03.jpg"
+    },
+    {
+      "id": "r03c04",
+      "r": 3,
+      "c": 4,
+      "core": [
+        1194,
+        756,
+        1493,
+        1008
+      ],
+      "box": [
+        1165,
+        731,
+        1522,
+        1008
+      ],
+      "size": [
+        357,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r03c04.jpg"
+    },
+    {
+      "id": "r03c05",
+      "r": 3,
+      "c": 5,
+      "core": [
+        1493,
+        756,
+        1792,
+        1008
+      ],
+      "box": [
+        1464,
+        731,
+        1792,
+        1008
+      ],
+      "size": [
+        328,
+        277
+      ],
+      "crop": "boundary_pedestrian_setP_obsidian/st_g_grid/1_cells/r03c05.jpg"
+    }
+  ],
+  "set": "SET-P"
+}

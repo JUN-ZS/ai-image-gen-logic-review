@@ -1,0 +1,19 @@
+{
+  "set": "SET-M-CHAIN",
+  "rule": "CROP person from clean → HUD texted → paste cut; cut REF next frame to prevent blur",
+  "root_person": "3987dba4-bea7-47d1-a38a-0228d7020adf",
+  "loop": "L-8343f6653b63",
+  "chain": {
+    "PRE": "clean→CROP→HUD→PASTE",
+    "MID": "clean+PRE_CUT_REF→CROP→HUD→PASTE",
+    "POST": "clean+MID_CUT_REF→CROP→HUD→PASTE"
+  },
+  "assets": {
+    "pre_clean": "3987dba4",
+    "pre_hud": "44484cb2",
+    "mid_clean": "3e936fab",
+    "mid_hud": "43947464",
+    "post_clean": "fa3aeb06",
+    "post_hud": "7ab2531d"
+  }
+}

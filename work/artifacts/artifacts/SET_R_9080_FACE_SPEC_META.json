@@ -1,0 +1,9 @@
+{
+  "asof": "2026-10-26T18:55:57Z",
+  "trial": "FACE_SPEC_LOCK_v1",
+  "L": "L-c98c11a5a84f",
+  "user_obs": "2bef 有真實物理反光；GENMIX 混臉達不到",
+  "method": "P3 L/specular donor + fair a/b + freckle-dark kill + keep highlight peaks; NOT GENMIX beauty flatten",
+  "ecc": 0.8114549371093409,
+  "constitution_note": "GENMIX alone loses physical lighting → need SPECULAR_LOCK from P3"
+}

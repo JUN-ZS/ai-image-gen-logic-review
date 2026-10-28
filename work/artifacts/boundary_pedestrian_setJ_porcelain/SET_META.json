@@ -1,0 +1,20 @@
+{
+  "set_id": "SET-J",
+  "world": "PORCELAIN_MOON_COURT",
+  "style_lock": "indigo porcelain night · cyan holo HUD · moonlit depth type",
+  "method": "GEO.T · H2",
+  "loop": "L-a7e62587e029",
+  "mid_sha256": "a7e62587e029c2339a51c82258a0381294eba2cb7762de721c973e6ec58829dd",
+  "pipeline": "PRE clean → MID from PRE → POST from MID → only-add ANALYSIS_HUD_PACK + DEPTH_TYPE_PACK",
+  "heroine_lock": "BW_HEROINE_SET_H_V1",
+  "packs": ["ANALYSIS_HUD_PACK", "DEPTH_TYPE_PACK"],
+  "frames": {
+    "clean_pre": "d9e696c8-2e82-4522-8149-e2b35b493ee4",
+    "clean_mid": "c902652f-5ecd-4d37-b4c6-9b213d4597f3",
+    "clean_post": "f111637a-f356-4066-9124-fe5913b6d3f1",
+    "hud_pre": "7dcff030-89fe-4c7b-9364-4c21c5f0fdca",
+    "hud_mid": "8271356a-fee2-4a26-9ae1-824ceb98bc44",
+    "hud_post": "de622852-aaee-4a8f-8844-e8c8e2df4e63"
+  },
+  "forbidden": ["TRY_count", "REVIEW PENDING", "hard-copy SET-F look"]
+}

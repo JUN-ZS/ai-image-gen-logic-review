@@ -1,0 +1,92 @@
+{
+  "asof": "2026-10-27T08:14:28Z",
+  "L": "L-1bc88c2f6017",
+  "donor": "68bf0b4a-6d6e-498e-8732-d1b11e6eef91",
+  "donor_size": [
+    1392,
+    1408
+  ],
+  "method": "multi-scale template match on FULL → pixel-ratio scale to box → ECC refine → NCC/MAD/phase",
+  "bases": {
+    "947": {
+      "box": [
+        1391,
+        1391,
+        3754,
+        3784
+      ],
+      "box_wh": [
+        2363,
+        2393
+      ],
+      "scale_px": 1.6976,
+      "aspect_donor": 0.9886,
+      "aspect_box": 0.9875,
+      "aspect_delta": 0.0012,
+      "ncc_before": 0.5758,
+      "ncc_after_ecc": 0.5849,
+      "mad_before": 33.44,
+      "mad_after": 33.01,
+      "ecc_cc": 0.5862,
+      "phase_shift": [
+        -0.39,
+        0.075
+      ],
+      "phase_resp": 0.0418,
+      "warp_tx": -2.896,
+      "warp_ty": -1.264,
+      "warp_rot_approx": -0.006,
+      "verdict": "HONEST_ALIGN",
+      "scale_hint": 1.7,
+      "ncc_template_search": 0.6995731592178345,
+      "iou_vs_stored_TORSO": 0.9756
+    },
+    "V5": {
+      "box": [
+        1391,
+        1391,
+        3754,
+        3784
+      ],
+      "box_wh": [
+        2363,
+        2393
+      ],
+      "scale_px": 1.6976,
+      "aspect_donor": 0.9886,
+      "aspect_box": 0.9875,
+      "aspect_delta": 0.0012,
+      "ncc_before": 0.594,
+      "ncc_after_ecc": 0.6065,
+      "mad_before": 32.34,
+      "mad_after": 31.82,
+      "ecc_cc": 0.6087,
+      "phase_shift": [
+        -0.383,
+        -0.135
+      ],
+      "phase_resp": 0.0519,
+      "warp_tx": -5.211,
+      "warp_ty": -2.013,
+      "warp_rot_approx": -0.02,
+      "verdict": "HONEST_ALIGN",
+      "scale_hint": 1.7,
+      "ncc_template_search": 0.7106576561927795,
+      "iou_vs_stored_TORSO": 0.9756
+    }
+  },
+  "cheat_tests": {
+    "fake_claim_without_ecc": "if ncc_before high by accident only",
+    "scale_cheat": "aspect_delta must be small after pure pixel scale (no stretch lie)",
+    "position_cheat": "phase_shift residual after ECC must be small",
+    "virus_local_base": "match must land on FULL 4608 poster with head/stone present"
+  },
+  "summary": {
+    "947_verdict": "HONEST_ALIGN",
+    "V5_verdict": "HONEST_ALIGN",
+    "947_ncc": 0.5849,
+    "V5_ncc": 0.6065,
+    "947_scale_px": 1.6976,
+    "V5_scale_px": 1.6976
+  }
+}

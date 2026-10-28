@@ -1,0 +1,21 @@
+{
+  "asof": "2026-10-27T16:54:43Z",
+  "user": "再來一層加強",
+  "base": "OPTIX_MLC L-3342d664836a",
+  "boost": [
+    "雙lobe N·H^52+^12",
+    "字棱 edge boost",
+    "殘餘cand→折光",
+    "L+opt*22",
+    "冷a,b閘",
+    "HF鎖母"
+  ],
+  "opt_mean": 0.0366,
+  "energy_mean": 0.1177,
+  "out_mb": 35.15,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-7cd7df4e5a5d"
+}

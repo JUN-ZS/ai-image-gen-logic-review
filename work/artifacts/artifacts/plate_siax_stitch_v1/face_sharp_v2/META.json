@@ -1,0 +1,37 @@
+{
+  "asof": "2026-10-26T17:12:07Z",
+  "trial": "FACE_SHARP_STITCH_v2",
+  "L": "L-ebaf5fca8718",
+  "plate_ref": "c27b9082",
+  "align": {
+    "ncc_shift": [
+      0,
+      0
+    ],
+    "phase_shift": [
+      0,
+      0
+    ],
+    "status": "OK locked"
+  },
+  "blur_root_cause": "v1 M_mean=0.32 canvas-LP dominated; double Gaussian; facezone lap 150 vs plate 512",
+  "fix": [
+    "plate-dominant alpha (core*feather)",
+    "src HF + hyb edges",
+    "post-downscale USM",
+    "no canvas LP into face interior",
+    "color LP match only"
+  ],
+  "metrics": {
+    "lap_canvas": 1881.6941106992572,
+    "lap_plate": 2805.5012521259173,
+    "lap_old": 456.22294108023965,
+    "lap_new": 1905.3073181464838,
+    "facezone_canvas": 303.20902074963846,
+    "facezone_plate": 2092.0600056765416,
+    "facezone_old": 150.28164295714862,
+    "facezone_new": 1902.086433531343,
+    "alpha_mean": 0.5712772011756897,
+    "full_q98_MB": 19.49
+  }
+}

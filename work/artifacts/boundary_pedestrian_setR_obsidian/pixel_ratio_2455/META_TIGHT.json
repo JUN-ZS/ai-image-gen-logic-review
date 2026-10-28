@@ -1,0 +1,23 @@
+{
+  "pipeline": "PIXEL_RATIO §0.12.14 TIGHT face-only + hammer_kill",
+  "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "dst_face": [
+    427,
+    77,
+    138,
+    138
+  ],
+  "bug_fixed": "previous expand covered hammer C-ring → ghost face; now tight pad=0.10 + UL hammer_kill mask",
+  "primary": "TIGHT_HF_a8b",
+  "paste_roi": [
+    413,
+    68,
+    578,
+    227
+  ],
+  "raw_lap": 3245.743024209537,
+  "primary_lap": 2671.807975610338,
+  "ghost_ul_delta": 0.3891366422176361,
+  "sha256": "2514c88d2ee5048b0d1d468827dc833a08d1b6c12be4cb6d7e4f380787306d7b",
+  "L_candidate": "L-2514c88d2ee5"
+}

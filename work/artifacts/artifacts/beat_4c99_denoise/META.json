@@ -1,0 +1,23 @@
+{
+  "asof": "2026-10-26T18:29:22Z",
+  "trial": "BEAT_4C99_DENOISE_v1",
+  "L": "L-39ba8c8f1d7c",
+  "params": {
+    "flat_hf_kill": 0.92,
+    "mid_pull_clean": 0.55,
+    "bilateral": true,
+    "usm_feat": 0.12,
+    "usm_flat": 0.04,
+    "eye_smooth": 0.7
+  },
+  "metrics": {
+    "face_lap_before": 2002.7,
+    "face_lap_after": 1839.2,
+    "face_clar_before": 203.7,
+    "face_clar_after": 194.5,
+    "fz_clar_before": 245.0,
+    "fz_clar_after": 233.6,
+    "still_beat_siax_fz": true
+  },
+  "note": "換參數：平面皮膚殺 HF 噪粒，特徵邊保留，眼白 bilateral"
+}

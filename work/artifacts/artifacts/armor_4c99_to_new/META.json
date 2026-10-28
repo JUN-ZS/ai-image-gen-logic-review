@@ -1,0 +1,46 @@
+{
+  "asof": "2026-10-26T19:33:10Z",
+  "trial": "4C99_CLOTHING_LOCAL_GEN_TO_NEW_v1",
+  "donor": "4c99ea4b / SIAX4x clothing crops",
+  "target": "SET_R_C9_ARMOR_GEN (our new)",
+  "user": "抽用4c99服裝UPGRADE,局部生成花紋,放到新圖",
+  "method": [
+    "crop 4c99 clothing",
+    "crop new pose",
+    "Ref(tgt, donor4c99) generative ornament",
+    "ECC stitch armor mask",
+    "sphere protect waist",
+    "face lock",
+    "2x strip"
+  ],
+  "gens": {
+    "chest": "bda2aaec-4334-4208-92ae-90ded17e18c0.jpg",
+    "shoulder_R": "ed726d64-7c24-460e-8c50-a18cc1356bea.jpg",
+    "sleeve_L": "176fc82f-e3aa-4c47-b4d0-fc86ff9f1e82.jpg",
+    "waist": "5d3fcadd-c579-40b7-8865-76711ad1ec75.jpg"
+  },
+  "stats": {
+    "chest": {
+      "cc": 0.8657979563835992,
+      "M": 0.5413671731948853,
+      "d": 10.051309585571289
+    },
+    "shoulder_R": {
+      "cc": 0.8224535796004125,
+      "M": 0.47299548983573914,
+      "d": 9.111445426940918
+    },
+    "sleeve_L": {
+      "cc": 0.6691302550937495,
+      "M": 0.5177879929542542,
+      "d": 15.467353820800781
+    },
+    "waist": {
+      "cc": 0.6575986293418942,
+      "M": 0.43963366746902466,
+      "d": 11.897880554199219
+    }
+  },
+  "L": "L-fa9f396d7c93",
+  "full_mb": 22.14
+}

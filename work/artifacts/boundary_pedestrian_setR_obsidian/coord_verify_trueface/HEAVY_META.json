@@ -1,0 +1,23 @@
+{
+  "version": "HEAVY_a8b_V2",
+  "request": "更重 a8b 五官",
+  "base": "f6c89598-06f4-48f9-9822-269183f8a8fd",
+  "pipeline": "T2 PIXEL FACE_CROP_DIRECT heavy alpha → T3 Ref([heavy,a8b]) strengthen features + single face",
+  "F_d": [
+    648,
+    118,
+    92,
+    108
+  ],
+  "kill_wall_x": 620,
+  "pixel_heavy": {
+    "delta_face": 16.62,
+    "delta_feat": 17.78,
+    "delta_cring": 0.0,
+    "asset": "7643a46b-e268-4c67-aebe-d2599a8e144b"
+  },
+  "final_asset": "d33bbd06-a1ec-477b-b598-64569776b0d5",
+  "delta_face_final_vs_before": 14.377616882324219,
+  "delta_cring_final": 6.398908615112305,
+  "note": "heavier a8b eyes/nose/lips; single face; C-ring kept; TRUE_FACE lock"
+}

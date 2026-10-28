@@ -1,0 +1,76 @@
+{
+  "asof": "2026-10-27T20:34:35Z",
+  "user": "反推模糊字 + 較優圖正/反推 細格對換",
+  "fix": "v4b/finish local_NCC gate; HF-heavy; no wrong-content lap-max",
+  "refs": [
+    "092a9e12 GRID8",
+    "5871ebc9≈OPTIX_MLC"
+  ],
+  "constitution": [
+    "§0.12.27 TEXT_GCS",
+    "blur reverse",
+    "NCC structure gate",
+    "micro CELL"
+  ],
+  "base": "SET_R_GRID8_FULL_q100.jpg",
+  "passes": [
+    {
+      "name": "title_fire",
+      "lap_in": 31.539688110351562,
+      "lap_out": 52.819297790527344,
+      "ratio": 1.67469303853067,
+      "source": "v4b_crop"
+    },
+    {
+      "name": "left_strike",
+      "lap_in": 36.5538215637207,
+      "lap_out": 42.82072830200195,
+      "ratio": 1.1714432390034386,
+      "source": "v4b_crop"
+    },
+    {
+      "name": "right_cn",
+      "lap_in": 29.598867416381836,
+      "lap_out": 35.60688781738281,
+      "ratio": 1.202981388223469,
+      "source": "v4b_crop"
+    },
+    {
+      "name": "stone_cn",
+      "lap_in": 33.73809051513672,
+      "lap_out": 105.52316284179688,
+      "ratio": 3.1277158281005173,
+      "source": "v4b_crop"
+    },
+    {
+      "name": "geo",
+      "lap_in": 29.233844757080078,
+      "lap_out": 83.37788391113281,
+      "ratio": 2.852101109240467,
+      "micro6": 42340,
+      "micro4": 70812,
+      "ncc": 0.9658204577409332
+    },
+    {
+      "name": "obsidian",
+      "lap_in": 37.30207443237305,
+      "lap_out": 57.1512336730957,
+      "ratio": 1.5321194065115298,
+      "micro6": 23161,
+      "micro4": 27485,
+      "ncc": 0.9973704040212076
+    }
+  ],
+  "out_mb": 38.61,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-a545d75ccea4",
+  "assets": {
+    "FULL": "c0729fb3-dd8d-4820-b593-bdb18b3a955e",
+    "VIEW": "9ff4ab46-a545-4917-a06a-59a3645e8372",
+    "BA": "43d65d77-f6eb-4dd0-9e84-7068ad899669",
+    "SHEET": "655e7ad8-db7d-4cfd-bfe6-8e7f0329d18d"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "asof": "2026-10-26T15:06:05Z",
+  "trial": "HYBRID_v7_BEAT_SIAX strip multi-band + PATH1E struct + PIXEL_CTRL",
+  "rival": "SIAX4x FULL ≈ user 4c99ea4b 4608x6912 pure Siax",
+  "proof": {
+    "face": {
+      "hf": {
+        "beat": 5.736,
+        "siax": 5.648,
+        "lan": 3.714,
+        "d": 0.089
+      },
+      "clar": {
+        "beat": 83.904,
+        "siax": 71.292,
+        "lan": 46.919,
+        "d": 12.611
+      },
+      "vs_siax": 3.804,
+      "vs_lan": 5.299
+    },
+    "text_title": {
+      "hf": {
+        "beat": 4.417,
+        "siax": 4.065,
+        "lan": 2.243,
+        "d": 0.352
+      },
+      "clar": {
+        "beat": 63.112,
+        "siax": 49.051,
+        "lan": 17.964,
+        "d": 14.062
+      },
+      "vs_siax": 2.857,
+      "vs_lan": 5.591
+    },
+    "text_ped": {
+      "hf": {
+        "beat": 5.283,
+        "siax": 4.677,
+        "lan": 2.707,
+        "d": 0.606
+      },
+      "clar": {
+        "beat": 62.172,
+        "siax": 47.962,
+        "lan": 17.472,
+        "d": 14.209
+      },
+      "vs_siax": 2.418,
+      "vs_lan": 6.737
+    },
+    "armor": {
+      "hf": {
+        "beat": 6.472,
+        "siax": 7.366,
+        "lan": 3.165,
+        "d": -0.894
+      },
+      "clar": {
+        "beat": 90.156,
+        "siax": 88.102,
+        "lan": 24.099,
+        "d": 2.055
+      },
+      "vs_siax": 3.285,
+      "vs_lan": 7.844
+    },
+    "sphere": {
+      "hf": {
+        "beat": 5.855,
+        "siax": 6.101,
+        "lan": 3.118,
+        "d": -0.245
+      },
+      "clar": {
+        "beat": 71.717,
+        "siax": 65.664,
+        "lan": 20.207,
+        "d": 6.054
+      },
+      "vs_siax": 3.115,
+      "vs_lan": 7.365
+    }
+  },
+  "scoreboard": {
+    "detail_near_over": 3,
+    "clar_near_over": 5,
+    "n": 5
+  },
+  "L": "L-5c738bdfdcdf",
+  "constitution": "§0.12.15-17"
+}

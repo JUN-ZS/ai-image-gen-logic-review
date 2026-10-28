@@ -1,0 +1,56 @@
+{
+  "asof": "2026-10-27T16:01:31Z",
+  "user": "甲成功鏈 stone_mid+fire 大裁GEN拓樸+原圖mask高α+SIAX僅mask拋光",
+  "pipeline": [
+    "1 原圖 EXTRACT + DETECT mask (from origbound)",
+    "2 2x 大裁 prep",
+    "3 GEN topology rebuild (armor-density material rewrite)",
+    "4 ECC + 高α paste (0.72 gen body)",
+    "5 SIAX HF residual ONLY inside mask",
+    "6 2x FULL band"
+  ],
+  "gen_assets": [
+    "cb562f08 stone",
+    "9d70fe35 fire"
+  ],
+  "stats": [
+    {
+      "name": "stone_mid",
+      "ecc": 0.7955,
+      "alpha_mean": 0.882,
+      "fill": 0.926,
+      "fill_hard": 0.917,
+      "box": [
+        380,
+        2080,
+        1920,
+        2920
+      ]
+    },
+    {
+      "name": "fire_title",
+      "ecc": 0.7817,
+      "alpha_mean": 0.212,
+      "fill": 0.304,
+      "fill_hard": 0.2,
+      "box": [
+        100,
+        20,
+        2200,
+        920
+      ]
+    }
+  ],
+  "out_mb": 35.44,
+  "size": [
+    4608,
+    6912
+  ],
+  "constitution": [
+    "甲成功鏈",
+    "ORIG mask",
+    "高α",
+    "SIAX mask-only polish"
+  ],
+  "L": "L-95991c6bae6b"
+}

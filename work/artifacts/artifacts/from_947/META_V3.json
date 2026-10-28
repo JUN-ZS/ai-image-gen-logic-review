@@ -1,0 +1,47 @@
+{
+  "asof": "2026-10-27T07:38:06Z",
+  "L": "L-18ab7f07decf",
+  "fix": "V3 wide clothes mask + GEN-dominant α0.94 + upper boost; honest paste not structure-lock cheat",
+  "stats": {
+    "TORSO": {
+      "cc": 0.8657,
+      "amax": 0.95,
+      "alpha_mean": 0.596,
+      "alpha_hi_frac": 0.664,
+      "mad_base": 11.86,
+      "mad_gen": 9.51,
+      "mad_upper": 13.23,
+      "mad_on_armor": 17.48
+    },
+    "CHEST": {
+      "cc": 0.6901,
+      "amax": 0.94,
+      "alpha_mean": 0.499,
+      "alpha_hi_frac": 0.564,
+      "mad_base": 14.86,
+      "mad_gen": 14.85,
+      "mad_upper": 14.1,
+      "mad_on_armor": 24.6
+    },
+    "SHOULDER": {
+      "cc": 0.673,
+      "amax": 0.7,
+      "alpha_mean": 0.45,
+      "alpha_hi_frac": 0.636,
+      "mad_base": 17.7,
+      "mad_gen": 13.73,
+      "mad_upper": 13.71,
+      "mad_on_armor": 23.96
+    }
+  },
+  "bytes": 30316380,
+  "size": [
+    4608,
+    6912
+  ],
+  "gens": {
+    "TORSO": "99563ca2",
+    "CHEST": "8058bf3b",
+    "SHOULDER": "80aecc41"
+  }
+}

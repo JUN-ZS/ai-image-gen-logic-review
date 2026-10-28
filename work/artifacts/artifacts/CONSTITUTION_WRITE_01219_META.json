@@ -1,0 +1,26 @@
+{
+  "asof": "2026-10-26T15:55:00Z",
+  "section": "§0.12.19",
+  "title": "DETAIL6 size≥6MB + detail methods",
+  "user": "把圖的大小升到6MB以上… → 寫入憲",
+  "L": "L-7fcd14aab71a",
+  "baseline_METAL_BITE": "L-f99f139b55a6",
+  "sizes_MB": {
+    "q100": 35,
+    "q98": 21,
+    "3072": 10
+  },
+  "methods": [
+    "D1 native 4x",
+    "D2 residual HF",
+    "D3 MID",
+    "D4 zone USM",
+    "D5 microcontrast",
+    "D6 jpeg high bitrate"
+  ],
+  "E_GS_new": [
+    "E-GS-16",
+    "E-GS-17",
+    "E-GS-18"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "set": "SET-R",
+  "stage": "VIDEO_v2",
+  "first_frame": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+  "video_primary": "964b101f-0edd-4aa3-bcb7-477d41db21f5",
+  "video_alt": "c4af4de2-978b-4595-bb35-e6dae1bac76c",
+  "duration_s": 10,
+  "story_correct": "圓被推往右移後 → 用公式打 → 武器另一頭 銅圓黑月 敲碎玻璃泡球",
+  "formula": "STRIKE:銅圓黑月(RING-END)  RECV:TANGENT  F_n  n·v  GAP=0  H2",
+  "weapon_end": "OTHER end = copper-bronze disk + black moon C-ring (銅圓黑月)",
+  "beats": [
+    "0–3s: push sphere RIGHT, mostly intact, gap opens",
+    "3–5s: flip to 銅圓黑月 end, wind-up",
+    "5–8s: formula strike GAP=0 shatter glass bubble on right",
+    "8–10s: follow-through shards"
+  ],
+  "reject": "f461a2e1… (wrong: generic crescent smash without 銅圓黑月 formula end)"
+}

@@ -1,0 +1,91 @@
+{
+  "asof": "2026-10-26T18:14:00Z",
+  "section": "§0.12.14.F TRUE_FACE_LOCK",
+  "version": "V5",
+  "pipeline": "PIXEL_RATIO FACE_CROP_DIRECT V4 (true face) → image_to_image V5 clean left-hair artifact",
+  "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "F_d_lock": [
+    648,
+    118,
+    92,
+    108
+  ],
+  "F_s": [
+    175,
+    70,
+    200,
+    250
+  ],
+  "V4_metrics": {
+    "F_d": [
+      648,
+      118,
+      92,
+      108
+    ],
+    "F_s": [
+      175,
+      70,
+      200,
+      250
+    ],
+    "s_face": 0.44578021490416103,
+    "s_eff": 0.4444444444444444,
+    "place": [
+      646.0,
+      112.0
+    ],
+    "delta_face": 23.031837463378906,
+    "delta_feat": 23.093233108520508,
+    "delta_cring": 0.0,
+    "delta_wrong_left": 0.0,
+    "delta_hairL": 0.0,
+    "kill_wall_x": 620,
+    "center_err": [
+      0.0,
+      0.0
+    ],
+    "method": "V4 tight-right FACE_CROP_DIRECT + hard kill wall"
+  },
+  "wrong_boxes_rejected": [
+    {
+      "box": [
+        528,
+        102,
+        105,
+        118
+      ],
+      "why": "neck/C-ring"
+    },
+    {
+      "box": [
+        492,
+        154
+      ],
+      "why": "left hair/weapon"
+    },
+    {
+      "box": [
+        535,
+        108,
+        95,
+        108
+      ],
+      "why": "old SOFT too left"
+    },
+    {
+      "box": [
+        615,
+        118,
+        125,
+        140
+      ],
+      "why": "too left weak"
+    }
+  ],
+  "left_hair_face_like": "present in ORIGINAL clean 2455 (pareidolia); NOT introduced by V4 (d_hairL=0); V5 cleaned",
+  "final_asset": "314f3660-eb42-49a0-b091-c2287632d8a4",
+  "user": "bb5fb0fa 你對後, 要是改對臉的",
+  "constitution": "BOUNDARY_WALKER_UNIFIED_RULES.md §0.12.14.F"
+}

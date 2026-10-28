@@ -1,0 +1,17 @@
+{
+  "pipeline": "GRID24_FACE_REF_v2b",
+  "REF": "a8b+IP only",
+  "r0c4_demote": 0.35,
+  "gates": {
+    "face_lap": 413.25555419921875,
+    "face_center_lap": 236.8158416748047,
+    "full_center_lap": 1306.0994873046875,
+    "full_lap": 1101.048583984375,
+    "r1c4_conf": 0.943795919418335,
+    "r0c4_boost": 0.35,
+    "r1c4_boost": 1.4
+  },
+  "L": "L-2685bec0c557",
+  "sha256": "2685bec0c557dd7d7e19256de3219fb557a2701585c08e1d0d016ff4ee4a896e",
+  "asof": "2026-10-25T17:38:00Z"
+}

@@ -1,0 +1,19 @@
+{
+  "asof": "2026-10-27T10:03:47Z",
+  "L": "L-b4abbb6abe09",
+  "user": "有局部岔邊 @3380fa95 人右緣",
+  "structure_edge_only": "SET_R_AEE_CONST2X_FULL_q100.jpg",
+  "note": "結構母只鎖外輪，不當全圖底",
+  "box": [
+    2304,
+    1036,
+    3594,
+    4008
+  ],
+  "ecc_cc": 0.9663,
+  "fork_mean": 0.045,
+  "ghost_mean": 0.025,
+  "alpha_mean": 0.031,
+  "mad": 0.25,
+  "out_mb": 35.72
+}

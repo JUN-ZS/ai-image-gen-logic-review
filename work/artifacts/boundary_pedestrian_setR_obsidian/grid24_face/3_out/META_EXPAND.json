@@ -1,0 +1,32 @@
+{
+  "pipeline": "FACE_EXPAND_TO_ORIG",
+  "method_user": "以 6e83c5f9 臉擴圖，擴出原圖 e51cdaa3",
+  "face_seed": "6e83c5f9-f466-4941-9888-bff543d3edc8",
+  "orig_scene": "e51cdaa3-af68-4fe7-8487-bbd4b939c267",
+  "mid_asset": "0c63caa4-ac10-4376-af68-120cbe9f6652",
+  "candidates": [
+    {
+      "key": "E1",
+      "asset": "0c63caa4-ac10-4376-af68-120cbe9f6652",
+      "note": "最貼原構"
+    },
+    {
+      "key": "E2",
+      "asset": "bd538542-48a5-4153-8408-36b3be3d6e4c",
+      "note": "臉更大·構圖變"
+    },
+    {
+      "key": "E3",
+      "asset": "a85bab4f-cf7a-468e-96a9-e43aab931e0c",
+      "note": "貼原·臉清"
+    }
+  ],
+  "L": "L-600efc1263f2",
+  "sha256": "600efc1263f276bd2b95d2c9f68789f06e794ad4d1e17e92e2dd8b16d6d1499c",
+  "method": "GEO.T · H2",
+  "weapon": "W0",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2",
+  "text": "NONE",
+  "person_cut_source": "MID_ONLY",
+  "recommend": "E1 最貼原構；E2 臉更大可備選"
+}

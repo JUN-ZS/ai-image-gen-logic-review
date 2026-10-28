@@ -1,0 +1,15 @@
+{
+  "pipeline": "HIERARCHICAL_PERSON_PARTS",
+  "order": [
+    "0 WITH_PERSON root",
+    "1 extract WHOLE person → HD → 2x tight",
+    "2 local parts from HD person (face/bun/hands/hammer/cloak) each upscale",
+    "3 paste parts → PERSON_REBUILD",
+    "4 paste rebuild + sphere onto BG → SCENE_FINAL"
+  ],
+  "root_asset": "d225b616-2be3-4f9f-b4e7-3a1049714ebc",
+  "person_hd": "9a91fc4b-b44f-47e5-993c-8506a672654a",
+  "person_cut": "02878a5f-e295-4c2b-baa2-e08793dccd27",
+  "bg": "92f23d2e-1cc4-4b0f-9f48-f76ea5c7213f",
+  "sha_final": "b2e8829f3537a47596ed9f92abb82c647790a997a66bd18a0a774cceb92a1c03"
+}

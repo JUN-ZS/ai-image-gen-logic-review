@@ -1,0 +1,18 @@
+{
+  "set_id": "SET-Q",
+  "version": "v2",
+  "mid_asset_id": "f1d38afd-17cb-476e-b354-6d77e153d6ca",
+  "mid_path1e_asset": "f80c51c8-3611-45e7-87ae-a6fccb811703",
+  "mid_sha256": "dfa1b1dabb5742e49e2be25588217f7bb6d8c706f2e03dcbfa936fbe4775d10b",
+  "L": "L-dfa1b1dabb57",
+  "locked": true,
+  "FULLFRAME_FACE_LOCK": true,
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "identity_plate": "49568425-f48f-4cf3-beb3-233ce85d03b9",
+  "method": "a8b FIRST in asset_ids + IP face close + PATH1E donor plate; supersedes f5bedf13",
+  "supersedes": "f5bedf13-d489-440a-bfb6-d374c56ec6df",
+  "v1_fail_reason": "scene-first ref; face drifted soft non-heroine; no immediate PATH1E",
+  "quality_ref": "2ce5fabe-8de3-42a2-bab9-727d63c834c8",
+  "world": "CHROME_MIRROR",
+  "method_geo": "GEO.T · H2"
+}

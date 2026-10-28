@@ -1,0 +1,23 @@
+{
+  "asof": "2026-10-27T10:38:40Z",
+  "trial": "gou_concept_e61_on_a0beb_line_no_virus",
+  "base_full": "SET_R_AEE_CONST2X_FULL full-canvas not local virus",
+  "a0beb_ref": "a0beb9de via view 1d038c85",
+  "gou_ref": "e61ab50c green contour",
+  "clothes": "6b398fb4",
+  "box_search_only": [
+    1364,
+    1272,
+    3348,
+    3544
+  ],
+  "shape_fill_ratio": 0.581,
+  "shape_area_frac": 0.433,
+  "affine_ncc": 0.9299,
+  "alpha_mean": 0.233,
+  "lap_armor": [
+    1528.7,
+    1825.4
+  ],
+  "virus_local_base": false
+}

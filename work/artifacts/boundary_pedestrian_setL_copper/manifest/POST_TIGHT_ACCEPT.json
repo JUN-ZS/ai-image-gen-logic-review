@@ -1,0 +1,17 @@
+{
+  "L0_clean": "1cabb620-6817-4c2c-bbd6-79938cf2bedc",
+  "L1_tight_reticle": "2227a14d-f814-4025-8fdb-17cdc5617cf5",
+  "L1_tight_title_MAIN": "e6074756-777a-46d3-aa5a-9701ecb44bbc",
+  "ENDING_alt_NOT_L1": "080175f4-1e9c-4dc9-8c54-ec45d1e30e37",
+  "FINAL_mainstrip_rule": "CLEAN + TYPE isolate from L1_tight_title",
+  "mae": {
+    "tight_reticle": 8.86,
+    "ending": 52.31
+  },
+  "align_pass": {
+    "tight_reticle": true,
+    "tight_title": "pose visual lock ok",
+    "ending": false
+  },
+  "sha_final": "313974a034bf574f83660e20e875a63b36d2a07e8fd7f3a34b74930e7b2c0e92"
+}

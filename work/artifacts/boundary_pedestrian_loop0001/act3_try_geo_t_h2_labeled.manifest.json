@@ -1,0 +1,22 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "0001",
+  "try_id": "0001",
+  "act_id": "3",
+  "method_id": "GEO.T",
+  "method_label": "T-hammer end-face FIRST CONTACT (H2) / X_RIGHT CAM01 M1",
+  "prompt_id": "I-04",
+  "style_id": "S-01",
+  "status": "REVIEW_PENDING",
+  "note": "本輪主試法：T 槌指定端面第一次接觸",
+  "source_path": "boundary_pedestrian_loop0001/act3_try_geo_t_h2_base.jpg",
+  "source_sha256": "2693cdee25811195c984f7e5671c492f9961a7345354ecef7f0a7930df01782e",
+  "source_width": 1792,
+  "source_height": 1008,
+  "image_realization": "SOURCE_FILE_ATTACHED",
+  "pixel_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "renderer": "boundary_pedestrian_try_art.py",
+  "artwork_path": "boundary_pedestrian_loop0001/act3_try_geo_t_h2_labeled.svg",
+  "artwork_sha256": "d64357cb42e3234017081006a90925bf59f61f21b9f8f8a6a371fe9c574d8864"
+}

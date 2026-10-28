@@ -1,0 +1,80 @@
+{
+  "fire_title": {
+    "box": [
+      120,
+      40,
+      2180,
+      900
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_env/crop_fire_title.jpg",
+    "gen_size": [
+      1400,
+      584
+    ]
+  },
+  "text_left": {
+    "box": [
+      40,
+      1100,
+      700,
+      1900
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_env/crop_text_left.jpg",
+    "gen_size": [
+      1400,
+      1697
+    ]
+  },
+  "text_right": {
+    "box": [
+      1600,
+      1150,
+      2260,
+      1850
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_env/crop_text_right.jpg",
+    "gen_size": [
+      1400,
+      1485
+    ]
+  },
+  "stone_mid": {
+    "box": [
+      400,
+      2100,
+      1900,
+      2900
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_env/crop_stone_mid.jpg",
+    "gen_size": [
+      1400,
+      747
+    ]
+  },
+  "stone_bot": {
+    "box": [
+      200,
+      2800,
+      2100,
+      3450
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_env/crop_stone_bot.jpg",
+    "gen_size": [
+      1400,
+      479
+    ]
+  },
+  "ground_fire": {
+    "box": [
+      300,
+      2550,
+      2000,
+      3200
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_env/crop_ground_fire.jpg",
+    "gen_size": [
+      1400,
+      535
+    ]
+  }
+}

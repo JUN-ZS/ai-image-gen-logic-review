@@ -1,0 +1,1333 @@
+{
+  "source": "d87e75cd-4169-4594-b998-d41ea4f734d0",
+  "L0": [
+    1792,
+    1008
+  ],
+  "COLS": 10,
+  "ROWS": 6,
+  "n": 60,
+  "overlap_crop": 0.08,
+  "cells": [
+    {
+      "id": "r00c00",
+      "r": 0,
+      "c": 0,
+      "core": [
+        0,
+        0,
+        179,
+        168
+      ],
+      "box": [
+        0,
+        0,
+        193,
+        181
+      ],
+      "size": [
+        193,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c00.jpg"
+    },
+    {
+      "id": "r00c01",
+      "r": 0,
+      "c": 1,
+      "core": [
+        179,
+        0,
+        358,
+        168
+      ],
+      "box": [
+        164,
+        0,
+        372,
+        181
+      ],
+      "size": [
+        208,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c01.jpg"
+    },
+    {
+      "id": "r00c02",
+      "r": 0,
+      "c": 2,
+      "core": [
+        358,
+        0,
+        538,
+        168
+      ],
+      "box": [
+        344,
+        0,
+        551,
+        181
+      ],
+      "size": [
+        207,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c02.jpg"
+    },
+    {
+      "id": "r00c03",
+      "r": 0,
+      "c": 3,
+      "core": [
+        538,
+        0,
+        717,
+        168
+      ],
+      "box": [
+        523,
+        0,
+        731,
+        181
+      ],
+      "size": [
+        208,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c03.jpg"
+    },
+    {
+      "id": "r00c04",
+      "r": 0,
+      "c": 4,
+      "core": [
+        717,
+        0,
+        896,
+        168
+      ],
+      "box": [
+        702,
+        0,
+        910,
+        181
+      ],
+      "size": [
+        208,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c04.jpg"
+    },
+    {
+      "id": "r00c05",
+      "r": 0,
+      "c": 5,
+      "core": [
+        896,
+        0,
+        1075,
+        168
+      ],
+      "box": [
+        881,
+        0,
+        1089,
+        181
+      ],
+      "size": [
+        208,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c05.jpg"
+    },
+    {
+      "id": "r00c06",
+      "r": 0,
+      "c": 6,
+      "core": [
+        1075,
+        0,
+        1254,
+        168
+      ],
+      "box": [
+        1060,
+        0,
+        1268,
+        181
+      ],
+      "size": [
+        208,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c06.jpg"
+    },
+    {
+      "id": "r00c07",
+      "r": 0,
+      "c": 7,
+      "core": [
+        1254,
+        0,
+        1434,
+        168
+      ],
+      "box": [
+        1240,
+        0,
+        1447,
+        181
+      ],
+      "size": [
+        207,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c07.jpg"
+    },
+    {
+      "id": "r00c08",
+      "r": 0,
+      "c": 8,
+      "core": [
+        1434,
+        0,
+        1613,
+        168
+      ],
+      "box": [
+        1419,
+        0,
+        1627,
+        181
+      ],
+      "size": [
+        208,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c08.jpg"
+    },
+    {
+      "id": "r00c09",
+      "r": 0,
+      "c": 9,
+      "core": [
+        1613,
+        0,
+        1792,
+        168
+      ],
+      "box": [
+        1598,
+        0,
+        1792,
+        181
+      ],
+      "size": [
+        194,
+        181
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r00c09.jpg"
+    },
+    {
+      "id": "r01c00",
+      "r": 1,
+      "c": 0,
+      "core": [
+        0,
+        168,
+        179,
+        336
+      ],
+      "box": [
+        0,
+        154,
+        193,
+        349
+      ],
+      "size": [
+        193,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c00.jpg"
+    },
+    {
+      "id": "r01c01",
+      "r": 1,
+      "c": 1,
+      "core": [
+        179,
+        168,
+        358,
+        336
+      ],
+      "box": [
+        164,
+        154,
+        372,
+        349
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c01.jpg"
+    },
+    {
+      "id": "r01c02",
+      "r": 1,
+      "c": 2,
+      "core": [
+        358,
+        168,
+        538,
+        336
+      ],
+      "box": [
+        344,
+        154,
+        551,
+        349
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c02.jpg"
+    },
+    {
+      "id": "r01c03",
+      "r": 1,
+      "c": 3,
+      "core": [
+        538,
+        168,
+        717,
+        336
+      ],
+      "box": [
+        523,
+        154,
+        731,
+        349
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c03.jpg"
+    },
+    {
+      "id": "r01c04",
+      "r": 1,
+      "c": 4,
+      "core": [
+        717,
+        168,
+        896,
+        336
+      ],
+      "box": [
+        702,
+        154,
+        910,
+        349
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c04.jpg"
+    },
+    {
+      "id": "r01c05",
+      "r": 1,
+      "c": 5,
+      "core": [
+        896,
+        168,
+        1075,
+        336
+      ],
+      "box": [
+        881,
+        154,
+        1089,
+        349
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c05.jpg"
+    },
+    {
+      "id": "r01c06",
+      "r": 1,
+      "c": 6,
+      "core": [
+        1075,
+        168,
+        1254,
+        336
+      ],
+      "box": [
+        1060,
+        154,
+        1268,
+        349
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c06.jpg"
+    },
+    {
+      "id": "r01c07",
+      "r": 1,
+      "c": 7,
+      "core": [
+        1254,
+        168,
+        1434,
+        336
+      ],
+      "box": [
+        1240,
+        154,
+        1447,
+        349
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c07.jpg"
+    },
+    {
+      "id": "r01c08",
+      "r": 1,
+      "c": 8,
+      "core": [
+        1434,
+        168,
+        1613,
+        336
+      ],
+      "box": [
+        1419,
+        154,
+        1627,
+        349
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c08.jpg"
+    },
+    {
+      "id": "r01c09",
+      "r": 1,
+      "c": 9,
+      "core": [
+        1613,
+        168,
+        1792,
+        336
+      ],
+      "box": [
+        1598,
+        154,
+        1792,
+        349
+      ],
+      "size": [
+        194,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r01c09.jpg"
+    },
+    {
+      "id": "r02c00",
+      "r": 2,
+      "c": 0,
+      "core": [
+        0,
+        336,
+        179,
+        504
+      ],
+      "box": [
+        0,
+        322,
+        193,
+        517
+      ],
+      "size": [
+        193,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c00.jpg"
+    },
+    {
+      "id": "r02c01",
+      "r": 2,
+      "c": 1,
+      "core": [
+        179,
+        336,
+        358,
+        504
+      ],
+      "box": [
+        164,
+        322,
+        372,
+        517
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c01.jpg"
+    },
+    {
+      "id": "r02c02",
+      "r": 2,
+      "c": 2,
+      "core": [
+        358,
+        336,
+        538,
+        504
+      ],
+      "box": [
+        344,
+        322,
+        551,
+        517
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c02.jpg"
+    },
+    {
+      "id": "r02c03",
+      "r": 2,
+      "c": 3,
+      "core": [
+        538,
+        336,
+        717,
+        504
+      ],
+      "box": [
+        523,
+        322,
+        731,
+        517
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c03.jpg"
+    },
+    {
+      "id": "r02c04",
+      "r": 2,
+      "c": 4,
+      "core": [
+        717,
+        336,
+        896,
+        504
+      ],
+      "box": [
+        702,
+        322,
+        910,
+        517
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c04.jpg"
+    },
+    {
+      "id": "r02c05",
+      "r": 2,
+      "c": 5,
+      "core": [
+        896,
+        336,
+        1075,
+        504
+      ],
+      "box": [
+        881,
+        322,
+        1089,
+        517
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c05.jpg"
+    },
+    {
+      "id": "r02c06",
+      "r": 2,
+      "c": 6,
+      "core": [
+        1075,
+        336,
+        1254,
+        504
+      ],
+      "box": [
+        1060,
+        322,
+        1268,
+        517
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c06.jpg"
+    },
+    {
+      "id": "r02c07",
+      "r": 2,
+      "c": 7,
+      "core": [
+        1254,
+        336,
+        1434,
+        504
+      ],
+      "box": [
+        1240,
+        322,
+        1447,
+        517
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c07.jpg"
+    },
+    {
+      "id": "r02c08",
+      "r": 2,
+      "c": 8,
+      "core": [
+        1434,
+        336,
+        1613,
+        504
+      ],
+      "box": [
+        1419,
+        322,
+        1627,
+        517
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c08.jpg"
+    },
+    {
+      "id": "r02c09",
+      "r": 2,
+      "c": 9,
+      "core": [
+        1613,
+        336,
+        1792,
+        504
+      ],
+      "box": [
+        1598,
+        322,
+        1792,
+        517
+      ],
+      "size": [
+        194,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r02c09.jpg"
+    },
+    {
+      "id": "r03c00",
+      "r": 3,
+      "c": 0,
+      "core": [
+        0,
+        504,
+        179,
+        672
+      ],
+      "box": [
+        0,
+        490,
+        193,
+        685
+      ],
+      "size": [
+        193,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c00.jpg"
+    },
+    {
+      "id": "r03c01",
+      "r": 3,
+      "c": 1,
+      "core": [
+        179,
+        504,
+        358,
+        672
+      ],
+      "box": [
+        164,
+        490,
+        372,
+        685
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c01.jpg"
+    },
+    {
+      "id": "r03c02",
+      "r": 3,
+      "c": 2,
+      "core": [
+        358,
+        504,
+        538,
+        672
+      ],
+      "box": [
+        344,
+        490,
+        551,
+        685
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c02.jpg"
+    },
+    {
+      "id": "r03c03",
+      "r": 3,
+      "c": 3,
+      "core": [
+        538,
+        504,
+        717,
+        672
+      ],
+      "box": [
+        523,
+        490,
+        731,
+        685
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c03.jpg"
+    },
+    {
+      "id": "r03c04",
+      "r": 3,
+      "c": 4,
+      "core": [
+        717,
+        504,
+        896,
+        672
+      ],
+      "box": [
+        702,
+        490,
+        910,
+        685
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c04.jpg"
+    },
+    {
+      "id": "r03c05",
+      "r": 3,
+      "c": 5,
+      "core": [
+        896,
+        504,
+        1075,
+        672
+      ],
+      "box": [
+        881,
+        490,
+        1089,
+        685
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c05.jpg"
+    },
+    {
+      "id": "r03c06",
+      "r": 3,
+      "c": 6,
+      "core": [
+        1075,
+        504,
+        1254,
+        672
+      ],
+      "box": [
+        1060,
+        490,
+        1268,
+        685
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c06.jpg"
+    },
+    {
+      "id": "r03c07",
+      "r": 3,
+      "c": 7,
+      "core": [
+        1254,
+        504,
+        1434,
+        672
+      ],
+      "box": [
+        1240,
+        490,
+        1447,
+        685
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c07.jpg"
+    },
+    {
+      "id": "r03c08",
+      "r": 3,
+      "c": 8,
+      "core": [
+        1434,
+        504,
+        1613,
+        672
+      ],
+      "box": [
+        1419,
+        490,
+        1627,
+        685
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c08.jpg"
+    },
+    {
+      "id": "r03c09",
+      "r": 3,
+      "c": 9,
+      "core": [
+        1613,
+        504,
+        1792,
+        672
+      ],
+      "box": [
+        1598,
+        490,
+        1792,
+        685
+      ],
+      "size": [
+        194,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r03c09.jpg"
+    },
+    {
+      "id": "r04c00",
+      "r": 4,
+      "c": 0,
+      "core": [
+        0,
+        672,
+        179,
+        840
+      ],
+      "box": [
+        0,
+        658,
+        193,
+        853
+      ],
+      "size": [
+        193,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c00.jpg"
+    },
+    {
+      "id": "r04c01",
+      "r": 4,
+      "c": 1,
+      "core": [
+        179,
+        672,
+        358,
+        840
+      ],
+      "box": [
+        164,
+        658,
+        372,
+        853
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c01.jpg"
+    },
+    {
+      "id": "r04c02",
+      "r": 4,
+      "c": 2,
+      "core": [
+        358,
+        672,
+        538,
+        840
+      ],
+      "box": [
+        344,
+        658,
+        551,
+        853
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c02.jpg"
+    },
+    {
+      "id": "r04c03",
+      "r": 4,
+      "c": 3,
+      "core": [
+        538,
+        672,
+        717,
+        840
+      ],
+      "box": [
+        523,
+        658,
+        731,
+        853
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c03.jpg"
+    },
+    {
+      "id": "r04c04",
+      "r": 4,
+      "c": 4,
+      "core": [
+        717,
+        672,
+        896,
+        840
+      ],
+      "box": [
+        702,
+        658,
+        910,
+        853
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c04.jpg"
+    },
+    {
+      "id": "r04c05",
+      "r": 4,
+      "c": 5,
+      "core": [
+        896,
+        672,
+        1075,
+        840
+      ],
+      "box": [
+        881,
+        658,
+        1089,
+        853
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c05.jpg"
+    },
+    {
+      "id": "r04c06",
+      "r": 4,
+      "c": 6,
+      "core": [
+        1075,
+        672,
+        1254,
+        840
+      ],
+      "box": [
+        1060,
+        658,
+        1268,
+        853
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c06.jpg"
+    },
+    {
+      "id": "r04c07",
+      "r": 4,
+      "c": 7,
+      "core": [
+        1254,
+        672,
+        1434,
+        840
+      ],
+      "box": [
+        1240,
+        658,
+        1447,
+        853
+      ],
+      "size": [
+        207,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c07.jpg"
+    },
+    {
+      "id": "r04c08",
+      "r": 4,
+      "c": 8,
+      "core": [
+        1434,
+        672,
+        1613,
+        840
+      ],
+      "box": [
+        1419,
+        658,
+        1627,
+        853
+      ],
+      "size": [
+        208,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c08.jpg"
+    },
+    {
+      "id": "r04c09",
+      "r": 4,
+      "c": 9,
+      "core": [
+        1613,
+        672,
+        1792,
+        840
+      ],
+      "box": [
+        1598,
+        658,
+        1792,
+        853
+      ],
+      "size": [
+        194,
+        195
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r04c09.jpg"
+    },
+    {
+      "id": "r05c00",
+      "r": 5,
+      "c": 0,
+      "core": [
+        0,
+        840,
+        179,
+        1008
+      ],
+      "box": [
+        0,
+        826,
+        193,
+        1008
+      ],
+      "size": [
+        193,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c00.jpg"
+    },
+    {
+      "id": "r05c01",
+      "r": 5,
+      "c": 1,
+      "core": [
+        179,
+        840,
+        358,
+        1008
+      ],
+      "box": [
+        164,
+        826,
+        372,
+        1008
+      ],
+      "size": [
+        208,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c01.jpg"
+    },
+    {
+      "id": "r05c02",
+      "r": 5,
+      "c": 2,
+      "core": [
+        358,
+        840,
+        538,
+        1008
+      ],
+      "box": [
+        344,
+        826,
+        551,
+        1008
+      ],
+      "size": [
+        207,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c02.jpg"
+    },
+    {
+      "id": "r05c03",
+      "r": 5,
+      "c": 3,
+      "core": [
+        538,
+        840,
+        717,
+        1008
+      ],
+      "box": [
+        523,
+        826,
+        731,
+        1008
+      ],
+      "size": [
+        208,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c03.jpg"
+    },
+    {
+      "id": "r05c04",
+      "r": 5,
+      "c": 4,
+      "core": [
+        717,
+        840,
+        896,
+        1008
+      ],
+      "box": [
+        702,
+        826,
+        910,
+        1008
+      ],
+      "size": [
+        208,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c04.jpg"
+    },
+    {
+      "id": "r05c05",
+      "r": 5,
+      "c": 5,
+      "core": [
+        896,
+        840,
+        1075,
+        1008
+      ],
+      "box": [
+        881,
+        826,
+        1089,
+        1008
+      ],
+      "size": [
+        208,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c05.jpg"
+    },
+    {
+      "id": "r05c06",
+      "r": 5,
+      "c": 6,
+      "core": [
+        1075,
+        840,
+        1254,
+        1008
+      ],
+      "box": [
+        1060,
+        826,
+        1268,
+        1008
+      ],
+      "size": [
+        208,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c06.jpg"
+    },
+    {
+      "id": "r05c07",
+      "r": 5,
+      "c": 7,
+      "core": [
+        1254,
+        840,
+        1434,
+        1008
+      ],
+      "box": [
+        1240,
+        826,
+        1447,
+        1008
+      ],
+      "size": [
+        207,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c07.jpg"
+    },
+    {
+      "id": "r05c08",
+      "r": 5,
+      "c": 8,
+      "core": [
+        1434,
+        840,
+        1613,
+        1008
+      ],
+      "box": [
+        1419,
+        826,
+        1627,
+        1008
+      ],
+      "size": [
+        208,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c08.jpg"
+    },
+    {
+      "id": "r05c09",
+      "r": 5,
+      "c": 9,
+      "core": [
+        1613,
+        840,
+        1792,
+        1008
+      ],
+      "box": [
+        1598,
+        826,
+        1792,
+        1008
+      ],
+      "size": [
+        194,
+        182
+      ],
+      "path": "/workspace/artifacts/boundary_pedestrian_setN_golden/grid60/1_cells/r05c09.jpg"
+    }
+  ]
+}

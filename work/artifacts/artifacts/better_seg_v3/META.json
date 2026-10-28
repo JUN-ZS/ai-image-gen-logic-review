@@ -1,0 +1,52 @@
+{
+  "asof": "2026-10-27T06:21:31Z",
+  "version": "v3b",
+  "method": "u2net_human_seg rembg + multi-class + big-contour",
+  "stats": [
+    {
+      "id": 0,
+      "name": "background",
+      "frac": 0.3624,
+      "n": 0
+    },
+    {
+      "id": 1,
+      "name": "hair",
+      "frac": 0.1284,
+      "n": 2
+    },
+    {
+      "id": 2,
+      "name": "body_skin",
+      "frac": 0.089,
+      "n": 3
+    },
+    {
+      "id": 3,
+      "name": "face_skin",
+      "frac": 0.0678,
+      "n": 1
+    },
+    {
+      "id": 4,
+      "name": "armor_clothes",
+      "frac": 0.1666,
+      "n": 1
+    },
+    {
+      "id": 5,
+      "name": "weapon",
+      "frac": 0.0916,
+      "n": 1
+    },
+    {
+      "id": 6,
+      "name": "fire_fx",
+      "frac": 0.0942,
+      "n": 5
+    }
+  ],
+  "n_instances": 13,
+  "L": "L-5990f3b77a78",
+  "person_frac": 0.5433
+}

@@ -1,0 +1,67 @@
+{
+  "asof": "2026-10-27T15:15:54Z",
+  "user": "重做 SIAX 混",
+  "base": "1f290afc-af64-4aaa-b9a3-007106979346",
+  "true_siax": true,
+  "model": "4x_NMKD-Siax_200k.pth",
+  "formula": "out=LP(Lanczos)+HF(Siax-LP_blur)×M",
+  "GAINS": {
+    "fire": 0.85,
+    "text": 0.98,
+    "stone": 0.78,
+    "metal": 0.55,
+    "flat": 0.35
+  },
+  "face_skin_lock": true,
+  "virus_local_base": false,
+  "constitution": [
+    "§0.12.15",
+    "§0.12.18 not pure Siax FINAL",
+    "T1 TRUE SIAX tile-to-disk"
+  ],
+  "proof": [
+    {
+      "name": "fire_title",
+      "lap_lp": 294.3,
+      "lap_siax": 1862.4,
+      "lap_hyb": 715.6
+    },
+    {
+      "name": "text_left",
+      "lap_lp": 388.3,
+      "lap_siax": 2149.1,
+      "lap_hyb": 1053.2
+    },
+    {
+      "name": "text_right",
+      "lap_lp": 277.8,
+      "lap_siax": 1124.6,
+      "lap_hyb": 517.2
+    },
+    {
+      "name": "stone_mid",
+      "lap_lp": 470.9,
+      "lap_siax": 1709.2,
+      "lap_hyb": 883.6
+    },
+    {
+      "name": "ground_fire",
+      "lap_lp": 329.6,
+      "lap_siax": 1112.5,
+      "lap_hyb": 574.7
+    },
+    {
+      "name": "face",
+      "lap_lp": 458.7,
+      "lap_siax": 4730.7,
+      "lap_hyb": 723.6
+    }
+  ],
+  "out_mb": 36.77,
+  "size": [
+    4608,
+    6912
+  ],
+  "n_tiles": 70,
+  "L": "L-deded6a354ef"
+}

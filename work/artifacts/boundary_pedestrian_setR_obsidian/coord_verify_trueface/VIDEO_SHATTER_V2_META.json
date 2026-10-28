@@ -1,0 +1,16 @@
+{
+  "type": "VIDEO_V2",
+  "request": "首0.0001秒球無損輕震 → 武器另一邊打到球 → 大破碎；維持武器外型+描邊發光",
+  "source_ref_video": "76914daf (敘事參考)",
+  "still_mother": "cce4ad3a (母圖單次靜幀 · 禁疊 E-FLOW-06)",
+  "video_asset": "9b97db79-c7ec-410d-b694-60af961913d9",
+  "duration_s": 10,
+  "beats": [
+    "t≈0: 球在被打的光下，無損，僅輕震",
+    "中: 同一 C 環槌 翻另一面擊中；外型鎖 + 描邊發光",
+    "後: 大破碎 · 晶片飛散"
+  ],
+  "weapon_lock": "twisted shaft + C-ring + hammer head; edge glow for continuity",
+  "sha256": "7af1c20afebf2862901c2730102dc0a53100de034d70c0af1172b5b55d3f1ed7",
+  "discarded": "b71de894 (no prompt / weapon drift)"
+}

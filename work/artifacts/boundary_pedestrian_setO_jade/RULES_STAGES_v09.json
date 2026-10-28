@@ -1,0 +1,62 @@
+{
+  "asof": "2026-10-25T15:00:23Z",
+  "doc": "BOUNDARY_WALKER_UNIFIED_RULES.md §0.9",
+  "stages": [
+    "ST0_REF",
+    "ST1_IP",
+    "ST2_MID_LOCK",
+    "ST3_GEO_AUDIT",
+    "ST4_DT",
+    "ST5_ET_TYPE",
+    "ST6_FREE_CAM",
+    "ST7_GATE",
+    "ST8_FINAL"
+  ],
+  "dual_et": {
+    "ET-A": {
+      "frame": "PRE",
+      "phase": "condensed",
+      "examples": [
+        "ice glass",
+        "coiled lightning",
+        "frost neon"
+      ]
+    },
+    "ET-B": {
+      "frame": "POST",
+      "phase": "released",
+      "examples": [
+        "combustion fire",
+        "metal neon",
+        "crack graffiti"
+      ]
+    },
+    "same_sigma_text": true,
+    "no_bg_plate": true,
+    "no_try_count": true,
+    "no_review_pending_on_image": true
+  },
+  "direction_lines": [
+    "STRIKE_AXIS",
+    "force F",
+    "normal n",
+    "GAP marker"
+  ],
+  "highlights": [
+    "HL.STRIKE",
+    "HL.RECV",
+    "HL.SPHERE",
+    "HL.CONTACT",
+    "HL.WEAPON",
+    "HL.AXIS",
+    "HL.FORCE",
+    "HL.GAP"
+  ],
+  "source": [
+    "FACE_ANALYSIS_HUB.json",
+    "HUB_MASTER_FORMULAS_v5 axis A/E",
+    "SET-L E TYPE",
+    "SET-F dual ice/metal plates",
+    "§0.8 T_diegetic"
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "src": "SET_R_SELFGEN_FACE_FULL_q100.jpg",
+  "W": 4608,
+  "H": 6912,
+  "crops": [
+    {
+      "name": "face",
+      "box_2304": [
+        780,
+        260,
+        1520,
+        980
+      ],
+      "box_full": [
+        1560,
+        520,
+        3040,
+        1960
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_face.jpg",
+      "gen_size": [
+        1024,
+        996
+      ]
+    },
+    {
+      "name": "torso",
+      "box_2304": [
+        700,
+        700,
+        1600,
+        1600
+      ],
+      "box_full": [
+        1400,
+        1400,
+        3200,
+        3200
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_torso.jpg",
+      "gen_size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "weapon",
+      "box_2304": [
+        400,
+        100,
+        1100,
+        1400
+      ],
+      "box_full": [
+        800,
+        200,
+        2200,
+        2800
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_weapon.jpg",
+      "gen_size": [
+        700,
+        1300
+      ]
+    },
+    {
+      "name": "sphere",
+      "box_2304": [
+        750,
+        1450,
+        1550,
+        2300
+      ],
+      "box_full": [
+        1500,
+        2900,
+        3100,
+        4600
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_sphere.jpg",
+      "gen_size": [
+        963,
+        1023
+      ]
+    },
+    {
+      "name": "stone_mid",
+      "box_2304": [
+        400,
+        1950,
+        1900,
+        2750
+      ],
+      "box_full": [
+        800,
+        3900,
+        3800,
+        5500
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_stone_mid.jpg",
+      "gen_size": [
+        1500,
+        800
+      ]
+    },
+    {
+      "name": "ground_fire",
+      "box_2304": [
+        300,
+        2550,
+        2000,
+        3200
+      ],
+      "box_full": [
+        600,
+        5100,
+        4000,
+        6400
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_ground_fire.jpg",
+      "gen_size": [
+        1700,
+        650
+      ]
+    },
+    {
+      "name": "fire_title",
+      "box_2304": [
+        200,
+        40,
+        2100,
+        700
+      ],
+      "box_full": [
+        400,
+        80,
+        4200,
+        1400
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_fire_title.jpg",
+      "gen_size": [
+        1900,
+        660
+      ]
+    },
+    {
+      "name": "text_left",
+      "box_2304": [
+        40,
+        1000,
+        650,
+        1750
+      ],
+      "box_full": [
+        80,
+        2000,
+        1300,
+        3500
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_text_left.jpg",
+      "gen_size": [
+        832,
+        1024
+      ]
+    },
+    {
+      "name": "text_right",
+      "box_2304": [
+        1600,
+        1050,
+        2260,
+        1750
+      ],
+      "box_full": [
+        3200,
+        2100,
+        4520,
+        3500
+      ],
+      "path": "/workspace/artifacts/artifacts/sfr_all/crop_text_right.jpg",
+      "gen_size": [
+        965,
+        1024
+      ]
+    }
+  ]
+}

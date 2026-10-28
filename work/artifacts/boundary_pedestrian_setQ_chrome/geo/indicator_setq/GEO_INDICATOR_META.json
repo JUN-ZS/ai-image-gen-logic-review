@@ -1,0 +1,64 @@
+{
+  "set": "SET-Q",
+  "method": "GEO.T · H2",
+  "catalog_id": "G02",
+  "L": "L-dfa1b1dabb57",
+  "source": "GEO_INDICATOR_TEXT_SET blind",
+  "frames": {
+    "PRE": {
+      "file": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_PRE_INDICATOR.jpg",
+      "sha256": "31c5842137e3eea42ece841e8547b952dbc6eb6210798658af4f7d431f0c5404",
+      "Σ_geo": {
+        "s_title": "GEO.T · H2",
+        "s_brand": "邊界行人",
+        "s_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP→0 PENDING  H2",
+        "s_strike": "打擊面=T-END",
+        "s_recv": "受面=TANGENT",
+        "s_force": "F_n",
+        "s_gap": "GAP→0 PENDING",
+        "s_nv": "n·v=1",
+        "s_loop": "LOOP L-dfa1b1dabb57"
+      },
+      "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP→0 PENDING  H2"
+    },
+    "MID": {
+      "file": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_MID_INDICATOR.jpg",
+      "sha256": "25aa3c52e99dc654f09dbc99c62768ff9b382b8be1f6f503ca8b479a882e0414",
+      "Σ_geo": {
+        "s_title": "GEO.T · H2",
+        "s_brand": "邊界行人",
+        "s_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2",
+        "s_strike": "打擊面=T-END",
+        "s_recv": "受面=TANGENT",
+        "s_force": "F_n",
+        "s_gap": "GAP=0",
+        "s_nv": "n·v=1",
+        "s_loop": "LOOP L-dfa1b1dabb57"
+      },
+      "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2"
+    },
+    "POST": {
+      "file": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_POST_INDICATOR.jpg",
+      "sha256": "43d92176e1cc23f2eca77483e18404164a393a01742bfbae2db19a0f8276603c",
+      "Σ_geo": {
+        "s_title": "GEO.T · H2",
+        "s_brand": "邊界行人",
+        "s_line": "STRIKE:T-END  RECV:TANGENT  F_n OUT  n·v=1  GAP=0 FOLLOW  H2",
+        "s_strike": "打擊面=T-END",
+        "s_recv": "受面=TANGENT",
+        "s_force": "F_n OUT",
+        "s_gap": "GAP=0 FOLLOW",
+        "s_nv": "n·v=1",
+        "s_loop": "LOOP L-dfa1b1dabb57"
+      },
+      "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n OUT  n·v=1  GAP=0 FOLLOW  H2"
+    }
+  },
+  "triptych": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_TRIPTYCH_INDICATOR.jpg",
+  "assets": {
+    "PRE": "ff91b1b4-822f-4ecd-b230-75e2a926137c",
+    "MID": "f2fc274d-e9c2-4852-b264-42103969c0c5",
+    "POST": "6d0bf200-b779-4d05-a593-5f4f2ce9ddd7",
+    "TRIPTYCH": "b3c893dc-6670-40e2-aaa1-1ba1533e5004"
+  }
+}

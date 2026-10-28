@@ -1,0 +1,17 @@
+{
+  "pipeline": "FAT_FACE_REF_v5",
+  "gates": {
+    "face_lap": 276.8955993652344,
+    "center_lap": 563.9488525390625,
+    "full_lap": 371.13580322265625,
+    "v3_center": 457.5,
+    "note": "sharp base v3 + mid identity from Imagine"
+  },
+  "L": "L-ebdc972206c8",
+  "sha256": "ebdc972206c8cf98ddbd0ce90498afe863727a207aa688eb9a63853c473c9852",
+  "size": [
+    3584,
+    2016
+  ],
+  "asof": "2026-10-25T17:21:48Z"
+}

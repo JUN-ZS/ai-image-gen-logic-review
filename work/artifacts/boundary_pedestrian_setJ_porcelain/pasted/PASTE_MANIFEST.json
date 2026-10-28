@@ -1,0 +1,32 @@
+[
+  {
+    "frame": "pre",
+    "hud": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/labeled/J01_pre_HUD.jpg",
+    "cutout": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/cutouts/J01_pre_cut.png",
+    "out": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/pasted/J01_pre_PASTE.jpg",
+    "hud_sha256": "997c5f1ca1d17a3a520ba1dcc73051a979e150379c803d1bd6a9a94aa9bd3b94",
+    "cut_sha256": "cc4736510c60793f48b6ef8a97bc98b603256652289f10cf0839a08db72ae3c8",
+    "out_sha256": "5b597b098f221a2aeceef1e852873879c91114d362dc30cb2531f71095095681",
+    "note": "clean first-gen character (extract) pasted over HUD final to kill img2img ghosting"
+  },
+  {
+    "frame": "mid",
+    "hud": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/labeled/J01_mid_HUD.jpg",
+    "cutout": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/cutouts/J01_mid_cut.png",
+    "out": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/pasted/J01_mid_PASTE.jpg",
+    "hud_sha256": "2118336dcde58815f5deac837bfcae4c47d10fa20a755692afb96aeb6f2d6b56",
+    "cut_sha256": "6a9a4c754bc4149ab3d4d75a5d1d8d6208e485d7be752550465a24d2e19adee0",
+    "out_sha256": "6091d3a67a175c7dcd7551b91b3b7b80b11b8742bc7e29f0ce86ffd71cf60808",
+    "note": "clean first-gen character (extract) pasted over HUD final to kill img2img ghosting"
+  },
+  {
+    "frame": "post",
+    "hud": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/labeled/J01_post_HUD.jpg",
+    "cutout": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/cutouts/J01_post_cut.png",
+    "out": "/workspace/artifacts/boundary_pedestrian_setJ_porcelain/pasted/J01_post_PASTE.jpg",
+    "hud_sha256": "78a178a1ed50be7e2ffb9ad625d9cdef57200af49dd2bdf231987b884528d429",
+    "cut_sha256": "632123321d43518f2c1e9ed7c861c66345bf417eb1e74006d23cd0d3a57d21f4",
+    "out_sha256": "2367004e7f769813048f476fe372a60dd5e6e910e919dd65910c542c192f1018",
+    "note": "clean first-gen character (extract) pasted over HUD final to kill img2img ghosting"
+  }
+]

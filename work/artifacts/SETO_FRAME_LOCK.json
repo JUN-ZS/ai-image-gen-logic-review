@@ -1,0 +1,24 @@
+{
+  "set": "SET-O",
+  "true_heroine": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "L": "L-08d1743fbd6a",
+  "mid_sha256": "08d1743fbd6af45e8548dd89d58ec44cb00daecb35a3abf9a53eb317083cb4f9",
+  "method": "HD_IP_REF_NEW_ACTION (not i2i ghost stack)",
+  "rule": "BOUNDARY_WALKER_UNIFIED_RULES.md §0.7",
+  "banned": {
+    "86bc3e56-a757-418a-aa84-9445e7e48677": "FAIL_GHOST_PERSON"
+  },
+  "assets": {
+    "ip_hd": "affaa47f-7b8d-4814-b9d0-e2ca06a33b5f",
+    "face_hd": "87536f45-e6b1-4b30-a470-dadf7ce53c86",
+    "pre": "bafd8c53-8d91-4b19-aa60-1218c87d582f",
+    "mid": "634afc74-f693-48d8-86c8-79c48415f85b",
+    "post": "c5b91f93-6a32-4ac6-90f9-bb3fd24a6e0d"
+  },
+  "locked": true,
+  "asof": "2026-10-25T10:17:29Z",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "standard_face_sha12": "f612ec7e07d9",
+  "face_lock": "ALL_ALBUMS_STANDARD",
+  "asof_face_lock": "2026-10-25T15:12:55Z"
+}

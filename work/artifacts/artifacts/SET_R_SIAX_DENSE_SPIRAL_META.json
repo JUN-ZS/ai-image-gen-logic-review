@@ -1,0 +1,48 @@
+{
+  "asof": "2026-10-26T19:55:58Z",
+  "trial": "DENSE_MESH_armor + SPIRAL_WEAPON_v1",
+  "user": "再密一檔網孔, 武器另一種紋",
+  "armor_pattern": "denser gold/black open lattice mesh 2x cells",
+  "weapon_pattern": "forged spiral twisted steel cord + ring wrap — NOT diamond mesh",
+  "stats": {
+    "armor_chest": {
+      "cc": 0.858,
+      "M": 0.791,
+      "d": 12.8,
+      "kind": "armor"
+    },
+    "armor_shoulder": {
+      "cc": 0.863,
+      "M": 0.823,
+      "d": 14.8,
+      "kind": "armor"
+    },
+    "armor_skirt": {
+      "cc": 0.817,
+      "M": 0.737,
+      "d": 13.0,
+      "kind": "armor"
+    },
+    "weapon_grip": {
+      "cc": 0.78,
+      "M": 0.342,
+      "d": 6.9,
+      "kind": "weapon_grip"
+    },
+    "weapon_upper": {
+      "cc": 0.75,
+      "M": 0.306,
+      "d": 12.3,
+      "kind": "weapon"
+    },
+    "weapon_lower": {
+      "cc": 0.686,
+      "M": 0.404,
+      "d": 14.8,
+      "kind": "weapon"
+    }
+  },
+  "L": "L-e18b7d20eca8",
+  "mb": 2.74,
+  "mb_2x": 8.56
+}

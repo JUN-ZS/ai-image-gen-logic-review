@@ -1,0 +1,37 @@
+{
+  "asof": "2026-10-26T17:50:05Z",
+  "trial": "STONE_REDO_A_B_C_v1",
+  "L": "L-742f06e2b00b",
+  "old_plate": "e52b18ef-2691-494b-acb4-d0cd2b70bd30",
+  "best": {
+    "name": "a",
+    "path": "/workspace/artifacts/imagine_images/2314ef43-a062-4027-a3cd-5b2932eddc5a.jpg",
+    "ncc": 0.6423946619033813,
+    "lap": 870.8552183308345
+  },
+  "all_scores": [
+    {
+      "name": "a",
+      "path": "/workspace/artifacts/imagine_images/2314ef43-a062-4027-a3cd-5b2932eddc5a.jpg",
+      "ncc": 0.6423946619033813,
+      "lap": 870.8552183308345
+    },
+    {
+      "name": "b",
+      "path": "/workspace/artifacts/imagine_images/60521f5a-ce7e-4a35-8638-9f6c9e8d56cc.jpg",
+      "ncc": 0.6190279126167297,
+      "lap": 995.1042392220963
+    }
+  ],
+  "ncc_stitch": 0.5387,
+  "lap_canvas": 1405.9,
+  "lap_old_e52b_in_box": 615.6,
+  "lap_new": 3218.8,
+  "mean_abs": 17.3,
+  "pct_gt8": 54.7,
+  "beat_canvas": true,
+  "beat_old_e52b": true,
+  "visible_delta": true,
+  "pass_gate": true,
+  "note": "same-comp stone MAT; plate-dominant; beat e52b blur claim"
+}

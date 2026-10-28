@@ -1,0 +1,59 @@
+{
+  "asof": "2026-10-27T06:49:48Z",
+  "source": "28abefc3-3547-4173-aaed-2f7c3c2cc4f4",
+  "method": "混法: 2x crop enlarge + GEN i2i mesh densify + ECC stitch + armor α + weapon hard lock Δ≈0",
+  "gens": {
+    "CHEST": "9d7cdc50",
+    "TORSO": "68bf0b4a",
+    "SHOULDER": "f351961b"
+  },
+  "stats": {
+    "TORSO": {
+      "cc": 0.9455,
+      "alpha": 0.82,
+      "lap_base": 3973.5,
+      "lap_gen": 1073.5,
+      "lap_out": 2108.8,
+      "mad": 11.77,
+      "weapon_delta": 0.0,
+      "box": [
+        345,
+        345,
+        944,
+        950
+      ]
+    },
+    "CHEST": {
+      "cc": 0.8727,
+      "alpha": 0.78,
+      "lap_base": 3877.1,
+      "lap_gen": 2057.6,
+      "lap_out": 2460.2,
+      "mad": 15.99,
+      "weapon_delta": 0.0,
+      "box": [
+        322,
+        311,
+        898,
+        829
+      ]
+    },
+    "SHOULDER": {
+      "cc": 0.95,
+      "alpha": 0.45,
+      "lap_base": 3462.3,
+      "lap_gen": 1333.2,
+      "lap_out": 2375.8,
+      "mad": 12.26,
+      "weapon_delta": 0.0,
+      "box": [
+        483,
+        276,
+        1013,
+        725
+      ]
+    }
+  },
+  "weapon_delta_global": 0.0,
+  "L": "L-9962faee5bd1"
+}

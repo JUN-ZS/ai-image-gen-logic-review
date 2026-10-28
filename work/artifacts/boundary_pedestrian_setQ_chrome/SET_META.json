@@ -1,0 +1,277 @@
+{
+  "set_id": "SET-Q",
+  "code": "Q",
+  "world": "CHROME_MIRROR",
+  "world_label": "水銀鏡面 · 黑晶反射",
+  "method": "GEO.T · H2",
+  "asof": "2026-10-26T01:53:00Z",
+  "pipeline": "UNIFIED_v0.13 + §0.5.1 IP_PACK",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "stages": {
+    "ST0": "ok",
+    "ST1_IP_PACK": "ok",
+    "ST2_FULLFRAME_FACE_LOCK": "ok_v2_relocked",
+    "ST4": "ok",
+    "ST5_ET": "ok_second_pass_on_path1e",
+    "ST_G_GRID24_ENHANCE": "ok",
+    "PATH1E_POST": "ok",
+    "ST2_v1": "FAIL_not_heroine_unclear",
+    "ST5_ET_on_f80": "ok",
+    "ST_G_GRID24_ET_MID": "ok",
+    "ST3_G_GEO_INDICATOR": "ok",
+    "ST3_G_GEO_INDICATOR_DIEGETIC": "ok",
+    "ST3_G_ONESHOT_EXP": "ok",
+    "ST3_G_FACEONLY_EXP": "ok"
+  },
+  "rules": [
+    "PRIMARY IP = no_bg + multi_angle",
+    "FULLFRAME_FACE_LOCK before ET",
+    "GRID face cells ENHANCE_ONLY"
+  ],
+  "L": "L-dfa1b1dabb57",
+  "mid_asset_id": "f1d38afd-17cb-476e-b354-6d77e153d6ca",
+  "IP_PACK": {
+    "set_id": "SET-Q",
+    "world": "CHROME_MIRROR",
+    "no_bg": true,
+    "multi_angle": true,
+    "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "body_seed": "21a606e1-9fba-448b-97bd-7cb1f90f6d75",
+    "asof": "2026-10-26T01:53:00Z",
+    "angles": [
+      {
+        "id": "IP.FACE_CLOSE",
+        "asset_id": "c33c10f0-3a79-4d35-8038-1d036ff11a87",
+        "role": "face_primary",
+        "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FACE_CLOSE_c33c10f0.jpg"
+      },
+      {
+        "id": "IP.FRONT",
+        "asset_id": "56e5c458-7817-4e68-855e-9caf481e1295",
+        "role": "half_body",
+        "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FRONT_56e5c458.jpg"
+      },
+      {
+        "id": "IP.FRONT_FULL",
+        "asset_id": "09eb5c04-1068-43d1-a54d-e3e508a5aa39",
+        "role": "full_body",
+        "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FRONT_FULL_09eb5c04.jpg"
+      },
+      {
+        "id": "IP.ACTION",
+        "asset_id": "6ed663e5-6413-46a0-a168-555ba39087cb",
+        "role": "hammer_raise",
+        "IP_HD": true,
+        "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_ACTION_6ed663e5.jpg"
+      },
+      {
+        "id": "IP.THREE_Q",
+        "asset_id": "5d1e56a1-f7eb-4bd5-9d8e-53677059dc6b",
+        "role": "three_quarter",
+        "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_THREE_Q_5d1e56a1.jpg"
+      },
+      {
+        "id": "IP.SIDE",
+        "asset_id": "d8acce60-f2a5-4007-8a25-1609a170b852",
+        "role": "profile",
+        "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_SIDE_d8acce60.jpg"
+      }
+    ],
+    "IP_HD": "6ed663e5-6413-46a0-a168-555ba39087cb",
+    "min_ok": true
+  },
+  "FRAME_LOCK": {
+    "set_id": "SET-Q",
+    "version": "v2",
+    "mid_asset_id": "f1d38afd-17cb-476e-b354-6d77e153d6ca",
+    "mid_path1e_asset": "f80c51c8-3611-45e7-87ae-a6fccb811703",
+    "mid_sha256": "dfa1b1dabb5742e49e2be25588217f7bb6d8c706f2e03dcbfa936fbe4775d10b",
+    "L": "L-dfa1b1dabb57",
+    "locked": true,
+    "FULLFRAME_FACE_LOCK": true,
+    "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "identity_plate": "49568425-f48f-4cf3-beb3-233ce85d03b9",
+    "method": "a8b FIRST in asset_ids + IP face close + PATH1E donor plate; supersedes f5bedf13",
+    "supersedes": "f5bedf13-d489-440a-bfb6-d374c56ec6df",
+    "v1_fail_reason": "scene-first ref; face drifted soft non-heroine; no immediate PATH1E",
+    "quality_ref": "2ce5fabe-8de3-42a2-bab9-727d63c834c8",
+    "world": "CHROME_MIRROR",
+    "method_geo": "GEO.T · H2"
+  },
+  "assets": {
+    "IP_PACK": {
+      "set_id": "SET-Q",
+      "world": "CHROME_MIRROR",
+      "no_bg": true,
+      "multi_angle": true,
+      "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+      "body_seed": "21a606e1-9fba-448b-97bd-7cb1f90f6d75",
+      "asof": "2026-10-26T01:53:00Z",
+      "angles": [
+        {
+          "id": "IP.FACE_CLOSE",
+          "asset_id": "c33c10f0-3a79-4d35-8038-1d036ff11a87",
+          "role": "face_primary",
+          "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FACE_CLOSE_c33c10f0.jpg"
+        },
+        {
+          "id": "IP.FRONT",
+          "asset_id": "56e5c458-7817-4e68-855e-9caf481e1295",
+          "role": "half_body",
+          "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FRONT_56e5c458.jpg"
+        },
+        {
+          "id": "IP.FRONT_FULL",
+          "asset_id": "09eb5c04-1068-43d1-a54d-e3e508a5aa39",
+          "role": "full_body",
+          "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_FRONT_FULL_09eb5c04.jpg"
+        },
+        {
+          "id": "IP.ACTION",
+          "asset_id": "6ed663e5-6413-46a0-a168-555ba39087cb",
+          "role": "hammer_raise",
+          "IP_HD": true,
+          "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_ACTION_6ed663e5.jpg"
+        },
+        {
+          "id": "IP.THREE_Q",
+          "asset_id": "5d1e56a1-f7eb-4bd5-9d8e-53677059dc6b",
+          "role": "three_quarter",
+          "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_THREE_Q_5d1e56a1.jpg"
+        },
+        {
+          "id": "IP.SIDE",
+          "asset_id": "d8acce60-f2a5-4007-8a25-1609a170b852",
+          "role": "profile",
+          "file": "boundary_pedestrian_setQ_chrome/ip_pack/IP_SIDE_d8acce60.jpg"
+        }
+      ],
+      "IP_HD": "6ed663e5-6413-46a0-a168-555ba39087cb",
+      "min_ok": true
+    },
+    "I_MID": "f1d38afd-17cb-476e-b354-6d77e153d6ca",
+    "I_PRE": "51c9ea75-3de3-4503-8d58-0a7d02970b3a",
+    "I_POST": "61902455-e795-4908-9114-7d547675399d",
+    "I_PRE_ET": "689dd6d5-c91e-4199-aab2-7c7d5fb13f9b",
+    "I_POST_ET": "fe82f7d0-2ff2-48ed-98d1-35531e6bac63",
+    "I_POST_PATH1E": "9d0ac17e-e11a-400d-95f2-4f5b32aba72c",
+    "I_POST_PATH1E_ET2": "8c9f5051-1b28-4fdd-9849-05ba5926f916",
+    "I_POST_GRID24_ENHANCE": "88d913ff-aa80-4345-94de-645946252b43",
+    "TEXT_BACKUP_from_fe82": "et/TEXT_BACKUP_FROM_fe82_RGB.jpg",
+    "fe82_role": "TEXT_BACKUP_SPARE_NOT_MASTER",
+    "I_POST_GRID24_PREVIEW": "6b00f857-699d-492f-98ce-2fbdd7d83574",
+    "I_MID_v1_FAIL": "f5bedf13-d489-440a-bfb6-d374c56ec6df",
+    "I_MID_PATH1E_variant": "f80c51c8-3611-45e7-87ae-a6fccb811703",
+    "I_MID_PATH1E": "f80c51c8-3611-45e7-87ae-a6fccb811703",
+    "I_MID_ET": "e649a380-4625-4b40-82b5-b269202da4d6",
+    "I_MID_ET_GRID24": "pending_asset",
+    "I_PRE_GEO_INDICATOR": "ff91b1b4-822f-4ecd-b230-75e2a926137c",
+    "I_MID_GEO_INDICATOR": "f2fc274d-e9c2-4852-b264-42103969c0c5",
+    "I_POST_GEO_INDICATOR": "6d0bf200-b779-4d05-a593-5f4f2ce9ddd7",
+    "GEO_H2_TRIPTYCH": "b3c893dc-6670-40e2-aaa1-1ba1533e5004",
+    "I_PRE_GEO_DIEGETIC": "279a7d16-6311-404c-890c-7139fccf0f7b",
+    "I_MID_GEO_DIEGETIC": "7457164a-8374-47ca-8a94-a7d06ed8bea8",
+    "I_POST_GEO_DIEGETIC": "f1b7a402-f041-48d0-8a54-04d46a7bfa53",
+    "GEO_H2_TRIPTYCH_DIEGETIC": "dbacaa05-bf3f-48d3-8491-e01bd7e98f36",
+    "I_MID_GEO_DIEGETIC_PURE": "b7fda684-8e38-414e-a68d-a97fa7745cc4",
+    "I_POST_GEO_DIEGETIC_PURE": "cc77cfd8-1940-47d8-9bc9-9d95aababe5c",
+    "ONESHOT_PRE": "a4c066d2-91b5-4848-8885-e8e33e12dc9b",
+    "ONESHOT_MID": "efe4e95e-6dee-408f-8a6c-c54f2c6380b1",
+    "ONESHOT_POST": "ea514dc8-8aaf-4735-b92f-b5e36951d2d9",
+    "FACEONLY_PRE": "701aa1f1-5881-425a-9aed-693edd06d9f4",
+    "FACEONLY_MID": "820abbe3-01ff-4e2b-ada3-274a9fae758d",
+    "FACEONLY_POST": "a5602af7-36a4-4013-a928-40f5023a1ef2"
+  },
+  "obs": {
+    "ST1": "6 angles no_bg ok",
+    "ST2": "FULLFRAME_FACE_LOCK chrome cave ok face",
+    "ST4": "PRE gap / POST shatter continuity ok",
+    "ST5": "ET-A has core strings + some garbage glyphs; ET-B free artistic strong but extra FREE and weaker 邊界行人 — mark trial not OCR-clean FINAL",
+    "next": "ST_G GRID24_ENHANCE face_cell=ENHANCE_ONLY on I_PRE_ET / I_POST_ET"
+  },
+  "pipeline_executed": "61902455 clean POST → PATH1E → text 2pass + fe82 backup spare → GRID24_ENHANCE",
+  "GRID_META": {
+    "method": "GRID24_ENHANCE",
+    "face_cell_mode": "ENHANCE_ONLY",
+    "forbid_face_ref": true,
+    "S": 2,
+    "size": [
+      3584,
+      2016
+    ],
+    "assemble": "B_float64",
+    "mean_conf": 0.7495924331430451,
+    "min_conf": 0.4995945572310856,
+    "lap_full": 4732.661471877709,
+    "lap_face": 3036.8118380440333,
+    "lap_center": 4357.232983249931,
+    "sha256": "334cb0cd595bbbcf44c7c6ce6ab187b2e3b59abde96e565517cdbc4ecbe9a4fe",
+    "L": "L-334cb0cd595b",
+    "pipeline": "POST clean 6190 → PATH1E → ET2pass → GRID24_ENHANCE",
+    "L0": "8c9f5051-1b28-4fdd-9849-05ba5926f916",
+    "path1e": "9d0ac17e-e11a-400d-95f2-4f5b32aba72c",
+    "hd_map": {
+      "r0c0": "e40d6878-54e6-48c1-9c4f-0e21883263f1",
+      "r0c1": "4b28a556-41ca-4cbe-a73b-c68abac687a0",
+      "r0c2": "e95c0710-24a9-4588-b6f0-60397833a168",
+      "r0c3": "43da5dce-3dc4-4511-ab70-304c28d91867",
+      "r0c4": "9348be24-c6ce-4baf-9b3d-6e9428924609",
+      "r0c5": "d7e68420-cfe1-4307-b3be-0dc0cee325c7",
+      "r1c0": "0a03628f-b264-466a-9196-36575b01fdad",
+      "r1c1": "878a8d01-4e5d-41e9-b9bf-1d3cdf2ea75e",
+      "r1c2": "4362fdc7-943e-4e93-b93c-a531ff4eab03",
+      "r1c3": "c7a802b0-75bc-4055-9159-0b1b7e825cda",
+      "r1c4": "4140a8be-ab2e-4d10-838d-8bd225beb294",
+      "r1c5": "0bc94148-935b-40b8-a885-d71e32aec5a9",
+      "r2c0": "95b4318c-c0da-4e8f-9607-ca52b75e54d1",
+      "r2c1": "58b7676b-9aa3-4193-bd36-6b3ffadc9807",
+      "r2c2": "40ba332d-f646-4344-8610-6eb36bdcd35c",
+      "r2c3": "29f1ecb2-cf10-453a-8f6b-119512a6bd6d",
+      "r2c4": "fe919543-0265-4aef-838a-1946a33a0dad",
+      "r2c5": "982638a9-e4ac-469c-ab71-1fe64d06b537",
+      "r3c0": "40923c90-fd00-4b1d-8b51-68d73d7f00cc",
+      "r3c1": "07dbec19-05e7-40bf-ae87-cb341568f148",
+      "r3c2": "0a9a6ec4-cd92-497b-b2ed-e996f56bf582",
+      "r3c3": "a729af1c-1f0b-4f50-83ef-1c3f2589ccf4",
+      "r3c4": "3ac35e34-23c2-4682-8b44-617f767159f8",
+      "r3c5": "be4c6a1a-4503-468c-b635-fcd894308303"
+    },
+    "not_master": "fe82f7d0 (only text backup spare)"
+  },
+  "pipeline_note": "f80 PATH1E clean -> ET text -> GRID24_ENHANCE face protect",
+  "GEO_INDICATOR": {
+    "catalog_id": "G02",
+    "method": "GEO.T · H2",
+    "text_set": "GEO_INDICATOR_TEXT_SET.json",
+    "L": "L-dfa1b1dabb57",
+    "mode": "blind_compile_vector_overlay",
+    "dir": "geo/indicator_setq"
+  },
+  "GEO_INDICATOR_DIEGETIC": {
+    "set": "SET-Q",
+    "stage": "ST3.G diegetic materialize + ENLARGE WORDS",
+    "method": "GEO.T · H2",
+    "L": "L-dfa1b1dabb57",
+    "pass1": "vector GEO_INDICATOR",
+    "pass2": "imagine diegetic chrome/fire lines + enlarged glyphs",
+    "pass2b": "PRE surgical T-END/TANGENT fix (model likes M-END drift)",
+    "files": {
+      "PRE": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_PRE_DIEGETIC_ENLARGE.jpg",
+      "MID": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_MID_DIEGETIC_ENLARGE.jpg",
+      "POST": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_POST_DIEGETIC_ENLARGE.jpg",
+      "TRIPTYCH": "boundary_pedestrian_setQ_chrome/geo/indicator_setq/SETQ_GEO_H2_TRIPTYCH_DIEGETIC_ENLARGE.jpg"
+    },
+    "obs": {
+      "MID": "best — exact T-END/TANGENT + diegetic rails",
+      "POST": "best — HOT fire F_n OUT enlarged",
+      "PRE": "bottom analysis_line exact; mid labels surgically forced T-END"
+    }
+  },
+  "ONESHOT_vs_2PASS": {
+    "best_visual_effect": "ONESHOT (scene+text co-generated) — lines/glyphs fuse with chrome/fire lighting",
+    "best_string_accuracy": "2PASS (TEXT_SET vector skeleton → diegetic) or hybrid",
+    "recommended_default": "HYBRID: ONESHOT for hero frame look, then TEXT_SET exact glyph residual only on failed tokens (T-END), OR ONESHOT + OCR gate → if M-END FAIL fall back 2PASS",
+    "rule_proposal": "ST3.G mode ONESHOT allowed when OCR gate passes; else 2PASS. PRE often ONESHOT OK; MID T-END high risk in ONESHOT."
+  },
+  "FACEONLY_verdict": "Face-only OK for new IP hero keyart; NOT default for SET continuity GEO.T. Prefer scene plate + a8b for SET-Q."
+}

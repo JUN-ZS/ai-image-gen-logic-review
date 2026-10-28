@@ -1,0 +1,45 @@
+{
+  "asof": "2026-10-26T14:22:09Z",
+  "version": "v6",
+  "note": "assembled from strips after OOM; face ROI dual-band polish",
+  "skin_methods": [
+    "A dual-band mid-freq Siax on face_skin (皮紋)",
+    "B feature HF + USM (五官更清)",
+    "C lower flat-skin HF / higher mid",
+    "D EYE_WHITE kill kept"
+  ],
+  "params": {
+    "MID_SKIN_M": 0.48,
+    "EDGE_BOOST": 0.32,
+    "FEATURE_USM": 0.65,
+    "EYE_MAX": 0.1,
+    "blend_face": "0.55+0.35*feat+0.20*skin"
+  },
+  "proof_face": [
+    {
+      "name": "Lan vs v6",
+      "psnr": 25.58,
+      "mean_abs": 5.998,
+      "pct_gt8": 16.26
+    },
+    {
+      "name": "v5 vs v6",
+      "psnr": 30.77,
+      "mean_abs": 3.496,
+      "pct_gt8": 9.29
+    },
+    {
+      "name": "v3 vs v6",
+      "psnr": 33.37,
+      "mean_abs": 2.547,
+      "pct_gt8": 5.62
+    },
+    {
+      "name": "v6 vs Siax",
+      "psnr": 34.14,
+      "mean_abs": 3.34,
+      "pct_gt8": 7.0
+    }
+  ],
+  "L": "L-b55598a885ac"
+}

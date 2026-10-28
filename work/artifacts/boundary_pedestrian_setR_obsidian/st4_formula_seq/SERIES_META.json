@@ -1,0 +1,37 @@
+{
+  "set": "SET-R",
+  "stage": "ST4_FORMULA_SERIES",
+  "seed_PRE": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+  "story": "圓被攻擊敲往右移後 → 公式 → 武器另一頭銅圓黑月敲碎玻璃泡球",
+  "formula": "STRIKE:銅圓黑月  RECV:TANGENT  F_n  n·v  GAP=0  H2",
+  "weapon_other_end": "銅圓黑月 = copper-bronze disk + black moon C-ring (RING-CLEAVER reverse)",
+  "frames": [
+    {
+      "id": "F0",
+      "asset": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+      "beat": "未打到 · GAP>0"
+    },
+    {
+      "id": "F1",
+      "asset": "b4213041-dbe0-4f69-9bfd-7e4e1ec9cedb",
+      "beat": "盤端敲 · 球右移"
+    },
+    {
+      "id": "F2",
+      "asset": "8ed29bd2-0e47-4dd2-9104-e0fa96c131ea",
+      "beat": "換握 · 銅圓黑月對球"
+    },
+    {
+      "id": "F3",
+      "asset": "611e6adc-51ab-40a3-baad-31fe41c236d0",
+      "beat": "公式打 · 銅圓黑月 GAP=0"
+    },
+    {
+      "id": "F4",
+      "asset": "bcf32e2f-5336-4ed8-8b1c-7aff945fa241",
+      "beat": "敲碎玻璃泡 · 右爆"
+    }
+  ],
+  "person_cut_source": "PRE_series",
+  "text": "NONE"
+}

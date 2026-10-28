@@ -1,0 +1,32 @@
+{
+  "kind": "GRID24_ABC_COMPARE",
+  "S": 3,
+  "n_cells": 24,
+  "results": {
+    "C_float64_memmap": {
+      "method": "C_float64_memmap",
+      "ok": true,
+      "sec": 48.33,
+      "peak_rss_mb": 708.3,
+      "size": [
+        5376,
+        3024
+      ],
+      "gates": {
+        "ecc": 0.31328735424477894,
+        "face_lap": 332.44036865234375,
+        "center_lap": 515.665283203125,
+        "full_lap": 282.4862060546875,
+        "assembly_lap": 248.8712158203125
+      },
+      "sha256": "3f85caec9d1439c8c3ad60c08a8c8bb9861c0995dbd9ce82972d1315c9435428",
+      "L_code": "L-3f85caec9d14",
+      "mb": 5.71
+    },
+    "pairwise_mean_abs_diff": {
+      "C_vs_A": 1.0127954483032227,
+      "C_vs_B": 1.010525107383728
+    }
+  },
+  "asof": "2026-10-25T16:03:43Z"
+}

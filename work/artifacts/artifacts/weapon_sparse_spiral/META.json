@@ -1,0 +1,42 @@
+{
+  "asof": "2026-10-26T20:00:55Z",
+  "trial": "WEAPON_SPARSE_SPIRAL_ZERO_MESH",
+  "user": "全桿邏輯疏螺旋、零網、weapon mask 高α",
+  "weapon_pattern": "sparse logical helical spiral / ring wrap, solid steel between turns, ZERO diamond mesh",
+  "armor": "unchanged (mask excludes gold+skin)",
+  "alphas": {
+    "w_full": 0.78,
+    "w_top": 0.96,
+    "w_mid": 0.95,
+    "w_bot": 0.97
+  },
+  "stats": {
+    "w_full": {
+      "cc": 0.607,
+      "M": 0.148,
+      "d": 4.9,
+      "alpha": 0.78
+    },
+    "w_top": {
+      "cc": 0.457,
+      "M": 0.111,
+      "d": 5.2,
+      "alpha": 0.96
+    },
+    "w_mid": {
+      "cc": 0.793,
+      "M": 0.116,
+      "d": 3.6,
+      "alpha": 0.95
+    },
+    "w_bot": {
+      "cc": 0.547,
+      "M": 0.172,
+      "d": 6.0,
+      "alpha": 0.97
+    }
+  },
+  "L": "L-be42488eccee",
+  "mb": 2.43,
+  "mb_2x": 7.5
+}

@@ -1,0 +1,17 @@
+{
+  "method": "DETAIL_TRANSFER_SCAN",
+  "logic": "L0 structure locked; warp HD; inject HF residual only; edge feather on residual; core scan row-major",
+  "forbid": [
+    "full-RGB generative cell paste",
+    "wide overlap blend of divergent tiles"
+  ],
+  "S": 3.0,
+  "FINAL": [
+    5376,
+    3024
+  ],
+  "feather": 24,
+  "blur_sigma": 2.2,
+  "mix": 0.85,
+  "sha": "082e2b2f24e0db88e8077e662d613b553dedb0103bb0f82511a4216e07560f1c"
+}

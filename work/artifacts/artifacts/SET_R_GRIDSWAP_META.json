@@ -1,0 +1,29 @@
+{
+  "asof": "2026-10-27T19:28:50Z",
+  "user": "貼不行就仔細再放大,一小一小格對換",
+  "method": "face box place donor → CELL=48 step=32 local±10 match → V5 swap; micro CELL=32 eyes",
+  "constitution": [
+    "§0.12.14 PIXEL_RATIO cell",
+    "§0.12.18 GRID spirit",
+    "§0.12.24 V5 per cell",
+    "no whole-face ECC"
+  ],
+  "face_box": [
+    780,
+    240,
+    1523,
+    1036
+  ],
+  "face_tmpl": 0.850648820400238,
+  "face_sc": 0.5468589743589743,
+  "CELL": 48,
+  "OVERLAP": 16,
+  "SEARCH_R": 10,
+  "n_pass": 239,
+  "n_soft": 261,
+  "n_skip": 52,
+  "n_micro": 270,
+  "mean_ncc": 0.8158996671816628,
+  "out_mb": 32.14,
+  "L": "L-c27dacaa89f4"
+}

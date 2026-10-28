@@ -1,0 +1,22 @@
+{
+  "asof": "2026-10-26T13:10:03Z",
+  "L0": "90807317-4e7d-4646-9f98-ac6c59208d08",
+  "model": "4x_NMKD-Siax_200k.pth",
+  "source_url": "https://huggingface.co/Kallamamran/best_upscaler_models/blob/main/4x_NMKD-Siax_200k.pth",
+  "engine": "spandrel ESRGAN + torch CPU tile-to-disk",
+  "scale": 4,
+  "in_px": [
+    1152,
+    1728
+  ],
+  "out_px": [
+    4608,
+    6912
+  ],
+  "tile": 192,
+  "overlap": 16,
+  "constitution": "NOT written \u2014 trial only per user",
+  "L": "L-ec355935c17f",
+  "sha": "ec355935c17f4cbdb25a88c573b3b47012aadf623926b2d59ade0980af34aa63",
+  "elapsed_s": 578.5928747653961
+}

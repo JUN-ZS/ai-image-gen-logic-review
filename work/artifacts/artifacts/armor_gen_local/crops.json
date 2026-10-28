@@ -1,0 +1,87 @@
+{
+  "chest": {
+    "box": [
+      737,
+      622,
+      1336,
+      1313
+    ],
+    "src_size": [
+      599,
+      691
+    ],
+    "gen_in_size": [
+      958,
+      1105
+    ],
+    "path": "/workspace/artifacts/artifacts/armor_gen_local/chest_src.jpg"
+  },
+  "shoulder_R": {
+    "box": [
+      1198,
+      552,
+      1751,
+      1244
+    ],
+    "src_size": [
+      553,
+      692
+    ],
+    "gen_in_size": [
+      884,
+      1107
+    ],
+    "path": "/workspace/artifacts/artifacts/armor_gen_local/shoulder_R_src.jpg"
+  },
+  "sleeve_L": {
+    "box": [
+      414,
+      760,
+      967,
+      1658
+    ],
+    "src_size": [
+      553,
+      898
+    ],
+    "gen_in_size": [
+      884,
+      1436
+    ],
+    "path": "/workspace/artifacts/artifacts/armor_gen_local/sleeve_L_src.jpg"
+  },
+  "skirt": {
+    "box": [
+      783,
+      1244,
+      1520,
+      1900
+    ],
+    "src_size": [
+      737,
+      656
+    ],
+    "gen_in_size": [
+      1179,
+      1049
+    ],
+    "path": "/workspace/artifacts/artifacts/armor_gen_local/skirt_src.jpg"
+  },
+  "waist": {
+    "box": [
+      829,
+      1105,
+      1428,
+      1658
+    ],
+    "src_size": [
+      599,
+      553
+    ],
+    "gen_in_size": [
+      958,
+      884
+    ],
+    "path": "/workspace/artifacts/artifacts/armor_gen_local/waist_src.jpg"
+  }
+}

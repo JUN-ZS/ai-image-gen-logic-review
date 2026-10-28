@@ -1,0 +1,32 @@
+{
+  "asof": "2026-10-26T14:29:33Z",
+  "version": "v1.1-surgical",
+  "principle": "記認 mask → 只寫入該像素；其餘原圖不動",
+  "eye_white_law": "mask像素 out = ST；HARD out = ST exact；其餘 = base",
+  "mask_def": "eye_soft ∧ (ST高亮低彩 OR runaway: base遠ST/假HF/假亮)",
+  "masked_proof": {
+    "base_to_ctrl": {
+      "name": "base→ctrl",
+      "n": 85732,
+      "mean_abs": 2.209,
+      "pct_gt8": 3.95
+    },
+    "st_to_ctrl": {
+      "name": "ST→ctrl",
+      "n": 85732,
+      "mean_abs": 0.383,
+      "pct_gt8": 0.4
+    },
+    "siax_to_ctrl": {
+      "name": "Siax→ctrl",
+      "n": 85732,
+      "mean_abs": 12.646,
+      "pct_gt8": 50.45
+    }
+  },
+  "coverage": {
+    "mask_gt_0.3": 0.03301325890601703,
+    "hard_gt_0.5": 0.02950252917328996
+  },
+  "L": "L-69e63d57a466"
+}

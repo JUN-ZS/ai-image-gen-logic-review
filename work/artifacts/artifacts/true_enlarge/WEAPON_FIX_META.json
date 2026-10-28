@@ -1,0 +1,12 @@
+{
+  "asof": "2026-10-26T20:36:45Z",
+  "trial": "WEAPON_HANDLE_RESTORE",
+  "user": "你改了武器的柄,不行",
+  "fix": "hard lock weapon column from clothes onto 977-2x; armor right preserved",
+  "weapon_delta_vs_wrong_977": 13.676492691040039,
+  "weapon_delta_vs_donor": 8.400825500488281,
+  "armor_delta_vs_977": 0.0,
+  "donor": "clothes",
+  "L": "L-7f76614e739e",
+  "mb": 4.56
+}

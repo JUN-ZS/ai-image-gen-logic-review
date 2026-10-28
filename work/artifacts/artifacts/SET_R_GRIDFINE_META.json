@@ -1,0 +1,41 @@
+{
+  "asof": "2026-10-27T19:36:54Z",
+  "user": "再分細,修正模糊feather邊界",
+  "method": "P1 CELL32 f=3; P2 CELL16 f=2 eyes; P3 CELL12 blur-zone only; seam HF inject",
+  "constitution": [
+    "GRID cell-swap finer",
+    "tight feather smootherstep",
+    "blur_zone detect",
+    "V5 per cell"
+  ],
+  "face_box": [
+    780,
+    241,
+    1522,
+    1036
+  ],
+  "tmpl": 0.8653901815414429,
+  "P1": {
+    "pass_": 662,
+    "soft": 685,
+    "skip": 57,
+    "blur": 0,
+    "n": 1347,
+    "mean_ncc": 0.849116893673062
+  },
+  "P2": {
+    "pass_": 1572,
+    "soft": 124,
+    "skip": 6,
+    "blur": 11,
+    "n": 1696,
+    "mean_ncc": 0.9581654936659458
+  },
+  "P3_blur_cells": 127,
+  "lap_face": [
+    3346.3232421875,
+    7493.77099609375
+  ],
+  "out_mb": 32.74,
+  "L": "L-ea2a6b0f2778"
+}

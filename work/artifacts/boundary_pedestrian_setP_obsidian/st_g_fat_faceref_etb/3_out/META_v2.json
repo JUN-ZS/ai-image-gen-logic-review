@@ -1,0 +1,42 @@
+{
+  "pipeline": "FAT_FACE_REF_v2_CLEAN",
+  "L0": "6f544750-6f70-4b4a-974b-5b50e394f9f1",
+  "S": 2,
+  "overlap": 0.22,
+  "method": "B",
+  "FACE_REF_cells": [
+    "f02"
+  ],
+  "ENHANCE_cells": [
+    "f00",
+    "f01",
+    "f10",
+    "f11",
+    "f12"
+  ],
+  "f01": "ENHANCE re-roll 1ed7074b (was false FACE_REF 644f4139)",
+  "f02": "FACE_REF kept 59763bdc",
+  "f02_weight_boost": 1.15,
+  "PATH1E": "STD + f02 donor HF residual",
+  "gates": {
+    "face_lap": 148.60447692871094,
+    "center_lap": 274.0911865234375,
+    "full_lap": 346.9768981933594,
+    "mean_conf": 0.799161821603775,
+    "confs": {
+      "f00": 0.7990895509719849,
+      "f01": 0.7387222051620483,
+      "f02": 0.827397882938385,
+      "f10": 0.8189502954483032,
+      "f11": 0.7271267175674438,
+      "f12": 0.8836842775344849
+    }
+  },
+  "L": "L-f3c449cd1535",
+  "sha256": "f3c449cd15358ce3ca40f433c0ef006df3283c665c21ddf5609eafff2676fcaa",
+  "size": [
+    3584,
+    2016
+  ],
+  "asof": "2026-10-25T17:17:02Z"
+}

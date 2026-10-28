@@ -1,0 +1,30 @@
+{
+  "seed": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "story": "球0.0001s無損彈開 → 極速銅圓黑月敲碎玻璃泡",
+  "frames": [
+    {
+      "id": "T0",
+      "asset": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+      "beat": "t=0 盤端觸"
+    },
+    {
+      "id": "T1",
+      "asset": "fecb8d34-8df7-42f7-bbd0-fbe7ef6fde19",
+      "beat": "0.0001s 無損彈開"
+    },
+    {
+      "id": "T2",
+      "asset": "836000e2-9769-4bed-a2ff-a9d4e8b21b0d",
+      "beat": "極速 銅圓黑月"
+    },
+    {
+      "id": "T3",
+      "asset": "ab406bf2-b800-4e6f-8221-669aee50220f",
+      "beat": "銅圓黑月敲碎"
+    }
+  ],
+  "video": "3f11a19e-9d3a-4588-94fc-ed3cbfc0cff3",
+  "formula": "STRIKE:銅圓黑月  RECV:TANGENT  GAP=0  H2",
+  "T3_primary": "ab406bf2-b800-4e6f-8221-669aee50220f",
+  "T3_alt": "2fc0406e-8625-419a-8a5f-550e45fc0a6d"
+}

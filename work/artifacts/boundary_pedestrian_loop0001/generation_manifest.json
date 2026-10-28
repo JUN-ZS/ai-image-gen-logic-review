@@ -1,0 +1,88 @@
+{
+  "story": "THE BOUNDARY WALKER / 邊界行人",
+  "loop_id": "LOOP-0001",
+  "try_id": "TRY-0001",
+  "variant_id": "BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT",
+  "method_label": "GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01",
+  "primary_act": "3",
+  "lane": "HARD",
+  "style": "S01 photoreal cinematic",
+  "source_catalog_sha256": "b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731",
+  "compiled_from": "boundary_pedestrian_loop_planner.py interleaved limit demo",
+  "asof": "2026-10-24T13:37:54.901924+00:00",
+  "image_realization": "GENERATED_6_ACTS",
+  "external_generation_called": true,
+  "pixel_audit_status": "NOT_RUN",
+  "continuity_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "geometry_pass_claimed": false,
+  "note": "Single-loop live demo only. Labels SVG/ASS are deterministic overlays; do not treat labels as geometry proof.",
+  "acts": [
+    {
+      "act_id": "1",
+      "act_title": "畫界",
+      "role": "COMPANION",
+      "asset_id": "08309b18-6060-4042-aa87-4a1c41dc1ed8",
+      "file": "act1_draw_boundary_base.jpg",
+      "sha256": "6f4176d11ed58ae2c119025360ffaefca7a89348fdb846bb843daccd93964f15",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "2",
+      "act_title": "保護",
+      "role": "COMPANION",
+      "asset_id": "64daf29a-53b6-47f6-bcd6-a1cd95c311eb",
+      "file": "act2_protect_base.jpg",
+      "sha256": "f1fdeecbf5ea9afa4890e000c7ed857520f10e4a5132d937ccc344604779a545",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "3",
+      "act_title": "試法／碎裂",
+      "role": "PRIMARY",
+      "asset_id": "f84f1613-97e6-4daa-b895-f1f5cc7acbd4",
+      "file": "act3_try_geo_t_h2_base.jpg",
+      "sha256": "2693cdee25811195c984f7e5671c492f9961a7345354ecef7f0a7930df01782e",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "4",
+      "act_title": "假修",
+      "role": "COMPANION",
+      "asset_id": "2e07b522-cfd2-464b-bcea-87b07267413d",
+      "file": "act4_false_repair_base.jpg",
+      "sha256": "83e55cc85c9b702ca3476677ef93f5755901bf07bc1e17d8c0c36d3bccc03297",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "5",
+      "act_title": "一界",
+      "role": "COMPANION",
+      "asset_id": "a2bdbc97-590a-47db-87e9-2cde9e288ec6",
+      "file": "act5_one_boundary_base.jpg",
+      "sha256": "dc8e888905daf09937fe52f308186ad5f0610a4226f6e4f8440c1935b2aab686",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "6",
+      "act_title": "選擇",
+      "role": "COMPANION",
+      "asset_id": "96aec9b0-75ec-405c-a59d-673307eada44",
+      "file": "act6_choose_base.jpg",
+      "sha256": "79c87e0a5672162986d32da82214ad6b5415ec63bef58020f9215c5c92158a37",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    }
+  ]
+}

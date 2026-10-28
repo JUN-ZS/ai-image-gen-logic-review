@@ -1,0 +1,32 @@
+{
+  "rule": "L0_FULL_EXTRACT_BEFORE_TEXT",
+  "locked_at": "2026-10-25T07:53:35.472371+00:00",
+  "order": [
+    "1. Generate L0_CLEAN (no text / no HUD / no title)",
+    "2. FULL extract EVERY object immediately (woman, hammer, sphere, bg, face...)",
+    "3. Enhance each cutout on its own layer (same-pixel-source)",
+    "4. Pure collage rebuild of L0_DEPLOY_NOTEXT",
+    "5. ONLY THEN add text/HUD/TYPE as top layers"
+  ],
+  "forbid": [
+    "Do NOT extract objects from texted/HUD finals as first deploy",
+    "Do NOT cross-paste face from another pixel source onto body",
+    "Do NOT generate text before L0 object bank is ready"
+  ],
+  "l0_root": "l0_deploy/L0_CLEAN_ROOT.jpg",
+  "l0_sha256": "4676bcb62c6d062d566fabfbba9ad9a10af29cf8f7c424ab8d6d4e69518b1103",
+  "assets": {
+    "L0_CLEAN": "14ee1bc8-efa4-49d6-b88a-65841531b52c",
+    "OBJ_group": "c1262439-3061-450d-945d-72b905b787c1",
+    "OBJ_bg": "cde91c58-a389-44a7-a426-b96c2c975cec"
+  },
+  "files": {
+    "woman_hammer": "cutouts/OBJ_woman_hammer.png",
+    "sphere": "cutouts/OBJ_sphere.png",
+    "sphere_L0px": "cutouts/OBJ_sphere_px_L0px.png",
+    "face_L0px": "cutouts/OBJ_face_L0px.png",
+    "hammer_L0px": "cutouts/OBJ_hammer_L0px.png",
+    "bg": "cutouts/OBJ_bg_empty.jpg",
+    "collage_notext": "L0_DEPLOY_COLLAGE_NOTEXT.jpg"
+  }
+}

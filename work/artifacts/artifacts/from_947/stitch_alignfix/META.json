@@ -1,0 +1,34 @@
+{
+  "asof": "2026-10-27T08:36:47Z",
+  "L": "L-b9a649404dfc",
+  "user": "反推只定範圍; 真拼=舊混法; 問題=貼錯位",
+  "reverse_role": "RANGE mask only",
+  "paste_role": "OLD V5 hybrid: base+α*(gen_MF-base_MF)+β*base_HF after ECC",
+  "align_mode": "affine",
+  "ncc": 0.8002,
+  "phase": [
+    -0.017,
+    -0.035
+  ],
+  "edge_align_ratio": 0.1212,
+  "lap_upper": [
+    2996.3,
+    3790.2
+  ],
+  "lap_lower": [
+    6493.0,
+    8198.1
+  ],
+  "mad": 9.06,
+  "box": [
+    1382,
+    1382,
+    3762,
+    3792
+  ],
+  "bytes": 32355397,
+  "size": [
+    4608,
+    6912
+  ]
+}

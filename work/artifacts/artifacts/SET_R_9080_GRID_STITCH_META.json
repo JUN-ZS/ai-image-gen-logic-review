@@ -1,0 +1,137 @@
+{
+  "asof": "2026-10-26T16:19:31Z",
+  "method": "L0原圖 → Lanczos STRUCT 4x + Siax 4x → 24GRID class M 混法 → strip拼回",
+  "L0": "90807317",
+  "L0_size": [
+    1152,
+    1728
+  ],
+  "out_size": [
+    4608,
+    6912
+  ],
+  "grid": "4x6=24",
+  "class_gains": {
+    "r0c0": {
+      "cls": "TEXT",
+      "g": 0.96
+    },
+    "r0c1": {
+      "cls": "FACE",
+      "g": 0.32
+    },
+    "r0c2": {
+      "cls": "FACE",
+      "g": 0.32
+    },
+    "r0c3": {
+      "cls": "TEXT",
+      "g": 0.96
+    },
+    "r1c0": {
+      "cls": "FLAT",
+      "g": 0.48
+    },
+    "r1c1": {
+      "cls": "FACE",
+      "g": 0.32
+    },
+    "r1c2": {
+      "cls": "FACE",
+      "g": 0.32
+    },
+    "r1c3": {
+      "cls": "FLAT",
+      "g": 0.48
+    },
+    "r2c0": {
+      "cls": "STONE",
+      "g": 0.84
+    },
+    "r2c1": {
+      "cls": "METAL",
+      "g": 0.9
+    },
+    "r2c2": {
+      "cls": "METAL",
+      "g": 0.9
+    },
+    "r2c3": {
+      "cls": "STONE",
+      "g": 0.84
+    },
+    "r3c0": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r3c1": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r3c2": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r3c3": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r4c0": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r4c1": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r4c2": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r4c3": {
+      "cls": "TEXT",
+      "g": 0.93
+    },
+    "r5c0": {
+      "cls": "FIRE",
+      "g": 0.8
+    },
+    "r5c1": {
+      "cls": "FIRE",
+      "g": 0.8
+    },
+    "r5c2": {
+      "cls": "FIRE",
+      "g": 0.8
+    },
+    "r5c3": {
+      "cls": "FIRE",
+      "g": 0.8
+    }
+  },
+  "proof": {
+    "face": {
+      "hf_vs_siax": -3.504,
+      "hf_vs_lan": -0.543
+    },
+    "cloth": {
+      "hf_vs_siax": -3.771,
+      "hf_vs_lan": 0.434
+    },
+    "text": {
+      "hf_vs_siax": -1.704,
+      "hf_vs_lan": 0.23
+    },
+    "fire": {
+      "hf_vs_siax": -2.226,
+      "hf_vs_lan": -0.234
+    }
+  },
+  "sizes_MB": {
+    "q95_MB": 9.97,
+    "q98_MB": 13.94,
+    "q100_MB": 25.03
+  },
+  "L": "L-01759ab11a97",
+  "note": "NO external textures. GRID defines pixel class; hybrid stitches STRUCT+Siax."
+}

@@ -1,0 +1,92 @@
+{
+  "story": "THE BOUNDARY WALKER / 邊界行人",
+  "loop_id": "LOOP-0002",
+  "try_id": "TRY-0002",
+  "previous_loop": "LOOP-0001",
+  "previous_method": "GEO.T · H2",
+  "variant_id": "BP-3H-T2-FACE-H_LR__CAM01_GRAZING_FACE-W00-S01-FRONT",
+  "method_label": "GEO.T2 · FACE · H_LR/CAM01 · W00 · S01",
+  "primary_act": "3",
+  "lane": "HARD",
+  "style": "S01",
+  "delta_from_previous": "topology T → T2 dual independent hammers; contact H2 end-face-on-sphere → FACE face-to-face between two T end-faces",
+  "asof": "2026-10-24T13:44:17.898839+00:00",
+  "image_realization": "GENERATED_6_ACTS",
+  "external_generation_called": true,
+  "pixel_audit_status": "NOT_RUN",
+  "continuity_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "geometry_pass_claimed": false,
+  "generation_notes": [
+    "First ACT3 attempt produced twin heroines (identity DNA fault); rejected and saved as act3_try_geo_t2_face_REJECT_twins.jpg",
+    "Retried ACT3: single heroine + two separate T-hammers face-to-face; status still REVIEW_PENDING"
+  ],
+  "acts": [
+    {
+      "act_id": "1",
+      "act_title": "畫界",
+      "role": "COMPANION",
+      "asset_id": "72a0b39e-ee55-46c7-a341-95d98033a327",
+      "file": "act1_draw_boundary_base.jpg",
+      "sha256": "2704e0286155037da9998782e71277acf0c499b38978155e3741d3b19b769c81",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "2",
+      "act_title": "保護",
+      "role": "COMPANION",
+      "asset_id": "bf0dea4a-aa72-4f2f-9eda-b352383f3d1d",
+      "file": "act2_protect_base.jpg",
+      "sha256": "6a9a2ad1a027a3b0c0ae98502611cf34635151a79b0e0b2c5d9fb87c8ee9795f",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "3",
+      "act_title": "試法／碎裂",
+      "role": "PRIMARY",
+      "asset_id": "9b173759-c87f-47bd-833a-08d1d478deae",
+      "file": "act3_try_geo_t2_face_base.jpg",
+      "sha256": "423ac5bd2e9cee77c6bc92f62cdf4c2b821e616e90bd186d230f05821ef49c8a",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "4",
+      "act_title": "假修",
+      "role": "COMPANION",
+      "asset_id": "1178a9c4-f15e-45dc-bdb7-cf19bb12c3aa",
+      "file": "act4_false_repair_base.jpg",
+      "sha256": "ec4da8ab3ccd8f5fb6cf10fac757f9a8f9dc255342a279f3d030502b837c76dc",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "5",
+      "act_title": "一界",
+      "role": "COMPANION",
+      "asset_id": "0df77f7d-63fa-463b-973c-217cdacbb7cc",
+      "file": "act5_one_boundary_base.jpg",
+      "sha256": "03dfc3493a546992f46574d5f4ff4d05ea723f8088aafd06184899a3f74b79e2",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    },
+    {
+      "act_id": "6",
+      "act_title": "選擇",
+      "role": "COMPANION",
+      "asset_id": "6a314e11-2826-442a-8eb1-b5ee02f46e19",
+      "file": "act6_choose_base.jpg",
+      "sha256": "cee28234fc949a85bbbdeea61feed4057fd50f42e94ad9aa7c60da61f2913df6",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit_status": "NOT_RUN",
+      "visual_acceptance_status": "NOT_VERIFIED"
+    }
+  ]
+}

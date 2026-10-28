@@ -1,0 +1,55 @@
+{
+  "identity_lock": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "design_name": "軌道祭司 · ORBITAL PRIESTESS",
+  "outfit": {
+    "silhouette": "非小黑裙：不對稱結構戰袍 + 半甲肋板 + 飄帶重力失效",
+    "materials": [
+      "磨砂黑曜織物",
+      "青銅線縫",
+      "半透明星砂紗",
+      "汞銀邊緣鑲邊"
+    ],
+    "details": [
+      "單肩露臂結構甲",
+      "高開叉長袍但側有護膝甲片",
+      "腰間軌道環掛件（小碎片環）",
+      "赤足或薄底軌道靴擇一：預設薄底銀靴"
+    ]
+  },
+  "hammer_innovation": {
+    "name": "裂環槌 RING-CLEAVER W0",
+    "locked_asset": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "topology": "C-shaped black faceted orbital ring + bronze flat circular strike disk in C-gap + twisted bronze-obsidian haft",
+    "strike_face": "T-END · FLAT BRONZE DISK IN C-GAP",
+    "status": "LOCKED"
+  },
+  "ip_pack_required": [
+    "IP.FRONT",
+    "IP.FRONT_FULL",
+    "IP.THREE_Q",
+    "IP.SIDE",
+    "IP.BACK_3Q",
+    "IP.ACTION",
+    "IP.FACE_CLOSE"
+  ],
+  "no_bg": true,
+  "hammer_v2_candidates": {
+    "W1": {
+      "asset": "ebb66f95-45b3-4d38-97a4-8e86326c466d",
+      "topology": "crescent + floating T-disk",
+      "strike": "T-END disk"
+    },
+    "W2": {
+      "asset": "40edb55a-d65e-4021-90ed-5a215de30744",
+      "topology": "crescent + thick anvil disk on shaft",
+      "strike": "T-END disk"
+    },
+    "W3": {
+      "asset": "d5f9fe0e-a773-4619-948e-c49c3295c35e",
+      "topology": "twin rings + forward peen",
+      "strike": "T-END peen face"
+    },
+    "W0_prop": "4dc35b8e-ea70-4870-8edc-806aee0bd03f"
+  },
+  "status": "weapon_locked_W0"
+}

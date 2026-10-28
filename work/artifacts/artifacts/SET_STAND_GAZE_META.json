@@ -1,0 +1,10 @@
+{
+  "request": "先改對表情(是望球那邊)要原女主級重生成",
+  "mother": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1 (本鏡站姿母圖 · 非 aerial 2455)",
+  "donor": "2dae8d6e a8b",
+  "final": "802401c9-1e40-4578-8e2b-453611f0f9c0",
+  "method": "單次 Ref([mother,a8b]) · E-FLOW-06 不疊",
+  "expression": "望球 · 頭/眼朝右側水晶球",
+  "discarded_weak_gaze": "ef864867",
+  "sha256": "48d3dedb9b4fe451acd62af929c8601159b4a8a9fa5699cacd3a3300488331ab"
+}

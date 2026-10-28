@@ -1,0 +1,21 @@
+{
+  "asof": "2026-10-26T18:16:15Z",
+  "trial": "MERGE_V3_SKIN_STONE_ADV",
+  "L": "L-c8df248b478a",
+  "correct_ref": "495fff5d = REAL_MAT_V3",
+  "base": "SET_R_9080_STONE_TEX_ADV_FULL (V3+stone ADV)",
+  "face_donor": "plate_al",
+  "face_ncc": 0.8122,
+  "method": "structure-lock HF skin on V3 face; stone ADV untouched; eye-white lock; no soft plate paste",
+  "metrics": {
+    "face_lap_src": 1120.8,
+    "face_lap_new": 1174.7,
+    "zone_src": 1195.0,
+    "zone_new": 1299.5,
+    "mean_abs": 0.81,
+    "pct_gt8": 0.9,
+    "ncc_final": 0.9995,
+    "stone_delta": 0.0
+  },
+  "constitution": "§0.12.20 same REF logic + skin P3 donor HF"
+}

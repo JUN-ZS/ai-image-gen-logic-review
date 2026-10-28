@@ -1,0 +1,141 @@
+{
+  "board": "BOUNDARY_PEDESTRIAN_METHOD_PRODUCT_SAMPLE",
+  "asof": "2026-10-24T13:49:57.063349+00:00",
+  "full_catalog_variants": 3723,
+  "full_act_prompts_if_looped": 22338,
+  "this_board_is": "diversity SAMPLE across product axes, NOT full 3723 generation",
+  "product_axes": {
+    "A_geometry_contact": "T×H0-3, T2 FACE, CROSS FACE, ROD POS/NEG, PLANT_S/O, MULTI",
+    "B_camera_art": "T192 multi-view, DUAL48, WASH10, S01/S02/S03 styles — camera never rewrites contact law",
+    "C_video": "V-01 10s, V-02 KF5, V-03 plant, V-04 I2V, geo videos, V-09 BP MV segments",
+    "D_narrative": "six acts soft vs hard separation; loop compiler multiplies each variant × 6 acts"
+  },
+  "bucket_counts": {
+    "HARD_T_192": 2304,
+    "HARD_T_H2_IMPACT4": 768,
+    "HARD_DUAL48": 288,
+    "SOFT_IMAGE": 81,
+    "HARD_PLANT_S": 72,
+    "HARD_ROD": 60,
+    "HARD_MULTI": 60,
+    "HARD_PLANT_O": 30,
+    "VIDEO_GEO": 24,
+    "VIDEO_I2V": 18,
+    "VIDEO_BP": 18
+  },
+  "cells": [
+    {
+      "slot": "01_T_H0",
+      "asset_id": "624c65b3-a824-4c5b-b3b7-870a911fa3b2",
+      "method": "GEO.T H0 PRE_FAR",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "02_T_H1",
+      "asset_id": "76bc1d7d-8454-416d-a453-367eb801d2e4",
+      "method": "GEO.T H1 PRE_NEAR",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "03_T_H2",
+      "asset_id": "f84f1613-97e6-4daa-b895-f1f5cc7acbd4",
+      "method": "GEO.T H2 FIRST CONTACT",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "04_T_H3",
+      "asset_id": "30485a51-da04-4cbe-a433-8dce8c7b642c",
+      "method": "GEO.T H3 FOLLOW-THROUGH",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "05_T2_FACE",
+      "asset_id": "9b173759-c87f-47bd-833a-08d1d478deae",
+      "method": "GEO.T2 FACE dual T",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "06_CROSS_FACE",
+      "asset_id": "41f164fc-947a-465a-9402-7413e8a892ae",
+      "method": "GEO.CROSS FACE end-caps",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "07_ROD_POS",
+      "asset_id": "2fbafc79-2fe0-41c2-9d1b-63d5314e9e6c",
+      "method": "GEO.ROD POS 90°",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "08_ROD_NEG",
+      "asset_id": "bc193e3b-8f34-483a-904e-1c4ddc676569",
+      "method": "GEO.ROD NEG control",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "09_PLANT_S",
+      "asset_id": "d55bb6d1-6f09-438e-a557-bfb98401564a",
+      "method": "GEO.PLANT_S side handle",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "10_PLANT_O",
+      "asset_id": "32bb0d05-1921-41c0-8029-d6064ed49e91",
+      "method": "GEO.PLANT_O outer handle",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "11_MULTI_H2",
+      "asset_id": "e0fe201f-e522-42f7-a675-17ea6c8edb64",
+      "method": "GEO.MULTI flat-face H2",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "12_S02_SOFT",
+      "asset_id": "72b49c97-cdb2-451d-a270-7e233db408a7",
+      "method": "SOFT ACT3 style S02 pastel",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "13_S03_SOFT",
+      "asset_id": "75756cad-bb94-4f66-b836-e390066f5b2b",
+      "method": "SOFT ACT6 style S03 surreal",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    },
+    {
+      "slot": "14_W04_ROD",
+      "asset_id": "53f3cb9d-05fe-4ead-b10c-cbe0e032b827",
+      "method": "WASH W04 low sweep + ROD",
+      "media": "IMAGE",
+      "status": "IMAGE_GENERATED",
+      "pixel_audit": "NOT_RUN"
+    }
+  ],
+  "geometry_pass_claimed": false
+}

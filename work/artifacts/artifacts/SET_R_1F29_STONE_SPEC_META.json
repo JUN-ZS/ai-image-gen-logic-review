@@ -1,0 +1,22 @@
+{
+  "asof": "2026-10-27T16:11:46Z",
+  "user": "差一點: 白反光當光源保留甚至重做/創 正反推",
+  "logic": [
+    "反推: fire_light_field + specular_map from 原圖&GEN",
+    "殺: 無結構白噪線 only (noise map), NOT spec",
+    "正推: create_specular warm highlights under light field",
+    "還原: pull 原圖真反光 spec_b into paste",
+    "SIAX: mild, protect spec HF"
+  ],
+  "ecc": 0.726,
+  "kill_noise": 0.0021,
+  "kill_final": 0.0405,
+  "spec_mean": 0.0923,
+  "light_mean": 0.9711,
+  "out_mb": 35.53,
+  "size": [
+    4608,
+    6912
+  ],
+  "L": "L-3009e047956a"
+}

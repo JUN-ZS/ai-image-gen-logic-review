@@ -1,0 +1,46 @@
+{
+  "asof": "2026-10-26T17:31:50Z",
+  "trial": "SKIN_REDO_A_B_C_v1",
+  "L": "L-af02132e74ec",
+  "best_plate": {
+    "name": "full_b",
+    "path": "/workspace/artifacts/imagine_images/2befbe5e-751c-434a-a39f-ad4bf8ed4374.jpg",
+    "ncc": 0.8439959287643433,
+    "ncc_face": 0.9472739100456238,
+    "lap": 1606.1389093617286,
+    "lap_face": 1410.4923003238084
+  },
+  "all_scores": [
+    {
+      "name": "full_b",
+      "path": "/workspace/artifacts/imagine_images/2befbe5e-751c-434a-a39f-ad4bf8ed4374.jpg",
+      "ncc": 0.8439959287643433,
+      "ncc_face": 0.9472739100456238,
+      "lap": 1606.1389093617286,
+      "lap_face": 1410.4923003238084
+    },
+    {
+      "name": "full_a",
+      "path": "/workspace/artifacts/imagine_images/4a8d9002-e985-482a-a82c-f24411eec3dd.jpg",
+      "ncc": 0.852786660194397,
+      "ncc_face": 0.9406418204307556,
+      "lap": 1543.5494046400713,
+      "lap_face": 1281.6950409451533
+    },
+    {
+      "name": "core",
+      "path": "/workspace/artifacts/imagine_images/caece16d-28f5-4e24-b3bf-473ddf6e7b7e.jpg",
+      "ncc": 0.007039248943328857,
+      "ncc_face": 0.09586819261312485,
+      "lap": 316.5607530666125,
+      "lap_face": 574.274103207313
+    }
+  ],
+  "ncc_stitch": 0.6871,
+  "facezone_lap_baseline_589": 839.2,
+  "facezone_lap_new": 5953.5,
+  "beat_baseline": true,
+  "mean_abs": 14.03,
+  "pct_gt8": 48.0,
+  "note": "same-comp pore plate forced; plate-dominant alpha; eye soft-protect; USM skin"
+}

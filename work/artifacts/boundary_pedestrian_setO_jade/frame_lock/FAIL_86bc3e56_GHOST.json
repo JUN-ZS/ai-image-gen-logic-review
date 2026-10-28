@@ -1,0 +1,7 @@
+{
+  "asset": "86bc3e56-a757-418a-aa84-9445e7e48677",
+  "status": "FAIL_GHOST_PERSON",
+  "reason": "person double-exposure/ghost from weak i2i time-push; not HD IP REF new action",
+  "rule": "BOUNDARY_WALKER_UNIFIED_RULES.md §0.7",
+  "asof": "2026-10-25T10:16:50Z"
+}

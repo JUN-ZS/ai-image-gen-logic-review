@@ -1,0 +1,16 @@
+{
+  "set": "SET-R",
+  "stage": "VIDEO",
+  "first_frame": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+  "video_asset": "f461a2e1-c389-462e-92ec-fe2609c5c0e8",
+  "duration_s": 10,
+  "story": "球被推往右移 → 女主用武器另一頭黑月(C環)敲碎玻璃泡球",
+  "beats": [
+    "0–2s disk contact / push impulse",
+    "2–5s sphere slides right, heroine repositions",
+    "5–7s black crescent moon (ring end) smash + shatter",
+    "7–10s follow-through shards"
+  ],
+  "weapon": "W0 RING-CLEAVER · POST strike = black moon C-ring",
+  "resolution": "720p"
+}

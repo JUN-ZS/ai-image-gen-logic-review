@@ -1,0 +1,30 @@
+{
+  "set": "SET-P",
+  "world": "obsidian",
+  "method": "GEO.T · H2",
+  "mid_asset_id": "fc3dde8b-4590-4713-b24d-094bb71b05e1",
+  "mid_sha256": "3f0d0d1f4c34350d63f8b043951134659c026a6fa490f3126e4fcceb43cb2b03",
+  "L": "L-3f0d0d1f4c34",
+  "size": [
+    1792,
+    1008
+  ],
+  "ip_raw": "cbfdd6d9-83e2-45e1-adc5-5e2abc6f4a08",
+  "ip_hd": "21a606e1-9fba-448b-97bd-7cb1f90f6d75",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "camera_contract": "16:9 three-quarter front locked",
+  "weapon_topology": "T sledgehammer flat end",
+  "contact_state_mid": "H2 GAP=0 tangent first contact micro-crack",
+  "person_cut_source": "MID_ONLY",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  n·v=1  GAP=0  ★MICRO  H2",
+  "highlights": [
+    "HL.STRIKE",
+    "HL.RECV",
+    "HL.SPHERE",
+    "HL.CONTACT",
+    "HL.WEAPON",
+    "HL.AXIS"
+  ],
+  "locked": true,
+  "asof": "2026-10-25T16:44:54Z"
+}

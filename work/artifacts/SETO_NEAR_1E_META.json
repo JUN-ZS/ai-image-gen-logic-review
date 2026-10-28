@@ -1,0 +1,19 @@
+{
+  "kind": "PATH1E_NEAR",
+  "source": "6d3b6bcb-0519-481e-a106-b92885c261c2",
+  "result": "bcf4c3d4-80b0-4588-b55c-46ae84a83db7",
+  "plate": "db29e080-5616-4db6-842f-dbee740896ac",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "params": {
+    "band": "NEAR",
+    "s": ">=0.9",
+    "feather_px": "32-40",
+    "mix_interior": 0.95,
+    "ROI": "FACE_ROI full",
+    "color_match": 0.25,
+    "conf_hf": 0.35,
+    "HF_inject": "optional on",
+    "gate_face_lap": 400
+  },
+  "asof": "2026-10-25T15:24:39Z"
+}

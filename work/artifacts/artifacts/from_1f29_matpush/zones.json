@@ -1,0 +1,78 @@
+{
+  "fire_title": {
+    "box2304": [
+      120,
+      40,
+      2180,
+      900
+    ],
+    "box4608": [
+      240,
+      80,
+      4360,
+      1800
+    ],
+    "size": [
+      2060,
+      860
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_matpush/CROP_fire_title.jpg"
+  },
+  "stone_mid": {
+    "box2304": [
+      400,
+      2100,
+      1900,
+      2900
+    ],
+    "box4608": [
+      800,
+      4200,
+      3800,
+      5800
+    ],
+    "size": [
+      1500,
+      800
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_matpush/CROP_stone_mid.jpg"
+  },
+  "ground_fire": {
+    "box2304": [
+      300,
+      2550,
+      2000,
+      3199
+    ],
+    "box4608": [
+      600,
+      5100,
+      4000,
+      6398
+    ],
+    "size": [
+      1700,
+      649
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_matpush/CROP_ground_fire.jpg"
+  },
+  "stone_bot": {
+    "box2304": [
+      200,
+      2800,
+      2097,
+      3444
+    ],
+    "box4608": [
+      400,
+      5600,
+      4194,
+      6888
+    ],
+    "size": [
+      1897,
+      644
+    ],
+    "path": "/workspace/artifacts/artifacts/from_1f29_matpush/CROP_stone_bot.jpg"
+  }
+}

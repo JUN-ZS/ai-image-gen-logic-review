@@ -1,0 +1,35 @@
+{
+  "asof": "2026-10-27T07:03:43Z",
+  "L": "L-5a58199057bc",
+  "size": [
+    2304,
+    3456
+  ],
+  "bytes": 3748383,
+  "gold": [
+    0.2969,
+    0.239
+  ],
+  "weapon_delta": 0.0,
+  "stats": {
+    "TORSO": {
+      "cc": 0.894,
+      "amax": 0.95,
+      "lap": 2031.8
+    },
+    "CHEST": {
+      "cc": 0.8169,
+      "amax": 0.93,
+      "lap": 3391.3
+    }
+  },
+  "lap_torso": [
+    927.1,
+    3141.1
+  ],
+  "lap_chest": [
+    901.1,
+    3511.3
+  ],
+  "method": "2x hybrid + black GEN α0.93-0.95 + double gold→black metal + weapon lock"
+}

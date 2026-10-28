@@ -1,0 +1,30 @@
+{
+  "asof": "2026-10-27T08:32:50Z",
+  "L": "L-ff40cbfd5039",
+  "killed": "L-17da gain_rgb soft→lap crash; bad pad expand ncc0.14",
+  "diagnosis": "Not feather. Face-lock y<0.24 killed 無 upper; armor_id missed glossy mesh. User curve 無↑有↓.",
+  "method": "reverse mesh PIXEL from d8 (lap+MF+gold) × surplus × upper boost; V5 MF only; face oval lock",
+  "box": [
+    1391,
+    1391,
+    3754,
+    3784
+  ],
+  "ncc": 0.6065,
+  "ecc": 0.6087,
+  "lap_upper": [
+    3022.2,
+    3128.2
+  ],
+  "lap_lower": [
+    6535.8,
+    6753.6
+  ],
+  "mad": 2.55,
+  "inject_mean": 0.109,
+  "bytes": 31806796,
+  "size": [
+    4608,
+    6912
+  ]
+}

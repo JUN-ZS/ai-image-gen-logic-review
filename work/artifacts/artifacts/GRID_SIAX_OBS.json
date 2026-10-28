@@ -1,0 +1,24 @@
+{
+  "asof": "2026-10-26T14:35:00Z",
+  "constitution": "§0.12.15 + §0.12.16",
+  "user": "好,記到憲的除錯,再發現",
+  "written": [
+    "§0.12.16 full",
+    "E-GS-08..11",
+    "T6-T9",
+    "PIXEL_CTRL_LAW",
+    "header LOCK",
+    "rev log"
+  ],
+  "proof_template": {
+    "L": "L-69e63d57a466",
+    "ST_to_ctrl_mask": 0.383,
+    "Siax_to_ctrl_mask": 12.646
+  },
+  "next_discover_hooks": [
+    "iris still over-sharpened?",
+    "fire bleed into face ROI?",
+    "mask false-positive on specular armor?",
+    "text edge vs metal conf collision"
+  ]
+}

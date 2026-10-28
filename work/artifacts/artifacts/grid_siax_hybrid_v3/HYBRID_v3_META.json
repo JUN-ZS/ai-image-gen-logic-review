@@ -1,0 +1,65 @@
+{
+  "asof": "2026-10-26T13:57:13Z",
+  "honest_answer": "v1→v2 face almost NO real change (meanΔ=1.56, only 2.4% pixels >8). User was right to doubt.",
+  "v3_change": "v2→v3 face meanΔ significant; face ROI push +0.28, gain 0.82, skin suppress 0.25",
+  "metrics": [
+    {
+      "name": "Lanczos vs SiaxFULL",
+      "psnr": 25.75,
+      "mean_abs": 7.209,
+      "max_abs": 198.0,
+      "pct_chg_gt8": 23.03
+    },
+    {
+      "name": "Lanczos vs v1",
+      "psnr": 33.85,
+      "mean_abs": 3.425,
+      "max_abs": 59.0,
+      "pct_chg_gt8": 9.36
+    },
+    {
+      "name": "Lanczos vs v2",
+      "psnr": 34.05,
+      "mean_abs": 3.198,
+      "max_abs": 66.0,
+      "pct_chg_gt8": 7.59
+    },
+    {
+      "name": "Lanczos vs v3",
+      "psnr": 28.96,
+      "mean_abs": 5.034,
+      "max_abs": 131.0,
+      "pct_chg_gt8": 14.6
+    },
+    {
+      "name": "v1 vs v2",
+      "psnr": 38.94,
+      "mean_abs": 1.562,
+      "max_abs": 53.0,
+      "pct_chg_gt8": 2.41
+    },
+    {
+      "name": "v2 vs v3",
+      "psnr": 30.3,
+      "mean_abs": 4.814,
+      "max_abs": 103.0,
+      "pct_chg_gt8": 15.21
+    },
+    {
+      "name": "v1 vs v3",
+      "psnr": 28.26,
+      "mean_abs": 5.773,
+      "max_abs": 120.0,
+      "pct_chg_gt8": 19.66
+    },
+    {
+      "name": "v3 vs SiaxFULL",
+      "psnr": 32.53,
+      "mean_abs": 3.721,
+      "max_abs": 71.0,
+      "pct_chg_gt8": 9.43
+    }
+  ],
+  "L": "L-8bca4ceb59b5",
+  "constitution": "NOT written"
+}

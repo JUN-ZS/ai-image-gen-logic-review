@@ -1,0 +1,140 @@
+{
+  "asof": "2026-10-26T15:43:40Z",
+  "trial": "HYBRID_v8_METAL_BITE",
+  "G": {
+    "TEXT": 0.995,
+    "METAL": 0.97,
+    "FIRE": 0.9,
+    "STONE": 0.92,
+    "FACE_FEAT": 0.88,
+    "SKIN": 0.18,
+    "FLAT": 0.32,
+    "EW": 0.0
+  },
+  "ROI": {
+    "TEXT": 0.42,
+    "METAL": 0.28,
+    "FIRE": 0.22,
+    "STONE": 0.2,
+    "FACE": 0.28
+  },
+  "thesis": "metal gain up · text clearer · fire more detail · armor bite Siax · stone grain · no oil face",
+  "proof": {
+    "face": {
+      "hf_d": -0.503,
+      "clar_d": 8.053,
+      "hf": {
+        "v8": 5.14,
+        "siax": 5.65,
+        "lan": 3.76
+      },
+      "clar": {
+        "v8": 79.34,
+        "siax": 71.29,
+        "lan": 48.13
+      },
+      "vs_siax": 4.193,
+      "vs_lan": 4.349,
+      "win_hf": false,
+      "win_clar": true
+    },
+    "text": {
+      "hf_d": 1.221,
+      "clar_d": 31.023,
+      "hf": {
+        "v8": 5.9,
+        "siax": 4.68,
+        "lan": 2.71
+      },
+      "clar": {
+        "v8": 78.99,
+        "siax": 47.96,
+        "lan": 17.47
+      },
+      "vs_siax": 4.332,
+      "vs_lan": 8.072,
+      "win_hf": true,
+      "win_clar": true
+    },
+    "text_title": {
+      "hf_d": 0.136,
+      "clar_d": 20.032,
+      "hf": {
+        "v8": 4.2,
+        "siax": 4.06,
+        "lan": 2.25
+      },
+      "clar": {
+        "v8": 69.08,
+        "siax": 49.05,
+        "lan": 18.12
+      },
+      "vs_siax": 3.432,
+      "vs_lan": 5.103,
+      "win_hf": true,
+      "win_clar": true
+    },
+    "armor": {
+      "hf_d": 1.126,
+      "clar_d": 37.045,
+      "hf": {
+        "v8": 8.49,
+        "siax": 7.37,
+        "lan": 3.17
+      },
+      "clar": {
+        "v8": 125.15,
+        "siax": 88.1,
+        "lan": 24.3
+      },
+      "vs_siax": 6.269,
+      "vs_lan": 11.493,
+      "win_hf": true,
+      "win_clar": true
+    },
+    "sphere": {
+      "hf_d": 1.4,
+      "clar_d": 36.683,
+      "hf": {
+        "v8": 7.5,
+        "siax": 6.1,
+        "lan": 3.12
+      },
+      "clar": {
+        "v8": 102.35,
+        "siax": 65.66,
+        "lan": 20.21
+      },
+      "vs_siax": 5.944,
+      "vs_lan": 10.638,
+      "win_hf": true,
+      "win_clar": true
+    },
+    "stone_ped": {
+      "hf_d": 0.809,
+      "clar_d": 25.304,
+      "hf": {
+        "v8": 4.92,
+        "siax": 4.11,
+        "lan": 2.44
+      },
+      "clar": {
+        "v8": 67.41,
+        "siax": 42.11,
+        "lan": 15.85
+      },
+      "vs_siax": 4.0,
+      "vs_lan": 6.752,
+      "win_hf": true,
+      "win_clar": true
+    }
+  },
+  "scoreboard": {
+    "hf_win": 5,
+    "clar_win": 6,
+    "n": 6
+  },
+  "L": "L-f99f139b55a6",
+  "constitution": "§0.12.15–18",
+  "rival": "SIAX4x_9080_FULL"
+}

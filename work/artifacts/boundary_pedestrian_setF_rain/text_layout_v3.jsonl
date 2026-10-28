@@ -1,0 +1,12 @@
+{"id":"F01","frame":"pre","style":"ice","loop":"L-546119e75b2e","layout":{"title":[804,367,83],"en":[234,517,30],"method":[233,239,19],"loop_txt":[212,505,20],"world":[875,403,14],"cam":[589,375,16]}}
+{"id":"F01","frame":"post","style":"metal","loop":"L-546119e75b2e","layout":{"title":[295,304,58],"en":[421,427,20],"method":[699,407,42],"loop_txt":[899,378,22],"world":[398,421,14],"cam":[696,786,13]}}
+{"id":"F02","frame":"pre","style":"ice","loop":"L-d4890246f4f1","layout":{"title":[126,221,103],"en":[314,716,21],"method":[594,471,42],"loop_txt":[1038,218,20],"world":[661,265,18],"cam":[664,367,11]}}
+{"id":"F02","frame":"post","style":"metal","loop":"L-d4890246f4f1","layout":{"title":[465,106,57],"en":[886,336,26],"method":[857,107,20],"loop_txt":[85,675,22],"world":[900,152,12],"cam":[266,262,16]}}
+{"id":"F03","frame":"pre","style":"ice","loop":"L-668b0ffb9db9","layout":{"title":[382,263,54],"en":[430,791,31],"method":[405,330,30],"loop_txt":[1024,808,16],"world":[902,386,14],"cam":[802,296,16]}}
+{"id":"F03","frame":"post","style":"metal","loop":"L-668b0ffb9db9","layout":{"title":[454,535,60],"en":[893,380,17],"method":[260,347,22],"loop_txt":[528,132,18],"world":[891,740,17],"cam":[748,405,15]}}
+{"id":"F04","frame":"pre","style":"ice","loop":"L-e185fc04cebb","layout":{"title":[765,401,70],"en":[555,351,25],"method":[165,124,22],"loop_txt":[450,192,14],"world":[884,161,11],"cam":[906,86,12]}}
+{"id":"F04","frame":"post","style":"metal","loop":"L-e185fc04cebb","layout":{"title":[836,155,98],"en":[737,286,18],"method":[573,819,25],"loop_txt":[425,583,17],"world":[998,50,11],"cam":[413,251,17]}}
+{"id":"F05","frame":"pre","style":"ice","loop":"L-273feb9920b1","layout":{"title":[526,586,97],"en":[865,651,24],"method":[205,110,29],"loop_txt":[1036,69,15],"world":[376,363,16],"cam":[161,459,15]}}
+{"id":"F05","frame":"post","style":"metal","loop":"L-273feb9920b1","layout":{"title":[909,270,80],"en":[588,361,27],"method":[242,732,26],"loop_txt":[1028,632,11],"world":[156,809,16],"cam":[877,508,18]}}
+{"id":"F06","frame":"pre","style":"ice","loop":"L-96cb558c7f61","layout":{"title":[958,583,84],"en":[936,171,21],"method":[488,106,23],"loop_txt":[599,690,14],"world":[442,537,14],"cam":[749,703,14]}}
+{"id":"F06","frame":"post","style":"metal","loop":"L-96cb558c7f61","layout":{"title":[331,450,83],"en":[620,572,29],"method":[784,287,22],"loop_txt":[897,578,20],"world":[367,427,17],"cam":[163,57,20]}}

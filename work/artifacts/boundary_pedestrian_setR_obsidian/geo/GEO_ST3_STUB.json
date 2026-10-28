@@ -1,0 +1,14 @@
+{
+  "method": "GEO.T · H2",
+  "analysis_line": "STRIKE:T-END  RECV:TANGENT  F_n  n·v=1  GAP=0  H2",
+  "HL": [
+    "HL.STRIKE",
+    "HL.RECV",
+    "HL.SPHERE",
+    "HL.CONTACT",
+    "HL.WEAPON",
+    "HL.AXIS"
+  ],
+  "mid": "e486ba65-2cee-410c-985d-9a80019ce025",
+  "L": "L-b4176e0e7cf6"
+}

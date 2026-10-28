@@ -1,0 +1,115 @@
+{
+  "verify": "§0.12.14 corrected coords",
+  "dst_clean": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "ghost_ref": "9d8f194e-3739-4595-93a2-a4b2cae21ffb",
+  "donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "F_d": [
+    528,
+    102,
+    105,
+    118
+  ],
+  "F_s": [
+    179,
+    110,
+    272,
+    272
+  ],
+  "roi_OLD": [
+    491,
+    37,
+    669,
+    255
+  ],
+  "roi_NEW": [
+    515,
+    87,
+    645,
+    234
+  ],
+  "OLD_hits_cring": 0,
+  "NEW_hits_cring": 0,
+  "corrected": {
+    "s_face": 0.40922932674542295,
+    "s_eff": 0.40903497819517576,
+    "place": [
+      511.3730886850153,
+      95.96343846696705
+    ],
+    "paste": [
+      515,
+      87,
+      645,
+      234
+    ],
+    "F_d": [
+      528,
+      102,
+      105,
+      118
+    ],
+    "F_s": [
+      179,
+      110,
+      272,
+      272
+    ],
+    "center_err": [
+      0.0,
+      0.0
+    ],
+    "crop_S": [
+      146,
+      87,
+      484,
+      414
+    ],
+    "delta_face": 15.44031047821045,
+    "delta_cring": 0.0,
+    "delta_full_outside": null,
+    "delta_outside": 1.8985843780683354e-05,
+    "center_ok": true,
+    "cring_ok": true
+  },
+  "old_bad": {
+    "s": 0.4099264705882353,
+    "s_eff": 0.408909785271653,
+    "place_float": [
+      451.37316176470586,
+      60.158088235294116
+    ],
+    "paste": [
+      491,
+      37,
+      669,
+      255
+    ],
+    "center_err_float_s": [
+      0.0,
+      0.0
+    ],
+    "center_err_mismatch": [
+      0.3202558747234434,
+      0.2501045878792638
+    ],
+    "center_err_if_seff_place": [
+      0.0,
+      0.0
+    ],
+    "delta_cring": 0.17763888835906982,
+    "delta_face": 20.222339630126953,
+    "cring_hits": 0
+  },
+  "heat_mean": {
+    "corrected": 0.16334964334964752,
+    "old_bad": 0.43441957235336304,
+    "ghost_9d8f": 11.091172218322754
+  },
+  "gates": {
+    "center_ok": true,
+    "cring_ok": true,
+    "corrected_delta_cring": 0.0,
+    "old_delta_cring": 0.17763888835906982,
+    "ghost_present_in_9d8f": true
+  }
+}

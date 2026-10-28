@@ -1,0 +1,10 @@
+{
+  "set_id": "SET-H",
+  "world": "ARCTIC AURORA · ICE CRYSTAL NIGHT",
+  "world_code": "ARCTIC_AURORA_ICE",
+  "opposite_of": "SET-G GOLD FOIL RUINED TEMPLE",
+  "palette": ["#0a1628", "#1a3a4a", "#7fffd4", "#a78bfa", "#e0f2fe", "#0ea5e9"],
+  "style_lock": "one style for whole set: photoreal arctic aurora ice night",
+  "frame_contract": ["PRE", "MID", "POST"],
+  "priority_methods": ["A03_H2", "A07_ROD_POS", "A08_ROD_NEG", "A10_PLANT_O", "A02_H1", "A05_T2_PHASES"]
+}

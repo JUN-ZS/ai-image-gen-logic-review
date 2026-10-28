@@ -1,0 +1,13 @@
+{
+  "asof": "2026-10-26T19:14:04Z",
+  "trial": "ARMOR_MAT_PLATE_v2",
+  "source": "1f5f86ae",
+  "L": "L-f13895a39682",
+  "full_mb": 24.52,
+  "plates": [
+    "5e21b4e4",
+    "041a3f75"
+  ],
+  "alpha": 0.9,
+  "note": "plate-dominant metal mask + residual; face locked"
+}

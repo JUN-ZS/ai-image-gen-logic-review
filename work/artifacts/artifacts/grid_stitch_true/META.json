@@ -1,0 +1,53 @@
+{
+  "asof": "2026-10-26T16:19:03Z",
+  "trial": "GRID_STITCH_TRUE_v4",
+  "thesis": "放大原圖(Siax4x of L0) 分區拼回：材質區高權重直接寫入原升清像素；臉毛孔 mid；眼白鎖 STRUCT。禁外貼 stock。",
+  "proof": {
+    "face": {
+      "hfA": 5.61,
+      "hfB": 5.25,
+      "hfS": 5.51,
+      "dB": 0.352,
+      "dS": 0.099
+    },
+    "cloth": {
+      "hfA": 7.95,
+      "hfB": 8.49,
+      "hfS": 7.24,
+      "dB": -0.536,
+      "dS": 0.713
+    },
+    "fire": {
+      "hfA": 4.38,
+      "hfB": 4.44,
+      "hfS": 4.13,
+      "dB": -0.061,
+      "dS": 0.247
+    },
+    "sphere": {
+      "hfA": 6.8,
+      "hfB": 7.65,
+      "hfS": 6.1,
+      "dB": -0.848,
+      "dS": 0.699
+    },
+    "text": {
+      "hfA": 5.23,
+      "hfB": 6.0,
+      "hfS": 4.68,
+      "dB": -0.77,
+      "dS": 0.549
+    }
+  },
+  "sizes_MB": {
+    "GRID_STITCH_FULL.jpg": 12.46,
+    "GRID_STITCH_FULL_q98.jpg": 16.88,
+    "GRID_STITCH_FULL_q100.jpg": 28.64
+  },
+  "L": "L-2303694c4c71",
+  "px": [
+    4608,
+    6912
+  ],
+  "method": "zone-weight original-Siax stitch + hybrid mid + USM materials"
+}

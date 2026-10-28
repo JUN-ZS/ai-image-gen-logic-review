@@ -1,0 +1,13 @@
+{
+  "official": {
+    "S2_canvas": "SETP_ETB_AplusB_S2_v7.jpg (v7 ECC f02 cell, no multi-layer ghost)",
+    "face_correct_16x9": "SETP_ETB_AplusB_FACELOCK_16x9.jpg = Imagine ref(v7景, a8b, IP, f02)",
+    "face_plate_HD": "SETP_ETB_AplusB_FACE_PLATE_HD.jpg = 2d3416e0 ultra sharp IP plate"
+  },
+  "failed": {
+    "v8/v8b": "B upsample ECC soft or ghost",
+    "v9": "frontal plate HF_ONLY on action pose → giant ghost face in ROI — ABORT"
+  },
+  "lesson": "A+B means: (1) Imagine full-frame ref for identity OR (2) same-pose face plate only. Never frontal plate HF on mismatched pose.",
+  "asof": "2026-10-25T17:26:53Z"
+}

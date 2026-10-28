@@ -1,0 +1,37 @@
+{
+  "asof": "2026-10-27T10:15:53Z",
+  "constitution": "§0.12.24 WHOLE · REVERSE=RANGE only · V5 content · self boundary",
+  "killed": [
+    "OLD CONST edge lock",
+    "借舊底省算力",
+    "REV_AS_CONTENT"
+  ],
+  "mother": "SET_R_7F5_INTO_FULL (FULL MB)",
+  "clothes_donor": "6b398fb4 GEN 7f5 mesh",
+  "box_full": [
+    1376,
+    1288,
+    3328,
+    3528
+  ],
+  "view_match_ncc": 0.677,
+  "ecc_pick": "affine",
+  "affine_ncc": 0.9772,
+  "alpha_mean": 0.417,
+  "range_mean": 0.533,
+  "lap_whole": [
+    896.3,
+    1069.8
+  ],
+  "lap_armor": [
+    998.6,
+    1204.0
+  ],
+  "lap_gate_ok": true,
+  "out_mb": 35.55,
+  "L": "L-5d776bf61a20",
+  "size": [
+    4608,
+    6912
+  ]
+}

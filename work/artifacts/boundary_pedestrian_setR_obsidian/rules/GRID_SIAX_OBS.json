@@ -1,0 +1,42 @@
+{
+  "asof": "2026-10-26T14:05:00Z",
+  "section": "0.12.15",
+  "title": "GRID×SIAX pixel coordination + debug",
+  "user": "把這發現和除錯,寫進憲中",
+  "L0": "90807317-4e7d-4646-9f98-ac6c59208d08",
+  "model": "4x_NMKD-Siax_200k.pth",
+  "model_url": "https://huggingface.co/Kallamamran/best_upscaler_models/blob/main/4x_NMKD-Siax_200k.pth",
+  "siax_full_L": "L-ec355935c17f",
+  "hybrid_v3_L": "L-8bca4ceb59b5",
+  "face_proof": {
+    "v1_to_v2": {
+      "mean_abs": 1.562,
+      "pct_gt8": 2.41,
+      "verdict": "almost_no_change"
+    },
+    "v2_to_v3": {
+      "mean_abs": 4.814,
+      "pct_gt8": 15.21,
+      "verdict": "measurable_change"
+    },
+    "v3_to_siax": {
+      "mean_abs": 3.721,
+      "pct_gt8": 9.43
+    }
+  },
+  "root_cause_v1_v2": "E-GS-02: face gain raised but skin suppress + conf crushed actual M",
+  "errors_codified": [
+    "E-GS-01",
+    "E-GS-02",
+    "E-GS-03",
+    "E-GS-04",
+    "E-GS-05",
+    "E-GS-06",
+    "E-GS-07"
+  ],
+  "constitution_files": [
+    "BOUNDARY_WALKER_UNIFIED_RULES.md §0.12.15",
+    "rules/GRID_SIAX_DO_NOT_REPEAT.md",
+    "rules/GRID_SIAX_CORRECT_PROCESS.md"
+  ]
+}

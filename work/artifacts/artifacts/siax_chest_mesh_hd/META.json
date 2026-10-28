@@ -1,0 +1,40 @@
+{
+  "asof": "2026-10-26T19:49:46Z",
+  "trial": "SIAX_CHEST_MESH_HD_v1",
+  "source": "71c21828 / HONEST_siax_full_chest",
+  "user": "更清GEN花紋超高清網紋,孔不模糊,防OOM",
+  "method": [
+    "1.2x local",
+    "full GEN mesh",
+    "4-tile ultra mesh GEN (hammer/collar/gauntlet/skirt)",
+    "ECC stitch mesh mask",
+    "mid-band mesh clarify strips",
+    "2x strip AVOID OOM"
+  ],
+  "stats": {
+    "TL": {
+      "cc": 0.6589599552753591,
+      "M": 0.49229568243026733,
+      "d": 18.674320220947266
+    },
+    "TR": {
+      "cc": 0.8290383630397326,
+      "M": 0.6717284917831421,
+      "d": 13.104667663574219
+    },
+    "BL": {
+      "cc": 0.7007591182116398,
+      "M": 0.6645069122314453,
+      "d": 13.833951950073242
+    },
+    "BR": {
+      "cc": 0.6944515143008019,
+      "M": 0.7112827897071838,
+      "d": 16.550701141357422
+    }
+  },
+  "full_gen_cc": 0.7766623540247458,
+  "L": "L-e60e7572c7b1",
+  "mb": 2.31,
+  "mb_2x": 7.17
+}

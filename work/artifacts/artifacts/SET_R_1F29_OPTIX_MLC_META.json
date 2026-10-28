@@ -1,0 +1,22 @@
+{
+  "asof": "2026-10-27T16:48:45Z",
+  "user": "以OPTIX現圖再啞貼分溫 防oom",
+  "base_matte": "SET_R_1F29_OPTIX (L-e0252c2a5d6c)",
+  "light_ref": "SIAX_HYBRID",
+  "move": "啞貼分溫 MATTE_LIGHT_CTEMP §0.12.26",
+  "cold_matte_ab": [
+    134.34,
+    137.42
+  ],
+  "cold_fixed_ab": [
+    133.75,
+    137.03
+  ],
+  "out_mb": 34.7,
+  "size": [
+    4608,
+    6912
+  ],
+  "oom_safe": "stone crop only + band FULL 2x",
+  "L": "L-3342d664836a"
+}

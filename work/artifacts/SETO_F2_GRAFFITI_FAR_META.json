@@ -1,0 +1,31 @@
+{
+  "kind": "PATH1E_FAR",
+  "base": "ca9333d2-9d64-4efd-861d-37052bcb52df",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "HEAD_ROI_norm": [
+    0.455,
+    0.285,
+    0.545,
+    0.415
+  ],
+  "HEAD_ROI_px": [
+    815,
+    287,
+    976,
+    418
+  ],
+  "params": {
+    "feather_px": 16,
+    "mix_interior": 0.78,
+    "color_match": 0.45,
+    "use_HEAD_ROI": true
+  },
+  "hard_paste_file": "boundary_pedestrian_setO_jade/free_art_1e/GRAFFITI_FAR_HARD.jpg",
+  "imagine_FAR_A": "381dfb6b-0d37-4f39-993d-4e7623151140",
+  "imagine_FAR_B": "745c473f-244b-476d-939f-54393ff67b25",
+  "asof": "2026-10-25T15:20:31Z",
+  "hard_paste_status": "FAILED_no_ECC_pose_match_floating_head",
+  "primary_deliverable": "381dfb6b-0d37-4f39-993d-4e7623151140",
+  "alt_deliverable": "745c473f-244b-476d-939f-54393ff67b25",
+  "note_zh": "純縮放硬貼無 pose plate+ECC 會浮頭；遠距正式交付用 Imagine FAR（HEAD 權重+場景鎖）"
+}

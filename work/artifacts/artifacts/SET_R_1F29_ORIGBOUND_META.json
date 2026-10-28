@@ -1,0 +1,50 @@
+{
+  "asof": "2026-10-27T15:54:15Z",
+  "user": "直接在原圖抽出,用正/反定邊界,再混生真實材質在內",
+  "pipeline": [
+    "1 原圖 EXTRACT crop",
+    "2 反推 DETECT 不規則邊界 from 原圖像素 (HSV+edge+GrabCut)",
+    "3 正推 GrabCut 收緊邊界",
+    "4 邊界內 混生 GEN 真實材質 (i2i on 原圖抽出)",
+    "5 只在 mask 內貼回；界外=原圖像素 100% 不動"
+  ],
+  "not_used_as_primary": "外部純 basalt/fire 空板當主 donor（可輔不可替原圖抽出）",
+  "stats": [
+    {
+      "name": "stone_mid",
+      "ecc": 0.833,
+      "fill": 0.928,
+      "alpha_mean": 0.846,
+      "box": [
+        380,
+        2080,
+        1920,
+        2920
+      ]
+    },
+    {
+      "name": "fire_title",
+      "ecc": 0.7982,
+      "fill": 0.312,
+      "alpha_mean": 0.209,
+      "box": [
+        100,
+        20,
+        2200,
+        920
+      ]
+    }
+  ],
+  "out_mb": 34.03,
+  "size": [
+    4608,
+    6912
+  ],
+  "constitution": [
+    "ORIG extract",
+    "正反定界",
+    "混生真實在內",
+    "§0.12.25 GOU from ORIG"
+  ],
+  "L": "L-ad02000903b0"
+}

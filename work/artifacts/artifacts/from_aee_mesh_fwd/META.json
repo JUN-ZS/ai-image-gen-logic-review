@@ -1,0 +1,32 @@
+{
+  "asof": "2026-10-27T09:23:03Z",
+  "L": "L-de3909c1510e",
+  "user": "反推只取根因座標; 不用再反拼; 大圖密網正向拼入全圖",
+  "method": "FORWARD_MESH_INTO_FULL",
+  "reverse_role": "diagnostic only (box+root cause)",
+  "donor": [
+    "b802640b torso GEN",
+    "f9237e9c chest GEN"
+  ],
+  "box": [
+    1296,
+    1244,
+    3582,
+    4284
+  ],
+  "ncc": 0.7065,
+  "gain_rgb": 0.88,
+  "alpha_mean": 0.45,
+  "lap_armor": [
+    1552.8,
+    1551.3,
+    1502.6
+  ],
+  "mad_vs_full": 14.23,
+  "mad_vs_donor": 19.19,
+  "out_mb": 32.21,
+  "size": [
+    4608,
+    6912
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "LOOP-0001",
+  "try_id": "TRY-0001",
+  "sweep_id": "SWEEP-001",
+  "variant_id": "BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT",
+  "primary_act": "3",
+  "primary_media": "IMAGE",
+  "lane": "HARD",
+  "method_label": "GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01",
+  "method_fingerprint": "ae642e0d07d63913e5a56c020312ce1fcdd351f375c9425a3cbe6892eca89351",
+  "catalog_row": {
+    "id": "BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT",
+    "lane": "HARD",
+    "media": "IMAGE",
+    "act": "3",
+    "geo_family": "T",
+    "geo_catalog": "I-01;I-04;I-18;PACK_IMPACT_4",
+    "contact": "H2",
+    "cam": "X_RIGHT__CAM01_GRAZING_FACE__M1",
+    "wash": "W00",
+    "style": "S01",
+    "shot": "FRONT",
+    "video_method": "",
+    "count_bucket": "HARD_T_H2_IMPACT4"
+  },
+  "acts": [
+    {
+      "act_id": "1",
+      "act_title": "畫界",
+      "media": "IMAGE",
+      "is_primary_try": false,
+      "variant_id": null,
+      "prompt_id": "STORY_SPINE_ACT1",
+      "prompt": "STORY: THE BOUNDARY WALKER. LOOP LOOP-0003. TRY TRY-0003. ACT 1: 畫界. PRIMARY TRY METHOD FOR THIS LOOP: GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. SOURCE VARIANT ID: BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT. CATALOG METHOD REFERENCES: I-01;I-04;I-18;PACK_IMPACT_4. SOURCE CATALOG SHA-256: b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731. Keep the same adult East Asian heroine from the approved identity reference: long straight dark-brown hair, unchanged face, body proportions and canonical outfit. Keep the same world: an outer ruined city and a small living sanctuary inside a translucent spherical boundary. Preserve the story's moral question: is the boundary protecting life, or separating the two sides? The heroine, world landmarks, lighting direction and circular boundary motif must remain recognizably continuous with the previous and next act. The heroine walks along a luminous boundary line and notices that its reflection does not match the world behind her. Visual style: photoreal cinematic live action, motivated lighting, restrained bloom and believable materials. Framing method: neutral baseline framing; keep the whole declared event clearly visible. Camera variant: X_RIGHT/CAM01/M1. Shot variant: FRONT. The episode's method label is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. Do not bake text, letters, numbers, subtitles, logos, UI or watermarks into the generated media; an exact editorial title/method layer will be composited afterward from the same loop manifest. Keep corner negative-space available for that layer without covering the heroine's face, active contact surface, handles, boundary or fracture origin. One full-frame image, never a collage or contact sheet. This is a COMPANION STORY-SPINE FRAME, not the primary method demonstration. The primary method for the episode is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01, but do not place that tool/contact into this act unless this act is the selected target. Follow the act event only, with no new weapon impact. "
+    },
+    {
+      "act_id": "2",
+      "act_title": "保護",
+      "media": "IMAGE",
+      "is_primary_try": false,
+      "variant_id": null,
+      "prompt_id": "STORY_SPINE_ACT2",
+      "prompt": "STORY: THE BOUNDARY WALKER. LOOP LOOP-0003. TRY TRY-0003. ACT 2: 保護. PRIMARY TRY METHOD FOR THIS LOOP: GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. SOURCE VARIANT ID: BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT. CATALOG METHOD REFERENCES: I-01;I-04;I-18;PACK_IMPACT_4. SOURCE CATALOG SHA-256: b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731. Keep the same adult East Asian heroine from the approved identity reference: long straight dark-brown hair, unchanged face, body proportions and canonical outfit. Keep the same world: an outer ruined city and a small living sanctuary inside a translucent spherical boundary. Preserve the story's moral question: is the boundary protecting life, or separating the two sides? The heroine, world landmarks, lighting direction and circular boundary motif must remain recognizably continuous with the previous and next act. The heroine holds an open hand beside the translucent boundary sphere; the miniature sanctuary and its residents remain safe and visible. Visual style: photoreal cinematic live action, motivated lighting, restrained bloom and believable materials. Framing method: neutral baseline framing; keep the whole declared event clearly visible. Camera variant: X_RIGHT/CAM01/M1. Shot variant: FRONT. The episode's method label is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. Do not bake text, letters, numbers, subtitles, logos, UI or watermarks into the generated media; an exact editorial title/method layer will be composited afterward from the same loop manifest. Keep corner negative-space available for that layer without covering the heroine's face, active contact surface, handles, boundary or fracture origin. One full-frame image, never a collage or contact sheet. This is a COMPANION STORY-SPINE FRAME, not the primary method demonstration. The primary method for the episode is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01, but do not place that tool/contact into this act unless this act is the selected target. Follow the act event only, with no new weapon impact. "
+    },
+    {
+      "act_id": "3",
+      "act_title": "試法／碎裂",
+      "media": "IMAGE",
+      "is_primary_try": true,
+      "variant_id": "BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT",
+      "prompt_id": "I-01;I-04;I-18;PACK_IMPACT_4",
+      "prompt": "STORY: THE BOUNDARY WALKER. LOOP LOOP-0003. TRY TRY-0003. ACT 3: 試法／碎裂. PRIMARY TRY METHOD FOR THIS LOOP: GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. SOURCE VARIANT ID: BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT. CATALOG METHOD REFERENCES: I-01;I-04;I-18;PACK_IMPACT_4. SOURCE CATALOG SHA-256: b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731. Keep the same adult East Asian heroine from the approved identity reference: long straight dark-brown hair, unchanged face, body proportions and canonical outfit. Keep the same world: an outer ruined city and a small living sanctuary inside a translucent spherical boundary. Preserve the story's moral question: is the boundary protecting life, or separating the two sides? The heroine, world landmarks, lighting direction and circular boundary motif must remain recognizably continuous with the previous and next act. Create one single full-frame cinematic 16:9 image for this act of the looping story. Primary physical trial in the fracture act. Selected method: Exactly one rigid T-hammer: a straight rectangular crossbar and one straight handle attached at the midpoint at a right angle. FIRST CONTACT: only the nominated terminal striking face touches the sphere at point P, with opposing normals, zero gap and no interpenetration. The first fine cracks originate at P only. Visual style: photoreal cinematic live action, motivated lighting, restrained bloom and believable materials. Framing method: neutral baseline framing; keep the whole declared event clearly visible. Camera variant: X_RIGHT/CAM01/M1. Shot variant: FRONT. The episode's method label is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. Do not bake text, letters, numbers, subtitles, logos, UI or watermarks into the generated media; an exact editorial title/method layer will be composited afterward from the same loop manifest. Keep corner negative-space available for that layer without covering the heroine's face, active contact surface, handles, boundary or fracture origin. One full-frame image, never a collage or contact sheet. Keep the full story readable through this one frame. The title/method typography is added afterward by the deterministic SVG renderer, so the generated image itself must contain no readable text or false labels. Use a motivated cinematic composition, meaningful negative space, a recurring circular line and restrained effects. Do not hide the focal event behind bloom or debris. Render the requested state only; actual geometry and pixel acceptance are decided by inspection of the saved raster, not by the prompt text."
+    },
+    {
+      "act_id": "4",
+      "act_title": "假修",
+      "media": "IMAGE",
+      "is_primary_try": false,
+      "variant_id": null,
+      "prompt_id": "STORY_SPINE_ACT4",
+      "prompt": "STORY: THE BOUNDARY WALKER. LOOP LOOP-0003. TRY TRY-0003. ACT 4: 假修. PRIMARY TRY METHOD FOR THIS LOOP: GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. SOURCE VARIANT ID: BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT. CATALOG METHOD REFERENCES: I-01;I-04;I-18;PACK_IMPACT_4. SOURCE CATALOG SHA-256: b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731. Keep the same adult East Asian heroine from the approved identity reference: long straight dark-brown hair, unchanged face, body proportions and canonical outfit. Keep the same world: an outer ruined city and a small living sanctuary inside a translucent spherical boundary. Preserve the story's moral question: is the boundary protecting life, or separating the two sides? The heroine, world landmarks, lighting direction and circular boundary motif must remain recognizably continuous with the previous and next act. A beautiful golden repair bandage covers the fracture, but a faint seam and a wrong reflection reveal that this repair is superficial. Visual style: photoreal cinematic live action, motivated lighting, restrained bloom and believable materials. Framing method: neutral baseline framing; keep the whole declared event clearly visible. Camera variant: X_RIGHT/CAM01/M1. Shot variant: FRONT. The episode's method label is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. Do not bake text, letters, numbers, subtitles, logos, UI or watermarks into the generated media; an exact editorial title/method layer will be composited afterward from the same loop manifest. Keep corner negative-space available for that layer without covering the heroine's face, active contact surface, handles, boundary or fracture origin. One full-frame image, never a collage or contact sheet. This is a COMPANION STORY-SPINE FRAME, not the primary method demonstration. The primary method for the episode is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01, but do not place that tool/contact into this act unless this act is the selected target. Follow the act event only, with no new weapon impact. "
+    },
+    {
+      "act_id": "5",
+      "act_title": "一界",
+      "media": "IMAGE",
+      "is_primary_try": false,
+      "variant_id": null,
+      "prompt_id": "STORY_SPINE_ACT5",
+      "prompt": "STORY: THE BOUNDARY WALKER. LOOP LOOP-0003. TRY TRY-0003. ACT 5: 一界. PRIMARY TRY METHOD FOR THIS LOOP: GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. SOURCE VARIANT ID: BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT. CATALOG METHOD REFERENCES: I-01;I-04;I-18;PACK_IMPACT_4. SOURCE CATALOG SHA-256: b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731. Keep the same adult East Asian heroine from the approved identity reference: long straight dark-brown hair, unchanged face, body proportions and canonical outfit. Keep the same world: an outer ruined city and a small living sanctuary inside a translucent spherical boundary. Preserve the story's moral question: is the boundary protecting life, or separating the two sides? The heroine, world landmarks, lighting direction and circular boundary motif must remain recognizably continuous with the previous and next act. Reflections from the outer ruined city and inner sanctuary align; the boundary is still visible, while the residents remain safe. Visual style: photoreal cinematic live action, motivated lighting, restrained bloom and believable materials. Framing method: neutral baseline framing; keep the whole declared event clearly visible. Camera variant: X_RIGHT/CAM01/M1. Shot variant: FRONT. The episode's method label is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. Do not bake text, letters, numbers, subtitles, logos, UI or watermarks into the generated media; an exact editorial title/method layer will be composited afterward from the same loop manifest. Keep corner negative-space available for that layer without covering the heroine's face, active contact surface, handles, boundary or fracture origin. One full-frame image, never a collage or contact sheet. This is a COMPANION STORY-SPINE FRAME, not the primary method demonstration. The primary method for the episode is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01, but do not place that tool/contact into this act unless this act is the selected target. Follow the act event only, with no new weapon impact. "
+    },
+    {
+      "act_id": "6",
+      "act_title": "選擇",
+      "media": "IMAGE",
+      "is_primary_try": false,
+      "variant_id": null,
+      "prompt_id": "STORY_SPINE_ACT6",
+      "prompt": "STORY: THE BOUNDARY WALKER. LOOP LOOP-0003. TRY TRY-0003. ACT 6: 選擇. PRIMARY TRY METHOD FOR THIS LOOP: GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. SOURCE VARIANT ID: BP-3H-T-H2-X_RIGHT__CAM01_GRAZING_FACE__M1-W00-S01-IMPACT4-FRONT. CATALOG METHOD REFERENCES: I-01;I-04;I-18;PACK_IMPACT_4. SOURCE CATALOG SHA-256: b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731. Keep the same adult East Asian heroine from the approved identity reference: long straight dark-brown hair, unchanged face, body proportions and canonical outfit. Keep the same world: an outer ruined city and a small living sanctuary inside a translucent spherical boundary. Preserve the story's moral question: is the boundary protecting life, or separating the two sides? The heroine, world landmarks, lighting direction and circular boundary motif must remain recognizably continuous with the previous and next act. The heroine chooses to return to the boundary. Her final footstep forms an incomplete luminous ring that can match-cut to the next loop's opening step. Visual style: photoreal cinematic live action, motivated lighting, restrained bloom and believable materials. Framing method: neutral baseline framing; keep the whole declared event clearly visible. Camera variant: X_RIGHT/CAM01/M1. Shot variant: FRONT. The episode's method label is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01. Do not bake text, letters, numbers, subtitles, logos, UI or watermarks into the generated media; an exact editorial title/method layer will be composited afterward from the same loop manifest. Keep corner negative-space available for that layer without covering the heroine's face, active contact surface, handles, boundary or fracture origin. One full-frame image, never a collage or contact sheet. This is a COMPANION STORY-SPINE FRAME, not the primary method demonstration. The primary method for the episode is GEO.T · H2 · X_RIGHT/CAM01/M1 · W00 · S01, but do not place that tool/contact into this act unless this act is the selected target. Follow the act event only, with no new weapon impact. "
+    }
+  ],
+  "status": "PROMPT_READY",
+  "image_realization": "NOT_RUN",
+  "video_realization": "NOT_RUN",
+  "pixel_audit_status": "NOT_RUN",
+  "continuity_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "source_catalog_sha256": "b9c26f0c5afedf8ce6f5be4df610121d039e23500ce950f94f800b9237177731",
+  "external_generation_called": false,
+  "demo_source_loop_id": "LOOP-0003",
+  "demo_note": "Single-loop live generation demo. Primary TRY = GEO.T H2 first contact. Status remains REVIEW_PENDING until human pixel audit."
+}

@@ -1,0 +1,45 @@
+{
+  "asof": "2026-10-27T07:11:11Z",
+  "L": "L-eb923f6c0c97",
+  "size": [
+    4608,
+    6912
+  ],
+  "bytes": 8565904,
+  "source": "gold hybrid NOT black",
+  "method": "4x + denser GOLD mesh GEN ECC crop-stitch OOM-safe weapon lock",
+  "gens": {
+    "CHEST": "7232fcb2",
+    "TORSO": "d5b38646",
+    "SHOULDER": "8ec48c37"
+  },
+  "stats": {
+    "TORSO": {
+      "cc": 0.9202,
+      "amax": 0.88,
+      "lap_b": 75.0,
+      "lap_o": 367.9
+    },
+    "CHEST": {
+      "cc": 0.7933,
+      "amax": 0.9,
+      "lap_b": 415.5,
+      "lap_o": 553.1
+    },
+    "SHOULDER": {
+      "cc": 0.8198,
+      "amax": 0.4,
+      "lap_b": 571.1,
+      "lap_o": 472.8
+    }
+  },
+  "weapon_delta": 0.0,
+  "lap_torso": [
+    75.0,
+    884.9
+  ],
+  "lap_chest": [
+    73.2,
+    1027.8
+  ]
+}

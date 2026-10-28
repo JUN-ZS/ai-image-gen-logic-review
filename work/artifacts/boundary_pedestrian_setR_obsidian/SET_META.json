@@ -1,0 +1,694 @@
+{
+  "set": "SET-R",
+  "world_code": "OBSIDIAN_ORBIT",
+  "asof": "2026-10-26T12:09:29Z",
+  "constitution": "BOUNDARY_WALKER_UNIFIED_RULES.md",
+  "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+  "stages": {
+    "ST0_WORLD": "ok",
+    "ST1_IP": "ok_W0",
+    "ST2": "ok_MID_LOCK_REDO",
+    "ST2_AUDIT": "pending_user",
+    "ST4": "ok_PRE_POST",
+    "VIDEO": "ok_v2_formula_copper_moon",
+    "ST4_FORMULA_SERIES": "ok",
+    "ST4_STRIKE_NEW": "ok_not_clone",
+    "ST4_FORMULA_SERIES_v3": "ok",
+    "POST_NEW": "ok",
+    "PIXEL_BBAAE": "ok",
+    "T0001_BOUNCE_MOON": "ok",
+    "VIDEO_6S": "ok",
+    "PIXEL_2455": "LOCKED_SOFT_a8b_v2",
+    "ST2_MID_LOCK": "ok_LOCKED",
+    "ST3": "ok_PIXEL_V4_V5_GEO",
+    "ST3_GEO": "ok",
+    "ST5_TYPE": "ok_TRIPTYCH",
+    "POSTER": "ok",
+    "IP_POSTER": "ok",
+    "STRIKE_INFO_POSTER": "ok",
+    "STRIKE_NATIVE_POSTER": "ok",
+    "STRIKE_CLOSE_FUSED": "ok",
+    "GRID24_9080": "ok_S2"
+  },
+  "world": {
+    "set": "SET-R",
+    "world_code": "OBSIDIAN_ORBIT",
+    "title_zh": "黑曜軌道 · 邊界行人",
+    "title_en": "OBSIDIAN ORBIT · THE BOUNDARY WALKER",
+    "concept": {
+      "one_liner": "破碎的環形黑曜石天體軌道，重力殘線把水銀與星砂吊成靜止瀑布；生命球是懸浮在軌道缺口的玻璃星核。",
+      "palette": [
+        "#0B0E14",
+        "#1A1F2E",
+        "#4B6BFB-void-blue",
+        "#C0C8D8-mercury",
+        "#E8F0FF-starfrost",
+        "#8B5A2B-bronze-edge"
+      ],
+      "architecture": [
+        "巨大斷裂的黑曜石環（orbital ring fragments）",
+        "垂直靜止的水銀瀑布（mercury still-fall）",
+        "漂浮的星砂台階與薄刃橋",
+        "地平線是彎曲的空洞星空，非洞穴"
+      ],
+      "physics_mood": "低重力 · 時間黏滯 · 接觸瞬間會折彎附近光弧",
+      "not": [
+        "chrome cave clone",
+        "generic cyber city",
+        "forest",
+        "plain studio only for world"
+      ]
+    },
+    "method_default": "GEO.T · H2",
+    "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "stages_plan": [
+      "ST0_WORLD",
+      "ST1_IP_NO_BG_MULTI",
+      "ST2_FULLFRAME",
+      "ST3_G",
+      "ST4",
+      "ST5",
+      "ST_G"
+    ]
+  },
+  "heroine_design": {
+    "identity_lock": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "design_name": "軌道祭司 · ORBITAL PRIESTESS",
+    "outfit": {
+      "silhouette": "非小黑裙：不對稱結構戰袍 + 半甲肋板 + 飄帶重力失效",
+      "materials": [
+        "磨砂黑曜織物",
+        "青銅線縫",
+        "半透明星砂紗",
+        "汞銀邊緣鑲邊"
+      ],
+      "details": [
+        "單肩露臂結構甲",
+        "高開叉長袍但側有護膝甲片",
+        "腰間軌道環掛件（小碎片環）",
+        "赤足或薄底軌道靴擇一：預設薄底銀靴"
+      ]
+    },
+    "hammer_innovation": {
+      "name": "裂環槌 · RING-CLEAVER",
+      "topology": "T-variant: 槌頭不是實心方錘，而是『半環缺口黑曜石』——T 形柄頂端嵌一枚斷開的軌道弧刃，打擊面 = 弧的平切端面（仍可定義 T-END 平圓接觸）",
+      "look": "柄細長青銅-黑曜；頭為新月狀缺環，缺口朝前當打擊端面；內圈掛一縷懸浮水銀絲",
+      "strike_face": "T-END · FLAT CIRCULAR FACE OF RING-CLEAVER",
+      "creative_note": "仍滿足 GEO.T · H2 契約（端面法向接觸），外形創新"
+    },
+    "ip_pack_required": [
+      "IP.FRONT",
+      "IP.FRONT_FULL",
+      "IP.THREE_Q",
+      "IP.SIDE",
+      "IP.BACK_3Q",
+      "IP.ACTION",
+      "IP.FACE_CLOSE"
+    ],
+    "no_bg": true
+  },
+  "assets": {
+    "WORLD_ESTABLISH": "7f117b0f-bf08-4314-b1f0-d8bbbf0698a4",
+    "WORLD_STAGE": "df2a2226-91ba-40eb-a59d-d00c801ed4e8",
+    "IP_FRONT_BUST": "482df24b-5f1b-4ea5-91d9-f4aae903adc2",
+    "IP_FRONT_FULL": "4e75a2ab-c7b9-4c64-8088-39f5a2f4e46b",
+    "IP_THREE_Q_ALT": "d860a4e3-00da-43d5-809e-a3e11380c5de",
+    "IP_SIDE": "01b7ea7f-1f5d-4433-9097-d0a9ceee268a",
+    "IP_ACTION": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+    "IP_BACK_3Q": "fdd07f76-a2c4-4e6b-82bf-742aa40a85e1",
+    "IP_FACE_CLOSE": "9c2dbc34-e1b4-4056-985f-68066a789950",
+    "IP_FRONT_FULL_v2": "2ce551c4-68ec-43b7-a6cd-84eaf55681c7",
+    "STANDARD_FACE": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "I_MID_L0": "7c19c324-0b00-4880-93ff-78f22280f34a",
+    "I_MID_L0_alt": "5b23e51c-9cdf-4075-a2be-bb62b3a4f449",
+    "MID_CANDIDATES": {
+      "A_old_primary": "e486ba65-2cee-410c-985d-9a80019ce025",
+      "B_old_alt": "5aa3ed90-d6c8-4a42-886a-4bef84cba41d",
+      "C_redraw": "086843c6-e9b7-4e6a-83f9-6854d2e0442d",
+      "D_redraw": "2375a667-b215-4864-8f36-262a0bdbd4c5",
+      "E_redraw_close": "df29a30d-0905-4d6a-8810-3253c28fb9a0"
+    },
+    "MID_C": "086843c6-e9b7-4e6a-83f9-6854d2e0442d",
+    "MID_D": "2375a667-b215-4864-8f36-262a0bdbd4c5",
+    "MID_E": "df29a30d-0905-4d6a-8810-3253c28fb9a0",
+    "MID_H1": "303cc0ab-d6ac-4df9-a9b2-4fae24e0092f",
+    "MID_H2": "ed342748-66c3-4dc3-ae84-506e1edd8338",
+    "MID_H3": "43d90afd-e638-498c-9939-b5c913adad2a",
+    "MID_H4": "ec467ef1-3c0e-4e85-a549-5d1c2f11e609",
+    "IP_W1_Tdisk": "ebb66f95-45b3-4d38-97a4-8e86326c466d",
+    "IP_W2_anvil": "40edb55a-d65e-4021-90ed-5a215de30744",
+    "IP_W3_twin": "d5f9fe0e-a773-4619-948e-c49c3295c35e",
+    "IP_W0_prop": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "IP_W1_ACTION": "99b8d643-dd48-4aea-aafd-7326c46a5379",
+    "IP_W2_SIDE": "4f2f2d5c-65d7-4a0d-8d7a-40799ccb6e9f",
+    "IP_W3_3Q": "c104397d-72b1-4dcc-b3a4-62d47491680c",
+    "WEAPON_PROP": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "WEAPON_PROP_MASTER": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+    "IP_ACTION_draft": "850060c5-c2a8-4a29-91ea-8aea73fc2377",
+    "IP_FRONT_ALT": "2ce551c4-68ec-43b7-a6cd-84eaf55681c7",
+    "MID_M1": "e51cdaa3-af68-4fe7-8487-bbd4b939c267",
+    "MID_M2": "132f3b87-ff4d-491c-ae0d-4c7ea7a7e518",
+    "MID_M3": "4b0afa54-5ef2-4c6c-9f1d-fd33c8f7cb7e",
+    "I_MID_L0_base_M2": "132f3b87-ff4d-491c-ae0d-4c7ea7a7e518",
+    "I_MID_PATH1E_MODEL": "ef74c456-7c7c-4a72-b332-8ae53e7de5de",
+    "I_MID_base_M1": "e51cdaa3-af68-4fe7-8487-bbd4b939c267",
+    "GRID24_FACE_FINAL": "/workspace/artifacts/boundary_pedestrian_setR_obsidian/grid24_face/3_out/FINAL_GRID24_FACE_REF.jpg",
+    "FACE_SEED": "6e83c5f9-f466-4941-9888-bff543d3edc8",
+    "EXPAND_E1": "0c63caa4-ac10-4376-af68-120cbe9f6652",
+    "EXPAND_E2": "bd538542-48a5-4153-8408-36b3be3d6e4c",
+    "EXPAND_E3": "a85bab4f-cf7a-468e-96a9-e43aab931e0c",
+    "I_PRE": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+    "I_MID_ST4": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+    "I_POST": "07830c7e-88be-4f87-bc7d-69b1a9c18245",
+    "I_PRE_alt": "a29ed948-d5b3-43b7-ba35-512b4424725f",
+    "I_POST_alt": "b0917eaf-721f-455b-bd1a-070736899394",
+    "VIDEO_RING_SHATTER": "f461a2e1-c389-462e-92ec-fe2609c5c0e8",
+    "VIDEO_FORMULA": "964b101f-0edd-4aa3-bcb7-477d41db21f5",
+    "VIDEO_FORMULA_alt": "c4af4de2-978b-4595-bb35-e6dae1bac76c",
+    "F0": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+    "F1": "b4213041-dbe0-4f69-9bfd-7e4e1ec9cedb",
+    "F2": "8ed29bd2-0e47-4dd2-9104-e0fa96c131ea",
+    "F3": "611e6adc-51ab-40a3-baad-31fe41c236d0",
+    "F4": "bcf32e2f-5336-4ed8-8b1c-7aff945fa241",
+    "STRIKE_N1": "e88537f1-1219-4d91-bb88-46cc368b0dcd",
+    "STRIKE_N2": "4b69ced1-544c-4d0f-9ee8-95596d12fa3d",
+    "STRIKE_N3": "1f888d6a-3295-460c-b962-e0c701f28cb0",
+    "STRIKE_N4": "b0d398f2-87f2-4caf-86ac-51c4d8f009d8",
+    "F0_PRE": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+    "F1_PUSH": "b0815d2f-982c-471d-9091-68b34014a8c3",
+    "F2_FLIP": "ffee964f-b641-455b-9af9-14bdaa0e9a87",
+    "F3_MOON": "574ca7cf-ae02-438c-9c08-f47741c1ee34",
+    "F4_SHATTER": "ab1139d4-6249-40e8-b1c9-3f2d9a8551ce",
+    "P1": "6bcaa837-dad1-4091-86f1-b29f090ea191",
+    "P2": "0a79cb6f-5cc1-4e95-a403-57469a64ef5c",
+    "P3": "f190cf4b-18fa-48ff-a305-56b9ff3ce167",
+    "P4": "ce6f0848-985f-4d08-bcb8-f56ec3e0f3ce",
+    "BBAAE_PIXEL": "pending",
+    "BBAAE_MODEL_a8b": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "BBAAE_MODEL_grid": "b0a88efd-4a2f-48bb-bd81-fc91ea06cac8",
+    "T0_CONTACT": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "T1_BOUNCE": "fecb8d34-8df7-42f7-bbd0-fbe7ef6fde19",
+    "T2_FLIP": "836000e2-9769-4bed-a2ff-a9d4e8b21b0d",
+    "T3_SHATTER": "2fc0406e-8625-419a-8a5f-550e45fc0a6d",
+    "VIDEO_T0001": "3f11a19e-9d3a-4588-94fc-ed3cbfc0cff3",
+    "VIDEO_6S": "8b6677ee-3f3b-4512-b16d-f51e46876ad1",
+    "FACE_2455_PIXEL": "file:SET_R_2455_PIXEL_FINAL.jpg",
+    "FACE_2455_PIXEL_SOFT_a8b": "pending_asset",
+    "I_MID": "7c19c324-0b00-4880-93ff-78f22280f34a",
+    "I_MID_ST3_FACELOCK": "cad1d080-af32-40a0-ac50-4b4cfd457e79",
+    "I_MID_ST3_GEO": "1e0759f9-f44f-4cdc-8d42-a9275c225dd3",
+    "I_MID_ST3_FACELOCK_src": "b5c63235-d3b5-49e0-8dc8-f219f6623370",
+    "TYPE_GEO_MID": "3847ecc2-1f56-4937-93f1-99d79bb11efb",
+    "TYPE_ET_A_COLD": "aca0bf41-772e-4ea3-8688-31b06b2d2eab",
+    "TYPE_ET_B_HOT": "0c634374-e45b-4938-ad6b-1e04acfebbb3"
+  },
+  "L": "L-a1a1f6da2612",
+  "notes": "User: 全憲新 SET · 先環境概念 · 大師級創新造型女主 IP（退地多角度·槌有創意）",
+  "IP_PACK": {
+    "set": "SET-R",
+    "status": "ST1_OK_WEAPON_W0",
+    "weapon_lock": {
+      "user": "這把",
+      "asset": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+      "name": "RING-CLEAVER W0",
+      "strike_face": "T-END bronze disk in C-gap"
+    },
+    "no_bg": true,
+    "standard_face": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "IP_BODY_MASTER": "4e75a2ab-c7b9-4c64-8088-39f5a2f4e46b",
+    "IP_HD": "9c2dbc34-e1b4-4056-985f-68066a789950",
+    "IP_ACTION": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+    "angles": {
+      "WEAPON_PROP": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+      "IP_FRONT_FULL": "4e75a2ab-c7b9-4c64-8088-39f5a2f4e46b",
+      "IP_ACTION": "68ffbcb3-d315-4c78-a96a-3be84cf206c9",
+      "IP_BACK_3Q": "fdd07f76-a2c4-4e6b-82bf-742aa40a85e1",
+      "IP_SIDE": "01b7ea7f-1f5d-4433-9097-d0a9ceee268a",
+      "IP_FACE_CLOSE": "9c2dbc34-e1b4-4056-985f-68066a789950",
+      "IP_FRONT_ALT": "2ce551c4-68ec-43b7-a6cd-84eaf55681c7"
+    },
+    "constitution": "§0.0 ST1 · §0.5.1"
+  },
+  "sheet": "SET_R_ST0_ST1_SHEET.jpg",
+  "mid_sha256": "a1a1f6da2612349782714493b92bba2fe53bb409d44200551edae959cfebe1a8",
+  "FRAME_LOCK": {
+    "LOCKED": true,
+    "L": "L-a1a1f6da2612",
+    "sha256": "a1a1f6da2612349782714493b92bba2fe53bb409d44200551edae959cfebe1a8",
+    "person_cut_source": "MID_ONLY",
+    "I_MID_asset": "7c19c324-0b00-4880-93ff-78f22280f34a"
+  },
+  "next": "ST2_AUDIT → ST3/ST4 after user OK",
+  "note_user": "重抽IP槌 · 不用MID H系列",
+  "weapon_locked": "4dc35b8e-ea70-4870-8edc-806aee0bd03f",
+  "ST4": {
+    "set": "SET-R",
+    "stage": "ST4_PRE_POST",
+    "mid_lock_asset": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+    "mid_file": "frames/I_MID.jpg",
+    "PRE": {
+      "asset": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+      "alt": "a29ed948-d5b3-43b7-ba35-512b4424725f",
+      "contract": "GAP>0 · no spark · sphere intact · swing anticipation · 未打到圓",
+      "analysis_line": "STRIKE:T-END approaching  RECV:TANGENT  GAP>0  H2"
+    },
+    "MID": {
+      "asset": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+      "contract": "disk T-END contact · GAP=0 · spark",
+      "analysis_line": "STRIKE:T-END  RECV:TANGENT  GAP=0  H2"
+    },
+    "POST": {
+      "asset": "07830c7e-88be-4f87-bc7d-69b1a9c18245",
+      "alt": "b0917eaf-721f-455b-bd1a-070736899394",
+      "contract": "OTHER end = C-RING strike · sphere shatter · mass to RIGHT · 另一頭打爆圓右移",
+      "analysis_line": "STRIKE:RING-END  RECV:TANGENT  shatter  sphere→R  H2"
+    },
+    "sha": {
+      "PRE": "b66470bbece86ebd854ed6a0ccf43cf74ef16d1cec1d506abe4d5bcc93d19f0c",
+      "MID": "8d4f1c46b61b4d71f5c3985ac5795df882574cf001ebec24b1882ee77e1182ee",
+      "POST": "5a3e906b81cd677c2a27f8407f177749ab83619dd6028c0706b4c9d84bf6c4da"
+    },
+    "person_cut_source": "MID_ONLY",
+    "text": "NONE",
+    "weapon": "W0"
+  },
+  "VIDEO": {
+    "set": "SET-R",
+    "stage": "VIDEO_v2",
+    "first_frame": "e2f7772f-ae46-4172-8e61-ffddb1d021c9",
+    "video_primary": "964b101f-0edd-4aa3-bcb7-477d41db21f5",
+    "video_alt": "c4af4de2-978b-4595-bb35-e6dae1bac76c",
+    "duration_s": 10,
+    "story_correct": "圓被推往右移後 → 用公式打 → 武器另一頭 銅圓黑月 敲碎玻璃泡球",
+    "formula": "STRIKE:銅圓黑月(RING-END)  RECV:TANGENT  F_n  n·v  GAP=0  H2",
+    "weapon_end": "OTHER end = copper-bronze disk + black moon C-ring (銅圓黑月)",
+    "beats": [
+      "0–3s: push sphere RIGHT, mostly intact, gap opens",
+      "3–5s: flip to 銅圓黑月 end, wind-up",
+      "5–8s: formula strike GAP=0 shatter glass bubble on right",
+      "8–10s: follow-through shards"
+    ],
+    "reject": "f461a2e1… (wrong: generic crescent smash without 銅圓黑月 formula end)"
+  },
+  "FORMULA_SERIES": {
+    "set": "SET-R",
+    "stage": "ST4_FORMULA_SERIES",
+    "seed_PRE": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+    "story": "圓被攻擊敲往右移後 → 公式 → 武器另一頭銅圓黑月敲碎玻璃泡球",
+    "formula": "STRIKE:銅圓黑月  RECV:TANGENT  F_n  n·v  GAP=0  H2",
+    "weapon_other_end": "銅圓黑月 = copper-bronze disk + black moon C-ring (RING-CLEAVER reverse)",
+    "frames": [
+      {
+        "id": "F0",
+        "asset": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+        "beat": "未打到 · GAP>0"
+      },
+      {
+        "id": "F1",
+        "asset": "b4213041-dbe0-4f69-9bfd-7e4e1ec9cedb",
+        "beat": "盤端敲 · 球右移"
+      },
+      {
+        "id": "F2",
+        "asset": "8ed29bd2-0e47-4dd2-9104-e0fa96c131ea",
+        "beat": "換握 · 銅圓黑月對球"
+      },
+      {
+        "id": "F3",
+        "asset": "611e6adc-51ab-40a3-baad-31fe41c236d0",
+        "beat": "公式打 · 銅圓黑月 GAP=0"
+      },
+      {
+        "id": "F4",
+        "asset": "bcf32e2f-5336-4ed8-8b1c-7aff945fa241",
+        "beat": "敲碎玻璃泡 · 右爆"
+      }
+    ],
+    "person_cut_source": "PRE_series",
+    "text": "NONE"
+  },
+  "FORMULA_SERIES_v3": {
+    "set": "SET-R",
+    "stage": "ST4_FORMULA_SERIES_v3",
+    "seed": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+    "promise": "不騙新圖幀 · 不餵 611e/07830 同構",
+    "story": "球被敲右移 → 公式 → 銅圓黑月敲碎玻璃泡",
+    "formula": "STRIKE:銅圓黑月  RECV:TANGENT  F_n  GAP=0  H2",
+    "frames": [
+      {
+        "id": "F0_PRE",
+        "asset": "e99f4e69-79ec-4640-a3e9-fc252ad7d6a1",
+        "beat": "未打到 GAP>0 · 起點"
+      },
+      {
+        "id": "F1_PUSH",
+        "asset": "b0815d2f-982c-471d-9091-68b34014a8c3",
+        "beat": "盤端敲 · 球右移"
+      },
+      {
+        "id": "F2_FLIP",
+        "asset": "ffee964f-b641-455b-9af9-14bdaa0e9a87",
+        "beat": "球在右 · 換握蓄力"
+      },
+      {
+        "id": "F3_MOON",
+        "asset": "574ca7cf-ae02-438c-9c08-f47741c1ee34",
+        "beat": "公式 · 銅圓黑月打爆"
+      },
+      {
+        "id": "F4_SHATTER",
+        "asset": "ab1139d4-6249-40e8-b1c9-3f2d9a8551ce",
+        "beat": "銅圓黑月 · 右球碎裂"
+      }
+    ],
+    "alts": {
+      "F3_alt_aerial": "bbaae2b1-c628-4a95-aa68-22b70fde7ea3",
+      "F4_alt_rear": "a314178c-016d-44d1-9f81-b5b53c948daa"
+    },
+    "reject_twins": [
+      "611e6adc-51ab-40a3-baad-31fe41c236d0",
+      "07830c7e-88be-4f87-bc7d-69b1a9c18245"
+    ]
+  },
+  "POST_NEW": {
+    "stage": "POST_NEW_COPPER_MOON",
+    "seeds": [
+      {
+        "lab": "SEED A F2",
+        "asset": "ffee964f-b641-455b-9af9-14bdaa0e9a87"
+      },
+      {
+        "lab": "SEED B aerial",
+        "asset": "bbaae2b1-c628-4a95-aa68-22b70fde7ea3"
+      }
+    ],
+    "posts": [
+      {
+        "id": "P1",
+        "lab": "P1 站姿銅月碎",
+        "asset": "6bcaa837-dad1-4091-86f1-b29f090ea191"
+      },
+      {
+        "id": "P2",
+        "lab": "P2 飛撲銅月碎",
+        "asset": "0a79cb6f-5cc1-4e95-a403-57469a64ef5c"
+      },
+      {
+        "id": "P3",
+        "lab": "P3 過肩碎",
+        "asset": "f190cf4b-18fa-48ff-a305-56b9ff3ce167"
+      },
+      {
+        "id": "P4",
+        "lab": "P4 背影銅月碎",
+        "asset": "ce6f0848-985f-4d08-bcb8-f56ec3e0f3ce"
+      }
+    ],
+    "story": "圓已右移 → 公式 → 銅圓黑月敲碎玻璃泡",
+    "formula": "STRIKE:銅圓黑月  RECV:TANGENT  GAP=0  H2",
+    "primary_recommend": "P2 0a79cb6f 或 P4 ce6f0848（銅月最清楚）"
+  },
+  "T0001": {
+    "seed": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "story": "球0.0001s無損彈開 → 極速銅圓黑月敲碎玻璃泡",
+    "frames": [
+      {
+        "id": "T0_CONTACT",
+        "asset": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+        "beat": "盤端觸 · t=0"
+      },
+      {
+        "id": "T1_BOUNCE",
+        "asset": "fecb8d34-8df7-42f7-bbd0-fbe7ef6fde19",
+        "beat": "δt=0.0001 無損彈開"
+      },
+      {
+        "id": "T2_FLIP",
+        "asset": "836000e2-9769-4bed-a2ff-a9d4e8b21b0d",
+        "beat": "極速換握 銅圓黑月"
+      },
+      {
+        "id": "T3_SHATTER",
+        "asset": "2fc0406e-8625-419a-8a5f-550e45fc0a6d",
+        "beat": "敲碎玻璃泡"
+      }
+    ],
+    "video": "3f11a19e-9d3a-4588-94fc-ed3cbfc0cff3",
+    "formula": "STRIKE:銅圓黑月  RECV:TANGENT  GAP=0  H2"
+  },
+  "VIDEO_6S": {
+    "duration_s": 6,
+    "seed": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "video": "8b6677ee-3f3b-4512-b16d-f51e46876ad1",
+    "story": "0.0001s 球無損彈開半個球位 → 極速另一頭敲碎玻璃泡",
+    "weapon_other_end": "銅圓黑月 / reverse end"
+  },
+  "PIXEL_2455": {
+    "pipeline": "PIXEL_RATIO §0.12.14",
+    "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "dst_face": [
+      427,
+      77,
+      138,
+      138
+    ],
+    "expand_tight": true,
+    "primary": "a8b",
+    "primary_donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "scale_iso": 0.525223880597015,
+    "paste_roi": [
+      388,
+      14,
+      603,
+      245
+    ],
+    "sha256": "5ce79db3da0bb2460340522045df411a16d9a945a7fd69cee656fc58913a590b",
+    "L_candidate": "L-5ce79db3da0b",
+    "raw_lap": 2215.1253156932685,
+    "primary_lap": 898.0387935253989,
+    "variants": [
+      {
+        "name": "a8b",
+        "scale": 0.525223880597015,
+        "lap": 898.0387935253989
+      },
+      {
+        "name": "grid_face",
+        "scale": 0.2706923076923077,
+        "lap": 834.1949564796307
+      },
+      {
+        "name": "grid_face2",
+        "scale": 0.2866802443991854,
+        "lap": 820.0893312989235
+      }
+    ],
+    "anti_ghost": "tighter expand sx=0.28 syt=0.45 syb=0.22 + stronger feather + alpha≤0.88"
+  },
+  "PIXEL_2455_LOCK": {
+    "lock": "SOFT_a8b identity-heavy v2",
+    "pipeline": "PIXEL_RATIO SOFT alpha=0.85 + hard left hammer_kill + right-shifted ellipse",
+    "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+    "donor": "a8b78fe5-2654-4f6f-84e3-c1dfbee61004",
+    "dst_face": [
+      535,
+      108,
+      95,
+      108
+    ],
+    "paste_roi": [
+      529,
+      99,
+      643,
+      228
+    ],
+    "scale_iso": 0.3787313432835821,
+    "alpha": 0.85,
+    "delta_cring": 0.0,
+    "delta_face": 12.671812057495117,
+    "sha256": "d00c0783bb9bf114f841b5896be3fb8ddf143451c9657d2baf41178f851d9316",
+    "L_lock": "L-d00c0783bb9b"
+  },
+  "ST3": {
+    "L": "L-d3ef4a5ffdc6",
+    "face": "PIXEL_V4 + V5 hair-once",
+    "geo": "GEO.T · H2",
+    "FACELOCK": "cad1d080-af32-40a0-ac50-4b4cfd457e79",
+    "GEO": "1e0759f9-f44f-4cdc-8d42-a9275c225dd3"
+  },
+  "TYPE": {
+    "stage": "ST5_TYPE + ST3.G_TYPE",
+    "asof": "2026-10-26T12:09:29Z",
+    "base": "cad1d080 ST3 FACELOCK (I_MID a8b)",
+    "Σ_text": [
+      "邊界行人",
+      "THE BOUNDARY WALKER",
+      "GEO.T · H2",
+      "STRIKE:T-END",
+      "RECV:TANGENT",
+      "n·v≈1 GAP≈0 ★MICRO",
+      "WORLD: OBSIDIAN_ORBIT",
+      "LOOP L-d3ef4a5ffdc6"
+    ],
+    "plates": {
+      "TYPE_GEO_MID": "3847ecc2-1f56-4937-93f1-99d79bb11efb",
+      "TYPE_ET_A_COLD": "aca0bf41-772e-4ea3-8688-31b06b2d2eab",
+      "TYPE_ET_B_HOT": "0c634374-e45b-4938-ad6b-1e04acfebbb3"
+    },
+    "note": "同文異態 · 字不改骨相 · 無 TRY/REVIEW · 禁遮臉與 CONTACT",
+    "constitution": "§0.8 E-01/E-02 · §0.9 ST5 · §0.14 GEO_INDICATOR"
+  },
+  "POSTER": {
+    "asof": "2026-10-26T12:18:30Z",
+    "mode": "POSTER 字圖 · REF series ALL (batched ≤5)",
+    "series_refs_used": [
+      "802401c9",
+      "cce4ad3a",
+      "72339da4",
+      "79fa7eec",
+      "25003678",
+      "f72d9076",
+      "2c8876f7",
+      "aca0bf41",
+      "023b59a0",
+      "0c634374",
+      "3847ecc2"
+    ],
+    "posters": {
+      "POSTER 2:3 主海報": "cdd2f4d8-0fd0-4004-aef5-2eec920fbbc8",
+      "POSTER 青電 寬": "2250d7ef-10d3-4c6f-9d3e-e69c50e3f049",
+      "POSTER 火擊破": "776aa397-4df6-42d0-9786-5080e41b6d83",
+      "POSTER 雙相 PRE|POST": "4bf2804a-5363-4932-9b93-db8510dfc316"
+    },
+    "Σ": [
+      "邊界行人",
+      "THE BOUNDARY WALKER",
+      "GEO.T · H2",
+      "OBSIDIAN_ORBIT",
+      "STRIKE THE BOUNDARY"
+    ]
+  },
+  "IP_POSTER": {
+    "asof": "2026-10-26T12:20:28Z",
+    "mode": "POSTER 字圖 from SET-R IP pack only",
+    "IP_refs": [
+      "a8b78fe5",
+      "2ce551c4",
+      "4e75a2ab",
+      "68ffbcb3",
+      "9c2dbc34",
+      "4dc35b8e W0",
+      "99b8d643",
+      "01b7ea7f",
+      "482df24b"
+    ],
+    "posters": {
+      "IP POSTER 2:3": "7ea93675-6d3c-40e2-8be1-207fb8b51f22",
+      "IP 寬 青": "17f41ee6-6814-4c44-8b6b-e4906ac8f7f2",
+      "IP 火 ACTION": "9bdfea06-921f-4e62-9488-b19b6a2d040c",
+      "IP 雙相 FRONT|ACTION": "2ca4fb68-27d8-4842-9327-7d34540f6bf9"
+    }
+  },
+  "STRIKE_INFO_POSTER": {
+    "asof": "2026-10-26T12:23:59Z",
+    "theme": "打擊專題海報 · max INFO + FREE 字",
+    "posters": {
+      "STRIKE 寬 INFO牆": "d0911de6-3274-4190-b4bd-e7562a8c401f",
+      "STRIKE 豎 2:3 滿字": "6965eaad-2a16-43b8-b068-701b64e42805",
+      "STRIKE 寬 分析線": "3a6a1947-1bb8-4d91-a1da-a7f17ab62b59"
+    },
+    "Σ_INFO_FREE": [
+      "邊界行人",
+      "THE BOUNDARY WALKER",
+      "GEO.T · H2",
+      "STRIKE:T-END · FLAT CIRCULAR",
+      "RECV:SPHERE · TANGENT",
+      "n·v≈1",
+      "GAP=0 ★MICRO",
+      "F_n → NORMAL @ CONTACT",
+      "H2 CRITICAL",
+      "PRE | MID | POST",
+      "IP · W0 C-RING",
+      "SET-R",
+      "WORLD: OBSIDIAN_ORBIT",
+      "LOOP L-a1a1f6da2612",
+      "CAM · DUTCH · LOW · FREE",
+      "HL.STRIKE HL.RECV HL.CONTACT HL.SPHERE HL.WEAPON HL.AXIS HL.FORCE HL.GAP",
+      "蓄力→轉身→跳起→敲球",
+      "★IMPACT 擊破",
+      "THE BOUNDARY STRIKE",
+      "FORCE AXIS"
+    ]
+  },
+  "STRIKE_NATIVE_POSTER": {
+    "asof": "2026-10-26T12:25:33Z",
+    "mode": "原生新圖 · 不騙圖 · IP only anchor · 非舊幀疊字",
+    "refs_IP_only": [
+      "a8b78fe5",
+      "2ce551c4",
+      "68ffbcb3",
+      "4dc35b8e W0",
+      "9c2dbc34",
+      "482df24b",
+      "01b7ea7f",
+      "99b8d643"
+    ],
+    "posters": {
+      "原生寬 A 打擊INFO": "19e3945e-4600-4343-824a-455ec2f5a1de",
+      "原生豎 2:3": "9569e110-b152-4a7d-9364-df44554dcd98",
+      "原生寬 B 側擊": "4a027591-fd38-44df-b2c9-53100f7a9eec"
+    },
+    "note": "native composition + diegetic type born in render"
+  },
+  "STRIKE_CLOSE_FUSED": {
+    "asof": "2026-10-26T12:29:08Z",
+    "mode": "原生 · 人更近 · 字與境融合（石刻/球刻/衝擊環/碎石/石座）",
+    "plates": {
+      "近景 槌+球 石刻字": "7fa218e1-205a-4b82-9873-1913dfb32b3f",
+      "極近肖像 球刻字": "5ce6f87f-cdca-4a8d-8a42-5cfd7a5d334b",
+      "中近 碎石塗鴉": "2db4a8ac-f18d-483d-aa11-f4765c0de173",
+      "過肩 衝擊環字": "d72bb7fd-2902-42d8-9f93-82b1c656598b",
+      "仰角近 石座火字": "90807317-4e7d-4646-9f98-ac6c59208d08"
+    }
+  },
+  "GRID24_9080": {
+    "asof": "2026-10-26T12:42:28Z",
+    "L0": "90807317-4e7d-4646-9f98-ac6c59208d08",
+    "layout": "6x4 DEFAULT-24 ω=0.09",
+    "S": 2,
+    "out_px": [
+      2304,
+      3456
+    ],
+    "method": "GRID24_ENHANCE + SIA MKD light · face enhance-only · formula B · §0.12.13",
+    "hd_ids": [
+      "dc26e0bc-9a00-4ead-af6c-55bb2739db85",
+      "ea8aac81-eccf-4aee-8704-93fd1bfc5b46",
+      "6be99a13-ac02-4134-976a-eec93c497001",
+      "7b46b103-7594-4786-9bdb-495ca28cc5f3",
+      "f622e5ba-aa89-4aa4-a2ca-3236979daaa4",
+      "5cb475cd-b7eb-4be3-98ed-5d85a5f78226",
+      "9806d9f3-0d65-499e-8092-473e729d190a",
+      "57909c3e-5556-4ca4-adba-95dac1e401dc",
+      "d0caaa96-e8df-4095-ade4-4685a862bc63",
+      "4be2e5dd-e54c-4edf-81fe-f500fe022640",
+      "c0eb3065-5f9d-4433-976d-2146748e6bd7",
+      "d9858dbc-ee07-4f7f-bcfe-bf6dbe5abd8e",
+      "b8fcafb4-05af-4295-9818-03d69030c11d",
+      "f2bbea67-efaf-45f4-a670-a59eff519b92",
+      "945ede24-98d1-4f7d-b8d6-d8e5c96e54d6",
+      "18289936-bc25-4fd9-9094-d720cef11eb6",
+      "69c52095-e2f1-4ae1-94f6-e453e579f3d6",
+      "dc769666-8ffa-4dc6-ba7f-1accbc39e765",
+      "155074fa-53be-4051-b0b1-eab5b3ba7e8b",
+      "e76c2b91-ef7f-4acc-b4b8-45509b0d15b8",
+      "7f513571-02e7-436f-b742-1ded289bae5c",
+      "e01f009a-6665-4e23-b337-37f6df52aa48",
+      "3f3e95bb-4e09-4c29-b011-9e43ac7d3bb7",
+      "020a5596-da5b-45a2-8caf-5a1a1803f93b"
+    ],
+    "center_weight_mean": 0.9455899675125694,
+    "L": "L-6bfe190a6ecc",
+    "sha": "6bfe190a6ecca95d77e6e458d917707b8b953252956546b0f83d8f6642a7cfcd"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "asset_example": "b0b6e9bb-e5cb-4916-ba13-6cd1da19cfa1",
+  "canvas": [
+    1792,
+    1008
+  ],
+  "face_h_approx_px": 120,
+  "params": {
+    "face_h_px": 120,
+    "scale_vs_near": 0.316,
+    "feather_px": 14,
+    "roi_margin_frac": 0.387,
+    "mix_interior": 0.78,
+    "color_match_strength": 0.45,
+    "conf_hf_min": 0.55,
+    "use_HEAD_ROI": true,
+    "ecc_min": 0.85,
+    "edge_world_blur_px": 2,
+    "gate_face_lap_min": 224
+  },
+  "asof": "2026-10-25T15:18:51Z"
+}

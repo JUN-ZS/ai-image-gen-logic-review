@@ -1,0 +1,13 @@
+{
+  "type": "VIDEO_I2V_FIRST_FRAME",
+  "method": "imagine_image_to_video · THIS first frame lock",
+  "first_frame": "cce4ad3a-3ac9-425b-8057-459f0682c211",
+  "video_asset": "65d04ed3-7047-4df8-a441-1824b3937f62",
+  "duration_s": 10,
+  "beats": [
+    "t≈0 first frame=母圖 · 球無損輕震",
+    "中:另一邊擊球 · 外型/描邊光",
+    "後:大破碎"
+  ],
+  "sha256": "5c004e1e5b1220db7d3633e1c5265c4a703d800e456148171ca1dacc55131699"
+}

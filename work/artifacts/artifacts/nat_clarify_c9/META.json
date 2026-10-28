@@ -1,0 +1,20 @@
+{
+  "asof": "2026-10-26T19:05:40Z",
+  "trial": "NAT_CORRECT_CLARITY_v1",
+  "source": "c9facb1a-5a20-4c28-a7bd-9f4cc1fe6c03",
+  "user": "這臉很自然,只是沒有正確方法變清",
+  "method": [
+    "@2304 multi-scale mid structure",
+    "edge-coherent HF",
+    "soft skin",
+    "eye protect",
+    "2x strip Lanczos+light USM AVOID OOM",
+    "NO beauty/GENMIX/full Siax face"
+  ],
+  "L": "L-05de87f7e589",
+  "full_mb": 22.1,
+  "faceZ_lap_2x": {
+    "before": 107.87600259934129,
+    "after": 645.8175264130942
+  }
+}

@@ -1,0 +1,6 @@
+# STANDARD FACE LOCKED
+
+asset: a8b78fe5-2654-4f6f-84e3-c1dfbee61004
+FACE-L: FACE-f612ec7e07d9
+rule: §0.10
+asof: 2026-10-25T15:12:55Z

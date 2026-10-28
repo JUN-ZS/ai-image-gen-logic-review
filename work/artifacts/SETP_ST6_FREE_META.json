@@ -1,0 +1,59 @@
+{
+  "set": "SET-P",
+  "stage": "ST6_FREE_CAM",
+  "parent_L": "L-3f0d0d1f4c34",
+  "sigma_text": [
+    "邊界行人",
+    "THE BOUNDARY WALKER",
+    "GEO.T · H2",
+    "CAM · STYLE · PROMPT_ID",
+    "WORLD: OBSIDIAN · L-3f0d0d1f4c34"
+  ],
+  "rule": "§0.8 FREE parameter space — same Sigma, free Phi/E/cam; no TRY/REVIEW; no bg plate",
+  "shots": [
+    {
+      "id": "FREE01_DUTCH_LOW",
+      "cam": "Dutch extreme low-angle looking up",
+      "phase": "PRE",
+      "E": "frost neon lightning coil"
+    },
+    {
+      "id": "FREE02_TOP_FIRE",
+      "cam": "high top-down almost overhead",
+      "phase": "POST",
+      "E": "molten fire eruption type"
+    },
+    {
+      "id": "FREE03_SIDE_LONG",
+      "cam": "long side profile telephoto",
+      "phase": "PRE",
+      "E": "coiled lightning on hammer axis"
+    },
+    {
+      "id": "FREE04_MACRO_FACE",
+      "cam": "extreme close-up face+hammer head",
+      "phase": "MID_clean_no_text",
+      "E": "none"
+    },
+    {
+      "id": "FREE05_BEHIND_WIDE",
+      "cam": "behind heroine wide-angle looking at sphere",
+      "phase": "POST",
+      "E": "cracked ground graffiti + fire"
+    }
+  ],
+  "asof": "2026-10-25T16:54:16Z",
+  "assets": {
+    "FREE01_DUTCH_LOW": "bad41c1b-ceb9-4237-b0c9-886877923693",
+    "FREE02_TOP_FIRE": "55817e56-44bc-426a-b967-eca9b110445d",
+    "FREE03_SIDE_LONG": "8638f9c0-1248-4916-8128-f346ddba8232",
+    "FREE04_MACRO_FACE": "0004799f-5236-4eea-aa8a-ed4a18bb719a",
+    "FREE05_BEHIND_WIDE": "714e5877-6d15-44f8-93c2-6bebdab75d3d"
+  },
+  "status": "ST6_DONE",
+  "obs": [
+    "Same Sigma + L-3f0d0d1f4c34 across FREE text shots",
+    "FREE04 is clean MID macro (no text) per rules",
+    "FREE03 floor meta slightly poster-like — acceptable diegetic, watch no UI box"
+  ]
+}

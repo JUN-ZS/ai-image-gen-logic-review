@@ -1,0 +1,20 @@
+{
+  "asof": "2026-10-26T20:41:47Z",
+  "section": "§0.12.22 EDGE_OBJECT_FORM_FLOW",
+  "user_diagnosis": "沒有全圖描邊鎖形、鎖物品種類、再依全形物理走勢紋",
+  "stages": [
+    "E1_EDGE_LOCK",
+    "E2_OBJECT_LOCK",
+    "E3_FORM_FLOW",
+    "E4_GEN_in_mask"
+  ],
+  "shaft_ang_deg": -89.8,
+  "masks": {
+    "skin": 0.29035240411758423,
+    "weapon": 0.28162768483161926,
+    "armor": 0.30030184984207153,
+    "hair": 0.13260512053966522
+  },
+  "next": "E4 GEN armor-only with form-flow prompt + edge lock stitch",
+  "L": "L-9d7414310f97"
+}

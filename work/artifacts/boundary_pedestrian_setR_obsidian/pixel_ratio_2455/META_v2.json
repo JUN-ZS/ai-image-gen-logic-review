@@ -1,0 +1,23 @@
+{
+  "pipeline": "PIXEL_RATIO §0.12.14 + HF_detail transfer",
+  "dst": "2455522d-06e7-44c5-b925-cd9a3c5f05df",
+  "dst_face": [
+    427,
+    77,
+    138,
+    138
+  ],
+  "obs": "soft full-face paste LOWERED lap (2215→898) because dst already model-sharp; switched to HF-detail transfer keep structure",
+  "primary": "HF_PIXEL_a8b",
+  "primary_lap": 1824.2210149595373,
+  "raw_lap": 2408.144795948019,
+  "sha256": "360eb1435ac181bd0f63ee299b0113ab5685c8606fd1bcf0088d350c75407e06",
+  "L_candidate": "L-360eb1435ac1",
+  "scores": {
+    "RAW": 2408.144795948019,
+    "PIXEL_soft_a8b": 898.7738094073543,
+    "PIXEL_soft_g2": 819.006025647181,
+    "HF_a8b": 1824.2210149595373,
+    "HF_grid2": 1831.045533607688
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "set": "SET-N",
+  "grid": "grid60",
+  "face_lock": "PATH1E",
+  "status": "LOCKED",
+  "read": "boundary_pedestrian_setN_golden/grid60/RULES/PATH1E_LOCK.md",
+  "L": "L-355bfec974e3"
+}
