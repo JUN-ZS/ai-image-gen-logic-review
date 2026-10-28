@@ -13,6 +13,7 @@
 > **PIXEL 每點記認／控制 LOCK：** §0.12.16 · 記認 mask → 只寫允許類 · **眼白鐵律** M_hf=0·M_mid=0·lock=1·HARD=ST exact · 禁整臉重構（E-GS-08/09）· 樣板 `L-69e63d57a466` · 附件 `PIXEL_CTRL_LAW.md`
 > **FACE_GENMIX 混參重生 LOCK：** §0.12.21 · 白=P4 `d4d2d76d…`（去粒）· 自然=P3 `2befbe5e…`（去棕） · **Ref(結構錨,P4,P3) 重生** · 禁直接圖拿／像素貼混（E-GS-25/26） · 樣板 GEN `7e87efdd…` · `L-90961cfbcd33`
 > **字糊反推對換 TBRS 備案（未LOCK）：** §0.12.28 · 正名「字糊反推對換」· 本輪全錯 · 以後再改  
+> **外折混鎖 XHL 待解（未LOCK）：** §0.12.29 · 正名「**外折混鎖**」· 外機 donor 包（SUPIR 等）→ 內 Hybrid×M + a8b · **內不重跑外模** · 附件 `EXTERNAL_FOLD_HYBRID_LOCK_XHL_NAME.md`  
 > **白噪殺 WNK LOCK：** §0.12.26.D · 正名「**白噪殺**」· kill=NOISE∩¬SPEC · 噪殺／反光留 · 附件 `WHITE_NOISE_KILL_NAME.md`  
 > **噪折成光 N2R LOCK：** §0.12.26.O · 正名「噪折成光」· 短碼 **噪折／N2R** · cand→微面折射（**轉**非純滅）· 樣板 **L-06f22d5402af** · OVERLAY/MAPS · 附件 `NOISE_REFRACT_N2R_NAME.md`  
 > **GOU_DETECT_SHAPE 勾形拼 LOCK：** §0.12.25 · 反推=DETECT改動真邊界 · 拼≠方框 · fill∈[0.30,0.75] · 禁病毒母 · 樣板 L-767fc2634e8f / L-05683b2c4e72 / 終態 L-8ed30b6e8fe0 · 流程 GOU_MESH_CORRECT_PROCESS
@@ -147,6 +148,8 @@ ST1:  for angle in IP_PACK:
 | SET-R 實證 | `boundary_pedestrian_setR_obsidian`：WORLD 黑曜軌道 + IP 軌道祭司／裂環槌 |
 
 ### 0.0.6 修訂
+
+- **2026-10-28 · §0.12.29 XHL 外折混鎖**：正名入憲 · **待解未LOCK** · 外 SUPIR 包→內混鎖反推 · 附件 XHL_NAME / XHL_PENDING
 
 - **2026-10-26T15:52:00Z：** 用戶「環境概念 + 對型鎖臉創新 IP（退地多角度槌創意）←進憲第一步」→ 本節 §0.0 強制 ST0→ST1。
 
@@ -4156,6 +4159,50 @@ BASE 全幅 → 反推 blur_text_zone → 同構優 donor + 結構閘
 | 再改 | **YES** · 參數不LOCK |
 
 *END §0.12.28 · 字糊反推對換 / TBRS · 備案*
+
+---
+
+## 0.12.29 外折混鎖（EXTERNAL_FOLD_HYBRID_LOCK / XHL · **待解未LOCK**）
+
+> asof 2026-10-28T16:43:00+08:00  
+> **用戶：**「先把這技法命名 ,放憲待解」  
+> 構想：外機 SUPIR（等）出模板／數據包／根因與定位圖 → 交回 → **反推** 用於升清；本機 **不** 重跑外模。  
+> **正名：外折混鎖** · **XHL** · 母招 §0.12.15 Hybrid／S1HL  
+> **地位：待解 · 已命名 · 禁止當完成日產** · 詳 `EXTERNAL_FOLD_HYBRID_LOCK_XHL_NAME.md` · `EXTERNAL_FOLD_HYBRID_LOCK_XHL_PENDING.md`
+
+### 招名
+
+| 語 | 名 |
+|----|-----|
+| 正名 | **外折混鎖** |
+| 英／碼 | **eXternal-fold Hybrid Lock** · **XHL** |
+| 一句 | 外算 donor 包 **折入** 內機：LP + HF(外)×M → 臉鎖 a8b |
+| 禁 | 內跑全量 SUPIR；外 Q 裸臉 FINAL；冒名 TRUE SIAX |
+
+### 草案鏈（待實跑）
+
+```
+外：SUPIR-F|Q（或 SeedVR2／Topaz…）→ pack(src,out,diff?,mask?,params)
+內：LP(src) + HF(out|diff)×M → Ref(hybrid,a8b) → 可選 WNK
+```
+
+### 待解
+
+| 項 | 狀態 |
+|----|------|
+| 標準 pack 目錄 | 草案已寫 · 未凍 |
+| g／M 表 | 未凍 |
+| 樣板 L | **無** |
+| LOCK | **NO** · 待解 |
+
+### 與 S1HL
+
+- S1HL：donor = **本機 SIAX×1**  
+- XHL：donor = **外折包**（可並列 Siax，或替代 HF 源）  
+- 兩者皆：**Hybrid + 臉鎖**；XHL **未**升格為 LOCK
+
+*END §0.12.29 · 外折混鎖 / XHL · 待解*
+
 
 
 
