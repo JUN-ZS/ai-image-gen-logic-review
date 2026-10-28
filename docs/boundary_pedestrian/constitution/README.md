@@ -1,3 +1,15 @@
+## 引用 vs 作業（政策）
+
+| 線 | 角色 |
+|----|------|
+| **`main`（本目錄）** | **只引用** · 憲／正名／公式 |
+| **`work/boundary-walker-canvas`** | **全部過程** · Canvas／Log／Artifacts **縮圖**（檔名路徑對齊）· 可重用除錯 |
+
+作業場：https://github.com/JUN-ZS/ai-image-gen-logic-review/tree/work/boundary-walker-canvas/work  
+MANIFEST：`work/MANIFEST.json`（src/dst 對照）
+
+---
+
 # Boundary Walker · 操作憲集合（Grok 專案同步）
 
 > asof 2026-10-28 · branch `docs/boundary-walker-unified-constitution-20261028`  
