@@ -4669,12 +4669,22 @@ FAIL=kill_segment_or_retarget_FT
 
 *END §0.12.34 · HTFC_STACK · LOCK · asof 2026-10-28*
 
----
-
 ## §0.12.35 正衣先行 / 宏圖正衣棧（LOCK · asof 2026-10-28）
 
-> **正名：正衣先行** · **ZYF** · 棧 **宏圖正衣棧 MSR-ZYF** · 總程 **宏圖層律 MSR**
-> 先另板一次生成對稱／材質正確的「正衣」；再合入姿與全圖。禁全圖 Soft 硬修對稱。
-> 試錯：另生 8f09 能對稱 → 正衣先行。樣板 正衣 410a93c1 · 合新 7ea48628 · BASE 209e202d
-> 附件：ZHENGYI_FIRST_01235.md · NAME · DO_NOT_REPEAT · MACRO_SCALE_RHYTHM_MSR.md · MSR_ZYF_STACK_NAME.md
-> 黑名單 E-ZYF-01…05
+> **用戶：** 試錯入憲 + 連動技能命名入憲  
+> **正名：正衣先行** · **ZYF** · 棧 **宏圖正衣棧 MSR-ZYF**  
+> **總程：宏圖層律 MSR**
+
+### 鐵則
+先另板一次生成對稱／材質正確的「正衣」；再合入姿與全圖。禁全圖 Soft 硬修對稱。正衣 role=lock／donor · 非 BASE。
+
+### 試錯結論（摘）
+另生 `8f09` 能對稱 → 證明應 **正衣先行**；全圖／SDS 獨航／OIDV／病毒母／CHEAT_B 均 FAIL。樣板：正衣 `410a93c1` · 合新 `7ea48628` · BASE `209e202d`。
+
+### 附件
+`ZHENGYI_FIRST_01235.md` · `ZHENGYI_FIRST_NAME.md` · `ZHENGYI_FIRST_DO_NOT_REPEAT.md` · `MACRO_SCALE_RHYTHM_MSR.md` · `MSR_ZYF_STACK_NAME.md`
+
+### 黑名單
+E-ZYF-01…05（全圖修對稱、無正衣合、正衣當 BASE、合時重雕、flip 代 Verify）
+
+
