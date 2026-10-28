@@ -32,3 +32,4 @@
 > **HTFC 技能 = OTL0 ∧ RML ∧ 雙錨 ∧ 正推；試錯（柄鎖·有/無鎖對照）已入 §0.12.34。**
 
 *work/boundary-walker-canvas*
+- §0.12.35 **正衣先行 ZYF** / 宏圖正衣棧 MSR-ZYF（2026-10-28 LOCK）
