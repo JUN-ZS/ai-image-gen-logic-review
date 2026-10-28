@@ -4539,136 +4539,6 @@ PROMPT=short_fingerprint_only
 
 ---
 
-# §0.12.33 提醒鎖（REMINDER_LOCK / RML · **LOCK**）
-
-> asof 2026-10-28T21:10:00+08:00  
-> **用戶脈絡：** 生成器已有「換角再生成」· 只需 **提醒鎖**（格物錨 + 相對座標 + 根因噪／區禁 Soft）  
-> **正名：提醒鎖** · **RML** · Reminder Lock  
-> **LOCK：** 是  
-> 名卡：`REMINDER_LOCK_RML_NAME.md` · 正文：`REMINDER_LOCK_RML_01233.md`
-
-## 0.12.33.A 一句
-
-```
-提醒鎖 = 模板格物錨表 A_i × 相對不變式 R_ij × 根因帶禁 Soft 重抽（N 自 F0）
-轉角／追尾 = 投影同一物 · 不是再抽一把
-```
-
-## 0.12.33.B 與 OTL0
-
-| OTL0 | RML |
-|------|-----|
-| 物圖目錄 · 拓閘 | **錨點／選點的空間+因層實現** |
-| Verify 果閘 | 生成前／中 **因鎖**（先於 Verify） |
-
-## 0.12.33.C 選點類
-
-| class | 例 | 鎖 |
-|-------|-----|-----|
-| S_face / S_shaft / S_blade·S_hammer·S_ring·S_disc | 根因 | **因鎖** · Soft 禁寫 |
-| S_grip | 握 | 微 Ω |
-| S_pose / S_fx | 姿／FX | **准動** |
-
-## 0.12.33.D 柄欄（試錯入憲）
-
-`shaft.mat` 必須寫入 CONST／RML（例 brass_cylinder · dark_wrap）· **禁金辮／扭繩重雕類**（`92d45c` 金辮根因：柄未因鎖）。
-
-## 0.12.33.E 黑名單
-
-| 碼 | 禁 |
-|----|-----|
-| **E-RML-01** | 無口頭禁令當因鎖（無錨表／無根因帶） |
-| **E-RML-02** | 把 Verify 當唯一生產手段（無因層） |
-| **E-RML-03** | 單圖 freestyle 稱已 RML |
-
-*END §0.12.33*
-
----
-
-# §0.12.34 首幀追尾技能棧（HTFC_STACK · OTL0+RML+雙錨 · **LOCK**）
-
-> asof 2026-10-28T21:10:00+08:00  
-> **用戶：**「把 OTL0+RML+雙錨 這上試錯到連動到技能『首幀追尾』的過程入憲」  
-> **正名：首幀追尾技能棧** · **HTFC_STACK**  
-> **LOCK：** 是  
-> 正文：`HTFC_STACK_OTL0_RML_01234.md`
-
-## 0.12.34.A 強制連動（跑 HTFC 必帶）
-
-```
-HTFC 技能 = OTL0 ∧ RML ∧ 雙錨(F0, FT_PASS) ∧ 正推 t
-缺任一 → 不得稱「首幀追尾完成」（E-HTFC-04 加嚴）
-```
-
-```
-L0  OTL0 物格（拓·件數·柄.mat…）
-L0+ RML  提醒鎖（錨表·R_ij·根因禁 Soft）
-L1  雙錨 F0+FT_PASS（弱提醒：圖真；非文案）
-L2  HTFC 正推 Soft 只准動 S_pose／Ω／准動 FX
-L3  Verify 果閘 + Kill
-```
-
-## 0.12.34.B 標準流程（試錯後定稿）
-
-```
-S0  格物 F0 → CONST_F0.物（含 shaft.mat）→ RML 錨點圖／JSON
-S1  出 FT 候選 Xn（近鏡／終態）
-S2  OTL0+RML Verify_Topo(FT) → PASS 才入錨；P0 Kill（例環弱針柄 X1）
-S3  雙錨 asset_ids=[F0, FT_PASS]  · 短指紋 · 禁長文 OIDV
-S4  正推 t=ε…1 · 根因帶提醒 · 准動 Ω／FX
-S5  每幀 Verify · mono δ · 入列／Kill 段
-S6  交付：時間序格 · 膠片 · 輪播 · META（記 P1）
-```
-
-## 0.12.34.C 對照實驗（2026-10-28 入憲）
-
-| 模式 | 物穩 | 教訓 |
-|------|------|------|
-| **OTL0+RML+雙錨 HTFC** | ✓ | 技能完整態 |
-| **無文案 + 雙錨 Soft** | 大致 ✓ | 雙錨本身是**弱提醒鎖** · 非「無鎖」 |
-| **單圖自由 climax** | ✗ 雙環結／失盤 | 真無提醒 → 改物 |
-| **單圖 + redesign OK** | ✗✗ 換斧 | 先驗換槍 |
-
-**結論入憲：**  
-「不用 OTL0／RML 文案」≠ 關掉提醒；  
-**關掉提醒 = 不喂物真（單圖空約束）** → 不得當 HTFC。
-
-## 0.12.34.D 試錯樣板索引
-
-| 跑 | F0 | FT | 記 |
-|----|-----|-----|-----|
-| 鐮柄金辮 | `a4fd0df1` | `de6987` | t12 柄金辮 · 柄未因鎖 · 治本=RML shaft |
-| 環槌 | `d5f9fe0e` | `3822d80f` | 柄 brass 指紋 → 柄穩 |
-| 環盤衝擊 | `ab1139d4` | `4ad1e2c0` | 全序拓 PASS · t92 盤光吃=P1 FX |
-| 無鎖對照 | 同 ab1139 | — | 單圖改物 · 雙錨弱鎖仍可蹭 |
-
-## 0.12.34.E 黑名單加
-
-| 碼 | 禁 |
-|----|-----|
-| **E-HTFC-05** | 無 RML 錨／無柄.mat 稱完整 HTFC 棧 |
-| **E-HTFC-06** | 把「雙錨無文案」等同「已關 OTL0」卻當實驗結論混入生產 |
-| **E-HTFC-07** | 單圖 freestyle 產物入時間序當追尾幀 |
-
-## 0.12.34.F 一刀參數卡
-
-```
-MODE=HTFC_STACK
-F0=
-FT=                 # OTL0+RML PASS
-RML_ANCHORS=        # JSON 或錨點圖
-CONST_F0_SHORT=     # 含 shaft.mat / topo
-DUAL=asset_ids[F0,FT]
-N=11..24
-PUSH=forward_t
-VERIFY=topo,shaft_mat,mono_delta
-SOFT_FREE=S_pose,S_fx
-SOFT_FORBID=S_face,S_shaft,S_ring,S_disc,S_hammer,S_blade
-FAIL=kill_segment_or_retarget_FT
-```
-
-*END §0.12.34 · HTFC_STACK · LOCK · asof 2026-10-28*
-
 ## §0.12.35 正衣先行 / 宏圖正衣棧（LOCK · asof 2026-10-28）
 
 > **用戶：** 試錯入憲 + 連動技能命名入憲  
@@ -4687,4 +4557,40 @@ FAIL=kill_segment_or_retarget_FT
 ### 黑名單
 E-ZYF-01…05（全圖修對稱、無正衣合、正衣當 BASE、合時重雕、flip 代 Verify）
 
+---
 
+## §0.12.36 抽衣就正循環 · ETZ（LOCK · asof 2026-10-29）
+
+> **用戶：**「不,是那抽衣出來就正的循環試反.推憲」  
+> **正名：抽衣就正循環** · **碼 ETZ** · Extract-To-Zhengyi  
+> **地位：** LOCK · ZYF §0.12.35 上游 **製板循環**
+
+### 一句
+抽出衣語 → 洗到對稱／材質正 → 鎖正衣 → 合新；合失敗按環反推（E0/E1/E2/E3），**不在全圖 Soft 硬修**。
+
+### 循環
+```
+E0 EXTRACT  抽衣／自圖找衣語／世界一次空衣板 → DRAFT_GARM ≠ BASE
+E1 CORRECT  flipavg+GEN · N2R 洗 · 趨勢 donor → 正衣 role=zhengyi_lock
+E2 WEAR     S1 同姿換衣 | GOU densify→ECC→V5 | MSR L5 · 臉貼 BASE · OTL0
+E3 DIAG     臉毒→貼臉 · 網糊→ROI densify 臉α=0 · 衣歪→回 E1 · 姿漂→[0]=有人
+```
+
+### 與 ZYF
+| ZYF | ETZ |
+|-----|-----|
+| 先正衣再合 | 正衣從哪來、怎麼洗正、合壞怎麼反 |
+
+### 樣板鏈
+BASE `75f5f419` → 趨勢 `a4b74a57`/`e93f77ee` → 正衣 `090a9ce3` → S1 `7bd968c2` → 密網 `20099492` · 同姿成功因 `a6eca7c8`
+
+### 試錯（摘）
+正衣當[0]開新構＝姿漂；V5當換衣＝語不真；密網吃臉＝臉病毒；合後網<正衣＝全幅稀釋 → ROI densify only。
+
+### 附件
+`EXTRACT_TO_ZHENGYI_ETZ_01236.md` · `EXTRACT_TO_ZHENGYI_ETZ_NAME.md` · `EXTRACT_TO_ZHENGYI_ETZ_DO_NOT_REPEAT.md` · `CONSTITUTION_WRITE_01236_META.json`
+
+### 禁
+未抽衣全圖修 · 正衣當 BASE/姿主 · 合時重雕衣拓 · densify 帶臉 · 治標不返環
+
+*END §0.12.36 · ETZ · LOCK*
