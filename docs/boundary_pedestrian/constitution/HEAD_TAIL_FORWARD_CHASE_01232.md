@@ -145,4 +145,15 @@ FAIL=kill_segment_or_retarget_FT
 PROMPT=short_fingerprint_only
 ```
 
-*END §0.12.32 · 首幀追尾 / HTFC · LOCK · asof 2026-10-28*
+## 0.12.32.J 技能棧連動（2026-10-28 補）
+
+執行本招時 **必須** 同時滿足 **§0.12.34 HTFC_STACK**：
+
+```
+OTL0 + RML + 雙錨(F0,FT_PASS) + 本節正推
+```
+
+詳：試錯（柄金辮·有鎖/無鎖對照·錨點示範）→ 見 `HTFC_STACK_OTL0_RML_01234.md`。  
+僅跑 t% 而無 RML/OTL0/雙錨 → **E-HTFC-04/05**。
+
+*END §0.12.32 · 首幀追尾 / HTFC · LOCK · asof 2026-10-28 · stack→§0.12.34*

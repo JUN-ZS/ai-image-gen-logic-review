@@ -4536,3 +4536,135 @@ PROMPT=short_fingerprint_only
 
 *END §0.12.32 · 首幀追尾 / HTFC · LOCK · asof 2026-10-28*
 
+
+---
+
+# §0.12.33 提醒鎖（REMINDER_LOCK / RML · **LOCK**）
+
+> asof 2026-10-28T21:10:00+08:00  
+> **用戶脈絡：** 生成器已有「換角再生成」· 只需 **提醒鎖**（格物錨 + 相對座標 + 根因噪／區禁 Soft）  
+> **正名：提醒鎖** · **RML** · Reminder Lock  
+> **LOCK：** 是  
+> 名卡：`REMINDER_LOCK_RML_NAME.md` · 正文：`REMINDER_LOCK_RML_01233.md`
+
+## 0.12.33.A 一句
+
+```
+提醒鎖 = 模板格物錨表 A_i × 相對不變式 R_ij × 根因帶禁 Soft 重抽（N 自 F0）
+轉角／追尾 = 投影同一物 · 不是再抽一把
+```
+
+## 0.12.33.B 與 OTL0
+
+| OTL0 | RML |
+|------|-----|
+| 物圖目錄 · 拓閘 | **錨點／選點的空間+因層實現** |
+| Verify 果閘 | 生成前／中 **因鎖**（先於 Verify） |
+
+## 0.12.33.C 選點類
+
+| class | 例 | 鎖 |
+|-------|-----|-----|
+| S_face / S_shaft / S_blade·S_hammer·S_ring·S_disc | 根因 | **因鎖** · Soft 禁寫 |
+| S_grip | 握 | 微 Ω |
+| S_pose / S_fx | 姿／FX | **准動** |
+
+## 0.12.33.D 柄欄（試錯入憲）
+
+`shaft.mat` 必須寫入 CONST／RML（例 brass_cylinder · dark_wrap）· **禁金辮／扭繩重雕類**（`92d45c` 金辮根因：柄未因鎖）。
+
+## 0.12.33.E 黑名單
+
+| 碼 | 禁 |
+|----|-----|
+| **E-RML-01** | 無口頭禁令當因鎖（無錨表／無根因帶） |
+| **E-RML-02** | 把 Verify 當唯一生產手段（無因層） |
+| **E-RML-03** | 單圖 freestyle 稱已 RML |
+
+*END §0.12.33*
+
+---
+
+# §0.12.34 首幀追尾技能棧（HTFC_STACK · OTL0+RML+雙錨 · **LOCK**）
+
+> asof 2026-10-28T21:10:00+08:00  
+> **用戶：**「把 OTL0+RML+雙錨 這上試錯到連動到技能『首幀追尾』的過程入憲」  
+> **正名：首幀追尾技能棧** · **HTFC_STACK**  
+> **LOCK：** 是  
+> 正文：`HTFC_STACK_OTL0_RML_01234.md`
+
+## 0.12.34.A 強制連動（跑 HTFC 必帶）
+
+```
+HTFC 技能 = OTL0 ∧ RML ∧ 雙錨(F0, FT_PASS) ∧ 正推 t
+缺任一 → 不得稱「首幀追尾完成」（E-HTFC-04 加嚴）
+```
+
+```
+L0  OTL0 物格（拓·件數·柄.mat…）
+L0+ RML  提醒鎖（錨表·R_ij·根因禁 Soft）
+L1  雙錨 F0+FT_PASS（弱提醒：圖真；非文案）
+L2  HTFC 正推 Soft 只准動 S_pose／Ω／准動 FX
+L3  Verify 果閘 + Kill
+```
+
+## 0.12.34.B 標準流程（試錯後定稿）
+
+```
+S0  格物 F0 → CONST_F0.物（含 shaft.mat）→ RML 錨點圖／JSON
+S1  出 FT 候選 Xn（近鏡／終態）
+S2  OTL0+RML Verify_Topo(FT) → PASS 才入錨；P0 Kill（例環弱針柄 X1）
+S3  雙錨 asset_ids=[F0, FT_PASS]  · 短指紋 · 禁長文 OIDV
+S4  正推 t=ε…1 · 根因帶提醒 · 准動 Ω／FX
+S5  每幀 Verify · mono δ · 入列／Kill 段
+S6  交付：時間序格 · 膠片 · 輪播 · META（記 P1）
+```
+
+## 0.12.34.C 對照實驗（2026-10-28 入憲）
+
+| 模式 | 物穩 | 教訓 |
+|------|------|------|
+| **OTL0+RML+雙錨 HTFC** | ✓ | 技能完整態 |
+| **無文案 + 雙錨 Soft** | 大致 ✓ | 雙錨本身是**弱提醒鎖** · 非「無鎖」 |
+| **單圖自由 climax** | ✗ 雙環結／失盤 | 真無提醒 → 改物 |
+| **單圖 + redesign OK** | ✗✗ 換斧 | 先驗換槍 |
+
+**結論入憲：**  
+「不用 OTL0／RML 文案」≠ 關掉提醒；  
+**關掉提醒 = 不喂物真（單圖空約束）** → 不得當 HTFC。
+
+## 0.12.34.D 試錯樣板索引
+
+| 跑 | F0 | FT | 記 |
+|----|-----|-----|-----|
+| 鐮柄金辮 | `a4fd0df1` | `de6987` | t12 柄金辮 · 柄未因鎖 · 治本=RML shaft |
+| 環槌 | `d5f9fe0e` | `3822d80f` | 柄 brass 指紋 → 柄穩 |
+| 環盤衝擊 | `ab1139d4` | `4ad1e2c0` | 全序拓 PASS · t92 盤光吃=P1 FX |
+| 無鎖對照 | 同 ab1139 | — | 單圖改物 · 雙錨弱鎖仍可蹭 |
+
+## 0.12.34.E 黑名單加
+
+| 碼 | 禁 |
+|----|-----|
+| **E-HTFC-05** | 無 RML 錨／無柄.mat 稱完整 HTFC 棧 |
+| **E-HTFC-06** | 把「雙錨無文案」等同「已關 OTL0」卻當實驗結論混入生產 |
+| **E-HTFC-07** | 單圖 freestyle 產物入時間序當追尾幀 |
+
+## 0.12.34.F 一刀參數卡
+
+```
+MODE=HTFC_STACK
+F0=
+FT=                 # OTL0+RML PASS
+RML_ANCHORS=        # JSON 或錨點圖
+CONST_F0_SHORT=     # 含 shaft.mat / topo
+DUAL=asset_ids[F0,FT]
+N=11..24
+PUSH=forward_t
+VERIFY=topo,shaft_mat,mono_delta
+SOFT_FREE=S_pose,S_fx
+SOFT_FORBID=S_face,S_shaft,S_ring,S_disc,S_hammer,S_blade
+FAIL=kill_segment_or_retarget_FT
+```
+
+*END §0.12.34 · HTFC_STACK · LOCK · asof 2026-10-28*
