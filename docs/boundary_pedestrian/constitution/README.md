@@ -34,3 +34,4 @@
 
 *work/boundary-walker-canvas*
 | §0.12.37 | 衣槽清掃毒 SCD | SLOT_CLEAR_DETOX_SCD_01237.md | 掃毒·反殺舊底鎖死 donor |
+| §0.12.38 | 宏圖密網總表 MSI | MSR_GOU_SKILL_INVENTORY_01238.md | 總/連動技能+失敗生成備註 |
