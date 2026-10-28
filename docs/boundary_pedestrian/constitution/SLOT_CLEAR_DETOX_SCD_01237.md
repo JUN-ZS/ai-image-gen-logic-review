@@ -133,3 +133,15 @@ FAIL=retarget_S1_or_new_donor
 ---
 
 *END §0.12.37 · 衣槽清掃毒 / SCD · LOCK*
+
+## 0.12.37.I 樣板補 · 正衣090a × 人355e（2026-10-29 試換成功）
+
+| 路徑 | asset | 判 |
+|------|-------|-----|
+| donor | 090a9ce3 | 正衣葉紋 lock |
+| PERSON | 355eca85 | 合新人主 |
+| **直換★** | d026c44b | motif+人槽+手套 全過 → **優先** |
+| CLEAR | 31c93c2c | 睡衣 |
+| SCD | 89fe5678 | 葉紋OK · 手套被清 |
+
+**入憲結論：** donor 已是強正衣時，**直換可成功**；SCD 留給舊網鎖死。見 `ZHENGYI_PERSON_SWAP_ZPS_SAMPLE.md`。

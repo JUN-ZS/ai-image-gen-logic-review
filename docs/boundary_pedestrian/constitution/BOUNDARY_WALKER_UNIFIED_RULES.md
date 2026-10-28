@@ -4626,3 +4626,7 @@ S0 PERSON → S1 CLEAR_BUF（中性衣）→ S2 Ref(清槽人, 正衣_empty) →
 E-SCD-01…06（一步硬衝、複雜清槽、丟杖、有人 donor、貼臉當掃、BASE 衣不可洗）
 
 *END §0.12.37 · 衣槽清掃毒 / SCD · LOCK*
+
+### §0.12.37 補 · 試換成功樣板 ZPS（asof 2026-10-29）
+正衣 `090a` × 人 `355e` → 直換 ★`d026` 成功（葉紋轉移·人槽鎖）。  
+donor 已強 → **直換優先**；舊網鎖死才 SCD。附件：`ZHENGYI_PERSON_SWAP_ZPS_SAMPLE.md`
