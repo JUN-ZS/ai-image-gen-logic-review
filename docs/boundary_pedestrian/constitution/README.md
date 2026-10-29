@@ -34,3 +34,5 @@
 
 *work/boundary-walker-canvas*
 - **§0.12.37 SPM** · SIAX 探針匹配 · 預設 48×64 A · 等價 GUIDE/NOISE/STEP 旋鈕表
+
+| **§0.12.39** | **SPM** | SIAX 探針匹配 · 預設 48×64 A | `SIAX_PROBE_MATCH_SPM_01239.md` |

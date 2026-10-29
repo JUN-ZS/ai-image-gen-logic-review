@@ -195,3 +195,12 @@ UPSCALE=2x_lanczos_hf|none
 | 合體前 | SPM／S1HL 二選一：預覽 SPM-A · 定版 P0 |
 
 GOU 主幹仍是 **近距 GEN + 勾形貼**；SPM 只省 **外圈全幅 SIAX**。
+
+<!-- SPM_DEFAULT_SIAX §0.12.39 -->
+## 預設 SIAX（§0.12.39 SPM-A）
+
+- 近距 ROI 可真 SIAX；**全幅／外圈預覽一升 = SPM-A 48×64²**
+- 探針外 fail → GOU crop GEN 貼，不硬全幅 SIAX
+- 與 Hybrid：`LP + SPM residual×M`；定版再 P0
+<!-- END_SPM_DEFAULT -->
+

@@ -2039,21 +2039,6 @@ rules/
 
 *END §0.12.15 · asof 2026-10-26T14:05:00Z · L 補 2026-10-28T07:06:55Z*
 
-
-#### 0.12.15.L.OOM 一升 OOM 備註（2026-10-29T04:10:00+08:00）
-
-> 詳附件 `SIAX_HYBRID_FACELOCK_S1HL_OOM_NOTES.md` · `GRID_SIAX_DO_NOT_REPEAT` E-GS-04 族
-
-| 死法 | 碼 | 下次先走 |
-|------|-----|----------|
-| 全幅 float×3／雙 memmap FULL | 137 / I/O | **P0 STRIP**：siax.mm only + Hybrid strip→VIEW/HD |
-| 同構重試加碼 | 再 137 | **換 PATH** P1 ROI / P2 S=2 / P3 GRID / P4 XHL |
-| 用二升救 OOM | 違招 | **禁** E-GS-47 · E-GS-04e |
-
-**擴 ID：** E-GS-04b · 04c · 04d · 04e  
-**正典 v3 樣板：** SET-S abe76 S1HL strip · T3 `be436496…`
-
-
 ### 0.12.16 PIXEL 每點記認與控制法（PIXEL_CTRL · 眼白鐵律 · 外科）
 
 > **用戶確立（2026-10-26）：**  
@@ -4554,6 +4539,136 @@ PROMPT=short_fingerprint_only
 
 ---
 
+# §0.12.33 提醒鎖（REMINDER_LOCK / RML · **LOCK**）
+
+> asof 2026-10-28T21:10:00+08:00  
+> **用戶脈絡：** 生成器已有「換角再生成」· 只需 **提醒鎖**（格物錨 + 相對座標 + 根因噪／區禁 Soft）  
+> **正名：提醒鎖** · **RML** · Reminder Lock  
+> **LOCK：** 是  
+> 名卡：`REMINDER_LOCK_RML_NAME.md` · 正文：`REMINDER_LOCK_RML_01233.md`
+
+## 0.12.33.A 一句
+
+```
+提醒鎖 = 模板格物錨表 A_i × 相對不變式 R_ij × 根因帶禁 Soft 重抽（N 自 F0）
+轉角／追尾 = 投影同一物 · 不是再抽一把
+```
+
+## 0.12.33.B 與 OTL0
+
+| OTL0 | RML |
+|------|-----|
+| 物圖目錄 · 拓閘 | **錨點／選點的空間+因層實現** |
+| Verify 果閘 | 生成前／中 **因鎖**（先於 Verify） |
+
+## 0.12.33.C 選點類
+
+| class | 例 | 鎖 |
+|-------|-----|-----|
+| S_face / S_shaft / S_blade·S_hammer·S_ring·S_disc | 根因 | **因鎖** · Soft 禁寫 |
+| S_grip | 握 | 微 Ω |
+| S_pose / S_fx | 姿／FX | **准動** |
+
+## 0.12.33.D 柄欄（試錯入憲）
+
+`shaft.mat` 必須寫入 CONST／RML（例 brass_cylinder · dark_wrap）· **禁金辮／扭繩重雕類**（`92d45c` 金辮根因：柄未因鎖）。
+
+## 0.12.33.E 黑名單
+
+| 碼 | 禁 |
+|----|-----|
+| **E-RML-01** | 無口頭禁令當因鎖（無錨表／無根因帶） |
+| **E-RML-02** | 把 Verify 當唯一生產手段（無因層） |
+| **E-RML-03** | 單圖 freestyle 稱已 RML |
+
+*END §0.12.33*
+
+---
+
+# §0.12.34 首幀追尾技能棧（HTFC_STACK · OTL0+RML+雙錨 · **LOCK**）
+
+> asof 2026-10-28T21:10:00+08:00  
+> **用戶：**「把 OTL0+RML+雙錨 這上試錯到連動到技能『首幀追尾』的過程入憲」  
+> **正名：首幀追尾技能棧** · **HTFC_STACK**  
+> **LOCK：** 是  
+> 正文：`HTFC_STACK_OTL0_RML_01234.md`
+
+## 0.12.34.A 強制連動（跑 HTFC 必帶）
+
+```
+HTFC 技能 = OTL0 ∧ RML ∧ 雙錨(F0, FT_PASS) ∧ 正推 t
+缺任一 → 不得稱「首幀追尾完成」（E-HTFC-04 加嚴）
+```
+
+```
+L0  OTL0 物格（拓·件數·柄.mat…）
+L0+ RML  提醒鎖（錨表·R_ij·根因禁 Soft）
+L1  雙錨 F0+FT_PASS（弱提醒：圖真；非文案）
+L2  HTFC 正推 Soft 只准動 S_pose／Ω／准動 FX
+L3  Verify 果閘 + Kill
+```
+
+## 0.12.34.B 標準流程（試錯後定稿）
+
+```
+S0  格物 F0 → CONST_F0.物（含 shaft.mat）→ RML 錨點圖／JSON
+S1  出 FT 候選 Xn（近鏡／終態）
+S2  OTL0+RML Verify_Topo(FT) → PASS 才入錨；P0 Kill（例環弱針柄 X1）
+S3  雙錨 asset_ids=[F0, FT_PASS]  · 短指紋 · 禁長文 OIDV
+S4  正推 t=ε…1 · 根因帶提醒 · 准動 Ω／FX
+S5  每幀 Verify · mono δ · 入列／Kill 段
+S6  交付：時間序格 · 膠片 · 輪播 · META（記 P1）
+```
+
+## 0.12.34.C 對照實驗（2026-10-28 入憲）
+
+| 模式 | 物穩 | 教訓 |
+|------|------|------|
+| **OTL0+RML+雙錨 HTFC** | ✓ | 技能完整態 |
+| **無文案 + 雙錨 Soft** | 大致 ✓ | 雙錨本身是**弱提醒鎖** · 非「無鎖」 |
+| **單圖自由 climax** | ✗ 雙環結／失盤 | 真無提醒 → 改物 |
+| **單圖 + redesign OK** | ✗✗ 換斧 | 先驗換槍 |
+
+**結論入憲：**  
+「不用 OTL0／RML 文案」≠ 關掉提醒；  
+**關掉提醒 = 不喂物真（單圖空約束）** → 不得當 HTFC。
+
+## 0.12.34.D 試錯樣板索引
+
+| 跑 | F0 | FT | 記 |
+|----|-----|-----|-----|
+| 鐮柄金辮 | `a4fd0df1` | `de6987` | t12 柄金辮 · 柄未因鎖 · 治本=RML shaft |
+| 環槌 | `d5f9fe0e` | `3822d80f` | 柄 brass 指紋 → 柄穩 |
+| 環盤衝擊 | `ab1139d4` | `4ad1e2c0` | 全序拓 PASS · t92 盤光吃=P1 FX |
+| 無鎖對照 | 同 ab1139 | — | 單圖改物 · 雙錨弱鎖仍可蹭 |
+
+## 0.12.34.E 黑名單加
+
+| 碼 | 禁 |
+|----|-----|
+| **E-HTFC-05** | 無 RML 錨／無柄.mat 稱完整 HTFC 棧 |
+| **E-HTFC-06** | 把「雙錨無文案」等同「已關 OTL0」卻當實驗結論混入生產 |
+| **E-HTFC-07** | 單圖 freestyle 產物入時間序當追尾幀 |
+
+## 0.12.34.F 一刀參數卡
+
+```
+MODE=HTFC_STACK
+F0=
+FT=                 # OTL0+RML PASS
+RML_ANCHORS=        # JSON 或錨點圖
+CONST_F0_SHORT=     # 含 shaft.mat / topo
+DUAL=asset_ids[F0,FT]
+N=11..24
+PUSH=forward_t
+VERIFY=topo,shaft_mat,mono_delta
+SOFT_FREE=S_pose,S_fx
+SOFT_FORBID=S_face,S_shaft,S_ring,S_disc,S_hammer,S_blade
+FAIL=kill_segment_or_retarget_FT
+```
+
+*END §0.12.34 · HTFC_STACK · LOCK · asof 2026-10-28*
+
 ## §0.12.35 正衣先行 / 宏圖正衣棧（LOCK · asof 2026-10-28）
 
 > **用戶：** 試錯入憲 + 連動技能命名入憲  
@@ -4574,109 +4689,43 @@ E-ZYF-01…05（全圖修對稱、無正衣合、正衣當 BASE、合時重雕�
 
 ---
 
-## §0.12.36 抽衣就正循環 · ETZ（LOCK · asof 2026-10-29）
+---
 
-> **用戶：**「不,是那抽衣出來就正的循環試反.推憲」  
-> **正名：抽衣就正循環** · **碼 ETZ** · Extract-To-Zhengyi  
-> **地位：** LOCK · ZYF §0.12.35 上游 **製板循環**
+## §0.12.39 SIAX 探針匹配 · SPM（**LOCK** · asof 2026-10-29）
+
+> **用戶：** 等價旋鈕表入 SPM 憲 · 方案 A **48×64²** 寫入一升混圖／N2R／S1HL／GOU／MSR **預設 SIAX**  
+> **正名：SIAX 探針匹配** · **碼 SPM** · SIAX Probe Match
 
 ### 一句
-抽出衣語 → 洗到對稱／材質正 → 鎖正衣 → 合新；合失敗按環反推（E0/E1/E2/E3），**不在全圖 Soft 硬修**。
+SIAX 只當探針抽 HF residual → Lanczos 模底互構；**無**擴散 STEP／NOISE／CFG 原生。
 
-### 循環
-```
-E0 EXTRACT  抽衣／自圖找衣語／世界一次空衣板 → DRAFT_GARM ≠ BASE
-E1 CORRECT  flipavg+GEN · N2R 洗 · 趨勢 donor → 正衣 role=zhengyi_lock
-E2 WEAR     S1 同姿換衣 | GOU densify→ECC→V5 | MSR L5 · 臉貼 BASE · OTL0
-E3 DIAG     臉毒→貼臉 · 網糊→ROI densify 臉α=0 · 衣歪→回 E1 · 姿漂→[0]=有人
-```
+### ★ 預設 SIAX = **SPM-A**
+| 項 | 值 |
+|----|-----|
+| TILE | **48 × 64²** · MANY_ROUGH |
+| residual_gain | 1.15 |
+| rough_boost | 0.85 |
+| fill_sigmas | [4, 8, 16] |
+| M | 0.45–1.0 |
 
-### 與 ZYF
-| ZYF | ETZ |
-|-----|-----|
-| 先正衣再合 | 正衣從哪來、怎麼洗正、合壞怎麼反 |
+### 等價旋鈕（TILE 固定時可反比）
+| 口語 | 等價 | 實測 |
+|------|------|------|
+| GUIDANCE | residual_gain + M | lo 較貼 Hybrid；hi 過銳 |
+| NOISE | rough_boost + noise_amp | hi 花；lo 穩 |
+| STEP | fill_sigmas | few 長步略勝 many 短步 |
 
-### 樣板鏈
-BASE `75f5f419` → 趨勢 `a4b74a57`/`e93f77ee` → 正衣 `090a9ce3` → S1 `7bd968c2` → 密網 `20099492` · 同姿成功因 `a6eca7c8`
-
-### 試錯（摘）
-正衣當[0]開新構＝姿漂；V5當換衣＝語不真；密網吃臉＝臉病毒；合後網<正衣＝全幅稀釋 → ROI densify only。
+### 掛載
+- **S1HL** 預覽／一升混圖默認 SPM-A；定版 P0 全幅
+- **N2R** 探針 residual = cand 指紋（折射／保留）
+- **GOU** 外圈／fail → 近距貼，不硬全幅 SIAX
+- **MSR** L3–L4 省算力一升預設 SPM-A
 
 ### 附件
-`EXTRACT_TO_ZHENGYI_ETZ_01236.md` · `EXTRACT_TO_ZHENGYI_ETZ_NAME.md` · `EXTRACT_TO_ZHENGYI_ETZ_DO_NOT_REPEAT.md` · `CONSTITUTION_WRITE_01236_META.json`
+`SIAX_PROBE_MATCH_SPM_01239.md` · `SIAX_PROBE_MATCH_SPM_NAME.md` · `SIAX_PROBE_MATCH_SPM_DO_NOT_REPEAT.md`
 
 ### 禁
-未抽衣全圖修 · 正衣當 BASE/姿主 · 合時重雕衣拓 · densify 帶臉 · 治標不返環
+E-SPM-01…06（偽 CFG、默認全幅預覽、填場當殺光、病毒母、TILE 未鎖比旋鈕）
 
-*END §0.12.36 · ETZ · LOCK*
-
-
----
-
-## §0.12.37 衣槽清掃毒（SLOT_CLEAR_DETOX / SCD · **LOCK** · asof 2026-10-29）
-
-> **用戶：** 入憲成掃毒功能 + 反殺舊底鎖毒死模 DONOR  
-> **正名：衣槽清掃毒** · **碼 SCD** · Slot-Clear Detox  
-> **別名：** 睡衣清槽 · 兩步換衣
-
-### 一句
-人槽（臉／姿／杖）硬鎖；衣槽先中性化（睡衣等 CLEAR_BUF）再 Ref 空正衣 donor 寫入——**掃舊甲殘語，反殺舊底鎖死模 donor**。
-
-### 鐵序
-```
-S0 PERSON → S1 CLEAR_BUF（中性衣）→ S2 Ref(清槽人, 正衣_empty) → S3 驗
-```
-
-### 反殺
-| 毒 | 反 |
-|----|-----|
-| 舊底／舊甲佔衣槽 · 新 donor 寫不進 | 強制 S1 清槽再 S2 |
-| 甲→正衣一步語衝突 | 兩步 |
-| 失敗改硬貼臉 | 禁 · 掃在衣槽 |
-
-### 附件
-`SLOT_CLEAR_DETOX_SCD_01237.md` · `SLOT_CLEAR_DETOX_SCD_NAME.md` · `SLOT_CLEAR_DETOX_DO_NOT_REPEAT.md` · `CLOTHES_SWAP_WHY_PAJAMA.md`
-
-### 黑名單
-E-SCD-01…06（一步硬衝、複雜清槽、丟杖、有人 donor、貼臉當掃、BASE 衣不可洗）
-
-*END §0.12.37 · 衣槽清掃毒 / SCD · LOCK*
-
-
----
-
-## §0.12.38 宏圖密網總表（MSI · **LOCK** · asof 2026-10-29）
-
-> **用戶：** 連動技能＋總技能入憲 · 失敗試錯做生成備註  
-> **正名：宏圖密網總表** · **碼 MSI**
-
-### 總技能
-**MSR** 宏圖層律 · **GOU_MESH** 勾勾密網 · **GOU-B 反構模底** · **ZYF** 正衣先行 · **MSR-ZYF** 棧
-
-### 連動（摘）
-OTL0 · RML · GOU T0–12 · N2R · WNK · V5 · WHOLE · GCS · PIXEL · S1HL · VIRUS禁 · OIDV禁 · SDS=MAP · SCD · ETZ · ZPS  
-（HTFC／DAMD＝時間軸鄰 · 非單幀密網主幹）
-
-### 生成備註
-失敗碼 **F-MSR-*** · **F-GOU-*** · **F-OTL/FACE/CLO/ROUTE-*** → 見 `MSR_GOU_SKILL_INVENTORY_01238.md` §E  
-生成前檢查卡 §F · 黑名單 `MSR_GOU_FAIL_NOTES_DO_NOT_REPEAT.md`
-
-*END §0.12.38 · MSI · LOCK*
-
-## §0.12.37.I 姿漂（F-POSE）· 掛 SCD/ZPS
-- 掃衣必須姿＝姿主 · 見 SLOT_CLEAR_DETOX_SCD_01237.md §I
-- F-POSE-01 姿漂 · F-POSE-02 兩軌混比
-
----
-
-## §0.12.37 SIAX 探針匹配 · SPM（2026-10-29T19:00:00+08:00）
-
-**正名：** SIAX 探針匹配 · **SPM**  
-**預設一升 SIAX 幾何：方案 A · 48 × 64² · 殘粗糙（MANY_ROUGH）**
-
-- 文：`SIAX_PROBE_MATCH_SPM_01237.md` · 名：`SIAX_PROBE_MATCH_SPM_NAME.md`
-- **等價旋鈕**（非擴散原生）：GUIDANCE≈residual_gain+M · NOISE≈rough_boost+noise_amp · STEP≈fill_sigmas
-- 掛載預設：N2R 指紋 · S1HL 預覽一升 · GOU 外圈 · MSR L3–L4
-- 定版全幅仍走 S1HL P0 strip（OOM 備註不變）
-- 禁：E-SPM-01…05（偽稱 CFG／默認全幅預覽／填場當殺光）
+*END §0.12.39 · SPM · LOCK*
 

@@ -11,8 +11,32 @@ GRID×SIAX（§0.12.15）之 **成套支招**：升清 + 混 + 女主臉鎖 **�
 
 ## T1 真 SIAX4×（唯一）
 - 權重：`4x_NMKD-Siax_200k.pth`
-- tile／band 防 OOM；存 `SIAX4x_*_FULL`
+- **預覽／一升未指定 → §0.12.39 SPM-A（48×64²）**；定版 → 全幅 tile／band 防 OOM；存 `SIAX4x_*_FULL`
 - **禁止** i2i Enhance 冒充
+
+
+<!-- SPM_DEFAULT_SIAX §0.12.39 -->
+## 預設 SIAX／一升混圖（§0.12.39 SPM-A）
+
+> **一升／預覽／探針升清預設 = SPM-A：48 × 64² · 殘粗糙**  
+> 全文：`SIAX_PROBE_MATCH_SPM_01239.md`  
+> 定版全幅仍走 **S1HL-P0** strip（OOM 見 `SIAX_HYBRID_FACELOCK_S1HL_OOM_NOTES.md`）。
+
+| 項 | 預設 |
+|----|------|
+| TILE | **48 × 64×64** · grid 8×6 邊優先 |
+| residual_gain | 1.15 |
+| rough_boost | 0.85 |
+| fill_sigmas | [4, 8, 16] |
+| M | 0.45–1.0 邊權 |
+| 等價旋鈕 | GUIDANCE≈gain+M · NOISE≈rough+amp · STEP≈fill_sigmas（**非**擴散原生） |
+
+```
+out = LP(Lanczos) + residual_field(SPM-A)×M
+```
+禁：默認全幅 4× 當預覽；稱 SIAX 有 CFG/steps。
+<!-- END_SPM_DEFAULT -->
+
 
 ## T2 Hybrid 混
 ```
@@ -46,36 +70,6 @@ I_lock = Ref(hybrid, a8b)
 
 ## 樣板
 L-9441d3d22539 · 母 68ff · a8b 標準面
-
----
-
-## OOM 失敗備註（2026-10-29T04:10:00+08:00 · 必讀再一升）
-
-> 詳：`SIAX_HYBRID_FACELOCK_S1HL_OOM_NOTES.md`
-
-### 實敗
-
-| 版 | 死法 | 碼 |
-|----|------|-----|
-| v1 | 全幅 float×3 | **137 OOM** |
-| v2 | siax.mm + hyb.mm 雙 FULL | I/O／峰值 |
-| **v3** | siax.mm only · Hybrid strip→VIEW/HD | **PASS** · 樣板 abe76 |
-
-### 下次一升 · 先選路（勿默認死法）
-
-| 優先 | 路 | 一句 |
-|------|-----|------|
-| **P0** | STRIP_S1HL | tile+memmap+strip 混（預設） |
-| **P1** | ROI_S1HL | 只升臉／甲／械 |
-| **P2** | S2_BAND | 先 2× 預覽 |
-| **P3** | GRID_CELL | 好格 donor only |
-| **P4** | XHL | 外折 donor（待解） |
-| **禁** | FULL_F64_×3 | E-GS-04/04b/04c |
-
-**規則：** OOM 後 **只換 PATH**，禁止同構加碼重試；禁止用二升救 OOM（E-GS-47）。
-
-### 擴黑名單
-E-GS-04b · 04c · 04d · 04e（見 OOM_NOTES）
 
 ---
 
