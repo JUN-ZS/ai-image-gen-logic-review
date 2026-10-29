@@ -1,0 +1,14 @@
+{
+  "section": "0.12.43",
+  "code": "SWP",
+  "name": "升紋金字塔",
+  "asof": "2026-10-29T21:51:45Z",
+  "lock": true,
+  "files": [
+    "SHENGWEN_PYRAMID_SWP_NAME.md",
+    "SHENGWEN_PYRAMID_SWP_01243.md",
+    "SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md"
+  ],
+  "sample": "SETS/FUBZ_700b/RUSB_PY3/",
+  "notes": "L3到≠可貼; 支母接力; 同拓洗donor; HEX毒; 強α層層貼"
+}
