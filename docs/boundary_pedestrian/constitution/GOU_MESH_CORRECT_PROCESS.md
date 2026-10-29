@@ -181,3 +181,17 @@ UPSCALE=2x_lanczos_hf|none
 ```
 
 *END CORRECT_PROCESS · 2026-10-27T14:38:15Z*
+
+---
+
+## 預設 SIAX · SPM-A 探針（2026-10-29T19:00:00+08:00）
+
+> 掛：§0.12.37 SPM
+
+| 步 | 預設 |
+|----|------|
+| 近距前全幅預覽升清 | **SPM-A 48×64** 非全幅 4× |
+| ROI GEN 後要 HF 對位 | 同 ROI 真 SIAX 或繼承 SPM residual |
+| 合體前 | SPM／S1HL 二選一：預覽 SPM-A · 定版 P0 |
+
+GOU 主幹仍是 **近距 GEN + 勾形貼**；SPM 只省 **外圈全幅 SIAX**。

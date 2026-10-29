@@ -76,3 +76,24 @@ L-9441d3d22539 · 母 68ff · a8b 標準面
 
 ### 擴黑名單
 E-GS-04b · 04c · 04d · 04e（見 OOM_NOTES）
+
+---
+
+## 預設 SIAX · 掛 SPM-A（2026-10-29T19:00:00+08:00）
+
+> 詳：`SIAX_PROBE_MATCH_SPM_01237.md` · §0.12.37
+
+**一升未指定 PATH 時：**
+
+| 用途 | 預設 |
+|------|------|
+| 預覽／指紋／衣板 ZYF | **SPM-A：48 × 64² · 殘粗糙** |
+| 定版交付 | 仍 **S1HL P0** strip 全幅 4× Hybrid |
+| 臉鎖後 | T3 a8b 僅定版路；SPM 預覽可無臉 |
+
+```
+S1HL 預覽 = SPM-A（探針 HF + LP×M）
+S1HL 定版 = P0 SIAX 全幅 strip + Hybrid + a8b
+```
+
+等價旋鈕（GUIDE/NOISE/STEP）只改 residual 後處理，**不**表示 Siax 有 CFG。

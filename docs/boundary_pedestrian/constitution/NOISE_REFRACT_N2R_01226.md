@@ -47,3 +47,19 @@ n2r_zone = cand ∩ (近光 ∨ 高 energy) ∧ 邊框線  # 轉
 
 ## 樣板
 L-06f22d5402af · technique=`NOISE→REFRACT (轉化 not 消滅)`
+
+---
+
+## 預設 SIAX 指紋 · SPM-A（2026-10-29T19:00:00+08:00）
+
+> 掛：§0.12.37 SPM
+
+N2R 要 **噪 cand 指紋** 時：
+
+| 原 | 現預設 |
+|----|--------|
+| 易觸發全幅重升 | **SPM-A 48×64 residual** 作 cand／HF 真值 |
+| 純 median 滅 | **禁**；探針高能邊 → 折射／保留（n2r_zone） |
+| 填場 | residual 場 = **保留向**，非殺光 |
+
+`rough_boost` 高 → 接近 NOISE 等價；殺光仍只走 kill_pure ∩ ¬spec。

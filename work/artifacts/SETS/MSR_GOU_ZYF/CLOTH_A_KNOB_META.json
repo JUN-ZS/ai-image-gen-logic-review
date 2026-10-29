@@ -1,0 +1,119 @@
+{
+  "important": "NMKD-Siax has NO native STEP/NOISE/GUIDANCE (not diffusion). Knobs are SPM pipeline analogues.",
+  "tile_fixed": "48 x 64x64",
+  "siax_once_seconds": 154.4,
+  "map": {
+    "GUIDANCE": "residual_gain + M range → how hard to trust SIAX residual",
+    "NOISE": "rough_boost + residual-domain noise_amp",
+    "STEP": "fill_sigmas cascade → residual field spread steps"
+  },
+  "results": [
+    {
+      "tag": "BASE_mid",
+      "residual_gain": 1.0,
+      "rough_boost": 0.4,
+      "fill_sigmas": [
+        8,
+        16,
+        32
+      ],
+      "m_lo": 0.4,
+      "m_hi": 0.9,
+      "noise_amp": 0.0,
+      "mae": 1.283,
+      "ncc": 0.9958
+    },
+    {
+      "tag": "GUIDE_hi",
+      "residual_gain": 1.45,
+      "rough_boost": 0.4,
+      "fill_sigmas": [
+        8,
+        16,
+        32
+      ],
+      "m_lo": 0.55,
+      "m_hi": 1.0,
+      "noise_amp": 0.0,
+      "mae": 1.879,
+      "ncc": 0.9933
+    },
+    {
+      "tag": "GUIDE_lo",
+      "residual_gain": 0.55,
+      "rough_boost": 0.4,
+      "fill_sigmas": [
+        8,
+        16,
+        32
+      ],
+      "m_lo": 0.25,
+      "m_hi": 0.55,
+      "noise_amp": 0.0,
+      "mae": 1.036,
+      "ncc": 0.997
+    },
+    {
+      "tag": "NOISE_hi",
+      "residual_gain": 1.0,
+      "rough_boost": 1.1,
+      "fill_sigmas": [
+        8,
+        16,
+        32
+      ],
+      "m_lo": 0.4,
+      "m_hi": 0.9,
+      "noise_amp": 0.35,
+      "mae": 1.437,
+      "ncc": 0.9951
+    },
+    {
+      "tag": "NOISE_lo",
+      "residual_gain": 1.0,
+      "rough_boost": 0.08,
+      "fill_sigmas": [
+        8,
+        16,
+        32
+      ],
+      "m_lo": 0.4,
+      "m_hi": 0.9,
+      "noise_amp": 0.0,
+      "mae": 1.219,
+      "ncc": 0.9962
+    },
+    {
+      "tag": "STEP_many",
+      "residual_gain": 1.0,
+      "rough_boost": 0.4,
+      "fill_sigmas": [
+        3,
+        5,
+        8,
+        12,
+        16,
+        24
+      ],
+      "m_lo": 0.4,
+      "m_hi": 0.9,
+      "noise_amp": 0.0,
+      "mae": 1.278,
+      "ncc": 0.9957
+    },
+    {
+      "tag": "STEP_few",
+      "residual_gain": 1.0,
+      "rough_boost": 0.4,
+      "fill_sigmas": [
+        48,
+        96
+      ],
+      "m_lo": 0.4,
+      "m_hi": 0.9,
+      "noise_amp": 0.0,
+      "mae": 1.085,
+      "ncc": 0.9964
+    }
+  ]
+}

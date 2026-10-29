@@ -4666,3 +4666,17 @@ OTL0 · RML · GOU T0–12 · N2R · WNK · V5 · WHOLE · GCS · PIXEL · S1HL 
 ## §0.12.37.I 姿漂（F-POSE）· 掛 SCD/ZPS
 - 掃衣必須姿＝姿主 · 見 SLOT_CLEAR_DETOX_SCD_01237.md §I
 - F-POSE-01 姿漂 · F-POSE-02 兩軌混比
+
+---
+
+## §0.12.37 SIAX 探針匹配 · SPM（2026-10-29T19:00:00+08:00）
+
+**正名：** SIAX 探針匹配 · **SPM**  
+**預設一升 SIAX 幾何：方案 A · 48 × 64² · 殘粗糙（MANY_ROUGH）**
+
+- 文：`SIAX_PROBE_MATCH_SPM_01237.md` · 名：`SIAX_PROBE_MATCH_SPM_NAME.md`
+- **等價旋鈕**（非擴散原生）：GUIDANCE≈residual_gain+M · NOISE≈rough_boost+noise_amp · STEP≈fill_sigmas
+- 掛載預設：N2R 指紋 · S1HL 預覽一升 · GOU 外圈 · MSR L3–L4
+- 定版全幅仍走 S1HL P0 strip（OOM 備註不變）
+- 禁：E-SPM-01…05（偽稱 CFG／默認全幅預覽／填場當殺光）
+

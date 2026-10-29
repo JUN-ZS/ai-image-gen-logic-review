@@ -165,5 +165,17 @@ L2' 正衣（ZHENGYI）
 
 *END §正衣先行*
 
-## 連動總表
-技能索引與失敗生成備註 → **§0.12.38 MSI** `MSR_GOU_SKILL_INVENTORY_01238.md`
+---
+
+## 預設 SIAX · SPM-A（2026-10-29T19:00:00+08:00）
+
+> 掛：§0.12.37 SPM · 嵌入 L3–L4
+
+| 層 | SIAX |
+|----|------|
+| L0–L2 | 不強制 SIAX |
+| **L3 訊號** | 可用 **SPM-A residual／edge** 作 KEEP/FREE 輔 |
+| **L4 收細** | 預設升清 = **SPM-A**；定版格 = ROI 真 SIAX 或 P0 |
+| L5 拼回 | 同前 V5；SPM 產物 ≠ BASE |
+
+大圖場先立（MSR）→ 探針落在 KEEP 密網／金屬帶（48 格邊優先）。

@@ -1,0 +1,22 @@
+{
+  "section": "0.12.37",
+  "name": "SPM",
+  "title": "SIAX Probe Match",
+  "default_siax": {
+    "code": "SPM-A",
+    "tiles": "48x64",
+    "rough": true
+  },
+  "knobs": [
+    "GUIDANCE~residual_gain+M",
+    "NOISE~rough_boost+noise_amp",
+    "STEP~fill_sigmas"
+  ],
+  "mounts": [
+    "N2R",
+    "S1HL_preview",
+    "GOU",
+    "MSR_L3L4"
+  ],
+  "asof": "2026-10-29T11:00:05Z"
+}
