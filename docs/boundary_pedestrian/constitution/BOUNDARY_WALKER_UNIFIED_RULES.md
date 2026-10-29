@@ -4729,3 +4729,124 @@ E-SPM-01…06（偽 CFG、默認全幅預覽、填場當殺光、病毒母、TIL
 
 *END §0.12.39 · SPM · LOCK*
 
+
+## §0.12.40 階梯放大壓回 · LADDER_PRESS v2 / LP2（**LOCK** · asof 2026-10-29）
+
+> **用戶：** 過程入憲 · v2 入憲 · 再 v2+GOU 密網  
+> **正名：階梯放大壓回** · **碼 LP2** · Ladder Amplify–Press v2  
+> **連動：** SPM §0.12.39 · GOU §0.12.25 · S1HL · 漩聯動（出新不回毒母）
+
+### 0.12.40.A 一句
+每階 **小幅放大 → 輕 residual 咬 → 壓回穩紋** 淨增益；多階累積。**禁一次 ×4 重 HF 爆紋**；**禁 v1 過糊當定版**。
+
+### 0.12.40.B 試錯過程（入憲備註）
+
+| 刀 | 做法 | 結果 | 憲判 |
+|----|------|------|------|
+| PART_AMP oneshot | ×4 + SPM g1.55 + Hybrid HF0.95 | 密網亂／爆紋 | **E-LP-01 廢默認** |
+| LADDER v1 | ×1.5→咬→壓淨×1.28 · HF_KEEP=0.35 · LP blur0.8 | HF σ≈3.8 · 邊密≈0.05 · **升清未達** | **E-LP-02 作廢** |
+| **LADDER v2** | UP1.45 · NET1.30 · HF_KEEP=**0.62** · g1.10 · LP blur0.35 · edge USM0.22 · 終輕咬 | HF σ≈23 · 邊密≈0.13 · 3107×2332 · 密網可讀 | **LOCK 默認** |
+| LP2+GOU | GOU T3 密網 donor → LP2 | 有序蜂窩+尺度 | **推薦密網題** |
+
+### 0.12.40.C ★ 默認旋鈕（v2）
+
+| 項 | 值 |
+|----|-----|
+| UP_FACTOR | **1.45** |
+| PRESS_NET | **1.30** |
+| STEPS | **6**（淨 ~×4.8） |
+| GAIN / ROUGH | **1.10 / 0.70** |
+| HF_KEEP | **0.62** |
+| LP_blur | **0.35** |
+| edge_USM | **0.22** |
+| RES_CLIP | **±28** |
+| FINAL_EDGE_BITE | **true** |
+| 咬域 | edge + mid-contrast · 非整面 fill |
+
+壓回式：
+`out = LP(start→target, blur≤0.35) + HF_KEEP·HF(up_bitten→target) + edge_USM·sharp·edge`
+
+### 0.12.40.D 閘門
+- edge_density **≥ 0.10**（樣板 0.13）
+- HF σ 不得掉到 v1 區（~4）
+- 拓撲／物格未換（OTL0）；蜂窩有序優先於「最銳」
+
+### 0.12.40.E 與 SPM / GOU / S1HL
+- **尺度爬升** → LP2；**一升混預覽** → 仍 SPM-A（§0.12.39）
+- **有序密網** → 先 GOU T3 GEN donor，再 LP2（棧 **LP2-GOU**）
+- residual 指紋 → N2R 折射／保留，非滅
+
+### 0.12.40.F 黑名單
+E-LP-01…08 見 `LADDER_PRESS_LP2_DO_NOT_REPEAT.md`
+
+### 0.12.40.G 一刀參數卡
+```
+MODE=LADDER_PRESS_V2
+BASE_PART=
+UP_FACTOR=1.45 PRESS_NET=1.30 STEPS=6
+GAIN=1.10 ROUGH=0.70 HF_KEEP=0.62
+LP_BLUR=0.35 EDGE_USM=0.22 RES_CLIP=28
+FINAL_EDGE_BITE=true
+OPTIONAL_PRE=GOU_T3_MESH_DONOR
+FORBID=oneshot_x4_HF095, v1_HF035, cover_empty_up
+```
+
+### 0.12.40.H 附件
+- `LADDER_PRESS_LP2_NAME.md`
+- `LADDER_PRESS_LP2_01240.md`
+- `LADDER_PRESS_LP2_DO_NOT_REPEAT.md`
+- `LADDER_PRESS_GOU_STACK_NAME.md`
+- 樣板：`SETS/GOU_B_LADDER_V2/` · 反例 v1 `SETS/GOU_B_LADDER_PRESS/` · 爆紋 `SETS/GOU_B_AMP_SCALE/`
+
+*END §0.12.40 · LP2 · LOCK · asof 2026-10-29T16:40:37Z*
+
+
+
+---
+
+## §0.12.40 階梯壓回升清 · LADDER_PRESS_V2（**LOCK** · asof 2026-10-30T00:40:00+08:00）
+
+> **用戶：** 過程 + v2 入憲；禁一次爆紋與 v1 過糊  
+> **正名：階梯壓回升清** · **碼 LPV2**
+
+### 一句
+多階：×UP 放大 → SPM 輕咬 → 壓回淨×NET；**HF_KEEP≥0.62** 才算到位。
+
+### 鐵序
+`放大 → 輕咬(edge) → 壓回(LP+HF) → 累積` · 禁一次 PART_SCALE≥4+重HF。
+
+### v2 定稿參數
+UP=1.45 · NET=1.30 · STEPS=6 · g=1.10 · r=0.70 · HF_KEEP=**0.62** · LP_blur≤0.35 · edge_USM=0.22 · 終態 edge bite
+
+### 試錯
+| 一次×4爆 | v1 HF0.35過糊 | **v2 到位** |
+|----------|---------------|-------------|
+| E-LP-01 | E-LP-02 | 正招 · 樣板 FINAL_V2 3107×2332 |
+
+### 附件
+`LADDER_PRESS_V2_01240.md` · `LADDER_PRESS_V2_NAME.md` · `LADDER_PRESS_V2_DO_NOT_REPEAT.md`
+
+### 黑名單
+E-LP-01…05
+
+*END §0.12.40 · LPV2 · LOCK*
+
+---
+
+## §0.12.41 階梯+GOU 密網棧 · LPV2-GOU（**LOCK** · asof 2026-10-30T00:40:00+08:00）
+
+> **用戶：** v2 入憲後 **v2+GOU 密網**
+
+### 一句
+**GOU 近距 GEN 有序密網 → LADDER_PRESS_V2 階梯升尺寸。**
+
+### 鐵序
+G1 GOU T3 密網重組 → G2 閘有序 → G3 LPV2 → G4 可選勾形合體／出新
+
+### 禁
+GOU 後一次×4；跳 GOU 當密網完成；先爆再 GOU
+
+### 附件
+`LADDER_GOU_MESH_STACK_01241.md` · `LADDER_GOU_MESH_STACK_NAME.md`
+
+*END §0.12.41 · LPV2-GOU · LOCK*
