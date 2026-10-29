@@ -1,0 +1,15 @@
+{
+  "section": "0.12.40",
+  "code": "LP2",
+  "name": "階梯放大壓回",
+  "asof": "2026-10-29T16:40:37Z",
+  "lock": true,
+  "files": [
+    "LADDER_PRESS_LP2_NAME.md",
+    "LADDER_PRESS_LP2_01240.md",
+    "LADDER_PRESS_LP2_DO_NOT_REPEAT.md",
+    "LADDER_PRESS_GOU_STACK_NAME.md"
+  ],
+  "sample": "SETS/GOU_B_LADDER_V2/FINAL_V2.jpg",
+  "stack": "LP2-GOU"
+}
