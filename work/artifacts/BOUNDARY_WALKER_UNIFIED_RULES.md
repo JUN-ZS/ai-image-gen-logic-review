@@ -4850,3 +4850,60 @@ GOU 後一次×4；跳 GOU 當密網完成；先爆再 GOU
 `LADDER_GOU_MESH_STACK_01241.md` · `LADDER_GOU_MESH_STACK_NAME.md`
 
 *END §0.12.41 · LPV2-GOU · LOCK*
+
+
+## §0.12.42 密絲晶格 · GOU T3 紋語 / FILIGREE_LATTICE · FL（**LOCK** · asof 2026-10-29）
+
+> **用戶：** 這技法寫入憲 · 把防毒過程記錄  
+> **正名：密絲晶格** · **碼 FL** · GOU T3 表面紋語  
+> **連動：** GOU §0.12.25 · LP2 §0.12.40 · LPV2-GOU §0.12.41 · 病毒母 §0.12.23
+
+### 0.12.42.A 一句
+乾淨 **BASE** 鎖姿／洞／分件 → 只重生 **SURFACE** 為 dense gold-silver wire filigree lattice（密而可讀）；**style 圖只 lock 語感，永不當母**。尺度爬升另走 LP2。
+
+### 0.12.42.B 防毒過程（試錯 LOCK）
+
+| 刀 | 母 | 結果 | 判 |
+|----|-----|------|-----|
+| da39 | crop → 有序 hex | 純 | ✅ 合法 BASE 類 |
+| e031 | **f90 當 BASE densify** | **錯紋夾雜** | ❌ **E-FL-01** |
+| a992 | crop BASE + f90 style_lock | 密絲可讀 | ✅ **正典** |
+| c87→0e62/d55 | 乾淨母 ± style | 穩 | ✅ |
+| 根因 | BASE 多 residual 語 ∧「更密」無單拓撲 | 各語一齊加密 | 記死 |
+
+```
+毒： ladder/f90 終板 當 BASE → densify
+正： crop/da39 類乾淨板 當 BASE → FL 表面；f90 最多 style_lock
+```
+
+### 0.12.42.C 鐵序
+1. BASE = 乾淨 only  
+2. STYLE 可選 · role=style_lock  
+3. Ref/img2img · SURFACE only  
+4. 閘：無錯紋夾雜 · 無換骨  
+5. 可選 OUT→LP2（禁反）
+
+### 0.12.42.D 黑名單
+E-FL-01…06 · 見 `FILIGREE_LATTICE_FL_DO_NOT_REPEAT.md`
+
+### 0.12.42.E 樣板
+- 正典 **a9921fdd** · 毒反例 **e031aaa3** · 純 hex 母 **da39d847** · style 語 **f90d38e1**（禁 densify 母）
+- 附件全文 prompt：`FILIGREE_LATTICE_FL_01242.md`
+
+### 0.12.42.F 一刀卡
+```
+MODE=GOU_T3_FILIGREE
+BASE=clean_crop_or_da39_class
+STYLE=optional_style_lock
+PROMPT=filigree lattice SURFACE only
+FORBID=E-FL-01..06
+NEXT=optional LP2
+```
+
+### 0.12.42.G 附件
+- `FILIGREE_LATTICE_FL_NAME.md`
+- `FILIGREE_LATTICE_FL_01242.md`（流程+防毒+prompt 卡）
+- `FILIGREE_LATTICE_FL_DO_NOT_REPEAT.md`
+
+*END §0.12.42 · FL · LOCK · asof 2026-10-29T17:17:16Z*
+
