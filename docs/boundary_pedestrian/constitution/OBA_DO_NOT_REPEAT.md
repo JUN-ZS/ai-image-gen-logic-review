@@ -42,3 +42,8 @@
 **非法示範：** box+棚拍 HD · robots OBA_v1 · 舊 BATTLE6 粗貼 · batch HD 無 STEP
 
 **殘相轉生：** `RESIDUAL_REBIRTH_RRT_01246.md` · §0.12.46 · **.N** · asof 2026-10-30T18:35:44Z
+
+| **E-LINK-01** | 有 RRT 無 OBA · 1A 唔貼母 VOID |
+| **E-LINK-02** | 有 OBA 無 RRT · 棚拍 HD 當 STEP 中格 |
+| **E-LINK-03** | STEP 右格用母圖 · 非 VOID 累積 |
+| **聯動** | `OBA_RRT_LINK_RETURN_MOTHER_VOID.md` · §0.12.44.**O** · asof 2026-10-30T18:54:59Z |

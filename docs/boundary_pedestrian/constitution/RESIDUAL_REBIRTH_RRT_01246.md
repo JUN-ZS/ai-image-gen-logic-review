@@ -177,3 +177,18 @@ ASC 擴          = 必加 V3→1A 先貼
 ---
 
 *END §0.12.46 · 殘相轉生 / RRT · 1→2→3→1A · asof 2026-10-30T18:35:44Z*
+
+
+---
+
+## 0.12.46.K 聯動 OBA · 回母 VOID（asof 2026-10-30T18:54:59Z）
+
+殘相轉生產出 **1A** 之後：
+
+```
+accum 底 = 母 VOID（唔係母）
+paste   = 1A only
+STEP 右格 = VOID 累積（金樣 66a6568a）
+```
+
+全序見 `OBA_RRT_LINK_RETURN_MOTHER_VOID.md` · OBA **.O**。

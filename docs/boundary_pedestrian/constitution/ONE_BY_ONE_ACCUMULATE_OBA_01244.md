@@ -1,11 +1,11 @@
 # §0.12.44 一人累貼（ONE_BY_ONE_ACCUMULATE / OBA · **LOCK 終極版 + 優化**）
-# asof 2026-10-30T18:35:44Z
+# asof 2026-10-30T18:54:59Z
 
 > **正名：一人累貼** · **短碼 OBA** · **英** One-By-one Accumulate  
 > **試錯源：** `OBA_LEGO_FAILURE_RECORD.md`（**E-OBA-01..27** · E-ASC）  
 > **樣板：** minifig `99f4368d` · robots `OBA_v2_SCAN` · **BATTLE6** `OBA_SCAN_B132` · **MIX** `OBA_MIX_ROBOT_SHIP/ONE_BY_ONE`  
 > **家族：** MLR 母光重鋪 · **OBA＝多物件落地鐵序**  
-> **優化入憲：** 黃線格號法（f168）· 母形咬回 · **REF／線對看（.M）** · **殘相轉生 1→2→3→1A（.N · §0.12.46）** · ASC 旁系 §0.12.45
+> **優化入憲：** 黃線格號法（f168）· 母形咬回 · **REF／線對看（.M）** · **殘相轉生（.N）** · **OBA×RRT 回母 VOID（.O）** · ASC 旁系 §0.12.45
 
 ---
 
@@ -38,7 +38,7 @@
 
 ```
 T0  母圖 GEN／選定（最新母必須登記 asset · 全鏈只用此母）
-T1  母圖 VOID（重 PROMPT 無人／無物 · 同幅同光 · cover_fit 母）
+T1  母圖 VOID（重 PROMPT 無人／無物 · 同幅同光 · cover_fit 母）· **唯一 accum 底＝回母 VOID**
 T2  黃 GRID 劃座標格（格號 1..N · 只座標 · 不是人）     ← .K 黃線格號法
 T3  人／機 字母冊 A..（≠格號 · UUID 亦可）
 T4  每人獨立：solo crop → rembg + 魔法棒 → peep mask（VORONOI 互斥）
@@ -337,6 +337,36 @@ for L in far→near:
 
 **毒：** E-RRT-01 貼2 · E-RRT-02 1A改動作 · E-ASC-08 只交2  
 **全文：** `RESIDUAL_REBIRTH_RRT_01246.md`
+
+---
+
+---
+
+## 0.12.44.O OBA × 殘相轉生聯動 · 回母 VOID（**金樣 66a6568a 序**）
+
+> 一人累貼做法 **必須聯動** 殘相轉生；正確次序 **回到母圖 VOID** 再累貼。  
+> 金樣：`66a6568a` STEP=peep｜HD｜**VOID accum** · `eadb9176` GRID+字母 · `1e3908c0` peep map · `f168a1ba` 母/VOID 同 GRID。
+
+### 正確全序（縮）
+```
+P0  母（只讀）
+P1  母→VOID 空台 = accum0          ← 「回母 VOID」
+P2  黃GRID座標 + 字母人 + peep量尺
+P3  每件 RRT：1→2→3→1A（先於貼）
+P4  VOID上 遠→近 只貼1A · 一次一件 · STEP
+P5  FINAL 在VOID上咬母位形
+```
+
+### 金樣三格聯動
+| 左 | 中 | 右 |
+|----|----|-----|
+| VER.1 peep 綠描 | **VER.1A**（非裸2） | **母VOID + 累貼** |
+
+### 硬禁
+- 貼母本體（E-OBA-03）· 貼 VER.2（E-RRT-01）  
+- STEP 右格用母（E-LINK-03）· 無 RRT 棚拍中格（E-LINK-02）
+
+**全文：** `OBA_RRT_LINK_RETURN_MOTHER_VOID.md`
 
 ---
 ## 0.12.44.J 旁系技能 · OCCLU-COMPLETE / ASC（§0.12.45）

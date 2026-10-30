@@ -254,3 +254,19 @@ v32     **一人累貼** 正名 OBA       → E-OBA-01 解
 | E-ASC-08 | ASC 只交 2 | 強制 2→3→1A |
 
 **鏈：** 1 原 → 2 生全形 → 3 反補 · 動作不變 → **1A 落地**
+
+
+---
+
+## 7. OBA×RRT 聯動 · 回母 VOID（asof 2026-10-30T18:54:59Z）
+
+**金樣：** 66a6568a STEP 右格 = VOID 累貼（唔係母）
+
+| 錯 | 治本 |
+|----|------|
+| 貼母本體 | accum0=母VOID |
+| 中格用自由棚拍 | RRT 1A |
+| 右格顯示母 | STEP 右=VOID+accum |
+| 先貼後 complete | P3 RRT 先於 P4 paste |
+
+**序：** 母→VOID→peep→RRT→VOID累貼→FINAL
