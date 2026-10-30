@@ -4907,3 +4907,101 @@ NEXT=optional LP2
 
 *END §0.12.42 · FL · LOCK · asof 2026-10-29T17:17:16Z*
 
+
+
+---
+
+# §0.12.43 升紋金字塔 · SHENGWEN_PYRAMID / SWP（**LOCK** · asof 2026-10-30T18:20+08）
+
+> 用戶正名：**升紋金字塔** · 失敗→成功除毒備註 **再補** ROI／IPSD 層層保 PIXEL · ETZ E1 嵌 SWP  
+> **連動：** **ROI** · **IPSD** · GOU §0.12.25 · FUB §0.12.41 · OTL0 · LP2 §0.12.40 · **ETZ** §0.12.36 · 病毒母 §0.12.23
+
+### 0.12.43.A 一句
+**層層放大升清 → 每層保住 PIXEL／同拓 → 倒序貼回層層母：**  
+ROI 定裁區 → IPSD 同幅 densify → SWP 支母金字塔（L0→L1→L2）→ paste **L2→L1→L0→FULL**。  
+densify 必 **同拓洗 donor**；**禁 L2 直貼全幅／本母**。
+
+### 0.12.43.B 設計本意（ROI · IPSD · SWP 合讀）
+
+```
+ROI  = 點名「只搞呢塊」（胸／肩／甲…）
+IPSD = 同幅 densify：構圖／姿／拓鎖死，只升 HF；bite = LP(母)+HF(donor)×M
+SWP  = 多層支母：×2 工作幅做下一層母，ZOOM 再 ×2 深層；貼回只找支母→本母→全幅
+```
+
+| 閘（每層） | 過 | 殺 |
+|------------|-----|-----|
+| densify vs **該層 base** ncc | ≥0.90（樣板 IPSD residual **0.982**） | reframe／1:1 另構 ≈0.43 → **毒 DONOR** |
+| orient hist corr | 同拓高 | 換拓／HEX 低 |
+| paste ncc vs 支母／本母 | ≥0.75（優 ≥0.90） | 跳支母 · 硬貼 |
+| HF 傳層 | 可測升（或 α 強後不沖死） | 只視覺「更清」無 ncc |
+
+### 0.12.43.C ★ 除毒過程（失敗→成功 · 入技能備註 · 必讀）
+
+| # | 失敗 | 現象 | 治本成功 |
+|---|------|------|----------|
+| F1 | L2 **直貼**本母／全幅 | 對位漂 · 無支母座標 | **支母鐵序** L2→L1→L0→FULL |
+| F2 | densify **換拓**（HEX…）當 donor | 看起來更清 · 語法另一套 | **同拓閘** · BAN HEX · OTL0 |
+| F3 | 毒底 + α 淡 · 層層 HF 咬 | L3 到 · 貼回 **斷連** | 先 **洗 donor** · 強 α · MF=支母 |
+| F4 | 產品板／異比例 densify | 「高清沒對位」 | **ROI 同比例 IPSD** |
+| F5 | 一次全幅 4× 當金字塔 | 爆紋／OOM | 層層 ×2 + 閘 |
+| **F6** | L2 **1:1 reframe／另構** 當 donor | ncc≈**0.43** residual 熱圖全亮 | **L2 同比例 IPSD 重跑** · bite=LP(L2_base)+HF×k · ncc→**0.982** · HF+ |
+| **F7** | 知「升了」就貼 · 不查 PIXEL 回母 | 回潔淨母斷 · 毒灌全幅 | 每層 **ncc/orient/HF** 掃毒表；FAIL 停 |
+| **F8** | ETZ **E1 就正**未嵌 SWP 就 E2 | 正衣板紋弱／毒 donor 入合 | **E1 內 SWP 先衣** 再 E2 合 |
+
+**口訣：**  
+L3 到 ≠ 可貼；**保 PIXEL 回層層母**；斷連先洗毒 donor；**E1 金字塔 SWP 先衣 → E2**。
+
+### 0.12.43.D 鐵序（不可顛倒）
+
+```
+0  ROI_L0 本母 box（與全幅母同比例）
+1  IPSD densify(L0) → HF 咬 → L1 支母
+2  在 L1 裁 ZOOM ROI → L2_base（同比例 · 禁 reframe）
+3  IPSD densify(L2_base) · 同拓閘 · 洗毒
+4  bite_L2 = LP(L2_base) + HF(densify)×M   # 保 PIXEL 母底
+5  paste L2 → L1@sub-box（強 α）· ncc 閘
+6  paste L1' → L0 · ncc 閘
+7  paste L0' → FULL · PROOF
+```
+
+### 0.12.43.E 與 ETZ（§0.12.36）
+
+```
+E0 抽衣
+  → E1 就正 內嵌 SWP（ROI+IPSD 層層升清 · 洗毒 · 回正衣板）
+  → E2 合新（正衣 LOCK 穿回 BASE 姿）
+```
+
+禁：E1 未過 ncc／未洗毒 donor 就 E2。
+
+### 0.12.43.F 黑名單
+E-SWP-01..09（見 `SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md`）
+
+### 0.12.43.G 樣板
+- 母 `700b99f1` · `SETS/FUBZ_700b/RUSB_PY3/` · 洗後 `*WASHED*`
+- L2 毒→IPSD 洗：`L2_BASE` vs reframe donor ncc≈0.43 → residual bite ncc **0.982**
+- ETZ 鏈：E1_SWP_IPSD_LOCK → E2 wear · face a8b
+
+### 0.12.43.H 一刀卡
+```
+MODE=SHENGWEN_PYRAMID
+ROI=chest|armor|…
+LAYERS=3 SCALE=2
+DENSIFY=IPSD_same_frame
+BITE=LP(mother)+HF(donor)×M
+PASTE=L2→L1→L0→FULL
+DONOR_WASH=true BAN_TOPO_SWAP=true BAN_REFRAME=true
+NCC_LAYER≥0.90 NCC_PASTE≥0.75
+ETZ_E1_EMBED_SWP=true
+FAIL_if=hex|reframe|paste_skip_branch|ncc_fail
+```
+
+### 0.12.43.I 附件
+- `SHENGWEN_PYRAMID_SWP_NAME.md`
+- `SHENGWEN_PYRAMID_SWP_01243.md`（流程 + 除毒全表）
+- `SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md`
+- `IPSD_SAME_FRAME_NAME.md`（子步驟正名）
+- `SECTION_01243_SWP_APPEND.md`
+
+*END §0.12.43 · 升紋金字塔 / SWP · LOCK · asof 2026-10-30T18:20+08*

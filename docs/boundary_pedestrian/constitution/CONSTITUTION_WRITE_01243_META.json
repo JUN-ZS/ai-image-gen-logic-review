@@ -1,14 +1,23 @@
 {
   "section": "0.12.43",
   "code": "SWP",
-  "name": "升紋金字塔",
-  "asof": "2026-10-29T21:51:45Z",
-  "lock": true,
-  "files": [
-    "SHENGWEN_PYRAMID_SWP_NAME.md",
-    "SHENGWEN_PYRAMID_SWP_01243.md",
-    "SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md"
+  "name_zh": "升紋金字塔",
+  "name_en": "SHENGWEN_PYRAMID",
+  "status": "LOCK",
+  "asof": "2026-10-30T18:20:00+08:00",
+  "patch": "detox_notes_ROI_IPSD_PIXEL_layer_mothers_ETZ_E1_embed",
+  "notes": [
+    "F6 L2 reframe poison ncc~0.43 -> IPSD residual bite ncc 0.982",
+    "layer PIXEL preserve paste L2->L1->L0->FULL",
+    "ETZ E1 must embed SWP before E2",
+    "E-SWP-08 E-SWP-09"
   ],
-  "sample": "SETS/FUBZ_700b/RUSB_PY3/",
-  "notes": "L3到≠可貼; 支母接力; 同拓洗donor; HEX毒; 強α層層貼"
+  "files": [
+    "SHENGWEN_PYRAMID_SWP_01243.md",
+    "SHENGWEN_PYRAMID_SWP_NAME.md",
+    "SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md",
+    "IPSD_SAME_FRAME_NAME.md",
+    "SECTION_01243_SWP_APPEND.md",
+    "BOUNDARY_WALKER_UNIFIED_RULES.md"
+  ]
 }

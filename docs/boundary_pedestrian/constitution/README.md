@@ -1,7 +1,22 @@
 # Boundary Walker · 操作憲集合（Grok 專案同步）
 
-> asof 2026-10-28T21:10+08 · branch `work/boundary-walker-canvas`  
+> asof 2026-10-30T18:20+08 · branch `work/boundary-walker-canvas`
 > 母倉：`JUN-ZS/ai-image-gen-logic-review` · MAIN 只引用
+
+
+## 本批（§0.12.43 SWP 除毒補）
+
+| 正招 | 碼 | 條 |
+|------|-----|-----|
+| **升紋金字塔** | **SWP** | **§0.12.43 LOCK** · ROI+IPSD 層層保 PIXEL · 除毒 F1–F8 · ETZ E1 嵌 |
+| 同幅姿鎖升紋 | IPSD | SWP 子步驟 · 非獨立總招 |
+
+- `SHENGWEN_PYRAMID_SWP_01243.md` · `SHENGWEN_PYRAMID_SWP_NAME.md` · `SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md`
+- `IPSD_SAME_FRAME_NAME.md` · `SECTION_01243_SWP_APPEND.md` · `CONSTITUTION_WRITE_01243_META.json`
+- `BOUNDARY_WALKER_UNIFIED_RULES.md`（§0.12.43 全文）
+- `EXTRACT_TO_ZHENGYI_ETZ_01236.md`（E1 嵌 SWP）
+
+**口訣：** 層層放大 → 保 PIXEL 回層層母 → 倒序貼回；L3 到 ≠ 可貼；E1 金字塔先衣。
 
 ## 入口
 

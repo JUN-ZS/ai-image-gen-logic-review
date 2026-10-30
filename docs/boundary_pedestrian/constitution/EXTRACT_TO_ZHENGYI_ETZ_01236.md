@@ -24,8 +24,9 @@
       · 對稱趨勢 donor（L/R 加劇板）
       · flipavg 種子 · GEN hybrid 解鬼影
       · L0 場 + N2R cand 洗 FREE 噪
-      · ncc 對稱 / 目視 hex 格界
-      · 產物：正衣 LOCK · role=zhengyi_lock
+      · **嵌 SWP §0.12.43**：ROI→IPSD 層層升清 · 同拓洗毒 · 保 PIXEL 回支母／本母
+      · ncc 對稱 / 目視 hex 格界 · **層層 densify ncc≥0.90**
+      · 產物：正衣 LOCK · role=zhengyi_lock · **先衣完成才准 E2**
         │
         ▼
   E2  合新 WEAR（S1 / GOU / MSR-L5）
@@ -89,7 +90,8 @@
 MODE=ETZ
 BASE_ASSET=          # 全幅有人
 E0_EXTRACT= crop_armor | self_find_plate | world_once_empty
-E1_CORRECT= flipavg+GEN | N2R_wash | trend_donors
+E1_CORRECT= flipavg+GEN | N2R_wash | trend_donors | **SWP_IPSD 層層升清洗毒**
+ETZ_E1_EMBED_SWP=true   # §0.12.43 強制
 E1_PROOF= bilateral_ok · hex_clear · role=zhengyi_lock
 E2_WEAR= S1 | GOU | MSR_V5
 FACE= paste_BASE | alpha0
@@ -120,6 +122,7 @@ ON_FAIL= E3_DIAG → 回 E1 或 ROI densify · 禁全圖 Soft
 | 合時重雕衣拓 | 回 E1 |
 | densify 帶臉進 V5 | 臉貼 / α=0 |
 | 治標只改一幀不返環 | E3 點名環 |
+| **E1 未嵌 SWP／未洗毒 donor 就 E2** | **先 SWP §0.12.43 再合** |
 
 *END §0.12.36 抽衣就正循環 ETZ*
 

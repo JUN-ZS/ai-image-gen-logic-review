@@ -1,28 +1,53 @@
-# §0.12.43 升紋金字塔 · SHENGWEN_PYRAMID / SWP（**LOCK**）
+# §0.12.43 升紋金字塔 · SHENGWEN_PYRAMID / SWP（**LOCK** · asof 2026-10-30T18:20+08）
 
-> 用戶正名：**升紋金字塔** · 失敗→成功入憲備註
+> 用戶正名：**升紋金字塔** · 除毒過程入技能備註 · ROI／IPSD 層層保 PIXEL · ETZ E1 嵌 SWP  
+> **連動：** ROI · IPSD · GOU §0.12.25 · FUB §0.12.41 · OTL0 · LP2 §0.12.40 · ETZ §0.12.36 · 病毒母
 
 ### 0.12.43.A 一句
-**3 層放大、3 層貼回：** ×2 圖＝下一層 **支母**；ZOOM IN 再 ×2＝深層；貼回 **L2→L1 支母→L0 本母→全幅**。densify 必 **同拓洗 donor**。
+**層層放大升清 → 保 PIXEL 回層層母 → 倒序貼回：** ROI→IPSD→SWP(L0→L1→L2)→paste L2→L1→L0→FULL。同拓洗 donor。
 
-### 0.12.43.B 試錯備註（失敗→成功 · LOCK）
+### 0.12.43.B 除毒備註（失敗→成功 · LOCK）
+
 | # | 失敗 | 成功 |
 |---|------|------|
-| 1 | L2 直貼本母／當單階 RUSB | **支母金字塔** 鐵序 |
-| 2 | HEX 等 **換拓 densify** 當 donor | 只用 **同拓** densify；BAN HEX |
-| 3 | L3 視覺到但貼回 **斷連** | 掃毒 NCC/orient + **強 α** + 支母 MF 鎖 + HF 注入 |
-| 4 | α 淡 · HF 層層沖 | 洗後樣板 HF L0 **8.5→13.1** |
-| 5 | 異比例／產品板 densify | **ROI 同比例** IPSD 再入塔 |
+| 1 | L2 直貼本母／單階 RUSB | **支母金字塔** 鐵序 |
+| 2 | HEX／換拓 densify | **同拓** densify only |
+| 3 | L3 到貼回斷連 | 掃毒 ncc/orient + 強 α + MF 鎖 |
+| 4 | α 淡 HF 沖 | 洗後 HF 可傳層 |
+| 5 | 異比例／產品板 | **ROI 同比例 IPSD** |
+| **6** | L2 reframe 毒 ncc≈0.43 | **IPSD residual 咬** ncc→0.982 |
+| **7** | 不查 PIXEL 回母就貼 | 每層閘 · FAIL 停 |
+| **8** | E1 未 SWP 就 E2 | **E1 嵌 SWP 先衣** |
 
-**口訣：L3 到 ≠ 可貼；斷連先洗毒 donor 底。**
+**口訣：L3 到 ≠ 可貼；保 PIXEL 回層層母；斷連先洗毒 donor；E1 金字塔先衣。**
 
 ### 0.12.43.C 鐵序
 ```
-L0 本母 ROI → L1 支母(×2 densify+HF) → L2(ZOOM×2 densify+HF 同拓)
-paste: L2→L1 → L1→L0 → L0→FULL · 每層 NCC≥0.75
+L0 ROI → IPSD → L1 支母 → ZOOM L2_base → IPSD → L2
+paste: L2→L1 → L1→L0 → L0→FULL · ncc 層≥0.90 貼≥0.75
 ```
 
-### 0.12.43.D–G
-見 `SHENGWEN_PYRAMID_SWP_*.md`
+### 0.12.43.D 黑名單
+E-SWP-01..09（見 `SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md`）
 
-*END §0.12.43 · 升紋金字塔 / SWP · LOCK*
+### 0.12.43.E 樣板
+- 母 `700b99f1` · `SETS/FUBZ_700b/RUSB_PY3/`
+- L2 IPSD 洗 ncc **0.982** · 毒 peep · `POISON_DIAG.json`
+
+### 0.12.43.F 一刀卡
+```
+MODE=SHENGWEN_PYRAMID
+DENSIFY=IPSD_same_frame
+PASTE=L2→L1→L0→FULL
+DONOR_WASH=true BAN_REFRAME=true
+NCC_LAYER=0.90 NCC_PASTE=0.75
+ETZ_E1_EMBED_SWP=true
+```
+
+### 0.12.43.G 附件
+- `SHENGWEN_PYRAMID_SWP_NAME.md`
+- `SHENGWEN_PYRAMID_SWP_01243.md`
+- `SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md`
+- `IPSD_SAME_FRAME_NAME.md`
+
+*END §0.12.43 · SWP · LOCK · asof 2026-10-30T18:20+08*
