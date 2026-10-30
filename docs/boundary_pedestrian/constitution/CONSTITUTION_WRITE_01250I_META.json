@@ -1,0 +1,12 @@
+{
+  "section": "0.12.50.I",
+  "name": "全紋自對順",
+  "code": "FTSA",
+  "parent": "0.12.50 TEX4",
+  "lock": true,
+  "asof": "2026-10-30T22:11:49Z",
+  "verbatim": "那要懂自己對應該所有紋去順的修復效果 呀, 入憲",
+  "errors": ["E-TEX-11","E-TEX-12","E-TEX-13","E-TEX-14"],
+  "effect_sample_not_donor": "1f795042-4087-4662-b244-22e42d9625a6",
+  "principle": "inherit effect standard not pixels; enumerate all tex on peep; self-align each"
+}
