@@ -1,74 +1,67 @@
-## 引用 vs 作業（政策）
-
-| 線 | 角色 |
-|----|------|
-| **`main`（本目錄）** | **只引用** · 憲／正名／公式 |
-| **`work/boundary-walker-canvas`** | **全部過程** · Canvas／Log／Artifacts **縮圖**（檔名路徑對齊）· 可重用除錯 |
-
-作業場：https://github.com/JUN-ZS/ai-image-gen-logic-review/tree/work/boundary-walker-canvas/work  
-MANIFEST：`work/MANIFEST.json`（src/dst 對照）
-
----
-
 # Boundary Walker · 操作憲集合（Grok 專案同步）
 
-> asof 2026-10-28 · branch `docs/boundary-walker-unified-constitution-20261028`  
-> 母倉：`JUN-ZS/ai-image-gen-logic-review` · 合入目標：`main`  
-> 來源：Grok Project `/workspace/artifacts`（圖工／邊界行人像素與升清操作憲）
+> asof 2026-10-30T18:20+08 · branch `work/boundary-walker-canvas`
+> 母倉：`JUN-ZS/ai-image-gen-logic-review` · MAIN 只引用
+
+
+## 本批（§0.12.43 SWP 除毒補）
+
+| 正招 | 碼 | 條 |
+|------|-----|-----|
+| **升紋金字塔** | **SWP** | **§0.12.43 LOCK** · ROI+IPSD 層層保 PIXEL · 除毒 F1–F8 · ETZ E1 嵌 |
+| 同幅姿鎖升紋 | IPSD | SWP 子步驟 · 非獨立總招 |
+
+- `SHENGWEN_PYRAMID_SWP_01243.md` · `SHENGWEN_PYRAMID_SWP_NAME.md` · `SHENGWEN_PYRAMID_SWP_DO_NOT_REPEAT.md`
+- `IPSD_SAME_FRAME_NAME.md` · `SECTION_01243_SWP_APPEND.md` · `CONSTITUTION_WRITE_01243_META.json`
+- `BOUNDARY_WALKER_UNIFIED_RULES.md`（§0.12.43 全文）
+- `EXTRACT_TO_ZHENGYI_ETZ_01236.md`（E1 嵌 SWP）
+
+**口訣：** 層層放大 → 保 PIXEL 回層層母 → 倒序貼回；L3 到 ≠ 可貼；E1 金字塔先衣。
 
 ## 入口
 
 | 檔 | 角色 |
 |----|------|
-| **`BOUNDARY_WALKER_UNIFIED_RULES.md`** | **唯一總操作憲**（全文集合入口） |
-| 其餘 `*.md` | 專章／技名／流程／黑名單附件 |
+| **`BOUNDARY_WALKER_UNIFIED_RULES.md`** | **唯一總操作憲** |
 
 ## 近期 LOCK 技名（摘）
 
 | 正招 | 碼 | 條 |
 |------|-----|-----|
-| 一升混鎖 | S1HL | §0.12.15.L |
-| 白噪殺 | WNK | §0.12.26.D |
-| 噪折成光 | N2R | §0.12.26.O |
-| 字糊反推對換 | TBRS | §0.12.28（備案） |
+| **首幀追尾技能棧** | **HTFC_STACK** | **§0.12.35** | **正衣先行 ZYF** · 連動 **宏圖正衣棧 MSR-ZYF** · 試錯入憲 · LOCK |
+| **§0.12.34 LOCK** |
+| **提醒鎖** | **RML** | **§0.12.33 LOCK** |
+| **首幀追尾** | **HTFC** | **§0.12.32 LOCK** |
+| **物格 L0** | **OTL0** | **§0.12.31 LOCK** |
+| 雙錨中密 | DAMD | §0.12.29 LOCK |
 
-## 本批檔案
+## 本批（棧入憲）
 
-- `BOUNDARY_WALKER_UNIFIED_RULES.md`
-- `SIAX_HYBRID_FACELOCK_S1HL.md`
-- `SIAX_HYBRID_FACELOCK_S1HL_NAME.md`
-- `WHITE_NOISE_KILL_NAME.md`
-- `NOISE_REFRACT_N2R_01226.md`
-- `NOISE_REFRACT_N2R_NAME.md`
-- `GRID_SIAX_CORRECT_PROCESS.md`
-- `GRID_SIAX_DO_NOT_REPEAT.md`
-- `STONE_FIRE_LIGHT_CTEMP_01226.md`
-- `STONE_FIRE_DO_NOT_REPEAT.md`
-- `PIXEL_CTRL_LAW.md`
-- `PATH1E_PLATE_ECC_LAW.md`
-- `GOU_DETECT_SHAPE_01225.md`
-- `GOU_MESH_CORRECT_PROCESS.md`
-- `GOU_MESH_DO_NOT_REPEAT.md`
-- `TEXT_BLUR_REVERSE_SWAP_01228.md`
-- `TEXT_BLUR_REVERSE_SWAP_DO_NOT_REPEAT.md`
-- `TEXT_BLUR_REVERSE_SWAP_NAME.md`
-- `VIRUS_LOCAL_BASE_01223.md`
-- `GRID_CELL_SWAP_01227.md`
-- `WHOLE_COLLAGE_ALIGN_01224.md`
-- `MESH_STITCH_FORMULA_V5.md`
-- `REVERSE_MESH_RANGE_RULE.md`
-- `GRID60_PATH1E_LOCK.md`
+- `HTFC_STACK_NAME.md` · `HTFC_STACK_OTL0_RML_01234.md`
+- `REMINDER_LOCK_RML_NAME.md` · `REMINDER_LOCK_RML_01233.md`
+- `HEAD_TAIL_FORWARD_CHASE_01232.md`（補 .J 連動棧）
+- `OBJECT_TOPO_L0_01231.md`（補柄欄+RML）
+- `BOUNDARY_WALKER_UNIFIED_RULES.md`（§0.12.33–34）
 
-## 不在本批
+## 一句棧
 
-- 大圖／L 樣板 JPEG（`artifacts/` 產物目錄）— 體積大，另議  
-- `heroine_lock` 標準面 bip／圖 — 可後補  
-- JUN-ZS 場憲（`ecosystem-core`）— **非本包**
+> **HTFC 技能 = OTL0 ∧ RML ∧ 雙錨 ∧ 正推；試錯（柄鎖·有/無鎖對照）已入 §0.12.34。**
 
-## 用法
+*work/boundary-walker-canvas*
+- **§0.12.37 SPM** · SIAX 探針匹配 · 預設 48×64 A · 等價 GUIDE/NOISE/STEP 旋鈕表
 
-1. 以 `BOUNDARY_WALKER_UNIFIED_RULES.md` 為單一操作入口  
-2. 改憲走 PR；禁 silent rewrite `main`  
-3. 新招：正名 → 附件 → 總憲 LOCK 段 → §11 修訂
+| **§0.12.39** | **SPM** | SIAX 探針匹配 · 預設 48×64 A | `SIAX_PROBE_MATCH_SPM_01239.md` |
 
-*Generated for push · do not treat as frozen base without TAKE card if used under ecosystem rails.*
+- §0.12.44 **一人累貼 OBA** · `ONE_BY_ONE_ACCUMULATE_OBA_01244.md` · 錯成 `OBA_LEGO_FAILURE_RECORD.md` (E-OBA-01..20)
+
+## 本批（§0.12.50 四技對紋絕招 TEX4）
+
+| 正招 | 碼 | 條 |
+|------|-----|-----|
+| **四技對紋絕招** | **TEX4** | **§0.12.50 LOCK** · 影分身合×虛形互搏×RRT×P_G · 黑裙三綠圈試錯 · 升清≠換拓 |
+
+- `FOUR_SKILL_TEX_ALIGN_01250.md` · `FOUR_SKILL_TEX_ALIGN_NAME.md` · `FOUR_SKILL_TEX_ALIGN_DO_NOT_REPEAT.md`
+- `FOUR_SKILL_TEX_ALIGN.md` · `CONSTITUTION_WRITE_01250_META.json`
+- 樣板 `SETS/OBA_DRESS_FULLCHAIN/`
+
+**口訣：** IP→虛形 peep→RRT殺拓→P_G貼母；四技全上才 LOCK。
