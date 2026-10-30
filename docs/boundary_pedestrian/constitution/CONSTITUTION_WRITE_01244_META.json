@@ -1,0 +1,46 @@
+{
+  "section": "0.12.44",
+  "name": "一人累貼",
+  "code": "OBA",
+  "en": "One-By-one Accumulate",
+  "status": "LOCK",
+  "ultimate": true,
+  "asof": "2026-10-30T15:47:00Z",
+  "record": "OBA_LEGO_FAILURE_RECORD.md",
+  "errors": [
+    "E-OBA-01",
+    "E-OBA-02",
+    "E-OBA-03",
+    "E-OBA-04",
+    "E-OBA-05",
+    "E-OBA-06",
+    "E-OBA-07",
+    "E-OBA-08",
+    "E-OBA-09",
+    "E-OBA-10",
+    "E-OBA-11",
+    "E-OBA-12",
+    "E-OBA-13",
+    "E-OBA-14",
+    "E-OBA-15",
+    "E-OBA-16",
+    "E-OBA-17",
+    "E-OBA-18",
+    "E-OBA-19",
+    "E-OBA-20"
+  ],
+  "must_scan": [
+    "green_stroke",
+    "grid_coords_void",
+    "semi_audit",
+    "iou_spill",
+    "rembg_wand",
+    "one_by_one",
+    "peep_scale_s_le_1"
+  ],
+  "samples": {
+    "minifig": "SETS/IC_LEGO10_MLR/v32_ONE_BY_ONE",
+    "robots_illegal": "SETS/IC_LEGO10_MLR/MOTHER_ROBOTS10/OBA_v1",
+    "robots_lock": "SETS/IC_LEGO10_MLR/MOTHER_ROBOTS10/OBA_v2_SCAN"
+  }
+}

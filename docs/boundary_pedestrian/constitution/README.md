@@ -51,3 +51,5 @@
 - **§0.12.37 SPM** · SIAX 探針匹配 · 預設 48×64 A · 等價 GUIDE/NOISE/STEP 旋鈕表
 
 | **§0.12.39** | **SPM** | SIAX 探針匹配 · 預設 48×64 A | `SIAX_PROBE_MATCH_SPM_01239.md` |
+
+- §0.12.44 **一人累貼 OBA** · `ONE_BY_ONE_ACCUMULATE_OBA_01244.md` · 錯成 `OBA_LEGO_FAILURE_RECORD.md` (E-OBA-01..20)
