@@ -133,3 +133,14 @@ FAIL→ redo from missing skill · 不疊毒半修
 - 樣板：`SETS/OBA_DRESS_FULLCHAIN/`
 
 *END §0.12.50 · TEX4 四技對紋絕招 · LOCK · asof 2026-10-30T21:15:44Z*
+
+
+---
+
+## 0.12.50.I 全紋自對順（FTSA · LOCK 補 · asof 2026-10-30T22:11:49Z）
+
+見 `FULL_TEX_SELF_ALIGN_01250I.md`。
+
+**用戶鐵句：** 要懂自己對應**該所有紋**去順的修復效果。
+
+**一句：** 本母 peep 全部紋區自對應 · 逐區順修到同一效果標準 · 1f795=標準非 donor · 禁跨母 PIXEL。
