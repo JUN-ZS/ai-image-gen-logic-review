@@ -1,5 +1,5 @@
 # §0.12.45 補擋全機（OCCLU-COMPLETE / ASC · Amodal Solo Complete）
-# asof 2026-10-30T18:30:45Z
+# asof 2026-10-30T18:35:44Z
 
 > **正名：補擋全機** · **短碼 OCCLU-COMPLETE / ASC** · **英** Amodal Solo Complete  
 > **族：** OBA §0.12.44 **旁系技能**（補遮擋肢體；落地仍走 OBA 鐵序）  
@@ -11,7 +11,7 @@
 
 ## 0.12.45.A 一句
 
-用 **可見 peep 殘形** 當 shape-cond，逼 GEN 以「完整同類機體」**amodal 先驗** 補出被擋／不見肢體 → hard α 退地 → **peep 量 s≤1 腳錨** → **遠→近一人一刀** 累貼（近蓋遠）。
+用 **可見 peep 殘形（VER.1）** 生全形（VER.2）→ **反補回 1 之全形同動作（1A）** → **只貼 1A** → peep 量 s≤1 → 遠→近一次一件（**殘相轉生 §0.12.46**）。
 
 ---
 
@@ -66,11 +66,11 @@ pure solid black seamless background
 T_asc0  peep 殘形（母 RGB + mask · 可含遮擋缺口）      ← OBA T4–T6
 T_asc1  shape_pad 黑底
 T_asc1b emit REF 綠 peep on black ＝ 母原本動作（OBA .M）
-T_asc2  i2i OCCLU-COMPLETE **FROM REF**（full unoccluded · 同姿 · 禁鄰機 · 禁自由棚拍）  ← 擴 OBA T7
-T_asc3  hard α 退地 cut（largest CC + morph + trim）
-T_asc4  peep 量 s≤1 · 腳錨 peep_foot+cx
-        GATE = recall(peep⊂paste) ≥ 0.4 · spill = 0     ← 擴 OBA T9
-T_asc5  遠→近 foot_y 升序 **一次一件** α 累貼 + **每步 STEP 線對看**（REF｜HD｜accum）  ← OBA T8–T9 · .M
+T_asc2  VER.2 = i2i OCCLU-COMPLETE FROM VER.1（生全形 · 中間 · 禁直貼）  ← RRT V2
+T_asc2b VER.1A = 反補（body←2 · action_lock←1 · 動作不變）     ← RRT V3 · **最終 cut**
+T_asc3  hard α 退地 cut **只取 1A**
+T_asc4  peep 量 s≤1 · 腳錨 · GATE recall(peep⊂1A)≥0.4
+T_asc5  遠→近 **只貼 1A** + STEP（1｜2｜1A｜accum）  ← OBA .N · RRT
 T_asc6  semi 綠peep vs 紅complete · ALL_STEPS · AUDIT_COMPLETE.json
 ```
 
@@ -135,6 +135,7 @@ SAMPLE=SETS/OBA_BATTLE6_MECH/COMPLETE
 | **E-ASC-05** | 用 IoU 形配硬閘 ASC（應 recall；形必大於 peep） |
 | **E-ASC-06** | 無遠→近序 · 後排蓋前排 |
 | **E-ASC-07** | **ASC 無 REF 綠 peep 同姿** · 自由棚拍補肢 |
+| **E-ASC-08** | **只交 VER.2 complete 當貼** · 無反補 1A 同動作 |
 | **E-OBA-23** | 混淆 peep-LOCK 與 ASC（用 Δ 解讀錯） |
 | **E-OBA-25..27** | 見 OBA .M（batch 貼／缺線對看／無 REF） |
 

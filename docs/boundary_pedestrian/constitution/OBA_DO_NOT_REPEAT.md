@@ -30,10 +30,15 @@
 | **E-OBA-25** | **無 REF 或 HD 非由 REF 生 · 自由棚拍**（脫離母原本動作） |
 | **E-OBA-26** | **batch 生 HD 再一齊貼 · 非一次一件** |
 | **E-OBA-27** | **無 STEP 線對看自審 · 只交 final／圖冊** |
-| E-ASC-01..07 | 見 `OCCLU_COMPLETE_ASC_DO_NOT_REPEAT.md` · **E-ASC-07** 無 REF 同姿 ASC |
+| E-ASC-01..08 | 見 ASC 禁表 · **E-ASC-08** 只貼 VER.2 無 1A |
+| **E-RRT-01** | **貼 VER.2** · 跳過 1A（殘相轉生） |
+| **E-RRT-02** | **1A 改動作** · 脫離 VER.1 |
+| E-RRT-03..06 | 見 `RESIDUAL_REBIRTH_RRT_DO_NOT_REPEAT.md` |
 
 **黃線格號法：** `OBA_YELLOW_GRID_CELL_LAW.md` · §0.12.44.K  
 **母形咬回：** `OBA_MOTHER_BITE_POSITION_WITHOUT_SHAPE.md` · §0.12.44.L  
 **REF 原本動作／線對看：** `OBA_REF_ORIGINAL_POSE_LINE_ALIGN.md` · §0.12.44.**M**  
 **LOCK 樣：** `OBA_SCAN_B132` · BATTLE6 · 母 b1326837 · **MIX** `OBA_MIX_ROBOT_SHIP/ONE_BY_ONE`  
 **非法示範：** box+棚拍 HD · robots OBA_v1 · 舊 BATTLE6 粗貼 · batch HD 無 STEP
+
+**殘相轉生：** `RESIDUAL_REBIRTH_RRT_01246.md` · §0.12.46 · **.N** · asof 2026-10-30T18:35:44Z

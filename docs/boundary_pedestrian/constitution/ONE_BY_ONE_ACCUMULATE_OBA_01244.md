@@ -1,17 +1,17 @@
 # §0.12.44 一人累貼（ONE_BY_ONE_ACCUMULATE / OBA · **LOCK 終極版 + 優化**）
-# asof 2026-10-30T18:26:00Z
+# asof 2026-10-30T18:35:44Z
 
 > **正名：一人累貼** · **短碼 OBA** · **英** One-By-one Accumulate  
 > **試錯源：** `OBA_LEGO_FAILURE_RECORD.md`（**E-OBA-01..27** · E-ASC）  
 > **樣板：** minifig `99f4368d` · robots `OBA_v2_SCAN` · **BATTLE6** `OBA_SCAN_B132` · **MIX** `OBA_MIX_ROBOT_SHIP/ONE_BY_ONE`  
 > **家族：** MLR 母光重鋪 · **OBA＝多物件落地鐵序**  
-> **優化入憲：** 黃線格號法（f168）· 母形咬回／有位無形（BATTLE6）· **REF 原本動作 + 一次一件 + 線對看自審（金樣人仔 · 重要）** · ASC 旁系 §0.12.45
+> **優化入憲：** 黃線格號法（f168）· 母形咬回 · **REF／線對看（.M）** · **殘相轉生 1→2→3→1A（.N · §0.12.46）** · ASC 旁系 §0.12.45
 
 ---
 
 ## 0.12.44.A 一句
 
-母只出 **位／形／光** → **母圖 VOID** 空台 → **掃瞄綠描邊 peep** → 黃 GRID **座標**（≠人）→ **每件先出 REF（綠 peep＝母原本動作）** → **用 REF 蛹／生 HD 同姿** → **一次只加一件** peep s≤1 累貼 → **STEP 線對看自審** → 過閘先下一件。
+母只出 **位／形／光** → **母圖 VOID** 空台 → **掃瞄綠描邊 peep** → 黃 GRID **座標**（≠人）→ **每件先出 REF（綠 peep＝母原本動作）** → **殘相轉生 1→2→3→1A**（最終貼 **1A** 同動作全形）→ **一次只加一件** peep s≤1 累貼 → **STEP 線對看自審** → 過閘先下一件。
 
 **母必須真用：** 位＋**形／姿 peep** 皆咬母；禁「只 VOID+框 · HD 棚拍另生」（E-OBA-24 有位無形）。  
 **重要：** REF **唔係裝飾** · 係 **用嚟生嗰件「原本動作」嘅條件圖**（E-OBA-25/26）。
@@ -47,18 +47,21 @@ T5  綠描邊 stroke（findContours · 2px · 禁 fill 框）
 T6  peep 量：peep_w/h · peep_cx · peep_foot · cell occupancy（只註冊 · 永不入 s）
 T7  **每件出 REF**（綠 peep 板 · 鎖母「原本動作／姿」）
     · REF 路徑必落碟 · 必登記 · 必入 STEP 左格
-T7b **用 REF 蛹／生 HD**（i2i shape-cond · 同姿同動作 · 退地）
-    · 禁無 REF 自由棚拍（E-OBA-25）
-    · 姿脫鉤／IoU 低 → peep 過閘優先於假 HD（E-OBA-12/24）
+T7b **殘相轉生**（§0.12.46 · **.N**）· 禁無 REF 自由棚拍（E-OBA-25）
+    VER.1 = REF 殘相原本動作
+    VER.2 = 生全形（ASC complete · 中間 · 禁直貼）
+    VER.3 = 反補「1 之全形 · 動作不變」
+    VER.1A = 1 的沒被擋相同動作 · **唯一 paste cut**
+    · 姿脫鉤 → 重該件鏈 · 或 peep 過閘（E-OBA-12/24 · E-RRT-02）
 T8  遠→近 排序（peep_foot 升序）
 T9  **一次一件**（禁 batch 貼）：
       s = min(peep_h/cut_h, peep_w/cut_w, 1.0)   # 禁格邊長 · 禁 s>1
       腳錨 peep_foot + peep_cx
       IoU 微搜對 peep mask（LOCK 建議 ≥0.55 · 前排 ≥0.75）
-      只貼 **當前這一件** 入 accum（VOID 起步）
+      只貼 **當前這一件之 VER.1A** 入 accum（VOID 起步 · 禁貼 VER.2）
       spill 閘
 T9b **STEP 線對看自審**（mandatory · 每件必出）：
-      三格 = [REF peep 綠描 原本動作] | [HD from REF] | [accum 加此件]
+      三／四格 = [VER.1 REF 原] | [VER.2 全形MID 可選] | [VER.1A 同動作全形] | [accum]
       半透 綠 peep 邊 vs 紅 paste 邊
       過閘 → 先下一件；低 IoU **只重該 STEP**
 T10 全齊 · GRID+綠邊+字母 overlay · audit JSON · 全 STEP strips 蒙太奇
@@ -77,6 +80,7 @@ T10 全齊 · GRID+綠邊+字母 overlay · audit JSON · 全 STEP strips 蒙太
 3. **一人一刀** — 禁 batch；低 IoU **只重該 STEP**（E-OBA-01/10/12）  
 4. **母形咬回** — 最新母必須供 **位+形+姿**；禁只 VOID+框（E-OBA-24 · **.L**）  
 5. **REF 原本動作** — 每件必出 REF · HD 必由 REF 生 · 一次加一件 · 每件 STEP 線對看（**E-OBA-25/26/27 · .M**）
+6. **殘相轉生** — 1→2→3→**1A** · **只貼 1A** · 禁貼 2 · 1A 動作＝1（**E-RRT-01..06 · .N**）
 
 ---
 
@@ -147,7 +151,9 @@ ID=letters A-J|UUID (not grid numbers)
 PEEP=rembg+wand|mother-VOID+Voronoi  RGB=mother  VORONOI_excl
 STROKE=findContours thickness=2 no_fill
 REF=green_peep_plate per_unit ORIGINAL_POSE   # mandatory · 用嚟生 HD
-HD=i2i_from_REF shape_cond same_action        # BAN free_studio
+HD=RRT_chain 1→2→3→1A                         # BAN free_studio · BAN paste_ver2
+RRT=VER1_REF → VER2_FULL_MID → VER3_REVERSE → VER1A_FINAL
+PASTE_CUT=VER1A_only
 SCALE=peep_only s<=1 LANCZOS   # BAN grid_edge_scale
 ANCHOR=foot+cx
 ALIGN=IoU_microsearch >=0.55
@@ -158,7 +164,7 @@ AUDIT=STEP_strip REF|HD|accum + semi_green_vs_red + grid + peep_map
 CUT=extract_hard_alpha
 BAN=batch, mother_as_base, s>1, grid_scale, grid_as_person_id,
     old_mask, red_donor, stroke_fill, soft_crop_bg,
-    studio_hd_without_REF, void_box_only, no_STEP_strip, batch_then_paste
+    studio_hd_without_REF, void_box_only, no_STEP_strip, batch_then_paste, paste_ver2, skip_rrt_1a
 FAIL→ redo single STEP only
 RECORD=OBA_LEGO_FAILURE_RECORD.md
 ```
@@ -191,6 +197,7 @@ RECORD=OBA_LEGO_FAILURE_RECORD.md
 | 黃線格號法 | `OBA_YELLOW_GRID_CELL_LAW.md` |
 | 母形咬回 | `OBA_MOTHER_BITE_POSITION_WITHOUT_SHAPE.md` |
 | **REF 原本動作法** | `OBA_REF_ORIGINAL_POSE_LINE_ALIGN.md` |
+| **殘相轉生** | `RESIDUAL_REBIRTH_RRT_01246.md` · §0.12.46 · **.N** |
 
 ---
 
@@ -305,6 +312,33 @@ for L in far→near:
 
 ---
 
+
+---
+
+## 0.12.44.N 殘相轉生（RRT · §0.12.46 · **重要**）
+
+> **verbatim：** 最後仍是用物件的 **VER.1A**，即  
+> **1(原) → 2(生全形) → 3(反補出1的全形,但動作不變) → 1A (1的沒被擋的相同動作)**
+
+| VER | 名 | 用途 |
+|-----|-----|------|
+| **1** | 原 | peep 殘相 REF · 母原本動作 · 可被擋 |
+| **2** | 生全形 | ASC complete · **中間產** · 禁直貼 |
+| **3** | 反補 | 全形知識回寫 · **動作鎖 1** |
+| **1A** | 落地 | 1 之無擋同動作 · **唯一 paste cut** |
+
+```
+for L in far→near:
+  V1 = REF peep 原本動作
+  V2 = complete FROM V1          # 生全形
+  V1A = reverse_fill(V2, action_lock=V1)  # 反補 · 動作不變
+  paste V1A only → STEP 線對看 → next
+```
+
+**毒：** E-RRT-01 貼2 · E-RRT-02 1A改動作 · E-ASC-08 只交2  
+**全文：** `RESIDUAL_REBIRTH_RRT_01246.md`
+
+---
 ## 0.12.44.J 旁系技能 · OCCLU-COMPLETE / ASC（§0.12.45）
 
 **憲位：** 獨立節 **§0.12.45** · 全文 `OCCLU_COMPLETE_ASC_01245.md`
@@ -313,7 +347,7 @@ for L in far→near:
 |--|--|
 | 正名 | 補擋全機 |
 | 短碼 | OCCLU-COMPLETE / ASC |
-| 一句 | peep 殘形 REF → amodal 補被擋肢 **同姿** → peep 量 s≤1 → **一次一件** 遠→近 · STEP 線對看 |
+| 一句 | peep 殘形 **RRT 1→2→3→1A** → **只貼 1A** · peep 量 s≤1 · 一次一件 · 線對看 |
 | 閘 | recall peep≥0.4 · TAG=`COMPLETE_IMAGINED` 或 `OCCLU_COMPLETE_SHAPECOND` |
 | 樣 | `SETS/OBA_BATTLE6_MECH/COMPLETE` · `OBA_MIX_ROBOT_SHIP/ONE_BY_ONE` |
 | 禁 | E-ASC-01..06 · E-OBA-23 · **仍受 E-OBA-25/26/27 約束** |
@@ -322,4 +356,4 @@ for L in far→near:
 
 ---
 
-*END §0.12.44 · 一人累貼 / OBA · LOCK + 黃線格號 + 母形咬回 + REF 原本動作／一次一件／線對看 · asof 2026-10-30T18:26:00Z*
+*END §0.12.44 · 一人累貼 / OBA · + 殘相轉生 1→2→3→1A · asof 2026-10-30T18:35:44Z*

@@ -17,3 +17,7 @@
 | E-OBA-25 | batch complete 再 batch 貼 |
 | E-OBA-26 | 缺 STEP 線對看 |
 asof 2026-10-30T18:30:45Z
+
+| **E-ASC-08** | 只交 VER.2 complete 當貼 · 無 1A 同動作落地（殘相轉生） |
+| E-RRT-01..06 | 見 `RESIDUAL_REBIRTH_RRT_DO_NOT_REPEAT.md` |
+asof 2026-10-30T18:35:44Z

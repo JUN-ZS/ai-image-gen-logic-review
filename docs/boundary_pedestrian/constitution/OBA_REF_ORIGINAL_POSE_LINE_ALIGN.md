@@ -35,3 +35,16 @@ for L in far→near:
 `SETS/OBA_MIX_ROBOT_SHIP/ONE_BY_ONE/`
 
 見主憲 `ONE_BY_ONE_ACCUMULATE_OBA_01244.md` · **.M**
+
+
+---
+## 升格 · 殘相轉生（asof 2026-10-30T18:35:44Z）
+
+「用 REF 生 HD」**不是** 一步 complete 完事。  
+完整鏈見 §0.12.46：
+
+```
+1 REF 原 → 2 生全形 → 3 反補(動作=1) → 1A 落地 cut
+```
+
+**最終貼 1A** · 唔貼 2。
