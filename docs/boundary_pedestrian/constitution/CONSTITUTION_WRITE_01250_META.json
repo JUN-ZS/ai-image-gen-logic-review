@@ -1,0 +1,25 @@
+{
+  "section": "0.12.50",
+  "name": "四技對紋絕招",
+  "code": "TEX4",
+  "aliases": ["FOUR_SKILL_TEX_ALIGN", "對紋改版", "四技聯動"],
+  "lock": true,
+  "asof": "2026-10-30T21:15:44Z",
+  "children": ["0.12.46 RRT", "0.12.47 影分身合", "0.12.48 虛形互搏", "0.12.49 P_G紋"],
+  "embed_after": ["0.12.43 SWP", "0.12.39 SPM"],
+  "errors": ["E-TEX-01","E-TEX-02","E-TEX-03","E-TEX-04","E-TEX-05","E-TEX-06","E-TEX-07","E-TEX-08","E-TEX-09","E-TEX-10"],
+  "verbatim": [
+    "虛形互搏 和 影分身合 都要用到，因為改不到新的對紋",
+    "那這4技可用什麼幫改這圖？",
+    "IP 給新順紋 → 虛形讓 peep 只鎖衣 → RRT 殺殘／螺旋 → P_G 用 peep×姿座標貼返母"
+  ],
+  "sample": {
+    "mother": "22cf97df-68ba-4e4b-983c-b4559b7d2f11",
+    "problem_circles": "ad220951-b860-4b99-9a70-223f5529cd19",
+    "path": "SETS/OBA_DRESS_FULLCHAIN/"
+  },
+  "trial": {
+    "fail": ["RRT+P_G only", "SWP only spiral inherits", "SPM weak alpha", "toxic half-fix stack"],
+    "success": "①IP → ②ghost → ③RRT 1A → ④P_G pose lock"
+  }
+}
