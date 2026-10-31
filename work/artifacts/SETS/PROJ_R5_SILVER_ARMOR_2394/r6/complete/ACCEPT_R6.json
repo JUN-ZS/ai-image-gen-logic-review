@@ -1,0 +1,120 @@
+{
+  "round": "R6_MODEL_SELECT_FULLRES",
+  "constitution": "§0.12.56 NCPG_R6",
+  "diagnosis_user": [
+    "R5b = working SIAX inject chain · NOT full model tournament",
+    "SIAX 4x was AREA-down to 2x residual · E-R6-01",
+    "CPU sequential 48 probes slow · engine not optimized"
+  ],
+  "fixes": [
+    "4x MODEL OUTPUT → 4x RESIDUAL/CHILD (no INTER_AREA 256→128)",
+    "child_hw = peep * 4 = 2048 primary lossless PNG",
+    "mini contest SIAX native4 vs R5b-waste path vs Lanczos",
+    "engines pending listed · no false claim of full screen"
+  ],
+  "contest": {
+    "n_probes": 8,
+    "avg_ms_siax": 828.0125,
+    "ten_lp4": 9827.32958984375,
+    "ten_siax_native4": 38043.009765625,
+    "ten_r5b_waste_path": 28658.0576171875,
+    "ten_lanczos4": 9827.32958984375,
+    "gain_native_vs_lp": 3.871144181929271,
+    "gain_native_vs_waste": 1.3274803991882873,
+    "struct_native": 0.9923794791102409,
+    "residual_energy_native": 0.04651976749300957,
+    "residual_energy_r5b2x": 0.07358944788575172,
+    "winner_this_round": "SIAX_NATIVE_4X",
+    "engines_available": [
+      "SIAX_PyTorch_CPU"
+    ],
+    "engines_pending": [
+      "NMKD_Superscale_SP",
+      "RealESRGAN_v3",
+      "4xLSDIRCompactC3",
+      "SeedVR2",
+      "NCNN_Siax"
+    ],
+    "note": "Only SIAX weight on disk · contest proves native4 > waste path · not full model tournament"
+  },
+  "peeps": [
+    {
+      "tag": "P0",
+      "xy": [
+        300,
+        693
+      ],
+      "score": 80.33968353271484,
+      "meta": {
+        "n_probes": 48,
+        "unique": 48,
+        "coverage": 0.63671875,
+        "child_hw": 2048,
+        "model_scale": 4,
+        "ten_L0": 23399.30078125,
+        "ten_LP": 5473.46826171875,
+        "ten_soft": 18608.466796875,
+        "struct_soft": 0.9949260354042053,
+        "iron": "4x_MODEL_to_4x_RESIDUAL · E-R6-01 banned"
+      },
+      "residual_ridge_alignment": 0.9826192855834961,
+      "spill": 0.017381049692630768,
+      "ten_hard": 23712.580078125,
+      "struct": 0.9933128356933594,
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6/complete/P0_CHILD_2048_FULLRES4_R6.png",
+      "child_bytes": 6531532,
+      "register": {
+        "board_xy": [
+          300,
+          693
+        ],
+        "peep": 512,
+        "child_hw": 2048,
+        "scale": 4,
+        "iron": "4x_MODEL_to_4x_CHILD · primary=2048 PNG"
+      },
+      "PASS": true
+    },
+    {
+      "tag": "P1",
+      "xy": [
+        318,
+        180
+      ],
+      "score": 35.37141036987305,
+      "meta": {
+        "n_probes": 48,
+        "unique": 48,
+        "coverage": 0.625,
+        "child_hw": 2048,
+        "model_scale": 4,
+        "ten_L0": 16860.48046875,
+        "ten_LP": 3780.7802734375,
+        "ten_soft": 13706.2783203125,
+        "struct_soft": 0.996198296546936,
+        "iron": "4x_MODEL_to_4x_RESIDUAL · E-R6-01 banned"
+      },
+      "residual_ridge_alignment": 0.9883031249046326,
+      "spill": 0.011696607805788517,
+      "ten_hard": 17760.357421875,
+      "struct": 0.9953696727752686,
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6/complete/P1_CHILD_2048_FULLRES4_R6.png",
+      "child_bytes": 5859191,
+      "register": {
+        "board_xy": [
+          318,
+          180
+        ],
+        "peep": 512,
+        "child_hw": 2048,
+        "scale": 4,
+        "iron": "4x_MODEL_to_4x_CHILD · primary=2048 PNG"
+      },
+      "PASS": true
+    }
+  ],
+  "n_accept": 2,
+  "status": "ACCEPT",
+  "asof": "2026-10-31T17:31:59.900296+00:00",
+  "elapsed_s": 99.74
+}
