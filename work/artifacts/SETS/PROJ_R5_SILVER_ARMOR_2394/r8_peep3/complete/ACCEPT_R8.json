@@ -1,0 +1,41 @@
+{
+  "round": "R8_PEEP3_512_to_2048_FULLRES",
+  "option": 2,
+  "constitution": "§0.12.56 NCPG nested peep · PEEP3",
+  "peep3": {
+    "window_on_4096": [
+      2276,
+      28,
+      512,
+      512
+    ],
+    "score": 65.77373504638672,
+    "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r8_peep3/complete/PEEP3_CHILD_2048_NCNN_FULLRES_R8.png",
+    "child_bytes": 3002551,
+    "child_hw": 2048,
+    "align": 0.9774998426437378,
+    "spill": 0.02249978296458721,
+    "sn": 0.9982932806015015,
+    "ten": 7528.888671875,
+    "ten_lp": 3617.89892578125,
+    "n_probes": 48,
+    "probe_cov": 0.6318359375,
+    "infer_s": 1.74,
+    "engine": "NCNN_GENERAL_x4v3_PIXEL_RGB",
+    "ridge": "thr_k=0.20 dil5 cellkill0.90"
+  },
+  "register": {
+    "board_xy": [
+      2276,
+      28
+    ],
+    "peep": 512,
+    "child_hw": 2048,
+    "scale": 4,
+    "relative_to": "PEEP2_4096"
+  },
+  "PASS": true,
+  "status": "ACCEPT",
+  "asof": "2026-10-31T18:49:03.655651+00:00",
+  "elapsed_s": 7.76
+}
