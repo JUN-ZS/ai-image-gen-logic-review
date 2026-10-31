@@ -1,0 +1,294 @@
+{
+  "round": "R9_FULLCHAIN_LUMA_ONLY_DETOX",
+  "constitution": "E-BLUE-01..04 · §0.12.56 residual iron",
+  "formula": "Y_out=Y_LP+(Y_SR-Y_LP); RGB=chromaticity(LP)*Y_out",
+  "iron": [
+    "4x residual luma-primary",
+    "lock LP chroma",
+    "no full BGR residual paste"
+  ],
+  "jobs": [
+    {
+      "tag": "P0",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P0_CHILD_2048_LUMA_R9.png",
+      "child_bytes": 5294768,
+      "hw": [
+        2048,
+        2048
+      ],
+      "ten_lp": 5473.46826171875,
+      "ten_poison": 15698.2353515625,
+      "ten_detox": 15641.451171875,
+      "sn_poison": 0.9788346290588379,
+      "sn_detox": 0.9794097542762756,
+      "blue_lp": {
+        "be_mean": 6.560013771057129,
+        "be_p95": 12.0,
+        "dark_blue_frac": 0.4473381042480469,
+        "BminusG": 6.271247863769531
+      },
+      "blue_poison": {
+        "be_mean": 6.969941139221191,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.4902982711791992,
+        "BminusG": 6.6891632080078125
+      },
+      "blue_detox": {
+        "be_mean": 6.3929338455200195,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.45052552223205566,
+        "BminusG": 6.122007369995117
+      },
+      "chroma_abs_poison": {
+        "absB": 1.0272754430770874,
+        "absG": 0.26261040568351746,
+        "absR": 0.638430655002594
+      },
+      "chroma_abs_detox": {
+        "absB": 0.3645593523979187,
+        "absG": 0.07740233093500137,
+        "absR": 0.23011629283428192
+      },
+      "dark_blue_delta_pp": -3.977,
+      "elapsed_s": 3.11,
+      "formula": "Y_out=Y_LP+(Y_SR-Y_LP); RGB=chrom(LP)*Y_out",
+      "iron": "E-BLUE luma-only residual",
+      "PASS_blue_down": true,
+      "PASS_chroma_B": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS": true
+    },
+    {
+      "tag": "P1",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P1_CHILD_2048_LUMA_R9.png",
+      "child_bytes": 4833522,
+      "hw": [
+        2048,
+        2048
+      ],
+      "ten_lp": 3780.7802734375,
+      "ten_poison": 13954.5712890625,
+      "ten_detox": 13894.0908203125,
+      "sn_poison": 0.9801083207130432,
+      "sn_detox": 0.9806598424911499,
+      "blue_lp": {
+        "be_mean": 5.586357593536377,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.5177977085113525,
+        "BminusG": 3.8652007579803467
+      },
+      "blue_poison": {
+        "be_mean": 5.873280048370361,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.5370538234710693,
+        "BminusG": 4.167486190795898
+      },
+      "blue_detox": {
+        "be_mean": 5.384420394897461,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.5091278553009033,
+        "BminusG": 3.705796718597412
+      },
+      "chroma_abs_poison": {
+        "absB": 1.0210243463516235,
+        "absG": 0.2747243642807007,
+        "absR": 0.6667803525924683
+      },
+      "chroma_abs_detox": {
+        "absB": 0.4894239902496338,
+        "absG": 0.12048662453889847,
+        "absR": 0.36789003014564514
+      },
+      "dark_blue_delta_pp": -2.793,
+      "elapsed_s": 2.62,
+      "formula": "Y_out=Y_LP+(Y_SR-Y_LP); RGB=chrom(LP)*Y_out",
+      "iron": "E-BLUE luma-only residual",
+      "PASS_blue_down": true,
+      "PASS_chroma_B": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS": true
+    },
+    {
+      "tag": "PEEP2_R7",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_LUMA_R9.png",
+      "child_bytes": 14919534,
+      "hw": [
+        4096,
+        4096
+      ],
+      "ten_lp": 2044.4056396484375,
+      "ten_poison": 4429.0703125,
+      "ten_detox": 4400.42919921875,
+      "sn_poison": 0.9933862686157227,
+      "sn_detox": 0.9935049414634705,
+      "blue_lp": {
+        "be_mean": 5.107090950012207,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.26757991313934326,
+        "BminusG": 4.710160255432129
+      },
+      "blue_poison": {
+        "be_mean": 5.130219459533691,
+        "be_p95": 12.0,
+        "dark_blue_frac": 0.27229923009872437,
+        "BminusG": 4.648490905761719
+      },
+      "blue_detox": {
+        "be_mean": 5.066023826599121,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.27434033155441284,
+        "BminusG": 4.64976692199707
+      },
+      "chroma_abs_poison": {
+        "absB": 0.32254618406295776,
+        "absG": 0.10093653947114944,
+        "absR": 0.23533563315868378
+      },
+      "chroma_abs_detox": {
+        "absB": 0.12077367305755615,
+        "absG": 0.048745740205049515,
+        "absR": 0.1000586673617363
+      },
+      "dark_blue_delta_pp": 0.204,
+      "elapsed_s": 10.92,
+      "formula": "Y_out=Y_LP+(Y_SR-Y_LP); RGB=chrom(LP)*Y_out",
+      "iron": "E-BLUE luma-only residual",
+      "PASS_blue_down": true,
+      "PASS_chroma_B": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS": true
+    },
+    {
+      "tag": "PEEP2_R7b",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_RIDGE_LUMA_R9.png",
+      "child_bytes": 14920273,
+      "hw": [
+        4096,
+        4096
+      ],
+      "ten_lp": 2044.4056396484375,
+      "ten_poison": 5159.83984375,
+      "ten_detox": 5113.30859375,
+      "sn_poison": 0.9900275468826294,
+      "sn_detox": 0.9902110695838928,
+      "blue_lp": {
+        "be_mean": 5.107090950012207,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.26757991313934326,
+        "BminusG": 4.710160255432129
+      },
+      "blue_poison": {
+        "be_mean": 5.1343302726745605,
+        "be_p95": 12.0,
+        "dark_blue_frac": 0.2732165455818176,
+        "BminusG": 4.644981384277344
+      },
+      "blue_detox": {
+        "be_mean": 5.05360221862793,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.27392059564590454,
+        "BminusG": 4.633434772491455
+      },
+      "chroma_abs_poison": {
+        "absB": 0.4050528407096863,
+        "absG": 0.12736812233924866,
+        "absR": 0.2964380383491516
+      },
+      "chroma_abs_detox": {
+        "absB": 0.14536616206169128,
+        "absG": 0.05842941999435425,
+        "absR": 0.11935589462518692
+      },
+      "dark_blue_delta_pp": 0.07,
+      "elapsed_s": 6.96,
+      "formula": "Y_out=Y_LP+(Y_SR-Y_LP); RGB=chrom(LP)*Y_out",
+      "iron": "E-BLUE luma-only residual",
+      "PASS_blue_down": true,
+      "PASS_chroma_B": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS": true
+    },
+    {
+      "tag": "PEEP3_R8",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_R9.png",
+      "child_bytes": 3056060,
+      "hw": [
+        2048,
+        2048
+      ],
+      "ten_lp": 3609.10986328125,
+      "ten_poison": 7528.888671875,
+      "ten_detox": 7487.44677734375,
+      "sn_poison": 0.9982539415359497,
+      "sn_detox": 0.9982242584228516,
+      "blue_lp": {
+        "be_mean": 2.281597852706909,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.030360937118530273,
+        "BminusG": 0.19063591957092285
+      },
+      "blue_poison": {
+        "be_mean": 2.185883045196533,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.014931201934814453,
+        "BminusG": 0.11819624900817871
+      },
+      "blue_detox": {
+        "be_mean": 2.2270095348358154,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.01188039779663086,
+        "BminusG": 0.16895580291748047
+      },
+      "chroma_abs_poison": {
+        "absB": 1.3761215209960938,
+        "absG": 0.4694100618362427,
+        "absR": 0.9596244096755981
+      },
+      "chroma_abs_detox": {
+        "absB": 0.270444393157959,
+        "absG": 0.09784850478172302,
+        "absR": 0.21677295863628387
+      },
+      "dark_blue_delta_pp": -0.305,
+      "elapsed_s": 1.68,
+      "formula": "Y_out=Y_LP+(Y_SR-Y_LP); RGB=chrom(LP)*Y_out",
+      "iron": "E-BLUE luma-only residual",
+      "PASS_blue_down": true,
+      "PASS_chroma_B": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS": true
+    },
+    {
+      "tag": "PEEP3_R8_NESTED",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_NESTED_R9.png",
+      "child_bytes": 3429029,
+      "note": "dY from (SR8−LP3_orig) on chromaticity of DET7b-window LP",
+      "ten_detox": 7412.60107421875,
+      "blue_detox": {
+        "be_mean": 2.071371078491211,
+        "be_p95": 9.0,
+        "dark_blue_frac": 0.007418632507324219,
+        "BminusG": -0.001340627670288086
+      },
+      "sn_detox": 0.9982811212539673
+    }
+  ],
+  "n_jobs": 6,
+  "n_pass": 5,
+  "primary_children": [
+    "P0_CHILD_2048_LUMA_R9.png",
+    "P1_CHILD_2048_LUMA_R9.png",
+    "PEEP2_CHILD_4096_RIDGE_LUMA_R9.png",
+    "PEEP3_CHILD_2048_LUMA_NESTED_R9.png"
+  ],
+  "status": "ACCEPT",
+  "asof": "2026-10-31T19:05:53.037296+00:00",
+  "elapsed_s": 33.35,
+  "gate_note": "R9b re-gate: chroma B ≤50% or <0.5; dark +1pp tol; ten≥92%; sn≥0.95",
+  "asof_regate": "2026-10-31T19:06:01.962627+00:00"
+}
