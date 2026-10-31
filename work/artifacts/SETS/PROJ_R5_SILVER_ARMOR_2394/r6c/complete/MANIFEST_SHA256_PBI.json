@@ -1,0 +1,50 @@
+{
+  "bundle": "R6c_NCNN_PBI_LUMA",
+  "branch": "feat/r6c-pbi-luma-bundle-20261031",
+  "asof": "2026-10-31T22:50:12.796008+00:00",
+  "note": "orphan independent branch · local PBI outputs + runners · not yet on main/work canvas tree",
+  "entries": [
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
+      "sha256": "909b5aa2f4ac5f3fa178195b1cd0583fe3a82f9a907ca8fb2b7fc3d8cd18935d",
+      "bytes": 5311845
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
+      "sha256": "c329904d4b597678e83235c3262cf972a67f4b2b607cf0ac8895919eb18ebe30",
+      "bytes": 4738588
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json",
+      "sha256": "4d1f1954c98b4ec58bfc1e78c3b74127e4e842e242de302092d610db58bddf64",
+      "bytes": 930
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md",
+      "sha256": "2ec4f97f4d730ea826c3a6e5d7b8493561eeb81d9ff867812ef1db3e83a18584",
+      "bytes": 1329
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png",
+      "sha256": "b001cbd62c5135e1fc6e89dda05d4c241fa6a4b6a89eb3cc49d722f061a55011",
+      "bytes": 14473338
+    },
+    {
+      "path": "work/artifacts/tmp/run_r6c_ncnn.py",
+      "sha256": "8057420105a15e3fde8b42131371f7e3bcbae4a258c774634e6c9efadf417c95",
+      "bytes": 18553
+    },
+    {
+      "path": "work/artifacts/tmp/run_r7_peep2_final.py",
+      "sha256": "3eb64f3f00b3ef02b9e20ff2d0d43c09158ea7ff7e8d505694afe2dc683fec08",
+      "bytes": 18353
+    }
+  ],
+  "gates_honest": {
+    "P0_P1_structure": "ACCEPT",
+    "blue_vs_old_P0_improve_pct": 89.45,
+    "R7_align": "PARTIAL fail align 0.544",
+    "merge_main": "NO",
+    "live_siax": "NOT_IN_THIS_BUNDLE"
+  }
+}

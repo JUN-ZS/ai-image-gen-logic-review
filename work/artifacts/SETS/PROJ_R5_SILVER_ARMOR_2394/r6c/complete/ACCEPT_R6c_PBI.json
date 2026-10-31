@@ -1,0 +1,26 @@
+{
+  "round": "R6c_NCNN_PBI_LUMA_DEFAULT",
+  "change": "PBI default residual in run_r6c_ncnn.py + run_r7_peep2_final.py",
+  "formula": "hyb = C(LP) * (Y_LP + ridge(multi_sigma_Y(dY))); no RGB residual inject",
+  "P0_P1": "ACCEPT align/sn (structure gates)",
+  "blue_vs_old_P0": {
+    "old_blue_res": 3.049,
+    "pbi_blue_res": 0.322,
+    "improve_pct": 89.45,
+    "old_chrom_d": 0.068,
+    "pbi_chrom_d": 0.010
+  },
+  "r7": "PARTIAL · sn 0.993 · align 0.544 < 0.65 (Y-ridge align scale differs; structure OK)",
+  "outputs": {
+    "P0": "r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
+    "P1": "r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
+    "PEEP2": "r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png"
+  },
+  "scripts": {
+    "r6c": "tmp/run_r6c_ncnn.py PBI_MODE=luma_only",
+    "r7": "tmp/run_r7_peep2_final.py PBI_MODE=luma_only",
+    "backup": "*.bak_pre_pbi"
+  },
+  "merge_main": "NO",
+  "asof": "2026-10-31T22:09:00Z"
+}

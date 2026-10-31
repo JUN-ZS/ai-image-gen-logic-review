@@ -1,0 +1,42 @@
+{
+  "round": "R7_PEEP2_1024_to_4096_PBI_LUMA",
+  "option": 2,
+  "constitution": "§0.12.56 + NCPG nested peep",
+  "peep2": {
+    "window_on_p0_2048": [
+      758,
+      128,
+      1024,
+      1024
+    ],
+    "score": 79.98414611816406,
+    "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png",
+    "child_bytes": 14473338,
+    "child_hw": 4096,
+    "align": 0.5443130116909742,
+    "spill": 0.01818698783245054,
+    "sn": 0.992533266544342,
+    "ten": 4380.74658203125,
+    "ten_lp": 1907.9117431640625,
+    "n_probes": 48,
+    "infer_s": 12.06,
+    "engine": "NCNN_GENERAL_x4v3_PBI_LUMA",
+    "iron": "4x residual Y-only PBI · primary lossless PNG",
+    "pbi_mode": "luma_only",
+    "pbi": "hyb = C(LP)×(Y_LP + ridge(dY)); multi_sigma on Y only"
+  },
+  "register": {
+    "board_xy": [
+      758,
+      128
+    ],
+    "peep": 1024,
+    "child_hw": 4096,
+    "scale": 4,
+    "relative_to": "P0_2048"
+  },
+  "PASS": false,
+  "status": "PARTIAL",
+  "asof": "2026-10-31T22:09:02.612543+00:00",
+  "elapsed_s": 44.67
+}

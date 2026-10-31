@@ -1,0 +1,35 @@
+{
+  "peep_xy": [
+    306,
+    672
+  ],
+  "rows": [
+    {
+      "name": "LP",
+      "blue_res": 0.0,
+      "chrom_d": 0.0,
+      "dark_blue_pp": 0.0,
+      "ten": 87.981201171875,
+      "blue_improve_vs_old_pct": 100.0
+    },
+    {
+      "name": "OLD_RGB_residual",
+      "blue_res": 3.049314498901367,
+      "chrom_d": 0.06781469285488129,
+      "dark_blue_pp": 0.64239501953125,
+      "ten": 279.59051513671875,
+      "blue_improve_vs_old_pct": 0.0
+    },
+    {
+      "name": "PBI_luma",
+      "blue_res": 0.32169008255004883,
+      "chrom_d": 0.010054304264485836,
+      "dark_blue_pp": -0.0043392181396484375,
+      "ten": 275.1741943359375,
+      "blue_improve_vs_old_pct": 89.45
+    }
+  ],
+  "pbi_sha": "909b5aa2f4ac5f3f",
+  "old_sha": "205183d83144383f",
+  "same_as_poison": true
+}
