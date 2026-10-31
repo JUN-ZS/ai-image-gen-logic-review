@@ -59,13 +59,13 @@
     },
     {
       "name": "P0_B_material.png",
-      "bytes": 5294444,
-      "sha256": "2a92445d12afe4d9d166e75292657329f0f08e72a5e9dd6e5eabd44d94af701e"
+      "bytes": 5294470,
+      "sha256": "23ffe68120cc7000fe15f634c351e60b1c2311c7d0dbb5af322277f54ddd1086"
     },
     {
       "name": "P0_C_adaptive.png",
-      "bytes": 5303747,
-      "sha256": "a85ec7deaa354d8626e34c3ba4de141923b792a8e742abb08b173340a6282933"
+      "bytes": 5304457,
+      "sha256": "8d00edd517d0e7ff8c283aead44b116701d36f8f25b0e237a25f5e9c08d82e5f"
     },
     {
       "name": "P0_LP_2048.png",
@@ -79,13 +79,13 @@
     },
     {
       "name": "P1_B_material.png",
-      "bytes": 4834890,
-      "sha256": "98132cca1ba598182115747518eac062ba65a47f2f2d042084d34df833a7ce9c"
+      "bytes": 4835151,
+      "sha256": "043dd4621bb24baab24cba9508e085b0427501c7b1302714f971907e59649fa2"
     },
     {
       "name": "P1_C_adaptive.png",
-      "bytes": 4846383,
-      "sha256": "fcc89298bba662b34914b2e7be887e49da11aa796b5ebc8bd0275d77b3bf84c5"
+      "bytes": 4847545,
+      "sha256": "6a04f73a97e7f6bce01f7c66b9806537fadf7d4deb693d7674bc8a671314556d"
     },
     {
       "name": "P1_LP_2048.png",
@@ -96,21 +96,6 @@
       "name": "PEEP2_R7b_A_luma.png",
       "bytes": 14920377,
       "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505"
-    },
-    {
-      "name": "PEEP2_R7b_A_luma_for_nested.png",
-      "bytes": 14920377,
-      "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505"
-    },
-    {
-      "name": "PEEP2_R7b_B_material.png",
-      "bytes": 14920131,
-      "sha256": "ec8dd377df00ce1d7cbbe29f74049e8d9a1762e8a7c850cf40b0c8e33f872801"
-    },
-    {
-      "name": "PEEP2_R7b_C_adaptive.png",
-      "bytes": 14921226,
-      "sha256": "b59a8574cfa81921609b0e2c914bdd478de495a019b551efa1ecbcc3a60551eb"
     },
     {
       "name": "PEEP3_LP_nested_2048.png",
@@ -139,13 +124,13 @@
     },
     {
       "name": "PEEP3_origLP_B_material.png",
-      "bytes": 3056860,
-      "sha256": "7668d660350d355297deafc771952d652ed7d3bdaaec9e53ca386acecbc527bf"
+      "bytes": 3056846,
+      "sha256": "af26ab984fa3890d9c9799e5579d1f254ffb15c99c5b7c933bf69d0d36e13f1d"
     },
     {
       "name": "PEEP3_origLP_C_adaptive.png",
-      "bytes": 3096242,
-      "sha256": "40fe8d60a75ddfba4348951aeb16b9717e6969984137451968273a0324383be3"
+      "bytes": 3094475,
+      "sha256": "9a97d148708ea277ff491962e3bf41af643fec02bb9f688dc1f338804c35b14f"
     }
   ]
 }
