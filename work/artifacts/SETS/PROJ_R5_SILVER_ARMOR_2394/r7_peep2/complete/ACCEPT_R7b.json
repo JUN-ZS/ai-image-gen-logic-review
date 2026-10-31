@@ -1,0 +1,28 @@
+{
+  "round": "R7b_PEEP2_RIDGE_REGATE",
+  "option": 2,
+  "parent_round": "R7_PEEP2_1024_to_4096_FULLRES",
+  "diagnosis": "R7 align=0.425 because residual HF diffuse (multi-sigma fill) vs thin ridge thr_k=0.35; not topology fail (sn=0.993)",
+  "fix": "re-gate residual with thr_k=0.20 + dilate11 + cell kill 0.90 + power0.55",
+  "peep2": {
+    "window_on_p0_2048": [
+      708,
+      32,
+      1024,
+      1024
+    ],
+    "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_RIDGE_R7b.png",
+    "child_bytes": 15203677,
+    "child_hw": 4096,
+    "align": 0.9987025260925293,
+    "spill": 0.0012973467819392681,
+    "sn": 0.990145206451416,
+    "ten": 5159.83984375,
+    "ten_lp": 2044.4056396484375,
+    "ten_r7_raw": 4429.0703125,
+    "iron": "4096 primary lossless · ridge re-gate post residual"
+  },
+  "PASS": true,
+  "status": "ACCEPT",
+  "asof": "2026-10-31T18:41:41.758234+00:00"
+}
