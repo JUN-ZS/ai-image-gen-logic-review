@@ -1,0 +1,354 @@
+{
+  "round": "R10_1_ATOMIC_CLOSED_LOOP",
+  "runner_sha256": "80bcb8f76273c7f9322f82dc64f2d777da593a9fbce2ceae49d49f5a19a2cad7",
+  "runner_name": "run_r10_1.py",
+  "accept_sha256": "d5cca3e7e3cae3bd708b3473f8a09a298d0b7842a1181fd76a0b3a5e596c0bcd",
+  "inputs": [
+    {
+      "name": "MOTHER_SRC.jpg",
+      "bytes": 784428,
+      "sha256": "ab9edd500bc8a88571d8ffa3a1b57e75727a4220e6fd474f424eb3647fe64951"
+    },
+    {
+      "name": "P0_L0_512.png",
+      "bytes": 599996,
+      "sha256": "3dac1c645ed46216249f6edc65967efbe488976d0cdbb4031a337b2d916e8b2a"
+    },
+    {
+      "name": "P0_POISON_2048.png",
+      "bytes": 5450614,
+      "sha256": "205183d83144383f619dec2becf5977e70a52447a0bcb16cf340caedfa8136b2"
+    },
+    {
+      "name": "P1_L0_512.png",
+      "bytes": 539777,
+      "sha256": "0c682370561540250c113054d6e880469b4c890b35dde2ac56925b94c2b97ae0"
+    },
+    {
+      "name": "P1_POISON_2048.png",
+      "bytes": 4976508,
+      "sha256": "c90aa2f845964e479c63f0c478768ec7719cbf342c7c19a4444b06e2be643044"
+    },
+    {
+      "name": "PEEP2_LP_4096.png",
+      "bytes": 16089309,
+      "sha256": "7cd52f7a0fe37584755186b373ef2e18bacd9f9b51378ff7bf0c3ca31fe5a335"
+    },
+    {
+      "name": "PEEP2_POISON_R7.png",
+      "bytes": 15042012,
+      "sha256": "259e0ee44ea43a9a2ca2d9da9802e7b4de88e1845c0f5b859ef63d4460ad6c1e"
+    },
+    {
+      "name": "PEEP2_POISON_R7b.png",
+      "bytes": 15203677,
+      "sha256": "1940d7ea443aa28bb7826f02d9014c7aa6fbb77ea017f6a15a4d0162c9220677"
+    },
+    {
+      "name": "PEEP3_L0_512.jpg",
+      "bytes": 74187,
+      "sha256": "dfa7fe56e1f8629372467a152ee5caf39f415393c7c0332431ca78b2665783ab"
+    },
+    {
+      "name": "PEEP3_POISON_R8.png",
+      "bytes": 3002551,
+      "sha256": "3f42204098f42213c73b82661e3daf2bc5938b3c17c4f4d5bcc0760740ae5623"
+    }
+  ],
+  "outputs_png": [
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P0_LP_2048.png",
+      "name": "P0_LP_2048.png",
+      "bytes": 4737409,
+      "sha256": "f3e143870d7f5201e6df7f3b7abcecdce64588af63893123d92e6d07c24e4b43",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P0_A_luma.png",
+      "name": "P0_A_luma.png",
+      "bytes": 5294788,
+      "sha256": "5a53ceec340ad4b621a2db899a6b5616158914f279e071f5d7683d2b4e9c1eaf",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P0_B_material.png",
+      "name": "P0_B_material.png",
+      "bytes": 5294470,
+      "sha256": "23ffe68120cc7000fe15f634c351e60b1c2311c7d0dbb5af322277f54ddd1086",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P0_C_adaptive.png",
+      "name": "P0_C_adaptive.png",
+      "bytes": 5304457,
+      "sha256": "8d00edd517d0e7ff8c283aead44b116701d36f8f25b0e237a25f5e9c08d82e5f",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P1_LP_2048.png",
+      "name": "P1_LP_2048.png",
+      "bytes": 4279986,
+      "sha256": "b0ea3f43fe4bc24f0edcbd307cd59e5422519a1493d4c8e59b1bc6a5a092c93b",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P1_A_luma.png",
+      "name": "P1_A_luma.png",
+      "bytes": 4833461,
+      "sha256": "ccb818aba50e327f17358bd5f1419685d4d8a28fa8f48dc53f745c997ac52590",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P1_B_material.png",
+      "name": "P1_B_material.png",
+      "bytes": 4835151,
+      "sha256": "043dd4621bb24baab24cba9508e085b0427501c7b1302714f971907e59649fa2",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/P1_C_adaptive.png",
+      "name": "P1_C_adaptive.png",
+      "bytes": 4847545,
+      "sha256": "6a04f73a97e7f6bce01f7c66b9806537fadf7d4deb693d7674bc8a671314556d",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/PEEP2_R7b_A_luma.png",
+      "name": "PEEP2_R7b_A_luma.png",
+      "bytes": 14920377,
+      "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505",
+      "hw": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/PEEP3_LP_nested_2048.png",
+      "name": "PEEP3_LP_nested_2048.png",
+      "bytes": 2963556,
+      "sha256": "0d19d992a2c67a065d2b42b5079e2fef808656f2dcc19e7a6a6e87f508727f63",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/PEEP3_LP_orig_2048.png",
+      "name": "PEEP3_LP_orig_2048.png",
+      "bytes": 3013311,
+      "sha256": "a4da97ad4e34951e725c6a47b7d6463b94784e93bf23358fd286c9dace43316b",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/PEEP3_N1_DIRECT.png",
+      "name": "PEEP3_N1_DIRECT.png",
+      "bytes": 3083738,
+      "sha256": "8dd87a2c391bcfbad048163bb9ac4dd7d1840a0f442b8396fb87c43764901de8",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/PEEP3_N2_REBASE.png",
+      "name": "PEEP3_N2_REBASE.png",
+      "bytes": 3428751,
+      "sha256": "eb1d0bbb40def04ffdbc0ecf41f62629f7b10e05629c561f34d16488137401aa",
+      "hw": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/complete/PEEP3_origLP_A_luma.png",
+      "name": "PEEP3_origLP_A_luma.png",
+      "bytes": 3055573,
+      "sha256": "b1db5b2ec2a9dc8b370f771b138e8b8e2057b233daa7f8ce5e40223d683e1747",
+      "hw": [
+        2048,
+        2048
+      ]
+    }
+  ],
+  "roi_jpgs": [
+    {
+      "name": "P0_A_luma_MESH_ROI.jpg",
+      "bytes": 93654,
+      "sha256": "71b1f953e9ac2701f381cfd85677c2f43fa0ed7edeef145429f9b090165d25ac"
+    },
+    {
+      "name": "P0_A_luma_AUTO_ROI.jpg",
+      "bytes": 97592,
+      "sha256": "c21b5efc340d2d484fe8e29ddb470006751ec9cfd459c03a1a8e9e521926f2ee"
+    },
+    {
+      "name": "P0_B_material_MESH_ROI.jpg",
+      "bytes": 94066,
+      "sha256": "d9c13438036207149c23f378edb2fd771860ea517b3982f450e4c40845b7ad0c"
+    },
+    {
+      "name": "P0_B_material_AUTO_ROI.jpg",
+      "bytes": 97940,
+      "sha256": "2c039d911f9d45ee56f60b6d07713c57068660a6a962e3202888bcafd9c88a0e"
+    },
+    {
+      "name": "P0_C_adaptive_MESH_ROI.jpg",
+      "bytes": 94087,
+      "sha256": "64ae1d4b0f5348faa11bfe4a2199d32bfd2db6daaac27eae8e95ca4a97bb8d10"
+    },
+    {
+      "name": "P0_C_adaptive_AUTO_ROI.jpg",
+      "bytes": 98040,
+      "sha256": "4f56bb60bcd2ee673d461deb929393f9a1a7cef9291a42edf69422b97aaf7018"
+    },
+    {
+      "name": "P1_A_luma_MESH_ROI.jpg",
+      "bytes": 90339,
+      "sha256": "1fcfc075bfe29963c2ff20a0fe4ecab86723e18fec311f6096ff0fa48ab5832b"
+    },
+    {
+      "name": "P1_A_luma_AUTO_ROI.jpg",
+      "bytes": 94797,
+      "sha256": "a1951a9bfddd6839ee056363f7c9125bc7282d547673f9462d5205b8e20aad0c"
+    },
+    {
+      "name": "P1_B_material_MESH_ROI.jpg",
+      "bytes": 90695,
+      "sha256": "42cf2dddc36d413b6538c4ba54c468daed80c297325b8d6b00f712e13ed51e28"
+    },
+    {
+      "name": "P1_B_material_AUTO_ROI.jpg",
+      "bytes": 95157,
+      "sha256": "dfe605ffbaef91064d448930c489168e744ff61e2865404ca6e30f745305cee6"
+    },
+    {
+      "name": "P1_C_adaptive_MESH_ROI.jpg",
+      "bytes": 90811,
+      "sha256": "225607814f338f5966ef1066e36f2f18d387230a822281a14e53a1f95a773287"
+    },
+    {
+      "name": "P1_C_adaptive_AUTO_ROI.jpg",
+      "bytes": 95184,
+      "sha256": "d619d221cba7b437a85b7b8cb444535d41f4a71dac70823fef118a26a73271a6"
+    },
+    {
+      "name": "PEEP2_R7b_A_luma_MESH_ROI.jpg",
+      "bytes": 87571,
+      "sha256": "7bd6f4ca85d7c62f6b3dea4d148abb19f4643ccb08c6789a9ced2fc2c2cb0076"
+    },
+    {
+      "name": "PEEP2_R7b_A_luma_AUTO_ROI.jpg",
+      "bytes": 86568,
+      "sha256": "32b128d255f8c1df746d44c1ed6bc5e8fa8e15f493a1d5cc2bd8ffb94ebac2d8"
+    },
+    {
+      "name": "PEEP3_N1_DIRECT_MESH_ROI.jpg",
+      "bytes": 42683,
+      "sha256": "b350da7102a42ef067b105d0d50e62db497f79308cfdef19f4950b0dc49657f4"
+    },
+    {
+      "name": "PEEP3_N1_DIRECT_AUTO_ROI.jpg",
+      "bytes": 42793,
+      "sha256": "bcbb0fca83611818fed73b815f1c485677f64679310ae5c9f697595dd9cd3d5e"
+    },
+    {
+      "name": "PEEP3_N2_REBASE_MESH_ROI.jpg",
+      "bytes": 43456,
+      "sha256": "048b261dda4673883e12d3ffdfdef426cc6e2e7af44bde840d83f0a9f720fcbc"
+    },
+    {
+      "name": "PEEP3_N2_REBASE_AUTO_ROI.jpg",
+      "bytes": 43404,
+      "sha256": "007cfe51c11da9ae53f8906c9f3fa91bfdaf4aaea7b96e62888a0f4454cc0474"
+    },
+    {
+      "name": "PEEP3_origLP_A_luma_MESH_ROI.jpg",
+      "bytes": 42821,
+      "sha256": "e5db580ea70247bb805d9be9ddc53f14b7c8b4ec85ccfda9de27039e86d52c4c"
+    },
+    {
+      "name": "PEEP3_origLP_A_luma_AUTO_ROI.jpg",
+      "bytes": 43693,
+      "sha256": "51707ccf9bf55289567dbbe2c3bc336be82d3a39a460aca357342b776b32cbef"
+    }
+  ],
+  "job_plan": [
+    {
+      "tag": "P0",
+      "method": "A_luma"
+    },
+    {
+      "tag": "P0",
+      "method": "B_material"
+    },
+    {
+      "tag": "P0",
+      "method": "C_adaptive"
+    },
+    {
+      "tag": "P1",
+      "method": "A_luma"
+    },
+    {
+      "tag": "P1",
+      "method": "B_material"
+    },
+    {
+      "tag": "P1",
+      "method": "C_adaptive"
+    },
+    {
+      "tag": "PEEP2_R7b",
+      "method": "A_luma"
+    },
+    {
+      "tag": "PEEP2_R7b",
+      "method": "B_material"
+    },
+    {
+      "tag": "PEEP2_R7b",
+      "method": "C_adaptive"
+    },
+    {
+      "tag": "PEEP3",
+      "method": "N1_DIRECT"
+    },
+    {
+      "tag": "PEEP3",
+      "method": "N2_REBASE"
+    },
+    {
+      "tag": "PEEP3_origLP",
+      "method": "A_luma"
+    }
+  ],
+  "n_jobs": 12,
+  "asof": "2026-10-31T20:26:44.144121+00:00"
+}
