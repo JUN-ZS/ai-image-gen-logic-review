@@ -1,0 +1,101 @@
+name: R10.1 clean verify from Release
+
+on:
+  workflow_dispatch:
+  # optional: also on push of runner path
+  push:
+    paths:
+      - 'work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/run_r10_1.py'
+      - 'work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_1_blue_validate/verify_r10_1.py'
+      - '.github/workflows/r10_1_clean_verify.yml'
+
+env:
+  TAG: r10-1-atomic-closed-loop
+
+jobs:
+  clean-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install opencv-python-headless numpy
+
+      - name: Download release package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p work && cd work
+          gh release download "$TAG" --repo "${{ github.repository }}" \
+            --pattern 'run_r10_1.py' \
+            --pattern 'verify_r10_1.py' \
+            --pattern 'INPUTS_R10_1.tar.gz' \
+            --pattern 'ACCEPT_R10_1.json'
+          mkdir -p inputs complete roi preview
+          tar -xzf INPUTS_R10_1.tar.gz -C inputs
+          cp ACCEPT_R10_1.json ACCEPT_R10_1_FROM_RELEASE.json
+
+      - name: Run runner
+        working-directory: work
+        run: python3 -u run_r10_1.py | tee CLEAN_RUN.log
+
+      - name: Verify
+        working-directory: work
+        run: |
+          python3 verify_r10_1.py . | tee VERIFY_PASS.log
+          # PNG determinism vs release ACCEPT
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          acc=json.loads(Path('ACCEPT_R10_1.json').read_text())
+          rel=json.loads(Path('ACCEPT_R10_1_FROM_RELEASE.json').read_text())
+          assert acc['runner']['sha256']==rel['runner']['sha256'], 'runner sha drift'
+          n=0
+          for j in acc['jobs']:
+            if j['status']!='OK': continue
+            rj=next(x for x in rel['jobs'] if x.get('tag')==j['tag'] and x.get('method')==j['method'])
+            assert j['sha256']==rj['sha256'], (j['tag'], j['method'])
+            n+=1
+          print(f'PNG_DETERMINISM_PASS {n}')
+          PY
+
+      - name: Write CI report
+        working-directory: work
+        run: |
+          {
+            echo "# R10.1 CLEAN CHECKOUT VERIFY (GitHub Actions)"
+            echo
+            echo "- repo: ${{ github.repository }}"
+            echo "- ref: ${{ github.sha }}"
+            echo "- run: ${{ github.run_id }}"
+            echo "- tag: $TAG"
+            echo
+            echo '## VERIFY'
+            cat VERIFY_PASS.log
+            echo
+            echo '## RUN TAIL'
+            tail -40 CLEAN_RUN.log
+          } > VERIFY_CI_PASS.md
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: r10-1-clean-verify
+          path: |
+            work/VERIFY_CI_PASS.md
+            work/VERIFY_PASS.log
+            work/CLEAN_RUN.log
+            work/ACCEPT_R10_1.json
+            work/complete/MANIFEST_SHA256_R10_1.json
+
+      - name: Attach logs to Release
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        working-directory: work
+        run: |
+          gh release upload "$TAG" VERIFY_CI_PASS.md VERIFY_PASS.log CLEAN_RUN.log \
+            --repo "${{ github.repository }}" --clobber
