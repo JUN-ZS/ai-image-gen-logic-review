@@ -1,0 +1,70 @@
+{
+  "round": "R6c_NCNN_ACCEL_GENERAL_FIXED",
+  "option": 3,
+  "constitution": "§0.12.56",
+  "bench": {
+    "mae_ncnn_vs_pt": 1.52587890625e-05,
+    "ms_pt": 56.24341169993083,
+    "ms_ncnn": 31.544343630472824,
+    "speedup": 1.78,
+    "pixel_api": "PIXEL_RGB after BGR2RGB (BGR2RGB flag was poison)",
+    "vulkan": "unavailable · pyncnn CPU via pnnx"
+  },
+  "peeps": [
+    {
+      "tag": "P0",
+      "xy": [
+        300,
+        693
+      ],
+      "meta": {
+        "n_probes": 24,
+        "align": 0.9805541038513184,
+        "spill": 0.01944594271481037,
+        "ten": 15698.2353515625,
+        "sn": 0.979321300983429,
+        "infer_s": 0.89,
+        "engine": "NCNN_GENERAL_x4v3_PIXEL_RGB",
+        "vs_r6b_pt": {
+          "mae": 5.046526590983073e-05,
+          "sn": 1.000001311302185
+        }
+      },
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_GENERAL_R6c.png",
+      "bytes": 5450614,
+      "PASS": true
+    },
+    {
+      "tag": "P1",
+      "xy": [
+        318,
+        180
+      ],
+      "meta": {
+        "n_probes": 24,
+        "align": 0.9807970523834229,
+        "spill": 0.019203029572963715,
+        "ten": 13954.5712890625,
+        "sn": 0.980571985244751,
+        "infer_s": 1.22,
+        "engine": "NCNN_GENERAL_x4v3_PIXEL_RGB",
+        "vs_r6b_pt": {
+          "mae": 2.4398167928059895e-05,
+          "sn": 1.0000008344650269
+        }
+      },
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_GENERAL_R6c.png",
+      "bytes": 4976508,
+      "PASS": true
+    }
+  ],
+  "n_accept": 2,
+  "status": "ACCEPT",
+  "poison_fixed": "E-R6C-01: ncnn Mat PIXEL_BGR2RGB 毒色 · 改 PIXEL_RGB + 先 BGR→RGB",
+  "limits": [
+    "no Vulkan GPU binary",
+    "workspace noexec on official zip",
+    "pyncnn CPU only"
+  ],
+  "asof": "2026-10-31T18:12:14.577071+00:00"
+}
