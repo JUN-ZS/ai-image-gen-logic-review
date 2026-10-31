@@ -98,6 +98,16 @@
       "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505"
     },
     {
+      "name": "PEEP2_R7b_B_material.png",
+      "bytes": 4956160,
+      "sha256": "fdcbd9136f9050f3338f814dbccee0d0ee6af95986143992cb1a8457cf9a4f61"
+    },
+    {
+      "name": "PEEP2_R7b_C_adaptive.png",
+      "bytes": 14826808,
+      "sha256": "b204fcdf6f22a9962d6ec3bed31df3223510b132fcff66784b7fdba40edc8d6f"
+    },
+    {
       "name": "PEEP3_LP_nested_2048.png",
       "bytes": 2963556,
       "sha256": "0d19d992a2c67a065d2b42b5079e2fef808656f2dcc19e7a6a6e87f508727f63"
