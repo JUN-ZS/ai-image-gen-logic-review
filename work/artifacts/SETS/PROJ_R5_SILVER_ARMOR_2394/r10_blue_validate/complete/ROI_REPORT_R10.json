@@ -3,10 +3,15 @@
     "tag": "P0",
     "method": "A_luma",
     "PASS_FORMAL": true,
+    "roi": [
+      256,
+      384,
+      256,
+      256
+    ],
     "roi_ab_improve_pct": 61.45,
     "roi_blue_opp_improve_pct": 89.82,
     "ten_keep_pct": 99.54,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/P0_A_luma.png",
     "sha256": "5a53ceec340ad4b621a2db899a6b5616158914f279e071f5d7683d2b4e9c1eaf"
   },
@@ -14,10 +19,15 @@
     "tag": "P0",
     "method": "B_material",
     "PASS_FORMAL": true,
+    "roi": [
+      256,
+      384,
+      256,
+      256
+    ],
     "roi_ab_improve_pct": 61.24,
     "roi_blue_opp_improve_pct": 91.47,
     "ten_keep_pct": 99.55,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/P0_B_material.png",
     "sha256": "23ffe68120cc7000fe15f634c351e60b1c2311c7d0dbb5af322277f54ddd1086"
   },
@@ -25,21 +35,31 @@
     "tag": "P0",
     "method": "C_adaptive",
     "PASS_FORMAL": true,
-    "roi_ab_improve_pct": 57.9,
-    "roi_blue_opp_improve_pct": 83.36,
+    "roi": [
+      256,
+      384,
+      256,
+      256
+    ],
+    "roi_ab_improve_pct": 58.15,
+    "roi_blue_opp_improve_pct": 83.47,
     "ten_keep_pct": 99.68,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/P0_C_adaptive.png",
-    "sha256": "8d00edd517d0e7ff8c283aead44b116701d36f8f25b0e237a25f5e9c08d82e5f"
+    "sha256": "be47d5df4df13989484550a90f027a64940f25cb5e5e6ad45f50127eacaa7cb4"
   },
   {
     "tag": "P1",
     "method": "A_luma",
     "PASS_FORMAL": true,
+    "roi": [
+      1792,
+      1280,
+      256,
+      256
+    ],
     "roi_ab_improve_pct": 51.2,
     "roi_blue_opp_improve_pct": 90.26,
     "ten_keep_pct": 99.57,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/P1_A_luma.png",
     "sha256": "ccb818aba50e327f17358bd5f1419685d4d8a28fa8f48dc53f745c997ac52590"
   },
@@ -47,10 +67,15 @@
     "tag": "P1",
     "method": "B_material",
     "PASS_FORMAL": true,
+    "roi": [
+      1792,
+      1280,
+      256,
+      256
+    ],
     "roi_ab_improve_pct": 50.9,
     "roi_blue_opp_improve_pct": 83.82,
     "ten_keep_pct": 99.58,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/P1_B_material.png",
     "sha256": "043dd4621bb24baab24cba9508e085b0427501c7b1302714f971907e59649fa2"
   },
@@ -58,54 +83,47 @@
     "tag": "P1",
     "method": "C_adaptive",
     "PASS_FORMAL": true,
-    "roi_ab_improve_pct": 46.79,
-    "roi_blue_opp_improve_pct": 84.79,
+    "roi": [
+      1792,
+      1280,
+      256,
+      256
+    ],
+    "roi_ab_improve_pct": 47.02,
+    "roi_blue_opp_improve_pct": 84.95,
     "ten_keep_pct": 99.67,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/P1_C_adaptive.png",
-    "sha256": "6a04f73a97e7f6bce01f7c66b9806537fadf7d4deb693d7674bc8a671314556d"
+    "sha256": "d8f5961760cd82b272593eaed915d044d8eb7da0a2e20daca321bf7ec2876f43"
   },
   {
     "tag": "PEEP2_R7b",
     "method": "A_luma",
-    "PASS_FORMAL": false,
-    "roi_ab_improve_pct": 51.53,
-    "roi_blue_opp_improve_pct": 85.85,
-    "ten_keep_pct": 98.81,
-    "scope": "FULL",
+    "PASS_FORMAL": true,
+    "roi": [
+      2304,
+      1664,
+      512,
+      512
+    ],
+    "roi_ab_improve_pct": 50.12,
+    "roi_blue_opp_improve_pct": 85.81,
+    "ten_keep_pct": 98.82,
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP2_R7b_A_luma.png",
     "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505"
-  },
-  {
-    "tag": "PEEP2_R7b",
-    "method": "B_material",
-    "PASS_FORMAL": false,
-    "roi_ab_improve_pct": 51.03,
-    "roi_blue_opp_improve_pct": 75.92,
-    "ten_keep_pct": 98.81,
-    "scope": "ROI_paste",
-    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP2_R7b_B_material.png",
-    "sha256": "160aed30bf24aa9e28cd6c8b4657d37a542b74d16a2491a4bf4dabf3d4d1fee8"
-  },
-  {
-    "tag": "PEEP2_R7b",
-    "method": "C_adaptive",
-    "PASS_FORMAL": true,
-    "roi_ab_improve_pct": 46.11,
-    "roi_blue_opp_improve_pct": 67.94,
-    "ten_keep_pct": 98.9,
-    "scope": "ROI_paste",
-    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP2_R7b_C_adaptive.png",
-    "sha256": "b204fcdf6f22a9962d6ec3bed31df3223510b132fcff66784b7fdba40edc8d6f"
   },
   {
     "tag": "PEEP3",
     "method": "N1_DIRECT",
     "PASS_FORMAL": true,
+    "roi": [
+      1792,
+      384,
+      256,
+      256
+    ],
     "roi_ab_improve_pct": 84.58,
     "roi_blue_opp_improve_pct": 80.75,
     "ten_keep_pct": 98.04,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP3_N1_DIRECT.png",
     "sha256": "8dd87a2c391bcfbad048163bb9ac4dd7d1840a0f442b8396fb87c43764901de8"
   },
@@ -113,10 +131,15 @@
     "tag": "PEEP3",
     "method": "N2_REBASE",
     "PASS_FORMAL": true,
+    "roi": [
+      1792,
+      384,
+      256,
+      256
+    ],
     "roi_ab_improve_pct": 86.24,
     "roi_blue_opp_improve_pct": 68.84,
     "ten_keep_pct": 97.92,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP3_N2_REBASE.png",
     "sha256": "eb1d0bbb40def04ffdbc0ecf41f62629f7b10e05629c561f34d16488137401aa"
   },
@@ -124,33 +147,16 @@
     "tag": "PEEP3_origLP",
     "method": "A_luma",
     "PASS_FORMAL": false,
+    "roi": [
+      1792,
+      384,
+      256,
+      256
+    ],
     "roi_ab_improve_pct": 67.06,
     "roi_blue_opp_improve_pct": 31.25,
     "ten_keep_pct": 98.96,
-    "scope": "FULL",
     "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP3_origLP_A_luma.png",
     "sha256": "b1db5b2ec2a9dc8b370f771b138e8b8e2057b233daa7f8ce5e40223d683e1747"
-  },
-  {
-    "tag": "PEEP3_origLP",
-    "method": "B_material",
-    "PASS_FORMAL": false,
-    "roi_ab_improve_pct": 62.37,
-    "roi_blue_opp_improve_pct": -10.8,
-    "ten_keep_pct": 98.97,
-    "scope": "FULL",
-    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP3_origLP_B_material.png",
-    "sha256": "af26ab984fa3890d9c9799e5579d1f254ffb15c99c5b7c933bf69d0d36e13f1d"
-  },
-  {
-    "tag": "PEEP3_origLP",
-    "method": "C_adaptive",
-    "PASS_FORMAL": false,
-    "roi_ab_improve_pct": 62.31,
-    "roi_blue_opp_improve_pct": 25.86,
-    "ten_keep_pct": 99.07,
-    "scope": "FULL",
-    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_blue_validate/complete/PEEP3_origLP_C_adaptive.png",
-    "sha256": "9a97d148708ea277ff491962e3bf41af643fec02bb9f688dc1f338804c35b14f"
   }
 ]
