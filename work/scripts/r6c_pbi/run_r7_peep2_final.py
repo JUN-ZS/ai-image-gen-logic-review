@@ -24,6 +24,8 @@ for d in (COMP, BENCH, PEEP):
 TILE, S, GAIN = 64, 4, 1.10
 # PBI default: PREVENT BLUE INJECTION
 PBI_MODE = "luma_only"  # "luma_only" | "legacy_rgb"
+# GitHub path (this branch): work/scripts/r6c_pbi/run_r7_peep2_final.py
+REPO_SCRIPT = "work/scripts/r6c_pbi/run_r7_peep2_final.py"
 PBI_DOC = "hyb = C(LP)×(Y_LP + ridge(dY)); multi_sigma on Y only"
 
 def to_y_bgr(bgr):
@@ -408,8 +410,8 @@ def main():
         asof=datetime.now(timezone.utc).isoformat(),
         elapsed_s=round(time.time() - t_all, 2),
     )
-    (COMP / "ACCEPT_R7.json").write_text(json.dumps(accept, indent=2, ensure_ascii=False))
-    (OUT / "LOG_R7.md").write_text(f"""# R7 · ② PEEP2 更細 1024→4096
+    (COMP / "ACCEPT_R7_PBI.json").write_text(json.dumps(accept, indent=2, ensure_ascii=False))
+    (OUT / "LOG_R7_PBI.md").write_text(f"""# R7 · ② PEEP2 更細 1024→4096
 
 ## 鐵序
 P0 2048 高能窗 1024 → NCNN 4× residual → **4096 原生子板**（禁縮回 1024 當主）

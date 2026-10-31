@@ -29,7 +29,9 @@ for d in (OUT/"bench", OUT/"child", COMP):
 TILE, S, GAIN, TILE_N = 64, 4, 1.10, 24
 # PBI default: PREVENT BLUE INJECTION — luma-only residual · lock LP chroma
 # modes: "luma_only" (default) | "legacy_rgb" (poison) | "chroma_guard"
-PBI_MODE = "luma_only"
+PBI_MODE = "luma_only"  # "luma_only" | "legacy_rgb"
+# GitHub path (this branch): work/scripts/r6c_pbi/run_r6c_ncnn.py
+REPO_SCRIPT = "work/scripts/r6c_pbi/run_r6c_ncnn.py"
 PBI_DOC = "hyb = C(LP)×(Y_LP + ridge(dY)); multi_sigma on Y only; no RGB chroma residual"
 
 def to_y_bgr(bgr):
@@ -394,8 +396,8 @@ def main():
         asof=datetime.now(timezone.utc).isoformat(),
         elapsed_s=round(time.time()-t0,2),
     )
-    (COMP/'ACCEPT_R6c.json').write_text(json.dumps(accept, indent=2, ensure_ascii=False))
-    Path('/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c.md').write_text(
+    (COMP/'ACCEPT_R6c_PBI.json').write_text(json.dumps(accept, indent=2, ensure_ascii=False))
+    Path('/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md').write_text(
         f"""# R6c · NCNN 加速 GENERAL（選項 ③）
 
 ## 環境限制

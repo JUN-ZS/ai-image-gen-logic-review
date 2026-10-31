@@ -8,19 +8,34 @@
     "pbi_blue_res": 0.322,
     "improve_pct": 89.45,
     "old_chrom_d": 0.068,
-    "pbi_chrom_d": 0.010
+    "pbi_chrom_d": 0.01
   },
   "r7": "PARTIAL · sn 0.993 · align 0.544 < 0.65 (Y-ridge align scale differs; structure OK)",
   "outputs": {
-    "P0": "r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
-    "P1": "r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
-    "PEEP2": "r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png"
+    "P0": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
+    "P1": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
+    "PEEP2": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png",
+    "ACCEPT": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json",
+    "LOG": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md",
+    "SHA256SUMS": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt"
   },
   "scripts": {
-    "r6c": "tmp/run_r6c_ncnn.py PBI_MODE=luma_only",
-    "r7": "tmp/run_r7_peep2_final.py PBI_MODE=luma_only",
-    "backup": "*.bak_pre_pbi"
+    "r6c": "work/scripts/r6c_pbi/run_r6c_ncnn.py PBI_MODE=luma_only",
+    "r7": "work/scripts/r6c_pbi/run_r7_peep2_final.py PBI_MODE=luma_only",
+    "note": "paths relative to this branch root (feat/r6c-ncnn-pbi-luma); sandbox also had /workspace/artifacts/tmp copies at run time"
   },
   "merge_main": "NO",
-  "asof": "2026-10-31T22:09:00Z"
+  "asof": "2026-10-31T22:09:00Z",
+  "repro": {
+    "clean_checkout_full_rerun": false,
+    "missing_in_branch": [
+      "NCNN model weights",
+      "LP parent inputs",
+      "GENERAL poison boards",
+      "/workspace absolute env"
+    ],
+    "what_this_branch_proves": "binary deliverables + PBI runners + reports on GitHub for image/code review"
+  },
+  "audit_fix_asof": "2026-10-31T23:09:53Z",
+  "r7_status": "PARTIAL · align 0.544 < 0.65 · FAIL formal R7"
 }

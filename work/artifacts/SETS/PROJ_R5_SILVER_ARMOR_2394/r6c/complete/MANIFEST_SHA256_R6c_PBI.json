@@ -1,51 +1,71 @@
 {
-  "round": "R6c_NCNN_PBI_LUMA_DEFAULT",
+  "bundle": "R6c_NCNN_PBI_LUMA",
   "branch": "feat/r6c-ncnn-pbi-luma",
-  "merge_main": "NO",
-  "files": {
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json": {
-      "sha256": "4d1f1954c98b4ec58bfc1e78c3b74127e4e842e242de302092d610db58bddf64",
-      "bytes": 930
-    },
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/MANIFEST_SHA256_R6c_PBI.json": {
-      "sha256": "f04c193055b230f596fa8e24aabf74a933fc6c15d0b091b78462f01b13847dfb",
-      "bytes": 3590
-    },
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png": {
+  "base_commit": "cc9c113417ab62b4d6b8c170cb66d51726f278ad",
+  "asof": "2026-10-31T23:09:54.671853+00:00",
+  "rule": "MANIFEST does NOT list its own sha256 (no circular self-hash). Verify with SHA256SUMS_PBI.txt sidecar.",
+  "sha256sums_sidecar": {
+    "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt",
+    "sha256": "2d7e5faf9dfa77f222b4d26e80690301889490dc6f22218d654ca23736adc269",
+    "bytes": 1343
+  },
+  "entries": [
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
       "sha256": "909b5aa2f4ac5f3fa178195b1cd0583fe3a82f9a907ca8fb2b7fc3d8cd18935d",
       "bytes": 5311845
     },
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PBI_PREVIEW_512.jpg": {
-      "sha256": "a60d935e4e3ef91a9af52e1037507e20217ded965b99d12dd93c9811f14e311d",
-      "bytes": 126024
-    },
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png": {
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
       "sha256": "c329904d4b597678e83235c3262cf972a67f4b2b607cf0ac8895919eb18ebe30",
       "bytes": 4738588
     },
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_PBI_PREVIEW_512.jpg": {
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PBI_PREVIEW_512.jpg",
+      "sha256": "a60d935e4e3ef91a9af52e1037507e20217ded965b99d12dd93c9811f14e311d",
+      "bytes": 126024
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_PBI_PREVIEW_512.jpg",
       "sha256": "5fcc71ca563d1ac6ded7550c3ad87f84f912e05f0833e9362d984cc5d6d8d9cd",
       "bytes": 105492
     },
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md": {
-      "sha256": "2ec4f97f4d730ea826c3a6e5d7b8493561eeb81d9ff867812ef1db3e83a18584",
-      "bytes": 1329
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json",
+      "sha256": "15461323ca1e50e275edeb28a5c284a3a5abb3881721502900de0b21fa528b33",
+      "bytes": 1909
     },
-    "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png": {
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md",
+      "sha256": "9f04ca62c6dc7bc1befc43b38a261edb9e12462d1869369ee3b82810bce3d174",
+      "bytes": 1870
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png",
       "sha256": "b001cbd62c5135e1fc6e89dda05d4c241fa6a4b6a89eb3cc49d722f061a55011",
       "bytes": 14473338
     },
-    "work/scripts/r6c_pbi/run_r6c_ncnn.py": {
-      "sha256": "8057420105a15e3fde8b42131371f7e3bcbae4a258c774634e6c9efadf417c95",
-      "bytes": 18553
+    {
+      "path": "work/scripts/r6c_pbi/run_r6c_ncnn.py",
+      "sha256": "87ef2668037563769f328885bd3245c285ab66143149a207258dc18da87f5036",
+      "bytes": 18710
     },
-    "work/scripts/r6c_pbi/run_r7_peep2_final.py": {
-      "sha256": "3eb64f3f00b3ef02b9e20ff2d0d43c09158ea7ff7e8d505694afe2dc683fec08",
-      "bytes": 18353
+    {
+      "path": "work/scripts/r6c_pbi/run_r7_peep2_final.py",
+      "sha256": "7b589a96694b5516475fb146ff36e78043c0238d801a46987ed63bf8437a7c2e",
+      "bytes": 18492
     },
-    "README_R6c_PBI.md": {
+    {
+      "path": "README_R6c_PBI.md",
       "sha256": "ff4c5f002a1d5bfa135c6a7da4e40a8502c1ec9dd7cd6f3100f7eeb776db494d",
       "bytes": 1036
     }
+  ],
+  "gates_honest": {
+    "P0_P1_structure": "ACCEPT",
+    "blue_vs_old_P0_improve_pct_report": 89.45,
+    "R7": "PARTIAL align 0.544 FAIL formal",
+    "merge_main": "NO",
+    "clean_checkout_rerun": false
   }
 }

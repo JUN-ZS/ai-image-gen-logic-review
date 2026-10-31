@@ -28,3 +28,11 @@ See `work/artifacts/.../r6c/complete/MANIFEST_SHA256_R6c_PBI.json`
 - P0/P1: ACCEPT structure (align/sn)
 - Blue residual vs old GENERAL: −89.5% (same peep metric)
 - R7: PARTIAL (sn 0.993, align 0.544 < 0.65 Y-ridge scale)
+
+
+## Audit fix (follow-up, keep branch)
+
+- ACCEPT scripts → `work/scripts/r6c_pbi/*`
+- Runners write `*_PBI` ACCEPT/LOG names
+- SHA256: `SHA256SUMS_PBI.txt` sidecar; MANIFEST **no self-hash**
+- R7 still PARTIAL · merge main **NO** · clean-checkout full rerun **not claimed**

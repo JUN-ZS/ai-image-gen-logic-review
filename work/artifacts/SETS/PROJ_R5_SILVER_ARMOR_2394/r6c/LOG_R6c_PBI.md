@@ -35,3 +35,16 @@
 - metal mask 仍啟發式 peep 窗（非 SAM2 人審）
 - 不 merge main
 - 舊 GENERAL 檔保留作毒對照；新檔名 `*_PBI_*`
+
+
+## 審計修正（cc9c113 後 follow-up · 不推翻分支）
+
+| 問題 | 修法 |
+|------|------|
+| ACCEPT `scripts` 指 `tmp/…` | 改為 `work/scripts/r6c_pbi/…` |
+| runner 寫 `ACCEPT_R6c.json` | 改寫 `ACCEPT_R6c_PBI.json` / `LOG_R6c_PBI.md` |
+| Manifest 自含 SHA 循環 | 改：entries 不含 manifest 自身 · sidecar `SHA256SUMS_PBI.txt` |
+| 乾淨 checkout 一鍵重現 | **仍未** · 缺 NCNN 權重／LP 輸入 · 本分支只證「產物上 GitHub」 |
+| R7 | 仍 PARTIAL align 0.544 · 不升格 |
+
+**Merge main: NO**

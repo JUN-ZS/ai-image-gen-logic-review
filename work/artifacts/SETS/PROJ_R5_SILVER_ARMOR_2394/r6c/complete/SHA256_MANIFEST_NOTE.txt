@@ -1,0 +1,3 @@
+# SHA of MANIFEST file itself (sidecar only · not inside MANIFEST entries)
+3b7497fad8d91bf6828533fd20d3f5a2ed18853ddb1101d785291bba8667aaff  work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/MANIFEST_SHA256_R6c_PBI.json
+2d7e5faf9dfa77f222b4d26e80690301889490dc6f22218d654ca23736adc269  work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt
