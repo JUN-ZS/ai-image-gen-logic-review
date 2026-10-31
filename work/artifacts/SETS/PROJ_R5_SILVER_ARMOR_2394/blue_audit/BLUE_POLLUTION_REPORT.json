@@ -1,0 +1,71 @@
+{
+  "finding": "BLUE noise/color pollution CONFIRMED on NCNN RGB residual path",
+  "evidence": [
+    "chroma residual abs mean B≈1.03 vs G≈0.26 (B 4× G) — systematic blue chroma",
+    "dark_blue_frac LP 0.447 → P0 0.490 (+4.3pp new blotches)",
+    "user ref right panel shows navy blotches on mesh cells (green circles)",
+    "scene ambient teal/blue bleeds into HF residual via full-RGB inject + multi-sigma fill"
+  ],
+  "root_causes": [
+    "E-BLUE-01: residual = full BGR (model SR - LP), not luma-only → chroma drift",
+    "E-BLUE-02: multi-sigma fill spreads ambient blue into mesh cells",
+    "E-BLUE-03: ridge gate is magnitude-only · does not kill chroma spill",
+    "E-BLUE-04: teal BG / cool fill light in mother amplifies blue bias in SR model"
+  ],
+  "NOT": [
+    "not topology drift (sn high)",
+    "not pure random noise — structured navy blotches in mesh openings",
+    "not only display soft preview — present on native 2048 child"
+  ],
+  "detox": {
+    "FIX1_luma_only": {
+      "name": "FIX1",
+      "be_mean": 6.3929338455200195,
+      "be_p95": 13.0,
+      "dark_blue_frac": 0.45052552223205566,
+      "BminusG": 6.122007369995117,
+      "ten": 15641.451171875,
+      "recommend": true
+    },
+    "FIX2_chroma005": {
+      "name": "FIX2",
+      "be_mean": 6.553407669067383,
+      "be_p95": 13.0,
+      "dark_blue_frac": 0.47381114959716797,
+      "BminusG": 6.272096633911133,
+      "ten": 15657.662109375
+    },
+    "FIX3_blue_gate": {
+      "name": "FIX3",
+      "be_mean": 6.5119781494140625,
+      "be_p95": 13.0,
+      "dark_blue_frac": 0.4702296257019043,
+      "BminusG": 6.167158126831055,
+      "ten": 15677.4853515625
+    },
+    "baseline_P0": {
+      "name": "P0",
+      "be_mean": 6.969941139221191,
+      "be_p95": 13.0,
+      "dark_blue_frac": 0.4902982711791992,
+      "BminusG": 6.6891632080078125,
+      "ten": 15698.2353515625
+    },
+    "baseline_LP": {
+      "name": "LP",
+      "be_mean": 6.560013771057129,
+      "be_p95": 12.0,
+      "dark_blue_frac": 0.4473381042480469,
+      "BminusG": 6.271247863769531,
+      "ten": 5473.46826171875
+    }
+  },
+  "iron_rule_new": "4x residual MUST be luma-primary: inject dY only · lock LP chroma (or chroma residual ≤5%)",
+  "constitution_code": [
+    "E-BLUE-01",
+    "E-BLUE-02",
+    "E-BLUE-03",
+    "E-BLUE-04"
+  ],
+  "asof": "2026-10-31T19:00:51.494627+00:00"
+}
