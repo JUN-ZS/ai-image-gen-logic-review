@@ -1,71 +1,96 @@
 {
-  "bundle": "R6c_NCNN_PBI_LUMA",
+  "bundle": "R6c_NCNN_PBI_LUMA_G7G8",
   "branch": "feat/r6c-ncnn-pbi-luma",
-  "base_commit": "cc9c113417ab62b4d6b8c170cb66d51726f278ad",
-  "asof": "2026-10-31T23:09:54.671853+00:00",
-  "rule": "MANIFEST does NOT list its own sha256 (no circular self-hash). Verify with SHA256SUMS_PBI.txt sidecar.",
+  "image_generation": "THIS_RUN",
+  "asof": "2026-10-31T23:36:58.779351+00:00",
+  "rule": "MANIFEST entries exclude self; verify SHA256SUMS_PBI.txt",
   "sha256sums_sidecar": {
     "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt",
-    "sha256": "2d7e5faf9dfa77f222b4d26e80690301889490dc6f22218d654ca23736adc269",
-    "bytes": 1343
+    "sha256": "70461e02c8870fe59219b8da16f652fdeb0578a8abc254299a611eb4b784f41d",
+    "bytes": 2042
   },
   "entries": [
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
-      "sha256": "909b5aa2f4ac5f3fa178195b1cd0583fe3a82f9a907ca8fb2b7fc3d8cd18935d",
-      "bytes": 5311845
+      "sha256": "33fd1fd873af92f8790378f80cc41716119740bfe0c33cd961a17c3643268ace",
+      "bytes": 5443210
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
-      "sha256": "c329904d4b597678e83235c3262cf972a67f4b2b607cf0ac8895919eb18ebe30",
-      "bytes": 4738588
+      "sha256": "7d48872ba8b82c6d19afe6687499490f1b484225aaeb10412272591585813430",
+      "bytes": 4890481
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PROOF.jpg",
+      "sha256": "c28f9d48860d8db86d0debac4cb52ac61575adc40cd1c3a9b6981ac15a70853d",
+      "bytes": 59881
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_PROOF.jpg",
+      "sha256": "ed094537aed74a43cc26d53b31cd6a78f925532dc470275ee055f92581072c52",
+      "bytes": 51179
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_DIFF.jpg",
+      "sha256": "63a1823c723bd76c4205df5a8fc823f2d6c3dbca0bff1cc161f7ee2667f90b6e",
+      "bytes": 76555
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_DIFF.jpg",
+      "sha256": "89e2923c468e4b98900cc6c7c1cbffdce0c612e1ef0ff1c6a4783dccc7d19551",
+      "bytes": 66277
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PBI_PREVIEW_512.jpg",
-      "sha256": "a60d935e4e3ef91a9af52e1037507e20217ded965b99d12dd93c9811f14e311d",
-      "bytes": 126024
+      "sha256": "9c15830836e3b00800446591f9b10f487aad8acd4cb3d237fa3773f3101831c9",
+      "bytes": 125514
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_PBI_PREVIEW_512.jpg",
-      "sha256": "5fcc71ca563d1ac6ded7550c3ad87f84f912e05f0833e9362d984cc5d6d8d9cd",
-      "bytes": 105492
+      "sha256": "12eb0df956cc5e6a0881d7cf1b2883d634f3700d473084cba3300cd66f554c6b",
+      "bytes": 105215
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json",
-      "sha256": "15461323ca1e50e275edeb28a5c284a3a5abb3881721502900de0b21fa528b33",
-      "bytes": 1909
+      "sha256": "4da1c74c26eece58d824bb6184d53840bbd1811b07f4b39a4d1383f37def999c",
+      "bytes": 3636
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md",
-      "sha256": "9f04ca62c6dc7bc1befc43b38a261edb9e12462d1869369ee3b82810bce3d174",
-      "bytes": 1870
+      "sha256": "1c44374c398bf3b2cddb442acca1895f5341e10ee999a121baf338de7924d411",
+      "bytes": 301
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png",
-      "sha256": "b001cbd62c5135e1fc6e89dda05d4c241fa6a4b6a89eb3cc49d722f061a55011",
-      "bytes": 14473338
+      "sha256": "636c99cabce431720ff3a5b7a223e70e994a823b7f44ec6a3ea36820832a3936",
+      "bytes": 15859410
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/ACCEPT_R7_PBI.json",
+      "sha256": "9069ea0ed102d54d6be5ac4a6325544f12eced869daaf844aa31f8a510dc1877",
+      "bytes": 1141
     },
     {
       "path": "work/scripts/r6c_pbi/run_r6c_ncnn.py",
-      "sha256": "87ef2668037563769f328885bd3245c285ab66143149a207258dc18da87f5036",
-      "bytes": 18710
+      "sha256": "6840681277d00c91fc4ec6f587f3378579235fea9c0bf78377c951f2886c848e",
+      "bytes": 24742
     },
     {
       "path": "work/scripts/r6c_pbi/run_r7_peep2_final.py",
-      "sha256": "7b589a96694b5516475fb146ff36e78043c0238d801a46987ed63bf8437a7c2e",
-      "bytes": 18492
+      "sha256": "d9bd45a59307c3bc6ec4c5f629fb1978ff0c61ca1b5332ca0ddc76211108febb",
+      "bytes": 19075
     },
     {
       "path": "README_R6c_PBI.md",
-      "sha256": "ff4c5f002a1d5bfa135c6a7da4e40a8502c1ec9dd7cd6f3100f7eeb776db494d",
-      "bytes": 1036
+      "sha256": "86d2067a2e2e5932409b61f03f8e3f41622f1aeb99e8e5a8e69efebe7bb11f38",
+      "bytes": 606
     }
   ],
   "gates_honest": {
-    "P0_P1_structure": "ACCEPT",
-    "blue_vs_old_P0_improve_pct_report": 89.45,
-    "R7": "PARTIAL align 0.544 FAIL formal",
-    "merge_main": "NO",
-    "clean_checkout_rerun": false
+    "P0_P1_struct": "PASS",
+    "G7": "PASS",
+    "G8": "FAIL",
+    "R7": "PARTIAL",
+    "merge_main": "NO"
   }
 }

@@ -1,41 +1,125 @@
 {
   "round": "R6c_NCNN_PBI_LUMA_DEFAULT",
-  "change": "PBI default residual in run_r6c_ncnn.py + run_r7_peep2_final.py",
-  "formula": "hyb = C(LP) * (Y_LP + ridge(multi_sigma_Y(dY))); no RGB residual inject",
-  "P0_P1": "ACCEPT align/sn (structure gates)",
-  "blue_vs_old_P0": {
-    "old_blue_res": 3.049,
-    "pbi_blue_res": 0.322,
-    "improve_pct": 89.45,
-    "old_chrom_d": 0.068,
-    "pbi_chrom_d": 0.01
-  },
-  "r7": "PARTIAL · sn 0.993 · align 0.544 < 0.65 (Y-ridge align scale differs; structure OK)",
-  "outputs": {
-    "P0": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
-    "P1": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
-    "PEEP2": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png",
-    "ACCEPT": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json",
-    "LOG": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md",
-    "SHA256SUMS": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt"
-  },
+  "option": 3,
+  "constitution": "§0.12.56 + G7/G8 blotch gates",
+  "image_generation": "THIS_RUN",
   "scripts": {
-    "r6c": "work/scripts/r6c_pbi/run_r6c_ncnn.py PBI_MODE=luma_only",
-    "r7": "work/scripts/r6c_pbi/run_r7_peep2_final.py PBI_MODE=luma_only",
-    "note": "paths relative to this branch root (feat/r6c-ncnn-pbi-luma); sandbox also had /workspace/artifacts/tmp copies at run time"
+    "r6c": "work/scripts/r6c_pbi/run_r6c_ncnn.py",
+    "PBI_MODE": "luma_only"
   },
+  "formula": "hyb = C(LP)×(Y_LP + ridge(dY)); multi_sigma on Y only; no RGB chroma residual",
+  "bench": {
+    "mae_ncnn_vs_pt": 1.52587890625e-05,
+    "ncc_ncnn_vs_pt": 1.0000001192092896,
+    "ms": {
+      "PT": 49.8143196105957,
+      "NCNN": 28.45753828684489,
+      "ORT": 45.38532098134359,
+      "ORT_mae_vs_PT": 0.0
+    },
+    "speedup_vs_pt": {
+      "NCNN": 1.75,
+      "ORT": 1.1
+    },
+    "note": "Vulkan binary unavailable (libvulkan missing + noexec) · used pyncnn CPU from pnnx convert"
+  },
+  "peeps": [
+    {
+      "tag": "P0",
+      "xy": [
+        306,
+        672
+      ],
+      "meta": {
+        "n_probes": 24,
+        "child_hw": 2048,
+        "align": 0.9767128825187683,
+        "spill": 0.0232873372733593,
+        "ten": 13510.314453125,
+        "sn": 0.9812529683113098,
+        "infer_s": 0.88,
+        "engine": "NCNN_GENERAL_x4v3",
+        "iron": "4x_MODEL_to_4x_RESIDUAL_PBI_LUMA",
+        "pbi_mode": "luma_only",
+        "pbi": "hyb = C(LP)×(Y_LP + ridge(dY)); multi_sigma on Y only; no RGB chroma residual"
+      },
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
+      "bytes": 5443210,
+      "G7_blue": {
+        "mean_abs_blue_delta": 0.4914,
+        "new_blue_px": 1899,
+        "blotch_n": 424,
+        "blotch_max_area": 77,
+        "blotch_total_area": 1899,
+        "PASS": true
+      },
+      "G8_black": {
+        "new_black_px": 40242,
+        "blotch_n": 1067,
+        "blotch_max_area": 1315,
+        "blotch_total_area": 40242,
+        "wire_hit_px": 7994,
+        "PASS": false
+      },
+      "PASS_struct": true,
+      "PASS": false
+    },
+    {
+      "tag": "P1",
+      "xy": [
+        326,
+        159
+      ],
+      "meta": {
+        "n_probes": 24,
+        "child_hw": 2048,
+        "align": 0.9813849925994873,
+        "spill": 0.01861507073044777,
+        "ten": 11485.205078125,
+        "sn": 0.9856144189834595,
+        "infer_s": 0.89,
+        "engine": "NCNN_GENERAL_x4v3",
+        "iron": "4x_MODEL_to_4x_RESIDUAL_PBI_LUMA",
+        "pbi_mode": "luma_only",
+        "pbi": "hyb = C(LP)×(Y_LP + ridge(dY)); multi_sigma on Y only; no RGB chroma residual"
+      },
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
+      "bytes": 4890481,
+      "G7_blue": {
+        "mean_abs_blue_delta": 0.5892,
+        "new_blue_px": 5465,
+        "blotch_n": 493,
+        "blotch_max_area": 767,
+        "blotch_total_area": 5465,
+        "PASS": true
+      },
+      "G8_black": {
+        "new_black_px": 92269,
+        "blotch_n": 2353,
+        "blotch_max_area": 5139,
+        "blotch_total_area": 92269,
+        "wire_hit_px": 29896,
+        "PASS": false
+      },
+      "PASS_struct": true,
+      "PASS": false
+    }
+  ],
+  "n_accept": 0,
+  "n_struct": 2,
+  "status": "PARTIAL",
+  "gates_note": {
+    "struct": "align>=0.65 and sn>=0.97",
+    "G7": "new blue blotch vs LP (Y-valid)",
+    "G8": "new black blotch + wire_hit vs LP",
+    "blue_pct_89": "historical P0 ROI report only · not full-frame formal gate"
+  },
+  "limits": [
+    "realesrgan-ncnn-vulkan: libvulkan missing · pyncnn CPU",
+    "global LP chroma lock · not human silver-only mask",
+    "clean-checkout without /workspace models cannot rerun"
+  ],
   "merge_main": "NO",
-  "asof": "2026-10-31T22:09:00Z",
-  "repro": {
-    "clean_checkout_full_rerun": false,
-    "missing_in_branch": [
-      "NCNN model weights",
-      "LP parent inputs",
-      "GENERAL poison boards",
-      "/workspace absolute env"
-    ],
-    "what_this_branch_proves": "binary deliverables + PBI runners + reports on GitHub for image/code review"
-  },
-  "audit_fix_asof": "2026-10-31T23:09:53Z",
-  "r7_status": "PARTIAL · align 0.544 < 0.65 · FAIL formal R7"
+  "asof": "2026-10-31T23:35:22.880679+00:00",
+  "elapsed_s": 16.14
 }

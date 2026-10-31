@@ -38,11 +38,107 @@ def to_y_bgr(bgr):
     f = bgr.astype(np.float32)
     return 0.114 * f[..., 0] + 0.587 * f[..., 1] + 0.299 * f[..., 2]
 
-def chrom_bgr(bgr, y=None):
+def chrom_bgr(bgr, y=None, y_floor: float = 8.0):
+    """LP chroma; floor Y to avoid near-black blow-up (G8 risk)."""
     f = bgr.astype(np.float32)
     if y is None:
         y = to_y_bgr(f)
-    return f / (y[..., None] + 1e-3)
+    y_safe = np.maximum(y, y_floor)
+    return f / y_safe[..., None]
+
+
+# --- G7 NEW BLUE BLOTCH / G8 NEW BLACK BLOTCH ---
+def blue_opp_bgr(bgr: np.ndarray) -> np.ndarray:
+    f = bgr.astype(np.float32)
+    return f[..., 0] - 0.5 * (f[..., 1] + f[..., 2])
+
+
+def connected_blotch(mask: np.ndarray) -> dict:
+    m = (mask.astype(np.uint8) * 255)
+    n, _lab, stats, _ = cv2.connectedComponentsWithStats(m, connectivity=8)
+    if n <= 1:
+        return {"n": 0, "max_area": 0, "total_area": 0}
+    areas = stats[1:, cv2.CC_STAT_AREA]
+    return {"n": int(len(areas)), "max_area": int(areas.max()), "total_area": int(areas.sum())}
+
+
+def gate_g7_new_blue(lp_bgr: np.ndarray, out_bgr: np.ndarray,
+                     y_lo: float = 25.0, y_hi: float = 200.0,
+                     d_thr: float = 8.0, total_area_max: int = 8000) -> dict:
+    """Compare LP vs OUT: new blue opponent excess on Y-valid pixels."""
+    y = to_y_bgr(lp_bgr)
+    valid = (y >= y_lo) & (y <= y_hi)
+    d = blue_opp_bgr(out_bgr) - blue_opp_bgr(lp_bgr)
+    new_blue = (d > d_thr) & valid
+    bl = connected_blotch(new_blue)
+    mean_abs = float(np.abs(d)[valid].mean()) if valid.any() else 0.0
+    out = {
+        "mean_abs_blue_delta": round(mean_abs, 4),
+        "new_blue_px": int(new_blue.sum()),
+        "blotch_n": bl["n"],
+        "blotch_max_area": bl["max_area"],
+        "blotch_total_area": bl["total_area"],
+        "PASS": bl["total_area"] <= total_area_max and bl["max_area"] <= max(2000, total_area_max // 2),
+    }
+    return out
+
+
+def gate_g8_new_black(lp_bgr: np.ndarray, out_bgr: np.ndarray,
+                      black_thr: float = 18.0,
+                      total_area_max: int = 6000, max_area_max: int = 900) -> dict:
+    """New near-black vs LP: catch over-negative Y residual collapse."""
+    y_lp = to_y_bgr(lp_bgr)
+    y_out = to_y_bgr(out_bgr)
+    black_lp = y_lp < black_thr
+    black_out = y_out < black_thr
+    new_black = black_out & (~black_lp)
+    bl = connected_blotch(new_black)
+    # wire damage proxy: new black on high-edge LP
+    g = cv2.cvtColor(lp_bgr, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    mag = cv2.magnitude(cv2.Sobel(g, cv2.CV_32F, 1, 0, 3), cv2.Sobel(g, cv2.CV_32F, 0, 1, 3))
+    wire = mag > (mag.mean() + 0.5 * mag.std())
+    wire_hit = int((new_black & wire).sum())
+    out = {
+        "new_black_px": int(new_black.sum()),
+        "blotch_n": bl["n"],
+        "blotch_max_area": bl["max_area"],
+        "blotch_total_area": bl["total_area"],
+        "wire_hit_px": wire_hit,
+        "PASS": bl["total_area"] <= total_area_max and bl["max_area"] <= max_area_max and wire_hit < 1500,
+    }
+    return out
+
+
+def write_sha256sums(paths, out_txt: Path, note_manifest: Path | None = None) -> dict:
+    import hashlib
+    entries = []
+    lines = []
+    for p in paths:
+        p = Path(p)
+        if not p.is_file():
+            continue
+        b = p.read_bytes()
+        h = hashlib.sha256(b).hexdigest()
+        rel = str(p)
+        entries.append({"path": rel, "sha256": h, "bytes": len(b)})
+        lines.append(f"{h}  {rel}")
+    out_txt.parent.mkdir(parents=True, exist_ok=True)
+    out_txt.write_text("\n".join(lines) + "\n")
+    sh = __import__("hashlib").sha256(out_txt.read_bytes()).hexdigest()
+    man = {
+        "asof": datetime.now(timezone.utc).isoformat(),
+        "rule": "entries exclude MANIFEST self-hash; verify with this SHA256SUMS sidecar",
+        "sha256sums_sidecar": {"path": str(out_txt), "sha256": sh, "bytes": out_txt.stat().st_size},
+        "entries": entries,
+    }
+    if note_manifest is not None:
+        note_manifest.write_text(json.dumps(man, indent=2, ensure_ascii=False) + "\n")
+        # separate note for manifest file hash
+        mh = __import__("hashlib").sha256(note_manifest.read_bytes()).hexdigest()
+        (out_txt.parent / "SHA256_MANIFEST_NOTE.txt").write_text(
+            f"{mh}  {note_manifest}\n{sh}  {out_txt}\n"
+        )
+    return man
 
 def multi_sigma_fill_y(res_y, weight, sigmas=(4, 8, 16)):
     """Fill only on Y residual — do not spread chroma (E-BLUE-02)."""
@@ -345,6 +441,9 @@ def spm_fullres_ncnn(net, L0, n_probes=24):
         res_h_y, align, spill = ridge_hard_y(residual_y, parent_hd, 0.35, 3)
         y_lp = to_y_bgr(LP)
         y_out = y_lp + res_h_y
+        # G8: do not allow new near-black collapse far below LP (keep mesh holes from LP)
+        y_floor = np.maximum(y_lp - 36.0, 5.0)
+        y_out = np.clip(y_out, y_floor, 255.0)
         hyb = np.clip(chrom_bgr(LP, y_lp) * y_out[..., None], 0, 255).astype(np.uint8)
         mode = PBI_MODE
     meta=dict(n_probes=len(probes), child_hw=Wh, align=align, spill=spill,
@@ -371,50 +470,85 @@ def main():
         path=COMP/f'{tag}_CHILD_2048_NCNN_PBI_R6c.png'
         cv2.imwrite(str(path), hyb, [cv2.IMWRITE_PNG_COMPRESSION,3])
         print(f'  {tag} align={meta["align"]:.3f} ten={meta["ten"]:.0f} infer={meta["infer_s"]}s bytes={path.stat().st_size}', flush=True)
-        results.append(dict(tag=tag, xy=[x0,y0], meta=meta, child=str(path), bytes=path.stat().st_size, PASS=meta['align']>=0.65 and meta['sn']>=0.97))
-        # strip
+        # G7/G8 on full child vs Lanczos LP parent
+        LP_u8 = cv2.resize(L0, (hyb.shape[1], hyb.shape[0]), interpolation=cv2.INTER_LANCZOS4)
+        g7 = gate_g7_new_blue(LP_u8, hyb)
+        g8 = gate_g8_new_black(LP_u8, hyb)
+        struct_ok = meta['align'] >= 0.65 and meta['sn'] >= 0.97
+        pass_all = struct_ok and g7['PASS'] and g8['PASS']
+        results.append(dict(
+            tag=tag, xy=[x0, y0], meta=meta, child=str(path), bytes=path.stat().st_size,
+            G7_blue=g7, G8_black=g8,
+            PASS_struct=struct_ok, PASS=pass_all,
+        ))
+        # strip LP | OUT
         lp=cv2.resize(L0,(256,256),interpolation=cv2.INTER_AREA)
         ch=cv2.resize(hyb,(256,256),interpolation=cv2.INTER_AREA)
         strip=np.hstack([lp,ch])
         cv2.imwrite(str(COMP/f'{tag}_PROOF.jpg'), strip, [int(cv2.IMWRITE_JPEG_QUALITY),90])
+        # diff overlay preview
+        dlt = np.abs(ch.astype(np.float32) - lp.astype(np.float32))
+        dlt = np.clip(dlt * 3.0, 0, 255).astype(np.uint8)
+        cv2.imwrite(str(COMP/f'{tag}_DIFF.jpg'), np.hstack([lp, ch, dlt]), [int(cv2.IMWRITE_JPEG_QUALITY),90])
+        print(f'  {tag} G7_blue PASS={g7["PASS"]} area={g7["blotch_total_area"]} G8_black PASS={g8["PASS"]} area={g8["blotch_total_area"]}', flush=True)
         del hyb; gc.collect()
 
     # speed note vs R6b PT 24 probes ~54ms each = ~1.3s infer; NCNN should be similar or better
-    accept=dict(
-        round='R6c_NCNN_PBI_LUMA_DEFAULT',
+    accept = dict(
+        round="R6c_NCNN_PBI_LUMA_DEFAULT",
         option=3,
-        constitution='§0.12.56',
+        constitution="§0.12.56 + G7/G8 blotch gates",
+        image_generation="THIS_RUN",
+        scripts={"r6c": REPO_SCRIPT, "PBI_MODE": PBI_MODE},
+        formula=PBI_DOC,
         bench=bench_res,
         peeps=results,
-        n_accept=sum(1 for r in results if r['PASS']),
-        status='ACCEPT' if results and all(r['PASS'] for r in results) else 'PARTIAL',
+        n_accept=sum(1 for r in results if r["PASS"]),
+        n_struct=sum(1 for r in results if r.get("PASS_struct")),
+        status="ACCEPT" if results and all(r["PASS"] for r in results) else "PARTIAL",
+        gates_note={
+            "struct": "align>=0.65 and sn>=0.97",
+            "G7": "new blue blotch vs LP (Y-valid)",
+            "G8": "new black blotch + wire_hit vs LP",
+            "blue_pct_89": "historical P0 ROI report only · not full-frame formal gate",
+        },
         limits=[
-            'realesrgan-ncnn-vulkan binary: libvulkan.so.1 missing · workspace noexec',
-            'used pnnx → pyncnn CPU · not Vulkan GPU',
-            'batch probes still sequential (NCNN Mat API single)',
+            "realesrgan-ncnn-vulkan: libvulkan missing · pyncnn CPU",
+            "global LP chroma lock · not human silver-only mask",
+            "clean-checkout without /workspace models cannot rerun",
         ],
+        merge_main="NO",
         asof=datetime.now(timezone.utc).isoformat(),
-        elapsed_s=round(time.time()-t0,2),
+        elapsed_s=round(time.time() - t0, 2),
     )
-    (COMP/'ACCEPT_R6c_PBI.json').write_text(json.dumps(accept, indent=2, ensure_ascii=False))
-    Path('/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md').write_text(
-        f"""# R6c · NCNN 加速 GENERAL（選項 ③）
-
-## 環境限制
-- `realesrgan-ncnn-vulkan` 需 `libvulkan.so.1` · 本機無
-- workspace **noexec** · 官方 binary 無法直接 exec
-- 改用：**pnnx 轉 ncnn** + **pyncnn CPU**
-
-## Bench 64×64→256
-見 `bench/BENCH_NCNN.json`
-
-## Fullres
-- P0/P1 2048 · NCNN GENERAL · 4× residual 保留
-- ridge align 閘
-
-## 誠實
-NCNN CPU 未必大幅快過已很輕的 GENERAL PyTorch；若 speedup≈1 則收益在 **portable/部署** 而非本機 wall-time。
-""")
+    (COMP / "ACCEPT_R6c_PBI.json").write_text(json.dumps(accept, indent=2, ensure_ascii=False))
+    log_path = OUT / "LOG_R6c_PBI.md"
+    lines = [
+        "# R6c · NCNN PBI + G7/G8",
+        "",
+        "- image_generation: THIS_RUN",
+        f"- PBI_MODE={PBI_MODE}",
+        f"- status={accept['status']} n_accept={accept['n_accept']} n_struct={accept['n_struct']}",
+        "- merge_main: NO",
+        f"- elapsed_s={accept['elapsed_s']}",
+        "",
+        "## peeps G7/G8",
+    ]
+    for r in results:
+        lines.append(
+            f"- {r['tag']}: PASS={r['PASS']} struct={r.get('PASS_struct')} "
+            f"G7={r['G7_blue']['PASS']} area={r['G7_blue']['blotch_total_area']} "
+            f"G8={r['G8_black']['PASS']} area={r['G8_black']['blotch_total_area']}"
+        )
+    log_path.write_text("\n".join(lines) + "\n")
+    sha_list = [r["child"] for r in results]
+    for r in results:
+        for suf in ("_PROOF.jpg", "_DIFF.jpg"):
+            pp = COMP / f"{r['tag']}{suf}"
+            if pp.is_file():
+                sha_list.append(str(pp))
+    sha_list += [str(COMP / "ACCEPT_R6c_PBI.json"), str(log_path)]
+    write_sha256sums(sha_list, COMP / "SHA256SUMS_PBI.txt", COMP / "MANIFEST_SHA256_R6c_PBI.json")
     print(json.dumps(accept, indent=2, ensure_ascii=False), flush=True)
     print('DONE R6c', flush=True)
 

@@ -11,7 +11,8 @@ import cv2
 import ncnn
 
 P0 = Path("/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png")
-P0_FALLBACK = Path("/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_GENERAL_R6c.png")
+# P0_FALLBACK REMOVED — fail-closed if PBI missing (was GENERAL poison)
+P0_FALLBACK = None  # kept name only to avoid import confusion; unused
 PARAM = Path("/workspace/artifacts/artifacts/sr_contest/general_x4v3.ncnn.param")
 BIN = Path("/workspace/artifacts/artifacts/sr_contest/general_x4v3.ncnn.bin")
 OUT = Path("/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2")
@@ -32,11 +33,12 @@ def to_y_bgr(bgr):
     f = bgr.astype(np.float32)
     return 0.114 * f[..., 0] + 0.587 * f[..., 1] + 0.299 * f[..., 2]
 
-def chrom_bgr(bgr, y=None):
+def chrom_bgr(bgr, y=None, y_floor: float = 8.0):
     f = bgr.astype(np.float32)
     if y is None:
         y = to_y_bgr(f)
-    return f / (y[..., None] + 1e-3)
+    y_safe = np.maximum(y, y_floor)
+    return f / y_safe[..., None]
 
 def multi_sigma_fill_y(res_y, weight, sigmas=(4, 8, 16)):
     filled = np.zeros_like(res_y, dtype=np.float32)
@@ -168,9 +170,17 @@ def ridge_hard(residual, parent_hd, thr_k=0.35, dil=3):
 def main():
     t_all = time.time()
     print("R7 PEEP2 1024→4096 FULL-RES STREAM", flush=True)
-    p0_path = P0 if P0.is_file() else P0_FALLBACK
-    print(f"P0 parent: {p0_path.name} exists={p0_path.is_file()}", flush=True)
+    # FAIL-CLOSED: never fall back to GENERAL poison board (E-BLUE / audit)
+    if not P0.is_file():
+        raise SystemExit(
+            f"REJECT: missing PBI parent {P0} — refuse GENERAL fallback. "
+            "Generate R6c PBI first."
+        )
+    p0_path = P0
+    print(f"P0 parent: {p0_path.name} exists={p0_path.is_file()} (no GENERAL fallback)", flush=True)
     board = cv2.imread(str(p0_path))
+    if board is None:
+        raise SystemExit(f"REJECT: cannot read PBI parent {p0_path}")
     assert board is not None and board.shape[0] == 2048, board.shape if board is not None else None
 
     g = cv2.cvtColor(board, cv2.COLOR_BGR2GRAY).astype(np.float32)
@@ -324,6 +334,8 @@ def main():
             base = hyb_u8[y0t:y1, x0t:x1].astype(np.float32)
             y_lp = to_y_bgr(base)
             y_out = y_lp + dy_add
+            y_floor = np.maximum(y_lp - 36.0, 5.0)
+            y_out = np.clip(y_out, y_floor, 255.0)
             hyb_u8[y0t:y1, x0t:x1] = np.clip(chrom_bgr(base, y_lp) * y_out[..., None], 0, 255).astype(np.uint8)
             area = (y1 - y0t) * (x1 - x0t)
             align_acc += al * area
@@ -407,6 +419,8 @@ def main():
         register=manifest["register"],
         PASS=ok,
         status="ACCEPT" if ok else "PARTIAL",
+        fail_closed_no_general_fallback=True,
+        merge_main="NO",
         asof=datetime.now(timezone.utc).isoformat(),
         elapsed_s=round(time.time() - t_all, 2),
     )
