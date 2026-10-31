@@ -1,0 +1,160 @@
+{
+  "round": "R6b_MODEL_SELECT_CONTEST_VM4",
+  "constitution": "§0.12.56",
+  "peep_winners": {
+    "P0": "GENERAL_x4v3",
+    "P1": "GENERAL_x4v3"
+  },
+  "peep_summaries": {
+    "P0": {
+      "SIAX": {
+        "n": 10,
+        "ten": 38127.4517578125,
+        "ms": 777.5722503662109,
+        "sn": 0.9922039806842804,
+        "energy": 0.04734054319560528
+      },
+      "GENERAL_x4v3": {
+        "n": 10,
+        "ten": 45292.890234375,
+        "ms": 53.923654556274414,
+        "sn": 0.9798000693321228,
+        "energy": 0.05544977858662605
+      },
+      "X4PLUS": {
+        "n": 10,
+        "ten": 53974.15078125,
+        "ms": 769.5430517196655,
+        "sn": 0.643572810292244,
+        "energy": 0.27449891716241837
+      },
+      "LANCZOS4": {
+        "n": 10,
+        "ten": 9800.09462890625,
+        "ms": 0.0,
+        "sn": 1.0,
+        "energy": 0.0
+      }
+    },
+    "P1": {
+      "SIAX": {
+        "n": 10,
+        "ten": 42693.22734375,
+        "ms": 768.4242010116577,
+        "sn": 0.989228242635727,
+        "energy": 0.05289849825203419
+      },
+      "GENERAL_x4v3": {
+        "n": 10,
+        "ten": 42698.315625,
+        "ms": 53.395819664001465,
+        "sn": 0.9764309108257294,
+        "energy": 0.05441658273339271
+      },
+      "X4PLUS": {
+        "n": 10,
+        "ten": 76223.9056640625,
+        "ms": 789.7902011871338,
+        "sn": 0.706207275390625,
+        "energy": 0.2753306746482849
+      },
+      "LANCZOS4": {
+        "n": 10,
+        "ten": 8646.588916015626,
+        "ms": 0.0,
+        "sn": 1.0,
+        "energy": 0.0
+      }
+    }
+  },
+  "peeps": [
+    {
+      "tag": "P0",
+      "xy": [
+        300,
+        693
+      ],
+      "winner": "GENERAL_x4v3",
+      "meta": {
+        "n_probes": 24,
+        "child_hw": 2048,
+        "align": 0.9805539846420288,
+        "spill": 0.019445911049842834,
+        "ten": 15698.244140625,
+        "sn": 0.9793214797973633,
+        "ten_lp": 5473.46826171875,
+        "engine": "GENERAL_x4v3",
+        "reused_r6": false
+      },
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6b/complete/P0_CHILD_2048_GENERAL_x4v3_R6b.png",
+      "child_bytes": 5451113,
+      "register": {
+        "board_xy": [
+          300,
+          693
+        ],
+        "peep": 512,
+        "child_hw": 2048,
+        "scale": 4
+      }
+    },
+    {
+      "tag": "P1",
+      "xy": [
+        318,
+        180
+      ],
+      "winner": "GENERAL_x4v3",
+      "meta": {
+        "n_probes": 24,
+        "child_hw": 2048,
+        "align": 0.980797290802002,
+        "spill": 0.019202997907996178,
+        "ten": 13954.58203125,
+        "sn": 0.9805718064308167,
+        "ten_lp": 3780.7802734375,
+        "engine": "GENERAL_x4v3",
+        "reused_r6": false
+      },
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6b/complete/P1_CHILD_2048_GENERAL_x4v3_R6b.png",
+      "child_bytes": 4976639,
+      "register": {
+        "board_xy": [
+          318,
+          180
+        ],
+        "peep": 512,
+        "child_hw": 2048,
+        "scale": 4
+      }
+    }
+  ],
+  "virtual_master": {
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6b/complete/VIRTUAL_MASTER_4X_R6b_LOSSLESS.png",
+    "bytes": 28786949,
+    "hw": [
+      6912,
+      4608
+    ],
+    "iron": "native children registered at xy*4 · primary lossless · JPG preview only"
+  },
+  "engines_available": [
+    "SIAX",
+    "GENERAL_x4v3",
+    "X4PLUS"
+  ],
+  "note": "Contest is fair same-tile · regional winner per peep · FULL-RES 4x residual · VM 4x",
+  "asof": "2026-10-31T17:47:42.162313+00:00",
+  "elapsed_s": 58.7,
+  "engines_used": [
+    "GENERAL_x4v3"
+  ],
+  "honest_notes": [
+    "exit_code_1 was tee path only (mkdir race) · pipeline DONE",
+    "X4PLUS load: missing 690 unexpected 690 · weight partial/mismatch · high Tenen but struct sn~0.64-0.70 → NOT winner (struct gate)",
+    "GENERAL_x4v3: fastest ~54ms/probe · won both peeps by score=ten*sn*(sn>=0.90)",
+    "SIAX still best struct sn~0.99 but slower ~770ms · second place",
+    "VM 4x 4608x6912 lossless ~28.8MB primary · JPG preview only",
+    "FULL-RES 4x residual kept (E-R6-01 still banned)"
+  ]
+}
