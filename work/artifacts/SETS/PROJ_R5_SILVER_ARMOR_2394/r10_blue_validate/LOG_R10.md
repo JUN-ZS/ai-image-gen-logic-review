@@ -1,31 +1,15 @@
-# R10 · BLUE DETOX INDEPENDENT VALIDATION
+# R10 BLUE DETOX INDEPENDENT VALIDATION
 
-## 審計回應
-- 不再「改 JSON 稱 PASS」：單一 `run_r10_blue_validate.py` 同跑產 PNG+JSON+ROI+SHA
-- Nested **N1_DIRECT** 與 **N2_REBASE** 分開定義與閘
-- Formal 指標：**ROI Lab a,b** + **luma-norm blue opponent** · HSV dark 僅 legacy
-- PEEP2 B/C：`scope=ROI_paste`（全幅 4096 OOM → 記錄限制）
-- ten/sn 量度 scope：**ROI_only**（全幅 4096 OOM）
-- merge main：**NO**
+- status: **PARTIAL** · formal 9/12
+- runner: single closed loop (memsafe)
+- formal: ROI Lab ab + luma-norm blue opp · **not** HSV
+- Nested: N1_DIRECT vs N2_REBASE separate
+- merge main: **NO**
+- elapsed: 26.89s
 
-## 結果
-**PARTIAL** · formal **11/14**
-
-| Champion | method | FORMAL | ROI Lab ab ↑ | blue_opp ↑ | ten keep |
-|----------|--------|--------|--------------|------------|----------|
-| P0 | A_luma | ✅ | 61.45% | 89.82% | 99.54% |
-| P1 | A_luma | ✅ | 51.20% | 90.26% | 99.57% |
-| PEEP2_R7b | A_luma | ✅ | 50.12% | 85.81% | 98.82% |
-| PEEP3 Nested | **N2_REBASE** | ✅ | 86.24% | 68.84% | 97.92% |
-| PEEP3_origLP | A_luma | ❌ | 67.06% | **31.25%** (閘失敗) | 98.96% |
-
-Material-aware / adaptive 未勝出 A_luma（ROI ab 略差或相近）。
-
-## 閉環路徑
-```
-r10_blue_validate/
-  run_r10_blue_validate.py
-  inputs/   # staged poison+LP
-  complete/ ACCEPT_R10.json · MANIFEST · ROI_REPORT · PNGs
-  roi/      *_ROI.jpg
-```
+## Champions
+- **P0**: A_luma FORMAL=True ab↑61.45% blue↑89.82% ten99.64%
+- **P1**: A_luma FORMAL=True ab↑51.2% blue↑90.26% ten99.57%
+- **PEEP2_R7b**: A_luma FORMAL=True ab↑51.53% blue↑85.85% ten99.58%
+- **PEEP3**: N2_REBASE FORMAL=True ab↑86.24% blue↑68.84% ten98.46%
+- **PEEP3_origLP**: A_luma FORMAL=False ab↑67.06% blue↑31.25% ten99.45%
