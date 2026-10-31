@@ -1,0 +1,1458 @@
+{
+  "round": "R10_2_PEEP23_BLUE_FOCUS",
+  "focus": [
+    "PEEP2",
+    "PEEP3"
+  ],
+  "inherits_formal_from_R10_1": [
+    "P0",
+    "P1"
+  ],
+  "audit_fixes": [
+    "Y-valid blue_opp",
+    "multi mesh ROI",
+    "blotch CC",
+    "relative SN",
+    "N1+D_blotch",
+    "unmasked still reported"
+  ],
+  "runner": {
+    "name": "run_r10_2_continue.py",
+    "sha256": "a9eec0fc55115dbb220c016b0992b89c142b2625bdee14ecf1e6b6024f02e0f8"
+  },
+  "y_mask": [
+    25.0,
+    220.0
+  ],
+  "fixed_mesh_multi": {
+    "PEEP2_R7b": [
+      [
+        2534,
+        1715,
+        512,
+        512
+      ],
+      [
+        1800,
+        1400,
+        512,
+        512
+      ],
+      [
+        2800,
+        2200,
+        512,
+        512
+      ]
+    ],
+    "PEEP3": [
+      [
+        691,
+        1113,
+        256,
+        256
+      ],
+      [
+        400,
+        800,
+        256,
+        256
+      ],
+      [
+        1000,
+        900,
+        256,
+        256
+      ],
+      [
+        800,
+        1400,
+        256,
+        256
+      ]
+    ]
+  },
+  "peep3_window": [
+    2276,
+    28,
+    512,
+    512
+  ],
+  "jobs": [
+    {
+      "tag": "PEEP2_R7b",
+      "method": "A_luma",
+      "status": "OK",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_2_peep23/complete/PEEP2_R7b_A_luma.png",
+      "name": "PEEP2_R7b_A_luma.png",
+      "bytes": 14920377,
+      "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505",
+      "hw": [
+        4096,
+        4096
+      ],
+      "multi_mesh": [
+        {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            2534,
+            1715,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.5681960582733154,
+          "lab_ab_detox": 0.22289593517780304,
+          "lab_ab_improve_pct": 60.77,
+          "blue_opp_poison": 2.590710163116455,
+          "blue_opp_detox": 0.29650580883026123,
+          "blue_opp_improve_pct": 88.56,
+          "blue_opp_poison_unmasked": 17.97632598876953,
+          "blue_opp_detox_unmasked": 2.678953170776367,
+          "blue_opp_improve_unmasked_pct": 85.1,
+          "valid_frac": 0.7728843688964844,
+          "ten_keep_pct": 99.01,
+          "sn_detox": 0.9453145265579224,
+          "sn_poison": 0.9447863101959229,
+          "blotch_poison": {
+            "blotch_px": 4459,
+            "blotch_frac": 0.017009735107421875,
+            "n_cc": 245,
+            "area_max": 1050,
+            "area_sum": 4459
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.9437863101959229,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_1",
+          "roi": [
+            1800,
+            1400,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.0,
+          "lab_ab_detox": 0.17832881212234497,
+          "lab_ab_improve_pct": -100.0,
+          "blue_opp_poison": 0.0,
+          "blue_opp_detox": 0.5491026639938354,
+          "blue_opp_improve_pct": -100.0,
+          "blue_opp_poison_unmasked": 0.0,
+          "blue_opp_detox_unmasked": 0.6084256768226624,
+          "blue_opp_improve_unmasked_pct": -100.0,
+          "valid_frac": 0.9896965026855469,
+          "ten_keep_pct": 100.0,
+          "sn_detox": 1.0000003576278687,
+          "sn_poison": 1.0000003576278687,
+          "blotch_poison": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": false,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": null,
+          "VOID_EMPTY_POISON_ROI": true,
+          "note": "ROI discarded: poison≈LP (no blue residual to score)"
+        },
+        {
+          "roi_kind": "FIXED_MESH_2",
+          "roi": [
+            2800,
+            2200,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.42442092299461365,
+          "lab_ab_detox": 0.20458047091960907,
+          "lab_ab_improve_pct": 51.8,
+          "blue_opp_poison": 1.4164741039276123,
+          "blue_opp_detox": 0.30143216252326965,
+          "blue_opp_improve_pct": 78.72,
+          "blue_opp_poison_unmasked": 11.786495208740234,
+          "blue_opp_detox_unmasked": 4.746484756469727,
+          "blue_opp_improve_unmasked_pct": 59.73,
+          "valid_frac": 0.84320068359375,
+          "ten_keep_pct": 98.83,
+          "sn_detox": 0.9819805026054382,
+          "sn_poison": 0.9817070364952087,
+          "blotch_poison": {
+            "blotch_px": 2274,
+            "blotch_frac": 0.00867462158203125,
+            "n_cc": 126,
+            "area_max": 580,
+            "area_sum": 2274
+          },
+          "blotch_detox": {
+            "blotch_px": 1,
+            "blotch_frac": 3.814697265625e-06,
+            "n_cc": 1,
+            "area_max": 1,
+            "area_sum": 1
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        }
+      ],
+      "dual_roi": {
+        "FIXED_MESH": {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            2534,
+            1715,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.5681960582733154,
+          "lab_ab_detox": 0.22289593517780304,
+          "lab_ab_improve_pct": 60.77,
+          "blue_opp_poison": 2.590710163116455,
+          "blue_opp_detox": 0.29650580883026123,
+          "blue_opp_improve_pct": 88.56,
+          "blue_opp_poison_unmasked": 17.97632598876953,
+          "blue_opp_detox_unmasked": 2.678953170776367,
+          "blue_opp_improve_unmasked_pct": 85.1,
+          "valid_frac": 0.7728843688964844,
+          "ten_keep_pct": 99.01,
+          "sn_detox": 0.9453145265579224,
+          "sn_poison": 0.9447863101959229,
+          "blotch_poison": {
+            "blotch_px": 4459,
+            "blotch_frac": 0.017009735107421875,
+            "n_cc": 245,
+            "area_max": 1050,
+            "area_sum": 4459
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.9437863101959229,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        "AUTO_WORST": {
+          "roi_kind": "AUTO_WORST",
+          "roi": [
+            2400,
+            1632,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.6725975871086121,
+          "lab_ab_detox": 0.2321036458015442,
+          "lab_ab_improve_pct": 65.49,
+          "blue_opp_poison": 2.539330244064331,
+          "blue_opp_detox": 0.27353635430336,
+          "blue_opp_improve_pct": 89.23,
+          "blue_opp_poison_unmasked": 14.368119239807129,
+          "blue_opp_detox_unmasked": 1.8938705921173096,
+          "blue_opp_improve_unmasked_pct": 86.82,
+          "valid_frac": 0.7632484436035156,
+          "ten_keep_pct": 98.8,
+          "sn_detox": 0.9483781456947327,
+          "sn_poison": 0.9478954672813416,
+          "blotch_poison": {
+            "blotch_px": 5415,
+            "blotch_frac": 0.020656585693359375,
+            "n_cc": 253,
+            "area_max": 1050,
+            "area_sum": 5415
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.9468954672813416,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true,
+          "auto_score": 11.923773765563965
+        }
+      },
+      "PASS_FORMAL": true,
+      "n_mesh_pass": 2,
+      "n_mesh": 2,
+      "primary_blue_improve_pct": 88.56,
+      "primary_blue_improve_unmasked_pct": 85.1,
+      "primary_lab_improve_pct": 60.77,
+      "primary_blotch_px_detox": 0
+    },
+    {
+      "tag": "PEEP2_R7b",
+      "method": "D_blotch",
+      "status": "OK",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_2_peep23/complete/PEEP2_R7b_D_blotch.png",
+      "name": "PEEP2_R7b_D_blotch.png",
+      "bytes": 14906898,
+      "sha256": "22630bca75010c2bd529090e6bdd3409ec82b022eca7c913a0f59e9b08bbe550",
+      "hw": [
+        4096,
+        4096
+      ],
+      "multi_mesh": [
+        {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            2534,
+            1715,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.5681960582733154,
+          "lab_ab_detox": 0.23339451849460602,
+          "lab_ab_improve_pct": 58.92,
+          "blue_opp_poison": 2.590710163116455,
+          "blue_opp_detox": 0.48499783873558044,
+          "blue_opp_improve_pct": 81.28,
+          "blue_opp_poison_unmasked": 17.97632598876953,
+          "blue_opp_detox_unmasked": 3.2371840476989746,
+          "blue_opp_improve_unmasked_pct": 81.99,
+          "valid_frac": 0.7728843688964844,
+          "ten_keep_pct": 98.65,
+          "sn_detox": 0.9456394910812378,
+          "sn_poison": 0.9447863101959229,
+          "blotch_poison": {
+            "blotch_px": 4459,
+            "blotch_frac": 0.017009735107421875,
+            "n_cc": 245,
+            "area_max": 1050,
+            "area_sum": 4459
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.9437863101959229,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_1",
+          "roi": [
+            1800,
+            1400,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.0,
+          "lab_ab_detox": 0.20410853624343872,
+          "lab_ab_improve_pct": -100.0,
+          "blue_opp_poison": 0.0,
+          "blue_opp_detox": 1.1125547885894775,
+          "blue_opp_improve_pct": -100.0,
+          "blue_opp_poison_unmasked": 0.0,
+          "blue_opp_detox_unmasked": 1.249260663986206,
+          "blue_opp_improve_unmasked_pct": -100.0,
+          "valid_frac": 0.9896965026855469,
+          "ten_keep_pct": 100.0,
+          "sn_detox": 1.0000003576278687,
+          "sn_poison": 1.0000003576278687,
+          "blotch_poison": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": false,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": null,
+          "VOID_EMPTY_POISON_ROI": true,
+          "note": "ROI discarded: poison≈LP (no blue residual to score)"
+        },
+        {
+          "roi_kind": "FIXED_MESH_2",
+          "roi": [
+            2800,
+            2200,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.42442092299461365,
+          "lab_ab_detox": 0.21927103400230408,
+          "lab_ab_improve_pct": 48.34,
+          "blue_opp_poison": 1.4164741039276123,
+          "blue_opp_detox": 0.502240777015686,
+          "blue_opp_improve_pct": 64.54,
+          "blue_opp_poison_unmasked": 11.786495208740234,
+          "blue_opp_detox_unmasked": 6.028535842895508,
+          "blue_opp_improve_unmasked_pct": 48.85,
+          "valid_frac": 0.84320068359375,
+          "ten_keep_pct": 98.45,
+          "sn_detox": 0.9820619821548462,
+          "sn_poison": 0.9817070364952087,
+          "blotch_poison": {
+            "blotch_px": 2274,
+            "blotch_frac": 0.00867462158203125,
+            "n_cc": 126,
+            "area_max": 580,
+            "area_sum": 2274
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        }
+      ],
+      "dual_roi": {
+        "FIXED_MESH": {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            2534,
+            1715,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.5681960582733154,
+          "lab_ab_detox": 0.23339451849460602,
+          "lab_ab_improve_pct": 58.92,
+          "blue_opp_poison": 2.590710163116455,
+          "blue_opp_detox": 0.48499783873558044,
+          "blue_opp_improve_pct": 81.28,
+          "blue_opp_poison_unmasked": 17.97632598876953,
+          "blue_opp_detox_unmasked": 3.2371840476989746,
+          "blue_opp_improve_unmasked_pct": 81.99,
+          "valid_frac": 0.7728843688964844,
+          "ten_keep_pct": 98.65,
+          "sn_detox": 0.9456394910812378,
+          "sn_poison": 0.9447863101959229,
+          "blotch_poison": {
+            "blotch_px": 4459,
+            "blotch_frac": 0.017009735107421875,
+            "n_cc": 245,
+            "area_max": 1050,
+            "area_sum": 4459
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.9437863101959229,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        "AUTO_WORST": {
+          "roi_kind": "AUTO_WORST",
+          "roi": [
+            2400,
+            1632,
+            512,
+            512
+          ],
+          "lab_ab_poison": 0.6725975871086121,
+          "lab_ab_detox": 0.24197685718536377,
+          "lab_ab_improve_pct": 64.02,
+          "blue_opp_poison": 2.539330244064331,
+          "blue_opp_detox": 0.40915757417678833,
+          "blue_opp_improve_pct": 83.89,
+          "blue_opp_poison_unmasked": 14.368119239807129,
+          "blue_opp_detox_unmasked": 2.2335007190704346,
+          "blue_opp_improve_unmasked_pct": 84.46,
+          "valid_frac": 0.7632484436035156,
+          "ten_keep_pct": 98.43,
+          "sn_detox": 0.9486387372016907,
+          "sn_poison": 0.9478954672813416,
+          "blotch_poison": {
+            "blotch_px": 5415,
+            "blotch_frac": 0.020656585693359375,
+            "n_cc": 253,
+            "area_max": 1050,
+            "area_sum": 5415
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.9468954672813416,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true,
+          "auto_score": 11.923773765563965
+        }
+      },
+      "PASS_FORMAL": true,
+      "n_mesh_pass": 2,
+      "n_mesh": 2,
+      "primary_blue_improve_pct": 81.28,
+      "primary_blue_improve_unmasked_pct": 81.99,
+      "primary_lab_improve_pct": 58.92,
+      "primary_blotch_px_detox": 0,
+      "blotch_repair": {
+        "blotch_mask_frac_approx": 7.331371307373047e-06,
+        "thr_bo": 4.0,
+        "thr_raw": 6.0
+      }
+    },
+    {
+      "tag": "PEEP3",
+      "method": "N1_DIRECT",
+      "status": "OK",
+      "formula": "Y=Y_SR8; chrom(LPn)",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_2_peep23/complete/PEEP3_N1_DIRECT.png",
+      "name": "PEEP3_N1_DIRECT.png",
+      "bytes": 3083738,
+      "sha256": "8dd87a2c391bcfbad048163bb9ac4dd7d1840a0f442b8396fb87c43764901de8",
+      "hw": [
+        2048,
+        2048
+      ],
+      "multi_mesh": [
+        {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            691,
+            1113,
+            256,
+            256
+          ],
+          "lab_ab_poison": 9.863021850585938,
+          "lab_ab_detox": 0.5108252167701721,
+          "lab_ab_improve_pct": 94.82,
+          "blue_opp_poison": 3.101020574569702,
+          "blue_opp_detox": 0.17337383329868317,
+          "blue_opp_improve_pct": 94.41,
+          "blue_opp_poison_unmasked": 8.966968536376953,
+          "blue_opp_detox_unmasked": 4.993406295776367,
+          "blue_opp_improve_unmasked_pct": 44.31,
+          "valid_frac": 0.0485687255859375,
+          "ten_keep_pct": 98.07,
+          "sn_detox": 0.9993897080421448,
+          "sn_poison": 0.9993566870689392,
+          "blotch_poison": {
+            "blotch_px": 211,
+            "blotch_frac": 0.0032196044921875,
+            "n_cc": 100,
+            "area_max": 8,
+            "area_sum": 211
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_1",
+          "roi": [
+            400,
+            800,
+            256,
+            256
+          ],
+          "lab_ab_poison": 2.960219621658325,
+          "lab_ab_detox": 0.3488602340221405,
+          "lab_ab_improve_pct": 88.22,
+          "blue_opp_poison": 1.8454653024673462,
+          "blue_opp_detox": 0.24406029284000397,
+          "blue_opp_improve_pct": 86.78,
+          "blue_opp_poison_unmasked": 15.665660858154297,
+          "blue_opp_detox_unmasked": 11.174363136291504,
+          "blue_opp_improve_unmasked_pct": 28.67,
+          "valid_frac": 0.22381591796875,
+          "ten_keep_pct": 97.42,
+          "sn_detox": 0.9983636140823364,
+          "sn_poison": 0.9982732534408569,
+          "blotch_poison": {
+            "blotch_px": 206,
+            "blotch_frac": 0.003143310546875,
+            "n_cc": 59,
+            "area_max": 39,
+            "area_sum": 206
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_2",
+          "roi": [
+            1000,
+            900,
+            256,
+            256
+          ],
+          "lab_ab_poison": 1.3009675741195679,
+          "lab_ab_detox": 0.27065330743789673,
+          "lab_ab_improve_pct": 79.2,
+          "blue_opp_poison": 3.0504658222198486,
+          "blue_opp_detox": 0.09760867804288864,
+          "blue_opp_improve_pct": 96.8,
+          "blue_opp_poison_unmasked": 7.576883316040039,
+          "blue_opp_detox_unmasked": 4.892579555511475,
+          "blue_opp_improve_unmasked_pct": 35.43,
+          "valid_frac": 0.044158935546875,
+          "ten_keep_pct": 98.27,
+          "sn_detox": 0.9995589852333069,
+          "sn_poison": 0.9995386600494385,
+          "blotch_poison": {
+            "blotch_px": 240,
+            "blotch_frac": 0.003662109375,
+            "n_cc": 74,
+            "area_max": 56,
+            "area_sum": 240
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_3",
+          "roi": [
+            800,
+            1400,
+            256,
+            256
+          ],
+          "lab_ab_poison": 1.0066958665847778,
+          "lab_ab_detox": 0.15617015957832336,
+          "lab_ab_improve_pct": 84.49,
+          "blue_opp_poison": 2.682727336883545,
+          "blue_opp_detox": 0.25312158465385437,
+          "blue_opp_improve_pct": 90.56,
+          "blue_opp_poison_unmasked": 4.586732387542725,
+          "blue_opp_detox_unmasked": 2.911893367767334,
+          "blue_opp_improve_unmasked_pct": 36.51,
+          "valid_frac": 0.70416259765625,
+          "ten_keep_pct": 98.89,
+          "sn_detox": 0.9975202679634094,
+          "sn_poison": 0.9975368976593018,
+          "blotch_poison": {
+            "blotch_px": 2773,
+            "blotch_frac": 0.0423126220703125,
+            "n_cc": 49,
+            "area_max": 2428,
+            "area_sum": 2773
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        }
+      ],
+      "dual_roi": {
+        "FIXED_MESH": {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            691,
+            1113,
+            256,
+            256
+          ],
+          "lab_ab_poison": 9.863021850585938,
+          "lab_ab_detox": 0.5108252167701721,
+          "lab_ab_improve_pct": 94.82,
+          "blue_opp_poison": 3.101020574569702,
+          "blue_opp_detox": 0.17337383329868317,
+          "blue_opp_improve_pct": 94.41,
+          "blue_opp_poison_unmasked": 8.966968536376953,
+          "blue_opp_detox_unmasked": 4.993406295776367,
+          "blue_opp_improve_unmasked_pct": 44.31,
+          "valid_frac": 0.0485687255859375,
+          "ten_keep_pct": 98.07,
+          "sn_detox": 0.9993897080421448,
+          "sn_poison": 0.9993566870689392,
+          "blotch_poison": {
+            "blotch_px": 211,
+            "blotch_frac": 0.0032196044921875,
+            "n_cc": 100,
+            "area_max": 8,
+            "area_sum": 211
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        "AUTO_WORST": {
+          "roi_kind": "AUTO_WORST",
+          "roi": [
+            1344,
+            672,
+            256,
+            256
+          ],
+          "lab_ab_poison": 2.997316360473633,
+          "lab_ab_detox": 0.36913931369781494,
+          "lab_ab_improve_pct": 87.68,
+          "blue_opp_poison": 1.7828782796859741,
+          "blue_opp_detox": 0.13049152493476868,
+          "blue_opp_improve_pct": 92.68,
+          "blue_opp_poison_unmasked": 17.99986457824707,
+          "blue_opp_detox_unmasked": 11.325201988220215,
+          "blue_opp_improve_unmasked_pct": 37.08,
+          "valid_frac": 0.090972900390625,
+          "ten_keep_pct": 97.75,
+          "sn_detox": 0.9931530356407166,
+          "sn_poison": 0.9931558966636658,
+          "blotch_poison": {
+            "blotch_px": 274,
+            "blotch_frac": 0.004180908203125,
+            "n_cc": 68,
+            "area_max": 117,
+            "area_sum": 274
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true,
+          "auto_score": 7.299723148345947
+        }
+      },
+      "PASS_FORMAL": true,
+      "n_mesh_pass": 4,
+      "n_mesh": 4,
+      "primary_blue_improve_pct": 94.41,
+      "primary_blue_improve_unmasked_pct": 44.31,
+      "primary_lab_improve_pct": 94.82,
+      "primary_blotch_px_detox": 0
+    },
+    {
+      "tag": "PEEP3",
+      "method": "N2_REBASE",
+      "status": "OK",
+      "formula": "rebase Y",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_2_peep23/complete/PEEP3_N2_REBASE.png",
+      "name": "PEEP3_N2_REBASE.png",
+      "bytes": 3428751,
+      "sha256": "eb1d0bbb40def04ffdbc0ecf41f62629f7b10e05629c561f34d16488137401aa",
+      "hw": [
+        2048,
+        2048
+      ],
+      "multi_mesh": [
+        {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            691,
+            1113,
+            256,
+            256
+          ],
+          "lab_ab_poison": 9.863021850585938,
+          "lab_ab_detox": 0.5237346887588501,
+          "lab_ab_improve_pct": 94.69,
+          "blue_opp_poison": 3.101020574569702,
+          "blue_opp_detox": 0.1760929375886917,
+          "blue_opp_improve_pct": 94.32,
+          "blue_opp_poison_unmasked": 8.966968536376953,
+          "blue_opp_detox_unmasked": 5.7718119621276855,
+          "blue_opp_improve_unmasked_pct": 35.63,
+          "valid_frac": 0.0485687255859375,
+          "ten_keep_pct": 97.57,
+          "sn_detox": 0.9993855357170105,
+          "sn_poison": 0.9993566870689392,
+          "blotch_poison": {
+            "blotch_px": 211,
+            "blotch_frac": 0.0032196044921875,
+            "n_cc": 100,
+            "area_max": 8,
+            "area_sum": 211
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_1",
+          "roi": [
+            400,
+            800,
+            256,
+            256
+          ],
+          "lab_ab_poison": 2.960219621658325,
+          "lab_ab_detox": 0.36287614703178406,
+          "lab_ab_improve_pct": 87.74,
+          "blue_opp_poison": 1.8454653024673462,
+          "blue_opp_detox": 0.2587975859642029,
+          "blue_opp_improve_pct": 85.98,
+          "blue_opp_poison_unmasked": 15.665660858154297,
+          "blue_opp_detox_unmasked": 10.736010551452637,
+          "blue_opp_improve_unmasked_pct": 31.47,
+          "valid_frac": 0.22381591796875,
+          "ten_keep_pct": 97.24,
+          "sn_detox": 0.998351514339447,
+          "sn_poison": 0.9982732534408569,
+          "blotch_poison": {
+            "blotch_px": 206,
+            "blotch_frac": 0.003143310546875,
+            "n_cc": 59,
+            "area_max": 39,
+            "area_sum": 206
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_2",
+          "roi": [
+            1000,
+            900,
+            256,
+            256
+          ],
+          "lab_ab_poison": 1.3009675741195679,
+          "lab_ab_detox": 0.29512447118759155,
+          "lab_ab_improve_pct": 77.32,
+          "blue_opp_poison": 3.0504658222198486,
+          "blue_opp_detox": 0.11415938287973404,
+          "blue_opp_improve_pct": 96.26,
+          "blue_opp_poison_unmasked": 7.576883316040039,
+          "blue_opp_detox_unmasked": 4.507201194763184,
+          "blue_opp_improve_unmasked_pct": 40.51,
+          "valid_frac": 0.044158935546875,
+          "ten_keep_pct": 97.67,
+          "sn_detox": 0.9995614886283875,
+          "sn_poison": 0.9995386600494385,
+          "blotch_poison": {
+            "blotch_px": 240,
+            "blotch_frac": 0.003662109375,
+            "n_cc": 74,
+            "area_max": 56,
+            "area_sum": 240
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_3",
+          "roi": [
+            800,
+            1400,
+            256,
+            256
+          ],
+          "lab_ab_poison": 1.0066958665847778,
+          "lab_ab_detox": 0.06701209396123886,
+          "lab_ab_improve_pct": 93.34,
+          "blue_opp_poison": 2.682727336883545,
+          "blue_opp_detox": 0.05691930279135704,
+          "blue_opp_improve_pct": 97.88,
+          "blue_opp_poison_unmasked": 4.586732387542725,
+          "blue_opp_detox_unmasked": 2.9506638050079346,
+          "blue_opp_improve_unmasked_pct": 35.67,
+          "valid_frac": 0.70416259765625,
+          "ten_keep_pct": 98.72,
+          "sn_detox": 0.9974732398986816,
+          "sn_poison": 0.9975368976593018,
+          "blotch_poison": {
+            "blotch_px": 2773,
+            "blotch_frac": 0.0423126220703125,
+            "n_cc": 49,
+            "area_max": 2428,
+            "area_sum": 2773
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        }
+      ],
+      "dual_roi": {
+        "FIXED_MESH": {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            691,
+            1113,
+            256,
+            256
+          ],
+          "lab_ab_poison": 9.863021850585938,
+          "lab_ab_detox": 0.5237346887588501,
+          "lab_ab_improve_pct": 94.69,
+          "blue_opp_poison": 3.101020574569702,
+          "blue_opp_detox": 0.1760929375886917,
+          "blue_opp_improve_pct": 94.32,
+          "blue_opp_poison_unmasked": 8.966968536376953,
+          "blue_opp_detox_unmasked": 5.7718119621276855,
+          "blue_opp_improve_unmasked_pct": 35.63,
+          "valid_frac": 0.0485687255859375,
+          "ten_keep_pct": 97.57,
+          "sn_detox": 0.9993855357170105,
+          "sn_poison": 0.9993566870689392,
+          "blotch_poison": {
+            "blotch_px": 211,
+            "blotch_frac": 0.0032196044921875,
+            "n_cc": 100,
+            "area_max": 8,
+            "area_sum": 211
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        "AUTO_WORST": {
+          "roi_kind": "AUTO_WORST",
+          "roi": [
+            1344,
+            672,
+            256,
+            256
+          ],
+          "lab_ab_poison": 2.997316360473633,
+          "lab_ab_detox": 0.37145477533340454,
+          "lab_ab_improve_pct": 87.61,
+          "blue_opp_poison": 1.7828782796859741,
+          "blue_opp_detox": 0.1509140431880951,
+          "blue_opp_improve_pct": 91.54,
+          "blue_opp_poison_unmasked": 17.99986457824707,
+          "blue_opp_detox_unmasked": 14.911578178405762,
+          "blue_opp_improve_unmasked_pct": 17.16,
+          "valid_frac": 0.090972900390625,
+          "ten_keep_pct": 97.07,
+          "sn_detox": 0.9931542873382568,
+          "sn_poison": 0.9931558966636658,
+          "blotch_poison": {
+            "blotch_px": 274,
+            "blotch_frac": 0.004180908203125,
+            "n_cc": 68,
+            "area_max": 117,
+            "area_sum": 274
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true,
+          "auto_score": 7.299723148345947
+        }
+      },
+      "PASS_FORMAL": true,
+      "n_mesh_pass": 4,
+      "n_mesh": 4,
+      "primary_blue_improve_pct": 94.32,
+      "primary_blue_improve_unmasked_pct": 35.63,
+      "primary_lab_improve_pct": 94.69,
+      "primary_blotch_px_detox": 0
+    },
+    {
+      "tag": "PEEP3",
+      "method": "N1_D_blotch",
+      "status": "OK",
+      "formula": "N1+D_blotch",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r10_2_peep23/complete/PEEP3_N1_D_blotch.png",
+      "name": "PEEP3_N1_D_blotch.png",
+      "bytes": 3055186,
+      "sha256": "591f011af24106041988d80449e39bd6a992e656fd9addca6b8d7192bd2fa80f",
+      "hw": [
+        2048,
+        2048
+      ],
+      "multi_mesh": [
+        {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            691,
+            1113,
+            256,
+            256
+          ],
+          "lab_ab_poison": 9.863021850585938,
+          "lab_ab_detox": 0.51457679271698,
+          "lab_ab_improve_pct": 94.78,
+          "blue_opp_poison": 3.101020574569702,
+          "blue_opp_detox": 0.12077463418245316,
+          "blue_opp_improve_pct": 96.11,
+          "blue_opp_poison_unmasked": 8.966968536376953,
+          "blue_opp_detox_unmasked": 6.031123161315918,
+          "blue_opp_improve_unmasked_pct": 32.74,
+          "valid_frac": 0.0485687255859375,
+          "ten_keep_pct": 97.5,
+          "sn_detox": 0.9993767738342285,
+          "sn_poison": 0.9993566870689392,
+          "blotch_poison": {
+            "blotch_px": 211,
+            "blotch_frac": 0.0032196044921875,
+            "n_cc": 100,
+            "area_max": 8,
+            "area_sum": 211
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_1",
+          "roi": [
+            400,
+            800,
+            256,
+            256
+          ],
+          "lab_ab_poison": 2.960219621658325,
+          "lab_ab_detox": 0.36739516258239746,
+          "lab_ab_improve_pct": 87.59,
+          "blue_opp_poison": 1.8454653024673462,
+          "blue_opp_detox": 0.18053315579891205,
+          "blue_opp_improve_pct": 90.22,
+          "blue_opp_poison_unmasked": 15.665660858154297,
+          "blue_opp_detox_unmasked": 12.294147491455078,
+          "blue_opp_improve_unmasked_pct": 21.52,
+          "valid_frac": 0.22381591796875,
+          "ten_keep_pct": 96.95,
+          "sn_detox": 0.9983149170875549,
+          "sn_poison": 0.9982732534408569,
+          "blotch_poison": {
+            "blotch_px": 206,
+            "blotch_frac": 0.003143310546875,
+            "n_cc": 59,
+            "area_max": 39,
+            "area_sum": 206
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_2",
+          "roi": [
+            1000,
+            900,
+            256,
+            256
+          ],
+          "lab_ab_poison": 1.3009675741195679,
+          "lab_ab_detox": 0.2843577265739441,
+          "lab_ab_improve_pct": 78.14,
+          "blue_opp_poison": 3.0504658222198486,
+          "blue_opp_detox": 0.07148128002882004,
+          "blue_opp_improve_pct": 97.66,
+          "blue_opp_poison_unmasked": 7.576883316040039,
+          "blue_opp_detox_unmasked": 5.28753662109375,
+          "blue_opp_improve_unmasked_pct": 30.21,
+          "valid_frac": 0.044158935546875,
+          "ten_keep_pct": 97.69,
+          "sn_detox": 0.999553918838501,
+          "sn_poison": 0.9995386600494385,
+          "blotch_poison": {
+            "blotch_px": 240,
+            "blotch_frac": 0.003662109375,
+            "n_cc": 74,
+            "area_max": 56,
+            "area_sum": 240
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        {
+          "roi_kind": "FIXED_MESH_3",
+          "roi": [
+            800,
+            1400,
+            256,
+            256
+          ],
+          "lab_ab_poison": 1.0066958665847778,
+          "lab_ab_detox": 0.1711021214723587,
+          "lab_ab_improve_pct": 83.0,
+          "blue_opp_poison": 2.682727336883545,
+          "blue_opp_detox": 0.28312501311302185,
+          "blue_opp_improve_pct": 89.45,
+          "blue_opp_poison_unmasked": 4.586732387542725,
+          "blue_opp_detox_unmasked": 3.3875606060028076,
+          "blue_opp_improve_unmasked_pct": 26.14,
+          "valid_frac": 0.70416259765625,
+          "ten_keep_pct": 98.26,
+          "sn_detox": 0.997507631778717,
+          "sn_poison": 0.9975368976593018,
+          "blotch_poison": {
+            "blotch_px": 2773,
+            "blotch_frac": 0.0423126220703125,
+            "n_cc": 49,
+            "area_max": 2428,
+            "area_sum": 2773
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        }
+      ],
+      "dual_roi": {
+        "FIXED_MESH": {
+          "roi_kind": "FIXED_MESH_PRIMARY",
+          "roi": [
+            691,
+            1113,
+            256,
+            256
+          ],
+          "lab_ab_poison": 9.863021850585938,
+          "lab_ab_detox": 0.51457679271698,
+          "lab_ab_improve_pct": 94.78,
+          "blue_opp_poison": 3.101020574569702,
+          "blue_opp_detox": 0.12077463418245316,
+          "blue_opp_improve_pct": 96.11,
+          "blue_opp_poison_unmasked": 8.966968536376953,
+          "blue_opp_detox_unmasked": 6.031123161315918,
+          "blue_opp_improve_unmasked_pct": 32.74,
+          "valid_frac": 0.0485687255859375,
+          "ten_keep_pct": 97.5,
+          "sn_detox": 0.9993767738342285,
+          "sn_poison": 0.9993566870689392,
+          "blotch_poison": {
+            "blotch_px": 211,
+            "blotch_frac": 0.0032196044921875,
+            "n_cc": 100,
+            "area_max": 8,
+            "area_sum": 211
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true
+        },
+        "AUTO_WORST": {
+          "roi_kind": "AUTO_WORST",
+          "roi": [
+            1344,
+            672,
+            256,
+            256
+          ],
+          "lab_ab_poison": 2.997316360473633,
+          "lab_ab_detox": 0.3862535357475281,
+          "lab_ab_improve_pct": 87.11,
+          "blue_opp_poison": 1.7828782796859741,
+          "blue_opp_detox": 0.10524899512529373,
+          "blue_opp_improve_pct": 94.1,
+          "blue_opp_poison_unmasked": 17.99986457824707,
+          "blue_opp_detox_unmasked": 16.129030227661133,
+          "blue_opp_improve_unmasked_pct": 10.39,
+          "valid_frac": 0.090972900390625,
+          "ten_keep_pct": 97.21,
+          "sn_detox": 0.993155300617218,
+          "sn_poison": 0.9931558966636658,
+          "blotch_poison": {
+            "blotch_px": 274,
+            "blotch_frac": 0.004180908203125,
+            "n_cc": 68,
+            "area_max": 117,
+            "area_sum": 274
+          },
+          "blotch_detox": {
+            "blotch_px": 0,
+            "blotch_frac": 0.0,
+            "n_cc": 0,
+            "area_max": 0,
+            "area_sum": 0
+          },
+          "PASS_lab_ab": true,
+          "PASS_blue_opp": true,
+          "PASS_ten": true,
+          "PASS_sn": true,
+          "sn_floor_used": 0.95,
+          "PASS_blotch": true,
+          "PASS_FORMAL": true,
+          "auto_score": 7.299723148345947
+        }
+      },
+      "PASS_FORMAL": true,
+      "n_mesh_pass": 4,
+      "n_mesh": 4,
+      "primary_blue_improve_pct": 96.11,
+      "primary_blue_improve_unmasked_pct": 32.74,
+      "primary_lab_improve_pct": 94.78,
+      "primary_blotch_px_detox": 0,
+      "blotch_repair": {
+        "blotch_mask_frac_approx": 1.1682510375976562e-05,
+        "thr_bo": 3.5,
+        "thr_raw": 5.0
+      }
+    }
+  ],
+  "n_jobs": 5,
+  "n_pass_formal": 5,
+  "nested_compare": {
+    "N1_DIRECT": {
+      "blue_yvalid": 94.41,
+      "blue_unmasked": 44.31,
+      "PASS_FORMAL": true,
+      "blotch_px": 0
+    },
+    "N2_REBASE": {
+      "blue_yvalid": 94.32,
+      "blue_unmasked": 35.63,
+      "PASS_FORMAL": true,
+      "blotch_px": 0
+    },
+    "N1_D_blotch": {
+      "blue_yvalid": 96.11,
+      "blue_unmasked": 32.74,
+      "PASS_FORMAL": true,
+      "blotch_px": 0
+    }
+  },
+  "blue_champion_peep3": "N1_D_blotch",
+  "status": "ALL_FORMAL",
+  "merge_main": "NO",
+  "note": "Does NOT claim whole silver BLUE chain cleared",
+  "asof": "2026-10-31T20:51:15.401501+00:00",
+  "elapsed_s": 18.03,
+  "r10_2b_note": "VOID empty-poison secondary mesh ROIs; formal uses valid mesh only + AUTO"
+}
