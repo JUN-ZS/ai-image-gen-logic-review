@@ -1,0 +1,38 @@
+[
+  {
+    "tag": "P0",
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P0_CHILD_2048_LUMA_R9.png",
+    "sha256": "e6f63093d000f5a4f2f522935556859ac2c3b35df11bd1cb658711e42a65c3d4",
+    "bytes": 5294768
+  },
+  {
+    "tag": "P1",
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P1_CHILD_2048_LUMA_R9.png",
+    "sha256": "d706e9f4c5c2dd815269f592f6ed6ab420529a7e91ae085ed991de6d6884049a",
+    "bytes": 4833522
+  },
+  {
+    "tag": "PEEP2_R7",
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_LUMA_R9.png",
+    "sha256": "d82b7fd829431325276d13e9c385c165df6df4e7bc5c9a55988ddd991d44c7fa",
+    "bytes": 14919534
+  },
+  {
+    "tag": "PEEP2_R7b",
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_RIDGE_LUMA_R9.png",
+    "sha256": "c603dd7ff8107a74bdd4d69309984f4995b75c40a27dc77e45d83b0890df4fe7",
+    "bytes": 14920273
+  },
+  {
+    "tag": "PEEP3_R8",
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_R9.png",
+    "sha256": "03cb6358648ae51cc52bb9d5129e45ae652406628950cc9addffce70e005fcb2",
+    "bytes": 3056060
+  },
+  {
+    "tag": "PEEP3_R8_NESTED",
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_NESTED_R9.png",
+    "sha256": "e0fb8bcf886984d18a9333fc0f69c07f39db59dedf8fb88735f500d003009424",
+    "bytes": 3083320
+  }
+]
