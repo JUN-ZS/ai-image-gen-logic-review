@@ -1,0 +1,454 @@
+{
+  "round": "R9b_HONEST_AUDIT_RESPONSE",
+  "supersedes": "R9_FULLCHAIN_LUMA_ONLY_DETOX overclaim ACCEPT",
+  "audit_agreements": [
+    "5/6 incomplete: Nested lacked full PASS — FIXED with full gates",
+    "PEEP2 dark-blue micro-rise under +1pp soft gate — documented, not formal pass",
+    "formula Y_LP+(Y_SR-Y_LP)=Y_SR · means lock LP chrom + keep SR luma (not independent residual amp)",
+    "primary PNGs were local-only — SHA256 now recorded; delivery attempt separate",
+    "script path: /workspace/artifacts/tmp/run_r9_luma_detox.py + this R9b patch"
+  ],
+  "formula_clarification": {
+    "math": "Y_out = Y_SR; RGB = chrom(LP)*Y_SR",
+    "meaning": "discard SR chroma; keep SR luma detail; lock LP chromaticity",
+    "does_NOT": "remove blue already in LP ambient; amplify independent residual; material-select chroma"
+  },
+  "gates": {
+    "PASS_FORMAL": "chroma_B improve≥50%|absB<0.5 AND dark_blue not increase AND ten≥92% AND sn≥0.95",
+    "PASS_EXPERIMENTAL": "same but dark_blue +1pp tolerance (soft)"
+  },
+  "jobs": [
+    {
+      "blue_lp": {
+        "be_mean": 6.560013771057129,
+        "be_p95": 12.0,
+        "dark_blue_frac": 0.4473381042480469,
+        "BminusG": 6.271247863769531
+      },
+      "blue_poison": {
+        "be_mean": 6.969941139221191,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.4902982711791992,
+        "BminusG": 6.6891632080078125
+      },
+      "blue_detox": {
+        "be_mean": 6.3929338455200195,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.45052552223205566,
+        "BminusG": 6.122007369995117
+      },
+      "chroma_abs_poison": {
+        "absB": 1.0272754430770874,
+        "absG": 0.26261040568351746,
+        "absR": 0.638430655002594,
+        "abs_mean": 0.6427716612815857
+      },
+      "chroma_abs_detox": {
+        "absB": 0.3645593523979187,
+        "absG": 0.07740233093500137,
+        "absR": 0.23011629283428192,
+        "abs_mean": 0.22402574121952057
+      },
+      "ten_lp": 5473.46826171875,
+      "ten_poison": 15698.2353515625,
+      "ten_detox": 15641.451171875,
+      "sn_poison": 0.9788346290588379,
+      "sn_detox": 0.9794097542762756,
+      "chroma_B_improve_pct": 64.51,
+      "dark_blue_delta_pp": -3.977,
+      "dark_vs_lp_delta_pp": 0.319,
+      "ten_keep_pct": 99.64,
+      "PASS_chroma_B": true,
+      "PASS_blue_down_strict": true,
+      "PASS_blue_tol_1pp": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS_EXPERIMENTAL": true,
+      "PASS_FORMAL": true,
+      "tag": "P0",
+      "poison": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_GENERAL_R6c.png",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P0_CHILD_2048_LUMA_R9.png",
+      "child_bytes": 5294768,
+      "sha256": "e6f63093d000f5a4f2f522935556859ac2c3b35df11bd1cb658711e42a65c3d4",
+      "poison_sha256": "205183d83144383f619dec2becf5977e70a52447a0bcb16cf340caedfa8136b2",
+      "lp_note": "rebuilt_or_saved_LP"
+    },
+    {
+      "blue_lp": {
+        "be_mean": 5.586357593536377,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.5177977085113525,
+        "BminusG": 3.8652007579803467
+      },
+      "blue_poison": {
+        "be_mean": 5.873280048370361,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.5370538234710693,
+        "BminusG": 4.167486190795898
+      },
+      "blue_detox": {
+        "be_mean": 5.384420394897461,
+        "be_p95": 13.0,
+        "dark_blue_frac": 0.5091278553009033,
+        "BminusG": 3.705796718597412
+      },
+      "chroma_abs_poison": {
+        "absB": 1.0210243463516235,
+        "absG": 0.2747243642807007,
+        "absR": 0.6667803525924683,
+        "abs_mean": 0.6541762948036194
+      },
+      "chroma_abs_detox": {
+        "absB": 0.4894239902496338,
+        "absG": 0.12048662453889847,
+        "absR": 0.36789003014564514,
+        "abs_mean": 0.3259333074092865
+      },
+      "ten_lp": 3780.7802734375,
+      "ten_poison": 13954.5712890625,
+      "ten_detox": 13894.0908203125,
+      "sn_poison": 0.9801083207130432,
+      "sn_detox": 0.9806598424911499,
+      "chroma_B_improve_pct": 52.07,
+      "dark_blue_delta_pp": -2.793,
+      "dark_vs_lp_delta_pp": -0.867,
+      "ten_keep_pct": 99.57,
+      "PASS_chroma_B": true,
+      "PASS_blue_down_strict": true,
+      "PASS_blue_tol_1pp": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS_EXPERIMENTAL": true,
+      "PASS_FORMAL": true,
+      "tag": "P1",
+      "poison": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_GENERAL_R6c.png",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P1_CHILD_2048_LUMA_R9.png",
+      "child_bytes": 4833522,
+      "sha256": "d706e9f4c5c2dd815269f592f6ed6ab420529a7e91ae085ed991de6d6884049a",
+      "poison_sha256": "c90aa2f845964e479c63f0c478768ec7719cbf342c7c19a4444b06e2be643044",
+      "lp_note": "rebuilt_or_saved_LP"
+    },
+    {
+      "blue_lp": {
+        "be_mean": 5.107090950012207,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.26757991313934326,
+        "BminusG": 4.710160255432129
+      },
+      "blue_poison": {
+        "be_mean": 5.130219459533691,
+        "be_p95": 12.0,
+        "dark_blue_frac": 0.27229923009872437,
+        "BminusG": 4.648490905761719
+      },
+      "blue_detox": {
+        "be_mean": 5.066023826599121,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.27434033155441284,
+        "BminusG": 4.64976692199707
+      },
+      "chroma_abs_poison": {
+        "absB": 0.32254618406295776,
+        "absG": 0.10093653947114944,
+        "absR": 0.23533563315868378,
+        "abs_mean": 0.21960647404193878
+      },
+      "chroma_abs_detox": {
+        "absB": 0.12077367305755615,
+        "absG": 0.048745740205049515,
+        "absR": 0.1000586673617363,
+        "abs_mean": 0.08985936641693115
+      },
+      "ten_lp": 2044.4056396484375,
+      "ten_poison": 4429.0703125,
+      "ten_detox": 4400.42919921875,
+      "sn_poison": 0.9933862686157227,
+      "sn_detox": 0.9935049414634705,
+      "chroma_B_improve_pct": 62.56,
+      "dark_blue_delta_pp": 0.204,
+      "dark_vs_lp_delta_pp": 0.676,
+      "ten_keep_pct": 99.35,
+      "PASS_chroma_B": true,
+      "PASS_blue_down_strict": false,
+      "PASS_blue_tol_1pp": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS_EXPERIMENTAL": true,
+      "PASS_FORMAL": false,
+      "tag": "PEEP2_R7",
+      "poison": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_FULLRES_R7.png",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_LUMA_R9.png",
+      "child_bytes": 14919534,
+      "sha256": "d82b7fd829431325276d13e9c385c165df6df4e7bc5c9a55988ddd991d44c7fa",
+      "poison_sha256": "259e0ee44ea43a9a2ca2d9da9802e7b4de88e1845c0f5b859ef63d4460ad6c1e",
+      "lp_note": "rebuilt_or_saved_LP"
+    },
+    {
+      "blue_lp": {
+        "be_mean": 5.107090950012207,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.26757991313934326,
+        "BminusG": 4.710160255432129
+      },
+      "blue_poison": {
+        "be_mean": 5.1343302726745605,
+        "be_p95": 12.0,
+        "dark_blue_frac": 0.2732165455818176,
+        "BminusG": 4.644981384277344
+      },
+      "blue_detox": {
+        "be_mean": 5.05360221862793,
+        "be_p95": 11.0,
+        "dark_blue_frac": 0.27392059564590454,
+        "BminusG": 4.633434772491455
+      },
+      "chroma_abs_poison": {
+        "absB": 0.4050528407096863,
+        "absG": 0.12736812233924866,
+        "absR": 0.2964380383491516,
+        "abs_mean": 0.2762865722179413
+      },
+      "chroma_abs_detox": {
+        "absB": 0.14536616206169128,
+        "absG": 0.05842941999435425,
+        "absR": 0.11935589462518692,
+        "abs_mean": 0.10771726816892624
+      },
+      "ten_lp": 2044.4056396484375,
+      "ten_poison": 5159.83984375,
+      "ten_detox": 5113.30859375,
+      "sn_poison": 0.9900275468826294,
+      "sn_detox": 0.9902110695838928,
+      "chroma_B_improve_pct": 64.11,
+      "dark_blue_delta_pp": 0.07,
+      "dark_vs_lp_delta_pp": 0.634,
+      "ten_keep_pct": 99.1,
+      "PASS_chroma_B": true,
+      "PASS_blue_down_strict": false,
+      "PASS_blue_tol_1pp": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS_EXPERIMENTAL": true,
+      "PASS_FORMAL": false,
+      "tag": "PEEP2_R7b",
+      "poison": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_RIDGE_R7b.png",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_RIDGE_LUMA_R9.png",
+      "child_bytes": 14920273,
+      "sha256": "c603dd7ff8107a74bdd4d69309984f4995b75c40a27dc77e45d83b0890df4fe7",
+      "poison_sha256": "1940d7ea443aa28bb7826f02d9014c7aa6fbb77ea017f6a15a4d0162c9220677",
+      "lp_note": "rebuilt_or_saved_LP"
+    },
+    {
+      "blue_lp": {
+        "be_mean": 2.281597852706909,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.030360937118530273,
+        "BminusG": 0.19063591957092285
+      },
+      "blue_poison": {
+        "be_mean": 2.185883045196533,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.014931201934814453,
+        "BminusG": 0.11819624900817871
+      },
+      "blue_detox": {
+        "be_mean": 2.2270095348358154,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.01188039779663086,
+        "BminusG": 0.16895580291748047
+      },
+      "chroma_abs_poison": {
+        "absB": 1.3761215209960938,
+        "absG": 0.4694100618362427,
+        "absR": 0.9596244096755981,
+        "abs_mean": 0.9350507259368896
+      },
+      "chroma_abs_detox": {
+        "absB": 0.270444393157959,
+        "absG": 0.09784850478172302,
+        "absR": 0.21677295863628387,
+        "abs_mean": 0.19502200186252594
+      },
+      "ten_lp": 3609.10986328125,
+      "ten_poison": 7528.888671875,
+      "ten_detox": 7487.44677734375,
+      "sn_poison": 0.9982539415359497,
+      "sn_detox": 0.9982242584228516,
+      "chroma_B_improve_pct": 80.35,
+      "dark_blue_delta_pp": -0.305,
+      "dark_vs_lp_delta_pp": -1.848,
+      "ten_keep_pct": 99.45,
+      "PASS_chroma_B": true,
+      "PASS_blue_down_strict": true,
+      "PASS_blue_tol_1pp": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS_EXPERIMENTAL": true,
+      "PASS_FORMAL": true,
+      "tag": "PEEP3_R8",
+      "poison": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r8_peep3/complete/PEEP3_CHILD_2048_NCNN_FULLRES_R8.png",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_R9.png",
+      "child_bytes": 3056060,
+      "sha256": "03cb6358648ae51cc52bb9d5129e45ae652406628950cc9addffce70e005fcb2",
+      "poison_sha256": "3f42204098f42213c73b82661e3daf2bc5938b3c17c4f4d5bcc0760740ae5623",
+      "lp_note": "rebuilt_or_saved_LP"
+    },
+    {
+      "blue_lp": {
+        "be_mean": 2.088087797164917,
+        "be_p95": 9.0,
+        "dark_blue_frac": 0.008290529251098633,
+        "BminusG": 0.0032041072845458984
+      },
+      "blue_poison": {
+        "be_mean": 2.185883045196533,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.014931201934814453,
+        "BminusG": 0.11819624900817871
+      },
+      "blue_detox": {
+        "be_mean": 2.1844170093536377,
+        "be_p95": 10.0,
+        "dark_blue_frac": 0.00772404670715332,
+        "BminusG": 0.1564319133758545
+      },
+      "chroma_abs_poison": {
+        "absB": 1.7014695405960083,
+        "absG": 0.4524194598197937,
+        "absR": 1.057084083557129,
+        "abs_mean": 1.0703250169754028
+      },
+      "chroma_abs_detox": {
+        "absB": 0.32905447483062744,
+        "absG": 0.1489039659500122,
+        "absR": 0.31024762988090515,
+        "abs_mean": 0.26273563504219055
+      },
+      "ten_lp": 3586.408203125,
+      "ten_poison": 7528.888671875,
+      "ten_detox": 7425.8486328125,
+      "sn_poison": 0.9982475638389587,
+      "sn_detox": 0.998231053352356,
+      "chroma_B_improve_pct": 80.66,
+      "dark_blue_delta_pp": -0.721,
+      "dark_vs_lp_delta_pp": -0.057,
+      "ten_keep_pct": 98.63,
+      "PASS_chroma_B": true,
+      "PASS_blue_down_strict": true,
+      "PASS_blue_tol_1pp": true,
+      "PASS_ten_keep": true,
+      "PASS_sn": true,
+      "PASS_EXPERIMENTAL": true,
+      "PASS_FORMAL": true,
+      "tag": "PEEP3_R8_NESTED",
+      "poison": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r8_peep3/complete/PEEP3_CHILD_2048_NCNN_FULLRES_R8.png",
+      "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_NESTED_R9.png",
+      "child_bytes": 3083320,
+      "sha256": "e0fb8bcf886984d18a9333fc0f69c07f39db59dedf8fb88735f500d003009424",
+      "definition": "luma_only(LP3_nested from DET7b window, SR8) · full gates",
+      "note": "PRIMARY nested redefined as direct luma-only for verifiability"
+    }
+  ],
+  "material_aware_p0": {
+    "blue_lp": {
+      "be_mean": 6.560013771057129,
+      "be_p95": 12.0,
+      "dark_blue_frac": 0.4473381042480469,
+      "BminusG": 6.271247863769531
+    },
+    "blue_poison": {
+      "be_mean": 6.969941139221191,
+      "be_p95": 13.0,
+      "dark_blue_frac": 0.4902982711791992,
+      "BminusG": 6.6891632080078125
+    },
+    "blue_detox": {
+      "be_mean": 6.3996076583862305,
+      "be_p95": 13.0,
+      "dark_blue_frac": 0.45098423957824707,
+      "BminusG": 6.129677772521973
+    },
+    "chroma_abs_poison": {
+      "absB": 1.0272754430770874,
+      "absG": 0.26261040568351746,
+      "absR": 0.638430655002594,
+      "abs_mean": 0.6427716612815857
+    },
+    "chroma_abs_detox": {
+      "absB": 0.36144357919692993,
+      "absG": 0.07833231985569,
+      "absR": 0.23085014522075653,
+      "abs_mean": 0.22354187071323395
+    },
+    "ten_lp": 5473.46826171875,
+    "ten_poison": 15698.2353515625,
+    "ten_detox": 15641.6875,
+    "sn_poison": 0.9788346290588379,
+    "sn_detox": 0.9794069528579712,
+    "chroma_B_improve_pct": 64.82,
+    "dark_blue_delta_pp": -3.931,
+    "dark_vs_lp_delta_pp": 0.365,
+    "ten_keep_pct": 99.64,
+    "PASS_chroma_B": true,
+    "PASS_blue_down_strict": true,
+    "PASS_blue_tol_1pp": true,
+    "PASS_ten_keep": true,
+    "PASS_sn": true,
+    "PASS_EXPERIMENTAL": true,
+    "PASS_FORMAL": true,
+    "tag": "P0_MATERIAL_AWARE",
+    "child": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P0_CHILD_2048_MATERIAL_AWARE_R9b.png",
+    "sha256": "23ffe68120cc7000fe15f634c351e60b1c2311c7d0dbb5af322277f54ddd1086",
+    "silver_frac": 0.6067100167274475
+  },
+  "n_jobs": 6,
+  "n_pass_formal": 4,
+  "n_pass_experimental": 6,
+  "primary_children": [
+    "P0_CHILD_2048_LUMA_R9.png",
+    "P1_CHILD_2048_LUMA_R9.png",
+    "PEEP2_CHILD_4096_RIDGE_LUMA_R9.png",
+    "PEEP3_CHILD_2048_LUMA_NESTED_R9.png"
+  ],
+  "primary_manifest": [
+    {
+      "tag": "P0",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P0_CHILD_2048_LUMA_R9.png",
+      "sha256": "e6f63093d000f5a4f2f522935556859ac2c3b35df11bd1cb658711e42a65c3d4",
+      "bytes": 5294768
+    },
+    {
+      "tag": "P1",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/P1_CHILD_2048_LUMA_R9.png",
+      "sha256": "d706e9f4c5c2dd815269f592f6ed6ab420529a7e91ae085ed991de6d6884049a",
+      "bytes": 4833522
+    },
+    {
+      "tag": "PEEP2_R7",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_LUMA_R9.png",
+      "sha256": "d82b7fd829431325276d13e9c385c165df6df4e7bc5c9a55988ddd991d44c7fa",
+      "bytes": 14919534
+    },
+    {
+      "tag": "PEEP2_R7b",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP2_CHILD_4096_RIDGE_LUMA_R9.png",
+      "sha256": "c603dd7ff8107a74bdd4d69309984f4995b75c40a27dc77e45d83b0890df4fe7",
+      "bytes": 14920273
+    },
+    {
+      "tag": "PEEP3_R8",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_R9.png",
+      "sha256": "03cb6358648ae51cc52bb9d5129e45ae652406628950cc9addffce70e005fcb2",
+      "bytes": 3056060
+    },
+    {
+      "tag": "PEEP3_R8_NESTED",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r9_luma_detox/complete/PEEP3_CHILD_2048_LUMA_NESTED_R9.png",
+      "sha256": "e0fb8bcf886984d18a9333fc0f69c07f39db59dedf8fb88735f500d003009424",
+      "bytes": 3083320
+    }
+  ],
+  "status": "EXPERIMENTAL_P0_P1",
+  "formal_verdict": "REVOKE full-chain ACCEPT · keep P0/P1 as supported experiment · Nested now gated · do not merge main until PNG delivered + independent rerun",
+  "asof": "2026-10-31T19:38:56.879359+00:00"
+}
