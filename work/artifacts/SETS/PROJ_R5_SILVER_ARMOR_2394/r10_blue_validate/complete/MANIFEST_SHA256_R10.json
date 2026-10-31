@@ -1,0 +1,151 @@
+{
+  "inputs": [
+    {
+      "name": "MOTHER_SRC.jpg",
+      "bytes": 784428,
+      "sha256": "ab9edd500bc8a88571d8ffa3a1b57e75727a4220e6fd474f424eb3647fe64951"
+    },
+    {
+      "name": "P0_L0_512.png",
+      "bytes": 599996,
+      "sha256": "3dac1c645ed46216249f6edc65967efbe488976d0cdbb4031a337b2d916e8b2a"
+    },
+    {
+      "name": "P0_POISON_2048.png",
+      "bytes": 5450614,
+      "sha256": "205183d83144383f619dec2becf5977e70a52447a0bcb16cf340caedfa8136b2"
+    },
+    {
+      "name": "P1_L0_512.png",
+      "bytes": 539777,
+      "sha256": "0c682370561540250c113054d6e880469b4c890b35dde2ac56925b94c2b97ae0"
+    },
+    {
+      "name": "P1_POISON_2048.png",
+      "bytes": 4976508,
+      "sha256": "c90aa2f845964e479c63f0c478768ec7719cbf342c7c19a4444b06e2be643044"
+    },
+    {
+      "name": "PEEP2_LP_4096.png",
+      "bytes": 16089309,
+      "sha256": "7cd52f7a0fe37584755186b373ef2e18bacd9f9b51378ff7bf0c3ca31fe5a335"
+    },
+    {
+      "name": "PEEP2_POISON_R7.png",
+      "bytes": 15042012,
+      "sha256": "259e0ee44ea43a9a2ca2d9da9802e7b4de88e1845c0f5b859ef63d4460ad6c1e"
+    },
+    {
+      "name": "PEEP2_POISON_R7b.png",
+      "bytes": 15203677,
+      "sha256": "1940d7ea443aa28bb7826f02d9014c7aa6fbb77ea017f6a15a4d0162c9220677"
+    },
+    {
+      "name": "PEEP3_L0_512.jpg",
+      "bytes": 74187,
+      "sha256": "dfa7fe56e1f8629372467a152ee5caf39f415393c7c0332431ca78b2665783ab"
+    },
+    {
+      "name": "PEEP3_POISON_R8.png",
+      "bytes": 3002551,
+      "sha256": "3f42204098f42213c73b82661e3daf2bc5938b3c17c4f4d5bcc0760740ae5623"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P0_A_luma.png",
+      "bytes": 5294788,
+      "sha256": "5a53ceec340ad4b621a2db899a6b5616158914f279e071f5d7683d2b4e9c1eaf"
+    },
+    {
+      "name": "P0_B_material.png",
+      "bytes": 5294444,
+      "sha256": "2a92445d12afe4d9d166e75292657329f0f08e72a5e9dd6e5eabd44d94af701e"
+    },
+    {
+      "name": "P0_C_adaptive.png",
+      "bytes": 5303747,
+      "sha256": "a85ec7deaa354d8626e34c3ba4de141923b792a8e742abb08b173340a6282933"
+    },
+    {
+      "name": "P0_LP_2048.png",
+      "bytes": 4737409,
+      "sha256": "f3e143870d7f5201e6df7f3b7abcecdce64588af63893123d92e6d07c24e4b43"
+    },
+    {
+      "name": "P1_A_luma.png",
+      "bytes": 4833461,
+      "sha256": "ccb818aba50e327f17358bd5f1419685d4d8a28fa8f48dc53f745c997ac52590"
+    },
+    {
+      "name": "P1_B_material.png",
+      "bytes": 4834890,
+      "sha256": "98132cca1ba598182115747518eac062ba65a47f2f2d042084d34df833a7ce9c"
+    },
+    {
+      "name": "P1_C_adaptive.png",
+      "bytes": 4846383,
+      "sha256": "fcc89298bba662b34914b2e7be887e49da11aa796b5ebc8bd0275d77b3bf84c5"
+    },
+    {
+      "name": "P1_LP_2048.png",
+      "bytes": 4279986,
+      "sha256": "b0ea3f43fe4bc24f0edcbd307cd59e5422519a1493d4c8e59b1bc6a5a092c93b"
+    },
+    {
+      "name": "PEEP2_R7b_A_luma.png",
+      "bytes": 14920377,
+      "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505"
+    },
+    {
+      "name": "PEEP2_R7b_A_luma_for_nested.png",
+      "bytes": 14920377,
+      "sha256": "082ee7796870195a97639d396f35b151a9c1d4b61dd8ff3178761d3379db6505"
+    },
+    {
+      "name": "PEEP2_R7b_B_material.png",
+      "bytes": 14920131,
+      "sha256": "ec8dd377df00ce1d7cbbe29f74049e8d9a1762e8a7c850cf40b0c8e33f872801"
+    },
+    {
+      "name": "PEEP2_R7b_C_adaptive.png",
+      "bytes": 14921226,
+      "sha256": "b59a8574cfa81921609b0e2c914bdd478de495a019b551efa1ecbcc3a60551eb"
+    },
+    {
+      "name": "PEEP3_LP_nested_2048.png",
+      "bytes": 2963556,
+      "sha256": "0d19d992a2c67a065d2b42b5079e2fef808656f2dcc19e7a6a6e87f508727f63"
+    },
+    {
+      "name": "PEEP3_LP_orig_2048.png",
+      "bytes": 3013311,
+      "sha256": "a4da97ad4e34951e725c6a47b7d6463b94784e93bf23358fd286c9dace43316b"
+    },
+    {
+      "name": "PEEP3_N1_DIRECT.png",
+      "bytes": 3083738,
+      "sha256": "8dd87a2c391bcfbad048163bb9ac4dd7d1840a0f442b8396fb87c43764901de8"
+    },
+    {
+      "name": "PEEP3_N2_REBASE.png",
+      "bytes": 3428751,
+      "sha256": "eb1d0bbb40def04ffdbc0ecf41f62629f7b10e05629c561f34d16488137401aa"
+    },
+    {
+      "name": "PEEP3_origLP_A_luma.png",
+      "bytes": 3055573,
+      "sha256": "b1db5b2ec2a9dc8b370f771b138e8b8e2057b233daa7f8ce5e40223d683e1747"
+    },
+    {
+      "name": "PEEP3_origLP_B_material.png",
+      "bytes": 3056860,
+      "sha256": "7668d660350d355297deafc771952d652ed7d3bdaaec9e53ca386acecbc527bf"
+    },
+    {
+      "name": "PEEP3_origLP_C_adaptive.png",
+      "bytes": 3096242,
+      "sha256": "40fe8d60a75ddfba4348951aeb16b9717e6969984137451968273a0324383be3"
+    }
+  ]
+}
