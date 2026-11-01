@@ -40,3 +40,34 @@ E-TEX-01..10（見 DO_NOT_REPEAT）
 `SETS/OBA_DRESS_FULLCHAIN/` · 母 22cf97df · 圈 ad220951
 
 *LOCK 絕招 · §0.12.50*
+
+
+---
+## 附屬 · ZSC 放大換衣保 PIXEL（asof 2026-10-30T22:50Z）
+
+**換衣 bite LOCK = HARD RESIDUAL**（唔再用 soft LP+M·HF）
+
+```
+out = L1 + k·(dens − L1)·α_peep
+dens HF = IP衣 only · k≈1.3 · α≤0.98
+```
+
+正檔：`FORMULA_ZOOM_SWAP_CLOTH_ZSC.md` · `ZSC_HARD_RESIDUAL_BITE.md`  
+樣板：`SETS/OBA_BW_POSTER_TEX4/TEX4_ZSC/HARD_RESIDUAL/`  
+鐵序：①IP衣 → ②虛形 peep → ③FTSA 分區 ZSC → ④P_G  
+BAN：E-ZSC-04 soft LP · E-TEX-05 全幅 densify · 甲 scrap sole donor
+
+
+---
+## 附屬 · 解毒化衣 DHY（§0.12.51 · asof 2026-10-31T07:45+08）
+
+**失敗→成功：** ECC/residual 對準後 FULL Δ≈1.45「沒改」→ dens **可見 rewrite** + peep **硬換 α≈0.9** → ROI Δ≥12 才 LOCK。
+
+```
+化衣落地 = DHY
+  dens 肉眼有差 → peep 硬貼 → PROOF Δ
+  禁：只 MATCH／只 ncc／弱 residual 稱成功（E-DHY-01..03）
+```
+
+正檔：`DETOX_HUA_YI_01251.md` · `DETOX_HUA_YI_DO_NOT_REPEAT.md`  
+樣板：`SETS/OBA_BW_POSTER_TEX4/DETOX_VISIBLE/` · `FINAL_DETOX_VISIBLE.jpg`
