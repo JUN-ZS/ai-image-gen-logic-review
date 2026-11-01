@@ -1,0 +1,48 @@
+{
+  "section": "0.12.45",
+  "name": "補擋全機",
+  "code": "OCCLU-COMPLETE",
+  "code_alt": "ASC",
+  "en": "Amodal Solo Complete",
+  "status": "LOCK",
+  "family": "OBA_0.12.44_branch",
+  "asof": "2026-10-30T17:13:34Z",
+  "record": "OBA_LEGO_FAILURE_RECORD.md",
+  "errors": [
+    "E-ASC-01",
+    "E-ASC-02",
+    "E-ASC-03",
+    "E-ASC-04",
+    "E-ASC-05",
+    "E-ASC-06",
+    "E-OBA-23"
+  ],
+  "skill_layers": [
+    "amodal_prior",
+    "shape_cond_peep",
+    "explicit_complete_prompt",
+    "solo_black_isolation"
+  ],
+  "must": [
+    "peep_residual_input",
+    "full_unoccluded_prompt",
+    "hard_alpha_cut",
+    "peep_scale_s_le_1",
+    "foot_anchor",
+    "recall_gate",
+    "far_to_near_order",
+    "tag_COMPLETE_IMAGINED"
+  ],
+  "samples": {
+    "project": "SETS/OBA_BATTLE6_MECH/COMPLETE",
+    "C_complete": "ccdec01e-755a-4aa5-8403-5474391344ce",
+    "variant_limbs": "7344994c-8436-49ee-9f3a-8a36ef3ee992",
+    "mother": "b1326837-4f42-40f9-929a-b63573801a98"
+  },
+  "docs": [
+    "OCCLU_COMPLETE_ASC_01245.md",
+    "OCCLU_COMPLETE_ASC.md",
+    "OCCLU_COMPLETE_ASC_NAME.md",
+    "OCCLU_COMPLETE_ASC_DO_NOT_REPEAT.md"
+  ]
+}

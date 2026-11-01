@@ -1,0 +1,23 @@
+{
+  "asof": "2026-10-28T22:52:00+08:00",
+  "section": "0.12.35",
+  "name": "正衣先行",
+  "code": "ZYF",
+  "stack": "MSR-ZYF 宏圖正衣棧",
+  "lock": true,
+  "files": [
+    "ZHENGYI_FIRST_01235.md",
+    "ZHENGYI_FIRST_NAME.md",
+    "ZHENGYI_FIRST_DO_NOT_REPEAT.md",
+    "MACRO_SCALE_RHYTHM_MSR.md",
+    "MACRO_SCALE_RHYTHM_MSR_NAME.md",
+    "MSR_ZYF_STACK_NAME.md"
+  ],
+  "samples": {
+    "law_donor": "8f09b935-6bd8-45ed-ba7f-d4e5233b0225",
+    "zhengyi": "410a93c1-7a3a-48ed-82da-3cd384a8639a",
+    "he_xin": "7ea48628-81ee-4078-9506-8d82c956e809",
+    "base": "209e202d-9e23-4838-90a6-9b6908fb45b8"
+  },
+  "user": "把試錯入憲, 和把這連動技能命名入憲"
+}

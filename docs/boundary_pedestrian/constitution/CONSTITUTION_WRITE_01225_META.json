@@ -1,0 +1,39 @@
+{
+  "asof": "2026-10-27T10:55:37Z",
+  "section": "0.12.25 GOU_DETECT_SHAPE",
+  "user_request": "這不是有進展嗎, 探錯過程寫入憲",
+  "progress_acknowledged": true,
+  "killed": [
+    "BOX_PASTE",
+    "OLD_EDGE_LOCK",
+    "FILL_APPROX_1_fake_shape",
+    "REV_AS_CONTENT",
+    "VIRUS_LOCAL_BASE_as_mother",
+    "DENY_VALID_PROGRESS"
+  ],
+  "rescued": [
+    "DETECT_CHANGE_BOUNDARY",
+    "SHAPE_NOT_BOX_PASTE",
+    "GOU_CONTOUR_INTERIOR",
+    "SELF_BOUND_GRABCUT",
+    "FULL_BASE_NO_VIRUS",
+    "FILL_RATIO_GATE"
+  ],
+  "proof_L": [
+    "L-767fc2634e8f",
+    "L-05683b2c4e72"
+  ],
+  "proof_assets": {
+    "contour_gou": "360ef2a0-c0fb-41b9-be7a-43c5865cf061",
+    "full_gou_try": "f5c6a555-f7e9-420b-b879-075cd2954c35",
+    "a0beb_view_ref": "1d038c85-8f69-436d-8eda-850e72a616b0",
+    "shape_vs_box_prior": "e61ab50c-a679-4490-94e1-6624439fa703"
+  },
+  "constitution_files": [
+    "BOUNDARY_WALKER_UNIFIED_RULES.md",
+    "GOU_DETECT_SHAPE_01225.md",
+    "WHOLE_COLLAGE_ALIGN_01224.md",
+    "VIRUS_LOCAL_BASE_01223.md"
+  ],
+  "L": "L-57b567a9ce97"
+}

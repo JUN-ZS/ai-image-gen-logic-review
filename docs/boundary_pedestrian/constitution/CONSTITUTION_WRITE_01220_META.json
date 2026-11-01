@@ -1,0 +1,30 @@
+{
+  "asof": "2026-10-26T17:40:00Z",
+  "section": "0.12.20",
+  "title": "SKIN_MAT 四參數",
+  "refs": {
+    "P1_SHARP_ROI": "9e1cd1e9-f229-4b21-bf4c-91b2d045e08b",
+    "P2_PLATE_VIEW": "3f769105-e85e-43d2-854f-f454f8171e34",
+    "P3_PORE_PLATE": "2befbe5e-751c-434a-a39f-ad4bf8ed4374",
+    "P4_STITCH_ROI": "d4d2d76d-c467-46e9-96f2-eb6ba58ec5f6"
+  },
+  "L_samples": [
+    "L-ebaf5fca8718",
+    "L-af02132e74ec"
+  ],
+  "gates": [
+    "G-SAME-COMP≥0.90",
+    "G-ALIGN",
+    "G-BEAT-ZONE",
+    "G-VISIBLE-Δ",
+    "G-NO-BLUR"
+  ],
+  "E_GS": [
+    "E-GS-21",
+    "E-GS-22",
+    "E-GS-23",
+    "E-GS-24"
+  ],
+  "user": "這4参數都可寫進憲",
+  "note": "E-GS-17 was already DETAIL6; skin ban starts at 21"
+}

@@ -1,0 +1,31 @@
+{
+  "asof": "2026-10-27T20:40:46Z",
+  "section": "§0.12.28",
+  "skill_name_zh": "字糊反推對換",
+  "skill_name_en": "TEXT_BLUR_REVERSE_SWAP",
+  "code": "TBRS",
+  "status": "備案_未成",
+  "user_verdict": "全錯",
+  "user_quote": "全錯啊,先備案入憲, 出技名,以後再改",
+  "parent": "§0.12.27 GCS",
+  "trial_L": [
+    "L-a545d75ccea4",
+    "L-ce43c615607c"
+  ],
+  "not_final": true,
+  "fix_later": true,
+  "blacklist": [
+    "E-GS-42",
+    "E-GS-43",
+    "E-GS-44",
+    "E-GS-45",
+    "E-GS-46"
+  ],
+  "files": [
+    "TEXT_BLUR_REVERSE_SWAP_01228.md",
+    "TEXT_BLUR_REVERSE_SWAP_NAME.md",
+    "TEXT_BLUR_REVERSE_SWAP_DO_NOT_REPEAT.md",
+    "BOUNDARY_WALKER_UNIFIED_RULES.md §0.12.28",
+    "GRID_CELL_SWAP_01227.md K→28"
+  ]
+}

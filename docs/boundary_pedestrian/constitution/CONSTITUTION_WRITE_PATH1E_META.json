@@ -1,0 +1,19 @@
+{
+  "asof": "2026-10-26T15:00:00Z",
+  "user_request": "寫",
+  "written": [
+    "§0.12.17 PATH1E plate→ECC",
+    "E-GS-12",
+    "E-GS-13",
+    "header lock",
+    "revision log",
+    "§0.12.6 strengthened",
+    "PIXEL_CTRL_LAW",
+    "GRID_SIAX_DO_NOT_REPEAT",
+    "GRID_SIAX_CORRECT_PROCESS T10-T11",
+    "PATH1E_PLATE_ECC_LAW.md"
+  ],
+  "template_L": "L-fc0a2fa7b8a9",
+  "ecc_cc": 0.98,
+  "conf": 0.782
+}

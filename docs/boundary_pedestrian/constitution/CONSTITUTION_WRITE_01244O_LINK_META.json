@@ -1,0 +1,19 @@
+{
+  "section": "0.12.44.O",
+  "name": "OBA×RRT 聯動 · 回母 VOID",
+  "gold": [
+    "66a6568a",
+    "eadb9176",
+    "1e3908c0",
+    "f168a1ba"
+  ],
+  "order": [
+    "P0母",
+    "P1母VOID",
+    "P2SCAN",
+    "P3RRT",
+    "P4VOID累貼",
+    "P5核對"
+  ],
+  "asof": "2026-10-30T18:54:59Z"
+}
