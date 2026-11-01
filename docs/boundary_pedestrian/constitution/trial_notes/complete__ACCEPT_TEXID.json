@@ -1,0 +1,23 @@
+{
+  "round": "RENZHI_ZAOWEN_TEXID_SSBT",
+  "correction": "用 b7f4 紋身份造大女圖，不是另紋/弱 HF",
+  "tex_src": "b7f4e74c-b64e-4b87-a91c-ca2126f322fa",
+  "best_gen": "TEXID_B",
+  "ecc": 0.9431364003912597,
+  "sn": 0.9972686767578125,
+  "full_hw": [
+    1728,
+    1152
+  ],
+  "x2_hw": [
+    3456,
+    2304
+  ],
+  "full_bytes": 3010076,
+  "x2_bytes": 9787466,
+  "sha_full": "bd619b8c2a2f0503eb234bd22fcf1e60e01885e9b564df92a83785d89f80724a",
+  "sha_2x": "5ea8ac5370a92d5f2f214ce91d8e8822d3fd1423e661866f8bbcaaf65c3802bb",
+  "chain": "認 b7f4 紋 → 造 GEN 大女 → 補 mesh → 貼 PBI → FULL/2X",
+  "merge_main": "NO",
+  "asof": "2026-11-01T11:34:11.865267+00:00"
+}

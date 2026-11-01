@@ -1,0 +1,11 @@
+{
+  "round": "SSBT_FULLGEN_NO_PEEP",
+  "logic": "whole-body GEN only \u00b7 no peep fill/stitch",
+  "gens": [
+    "GEN_A",
+    "GEN_B",
+    "GEN_C"
+  ],
+  "asof": "2026-11-01T12:12:40.641243+00:00",
+  "merge_main": "NO"
+}

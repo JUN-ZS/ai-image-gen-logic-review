@@ -1,0 +1,23 @@
+{
+  "round": "SSBT_PEEP4_ALL_PATHS",
+  "skirt_center": {
+    "ten_parent": 14965.33203125,
+    "ten_quilt": 31087.96484375,
+    "ten_gen": 31118.05859375,
+    "ten_pbi": 15973.244140625,
+    "ten_ncnn4": 7195.59033203125,
+    "hf_ncc_tex_gen": 0.6546017527580261,
+    "hf_ncc_tex_pbi": 0.04303732514381409,
+    "hf_ncc_tex_parent": 0.0015894463285803795
+  },
+  "files": {
+    "full_path3": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_peep4/complete/FINAL_FULL_PATH3_PEEP_PASTE.png",
+    "vm2": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_peep4/complete/FINAL_VM2X_PATH4.png",
+    "skirt_child_1408": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_peep4/path3_gen_pbi/skirt_center_CHILD_1408_GEN.png",
+    "skirt_pbi_1024": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_peep4/path3_gen_pbi/skirt_center_PBI_1024.png",
+    "skirt_ncnn_2048": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_peep4/path4_vm/skirt_center_CHILD_2048_NCNN_GEN_PBI.png"
+  },
+  "note": "path2 quilt HF-NCC~0 (phase tile not identity); path3 GEN hf-ncc~0.66 vs TEX = real texture lock; path4 keeps 1408 child + 2048 NCNN plate",
+  "merge_main": "NO",
+  "asof": "2026-11-01T11:45:40.362154+00:00"
+}
