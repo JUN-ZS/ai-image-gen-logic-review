@@ -177,3 +177,18 @@ B: ROI→GEN 模板→atlas 模庫→HF 律動對位→Ref 新構合體
 | **四技對紋絕招** | **TEX4** | §0.12.50 LOCK | 影分身合×虛形×RRT×P_G · 對紋總招 · 黑裙樣板 |
 
 | **生生補貼真** | **SSBT-Z** | **§0.12.58 LOCK** | 整身 GEN 密網 · 禁 peep 補位 · 父 SSBT§0.12.56 · 樣 fullgen GEN-D/E/B | E-SSBT-Z-01..05 | 2026-11-01T12:23:04Z |
+
+
+---
+
+## SI 場繼承 · SESSION_INHERIT（asof 2026-11-01T13:06:55Z）
+
+| 正名 | 碼 | 文 | 職 |
+|------|-----|-----|-----|
+| **場繼承** | **SI** | SESSION_INHERIT_SI.md | 下一 AI 開場繼承對話慣性+技能圖+當前場 |
+| 生生補貼真 | SSBT-Z | SHENGSHENG_BUTIE_ZHEN_SSBTZ_01258.md | 整身 GEN · 禁 peep 填 |
+| 防藍注入 | PBI | PREVENT_BLUE_INJECTION_PBI_01255.md | Y residual only |
+| Nested PEEP | NCPG | NESTED_CONTEXT_PEEP_GENERATION_01253.md | VM 座標 peep 層 |
+| 新生像素 | GNP | GEN_NEW_PIXEL_GNP_01252.md | 真新 HF 非銳化 |
+
+> **Git：** 全量憲在 `docs/constitution-skills-ssbtz-20261101` · main 不全。
