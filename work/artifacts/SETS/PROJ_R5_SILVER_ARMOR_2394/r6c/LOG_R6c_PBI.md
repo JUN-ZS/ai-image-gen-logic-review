@@ -2,10 +2,10 @@
 
 - image_generation: THIS_RUN
 - PBI_MODE=luma_only
-- status=PARTIAL n_accept=0 n_struct=2
+- status=ACCEPT n_accept=2 n_struct=2
 - merge_main: NO
-- elapsed_s=18.86
+- elapsed_s=17.8
 
 ## peeps G7/G8
-- P0: PASS=False struct=True G7=True area=1899 G8=False area=35317
-- P1: PASS=False struct=True G7=True area=5465 G8=False area=63601
+- P0: PASS=True struct=True G7=True area=1545 G8=True area=492
+- P1: PASS=True struct=True G7=True area=2695 G8=True area=945

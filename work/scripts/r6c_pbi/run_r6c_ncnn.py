@@ -268,6 +268,64 @@ def ridge_hard_y(residual_y, parent_hd, thr_k=0.35, dil=3):
     spill = float((rmag * (1 - soft)).sum() / (rmag.sum() + 1e-8))
     return res_h, align, spill
 
+
+def wire_cell_masks(parent_hd, thr_k=0.5, dil_wire=2):
+    """LP edge → wire protect · low-mag → cell/hole (S1/S2)."""
+    g = cv2.cvtColor(parent_hd, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    mag = cv2.magnitude(
+        cv2.Sobel(g, cv2.CV_32F, 1, 0, 3),
+        cv2.Sobel(g, cv2.CV_32F, 0, 1, 3),
+    )
+    thr = float(mag.mean() + thr_k * mag.std())
+    wire = (mag > thr).astype(np.uint8)
+    wire = cv2.dilate(wire, np.ones((2 * dil_wire + 1, 2 * dil_wire + 1), np.uint8), 1)
+    wire = wire.astype(bool)
+    cell = (mag < mag.mean() * 0.55) & (~wire)
+    cell = cv2.erode(cell.astype(np.uint8), np.ones((3, 3), np.uint8), 1).astype(bool)
+    return wire, cell, mag
+
+
+def s1_s2_protect_y(res_h_y, y_lp, parent_hd,
+                    black_thr: float = 18.0,
+                    wire_max_drop: float = 4.0,
+                    cell_max_drop: float = 10.0,
+                    other_max_drop: float = 14.0):
+    """G8 ATTRIB 07e52d7:
+    S1 — cap strong negative residual in holes (cells)
+    S2 — wire protect: almost no darkening on LP ridge
+    Also block NEW near-black (y_lp>=thr → y_out>=thr+0.5)
+    Does NOT loosen G8 gates; stops generator from creating the failure mode.
+    """
+    wire, cell, mag = wire_cell_masks(parent_hd)
+    res = res_h_y.astype(np.float32).copy()
+    # residual caps by region
+    res = np.where(wire, np.maximum(res, -wire_max_drop), res)
+    res = np.where(cell, np.maximum(res, -cell_max_drop), res)
+    res = np.where(~wire & ~cell, np.maximum(res, -other_max_drop), res)
+    # positive residual untouched
+    y_out = y_lp + res
+    # absolute drop caps (double belt)
+    y_out = np.where(wire, np.maximum(y_out, y_lp - wire_max_drop), y_out)
+    y_out = np.where(cell, np.maximum(y_out, y_lp - cell_max_drop), y_out)
+    y_out = np.where(~wire & ~cell, np.maximum(y_out, y_lp - other_max_drop), y_out)
+    # S3-ish fragile band: further limit darkening when LP already dim
+    fragile = (y_lp >= black_thr) & (y_lp < black_thr + 12.0)
+    y_out = np.where(fragile, np.maximum(y_out, y_lp - min(6.0, cell_max_drop)), y_out)
+    # forbid NEW black relative to G8 definition
+    was_ok = y_lp >= black_thr
+    y_out = np.where(was_ok, np.maximum(y_out, black_thr + 0.5), y_out)
+    y_out = np.clip(y_out, 0, 255)
+    stats = {
+        "wire_frac": float(wire.mean()),
+        "cell_frac": float(cell.mean()),
+        "wire_max_drop": wire_max_drop,
+        "cell_max_drop": cell_max_drop,
+        "other_max_drop": other_max_drop,
+        "black_thr": black_thr,
+        "s1_s2": "ATTRIB_07e52d7",
+    }
+    return y_out, res, stats
+
 def pbi_compose_from_rgb_residual(LP_bgr, residual_rgb, parent_hd, mode=None):
     """Compose hybrid with PBI default.
     residual_rgb is BGR residual (SR-LP) after optional fill/mask/gain.
@@ -515,6 +573,7 @@ def spm_fullres_ncnn(net, L0, n_probes=24):
             print(f'    {i+1}/{len(probes)}', flush=True)
     infer_s=time.time()-t0
     parent_hd=cv2.resize(L0,(Wh,Hh),interpolation=cv2.INTER_LANCZOS4)
+    s12 = None
     if PBI_MODE == "legacy_rgb":
         res=res_acc/np.maximum(w_acc[:,:,None],1e-6)
         filled=multi_sigma_fill(res, w_acc)
@@ -535,17 +594,16 @@ def spm_fullres_ncnn(net, L0, n_probes=24):
         residual_y = filled_y * M * GAIN
         res_h_y, align, spill = ridge_hard_y(residual_y, parent_hd, 0.35, 3)
         y_lp = to_y_bgr(LP)
-        y_out = y_lp + res_h_y
-        # G8: do not allow new near-black collapse far below LP (keep mesh holes from LP)
-        y_floor = np.maximum(y_lp - 36.0, 5.0)
-        y_out = np.clip(y_out, y_floor, 255.0)
+        # S1/S2 protect (G8 attrib) — replaces weak y_lp-36 floor
+        y_out, res_prot, s12 = s1_s2_protect_y(res_h_y, y_lp, parent_hd)
         hyb = np.clip(chrom_bgr(LP, y_lp) * y_out[..., None], 0, 255).astype(np.uint8)
         mode = PBI_MODE
     meta=dict(n_probes=len(probes), child_hw=Wh, align=align, spill=spill,
               ten=tenengrad(hyb), sn=struct_ncc(LP.astype(np.uint8), hyb),
               infer_s=round(infer_s,2), engine='NCNN_GENERAL_x4v3',
-              iron='4x_MODEL_to_4x_RESIDUAL_PBI_LUMA',
-              pbi_mode=mode, pbi=PBI_DOC)
+              iron='4x_MODEL_to_4x_RESIDUAL_PBI_LUMA_S1S2',
+              pbi_mode=mode, pbi=PBI_DOC,
+              s1_s2=s12 if mode != 'legacy_rgb' else None)
     return hyb, meta
 
 def main():
@@ -606,9 +664,9 @@ def main():
 
     # speed note vs R6b PT 24 probes ~54ms each = ~1.3s infer; NCNN should be similar or better
     accept = dict(
-        round="R6c_NCNN_PBI_LUMA_DEFAULT",
+        round="R6c_NCNN_PBI_S1S2_PROTECT",
         option=3,
-        constitution="§0.12.56 + G7/G8 blotch gates",
+        constitution="§0.12.56 + G7/G8 + S1/S2 protect (attrib 07e52d7)",
         image_generation="THIS_RUN",
         scripts={"r6c": REPO_SCRIPT, "PBI_MODE": PBI_MODE},
         formula=PBI_DOC,

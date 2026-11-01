@@ -1,18 +1,13 @@
-# feat/r6c-ncnn-pbi-luma · G8-A/B/C + R7 parent lock
+# feat/r6c-ncnn-pbi-luma · S1/S2 protect
 
-## Honest
-- G7 BLUE PASS
-- G8 BLACK: G8-A full + G8-B silver_proxy + G8-C 6 ROIs → **FAIL**
-- R7: `DIAGNOSTIC_ONLY` when P0 formal PASS false (G8)
-- production_ok: false · merge main: **NO**
+## THIS_RUN after G8 attrib `07e52d7`
+- **S1** cell negative residual cap
+- **S2** wire protect (max drop 4)
+- block new black: y_lp≥18 → y_out≥18.5
+- G7/G8 gates **unchanged**
 
-## G8 design (not threshold gaming)
-- G8-A: near-black **and** min_drop≥6
-- G8-B: heuristic silver/mesh proxy scope (not human mask)
-- G8-C: 6 fixed mesh ROIs
-- G8-D: blotch + wire_hit
-
-## Scripts
-- `work/scripts/r6c_pbi/run_r6c_ncnn.py`
-- `work/scripts/r6c_pbi/run_r7_peep2_final.py` (parent ACCEPT/SHA/G8 lock)
-- `work/scripts/r6c_pbi/finalize_pbi_bundle.py` (unified SHA)
+## Result
+- R6c status: **ACCEPT** (n_accept=2)
+- G8 black: P0 35k→492 · P1 64k→945 · wire_hit 0
+- Tenengrad lower (detail tradeoff) · struct still PASS
+- merge main: **NO** (no human silver mask · not full clean-checkout chain · R7 not re-FORMAL yet)
