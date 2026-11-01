@@ -1,0 +1,79 @@
+{
+  "round": "R6c_GNP_FL_FILL_NEW_MESH",
+  "base": "P0_B_CLEAN_NOROISE (de-frost)",
+  "user": "要用技能規出新網紋去生成補",
+  "skills": {
+    "GNP": "Imagine densify = true new HF pixels (not USM)",
+    "FL": "filigree lattice surface densify",
+    "PBI": "C(LP)*Y only · no RGB residual",
+    "S1S2": "wire/cell black protect",
+    "gate": "mesh α + ridge"
+  },
+  "primary": "STRONG_REF",
+  "peeps": [
+    {
+      "tag": "REF_GNP",
+      "gen_path": "/workspace/artifacts/imagine_images/4ff3cb3f-9c48-49d7-9d57-0d13485d8cc4.jpg",
+      "out": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/B_gnp_fill/P0_GNP_FILL_REF_GNP_2048.png",
+      "bytes": 6222283,
+      "sha256": "32a20e8a64440c798204ff384b54b795f78c8066ee0d98fcc0b6bcf6c209aef8",
+      "ecc_cc": 0.5050280219426225,
+      "ten_clean": 10724.5419921875,
+      "ten_gen": 37016.40234375,
+      "ten_out": 10112.0205078125,
+      "sn_out_vs_lp": 0.982222318649292,
+      "sn_out_vs_clean": 0.9858312010765076,
+      "mesh_alpha_mean": 0.8620492815971375,
+      "skills": [
+        "GNP §0.12.52",
+        "FL §0.12.42",
+        "PBI §0.12.55",
+        "S1S2",
+        "mesh ridge gate"
+      ]
+    },
+    {
+      "tag": "I2I_FL",
+      "gen_path": "/workspace/artifacts/imagine_images/b7f4e74c-b64e-4b87-a91c-ca2126f322fa.jpg",
+      "out": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/B_gnp_fill/P0_GNP_FILL_I2I_FL_2048.png",
+      "bytes": 6144692,
+      "sha256": "c672a40664e3bcf55c6aac4bc4e41fc955c7455b350c9fddf3e131386a23774b",
+      "ecc_cc": 0.7492855760812179,
+      "ten_clean": 10724.5419921875,
+      "ten_gen": 25032.640625,
+      "ten_out": 10773.5322265625,
+      "sn_out_vs_lp": 0.9820696711540222,
+      "sn_out_vs_clean": 0.9874640703201294,
+      "mesh_alpha_mean": 0.8620492815971375,
+      "skills": [
+        "GNP §0.12.52",
+        "FL §0.12.42",
+        "PBI §0.12.55",
+        "S1S2",
+        "mesh ridge gate"
+      ]
+    }
+  ],
+  "merge_main": "NO",
+  "asof": "2026-11-01T11:07:30.920303+00:00",
+  "strong": {
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/B_gnp_fill/P0_GNP_FILL_STRONG_REF_2048.png",
+    "bytes": 6692836,
+    "sha256": "3d74aa7e3f866f72457d5357c07587af609eae53d996b6d8ba8f367793e9e28a",
+    "ecc_cc": 0.5085788183487067,
+    "ten_clean": 10724.5419921875,
+    "ten_gen": 39915.77734375,
+    "ten_out": 18925.869140625,
+    "sn_lp": 0.9431398510932922,
+    "sn_clean": 0.9419847130775452,
+    "alpha_mean": 0.8969590067863464,
+    "skills": [
+      "GNP",
+      "FL",
+      "PBI",
+      "S1S2",
+      "mesh+ridge strong Y blend"
+    ]
+  },
+  "primary_path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/B_gnp_fill/P0_GNP_FILL_STRONG_REF_2048.png"
+}

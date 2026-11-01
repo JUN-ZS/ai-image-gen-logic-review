@@ -1,0 +1,16 @@
+{
+  "section": "0.12.42",
+  "code": "FL",
+  "name": "密絲晶格",
+  "asof": "2026-10-29T17:17:16Z",
+  "lock": true,
+  "files": [
+    "FILIGREE_LATTICE_FL_NAME.md",
+    "FILIGREE_LATTICE_FL_01242.md",
+    "FILIGREE_LATTICE_FL_DO_NOT_REPEAT.md"
+  ],
+  "canon": "a9921fdd-1607-4e4c-8df8-6dd2265e6234",
+  "toxic": "e031aaa3-634b-405c-af47-92b4c408c9cb",
+  "clean_base_ex": "da39d847-1778-42a7-8bc1-d07614f49bc0",
+  "style_ex": "f90d38e1-c172-43b8-8c1f-36c89e4fd91e"
+}

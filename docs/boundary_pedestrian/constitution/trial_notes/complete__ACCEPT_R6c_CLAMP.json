@@ -1,0 +1,34 @@
+{
+  "round": "R6c_NCNN_CLAMP_FIX",
+  "results": [
+    {
+      "tag": "P0",
+      "align": 0.9603102207183838,
+      "sn": 0.42574337124824524,
+      "ten": 11393.07421875,
+      "infer_s": 0.8464393615722656,
+      "vs_r6b": {
+        "mae": 21.316788037618,
+        "sn": 0.39025405049324036
+      },
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_CLAMP_R6c.png",
+      "PASS": false
+    },
+    {
+      "tag": "P1",
+      "align": 0.9639880657196045,
+      "sn": 0.5600035190582275,
+      "ten": 11136.6474609375,
+      "infer_s": 0.8054294586181641,
+      "vs_r6b": {
+        "mae": 20.430419445037842,
+        "sn": 0.5246378183364868
+      },
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_CLAMP_R6c.png",
+      "PASS": false
+    }
+  ],
+  "n_accept": 0,
+  "status": "PARTIAL",
+  "fix": "clamp NCNN out to [0,1] before residual (model residual overshoot)"
+}

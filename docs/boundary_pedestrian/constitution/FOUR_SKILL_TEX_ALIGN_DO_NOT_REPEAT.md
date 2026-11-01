@@ -15,3 +15,33 @@
 | E-TEX-10 | 灰底／非 peep spill | 鬼線飄出裙 | P_G peep∩shape 閘 |
 
 **口訣：** 升清 ≠ 換拓；缺 IP 必漂；杖實必搶 peep；L3 到 ≠ 拓已死。
+
+## 全紋自對順補（§0.12.50.I · FTSA）
+
+| ID | 禁 |
+|----|-----|
+| E-TEX-11 | 只修局部 · 其餘紋放生仍稱 TEX4 完成 |
+| E-TEX-12 | 跨母成功圖 PIXEL 當本母紋 donor |
+| E-TEX-13 | 各區效果標準不一致硬 LOCK |
+| E-TEX-14 | 無紋區表 · 盲全幅 GEN 當全修 |
+
+**口訣：** 效果標準可繼承 · PIXEL 不可跨母；全部紋自對 · 逐區順。
+
+
+## ZSC 換衣 bite（asof 2026-10-30T22:51:45Z）
+| ID | 禁 |
+|----|-----|
+| E-ZSC-04 | soft LP+M·HF bite 洗死 IP衣 |
+| E-ZSC-01 | FULL Δ 近零仍稱換衣成功 |
+| — | 甲碎片 scrap 當 sole HF（要用 IP衣）|
+
+**生效 bite：** hard residual `out=L1+k(dens-L1)α`
+
+
+## 解毒化衣 DHY（asof 2026-10-31T07:45+08）
+| ID | 禁 |
+|----|-----|
+| E-DHY-01 | dens 無可見 rewrite 仍貼 |
+| E-DHY-02 | 只 ECC 對位稱換衣成功 |
+| E-DHY-03 | ROI/FULL Δ 近零仍稱有改 |
+**正：** dens 可見 → peep 硬換 → PROOF Δ≥12

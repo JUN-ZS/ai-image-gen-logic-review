@@ -1,0 +1,63 @@
+{
+  "round": "R6c_DUAL_FULL4X_MESH_AND_DONOR_QUILT",
+  "user": "全 peep 單次 4× SR 底板 + mesh α，或 donor 金絲 quilting 進全 mask 都要",
+  "A": "full peep 4× SR (whole/tiled-cover) + PBI + S1S2 + mesh α",
+  "B": "donor gold-wire HF quilting into full mesh mask + PBI chrom",
+  "C": "A base + B quilt residual (combo)",
+  "donor_src": "/workspace/artifacts/SETS/GOU_CHEST_113d/S1_GOU_DONOR_MACRO.jpg",
+  "donor_plate": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/complete/DONOR_GOLD_WIRE_PLATE_2048.png",
+  "peeps": [
+    {
+      "tag": "P0",
+      "A": {
+        "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/complete/P0_A_FULLPEEP4X_MESHALPHA.png",
+        "mode": "whole",
+        "ten": 10183.44140625,
+        "ten_lp": 5514.8779296875,
+        "sn": 0.9949695467948914,
+        "bytes": 5363689
+      },
+      "B": {
+        "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/complete/P0_B_DONOR_QUILT_MESH.png",
+        "ten": 12489.69140625,
+        "sn": 0.9854081273078918,
+        "bytes": 6827631,
+        "donor": "/workspace/artifacts/SETS/GOU_CHEST_113d/S1_GOU_DONOR_MACRO.jpg"
+      },
+      "C": {
+        "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/complete/P0_C_AplusB_COMBO.png",
+        "ten": 11963.6826171875,
+        "sn": 0.9932786226272583,
+        "bytes": 6408033
+      },
+      "mesh_alpha_mean": 0.8438071608543396
+    },
+    {
+      "tag": "P1",
+      "A": {
+        "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/complete/P1_A_FULLPEEP4X_MESHALPHA.png",
+        "mode": "whole",
+        "ten": 7040.9267578125,
+        "ten_lp": 3659.34521484375,
+        "sn": 0.9962875247001648,
+        "bytes": 4924749
+      },
+      "B": {
+        "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/complete/P1_B_DONOR_QUILT_MESH.png",
+        "ten": 9961.361328125,
+        "sn": 0.98792964220047,
+        "bytes": 6983573,
+        "donor": "/workspace/artifacts/SETS/GOU_CHEST_113d/S1_GOU_DONOR_MACRO.jpg"
+      },
+      "C": {
+        "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/complete/P1_C_AplusB_COMBO.png",
+        "ten": 8519.3076171875,
+        "sn": 0.9949801564216614,
+        "bytes": 6343426
+      },
+      "mesh_alpha_mean": 0.8373398780822754
+    }
+  ],
+  "merge_main": "NO",
+  "asof": "2026-11-01T10:56:12.335365+00:00"
+}

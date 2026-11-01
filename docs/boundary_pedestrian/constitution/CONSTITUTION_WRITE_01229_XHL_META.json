@@ -1,0 +1,14 @@
+{
+  "asof": "2026-10-28",
+  "code": "XHL",
+  "name_zh": "外折混鎖",
+  "name_en": "eXternal-fold Hybrid Lock",
+  "status": "PENDING_待解",
+  "section": "§0.12.29",
+  "lock": false,
+  "attachments": [
+    "EXTERNAL_FOLD_HYBRID_LOCK_XHL_NAME.md",
+    "EXTERNAL_FOLD_HYBRID_LOCK_XHL_PENDING.md"
+  ],
+  "one_liner": "外機SUPIR等donor包折入內機Hybrid+a8b升清；內不重跑外模"
+}

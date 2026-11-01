@@ -1,0 +1,38 @@
+{
+  "asof": "2026-10-27T14:38:15Z",
+  "section": "0.12.25.J GOU_MESH process + virus-to-gou journey",
+  "user_request": "把我試出這方法的重重錯走病毒到現在這勾勾圖的方法入憲和流程",
+  "constitution_chain": [
+    "0.12.23 VIRUS",
+    "0.12.24 WHOLE",
+    "0.12.25 GOU",
+    "0.12.25.J journey"
+  ],
+  "process_file": "GOU_MESH_CORRECT_PROCESS.md",
+  "do_not_repeat_file": "GOU_MESH_DO_NOT_REPEAT.md",
+  "final_template_L": "L-8ed30b6e8fe0",
+  "final_metrics": {
+    "fill": 0.575,
+    "affine_ncc": 0.824,
+    "lap": [
+      1178.1,
+      1609.1
+    ],
+    "base": "f5c6a555",
+    "gen": "96992a7f",
+    "full_asset": "8875ed8a-91e9-4bf8-8e97-87fb1d9caca9"
+  },
+  "killed_journey": [
+    "VIRUS_LOCAL_BASE",
+    "PATCH_UPPER_ONLY",
+    "REV_AS_CONTENT",
+    "BOX_PASTE",
+    "OLD_EDGE_LOCK",
+    "SOFT_RGB_COVER",
+    "HARD_SCALE_NO_TEMPLATE",
+    "LEFT_BRANCH",
+    "WRONG_DONOR"
+  ],
+  "rescued_flow": "T0-T12 full-base → crop → GEN mesh → 2x → template+affine → gou DETECT → V5 shape paste → PROOF",
+  "L": "L-8deba3ecf6fd"
+}

@@ -1,0 +1,28 @@
+{
+  "asof": "2026-10-29T01:18:00+08:00",
+  "section": "0.12.36",
+  "name": "抽衣就正循環",
+  "code": "ETZ",
+  "lock": true,
+  "parent": "ZYF §0.12.35",
+  "user": "不,是那抽衣出來就正的循環試反.推憲",
+  "files": [
+    "EXTRACT_TO_ZHENGYI_ETZ_01236.md",
+    "EXTRACT_TO_ZHENGYI_ETZ_NAME.md",
+    "EXTRACT_TO_ZHENGYI_ETZ_DO_NOT_REPEAT.md",
+    "EXTRACT_TO_ZHENGYI_ETZ_PATCH.md"
+  ],
+  "samples": {
+    "base": "75f5f419-252a-4b10-a007-8b442728ce39",
+    "zhengyi": "090a9ce3-c5bc-4f08-967d-b42de1413ae7",
+    "s1": "7bd968c2-ce9b-412e-8218-8bd216f22eb5",
+    "success_ref": "a6eca7c8-6809-45e8-bd92-afd60d6f5446",
+    "densify": "20099492-b1b6-4059-86bf-ca912810720e"
+  },
+  "cycle": [
+    "E0_EXTRACT",
+    "E1_CORRECT",
+    "E2_WEAR",
+    "E3_DIAG"
+  ]
+}

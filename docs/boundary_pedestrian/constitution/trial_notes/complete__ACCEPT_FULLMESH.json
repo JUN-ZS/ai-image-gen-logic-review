@@ -1,0 +1,64 @@
+{
+  "round": "R6c_FULLMESH_TEX_NOT_SPOT",
+  "critique": "user: 全網紋都改 not 只改噪位",
+  "was": "24 edge probes ≈ spot residual (red mask style)",
+  "now": "dense stride-32 grid covers full peep · mesh-wide pos HF boost · PBI+S1S2",
+  "peeps": [
+    {
+      "tag": "P0",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/fullmesh/complete/P0_CHILD_2048_FULLMESH_PBI_S1S2.png",
+      "meta": {
+        "mode": "FULLMESH_DENSE_PROBES",
+        "n_probes": 225,
+        "stride": 32,
+        "tile": 64,
+        "gain": 1.15,
+        "infer_s": 9.0,
+        "ten": 22678.421875,
+        "ten_lp": 5514.8779296875,
+        "sn": 0.9787649512290955,
+        "s1_s2": {
+          "wire_frac": 0.42612171173095703,
+          "cell_frac": 0.31432080268859863,
+          "wire_max_drop": 4.0,
+          "cell_max_drop": 10.0,
+          "other_max_drop": 14.0,
+          "black_thr": 18.0,
+          "s1_s2": "ATTRIB_07e52d7"
+        },
+        "mesh_frac": 0.8258895874023438,
+        "note": "full peep dense grid · not 24 spot probes · not red residual-only"
+      },
+      "bytes": 5998774
+    },
+    {
+      "tag": "P1",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/fullmesh/complete/P1_CHILD_2048_FULLMESH_PBI_S1S2.png",
+      "meta": {
+        "mode": "FULLMESH_DENSE_PROBES",
+        "n_probes": 225,
+        "stride": 32,
+        "tile": 64,
+        "gain": 1.15,
+        "infer_s": 8.91,
+        "ten": 16136.3916015625,
+        "ten_lp": 3659.34521484375,
+        "sn": 0.9827059507369995,
+        "s1_s2": {
+          "wire_frac": 0.340390682220459,
+          "cell_frac": 0.421764612197876,
+          "wire_max_drop": 4.0,
+          "cell_max_drop": 10.0,
+          "other_max_drop": 14.0,
+          "black_thr": 18.0,
+          "s1_s2": "ATTRIB_07e52d7"
+        },
+        "mesh_frac": 0.7752645015716553,
+        "note": "full peep dense grid · not 24 spot probes · not red residual-only"
+      },
+      "bytes": 5490594
+    }
+  ],
+  "merge_main": "NO",
+  "asof": "2026-11-01T10:51:28.439169+00:00"
+}

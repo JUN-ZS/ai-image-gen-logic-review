@@ -1,0 +1,99 @@
+{
+  "round": "SSBT_STRONG_STITCH_GEN_DOM",
+  "fix": "GEN Y gamma=0.92 on mesh · LP chroma only · weight-norm multi-peep stitch · not mother-ridge wash",
+  "peeps": [
+    {
+      "tag": "torso_mesh",
+      "ecc": 0.9054637185991111,
+      "alpha": 0.9564865231513977,
+      "wmean": 0.9277920722961426,
+      "ten_peep": 14578.974609375,
+      "ten_parent": 21234.4296875,
+      "sn": 0.9830647110939026,
+      "box": [
+        299,
+        311,
+        512,
+        512
+      ]
+    },
+    {
+      "tag": "hip_front",
+      "ecc": 0.45432477980908653,
+      "alpha": 0.9807401895523071,
+      "wmean": 0.9513179659843445,
+      "ten_peep": 21748.607421875,
+      "ten_parent": 23268.447265625,
+      "sn": 0.7173925638198853,
+      "box": [
+        322,
+        656,
+        512,
+        512
+      ]
+    },
+    {
+      "tag": "skirt_left",
+      "ecc": 0.6327105080887689,
+      "alpha": 0.9599840641021729,
+      "wmean": 0.9311844110488892,
+      "ten_peep": 21216.705078125,
+      "ten_parent": 17113.26953125,
+      "sn": 0.7891952395439148,
+      "box": [
+        138,
+        829,
+        480,
+        480
+      ]
+    },
+    {
+      "tag": "skirt_center",
+      "ecc": 0.285381152835808,
+      "alpha": 0.9811357259750366,
+      "wmean": 0.9517017006874084,
+      "ten_peep": 20952.60546875,
+      "ten_parent": 21980.697265625,
+      "sn": 0.4995417296886444,
+      "box": [
+        345,
+        725,
+        512,
+        512
+      ]
+    },
+    {
+      "tag": "thigh_L",
+      "ecc": 0.07853886577835155,
+      "alpha": 0.9999823570251465,
+      "wmean": 0.9699828624725342,
+      "ten_peep": 19311.837890625,
+      "ten_parent": 14857.6083984375,
+      "sn": 0.13088259100914001,
+      "box": [
+        207,
+        1002,
+        448,
+        448
+      ]
+    }
+  ],
+  "full": {
+    "sn": 0.9343017339706421,
+    "ten": 9887.5048828125,
+    "coverage": 0.3321337287808642,
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_peep4/complete/strong_stitch/FINAL_FULL_STRONG_STITCH.png",
+    "bytes": 3094127
+  },
+  "vm2": {
+    "hw": [
+      3456,
+      2304
+    ],
+    "ten": 7530.14404296875,
+    "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_peep4/complete/strong_stitch/FINAL_VM2X_STRONG_STITCH.png",
+    "bytes": 10583342
+  },
+  "merge_main": "NO",
+  "asof": "2026-11-01T11:58:59.227747+00:00"
+}

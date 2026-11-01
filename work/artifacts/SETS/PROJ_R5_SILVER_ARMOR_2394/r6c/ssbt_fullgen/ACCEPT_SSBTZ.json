@@ -1,0 +1,24 @@
+{
+  "round": "CONSTITUTION_SSBT_Z_LOCK",
+  "正名": "生生補貼真",
+  "短碼": "SSBT-Z",
+  "section": "§0.12.58",
+  "parent": "§0.12.56 SSBT",
+  "status": "LOCK",
+  "logic": "whole-body GEN · no peep fill · continuous mesh",
+  "files": [
+    "SHENGSHENG_BUTIE_ZHEN_SSBTZ_NAME.md",
+    "SHENGSHENG_BUTIE_ZHEN_SSBTZ_01258.md",
+    "SHENGSHENG_BUTIE_ZHEN_SSBTZ_DO_NOT_REPEAT.md",
+    "SHENGSHENG_BUTIE_ZHEN_SSBTZ_PROCESS.md",
+    "SHENGSHENG_BUTIE_ZHEN_SSBTZ_01256Z.md"
+  ],
+  "sample": "SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_fullgen/",
+  "primary_candidates": [
+    "GEN_D",
+    "GEN_E",
+    "GEN_B"
+  ],
+  "merge_main": "NO",
+  "asof": "2026-11-01T12:23:04Z"
+}

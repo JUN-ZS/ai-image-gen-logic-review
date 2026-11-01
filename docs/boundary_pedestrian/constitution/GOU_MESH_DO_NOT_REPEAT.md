@@ -82,3 +82,15 @@ f5 衣放大密網試：v1 ncc0.36 fill0.89 FAIL
 ```
 
 *END DO_NOT_REPEAT · 2026-10-27T14:38:15Z*
+
+
+---
+
+## 補 · 密絲晶格防毒（§0.12.42 · asof 2026-10-29）
+
+| 碼 | 禁 |
+|----|-----|
+| 連 E-FL-01 | LP2/f90 階梯終當 GOU T3 BASE densify → 錯紋夾雜 |
+| 連 E-FL-03 | style 圖當病毒母 |
+
+正：`FILIGREE_LATTICE_FL_01242.md` · 樣板 a992 · 毒 e031

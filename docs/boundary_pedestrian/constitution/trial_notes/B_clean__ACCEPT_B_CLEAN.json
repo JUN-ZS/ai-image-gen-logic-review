@@ -1,0 +1,52 @@
+{
+  "round": "R6c_B_CLEAN_NOROISE_SILK",
+  "source_asset": "3978a5aa = P0_B_DONOR_QUILT_MESH.png",
+  "problem": "quilting HF frost/noisy silk (random grain not on wire)",
+  "fix": "bilateral+median denoise B · residual clip · ridge gate · base on A structure · PBI+S1S2 · mesh α",
+  "peeps": [
+    {
+      "tag": "P0",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/B_clean/P0_B_CLEAN_NOROISE.png",
+      "bytes": 5665852,
+      "sha256": "9475a4ae7a022bc9fcb88d5fc01705b5e9906aa056a7e8d2b4b6628d41af3059",
+      "before": {
+        "ten": 12489.69140625,
+        "sn": 0.9854081273078918,
+        "frost_out": 6.041801452636719,
+        "frost_in": 9.313325881958008,
+        "frost_ratio": 0.6487264633178711
+      },
+      "after": {
+        "ten": 10724.5419921875,
+        "sn": 0.9939857125282288,
+        "frost_out": 1.2034186124801636,
+        "frost_in": 8.757129669189453,
+        "frost_ratio": 0.13742156326770782
+      },
+      "sn_vs_A": 0.9983000755310059
+    },
+    {
+      "tag": "P1",
+      "path": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/dual_sr_quilt/B_clean/P1_B_CLEAN_NOROISE.png",
+      "bytes": 5327854,
+      "sha256": "c903705f99f06beab541fd872edb41c2e19764d732b4561219821e98d5a704c1",
+      "before": {
+        "ten": 9961.361328125,
+        "sn": 0.98792964220047,
+        "frost_out": 5.60916805267334,
+        "frost_in": 8.730366706848145,
+        "frost_ratio": 0.6424893140792847
+      },
+      "after": {
+        "ten": 7393.19970703125,
+        "sn": 0.995440661907196,
+        "frost_out": 0.951788067817688,
+        "frost_in": 7.833194732666016,
+        "frost_ratio": 0.12150699645280838
+      },
+      "sn_vs_A": 0.9985804557800293
+    }
+  ],
+  "merge_main": "NO",
+  "asof": "2026-11-01T11:01:57.603647+00:00"
+}

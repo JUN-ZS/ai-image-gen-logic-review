@@ -133,3 +133,45 @@ FAIL→ redo from missing skill · 不疊毒半修
 - 樣板：`SETS/OBA_DRESS_FULLCHAIN/`
 
 *END §0.12.50 · TEX4 四技對紋絕招 · LOCK · asof 2026-10-30T21:15:44Z*
+
+
+---
+
+## 0.12.50.I 全紋自對順（FTSA · LOCK 補 · asof 2026-10-30T22:11:49Z）
+
+見 `FULL_TEX_SELF_ALIGN_01250I.md`。
+
+**用戶鐵句：** 要懂自己對應**該所有紋**去順的修復效果。
+
+**一句：** 本母 peep 全部紋區自對應 · 逐區順修到同一效果標準 · 1f795=標準非 donor · 禁跨母 PIXEL。
+
+
+---
+
+## 0.12.50.J 嵌 ZSC 放大換衣（asof 2026-10-30T22:51:45Z）
+
+**附屬公式 FILE 生效：** `FORMULA_ZOOM_SWAP_CLOTH_ZSC.md` · bite = **HARD RESIDUAL**
+
+```
+out = L1 + k·(dens−L1)·α_peep
+HF donor = IP衣 only
+BAN soft LP+M·HF（E-ZSC-04）
+```
+
+絕招流程中換衣位：①IP衣 → **ZSC hard residual 分區** → ④P_G  
+見 `ZSC_HARD_RESIDUAL_BITE.md` · 樣板 `SETS/OBA_BW_POSTER_TEX4/TEX4_ZSC/HARD_RESIDUAL/`
+
+
+---
+## 附屬 · 解毒化衣 DHY（§0.12.51 · asof 2026-10-31T07:45+08）
+
+**失敗→成功：** ECC/residual 對準後 FULL Δ≈1.45「沒改」→ dens **可見 rewrite** + peep **硬換 α≈0.9** → ROI Δ≥12 才 LOCK。
+
+```
+化衣落地 = DHY
+  dens 肉眼有差 → peep 硬貼 → PROOF Δ
+  禁：只 MATCH／只 ncc／弱 residual 稱成功（E-DHY-01..03）
+```
+
+正檔：`DETOX_HUA_YI_01251.md` · `DETOX_HUA_YI_DO_NOT_REPEAT.md`  
+樣板：`SETS/OBA_BW_POSTER_TEX4/DETOX_VISIBLE/` · `FINAL_DETOX_VISIBLE.jpg`

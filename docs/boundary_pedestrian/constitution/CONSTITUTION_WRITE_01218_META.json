@@ -1,0 +1,26 @@
+{
+  "asof": "2026-10-26T15:35:00Z",
+  "section": "§0.12.18",
+  "title": "GRID_CLEAN / BEAT_SIAX",
+  "user": "先把構想和成果寫入憲",
+  "thesis": [
+    "不加像素勝過全開Siax=換好像素+殺壞像素+鎖結構身份",
+    "GRID=地圖非工廠; 混合只寫好donor; 禁區永不寫 → 言清",
+    "勝過=清晰/字可讀 非HF總量 (E-GS-14)"
+  ],
+  "results": {
+    "BEAT_v7": "L-5c738bdfdcdf",
+    "GRID_CLEAN_v1": "L-6fb3f0816139",
+    "rival_pure_siax": "SIAX4x_9080_FULL ≈ 4c99ea4b"
+  },
+  "E_GS_new": [
+    "E-GS-14",
+    "E-GS-15"
+  ],
+  "files": [
+    "BOUNDARY_WALKER_UNIFIED_RULES.md",
+    "GRID_SIAX_DO_NOT_REPEAT.md",
+    "GRID_SIAX_CORRECT_PROCESS.md",
+    "PIXEL_CTRL_LAW.md"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "round": "SSBT_FULLBODY_v1",
+  "name_zh": "生生補貼",
+  "code": "SSBT",
+  "constitution": "§0.12.56",
+  "mother_hw": [
+    1728,
+    1152
+  ],
+  "x2_hw": [
+    3456,
+    2304
+  ],
+  "ten_mother": 12256.86328125,
+  "ten_full": 8748.99609375,
+  "ten_2x": 4616.23583984375,
+  "sn_full": 0.993909478187561,
+  "ecc": 0.9051157898922878,
+  "native_bytes": 3065895,
+  "x2_bytes": 9865096,
+  "sha_native": "c282334d12290e1f4909df7dd229e670858d35006b45530407acb68da5f3dccb",
+  "sha_2x": "258ff1c1dc4fb646b093082195687458a26979a02a3b932b4cc212262f675e2d",
+  "merge_main": "NO",
+  "asof": "2026-11-01T11:15:28.925596+00:00"
+}
