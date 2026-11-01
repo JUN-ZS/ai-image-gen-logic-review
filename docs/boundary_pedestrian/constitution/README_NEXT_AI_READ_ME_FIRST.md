@@ -2,9 +2,9 @@
 
 1. **SESSION_INHERIT_SI.md** （本對話慣性 + 如何繼續探討技能）  
 2. **MSR_GOU_SKILL_INVENTORY_01238.md**  
-3. Git branch **`docs/constitution-skills-ssbtz-20261101`**（main 技能不全）  
+3. Git **`main`**（已合 PR #15 全憲 · `78bcbed`）；歷史分支 `docs/constitution-skills-ssbtz-20261101` 可作追蹤  
 4. 當前場 **`SETS/PROJ_R5_SILVER_ARMOR_2394/`**  
 5. Headline：**生生補貼真 SSBT-Z** · **PBI**
 6. 圖 primary：`PROJ_R5_PRIMARY_MANIFEST.md`（path+SHA · 無大圖）
 
-asof 2026-11-01T13:06:55Z
+asof 2026-11-01T23:39:28Z
