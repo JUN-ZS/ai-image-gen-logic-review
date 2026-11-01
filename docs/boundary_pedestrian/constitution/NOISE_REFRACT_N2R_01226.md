@@ -19,6 +19,17 @@ n2r_zone = cand ∩ (近光 ∨ 高 energy) ∧ 邊框線  # 轉
 ```
 輸出：`NOISE_CANDIDATE_OVERLAY` + `MAPS`
 
+
+<!-- SPM_DEFAULT_SIAX §0.12.39 -->
+## 與 SPM 預設 SIAX（§0.12.39）
+
+- 探針 residual 高能邊 = **N2R cand 指紋源**（折射／保留，**非**純滅）
+- 預設探針幾何：**SPM-A 48×64²**
+- 填場互構 ≠ median 殺光（E-SPM-04）
+- 等價 NOISE 旋鈕（rough_boost）調的是 residual 糙度，不是擴散 noise schedule
+<!-- END_SPM_DEFAULT -->
+
+
 ## T2 轉化（非消滅）
 | 區 | 處置 |
 |----|------|
@@ -47,3 +58,19 @@ n2r_zone = cand ∩ (近光 ∨ 高 energy) ∧ 邊框線  # 轉
 
 ## 樣板
 L-06f22d5402af · technique=`NOISE→REFRACT (轉化 not 消滅)`
+
+---
+
+## 預設 SIAX 指紋 · SPM-A（2026-10-29T19:00:00+08:00）
+
+> 掛：§0.12.37 SPM
+
+N2R 要 **噪 cand 指紋** 時：
+
+| 原 | 現預設 |
+|----|--------|
+| 易觸發全幅重升 | **SPM-A 48×64 residual** 作 cand／HF 真值 |
+| 純 median 滅 | **禁**；探針高能邊 → 折射／保留（n2r_zone） |
+| 填場 | residual 場 = **保留向**，非殺光 |
+
+`rough_boost` 高 → 接近 NOISE 等價；殺光仍只走 kill_pure ∩ ¬spec。
