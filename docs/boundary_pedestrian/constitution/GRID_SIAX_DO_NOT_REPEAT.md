@@ -130,3 +130,17 @@ P1 `9e1cd1e9-f229-4b21-bf4c-91b2d045e08b` · P2 `3f769105-e85e-43d2-854f-f454f81
 | **E-GS-50** | 無 a8b Ref 只喊臉鎖 |
 
 **正：** SIAX×1 → Hybrid → Ref(hybrid,a8b) → **停**。
+
+---
+
+## E-GS-04 族擴 · S1HL 一升 OOM（2026-10-29T04:10:00+08:00）
+
+| ID | 禁 | 後果 | 下次先走 |
+|----|-----|------|----------|
+| **E-GS-04** | 全圖 float64 4× 常駐 | OOM 137 | tile-to-disk · float32 band |
+| **E-GS-04b** | Hybrid 持 LP+HF+Siax 三幅 FULL float | OOM | strip Hybrid 直出 VIEW/HD |
+| **E-GS-04c** | siax.mm + hyb.mm 雙全幅 | I/O／峰值 | 只 siax.mm |
+| **E-GS-04d** | OOM 後原樣加大 tile/band 重跑 | 再 137 | 換 PATH：ROI / S=2 / GRID |
+| **E-GS-04e** | OOM 後二升或 pure Siax 當 FINAL | 違 S1HL | 見 `SIAX_HYBRID_FACELOCK_S1HL_OOM_NOTES.md` 選路表 |
+
+**正典成功 PATH：** STRIP_S1HL v3 · 樣板 SET-S `abe76` → T3 `be436496…`
