@@ -5,5 +5,6 @@
 3. Git branch **`docs/constitution-skills-ssbtz-20261101`**（main 技能不全）  
 4. 當前場 **`SETS/PROJ_R5_SILVER_ARMOR_2394/`**  
 5. Headline：**生生補貼真 SSBT-Z** · **PBI**
+6. 圖 primary：`PROJ_R5_PRIMARY_MANIFEST.md`（path+SHA · 無大圖）
 
 asof 2026-11-01T13:06:55Z
