@@ -1,0 +1,138 @@
+{
+  "round": "G8_ATTRIB_4SOURCE",
+  "asof": "2026-11-01T10:30:06.792514+00:00",
+  "constitution": "diagnose black blotch root · no threshold gaming · merge NO",
+  "sources": {
+    "S1": "strong negative Y residual (hole darkening)",
+    "S2": "ridge/wire: new black on high-edge LP (wire hit)",
+    "S3": "Lanczos LP already near-dark (Y_lp low)",
+    "S4": "chroma-lock compose imbalance (Y(C·Y) vs intended Y)"
+  },
+  "peeps": [
+    {
+      "tag": "P0",
+      "xy": [
+        306,
+        672
+      ],
+      "counts_primary": {
+        "S1_strong_neg_residual": 21910,
+        "S2_ridge_wire_hit": 6920,
+        "S3_LP_already_dark": 6511,
+        "S4_chroma_compose": 0,
+        "S5_other": 0,
+        "new_black_B_total": 35341,
+        "new_black_A_full": 39133
+      },
+      "fracs_primary_of_blackB": {
+        "S1_strong_neg_residual": 0.62,
+        "S2_ridge_wire_hit": 0.1958,
+        "S3_LP_already_dark": 0.1842,
+        "S4_chroma_compose": 0.0,
+        "S5_other": 0.0,
+        "denom_new_black_B": 35341
+      },
+      "support_overlap": {
+        "support_S1_drop12": 34627,
+        "support_S2_wire": 7930,
+        "support_S3_lp_dark": 6511,
+        "support_S4_compose": 0,
+        "mean_drop_on_blackB": 28.83306884765625,
+        "mean_res_on_blackB": -28.83306884765625,
+        "mean_ylp_on_blackB": 39.23411560058594,
+        "mean_chrom_bias_on_blackB": 2.417849565006236e-08,
+        "silver_frac": 0.7342333793640137,
+        "wire_frac": 0.2151200771331787
+      },
+      "winner_primary": "S1_strong_neg_residual",
+      "general_contrast": {
+        "new_black_B_GENERAL": 65276,
+        "new_black_B_PBI": 35341,
+        "mean_drop_GEN_on_same_pbi_mask": -28.38495635986328,
+        "mean_drop_PBI_on_mask": 28.83306884765625,
+        "note": "GENERAL is RGB residual poison path · for contrast only"
+      },
+      "interpretation": [
+        "S1 dominant: multi_sigma/ridge allows large negative dY in holes → clip to black"
+      ],
+      "artifacts": {
+        "strip_overview": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P0_STRIP_OVERVIEW.jpg",
+        "strip_sources": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P0_STRIP_SOURCES.jpg",
+        "worst_roi": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P0_WORST_ROI.jpg",
+        "label_map": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P0_LABEL_MAP.png",
+        "share_bar": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P0_SHARE_BAR.jpg"
+      }
+    },
+    {
+      "tag": "P1",
+      "xy": [
+        326,
+        159
+      ],
+      "counts_primary": {
+        "S1_strong_neg_residual": 23291,
+        "S2_ridge_wire_hit": 21744,
+        "S3_LP_already_dark": 18841,
+        "S4_chroma_compose": 0,
+        "S5_other": 0,
+        "new_black_B_total": 63876,
+        "new_black_A_full": 85485
+      },
+      "fracs_primary_of_blackB": {
+        "S1_strong_neg_residual": 0.3646,
+        "S2_ridge_wire_hit": 0.3404,
+        "S3_LP_already_dark": 0.295,
+        "S4_chroma_compose": 0.0,
+        "S5_other": 0.0,
+        "denom_new_black_B": 63876
+      },
+      "support_overlap": {
+        "support_S1_drop12": 61425,
+        "support_S2_wire": 29415,
+        "support_S3_lp_dark": 18841,
+        "support_S4_compose": 0,
+        "mean_drop_on_blackB": 26.59927749633789,
+        "mean_res_on_blackB": -26.59927749633789,
+        "mean_ylp_on_blackB": 36.051788330078125,
+        "mean_chrom_bias_on_blackB": 3.1920528442697105e-08,
+        "silver_frac": 0.5130808353424072,
+        "wire_frac": 0.18669891357421875
+      },
+      "winner_primary": "S1_strong_neg_residual",
+      "general_contrast": {
+        "new_black_B_GENERAL": 199008,
+        "new_black_B_PBI": 63876,
+        "mean_drop_GEN_on_same_pbi_mask": -14.059492111206055,
+        "mean_drop_PBI_on_mask": 26.59927749633789,
+        "note": "GENERAL is RGB residual poison path · for contrast only"
+      },
+      "interpretation": [
+        "S1 dominant: multi_sigma/ridge allows large negative dY in holes → clip to black",
+        "S2 strong: new black lands on LP wire ridge → ridge gate not protecting silks",
+        "S3: many G8 pixels sit on fragile LP (Y near 18–30) Lanczos peep"
+      ],
+      "artifacts": {
+        "strip_overview": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P1_STRIP_OVERVIEW.jpg",
+        "strip_sources": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P1_STRIP_SOURCES.jpg",
+        "worst_roi": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P1_WORST_ROI.jpg",
+        "label_map": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P1_LABEL_MAP.png",
+        "share_bar": "/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/g8_attrib/P1_SHARE_BAR.jpg"
+      }
+    }
+  ],
+  "merge_main": "NO",
+  "MASTER": "NO",
+  "global_winner_mode": "S1_strong_neg_residual",
+  "next_fix_by_source": {
+    "S1": "cap negative residual in holes: res_y = max(res_y, -k) or hole-aware soft floor only inside cell not wire; keep ridge protect wire",
+    "S2": "harden ridge gate on wire: forbid new black on high-mag LP; dilate wire protect mask before fuse",
+    "S3": "don't SR-darken fragile LP band Y∈[18,30]; skip probe or reduce GAIN there",
+    "S4": "compose in linear Y with chrom separate; avoid chrom floor blow; verify to_y(C*Y)≈Y"
+  },
+  "honest": {
+    "G8_still_FAIL": true,
+    "did_not_lower_thresholds": true,
+    "human_silver_mask": false,
+    "merge_main": "NO"
+  }
+}
