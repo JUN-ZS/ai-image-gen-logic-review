@@ -83,28 +83,123 @@ def gate_g7_new_blue(lp_bgr: np.ndarray, out_bgr: np.ndarray,
     return out
 
 
+def silver_mesh_proxy_mask(lp_bgr: np.ndarray) -> np.ndarray:
+    """Heuristic silver/mesh region (not human mask): mid-high L + low chroma OR strong ridge.
+    Used only to scope G8-B; never claimed as formal human silver peep.
+    """
+    f = lp_bgr.astype(np.float32)
+    y = to_y_bgr(f)
+    # chroma magnitude in BGR approx
+    chrom = f / np.maximum(y[..., None], 8.0)
+    # silver-ish: not strongly colored
+    cdev = np.abs(chrom[..., 0] - chrom[..., 1]) + np.abs(chrom[..., 1] - chrom[..., 2])
+    low_chroma = cdev < 0.35
+    mid_y = (y > 28) & (y < 230)
+    g = cv2.cvtColor(lp_bgr, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    mag = cv2.magnitude(cv2.Sobel(g, cv2.CV_32F, 1, 0, 3), cv2.Sobel(g, cv2.CV_32F, 0, 1, 3))
+    ridge = mag > (mag.mean() + 0.35 * mag.std())
+    m = ((low_chroma & mid_y) | ridge).astype(np.uint8)
+    m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, np.ones((5, 5), np.uint8), 1)
+    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8), 1)
+    return m.astype(bool)
+
+
+def fixed_mesh_rois(h: int, w: int):
+    """Six fixed relative windows for G8-C (fractions of peep board)."""
+    # (x0,y0,x1,y1) fractions
+    fr = [
+        (0.10, 0.10, 0.40, 0.40),
+        (0.35, 0.10, 0.65, 0.40),
+        (0.60, 0.10, 0.90, 0.40),
+        (0.10, 0.45, 0.40, 0.75),
+        (0.35, 0.45, 0.65, 0.75),
+        (0.55, 0.55, 0.90, 0.90),
+    ]
+    out = []
+    for i, (a, b, c, d) in enumerate(fr):
+        x0, y0 = int(a * w), int(b * h)
+        x1, y1 = int(c * w), int(d * h)
+        out.append({"id": f"ROI{i}", "xyxy": [x0, y0, x1, y1]})
+    return out
+
+
 def gate_g8_new_black(lp_bgr: np.ndarray, out_bgr: np.ndarray,
                       black_thr: float = 18.0,
+                      min_drop: float = 6.0,
                       total_area_max: int = 6000, max_area_max: int = 900) -> dict:
-    """New near-black vs LP: catch over-negative Y residual collapse."""
+    """G8 family:
+    G8-A full-window near-black with min brightness drop
+    G8-B silver/mesh proxy mask scoped
+    G8-C six fixed mesh ROIs
+    G8-D blotch stats + wire hit
+    Does NOT loosen thresholds to force PASS.
+    """
     y_lp = to_y_bgr(lp_bgr)
     y_out = to_y_bgr(out_bgr)
+    drop = y_lp - y_out
+    # G8-A: must be newly near-black AND meaningful drop (not 18.1→17.9)
     black_lp = y_lp < black_thr
     black_out = y_out < black_thr
-    new_black = black_out & (~black_lp)
-    bl = connected_blotch(new_black)
-    # wire damage proxy: new black on high-edge LP
+    new_black_A = black_out & (~black_lp) & (drop >= min_drop)
+    bl_A = connected_blotch(new_black_A)
+
+    # G8-B: silver/mesh proxy
+    silver = silver_mesh_proxy_mask(lp_bgr)
+    new_black_B = new_black_A & silver
+    bl_B = connected_blotch(new_black_B)
+
+    # wire damage
     g = cv2.cvtColor(lp_bgr, cv2.COLOR_BGR2GRAY).astype(np.float32)
     mag = cv2.magnitude(cv2.Sobel(g, cv2.CV_32F, 1, 0, 3), cv2.Sobel(g, cv2.CV_32F, 0, 1, 3))
     wire = mag > (mag.mean() + 0.5 * mag.std())
-    wire_hit = int((new_black & wire).sum())
+    wire_hit_A = int((new_black_A & wire).sum())
+    wire_hit_B = int((new_black_B & wire).sum())
+
+    h, w = y_lp.shape
+    rois = []
+    roi_fail = 0
+    for r in fixed_mesh_rois(h, w):
+        x0, y0, x1, y1 = r["xyxy"]
+        sub = new_black_B[y0:y1, x0:x1]
+        bb = connected_blotch(sub)
+        ok = bb["total_area"] <= max(800, total_area_max // 6) and bb["max_area"] <= max_area_max
+        if not ok:
+            roi_fail += 1
+        rois.append({**r, **bb, "PASS": ok})
+
+    # formal G8 PASS requires A and B and all ROI
+    pass_A = bl_A["total_area"] <= total_area_max and bl_A["max_area"] <= max_area_max and wire_hit_A < 1500
+    pass_B = bl_B["total_area"] <= total_area_max and bl_B["max_area"] <= max_area_max and wire_hit_B < 1500
+    pass_C = roi_fail == 0
     out = {
-        "new_black_px": int(new_black.sum()),
-        "blotch_n": bl["n"],
-        "blotch_max_area": bl["max_area"],
-        "blotch_total_area": bl["total_area"],
-        "wire_hit_px": wire_hit,
-        "PASS": bl["total_area"] <= total_area_max and bl["max_area"] <= max_area_max and wire_hit < 1500,
+        "G8A_full": {
+            "min_drop": min_drop,
+            "black_thr": black_thr,
+            "new_black_px": int(new_black_A.sum()),
+            "blotch_n": bl_A["n"],
+            "blotch_max_area": bl_A["max_area"],
+            "blotch_total_area": bl_A["total_area"],
+            "wire_hit_px": wire_hit_A,
+            "PASS": pass_A,
+        },
+        "G8B_silver_proxy": {
+            "note": "heuristic silver/mesh · not human mask",
+            "silver_frac": round(float(silver.mean()), 4),
+            "new_black_px": int(new_black_B.sum()),
+            "blotch_n": bl_B["n"],
+            "blotch_max_area": bl_B["max_area"],
+            "blotch_total_area": bl_B["total_area"],
+            "wire_hit_px": wire_hit_B,
+            "PASS": pass_B,
+        },
+        "G8C_fixed_rois": {"n_fail": roi_fail, "rois": rois, "PASS": pass_C},
+        # backward-compat flat fields (prefer B as primary material scope)
+        "new_black_px": int(new_black_B.sum()),
+        "blotch_n": bl_B["n"],
+        "blotch_max_area": bl_B["max_area"],
+        "blotch_total_area": bl_B["total_area"],
+        "wire_hit_px": wire_hit_B,
+        "PASS": bool(pass_A and pass_B and pass_C),
     }
     return out
 
@@ -491,6 +586,22 @@ def main():
         dlt = np.clip(dlt * 3.0, 0, 255).astype(np.uint8)
         cv2.imwrite(str(COMP/f'{tag}_DIFF.jpg'), np.hstack([lp, ch, dlt]), [int(cv2.IMWRITE_JPEG_QUALITY),90])
         print(f'  {tag} G7_blue PASS={g7["PASS"]} area={g7["blotch_total_area"]} G8_black PASS={g8["PASS"]} area={g8["blotch_total_area"]}', flush=True)
+
+        # debug: silver proxy + new black B overlay
+        sil = silver_mesh_proxy_mask(LP_u8).astype(np.uint8) * 255
+        y_lp_d = to_y_bgr(LP_u8); y_out_d = to_y_bgr(hyb)
+        nb = ((y_out_d < 18) & (y_lp_d >= 18) & ((y_lp_d - y_out_d) >= 6) & (sil > 0)).astype(np.uint8) * 255
+        ov = hyb.copy(); ov[nb > 0] = (0, 0, 255)
+        sil3 = cv2.cvtColor(sil, cv2.COLOR_GRAY2BGR)
+        nb3 = cv2.cvtColor(nb, cv2.COLOR_GRAY2BGR)
+        dbg = np.hstack([
+            cv2.resize(LP_u8, (512, 512)),
+            cv2.resize(hyb, (512, 512)),
+            cv2.resize(sil3, (512, 512)),
+            cv2.resize(ov, (512, 512)),
+        ])
+        cv2.imwrite(str(COMP / f'{tag}_G8_DEBUG.jpg'), dbg, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+
         del hyb; gc.collect()
 
     # speed note vs R6b PT 24 probes ~54ms each = ~1.3s infer; NCNN should be similar or better

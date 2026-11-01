@@ -1,34 +1,34 @@
 {
-  "bundle": "R6c_NCNN_PBI_LUMA_G7G8",
+  "bundle": "R6c_R7_PBI_G8ABC_DIAG",
   "branch": "feat/r6c-ncnn-pbi-luma",
   "image_generation": "THIS_RUN",
-  "asof": "2026-10-31T23:36:58.779351+00:00",
-  "rule": "MANIFEST entries exclude self; verify SHA256SUMS_PBI.txt",
+  "asof": "2026-11-01T00:04:15.664736+00:00",
+  "rule": "no self-hash in entries; sidecar SHA256SUMS",
   "sha256sums_sidecar": {
     "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt",
-    "sha256": "70461e02c8870fe59219b8da16f652fdeb0578a8abc254299a611eb4b784f41d",
-    "bytes": 2042
+    "sha256": "894b060b9eb0f2578ceeb3d065dd32c17949ce09b8ea2a2f9749df5662408596",
+    "bytes": 4152
   },
   "entries": [
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md",
+      "sha256": "a5f219143327ef9cf2caaa1d7fbfcaac165789096169d4d5ccc0e6ed61622846",
+      "bytes": 301
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json",
+      "sha256": "a1d4a050b44c3d80b2856e0e64314d756e043e50be374bdebccdc8bd68e35393",
+      "bytes": 8672
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/MANIFEST_SHA256_R6c_PBI.json",
+      "sha256": "60d85760d918e0c0d1d6662fcdf6be4f747c23e5e070c9b014bb2375fd1ce647",
+      "bytes": 4893
+    },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_CHILD_2048_NCNN_PBI_R6c.png",
       "sha256": "33fd1fd873af92f8790378f80cc41716119740bfe0c33cd961a17c3643268ace",
       "bytes": 5443210
-    },
-    {
-      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
-      "sha256": "7d48872ba8b82c6d19afe6687499490f1b484225aaeb10412272591585813430",
-      "bytes": 4890481
-    },
-    {
-      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PROOF.jpg",
-      "sha256": "c28f9d48860d8db86d0debac4cb52ac61575adc40cd1c3a9b6981ac15a70853d",
-      "bytes": 59881
-    },
-    {
-      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_PROOF.jpg",
-      "sha256": "ed094537aed74a43cc26d53b31cd6a78f925532dc470275ee055f92581072c52",
-      "bytes": 51179
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_DIFF.jpg",
@@ -36,29 +36,79 @@
       "bytes": 76555
     },
     {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_G8_DEBUG.jpg",
+      "sha256": "626ce0aa5ac44dd920c8dd77ce0d74512df026677835c47e2991d957fc0ff997",
+      "bytes": 410518
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PBI_PREVIEW_512.jpg",
+      "sha256": "a60d935e4e3ef91a9af52e1037507e20217ded965b99d12dd93c9811f14e311d",
+      "bytes": 126024
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PROOF.jpg",
+      "sha256": "c28f9d48860d8db86d0debac4cb52ac61575adc40cd1c3a9b6981ac15a70853d",
+      "bytes": 59881
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_CHILD_2048_NCNN_PBI_R6c.png",
+      "sha256": "7d48872ba8b82c6d19afe6687499490f1b484225aaeb10412272591585813430",
+      "bytes": 4890481
+    },
+    {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_DIFF.jpg",
       "sha256": "89e2923c468e4b98900cc6c7c1cbffdce0c612e1ef0ff1c6a4783dccc7d19551",
       "bytes": 66277
     },
     {
-      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P0_PBI_PREVIEW_512.jpg",
-      "sha256": "9c15830836e3b00800446591f9b10f487aad8acd4cb3d237fa3773f3101831c9",
-      "bytes": 125514
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_G8_DEBUG.jpg",
+      "sha256": "cabe1bb4756d98f2ff973506fca949b7f78d822a05789f4faa28c3c733b67889",
+      "bytes": 372364
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_PBI_PREVIEW_512.jpg",
-      "sha256": "12eb0df956cc5e6a0881d7cf1b2883d634f3700d473084cba3300cd66f554c6b",
-      "bytes": 105215
+      "sha256": "5fcc71ca563d1ac6ded7550c3ad87f84f912e05f0833e9362d984cc5d6d8d9cd",
+      "bytes": 105492
     },
     {
-      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json",
-      "sha256": "4da1c74c26eece58d824bb6184d53840bbd1811b07f4b39a4d1383f37def999c",
-      "bytes": 3636
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/P1_PROOF.jpg",
+      "sha256": "ed094537aed74a43cc26d53b31cd6a78f925532dc470275ee055f92581072c52",
+      "bytes": 51179
     },
     {
-      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/LOG_R6c_PBI.md",
-      "sha256": "1c44374c398bf3b2cddb442acca1895f5341e10ee999a121baf338de7924d411",
-      "bytes": 301
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt",
+      "sha256": "ecefbff33eaf1bf26e0a599f3559f53092fc843eb3e2c176f47a9b93118baa7f",
+      "bytes": 2900
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256_MANIFEST_NOTE.txt",
+      "sha256": "47c9738e574b5c5f104f653b4d5db7c81f51e7f76e92c12273df625a655e678f",
+      "bytes": 310
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/pbi_compare/COMPARE_P0_PBI.json",
+      "sha256": "4bf97228164eddc4fff784c0f734226486bd155560c749ef720920a9dd3b74cb",
+      "bytes": 787
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/pbi_compare/STRIP_P0_OLD_vs_PBI.jpg",
+      "sha256": "bb5c9ee0c9228df685adc75c844f8d3d6f52847cd8731c4b2b232314e69c1c60",
+      "bytes": 61938
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/LOG_R7_PBI.md",
+      "sha256": "60164d4bc9c7192fa83b5da39e9e7f0e783a99af6e552593eb486f2e70c31c68",
+      "bytes": 1824
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/ACCEPT_R7.json",
+      "sha256": "4eb7e0345bfb71f9a93ab46843b39d0105639c44919d73a078dd56b4dd9e4d31",
+      "bytes": 1075
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/ACCEPT_R7_PBI.json",
+      "sha256": "fc95a649d13cee06eb1394a2fe06d0c777a9d88336132ec3e09e26e14fef0e17",
+      "bytes": 3978
     },
     {
       "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_NCNN_PBI_R7.png",
@@ -66,31 +116,53 @@
       "bytes": 15859410
     },
     {
-      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/ACCEPT_R7_PBI.json",
-      "sha256": "9069ea0ed102d54d6be5ac4a6325544f12eced869daaf844aa31f8a510dc1877",
-      "bytes": 1141
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PEEP2_CHILD_4096_PREVIEW_1024.jpg",
+      "sha256": "5d3cd5a57f286340adc41ad01aa90b5d0dbfc395f680cf1aa180eda67db26c9b",
+      "bytes": 282630
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/PROOF_PEEP2_R7.jpg",
+      "sha256": "763bb94fa9bc2cc70a3bdbb3fd426394ce2bc8a0858eff32345d698ac1b3457e",
+      "bytes": 323877
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/TRANSFORM_PEEP2.json",
+      "sha256": "27bad3fd241d9a7477a5a9fb0f2afdd95da520519d4612d478236345024d0f6a",
+      "bytes": 558
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/ZOOM400_PEEP2_CENTER.png",
+      "sha256": "cbd8bbcd457426f921c49fed5bff3afa456ce581f2b6c95258a5181510f0319c",
+      "bytes": 234076
+    },
+    {
+      "path": "work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r7_peep2/complete/ZOOM_L0_vs_R7_NATIVE.jpg",
+      "sha256": "236dfb6a06e5ce290819f63a109b186acef4f6a25c778ecbf35dd7c50ceb9d02",
+      "bytes": 70463
+    },
+    {
+      "path": "work/scripts/r6c_pbi/finalize_pbi_bundle.py",
+      "sha256": "a4f3bfff544b50eb9089b1fd763a86451d02a8b24c0d01d82c8afe330038abc4",
+      "bytes": 2801
     },
     {
       "path": "work/scripts/r6c_pbi/run_r6c_ncnn.py",
-      "sha256": "6840681277d00c91fc4ec6f587f3378579235fea9c0bf78377c951f2886c848e",
-      "bytes": 24742
+      "sha256": "272c873c30048ee70971f19cfb7c1b1e6fee8fb1b5d28a92ee103191c8183f98",
+      "bytes": 29145
     },
     {
       "path": "work/scripts/r6c_pbi/run_r7_peep2_final.py",
-      "sha256": "d9bd45a59307c3bc6ec4c5f629fb1978ff0c61ca1b5332ca0ddc76211108febb",
-      "bytes": 19075
-    },
-    {
-      "path": "README_R6c_PBI.md",
-      "sha256": "86d2067a2e2e5932409b61f03f8e3f41622f1aeb99e8e5a8e69efebe7bb11f38",
-      "bytes": 606
+      "sha256": "9519e5b6a08e0109b871289fecba93dc9baad04638006ba1f24a2154a71655fb",
+      "bytes": 21436
     }
   ],
   "gates_honest": {
-    "P0_P1_struct": "PASS",
+    "r6c_status": "PARTIAL",
     "G7": "PASS",
-    "G8": "FAIL",
-    "R7": "PARTIAL",
+    "G8A_B_C": "FAIL",
+    "r7_status": "DIAGNOSTIC_ONLY",
+    "r7_parent_mode": "DIAGNOSTIC_ONLY",
+    "production_ok": false,
     "merge_main": "NO"
   }
 }

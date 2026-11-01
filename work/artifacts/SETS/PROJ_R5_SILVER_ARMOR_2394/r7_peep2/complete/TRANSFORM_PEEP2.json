@@ -1,0 +1,31 @@
+{
+  "parent_of": "R6c_P0_CHILD_2048",
+  "window_on_2048": [
+    757,
+    122,
+    1024,
+    1024
+  ],
+  "mother_peep0_xy": [
+    300,
+    693
+  ],
+  "mother_window_approx": [
+    489,
+    723,
+    256,
+    256
+  ],
+  "scale_chain": "mother\u2282512 peep \u2192 2048 board \u2192 1024 PEEP2 \u2192 4096 child (\u00d74 FULLRES)",
+  "register": {
+    "board_xy": [
+      757,
+      122
+    ],
+    "peep": 1024,
+    "child_hw": 4096,
+    "scale": 4,
+    "relative_to": "P0_2048"
+  },
+  "iron": "4x_MODEL_to_4x_CHILD \u00b7 primary=4096 PNG \u00b7 no AREA kill"
+}

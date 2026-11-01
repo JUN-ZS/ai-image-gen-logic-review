@@ -12,14 +12,14 @@
     "mae_ncnn_vs_pt": 1.52587890625e-05,
     "ncc_ncnn_vs_pt": 1.0000001192092896,
     "ms": {
-      "PT": 49.8143196105957,
-      "NCNN": 28.45753828684489,
-      "ORT": 45.38532098134359,
+      "PT": 51.773198445638016,
+      "NCNN": 31.664061546325687,
+      "ORT": 46.63930733998616,
       "ORT_mae_vs_PT": 0.0
     },
     "speedup_vs_pt": {
-      "NCNN": 1.75,
-      "ORT": 1.1
+      "NCNN": 1.64,
+      "ORT": 1.11
     },
     "note": "Vulkan binary unavailable (libvulkan missing + noexec) · used pyncnn CPU from pnnx convert"
   },
@@ -37,7 +37,7 @@
         "spill": 0.0232873372733593,
         "ten": 13510.314453125,
         "sn": 0.9812529683113098,
-        "infer_s": 0.88,
+        "infer_s": 0.93,
         "engine": "NCNN_GENERAL_x4v3",
         "iron": "4x_MODEL_to_4x_RESIDUAL_PBI_LUMA",
         "pbi_mode": "luma_only",
@@ -54,11 +54,115 @@
         "PASS": true
       },
       "G8_black": {
-        "new_black_px": 40242,
-        "blotch_n": 1067,
-        "blotch_max_area": 1315,
-        "blotch_total_area": 40242,
-        "wire_hit_px": 7994,
+        "G8A_full": {
+          "min_drop": 6.0,
+          "black_thr": 18.0,
+          "new_black_px": 39133,
+          "blotch_n": 925,
+          "blotch_max_area": 1315,
+          "blotch_total_area": 39133,
+          "wire_hit_px": 7930,
+          "PASS": false
+        },
+        "G8B_silver_proxy": {
+          "note": "heuristic silver/mesh · not human mask",
+          "silver_frac": 0.7335,
+          "new_black_px": 35317,
+          "blotch_n": 953,
+          "blotch_max_area": 1053,
+          "blotch_total_area": 35317,
+          "wire_hit_px": 7930,
+          "PASS": false
+        },
+        "G8C_fixed_rois": {
+          "n_fail": 5,
+          "rois": [
+            {
+              "id": "ROI0",
+              "xyxy": [
+                204,
+                204,
+                819,
+                819
+              ],
+              "n": 195,
+              "max_area": 550,
+              "total_area": 6071,
+              "PASS": false
+            },
+            {
+              "id": "ROI1",
+              "xyxy": [
+                716,
+                204,
+                1331,
+                819
+              ],
+              "n": 72,
+              "max_area": 701,
+              "total_area": 4112,
+              "PASS": false
+            },
+            {
+              "id": "ROI2",
+              "xyxy": [
+                1228,
+                204,
+                1843,
+                819
+              ],
+              "n": 100,
+              "max_area": 701,
+              "total_area": 4450,
+              "PASS": false
+            },
+            {
+              "id": "ROI3",
+              "xyxy": [
+                204,
+                921,
+                819,
+                1536
+              ],
+              "n": 223,
+              "max_area": 1053,
+              "total_area": 12106,
+              "PASS": false
+            },
+            {
+              "id": "ROI4",
+              "xyxy": [
+                716,
+                921,
+                1331,
+                1536
+              ],
+              "n": 0,
+              "max_area": 0,
+              "total_area": 0,
+              "PASS": true
+            },
+            {
+              "id": "ROI5",
+              "xyxy": [
+                1126,
+                1126,
+                1843,
+                1843
+              ],
+              "n": 161,
+              "max_area": 224,
+              "total_area": 4021,
+              "PASS": false
+            }
+          ],
+          "PASS": false
+        },
+        "new_black_px": 35317,
+        "blotch_n": 953,
+        "blotch_max_area": 1053,
+        "blotch_total_area": 35317,
+        "wire_hit_px": 7930,
         "PASS": false
       },
       "PASS_struct": true,
@@ -77,7 +181,7 @@
         "spill": 0.01861507073044777,
         "ten": 11485.205078125,
         "sn": 0.9856144189834595,
-        "infer_s": 0.89,
+        "infer_s": 0.84,
         "engine": "NCNN_GENERAL_x4v3",
         "iron": "4x_MODEL_to_4x_RESIDUAL_PBI_LUMA",
         "pbi_mode": "luma_only",
@@ -94,11 +198,115 @@
         "PASS": true
       },
       "G8_black": {
-        "new_black_px": 92269,
-        "blotch_n": 2353,
-        "blotch_max_area": 5139,
-        "blotch_total_area": 92269,
-        "wire_hit_px": 29896,
+        "G8A_full": {
+          "min_drop": 6.0,
+          "black_thr": 18.0,
+          "new_black_px": 85485,
+          "blotch_n": 1319,
+          "blotch_max_area": 4827,
+          "blotch_total_area": 85485,
+          "wire_hit_px": 29415,
+          "PASS": false
+        },
+        "G8B_silver_proxy": {
+          "note": "heuristic silver/mesh · not human mask",
+          "silver_frac": 0.5115,
+          "new_black_px": 63601,
+          "blotch_n": 1357,
+          "blotch_max_area": 2949,
+          "blotch_total_area": 63601,
+          "wire_hit_px": 29410,
+          "PASS": false
+        },
+        "G8C_fixed_rois": {
+          "n_fail": 6,
+          "rois": [
+            {
+              "id": "ROI0",
+              "xyxy": [
+                204,
+                204,
+                819,
+                819
+              ],
+              "n": 213,
+              "max_area": 2368,
+              "total_area": 10788,
+              "PASS": false
+            },
+            {
+              "id": "ROI1",
+              "xyxy": [
+                716,
+                204,
+                1331,
+                819
+              ],
+              "n": 66,
+              "max_area": 1480,
+              "total_area": 5068,
+              "PASS": false
+            },
+            {
+              "id": "ROI2",
+              "xyxy": [
+                1228,
+                204,
+                1843,
+                819
+              ],
+              "n": 63,
+              "max_area": 1558,
+              "total_area": 3882,
+              "PASS": false
+            },
+            {
+              "id": "ROI3",
+              "xyxy": [
+                204,
+                921,
+                819,
+                1536
+              ],
+              "n": 222,
+              "max_area": 910,
+              "total_area": 7220,
+              "PASS": false
+            },
+            {
+              "id": "ROI4",
+              "xyxy": [
+                716,
+                921,
+                1331,
+                1536
+              ],
+              "n": 116,
+              "max_area": 267,
+              "total_area": 2456,
+              "PASS": false
+            },
+            {
+              "id": "ROI5",
+              "xyxy": [
+                1126,
+                1126,
+                1843,
+                1843
+              ],
+              "n": 275,
+              "max_area": 2949,
+              "total_area": 11327,
+              "PASS": false
+            }
+          ],
+          "PASS": false
+        },
+        "new_black_px": 63601,
+        "blotch_n": 1357,
+        "blotch_max_area": 2949,
+        "blotch_total_area": 63601,
+        "wire_hit_px": 29410,
         "PASS": false
       },
       "PASS_struct": true,
@@ -120,6 +328,6 @@
     "clean-checkout without /workspace models cannot rerun"
   ],
   "merge_main": "NO",
-  "asof": "2026-10-31T23:35:22.880679+00:00",
-  "elapsed_s": 16.14
+  "asof": "2026-11-01T00:02:44.454908+00:00",
+  "elapsed_s": 18.86
 }

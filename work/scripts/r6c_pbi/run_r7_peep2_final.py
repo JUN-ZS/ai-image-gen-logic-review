@@ -177,7 +177,53 @@ def main():
             "Generate R6c PBI first."
         )
     p0_path = P0
-    print(f"P0 parent: {p0_path.name} exists={p0_path.is_file()} (no GENERAL fallback)", flush=True)
+    # Parent acceptance lock vs R6c ACCEPT
+    accept_r6c = Path("/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/ACCEPT_R6c_PBI.json")
+    parent_mode = "FORMAL"  # or DIAGNOSTIC_ONLY
+    parent_meta = {}
+    if accept_r6c.is_file():
+        import hashlib
+        acc = json.loads(accept_r6c.read_text())
+        parent_meta["r6c_image_generation"] = acc.get("image_generation")
+        parent_meta["r6c_status"] = acc.get("status")
+        # find P0 peep
+        p0_peep = None
+        for pe in acc.get("peeps", []):
+            if pe.get("tag") == "P0":
+                p0_peep = pe
+                break
+        parent_meta["p0_PASS"] = bool(p0_peep and p0_peep.get("PASS"))
+        parent_meta["p0_G8"] = (p0_peep or {}).get("G8_black", {})
+        # SHA match optional if listed
+        h = hashlib.sha256(P0.read_bytes()).hexdigest()
+        parent_meta["p0_sha256"] = h
+        sums = Path("/workspace/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/complete/SHA256SUMS_PBI.txt")
+        sha_ok = None
+        if sums.is_file():
+            for line in sums.read_text().splitlines():
+                if "P0_CHILD_2048_NCNN_PBI_R6c.png" in line:
+                    exp = line.split()[0]
+                    sha_ok = (exp == h)
+                    parent_meta["p0_sha_match"] = sha_ok
+                    break
+        if acc.get("image_generation") != "THIS_RUN":
+            parent_mode = "DIAGNOSTIC_ONLY"
+            parent_meta["reason"] = "ACCEPT not THIS_RUN"
+        elif not parent_meta.get("p0_PASS", False):
+            parent_mode = "DIAGNOSTIC_ONLY"
+            parent_meta["reason"] = "P0 formal PASS false (likely G8 FAIL)"
+        elif sha_ok is False:
+            parent_mode = "DIAGNOSTIC_ONLY"
+            parent_meta["reason"] = "P0 sha mismatch vs SHA256SUMS"
+        else:
+            parent_mode = "FORMAL"
+            parent_meta["reason"] = "P0 THIS_RUN + PASS + sha_ok"
+    else:
+        parent_mode = "DIAGNOSTIC_ONLY"
+        parent_meta["reason"] = "missing ACCEPT_R6c_PBI.json"
+    print(f"P0 parent: {p0_path.name} mode={parent_mode} meta={parent_meta.get('reason')}", flush=True)
+    if parent_mode == "DIAGNOSTIC_ONLY":
+        print("WARN: R7 DIAGNOSTIC_ONLY — not formal production chain", flush=True)
     board = cv2.imread(str(p0_path))
     if board is None:
         raise SystemExit(f"REJECT: cannot read PBI parent {p0_path}")
@@ -418,8 +464,11 @@ def main():
         ),
         register=manifest["register"],
         PASS=ok,
-        status="ACCEPT" if ok else "PARTIAL",
+        status=("ACCEPT" if (ok and parent_mode=="FORMAL") else ("DIAGNOSTIC_ONLY" if parent_mode!="FORMAL" else "PARTIAL")),
         fail_closed_no_general_fallback=True,
+        parent_mode=parent_mode,
+        parent_meta=parent_meta,
+        production_ok=(parent_mode=="FORMAL" and ok),
         merge_main="NO",
         asof=datetime.now(timezone.utc).isoformat(),
         elapsed_s=round(time.time() - t_all, 2),
