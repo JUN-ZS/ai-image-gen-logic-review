@@ -131,3 +131,12 @@
 - 掛 `FACE_JU_YUAN_FJY_01262.md` S3.7：S3.6→光鎖→S5 ECC
 - 證據：`tmp/fjy_ic_match` · ms_sig8 · mother `cd98b954`
 - asof 2026-11-02T19:29:00Z
+
+## face俱圓 ALL · 插入 S1.5 單白殺（2026-11-03）
+
+全鏈固定序：
+S1 ROI → **S1.5 單白殺** → dens → JLP → HPP → ZNZZP → YLGS → SHOW → ECC → 貼
+
+- `MSR_GOU_SKILL_INVENTORY_FJY_ALL_CHAIN_APPEND.md`
+- `CONSTITUTION_WRITE_01262_FJY_ALL_S15_META.json`
+- 更新 `FACE_JU_YUAN_FJY_01262.md` / `FACE_JU_YUAN_FJY_NAME.md` / DBSS 交叉

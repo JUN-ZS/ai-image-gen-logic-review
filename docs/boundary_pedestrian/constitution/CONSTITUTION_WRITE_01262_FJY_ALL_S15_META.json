@@ -1,0 +1,23 @@
+{
+  "format": "ige.constitution.write_meta",
+  "parent": "FACE_JU_YUAN_FJY_01262",
+  "change": "ALL_CHAIN_INSERT_S1_5_DAN_BAI_SHA",
+  "slot": "S1.5",
+  "skill_ref": "DAN_BAI_SHA_SHENG_DBSS_01261 / WNK §0.12.26.D",
+  "chain": [
+    "S1_ROI",
+    "S1.5_WNK_NONHD",
+    "S2_S3_dens",
+    "S3.4_JLP",
+    "S3.5_HPP",
+    "S3.6_ZNZZP",
+    "S3.7_YLGS",
+    "S4_SHOW",
+    "S5_ECC",
+    "S6_paste"
+  ],
+  "evidence": "tmp/fjy_full_383578ab_wnk/RESULT_FJY_WNK_FULL.json",
+  "asof": "2026-11-02T20:14:00Z",
+  "quality_qualified": false,
+  "final_acceptance": false
+}

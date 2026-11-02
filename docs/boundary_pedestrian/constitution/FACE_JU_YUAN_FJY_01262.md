@@ -1,5 +1,42 @@
 # face俱圓 · 過程規格 · FACE_JU_YUAN_FJY_01262
 
+
+## 全鏈 · ALL（face俱圓 標準序）
+
+```
+S1     ROI 全臉（NON-HD · 例 box (920,80)–(1320,520) 依母圖）
+S1.5   單白殺 WNK / DBSS 核        ← NON-HD only · 先於 dens
+S2/S3  dens 本場同姿（TRUE_A8B 配方 · ar 跟 dens）
+S3.4   JLP 近臉皮真
+S3.5   HPP 畫皮皮
+S3.6   ZNZZP 真女主轉皮
+S3.7   YLGS 原臉光鎖（ms_sig8 默認）
+S4     SHOW
+S5     ECC ≥ 0.85
+S6     feather 貼母圖
+S7     收據
+```
+
+| 槽 | 碼／招 | 一句 |
+|----|--------|------|
+| S1 | ROI | 全臉俱圓框 · 母圖尺度 |
+| **S1.5** | **單白殺 · DBSS/WNK** | **非高清殺白噪 · 不殺合法高光** |
+| S2/S3 | dens | 本場同姿 plate |
+| S3.4 | JLP | 近臉程序皮真 |
+| S3.5 | HPP | 生成級皮 |
+| S3.6 | ZNZZP | 女主真皮＋身分 |
+| S3.7 | YLGS | 原臉 IC／陰影 |
+| S5–S6 | ECC→貼 | 門檻 0.85 · 母圖 WH 鎖死 |
+
+**硬規則**
+
+- 單白殺 **只** 在 dens **之前** 的 NON-HD ROI／臉槽；`hd_face_wnk=false` 為預設。
+- dens 之後不再預設 WNK（避免洗掉真皮高頻）。
+- 全鏈可跳過可選子招（JLP/HPP/ZNZZP/YLGS），但 **收據必須標 enabled**；S1→S1.5→dens→ECC→貼 為最短含殺白主幹。
+- `quality_qualified=false` 直至另開驗收。
+
+
+
 ## 0. 範圍
 
 | 做 | 不做 |
@@ -8,6 +45,7 @@
 | plate 比例 **跟 dens／自由** | 默認 2:3 長海報／錯 ar |
 | **畫皮皮** dens 框內生成級皮膚 | 錯 ratio 皮硬貼；網紅磨皮 |
 | **近臉皮真** 近圖 A±B 皮真實 | 遠景強開 B；磨皮假皮；改 ar |
+| **單白殺** NON-HD 殺白 dens 前 | HD plate 上殺白；kill 合法 SPEC |
 | **真女主轉皮** 女主 donor 真皮＋身分 | soft-id 冒充；無 donor；跨姿 dens |
 | **原臉光鎖** 原 ROI 低頻光＋陰影 | plate 直貼錯光；洗掉高頻真皮 |
 | 可選身分 ref（淨臉）合 dens | 身分板改鏡頭／重構姿 |
@@ -47,6 +85,22 @@ plate   = generate(aspect=auto)    # primary ref = dens → 框近 dens_ar
 ```
 face = mother[y0:y1, x0:x1]   # 全臉；不全則不算 FJY
 ```
+
+
+### S1.5 · 單白殺（WNK / DBSS 核）
+
+**掛點**：S1 ROI 之後、S2 dens **之前**。  
+**技源**：`DAN_BAI_SHA_SHENG_DBSS_01261` 的 **NON-HD 殺白** 段（本槽只取殺白，不強制整段 DBSS 升清回扣）。
+
+```
+face = mother[y0:y1, x0:x1]          # NON-HD
+face_wnk, mask, stats = WNK(face)    # kill = NOISE_WHITE ∩ ¬SPEC_LIGHT
+# dens 輸入 = face_wnk（不是 raw 噪臉）
+```
+
+- 紅 overlay／kill_px／frac_kill 入收據  
+- **禁止** 默認對 dens／HPP／ZNZZP plate 再殺白  
+- 與 DBSS 全鏈（殺白→PATH1E→Lanczos/Imagine light）相容：face俱圓 ALL 在殺白後改走 dens→JLP…→YLGS→ECC
 
 ### S2 · dens 幾何源
 

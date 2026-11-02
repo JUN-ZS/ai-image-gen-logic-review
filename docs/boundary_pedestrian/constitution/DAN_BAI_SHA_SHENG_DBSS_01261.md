@@ -117,3 +117,15 @@ Imagine(image_to_image, out_mother 或 Lanczos-1920 seed)
 - **MCP**：A 母 MASK 抽 donor 像素 —— 本技可不做。
 - **AMRS**：母修全鏈（WNK+MCP+PATH1E+DHY+NFP）—— 本技是**短鏈輕量回扣**變體。
 - **DBSS**：固定「非高清殺白」+「輕量升清回扣」。
+
+
+## 與 face俱圓 ALL
+
+face俱圓 **S1.5** 取本技 **S2 非高清殺白** 為必選掛點（dens 前）。
+
+```
+face俱圓 ALL:
+  S1 ROI → S1.5 單白殺(DBSS-S2) → dens → JLP → HPP → ZNZZP → YLGS → ECC → 貼
+```
+
+完整 DBSS（殺白後 Lanczos/Imagine light 回扣）可另開；face俱圓 ALL 預設走 dens 皮鏈而非 DBSS S6 輕升清。
