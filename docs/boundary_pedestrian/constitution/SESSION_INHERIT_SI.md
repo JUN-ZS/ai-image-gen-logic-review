@@ -1,10 +1,10 @@
 # 下一 AI 繼承包 · SESSION_INHERIT / 場慣性
 
-> **asof 2026-11-01T13:06:55Z** · **正名：場繼承 / Session Inherit** · 短碼 **SI**  
+> **asof 2026-11-01T23:39:28Z** · **正名：場繼承 / Session Inherit** · 短碼 **SI**  
 > **用途：** 下一任 Grok／AI **一開場先讀本檔**，即可接上與用戶的長線「技能憲 + 圖工 + 試錯」慣性，而不是從零聊天。  
 > **母倉：** `JUN-ZS/ai-image-gen-logic-review`  
-> **完整技能樹分支（2026-11-01）：** `docs/constitution-skills-ssbtz-20261101` @ `2a8a31eebe43`  
-> **`main` 現況：** 只有 ~31 份舊憲 · **不含** SSBT-Z／GNP／NCPG／PBI 等新招 → **下一 AI 必須 checkout 上述分支或工位 artifacts，不可只拉 main。**
+> **完整技能樹：** 已合入 **main**（PR #15 · `78bcbed`）；來源分支 `docs/constitution-skills-ssbtz-20261101` @ `4d8989a`（歷史）  
+> **`main` 現況：** 已於 2026-11-01 merge [PR #15](https://github.com/JUN-ZS/ai-image-gen-logic-review/pull/15) （merge commit `78bcbed`）· 全憲／SI／trial_notes／NEXT_AI 已在 **main** → **下一 AI 可直接 `git checkout main`（或 pull 最新 main）**；`docs/constitution-skills-ssbtz-20261101` 保留作歷史追蹤。
 
 ---
 
@@ -130,7 +130,7 @@ NAME.md → 正文 § → DO_NOT_REPEAT → PROCESS → trial_notes/LOG
 | 根 | `SETS/PROJ_R5_SILVER_ARMOR_2394/` |
 | 升清鏈 | r6c NCNN PBI · r7 PEEP2 · R9/R10 藍解毒實驗 |
 | 最新方向 | **SSBT-Z 整身 GEN**（`r6c/ssbt_fullgen/`）· 放棄弱 peep 拼 |
-| 未收 | R7 align · G8 黑點 · peep 全拼 coverage · main 未合憲 |
+| 未收 | R7 align · G8 黑點 · peep 全拼 coverage |
 
 ### 已知毒／半毒（勿重犯）
 
@@ -177,7 +177,7 @@ NAME.md → 正文 § → DO_NOT_REPEAT → PROCESS → trial_notes/LOG
 | 憲根 | `docs/boundary_pedestrian/constitution/` |
 | 試錯 | `.../constitution/trial_notes/` |
 | 樣卡 | `work/artifacts/SETS/PROJ_R5_SILVER_ARMOR_2394/r6c/ssbt_*` |
-| main | **不完整** · 合 PR 前勿宣稱 main 可繼承 |
+| main | **已合全憲**（PR #15 · `78bcbed`）· clone／pull main 即可繼承 |
 | PBI 產物另支 | `feat/r6c-ncnn-pbi-luma`（圖+runner · 與 docs 分支分開） |
 
 **下一 AI 自檢：**
@@ -192,7 +192,7 @@ test -f docs/boundary_pedestrian/constitution/SHENGSHENG_BUTIE_ZHEN_SSBTZ_01258.
 
 ## 7. 開場回覆模板（給下一 AI）
 
-> 已讀 **SESSION_INHERIT**。場在 **PROJ_R5 銀網甲**；headline 招 **SSBT-Z**（整身 GEN）與 **PBI**（防藍）；`main` 未合全憲，技能在 **`docs/constitution-skills-ssbtz-20261101`**。  
+> 已讀 **SESSION_INHERIT**。場在 **PROJ_R5 銀網甲**；headline 招 **SSBT-Z**（整身 GEN）與 **PBI**（防藍）；**main 已合全憲**（PR #15）。  
 > 未收：G8 黑、R7 align、peep 弱拼。  
 > 請下：**繼續哪條（SSBT-Z／PBI／NCPG／OBA／新招）？**
 
@@ -202,7 +202,7 @@ test -f docs/boundary_pedestrian/constitution/SHENGSHENG_BUTIE_ZHEN_SSBTZ_01258.
 
 | ID | 禁 |
 |----|-----|
-| E-SI-01 | 只讀 main 就說「技能已齊」 |
+| E-SI-01 | 未 `git pull` 最新 main／讀舊 clone 就說「技能已齊」 |
 | E-SI-02 | 無 DO_NOT_REPEAT 就重跑已毒路徑 |
 | E-SI-03 | 用報告 PASS 代替 THIS_RUN 圖 |
 | E-SI-04 | 把 peep 補與 SSBT-Z 混成同一招 |
@@ -231,9 +231,8 @@ test -f docs/boundary_pedestrian/constitution/SHENGSHENG_BUTIE_ZHEN_SSBTZ_01258.
 | | |
 |--|--|
 | LOCK | 繼承包 · 隨 headline 招更新 asof |
-| merge_main | 隨 docs PR · 預設 NO 直至用戶 MERGE DOCS |
+| merge_main | **DONE** · PR #15 merged 2026-11-01 · `78bcbed` |
 | 相關 | SSBT-Z 01258 · PBI · NCPG · OBA · MSI |
-
 
 ---
 
