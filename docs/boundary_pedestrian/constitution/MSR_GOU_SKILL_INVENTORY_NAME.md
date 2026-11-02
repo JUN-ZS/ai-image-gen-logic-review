@@ -12,3 +12,5 @@
 
 | 護絲防黑 S1S2 | §0.12.57 | WCP · PBI 聯動 · 樣板 P0_CHILD_2048_NCNN_PBI |
 | **生生補貼真** | **SSBT-Z** | §0.12.58 | 整身 GEN 禁 peep |
+
+| 全圖 NCNN＋PBI 省記憶體 | §0.12.59 | **NFP-M** · RAW-first · strip PBI · 見 NFP_M_APPEND |

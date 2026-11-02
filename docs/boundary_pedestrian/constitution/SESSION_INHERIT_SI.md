@@ -233,3 +233,12 @@ test -f docs/boundary_pedestrian/constitution/SHENGSHENG_BUTIE_ZHEN_SSBTZ_01258.
 | LOCK | 繼承包 · 隨 headline 招更新 asof |
 | merge_main | 隨 docs PR · 預設 NO 直至用戶 MERGE DOCS |
 | 相關 | SSBT-Z 01258 · PBI · NCPG · OBA · MSI |
+
+---
+
+## 附：NCNN 全圖方法（2026-11-02）
+
+- **NFP-M / §0.12.59** · 全圖 NCNN＋PBI 省記憶體  
+- 鐵序：**RAW 落盤 → strip PBI** · 見 `NCNN_FULLFRAME_PBI_MEMSAFE_01259.md`  
+- 工具：`work/scripts/r6c_pbi/run_ncnn_fullframe_pbi.py`  
+- **merge main: NO** · 勿與 Siax 混稱 PASS  
