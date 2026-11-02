@@ -1,0 +1,96 @@
+{
+  "skill": "升清回位",
+  "code": "SHQ",
+  "alias": [
+    "SC-H",
+    "SHQ-BEST"
+  ],
+  "version": "1.1",
+  "asof": "2026-11-03T06:40+08",
+  "priority_method": "IMAGINE_DEL_LOCKED_PASTE + SHQ-COREFIT formula",
+  "status_success": "IMAGINE_DEL_LOCKED_PASTE_OK",
+  "hard_rails": [
+    "person_scale=1.0",
+    "formula_corefit_first",
+    "imagine_region_edit_only_for_del",
+    "hardpaste_core_exact",
+    "virtual_master_no_downscale",
+    "anchor_audit",
+    "ground_horizontal_lock",
+    "mid_distance_preferred"
+  ],
+  "subskills": [
+    "SHQ-BEST",
+    "SHQ-COREFIT",
+    "ANTHRO-FIT",
+    "IMAGINE-DEL",
+    "HARDPASTE",
+    "VM-LOCK",
+    "SHQ-GROUND",
+    "DDXX",
+    "DDXX-AR",
+    "PATH1E-F",
+    "PATH1E-P",
+    "ANCHOR-AUDIT",
+    "SOLE-SUPPORT",
+    "PEEP-ROI",
+    "PLATE-POSE",
+    "CLEAN-REPASTE"
+  ],
+  "gold_samples": [
+    {
+      "id": "PROJ_SHQ_MID_LEVEL_RETURN_V1",
+      "role": "BEST_PRIORITY",
+      "status": "IMAGINE_DEL_LOCKED_PASTE_OK",
+      "path": "SETS/PROJ_SHQ_MID_LEVEL_RETURN_V1/SHQ_RUN/",
+      "locked": {
+        "a": 0.39358124917249104,
+        "S": 2.5111607142857144,
+        "donor_xy": [
+          623,
+          821
+        ],
+        "person_scale": 1.0,
+        "sole_y_vm": 2268,
+        "vm_wh": [
+          2552,
+          4520
+        ],
+        "core_exact": 1.0,
+        "face_exact": 1.0
+      }
+    },
+    {
+      "id": "DDXX_IMAGINE_DEL_PASTE",
+      "role": "FIRST_ACCEPT",
+      "status": "IMAGINE_DEL_LOCKED_PASTE_OK",
+      "path": "SETS/PROJ_R5_SILVER_ARMOR_2394/.../DDXX_IMAGINE_DEL_PASTE/",
+      "locked": {
+        "a": 0.2898465198567387,
+        "donor_xy": [
+          1654,
+          1429
+        ],
+        "person_scale": 1.0,
+        "vm_wh": [
+          3623,
+          6263
+        ],
+        "core_exact": 1.0
+      }
+    }
+  ],
+  "formula": {
+    "donor_to_scene": "q = a * (p @ R) + t",
+    "a_from": "Face+Torso(+shoulders/hips) robust",
+    "t_from": "feet/sole ground lock preferred",
+    "scene_to_vm": "S≈1/a; person_scale=1.0; integer paste"
+  },
+  "errors_extra": [
+    "E-SHQ-19",
+    "E-SHQ-20",
+    "E-SHQ-21",
+    "E-SHQ-22",
+    "E-SHQ-23"
+  ]
+}

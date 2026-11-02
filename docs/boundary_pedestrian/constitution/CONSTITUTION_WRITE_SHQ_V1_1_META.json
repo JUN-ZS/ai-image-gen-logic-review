@@ -1,0 +1,14 @@
+{
+  "write_id": "CONSTITUTION_WRITE_SHQ_V1_1",
+  "asof": "2026-11-03T06:40+08",
+  "skill": "升清回位",
+  "version": "1.1",
+  "priority": "SHQ-BEST formula COREFIT first",
+  "gold": "PROJ_SHQ_MID_LEVEL_RETURN_V1",
+  "status": "IMAGINE_DEL_LOCKED_PASTE_OK",
+  "push_target": "JUN-ZS/ai-image-gen-logic-review",
+  "paths": [
+    "skills/shengqing-huiwei/",
+    "docs/boundary_pedestrian/constitution/SHQ_升清回位_V1_1.md"
+  ]
+}
