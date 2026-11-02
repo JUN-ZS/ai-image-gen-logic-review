@@ -1,0 +1,26 @@
+{
+  "format": "ige.constitution.write_meta",
+  "skill_id": "01262B",
+  "code": "JLP",
+  "full_name": "JIN_LIAN_PI_ZHEN_JLP_01262B",
+  "title_zh": "近臉皮真",
+  "title_en": "Near-Face Skin Realism",
+  "parent": "FACE_JU_YUAN_FJY_01262",
+  "sibling": "HUA_PI_PI_HPP_01262A",
+  "slot": "S3.4",
+  "asof": "2026-11-02T17:47:00Z",
+  "status_before": "discussed_not_LOCK; only HPP aux mentioned procedural",
+  "status_after": "LOCK named skill wired into FJY",
+  "files": [
+    "JIN_LIAN_PI_ZHEN_JLP_NAME.md",
+    "JIN_LIAN_PI_ZHEN_JLP_01262B.md",
+    "JIN_LIAN_PI_ZHEN_JLP_DO_NOT_REPEAT.md",
+    "CONSTITUTION_WRITE_01262B_JLP_META.json"
+  ],
+  "layers": {
+    "A": "procedural bilateral+HF+grain+Y unsharp",
+    "B": "Imagine i2i / 畫皮皮 HPP"
+  },
+  "quality_qualified": false,
+  "final_acceptance": false
+}

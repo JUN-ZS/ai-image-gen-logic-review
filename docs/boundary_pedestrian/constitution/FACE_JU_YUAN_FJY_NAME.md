@@ -19,7 +19,8 @@ ID_REF       = optional clean identity plate (same person preferred)
 PLATE        = Imagine(ref=DENS first, ID second; aspect=auto|match dens)
               # NEVER force 2:3 when dens ar ≈ 0.9
 ECC          = findTransformECC(mother_face_ROI, plate→ROI)
-HPP_SKIN    = 畫皮皮 i2i(dens) 生成級皮（S3.5 · 可選近臉）
+JLP_SKIN    = 近臉皮真（S3.4 · 近圖默認 A 程序皮）
+HPP_SKIN    = 畫皮皮 i2i(dens) 生成級皮（S3.5 · B 加分）
 paste iff ECC ≥ 0.85 (raw) · mother WH locked
 SHOW         = free long-edge ≥1920  (contain 1920×1080 is display only, not geometry)
 ```

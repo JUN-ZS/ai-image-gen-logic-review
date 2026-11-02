@@ -7,6 +7,7 @@
 | 本場同姿全臉 peep／dens 作幾何 | 異姿庫存板硬換本場 |
 | plate 比例 **跟 dens／自由** | 默認 2:3 長海報／錯 ar |
 | **畫皮皮** dens 框內生成級皮膚 | 錯 ratio 皮硬貼；網紅磨皮 |
+| **近臉皮真** 近圖 A±B 皮真實 | 遠景強開 B；磨皮假皮；改 ar |
 | 可選身分 ref（淨臉）合 dens | 身分板改鏡頭／重構姿 |
 | ECC ≥0.85 貼回母圖 WH 鎖 | 半臉 peep、降 PIXEL 母圖 |
 | SHOW 長邊自由 ≥1920 | 把 1920×1080 letterbox 當幾何 peep |
@@ -63,6 +64,20 @@ plate = Imagine_reference(
 # 驗 ar ≈ dens_ar；偏離過大 → 重抽，勿硬貼
 ```
 
+
+
+### S3.4 · 近臉皮真（JLP · 皮真實）
+
+**子招** `JIN_LIAN_PI_ZHEN_JLP_01262B` · **近圖 face 默認**；遠景 skip。
+
+| 層 | 內容 |
+|----|------|
+| **A 程序** | bilateral 去蠟 → HF residual → mid grain → 輕 desat → Y unsharp；**WH/ar 不變** |
+| **B 生成** | 見 **S3.5 畫皮皮 HPP**（i2i 鎖框） |
+
+原則：同框同 ar 同姿；禁網紅磨皮／半臉／當 quality PASS；做完仍 **ECC≥0.85**。
+
+詳見 `JIN_LIAN_PI_ZHEN_JLP_01262B.md`。
 
 ### S3.5 · 畫皮皮（HPP · 生成級皮膚）
 
@@ -152,4 +167,5 @@ assert out.shape == mother.shape
 | DBSS | 殺白輕升鏈；FJY 可接在 dens 後作真臉源 |
 | AMRS／MCP | 母修／掩抽；FJY 不替代 MASK 抽像素 |
 | A8B 庫存 setS | 僅參考；異姿禁止硬貼（本技明確） |
+| **近臉皮真 JLP** | **S3.4 子招**；近臉 A 程序 ± B；遠景 skip |
 | **畫皮皮 HPP** | **S3.5 子招**；生成級皮；主路 i2i(dens) |

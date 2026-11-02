@@ -2,7 +2,9 @@
 
 ## 0. 地位
 
-**face俱圓（FJY_01262）子招** · 插在 **S3 plate 後、S5 ECC 前**（編號 **S3.5**）。
+**face俱圓（FJY_01262）子招** · **S3.5**（**S3.4 近臉皮真 JLP** 之後）。
+
+近臉何時開 A／B：見 `JIN_LIAN_PI_ZHEN_JLP_01262B`；本技是 **B 生成級主路**。
 
 | 做 | 不做 |
 |----|------|
@@ -58,7 +60,8 @@ Imagine_reference(primary=dens, skin_ref=good_skin_plate, aspect=auto)
 S1 全臉 ROI
 S2 dens 幾何
 S3 FJY plate (auto 跟 dens，可選身分)
-S3.5 畫皮皮 HPP     ← 本技
+S3.4 近臉皮真 JLP   （近圖 A）
+S3.5 畫皮皮 HPP     ← 本技（B）
 S4 SHOW 自由長邊
 S5 ECC ≥ 0.85
 S6 feather 貼母圖 WH 鎖
