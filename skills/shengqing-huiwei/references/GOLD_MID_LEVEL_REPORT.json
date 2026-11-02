@@ -1,0 +1,43 @@
+{
+  "skill": "SHQ",
+  "method": "Imagine region_edit remove person only → locked a warp → hard paste donor 1.0",
+  "set_id": "PROJ_SHQ_MID_LEVEL_RETURN_V1",
+  "asof": "2026-11-03T06:30+08",
+  "status": "IMAGINE_DEL_LOCKED_PASTE_OK",
+  "rules": [
+    "person not too far (mid ~30% frame)",
+    "HD ground horizontal same as original soles",
+    "終於對到了 IMAGINE_DEL_LOCKED_PASTE"
+  ],
+  "locked": {
+    "a": 0.39358124917249104,
+    "rotation_deg": -2.1823952282512273,
+    "donor_xy": [
+      623,
+      821
+    ],
+    "person_scale": 1.0,
+    "ground_y_scene": 903.323486328125,
+    "sole_y_vm": 2268,
+    "vm_wh": [
+      2552,
+      4520
+    ],
+    "S": 2.5111607142857144,
+    "S_raw": 2.5407714470709952
+  },
+  "core_exact": 1.0,
+  "face_exact": 1.0,
+  "gates": {
+    "person_scale": 1.0,
+    "core_exact": 1.0,
+    "face_exact": 1.0,
+    "imagine_del": true,
+    "ground_horizontal_lock": true,
+    "E_SHQ_01_person_resized": false,
+    "ACCEPT_CORE": true,
+    "ACCEPT_FULL": false,
+    "formal_status": "IMAGINE_DEL_LOCKED_PASTE_OK"
+  },
+  "sha16": "3b286bb099f0ac43"
+}
