@@ -1,0 +1,46 @@
+{
+  "format": "ige.constitution.write_meta",
+  "skill_id": "01262",
+  "code": "FJY",
+  "full_name": "FACE_JU_YUAN_FJY_01262",
+  "title_zh": "face俱圓",
+  "title_en": "Full-Face Round Framing (dens-aspect free ratio)",
+  "asof": "2026-11-02T17:06:00Z",
+  "files": [
+    "FACE_JU_YUAN_FJY_NAME.md",
+    "FACE_JU_YUAN_FJY_01262.md",
+    "FACE_JU_YUAN_FJY_DO_NOT_REPEAT.md",
+    "CONSTITUTION_WRITE_01262_FJY_META.json"
+  ],
+  "pipeline": [
+    "full-face ROI (forehead to chin)",
+    "dens same-pose geometry donor",
+    "optional identity ref",
+    "plate aspect=auto match dens (never wrong forced 2:3)",
+    "ECC >= 0.85 paste mother WH lock",
+    "SHOW free long-edge >=1920"
+  ],
+  "not": [
+    "forced 2:3 poster ratio default",
+    "setS cross-pose hard swap",
+    "half-face peep",
+    "1920x1080 letterbox as geometry",
+    "pixel drop mother"
+  ],
+  "evidence_runs": [
+    "tmp/a8b_ratio_fixed",
+    "tmp/a8b_true_samepose",
+    "tmp/dbss_a8b_from_wnk_3eeea"
+  ],
+  "evidence_assets": {
+    "dens_donor": "97cfa7e1-2ddd-497b-9ae4-981b848188a3",
+    "auto_id_plate": "43863809-c75d-463d-9309-8aeb95023815",
+    "wrong_2x3": [
+      "66b3d6de-63b9-4b61-aea6-8b5e8ab57944",
+      "47134783-6ee8-4182-9db1-ce2526ecabfe",
+      "2037341a-a71f-4dbc-8b4f-8e35a8237963"
+    ]
+  },
+  "quality_qualified": false,
+  "final_acceptance": false
+}
