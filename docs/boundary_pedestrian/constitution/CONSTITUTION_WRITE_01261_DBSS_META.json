@@ -1,0 +1,33 @@
+{
+  "format": "ige.constitution.write_meta",
+  "skill_id": "01261",
+  "code": "DBSS",
+  "full_name": "DAN_BAI_SHA_SHENG_DBSS_01261",
+  "title_zh": "單白殺升",
+  "title_en": "Single White-Kill Light Upscale",
+  "asof": "2026-11-02T16:23:55Z",
+  "files": [
+    "DAN_BAI_SHA_SHENG_DBSS_NAME.md",
+    "DAN_BAI_SHA_SHENG_DBSS_01261.md",
+    "DAN_BAI_SHA_SHENG_DBSS_DO_NOT_REPEAT.md",
+    "CONSTITUTION_WRITE_01261_DBSS_META.json"
+  ],
+  "pipeline": [
+    "NON-HD WNK on face/ROI peep",
+    "PATH1E dens",
+    "ECC ROI paste to mother (pixel lock)",
+    "Lanczos geometric upscale",
+    "Imagine light enhance"
+  ],
+  "not": [
+    "HD face WNK before paste as default",
+    "NCNN fullframe required",
+    "quality PASS by default"
+  ],
+  "evidence_runs": [
+    "tmp/amrs_nonhd_wnk_path1e",
+    "tmp/amrs_daf1_light_up"
+  ],
+  "quality_qualified": false,
+  "final_acceptance": false
+}
