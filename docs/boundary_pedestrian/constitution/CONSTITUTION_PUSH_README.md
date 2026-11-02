@@ -120,3 +120,14 @@
 - 掛 `FACE_JU_YUAN_FJY_01262.md` S3.6：pose plate + 女主真臉 → 真皮＋身分（非 soft-id）
 - 證據：`tmp/fjy_true_skin_f670` · plate `5c714e21` · donor `f670`
 - asof 2026-11-02T19:19:00Z
+
+## 01262D · 原臉光鎖 (YLGS) · face俱圓 子招 S3.7
+
+- `YUAN_LIAN_GUANG_SUO_YLGS_NAME.md`
+- `YUAN_LIAN_GUANG_SUO_YLGS_01262D.md`
+- `YUAN_LIAN_GUANG_SUO_YLGS_DO_NOT_REPEAT.md`
+- `CONSTITUTION_WRITE_01262D_YLGS_META.json`
+- `MSR_GOU_SKILL_INVENTORY_YLGS_APPEND.md`
+- 掛 `FACE_JU_YUAN_FJY_01262.md` S3.7：S3.6→光鎖→S5 ECC
+- 證據：`tmp/fjy_ic_match` · ms_sig8 · mother `cd98b954`
+- asof 2026-11-02T19:29:00Z

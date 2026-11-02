@@ -1,0 +1,18 @@
+{
+  "format": "ige.constitution.write_meta",
+  "skill_id": "01262D",
+  "code": "YLGS",
+  "full_name": "YUAN_LIAN_GUANG_SUO_YLGS_01262D",
+  "title_zh": "原臉光鎖",
+  "title_en": "Original-Face Illumination Lock",
+  "parent": "FACE_JU_YUAN_FJY_01262",
+  "slot": "S3.7",
+  "after": ["ZHEN_NV_ZHU_ZHUAN_PI_ZNZZP_01262C"],
+  "before": ["S5_ECC"],
+  "asof": "2026-11-02T19:29:00Z",
+  "evidence": "tmp/fjy_ic_match/RESULT_IC_MATCH.json",
+  "example_mother": "cd98b954-c701-49f1-99e1-be45f9ba89bb",
+  "default_variant": "ms_sig8",
+  "quality_qualified": false,
+  "final_acceptance": false
+}

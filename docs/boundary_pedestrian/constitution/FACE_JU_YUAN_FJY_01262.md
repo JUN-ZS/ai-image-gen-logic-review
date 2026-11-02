@@ -9,6 +9,7 @@
 | **畫皮皮** dens 框內生成級皮膚 | 錯 ratio 皮硬貼；網紅磨皮 |
 | **近臉皮真** 近圖 A±B 皮真實 | 遠景強開 B；磨皮假皮；改 ar |
 | **真女主轉皮** 女主 donor 真皮＋身分 | soft-id 冒充；無 donor；跨姿 dens |
+| **原臉光鎖** 原 ROI 低頻光＋陰影 | plate 直貼錯光；洗掉高頻真皮 |
 | 可選身分 ref（淨臉）合 dens | 身分板改鏡頭／重構姿 |
 | ECC ≥0.85 貼回母圖 WH 鎖 | 半臉 peep、降 PIXEL 母圖 |
 | SHOW 長邊自由 ≥1920 | 把 1920×1080 letterbox 當幾何 peep |
@@ -75,7 +76,8 @@ plate = Imagine_reference(
 |----|------|
 | **A 程序** | bilateral 去蠟 → HF residual → mid grain → 輕 desat → Y unsharp；**WH/ar 不變** |
 | **B 生成** | 見 **S3.5 畫皮皮 HPP
-S3.6 真女主轉皮 ZNZZP**（i2i 鎖框） |
+S3.6 真女主轉皮 ZNZZP
+S3.7 原臉光鎖 YLGS**（i2i 鎖框） |
 
 原則：同框同 ar 同姿；禁網紅磨皮／半臉／當 quality PASS；做完仍 **ECC≥0.85**。
 
@@ -109,6 +111,20 @@ pose_plate（dens/JLP/HPP）+ heroine_face（TRUE_A8B identity_ref，默認 f670
 ```
 
 詳見 `ZHEN_NV_ZHU_ZHUAN_PI_ZNZZP_01262C.md`。
+
+
+### S3.7 · 原臉光鎖（YLGS）
+
+**子招** `YUAN_LIAN_GUANG_SUO_YLGS_01262D` · **近臉建議開**（陰影／IC 與原 ROI 不符時必開）。
+
+```
+真女主轉皮 plate → ECC_align 到 FACE ROI
+→ 低頻 L + 環境色 ← 母圖原臉
+→ 高頻細節 ← plate
+→ peep_ic → S5 ECC → 貼
+```
+
+詳見 `YUAN_LIAN_GUANG_SUO_YLGS_01262D.md`。證據：`tmp/fjy_ic_match`（ms_sig8 ic≈0.9999）。
 
 ### S4 · SHOW（展示，非幾何）
 
@@ -185,3 +201,4 @@ assert out.shape == mother.shape
 | **近臉皮真 JLP** | **S3.4 子招**；近臉 A 程序 ± B；遠景 skip |
 | **畫皮皮 HPP** | **S3.5 子招**；生成級皮；主路 i2i(dens) |
 | **真女主轉皮 ZNZZP** | **S3.6 子招**；女主真臉皮材＋身分強轉 |
+| **原臉光鎖 YLGS** | **S3.7 子招**；貼前對齊原臉 IC／陰影 |

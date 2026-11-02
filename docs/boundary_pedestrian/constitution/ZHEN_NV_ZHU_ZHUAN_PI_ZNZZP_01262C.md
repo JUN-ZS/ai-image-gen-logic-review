@@ -56,6 +56,7 @@ S3   plate auto 跟 dens
 S3.4 近臉皮真 JLP     （近圖 A 程序 · 可選）
 S3.5 畫皮皮 HPP       （生成級皮 · 可選）
 S3.6 真女主轉皮 ZNZZP  ← 本技（女主 donor 真皮 · 近臉建議開）
+S3.7 原臉光鎖 YLGS     （原臉 IC／陰影）
 S4   SHOW 自由長邊
 S5   ECC ≥ 0.85
 S6   feather 貼母圖
