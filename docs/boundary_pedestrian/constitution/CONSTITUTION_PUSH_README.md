@@ -60,3 +60,14 @@
 3. 新招：正名 → 附件 → 總憲 LOCK 段 → §11 修訂
 
 *Generated for push · do not treat as frozen base without TAKE card if used under ecosystem rails.*
+
+## 2026-11-02 母修全鏈／掩抽拼
+
+| 正招 | 碼 | 條 |
+|------|-----|-----|
+| 掩抽拼 | MCP | §0.12.60 |
+| 母修全鏈 | AMRS | §0.12.60.S |
+| 全圖 NCNN 省憶 | NFP-M | §0.12.59 |
+| 白噪殺 | WNK | §0.12.26.D |
+| PATH1E | PATH1E | §0.12.17 |
+
