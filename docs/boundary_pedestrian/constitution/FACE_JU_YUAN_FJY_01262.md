@@ -6,6 +6,7 @@
 |----|------|
 | 本場同姿全臉 peep／dens 作幾何 | 異姿庫存板硬換本場 |
 | plate 比例 **跟 dens／自由** | 默認 2:3 長海報／錯 ar |
+| **畫皮皮** dens 框內生成級皮膚 | 錯 ratio 皮硬貼；網紅磨皮 |
 | 可選身分 ref（淨臉）合 dens | 身分板改鏡頭／重構姿 |
 | ECC ≥0.85 貼回母圖 WH 鎖 | 半臉 peep、降 PIXEL 母圖 |
 | SHOW 長邊自由 ≥1920 | 把 1920×1080 letterbox 當幾何 peep |
@@ -61,6 +62,23 @@ plate = Imagine_reference(
 )
 # 驗 ar ≈ dens_ar；偏離過大 → 重抽，勿硬貼
 ```
+
+
+### S3.5 · 畫皮皮（HPP · 生成級皮膚）
+
+**子招** `HUA_PI_PI_HPP_01262A` · 近臉／真 A8B dens 框內可選必做。
+
+```
+# 主路：生成級，鎖框
+skin = Imagine_i2i(geom=dens_or_plate_S3,
+  prompt="same crop/aspect/pose/armor; only photoreal pores skin, less plastic")
+# 輔路：程序皮真實（bilateral+HF+grain）
+# 禁：把 2:3 好皮硬當 paste 主源
+assert |skin.ar - dens.ar| 小
+# 之後 S5 必須重測 ECC
+```
+
+詳見 `HUA_PI_PI_HPP_01262A.md` · `HUA_PI_PI_HPP_NAME.md`。
 
 ### S4 · SHOW（展示，非幾何）
 
@@ -134,3 +152,4 @@ assert out.shape == mother.shape
 | DBSS | 殺白輕升鏈；FJY 可接在 dens 後作真臉源 |
 | AMRS／MCP | 母修／掩抽；FJY 不替代 MASK 抽像素 |
 | A8B 庫存 setS | 僅參考；異姿禁止硬貼（本技明確） |
+| **畫皮皮 HPP** | **S3.5 子招**；生成級皮；主路 i2i(dens) |

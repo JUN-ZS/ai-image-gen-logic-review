@@ -1,0 +1,36 @@
+{
+  "format": "ige.constitution.write_meta",
+  "skill_id": "01262A",
+  "code": "HPP",
+  "full_name": "HUA_PI_PI_HPP_01262A",
+  "title_zh": "畫皮皮",
+  "title_en": "Generative Skin Paint (dens-locked)",
+  "parent": "FACE_JU_YUAN_FJY_01262",
+  "slot": "S3.5",
+  "asof": "2026-11-02T17:19:00Z",
+  "files": [
+    "HUA_PI_PI_HPP_NAME.md",
+    "HUA_PI_PI_HPP_01262A.md",
+    "HUA_PI_PI_HPP_DO_NOT_REPEAT.md",
+    "CONSTITUTION_WRITE_01262A_HPP_META.json"
+  ],
+  "pipeline": [
+    "geom = dens / FJY plate correct ar",
+    "Imagine i2i skin-only OR procedural skin",
+    "optional skin_ref quality only",
+    "re-ECC >= 0.85 then paste"
+  ],
+  "not": [
+    "2:3 generative skin hard paste",
+    "beauty-blur plastic",
+    "reframe for skin",
+    "skip ECC after i2i"
+  ],
+  "evidence_assets": {
+    "hpp_i2i_main": "b55a53be-06d7-4851-ae92-4aea5c54ef6e",
+    "wrong_ratio_skin_ref": "47134783-6ee8-4182-9db1-ce2526ecabfe",
+    "dens_geom": "97cfa7e1-2ddd-497b-9ae4-981b848188a3"
+  },
+  "quality_qualified": false,
+  "final_acceptance": false
+}
