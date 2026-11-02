@@ -62,6 +62,7 @@ S2 dens 幾何
 S3 FJY plate (auto 跟 dens，可選身分)
 S3.4 近臉皮真 JLP   （近圖 A）
 S3.5 畫皮皮 HPP     ← 本技（B）
+S3.6 真女主轉皮 ZNZZP （女主 donor 真皮）
 S4 SHOW 自由長邊
 S5 ECC ≥ 0.85
 S6 feather 貼母圖 WH 鎖

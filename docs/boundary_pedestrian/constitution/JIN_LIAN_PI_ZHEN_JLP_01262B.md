@@ -57,6 +57,7 @@ S2  dens 幾何（本場同姿；TRUE_A8B 作配方）
 S3  FJY plate (auto 跟 dens，可選身分)
 S3.4 近臉皮真 JLP   ← 本技（近臉默認 A）
 S3.5 畫皮皮 HPP     ← 生成級 B（可選／加分）
+S3.6 真女主轉皮 ZNZZP ← 女主 donor 真皮（近臉建議）
 S4  SHOW 自由長邊
 S5  ECC ≥ 0.85
 S6  feather 貼母圖

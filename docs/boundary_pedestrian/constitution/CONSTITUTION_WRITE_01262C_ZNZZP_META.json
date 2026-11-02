@@ -1,0 +1,17 @@
+{
+  "format": "ige.constitution.write_meta",
+  "skill_id": "01262C",
+  "code": "ZNZZP",
+  "full_name": "ZHEN_NV_ZHU_ZHUAN_PI_ZNZZP_01262C",
+  "title_zh": "真女主轉皮",
+  "title_en": "Heroine True-Skin Transfer",
+  "parent": "FACE_JU_YUAN_FJY_01262",
+  "slot": "S3.6",
+  "after": ["JIN_LIAN_PI_ZHEN_JLP_01262B", "HUA_PI_PI_HPP_01262A"],
+  "asof": "2026-11-02T19:19:00Z",
+  "evidence": "tmp/fjy_true_skin_f670/RESULT_TRUE_SKIN.json",
+  "example_plate": "5c714e21-b12a-4455-9fc6-e5ff37d8d157",
+  "default_heroine_donor": "f670d500-d44d-4619-baf8-24b3dc757029",
+  "quality_qualified": false,
+  "final_acceptance": false
+}

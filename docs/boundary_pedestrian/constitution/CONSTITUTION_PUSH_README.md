@@ -109,3 +109,14 @@
 - `MSR_GOU_SKILL_INVENTORY_JLP_APPEND.md`
 - 已掛 `FACE_JU_YUAN_FJY_01262.md` S3.4；與 S3.5 畫皮皮銜接
 - asof 2026-11-02T17:47:00Z · **此前僅討論未 LOCK，本次正式入憲**
+
+## 01262C · 真女主轉皮 (ZNZZP) · face俱圓 子招 S3.6
+
+- `ZHEN_NV_ZHU_ZHUAN_PI_ZNZZP_NAME.md`
+- `ZHEN_NV_ZHU_ZHUAN_PI_ZNZZP_01262C.md`
+- `ZHEN_NV_ZHU_ZHUAN_PI_ZNZZP_DO_NOT_REPEAT.md`
+- `CONSTITUTION_WRITE_01262C_ZNZZP_META.json`
+- `MSR_GOU_SKILL_INVENTORY_ZNZZP_APPEND.md`
+- 掛 `FACE_JU_YUAN_FJY_01262.md` S3.6：pose plate + 女主真臉 → 真皮＋身分（非 soft-id）
+- 證據：`tmp/fjy_true_skin_f670` · plate `5c714e21` · donor `f670`
+- asof 2026-11-02T19:19:00Z
