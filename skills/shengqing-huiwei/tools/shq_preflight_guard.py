@@ -309,6 +309,12 @@ def check_run(run_path: Path):
                     fail(f"{uid}: pixel-level hardpaste verification did not pass", errors)
                 if pixel.get("donor_sha256") != hashes.get("donor_rgba"):
                     fail(f"{uid}: pixel audit donor SHA differs from accepted donor", errors)
+                if paste and pixel.get("donor_xy") != paste.get("donor_xy"):
+                    fail(f"{uid}: pixel audit paste coordinates differ from paste report", errors)
+                if paste and paste.get("virtual_master_sha256") != pixel.get("master_sha256"):
+                    fail(f"{uid}: pixel audit master SHA differs from paste report", errors)
+                if int(pixel.get("verified_visible_opaque_pixels", 0)) <= 0:
+                    fail(f"{uid}: pixel audit verified zero opaque donor pixels", errors)
         unit_summaries.append({"unit_id": uid, "hashes": hashes})
 
     if mode == "MULTI" and donor_hashes and len(donor_hashes) != len(set(donor_hashes)):
