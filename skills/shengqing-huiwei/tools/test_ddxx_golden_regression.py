@@ -54,6 +54,7 @@ def main():
                    "translation_target_px": [float(t[0]), float(t[1])],
                    "weighted_mean_residual_px": mean, "weighted_rmse_px": rmse}
     }
+    args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=2))
     raise SystemExit(0 if result["status"] == "PASS" else 2)
