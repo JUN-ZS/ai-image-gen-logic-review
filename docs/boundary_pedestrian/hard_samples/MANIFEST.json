@@ -1,0 +1,130 @@
+{
+  "title": "P3 MULTI + P4 T×H2×8 axes hard samples on 邊界行人 ACT3",
+  "asof": "2026-10-24",
+  "pixel_audit_pass": false,
+  "evidence_grade": "IMAGE_GENERATED_IN_SESSION",
+  "act": 3,
+  "style": "S01",
+  "p3_washes": [
+    "W01 dual-tone face light",
+    "W04 low sweep",
+    "W07 over-shoulder"
+  ],
+  "p4_axes": [
+    "X_RIGHT",
+    "X_LEFT",
+    "Z_UP",
+    "Z_DOWN",
+    "XZ_RISE",
+    "XZ_FALL",
+    "Y_DEPTH",
+    "OBLIQUE_3D"
+  ],
+  "p4_camera": "CAM02-like front three-quarter (prompted)",
+  "failures_called_out": [
+    "AX6 handle-through risk",
+    "P3 W07 fusion",
+    "first-pass AX0/AX1 plus-sign+labels discarded after retry"
+  ],
+  "items": [
+    {
+      "batch": "P3",
+      "geo": "MULTI",
+      "wash": "W01",
+      "note": "faceted head readable; contact clear; not formal PASS",
+      "path": "docs/boundary_pedestrian/hard_samples/p3_multi/W01_gold_cyan_front.jpg",
+      "sha256": "0eaeb070a426c065f00ff9667661690b13fb2f398e9efaa0c5fcb3e0a4c4fde2",
+      "bytes": 721371
+    },
+    {
+      "batch": "P3",
+      "geo": "MULTI",
+      "wash": "W04",
+      "note": "multi-block head strong; risk of stud-like look; contact explosive",
+      "path": "docs/boundary_pedestrian/hard_samples/p3_multi/W04_low_sweep.jpg",
+      "sha256": "6a4ed8a6e7bf6262d8572b036fe68bef19547e54ee2f5a9350e9848eb7bb964e",
+      "bytes": 913001
+    },
+    {
+      "batch": "P3",
+      "geo": "MULTI",
+      "wash": "W07",
+      "note": "head fuses with sphere optics; seam hard to audit",
+      "path": "docs/boundary_pedestrian/hard_samples/p3_multi/W07_over_shoulder.jpg",
+      "sha256": "6e8bd3a9789b81953e66a41696663991d848cf27aec6a4b410bd871c27843586",
+      "bytes": 762757
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "X_RIGHT",
+      "note": "T topology OK after retry; end-face contact plausible",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX0_X_RIGHT.jpg",
+      "sha256": "7d0d095f95fbc24129bab11f659645b712ba56727ef737765c4320dec2b4b641",
+      "bytes": 579207
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "X_LEFT",
+      "note": "T OK; may read cheek-first depending on view",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX1_X_LEFT.jpg",
+      "sha256": "4bb13db435cb8dc8bfa51d97ba0345a3a0644dc9f61a7708708805e97a9ca494",
+      "bytes": 492314
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "Z_UP",
+      "note": "clean T silhouette; small sphere",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX2_Z_UP.jpg",
+      "sha256": "a9b8b2ccc211ac2c41018afb8f0a1b6d58ef2b6b4ee9d508206e08ddf9c5daf0",
+      "bytes": 503149
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "Z_DOWN",
+      "note": "overhand T good; terminal face hit plausible",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX3_Z_DOWN.jpg",
+      "sha256": "b6e6aefeddb73c5e564f056def3d42c2c20f52624a289785e3b50f9402b5aaaf",
+      "bytes": 560017
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "XZ_RISE",
+      "note": "strong diagonal; T readable",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX4_XZ_RISE.jpg",
+      "sha256": "52c235930729ad1e7f929ddb73995173556d5799132c8e528b8a52ea3fc3fa97",
+      "bytes": 669859
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "XZ_FALL",
+      "note": "falling strike; T readable",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX5_XZ_FALL.jpg",
+      "sha256": "2948864360029457ec640058405a1f5927a1b4a56bebc33583a049759e79d524",
+      "bytes": 634573
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "Y_DEPTH",
+      "note": "FAIL risk: handle/shaft through sphere (not pure end-face)",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX6_Y_DEPTH.jpg",
+      "sha256": "59e34bda63f771726dd31c66c49d4a383de39cbfad571230aa5cf949d8823029",
+      "bytes": 591554
+    },
+    {
+      "batch": "P4",
+      "geo": "T",
+      "axis": "OBLIQUE_3D",
+      "note": "T-like after retry; contact busy",
+      "path": "docs/boundary_pedestrian/hard_samples/p4_t_h2/AX7_OBLIQUE_3D.jpg",
+      "sha256": "4503c16652ff2a9b1e94b726acca339b48f5e5bb529328d6c1a2dd6cfd076026",
+      "bytes": 618275
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "asof": "2026-10-24",
+  "full_id_total": 3723,
+  "generated_inventory_rows": 55,
+  "generated_repo_files_counted": 49,
+  "coverage": {
+    "IMAGE_geometry": {
+      "I-01 T mother": "partial via P4 T samples + session I-01 ref if any",
+      "I-02 H0": "NOT_GENERATED_IN_BP_PACK",
+      "I-03 H1": "NOT_GENERATED_IN_BP_PACK",
+      "I-04 H2": "YES — p4_t_h2 (8 axes)",
+      "I-05 H3": "NOT_GENERATED_IN_BP_PACK",
+      "I-06 dual T proof": "NO",
+      "I-07 dual T H0": "NO",
+      "I-08 thick cross": "NO",
+      "I-09 cross atlas": "NO",
+      "I-10 rod pos": "NO",
+      "I-11 rod neg": "NO",
+      "I-12 correct vs wrong face": "NO",
+      "I-13 plant side": "NO",
+      "I-14 plant atlas": "NO",
+      "I-15 plant outer grip": "NO",
+      "I-16 multi flat-face": "YES — p3_multi + mv26 ACT3 hard",
+      "I-17 multi H0/H2 rules": "partial H2 only in p3"
+    },
+    "IMAGE_camera_style": {
+      "I-18 192 multiview": "SAMPLE 8/192 axes only (P4); not full matrix",
+      "I-19 48 dual matrix": "NO",
+      "I-22 10 washes": "SAMPLE 3/10 (W01,W04,W07)",
+      "S-01 photoreal": "YES — i20, mv26, hard_samples",
+      "S-02 pastel": "YES — i21",
+      "S-03 surreal": "NO",
+      "S-04 geometric audit": "NO"
+    },
+    "VIDEO": {
+      "V-01 T 10s": "NO",
+      "V-02 KF5": "NO",
+      "V-03 planted video": "NO",
+      "V-04 I2V mother loop": "YES — session 6 clips from I-20",
+      "V-05 dual T video": "NO",
+      "V-06 cross video": "NO",
+      "V-07 rod video": "NO",
+      "V-08 multi video": "NO",
+      "V-09 BP 6-act MV": "YES — session 36s stitch (coarse)",
+      "V-10 teach dual out": "NO"
+    },
+    "NARRATIVE_BP": {
+      "I-20 6 acts": "YES — i20 complete",
+      "I-21 6 acts pastel": "YES — i21 complete",
+      "MV 26 shots": "YES — mv26 complete",
+      "soft no weapon rule": "YES on ACT2/5 soft; ACT3 uses hard geos"
+    }
+  },
+  "files": {
+    "full_ids": "docs/boundary_pedestrian/variants/VARIANT_IDS_FULL.csv",
+    "summary": "docs/boundary_pedestrian/variants/VARIANT_IDS_FULL_SUMMARY.json",
+    "asset_map": "docs/boundary_pedestrian/variants/GENERATED_ASSETS_CATALOG_MAP.csv"
+  }
+}

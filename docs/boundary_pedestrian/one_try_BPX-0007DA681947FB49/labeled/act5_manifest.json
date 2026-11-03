@@ -1,0 +1,22 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "LOOP-000014",
+  "try_id": "TRY-0007DA681947",
+  "act_id": "5",
+  "method_id": "GEO.T",
+  "method_label": "T H2 · T_H2_IMPACT4 · Y_DEPTH · CAM02 · LOW · M1 · S01 · V-04 · BP6-I20",
+  "prompt_id": "I-01;I-04;I-18;PACK_IMPACT_4",
+  "style_id": "S-01",
+  "status": "IMAGE_GENERATED",
+  "note": "combination_id=BPX-0007DA681947FB49 · status=IMAGE_GENERATED not pixel-audit",
+  "source_path": "/tmp/ai-image-gen-logic-review/docs/boundary_pedestrian/one_try_BPX-0007DA681947FB49/raw/act5_one_boundary.jpg",
+  "source_sha256": "623a34cc4acca81cc5f02dfacf72598532aeee20994f95783fc36baae7440cde",
+  "source_width": 1792,
+  "source_height": 1008,
+  "image_realization": "SOURCE_FILE_ATTACHED",
+  "pixel_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "renderer": "boundary_pedestrian_try_art.py",
+  "artwork_path": "/tmp/ai-image-gen-logic-review/docs/boundary_pedestrian/one_try_BPX-0007DA681947FB49/labeled/act5_一界.svg",
+  "artwork_sha256": "3f6352d71f3fb8fca494517d792a8a9163624f36616da50891b5feb6de087c67"
+}

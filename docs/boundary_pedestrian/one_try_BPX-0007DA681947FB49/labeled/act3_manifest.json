@@ -1,0 +1,22 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "LOOP-000014",
+  "try_id": "TRY-0007DA681947",
+  "act_id": "3",
+  "method_id": "GEO.T",
+  "method_label": "T H2 · T_H2_IMPACT4 · Y_DEPTH · CAM02 · LOW · M1 · S01 · V-04 · BP6-I20",
+  "prompt_id": "I-01;I-04;I-18;PACK_IMPACT_4",
+  "style_id": "S-01",
+  "status": "IMAGE_GENERATED",
+  "note": "combination_id=BPX-0007DA681947FB49 · status=IMAGE_GENERATED not pixel-audit",
+  "source_path": "/tmp/ai-image-gen-logic-review/docs/boundary_pedestrian/one_try_BPX-0007DA681947FB49/raw/act3_primary_try_T_H2.jpg",
+  "source_sha256": "9ba2b4bc866d70eee95d54e74361d31aacffc9cb9571cf6d1c06ec63fe477221",
+  "source_width": 1792,
+  "source_height": 1008,
+  "image_realization": "SOURCE_FILE_ATTACHED",
+  "pixel_audit_status": "NOT_RUN",
+  "visual_acceptance_status": "NOT_VERIFIED",
+  "renderer": "boundary_pedestrian_try_art.py",
+  "artwork_path": "/tmp/ai-image-gen-logic-review/docs/boundary_pedestrian/one_try_BPX-0007DA681947FB49/labeled/act3_試法碎裂.svg",
+  "artwork_sha256": "3dc01160b0771ef611ce726b29ee9158490a55bb349e5d400a2d04e7ba490f8b"
+}

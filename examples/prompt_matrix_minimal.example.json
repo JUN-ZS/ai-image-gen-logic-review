@@ -1,0 +1,51 @@
+{
+  "counts": {
+    "total_variants": 1
+  },
+  "variants": [
+    {
+      "variant_id": "DEMO_X_RIGHT__CAM02__M1",
+      "axis": {
+        "axis_id": "X_RIGHT",
+        "normal": [
+          1,
+          0,
+          0
+        ],
+        "name_en": "Horizontal left-to-right"
+      },
+      "camera": {
+        "camera_id": "CAM02_FRONT_THREE_QUARTER",
+        "off_normal_deg": 38,
+        "orbit_deg": 35,
+        "roll_deg": 0,
+        "focal_mm": 35
+      },
+      "swing": {
+        "swing_id": "SIDE_SWEEP",
+        "name_en": "Lateral arc swing"
+      },
+      "windup_profile": {
+        "profile_id": "WINDUP_COMPACT_SNAP",
+        "name": "compact accelerating wind-up"
+      },
+      "geometry": {
+        "normal_dot": -1,
+        "H0_total_gap": 50,
+        "H2_gap": 0,
+        "H3_advance": 15,
+        "roll_A": 0,
+        "roll_B": 90,
+        "camera_view_only": true
+      },
+      "prompts": {
+        "H2_first_contact": "DEMO ONLY: The designated terminal end-face meets the sphere at P with opposing normals and no interpenetration.",
+        "H3_followthrough": "DEMO ONLY: Advance the same rigid hammer along n; cracks propagate outward from P."
+      },
+      "audit_status": {
+        "image_realization": "NOT_RUN",
+        "pixel_audit": "NOT_RUN"
+      }
+    }
+  ]
+}

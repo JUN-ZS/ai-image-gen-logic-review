@@ -1,0 +1,22 @@
+{
+  "story": "THE BOUNDARY WALKER",
+  "loop_id": "LOOP-TRIAD-001",
+  "try_id": "TRY-FEMALE-H2-001",
+  "series_id": "S01-RAIN-TOKYO",
+  "world_label": "Rainy Tokyo / 雨夜東京",
+  "method_id": "GEO.T",
+  "method_label": "T-hammer · H2 first contact · IMPACT4 · P04 · female face lock",
+  "geometry_family": "T",
+  "contact_method": "H2",
+  "camera_id": "T_H2_IMPACT4-XZ_FALL-CAM08-LOW-M1",
+  "pose_id": "P04",
+  "style_id": "S01",
+  "panel_side": "right",
+  "status": "REVIEW_PENDING",
+  "acts": {
+    "3": {
+      "act_id": "3",
+      "prompt_id": "BPX-TRIAD-FEMALE-RAIN-TOKYO-001-I-MID-H2"
+    }
+  }
+}

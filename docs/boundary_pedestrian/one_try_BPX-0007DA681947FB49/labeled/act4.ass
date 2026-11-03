@@ -1,0 +1,17 @@
+[Script Info]
+Title: THE BOUNDARY WALKER TRY overlay
+ScriptType: v4.00+
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Title,Microsoft JhengHei,34,&H00F8F5E8,&H000000FF,&HCC06111C,&H8806111C,1,0,0,0,100,100,1,0,1,3,1,7,52,52,42,1
+Style: Method,Arial,25,&H00FFFFFF,&H000000FF,&HCC06111C,&H8806111C,1,0,0,0,100,100,1,0,1,2,1,9,52,52,42,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,0:00:02.60,Title,,0,0,0,,邊界行人 / THE BOUNDARY WALKER   ·   ACT 4
+Dialogue: 2,0:00:00.00,0:00:06.00,Method,,0,0,0,,GEO.T  /  T H2 · T_H2_IMPACT4 · Y_DEPTH · CAM02 · LOW · M1 · S01 · V-04 · BP6-I20\NLOOP LOOP-000014  ·  TRY TRY-0007DA681947   |   IMAGE GENERATED

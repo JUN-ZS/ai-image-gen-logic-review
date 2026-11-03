@@ -1,0 +1,20 @@
+[Script Info]
+Title: THE BOUNDARY WALKER — 3D TRY TITLE
+ScriptType: v4.00+
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+PlayResX: 1920
+PlayResY: 1080
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Title,Microsoft JhengHei,48,&H00F8F5E8,&H000000FF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,2,0,1,4,6,7,54,54,48,1
+Style: Try,Arial,44,&H007ACDFF,&H00FFFFFF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,2,0,1,4,6,7,54,54,48,1
+Style: Meta,Arial,24,&H00FFFFFF,&H000000FF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,1,0,1,3,4,7,54,54,48,1
+Style: Status,Arial,20,&H00B0E8E8,&H000000FF,&HCC06111C,&HAA06111C,1,0,0,0,100,100,1,0,1,3,4,7,54,54,48,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 2,0:00:00.00,0:00:03.50,Title,,0,0,0,,邊界行人 / THE BOUNDARY WALKER\N{\fs27\c&H00D8E6FF&}S02-AQUARIUM-CAFE  ·  Aquarium Café / 水族咖啡館
+Dialogue: 2,0:00:00.00,0:00:06.00,Try,,0,0,0,,LOOP LOOP-000002  ·  TRY TRY-0000559E2F9E\NGEO.MULTI  /  single multi-facet rounded head / nominated flat face · first contact at P · V-09
+Dialogue: 1,0:00:00.00,0:00:06.00,Meta,,0,0,0,,GEO MULTI / CONTACT H2 / CAM WASH10-NA-W02 / POSE P02 / STYLE S02 / PROMPT BPX-0000559E2F9EBD56-I-ACT3\N{\fs18}SHA-256 612dbd4fd89124a02a…  ·  IMAGE GENERATED

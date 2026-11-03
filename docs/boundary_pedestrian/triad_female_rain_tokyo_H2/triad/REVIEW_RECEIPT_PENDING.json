@@ -1,0 +1,21 @@
+{
+  "review_status": "REVIEW_PENDING",
+  "image_sha256": "b0b2e78fd1572adde80e526a487822bb1722922aa68f19ae02e9b7c5789a95d7",
+  "note": "Human has NOT accepted. PRE/POST images are DRAFT derivatives only. Gate remains BLOCKED_UNTIL_MID_H2_ACCEPTED.",
+  "geometry_checks": {
+    "one_rigid_T_hammer": true,
+    "nominated_terminal_end_face_is_first_contact": false,
+    "zero_gap_at_P": false,
+    "no_interpenetration": false,
+    "crossbar_and_handle_topology_correct": true,
+    "camera_crop_perspective_locked": true,
+    "hammer_shape_and_scale_locked": true,
+    "scene_lighting_background_locked": true
+  },
+  "honest_geometry_notes": [
+    "Letter-T topology largely correct.",
+    "Contact may still be stem/junction rather than crossbar TERMINAL end face — needs human PIXEL review.",
+    "PRE: positive gap, no cracks.",
+    "POST: crack growth from contact region."
+  ]
+}
