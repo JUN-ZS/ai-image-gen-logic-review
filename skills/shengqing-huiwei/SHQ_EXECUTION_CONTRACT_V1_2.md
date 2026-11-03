@@ -48,7 +48,7 @@ The v1.1 skill currently describes two related but distinct fit rules. They must
 ## 2. Phase state machine (no skipping)
 
 Allowed states:
-`PREFLIGHT → TARGET_CAPTURED → ANCHORED → DONOR_READY → FIT_DONE → POSE_GATE_DONE → READY_TO_PASTE → FINALIZED`
+`PREFLIGHT → TARGET_CAPTURED → ANCHORED → FIT_DONE → DONOR_READY → POSE_GATE_DONE → READY_TO_PASTE → FINALIZED`
 
 A failed gate moves to `BLOCKED_<REASON>`; it cannot be bypassed by changing report wording.
 
@@ -59,8 +59,8 @@ Required phase evidence:
 | PREFLIGHT | canonical version, method_id, unit count, golden solver regression result, no-repeat list loaded |
 | TARGET_CAPTURED | original target SHA, SOLO crop, target mask, target coordinate frame/crop offset, pose/shape maps |
 | ANCHORED | target and donor semantic anchor JSON, confidence, source SHA, overlay audit |
-| DONOR_READY | independent donor per unit, donor SHA, native dimensions, alpha, aspect ratio, design identity |
 | FIT_DONE | method_id, a/R/t, inverse scene transform, per-anchor residual CSV, robust weights, scale-only comparison |
+| DONOR_READY | fit-derived required native W+H/AR, independent donor per unit, donor SHA, alpha and design identity |
 | POSE_GATE_DONE | target-referenced pose report, silhouette/limb/object-axis residuals |
 | READY_TO_PASTE | native size + AR pass, pose pass, fit pass, donor is not resized, all required units pass |
 | FINALIZED | exact hard-paste report, donor SHA provenance, core pixel comparison, final dimensions, z-order and composition report |
