@@ -38,11 +38,15 @@ Exit code 0 = gate pass for the declared phase. Exit code 2 = BLOCK. Never overr
 
 ## 5. Evidence paths per unit
 
-At `TARGET_CAPTURED`: `target_solo`, `target_pose_map`, `target_silhouette`, `target_landmarks`, `design_spec`.
+At `TARGET_CAPTURED`: `target_solo`, `target_pose_map`, `target_silhouette`, `design_spec`.
 
-At `FIT_DONE`: add `fit_report` with frozen method_id, per-anchor residuals and semantic-anchor audit.
+At `TARGET_SPEC_LOCKED`: add `target_landmarks` and `size_contract` with planned scene scale, target silhouette bbox, required native W+H, AR and tolerances.
 
-At `DONOR_READY`: use the frozen fit to derive the native W+H/AR contract, then add `donor_rgba`, `donor_mask`, `donor_landmarks`, `genfit_report`.
+At `DONOR_READY`: generate against that locked contract; add `donor_rgba`, `donor_mask`, `genfit_report` with generation-output SHA.
+
+At `ANCHORED`: add `donor_landmarks` and `anchor_audit` linking both source SHAs.
+
+At `FIT_DONE`: add `fit_report` with frozen method_id, paired per-anchor residuals and plan-vs-fit scale consistency.
 
 At `POSE_GATE_DONE`: add `pose_report` whose primary reference role is `ORIGINAL_TARGET` and whose reference SHA equals `target_solo`.
 
