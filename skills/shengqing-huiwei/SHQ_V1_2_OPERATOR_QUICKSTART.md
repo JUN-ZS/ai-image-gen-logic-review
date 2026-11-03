@@ -1,6 +1,6 @@
 # SHQ v1.2 — Operator Quick Start
 
-Run from the repository root.
+Run from the repository root. Python 3.10+ is required; install the two checker dependencies with `python -m pip install numpy pillow`.
 
 ## 1. Golden solver regression
 
@@ -34,7 +34,7 @@ python skills/shengqing-huiwei/tools/shq_preflight_guard.py runs/<RUN_ID>/RUN_ST
   --out runs/<RUN_ID>/PREFLIGHT_REPORT.json
 ```
 
-Exit code 0 = gate pass for the declared phase. Exit code 2 = BLOCK. Never override with a text status.
+Exit code 0 = evidence/guard pass for the declared phase. Exit code 2 = BLOCK. A FINALIZED guard pass reports only placement/pixel verification (`...NOT_VISUAL_FULL`); it never means `ACCEPT_FULL`. Never override with a text status.
 
 ## 5. Evidence paths per unit
 
