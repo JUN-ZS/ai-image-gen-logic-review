@@ -52,6 +52,16 @@ At `POSE_GATE_DONE`: add `pose_report` whose primary reference role is `ORIGINAL
 
 At `READY_TO_PASTE`: add `paste_plan`.
 
-At `FINALIZED`: add `paste_report` proving donor SHA, hardpaste, unit_scale=1.0 and core integrity.
+At `FINALIZED`: add `paste_report` and `pixel_audit`. Verify actual pixels using:
+
+```bash
+python skills/shengqing-huiwei/tools/verify_native_hardpaste.py \
+  --donor runs/<RUN_ID>/UNIT_U0/DONOR_RGBA.png \
+  --master runs/<RUN_ID>/VIRTUAL_MASTER.png \
+  --xy <INTEGER_X> <INTEGER_Y> \
+  --out runs/<RUN_ID>/UNIT_U0/PIXEL_AUDIT.json
+```
+
+For an overlapped multi-unit donor, also provide a donor-sized `--visible-mask` showing the pixels owned by that unit in the final z-order. The guard checks pixel-audit donor SHA, paste coordinates and final VM SHA against `paste_report`.
 
 For MULTI, all required units must pass before the final common-scene composition is accepted. Any failed unit blocks the whole multi acceptance.
