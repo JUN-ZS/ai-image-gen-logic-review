@@ -265,6 +265,7 @@ def main():
         result = {"guard": "SHQ_EXECUTION_GUARD_V1_2", "status": "BLOCK", "errors": [str(exc)]}
     raw = json.dumps(result, ensure_ascii=False, indent=2)
     if args.out:
+        args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(raw + "\n", encoding="utf-8")
     print(raw)
     sys.exit(0 if result.get("status") == "PASS" else 2)
