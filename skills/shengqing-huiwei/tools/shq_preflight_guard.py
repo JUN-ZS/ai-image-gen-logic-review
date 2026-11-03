@@ -304,11 +304,17 @@ def check_run(run_path: Path):
                     fail(f"{uid}: pasted donor SHA does not match accepted donor", errors)
                 if paste.get("hardpaste") is not True:
                     fail(f"{uid}: final operation is not verified HARDPASTE", errors)
+                if paste.get("donor_xy") is None:
+                    fail(f"{uid}: paste_report must include integer donor_xy", errors)
+                if paste.get("virtual_master_sha256") is None:
+                    fail(f"{uid}: paste_report must include virtual_master_sha256", errors)
             if pixel:
                 if pixel.get("status") != "PASS" or pixel.get("core_exact") is not True:
                     fail(f"{uid}: pixel-level hardpaste verification did not pass", errors)
                 if pixel.get("donor_sha256") != hashes.get("donor_rgba"):
                     fail(f"{uid}: pixel audit donor SHA differs from accepted donor", errors)
+                if pixel.get("donor_xy") is None or pixel.get("master_sha256") is None:
+                    fail(f"{uid}: pixel audit must include donor_xy and master_sha256", errors)
                 if paste and pixel.get("donor_xy") != paste.get("donor_xy"):
                     fail(f"{uid}: pixel audit paste coordinates differ from paste report", errors)
                 if paste and paste.get("virtual_master_sha256") != pixel.get("master_sha256"):
@@ -319,6 +325,7 @@ def check_run(run_path: Path):
 
     if mode == "MULTI" and donor_hashes and len(donor_hashes) != len(set(donor_hashes)):
         fail("MULTI donor SHA collision: separate units unexpectedly share identical donor bytes", errors)
+    multi_scale_compromise = False
     if mode == "MULTI" and phase_index >= PHASES.index("FINALIZED"):
         comp = state.get("composition", {})
         if comp.get("mode") != "MULTI_RETURN":
@@ -329,9 +336,19 @@ def check_run(run_path: Path):
         if set(ratios) != set(ids):
             fail("slot_ratios must be declared for every unit", errors)
         bad = {k: v for k, v in ratios.items() if abs(float(v) - 1.0) > float(comp.get("slot_ratio_tolerance", 0.02))}
+        multi_scale_compromise = bool(bad)
         if bad and comp.get("status") != "MULTI_SCALE_COMPROMISE":
             fail("non-unit slot ratios must be explicitly labelled MULTI_SCALE_COMPROMISE", errors)
 
+    guard_status = "PASS" if not errors else "BLOCK"
+    if phase != "FINALIZED":
+        acceptance_status = "NOT_FINALIZED"
+    elif mode == "MULTI" and multi_scale_compromise:
+        acceptance_status = "MULTI_SCALE_COMPROMISE"
+    elif mode == "MULTI":
+        acceptance_status = "MULTI_RETURN_PLACEMENT_PIXEL_OK"
+    else:
+        acceptance_status = "SINGLE_PLACEMENT_PIXEL_OK"
     result = {
         "guard": "SHQ_EXECUTION_GUARD_V1_2",
         "run_id": state.get("run_id"),
@@ -339,9 +356,10 @@ def check_run(run_path: Path):
         "method_id": method,
         "task_mode": mode,
         "unit_count": expected_n,
-        "unit_summaries": unit_summaries,
-        "status": "PASS" if not errors else "BLOCK",
-        "errors": errors
+        "acceptance_status": acceptance_status,
+        "status": guard_status,
+        "errors": errors,
+        "important_limit": "Guard PASS verifies declared evidence, measured geometry, phase gates and pixel integrity only; it does not certify artistic quality, lighting, semantic identity, or full composition."
     }
     return result
 
