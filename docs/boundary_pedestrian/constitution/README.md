@@ -24,6 +24,16 @@
 |----|------|
 | **`BOUNDARY_WALKER_UNIFIED_RULES.md`** | **唯一總操作憲** |
 
+
+## 待解技名（未 LOCK）
+
+| 正招 | 碼 | 條 | 地位 |
+|------|-----|-----|------|
+| **外折混鎖** | **XHL** | §0.12.29 | 待解 · 外 donor 包→內混鎖 |
+| 字糊反推對換 | TBRS | §0.12.28 | 備案 |
+
+附件：`EXTERNAL_FOLD_HYBRID_LOCK_XHL_NAME.md` · `EXTERNAL_FOLD_HYBRID_LOCK_XHL_PENDING.md`
+
 ## 近期 LOCK 技名（摘）
 
 | 正招 | 碼 | 條 |
