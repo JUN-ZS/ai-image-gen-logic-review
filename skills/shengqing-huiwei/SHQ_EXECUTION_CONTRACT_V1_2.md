@@ -48,7 +48,7 @@ The v1.1 skill currently describes two related but distinct fit rules. They must
 ## 2. Phase state machine (no skipping)
 
 Allowed states:
-`PREFLIGHT → TARGET_CAPTURED → ANCHORED → FIT_DONE → DONOR_READY → POSE_GATE_DONE → READY_TO_PASTE → FINALIZED`
+`PREFLIGHT → TARGET_CAPTURED → TARGET_SPEC_LOCKED → DONOR_READY → ANCHORED → FIT_DONE → POSE_GATE_DONE → READY_TO_PASTE → FINALIZED`
 
 A failed gate moves to `BLOCKED_<REASON>`; it cannot be bypassed by changing report wording.
 
@@ -58,9 +58,10 @@ Required phase evidence:
 |---|---|
 | PREFLIGHT | canonical version, method_id, unit count, golden solver regression result, no-repeat list loaded |
 | TARGET_CAPTURED | original target SHA, SOLO crop, target mask, target coordinate frame/crop offset, pose/shape maps |
-| ANCHORED | target and donor semantic anchor JSON, confidence, source SHA, overlay audit |
-| FIT_DONE | method_id, a/R/t, inverse scene transform, per-anchor residual CSV, robust weights, scale-only comparison |
-| DONOR_READY | fit-derived required native W+H/AR, independent donor per unit, donor SHA, alpha and design identity |
+| TARGET_SPEC_LOCKED | target semantic landmarks, target silhouette bbox, planned scene scale, required native W+H and AR contract |
+| DONOR_READY | independent native donor generated against the locked W+H/AR contract; donor SHA, RGBA, alpha bbox and generation provenance |
+| ANCHORED | paired target/donor semantic anchor JSON, confidence, source SHAs, coordinate frames and overlay audit |
+| FIT_DONE | frozen method_id, a/R/t, inverse scene transform, per-anchor residual CSV, robust weights and plan-vs-fit scale consistency |
 | POSE_GATE_DONE | target-referenced pose report, silhouette/limb/object-axis residuals |
 | READY_TO_PASTE | native size + AR pass, pose pass, fit pass, donor is not resized, all required units pass |
 | FINALIZED | exact hard-paste report, donor SHA provenance, core pixel comparison, final dimensions, z-order and composition report |
@@ -124,7 +125,9 @@ At every new session:
 1. Read the canonical SKILL, this contract, method registry and DO_NOT_REPEAT.
 2. Load the last `RUN_STATE.json`; verify its input/output SHAs.
 3. Resume from the last artifact-backed phase, not from conversational memory.
-4. Do not rerun or replace a frozen `a,R,t,S,donor_xy` unless a new run_id is created and the reason is recorded.
-5. If the previous evidence is absent, status is `STATE_NOT_REPRODUCIBLE`; never reconstruct a PASS from prose.
+4. Lock the TARGET silhouette, intended scene scale, required native W+H and AR **before** donor generation.
+5. Generate the donor against that contract; only then pair target/donor semantic landmarks and solve actual `a,R,t`. Require `1/a` to agree with the prelocked scene scale within the declared tolerance.
+6. Do not rerun or replace a frozen `a,R,t,S,donor_xy` unless a new run_id is created and the reason is recorded.
+7. If the previous evidence is absent, status is `STATE_NOT_REPRODUCIBLE`; never reconstruct a PASS from prose.
 
 **Hard principle:** memory is a convenience; artifacts + hashes + executable gates are the authority.
