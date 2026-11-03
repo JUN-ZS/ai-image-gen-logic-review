@@ -1,0 +1,39 @@
+{
+  "schema_version": "SHQ-RUN-1.2",
+  "run_id": "REPLACE_WITH_UNIQUE_RUN_ID",
+  "repo_root": ".",
+  "method_id": "DDXX_MECHA_CORE_SIMILARITY_V1",
+  "phase": "PREFLIGHT",
+  "task": {
+    "mode": "MULTI",
+    "unit_count": 6,
+    "solo_then_compose": true,
+    "composition_mode": "MULTI_RETURN"
+  },
+  "preflight": {
+    "canonical_skill_loaded": true,
+    "do_not_repeat_loaded": true,
+    "method_id_frozen": "DDXX_MECHA_CORE_SIMILARITY_V1",
+    "canonical_skill_sha256": "FILL_FROM_shq_preflight_guard.py_--print-canonical-hashes",
+    "do_not_repeat_sha256": "FILL_FROM_shq_preflight_guard.py_--print-canonical-hashes",
+    "method_registry_sha256": "FILL_FROM_shq_preflight_guard.py_--print-canonical-hashes",
+    "golden_solver_regression": "PASS",
+    "golden_regression_report": "runs/REPLACE_WITH_UNIQUE_RUN_ID/DDXX_GOLDEN_REGRESSION_REPORT.json"
+  },
+  "units": [
+    {"unit_id":"U0","unit_dir":"UNIT_U0","artifacts":{}},
+    {"unit_id":"U1","unit_dir":"UNIT_U1","artifacts":{}},
+    {"unit_id":"U2","unit_dir":"UNIT_U2","artifacts":{}},
+    {"unit_id":"U3","unit_dir":"UNIT_U3","artifacts":{}},
+    {"unit_id":"U4","unit_dir":"UNIT_U4","artifacts":{}},
+    {"unit_id":"U5","unit_dir":"UNIT_U5","artifacts":{}}
+  ],
+  "composition": {
+    "mode": "MULTI_RETURN",
+    "status": "NOT_RUN",
+    "scene_scale_star": null,
+    "slot_ratio_tolerance": 0.02,
+    "slot_ratios": {},
+    "z_order_far_to_near": []
+  }
+}
