@@ -48,6 +48,19 @@ def sha256(path: Path) -> str:
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
+def binary_mask_bbox(path: Path, threshold: int = 128):
+    im = Image.open(path).convert("L")
+    mask = im.point(lambda v: 255 if v >= threshold else 0)
+    return mask.getbbox(), im.size
+
+def rgba_alpha_bbox(path: Path, threshold: int = 16):
+    im = Image.open(path)
+    if im.mode != "RGBA":
+        raise ValueError(f"donor must be true RGBA PNG, got mode={im.mode}")
+    alpha = im.getchannel("A")
+    mask = alpha.point(lambda v: 255 if v >= threshold else 0)
+    return mask.getbbox(), im.size
+
 def fail(msg: str, errors: list[str]):
     errors.append(msg)
 
@@ -167,8 +180,78 @@ def check_run(run_path: Path):
         if hashes.get("donor_rgba"):
             donor_hashes.append(hashes["donor_rgba"])
 
+        if phase_index >= PHASES.index("DONOR_READY"):
+            gen = check_report_json(unit_dir, "genfit_report", artifacts, errors)
+            spec = check_report_json(unit_dir, "size_contract", artifacts, errors)
+            donor_rel = artifacts.get("donor_rgba")
+            target_mask_rel = artifacts.get("target_silhouette")
+            if gen:
+                if gen.get("native_generated") is not True:
+                    fail(f"{uid}: donor is not verified native-generated", errors)
+                if gen.get("donor_resized_after_generation") is not False:
+                    fail(f"{uid}: donor was resized after generation or provenance unknown", errors)
+            if spec and donor_rel and target_mask_rel:
+                donor_path = (unit_dir / donor_rel).resolve()
+                target_mask_path = (unit_dir / target_mask_rel).resolve()
+                try:
+                    alpha_bbox, donor_canvas_wh = rgba_alpha_bbox(donor_path, int(spec.get("alpha_threshold", 16)))
+                    target_bbox, target_canvas_wh = binary_mask_bbox(target_mask_path, int(spec.get("target_mask_threshold", 128)))
+                    if alpha_bbox is None or target_bbox is None:
+                        fail(f"{uid}: donor alpha or target silhouette mask is empty", errors)
+                    else:
+                        dw = alpha_bbox[2] - alpha_bbox[0]
+                        dh = alpha_bbox[3] - alpha_bbox[1]
+                        tw = target_bbox[2] - target_bbox[0]
+                        th = target_bbox[3] - target_bbox[1]
+                        s_plan = float(spec.get("scene_scale_plan", 0))
+                        if s_plan <= 0:
+                            fail(f"{uid}: size_contract.scene_scale_plan must be > 0", errors)
+                        else:
+                            req_w, req_h = round(tw * s_plan), round(th * s_plan)
+                            declared = spec.get("required_native_wh", [])
+                            if len(declared) != 2 or abs(float(declared[0])-req_w) > 1 or abs(float(declared[1])-req_h) > 1:
+                                fail(f"{uid}: required_native_wh is not derived from TARGET mask × scene_scale_plan", errors)
+                            size_tol = float(spec.get("size_tolerance", 0.08))
+                            ar_tol = float(spec.get("aspect_ratio_tolerance", 0.02))
+                            eps_w = abs(dw-req_w) / max(req_w, 1)
+                            eps_h = abs(dh-req_h) / max(req_h, 1)
+                            ar_target = tw / max(th, 1)
+                            ar_donor = dw / max(dh, 1)
+                            ar_err = abs(ar_donor-ar_target) / max(ar_target, 1e-9)
+                            if eps_w > size_tol:
+                                fail(f"{uid}: measured donor alpha width error {eps_w:.4f} exceeds {size_tol:.4f}", errors)
+                            if eps_h > size_tol:
+                                fail(f"{uid}: measured donor alpha height error {eps_h:.4f} exceeds {size_tol:.4f}", errors)
+                            if ar_err > ar_tol:
+                                fail(f"{uid}: measured donor alpha AR error {ar_err:.4f} exceeds {ar_tol:.4f}", errors)
+                            genfit_measured = {"actual_alpha_bbox_wh":[dw,dh],"required_native_wh":[req_w,req_h],"eps_w":eps_w,"eps_h":eps_h,"ar_error":ar_err}
+                            u.setdefault("_guard_measured_genfit", genfit_measured)
+                    if gen:
+                        if gen.get("aspect_ratio_pass") is not True or gen.get("width_pass") is not True or gen.get("height_pass") is not True:
+                            fail(f"{uid}: GENFIT report flags must all pass", errors)
+                        declared_sha = gen.get("generation_output_sha256")
+                        if declared_sha and declared_sha != hashes.get("donor_rgba"):
+                            fail(f"{uid}: generation output SHA differs from current donor file", errors)
+                    donor_mask_path = (unit_dir / artifacts["donor_mask"]).resolve()
+                    mask_size = Image.open(donor_mask_path).size
+                    if mask_size != donor_canvas_wh:
+                        fail(f"{uid}: donor mask canvas {mask_size} != donor RGBA canvas {donor_canvas_wh}", errors)
+                except Exception as exc:
+                    fail(f"{uid}: unable to measure donor/target geometry: {exc}", errors)
+        if phase_index >= PHASES.index("ANCHORED"):
+            audit = check_report_json(unit_dir, "anchor_audit", artifacts, errors)
+            if audit:
+                if audit.get("semantic_labels_valid") is not True:
+                    fail(f"{uid}: paired anchor semantics did not pass audit", errors)
+                if audit.get("target_reference_sha256") != hashes.get("target_solo"):
+                    fail(f"{uid}: anchor audit TARGET SHA does not match TARGET_SOLO", errors)
+                if audit.get("donor_reference_sha256") != hashes.get("donor_rgba"):
+                    fail(f"{uid}: anchor audit DONOR SHA does not match donor RGBA", errors)
+                if method == "DDXX_MECHA_CORE_SIMILARITY_V1" and audit.get("annotation_type") not in {"MANUAL_SEMANTIC", "MECHA_KEYPOINT_MODEL"}:
+                    fail(f"{uid}: mecha anchors must be semantic machine keypoints, not arbitrary contour points", errors)
         if phase_index >= PHASES.index("FIT_DONE"):
             fit = check_report_json(unit_dir, "fit_report", artifacts, errors)
+            spec = check_report_json(unit_dir, "size_contract", artifacts, errors)
             if fit:
                 if fit.get("method_id") != method:
                     fail(f"{uid}: fit_report method_id differs from frozen method", errors)
@@ -178,19 +261,22 @@ def check_run(run_path: Path):
                     fail(f"{uid}: semantic anchor audit not PASS", errors)
                 if fit.get("forbidden_fit_points"):
                     fail(f"{uid}: forbidden/background/rubble points included in fit", errors)
-                if method == "DDXX_MECHA_CORE_SIMILARITY_V1" and fit.get("annotation_type") not in {"MANUAL_SEMANTIC", "MECHA_KEYPOINT_MODEL"}:
-                    fail(f"{uid}: mecha fit requires semantic machine keypoints; contour samples are not joints", errors)
-        if phase_index >= PHASES.index("DONOR_READY"):
-            gen = check_report_json(unit_dir, "genfit_report", artifacts, errors)
-            if gen:
-                if gen.get("native_generated") is not True:
-                    fail(f"{uid}: donor is not verified native-generated", errors)
-                if gen.get("donor_resized_after_generation") is not False:
-                    fail(f"{uid}: donor was resized after generation or provenance unknown", errors)
-                if gen.get("aspect_ratio_pass") is not True:
-                    fail(f"{uid}: donor aspect ratio gate did not pass", errors)
-                if gen.get("width_pass") is not True or gen.get("height_pass") is not True:
-                    fail(f"{uid}: both width and height must pass", errors)
+                if method == "DDXX_MECHA_CORE_SIMILARITY_V1":
+                    if fit.get("annotation_type") not in {"MANUAL_SEMANTIC", "MECHA_KEYPOINT_MODEL"}:
+                        fail(f"{uid}: mecha fit requires semantic machine keypoints; contour samples are not joints", errors)
+                    required_core = {"head_center","chest_center","pelvis_center","left_shoulder_joint","right_shoulder_joint"}
+                    if not required_core.issubset(set(fit.get("fit_anchor_names", []))):
+                        fail(f"{uid}: mecha COREFIT missing one or more required core anchors", errors)
+                if spec and fit.get("scale_a") is not None:
+                    a_fit = float(fit["scale_a"])
+                    if a_fit <= 0:
+                        fail(f"{uid}: fit scale_a must be positive", errors)
+                    else:
+                        s_fit = 1.0 / a_fit
+                        s_plan = float(spec.get("scene_scale_plan", 0))
+                        tol = float(spec.get("scale_consistency_tolerance", 0.08))
+                        if s_plan <= 0 or abs(s_fit-s_plan)/max(s_plan,1e-9) > tol:
+                            fail(f"{uid}: fit-derived scene scale 1/a disagrees with prelocked scene_scale_plan", errors)
         if phase_index >= PHASES.index("POSE_GATE_DONE"):
             pose = check_report_json(unit_dir, "pose_report", artifacts, errors)
             if pose:
