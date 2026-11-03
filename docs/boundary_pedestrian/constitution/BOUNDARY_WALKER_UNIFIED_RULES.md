@@ -5199,3 +5199,8 @@ BAN=SWP_only_as_align, no_IP, solid_hands_steal_peep, four_skill_missing
 **一句：** 一次整身生連續密網 · **禁 peep 補位**。  
 **父：** §0.12.56 SSBT（peep 可補）≠ 真。  
 **樣：** `r6c/ssbt_fullgen/` · GEN-D/E/B · merge main NO 直至閘。
+
+
+## §0.12.63 逐幀延生 NFE（LOCK 架構）
+
+見 `ZHU_ZHEN_YAN_SHENG_NFE_01263.md`。公式 F_{t+1}=G(F_t,F_{t-1},K,ΔS_t,C_t)；G=I2I only；STICK 進化附卡；一鍵 `nfe_one_click`。禁 I2V-as-G、禁光流當 next-frame 生成。

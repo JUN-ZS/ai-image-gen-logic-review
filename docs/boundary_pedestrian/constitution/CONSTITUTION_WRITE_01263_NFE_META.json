@@ -1,0 +1,28 @@
+{
+  "id": "CONSTITUTION_WRITE_01263_NFE",
+  "section": "0.12.63",
+  "skill_zh": "逐幀延生",
+  "skill_code": "NFE",
+  "english": "NEXT_FRAME_ENGINE",
+  "status": "LOCK_ARCHITECTURE",
+  "quality_qualified": false,
+  "final_acceptance": false,
+  "repos": {
+    "constitution": "JUN-ZS/ai-image-gen-logic-review",
+    "runtime": "JUN-ZS/UP-engine"
+  },
+  "runtime_paths": [
+    "src/ige/nfe/",
+    "tools/nfe_next_frame_pilot.py",
+    "tools/nfe_one_click.py",
+    "tools/nfe_one_click.ps1",
+    "tools/still_sequence_f2f_kit.py",
+    "tools/siax_next_frame_f2f_verify.py",
+    "docs/NEXT_FRAME_ENGINE_CHARTER.md",
+    "docs/NFE_FRAMEWORK_ALL.md",
+    "docs/NFE_STICK_EVOLVE.md"
+  ],
+  "stick": "NFE-STICK",
+  "one_click": "NFE-1CLICK",
+  "asof": "2026-11-04T03:40:00+08:00"
+}

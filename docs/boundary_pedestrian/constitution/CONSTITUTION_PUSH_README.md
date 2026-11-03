@@ -140,3 +140,14 @@ S1 ROI → **S1.5 單白殺** → dens → JLP → HPP → ZNZZP → YLGS → SH
 - `MSR_GOU_SKILL_INVENTORY_FJY_ALL_CHAIN_APPEND.md`
 - `CONSTITUTION_WRITE_01262_FJY_ALL_S15_META.json`
 - 更新 `FACE_JU_YUAN_FJY_01262.md` / `FACE_JU_YUAN_FJY_NAME.md` / DBSS 交叉
+
+
+## 01263 · 逐幀延生 (NFE)
+
+- `ZHU_ZHEN_YAN_SHENG_NFE_NAME.md`
+- `ZHU_ZHEN_YAN_SHENG_NFE_01263.md`
+- `ZHU_ZHEN_YAN_SHENG_NFE_DO_NOT_REPEAT.md`
+- `CONSTITUTION_WRITE_01263_NFE_META.json`
+- `MSR_GOU_SKILL_INVENTORY_NFE_APPEND.md`
+- runtime：`JUN-ZS/UP-engine` · `src/ige/nfe/*` · `tools/nfe_one_click.py`
+- asof 2026-11-04T03:40:00+08 · LOCK 架構 · quality_qualified=false
