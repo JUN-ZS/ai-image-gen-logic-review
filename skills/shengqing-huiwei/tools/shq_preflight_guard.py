@@ -243,9 +243,22 @@ def check_run(run_path: Path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("run_state", type=Path)
+    ap.add_argument("run_state", type=Path, nargs="?")
     ap.add_argument("--out", type=Path)
+    ap.add_argument("--print-canonical-hashes", action="store_true")
     args = ap.parse_args()
+    repo_root = Path(__file__).resolve().parents[3]
+    if args.print_canonical_hashes:
+        paths = {
+            "canonical_skill_sha256": repo_root / "skills/shengqing-huiwei/SKILL.md",
+            "do_not_repeat_sha256": repo_root / "skills/shengqing-huiwei/SHQ_DO_NOT_REPEAT.md",
+            "method_registry_sha256": repo_root / "skills/shengqing-huiwei/SHQ_METHOD_REGISTRY.json"
+        }
+        output = {k: sha256(v) if v.is_file() else None for k, v in paths.items()}
+        print(json.dumps(output, indent=2))
+        raise SystemExit(0 if all(output.values()) else 2)
+    if args.run_state is None:
+        ap.error("run_state is required unless --print-canonical-hashes is used")
     try:
         result = check_run(args.run_state.resolve())
     except Exception as exc:
