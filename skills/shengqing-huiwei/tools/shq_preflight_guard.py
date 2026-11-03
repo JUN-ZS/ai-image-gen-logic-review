@@ -341,14 +341,16 @@ def check_run(run_path: Path):
             fail("non-unit slot ratios must be explicitly labelled MULTI_SCALE_COMPROMISE", errors)
 
     guard_status = "PASS" if not errors else "BLOCK"
-    if phase != "FINALIZED":
+    if errors:
+        acceptance_status = "BLOCKED_EVIDENCE_OR_GATE_FAILURE"
+    elif phase != "FINALIZED":
         acceptance_status = "NOT_FINALIZED"
     elif mode == "MULTI" and multi_scale_compromise:
-        acceptance_status = "MULTI_SCALE_COMPROMISE"
+        acceptance_status = "MULTI_SCALE_COMPROMISE_PIXEL_VERIFIED_NOT_VISUAL_FULL"
     elif mode == "MULTI":
-        acceptance_status = "MULTI_RETURN_PLACEMENT_PIXEL_OK"
+        acceptance_status = "MULTI_PLACEMENT_PIXEL_VERIFIED_NOT_VISUAL_FULL"
     else:
-        acceptance_status = "SINGLE_PLACEMENT_PIXEL_OK"
+        acceptance_status = "SINGLE_PLACEMENT_PIXEL_VERIFIED_NOT_VISUAL_FULL"
     result = {
         "guard": "SHQ_EXECUTION_GUARD_V1_2",
         "run_id": state.get("run_id"),
