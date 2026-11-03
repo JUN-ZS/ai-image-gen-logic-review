@@ -35,7 +35,7 @@ PHASE_ARTIFACTS = {
     "FIT_DONE": {"fit_report"},
     "POSE_GATE_DONE": {"pose_report"},
     "READY_TO_PASTE": {"paste_plan"},
-    "FINALIZED": {"paste_report"}
+    "FINALIZED": {"paste_report", "pixel_audit"}
 }
 
 def sha256(path: Path) -> str:
@@ -230,7 +230,9 @@ def check_run(run_path: Path):
                         if gen.get("aspect_ratio_pass") is not True or gen.get("width_pass") is not True or gen.get("height_pass") is not True:
                             fail(f"{uid}: GENFIT report flags must all pass", errors)
                         declared_sha = gen.get("generation_output_sha256")
-                        if declared_sha and declared_sha != hashes.get("donor_rgba"):
+                        if not declared_sha:
+                            fail(f"{uid}: genfit_report must bind generation_output_sha256", errors)
+                        elif declared_sha != hashes.get("donor_rgba"):
                             fail(f"{uid}: generation output SHA differs from current donor file", errors)
                     donor_mask_path = (unit_dir / artifacts["donor_mask"]).resolve()
                     mask_size = Image.open(donor_mask_path).size
@@ -267,11 +269,13 @@ def check_run(run_path: Path):
                     required_core = {"head_center","chest_center","pelvis_center","left_shoulder_joint","right_shoulder_joint"}
                     if not required_core.issubset(set(fit.get("fit_anchor_names", []))):
                         fail(f"{uid}: mecha COREFIT missing one or more required core anchors", errors)
-                if spec and fit.get("scale_a") is not None:
+                if fit.get("scale_a") is None:
+                    fail(f"{uid}: fit_report must include measured scale_a", errors)
+                else:
                     a_fit = float(fit["scale_a"])
                     if a_fit <= 0:
                         fail(f"{uid}: fit scale_a must be positive", errors)
-                    else:
+                    elif spec:
                         s_fit = 1.0 / a_fit
                         s_plan = float(spec.get("scene_scale_plan", 0))
                         tol = float(spec.get("scale_consistency_tolerance", 0.08))
@@ -282,6 +286,8 @@ def check_run(run_path: Path):
             if pose:
                 if pose.get("pose_status") != "PASS":
                     fail(f"{uid}: target pose gate is not PASS", errors)
+                if pose.get("target_to_base_status") != "PASS":
+                    fail(f"{uid}: TARGET_TO_BASE must pass; BASE_TO_DETAIL alone is not pose proof", errors)
                 if pose.get("primary_reference_role") != "ORIGINAL_TARGET":
                     fail(f"{uid}: pose gate did not use original TARGET as primary reference", errors)
                 if pose.get("primary_reference_sha256") != hashes.get("target_solo"):
@@ -290,15 +296,19 @@ def check_run(run_path: Path):
                     fail(f"{uid}: soft-to-detail check cannot substitute target-to-base pose gate", errors)
         if phase_index >= PHASES.index("FINALIZED"):
             paste = check_report_json(unit_dir, "paste_report", artifacts, errors)
+            pixel = check_report_json(unit_dir, "pixel_audit", artifacts, errors)
             if paste:
                 if float(paste.get("unit_scale", -1)) != 1.0:
                     fail(f"{uid}: unit_scale must be exactly 1.0", errors)
-                if paste.get("core_exact") is not True:
-                    fail(f"{uid}: core_exact did not pass", errors)
                 if paste.get("donor_sha256") != hashes.get("donor_rgba"):
                     fail(f"{uid}: pasted donor SHA does not match accepted donor", errors)
                 if paste.get("hardpaste") is not True:
                     fail(f"{uid}: final operation is not verified HARDPASTE", errors)
+            if pixel:
+                if pixel.get("status") != "PASS" or pixel.get("core_exact") is not True:
+                    fail(f"{uid}: pixel-level hardpaste verification did not pass", errors)
+                if pixel.get("donor_sha256") != hashes.get("donor_rgba"):
+                    fail(f"{uid}: pixel audit donor SHA differs from accepted donor", errors)
         unit_summaries.append({"unit_id": uid, "hashes": hashes})
 
     if mode == "MULTI" and donor_hashes and len(donor_hashes) != len(set(donor_hashes)):
