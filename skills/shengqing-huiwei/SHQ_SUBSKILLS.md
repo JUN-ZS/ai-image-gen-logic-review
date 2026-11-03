@@ -48,3 +48,16 @@ SHQ-PEEP + SHQ-POSEPLATE
 | 人體公學對位 | SHQ-ANTHRO + SHQ-COREFIT |
 | 地平一致 | SHQ-GROUND |
 | 終於對到了 | IMAGINE_DEL_LOCKED_PASTE_OK |
+
+
+## v1.2 執行控制子技能（新增）
+
+| 子碼 | 正名 | 一句 | 何時用 | 禁 |
+|---|---|---|---|---|
+| **SHQ-METHOD-LOCK** | 方法鎖 | run_id 綁唯一 method_id | 每一輪開工 | CoreFit/DDXX 混用 |
+| **SHQ-RUNLOCK** | 狀態鎖 | canonical SHA + RUN_STATE + executable gate | 跨 session／續跑 | 只憑聊天記憶 |
+| **SHQ-DDXX-LM** | 全身相似擬合 | weighted Umeyama + Huber + per-point CSV | 語意錨點可信 | panel golden 當通用 production 閾值 |
+| **SHQ-MECHA-POSE** | 機甲姿態證 | 核心機甲錨點擬合；四肢、武器、翼端獨立驗 | Gundam／機甲 | 人類 DWPose、碎石 silhouette 假關節 |
+| **SHQ-GENFIT-AR** | 雙向尺寸鎖 | width + height + alpha bbox + aspect ratio | donor generation | 只鎖 H |
+| **SHQ-MULTI-SOLO** | 多物件單體拆分 | N 次獨立 SOLO | 多人物／多機 | Group Plate |
+| **SHQ-ZORDER** | 圖層咬合 | mask ownership + far-to-near | 共景回拼 | 不驗重疊 |

@@ -1,0 +1,15 @@
+{
+  "contract_id": "SHQ_SIZE_CONTRACT_V1_2",
+  "unit_id": "U0",
+  "target_silhouette_source": "TARGET_SILHOUETTE.png",
+  "target_mask_threshold": 128,
+  "alpha_threshold": 16,
+  "target_bbox_wh": [0, 0],
+  "scene_scale_plan": 1.0,
+  "required_native_wh": [0, 0],
+  "size_tolerance": 0.08,
+  "aspect_ratio_tolerance": 0.02,
+  "scale_consistency_tolerance": 0.08,
+  "derivation": "required_native_wh = round(target_silhouette_bbox_wh * scene_scale_plan)",
+  "note": "Replace placeholders from actual TARGET silhouette and planned VM scene scale. Do not compute from a generated donor, do not resize a donor to force a pass."
+}

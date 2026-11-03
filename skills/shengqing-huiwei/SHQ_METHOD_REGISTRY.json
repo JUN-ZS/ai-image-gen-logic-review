@@ -1,0 +1,53 @@
+{
+  "schema_version": "SHQ-METHOD-REGISTRY-1.2",
+  "canonical_skill": "SHQ",
+  "rule": "A run MUST select exactly one method_id before fitting. Method switching requires a new run_id and a written reason; no silent fallback.",
+  "methods": {
+    "SHQ_BEST_CORE_V1_1": {
+      "purpose": "Single humanoid identity replacement where face/torso are reliable but hands/legs may articulate differently.",
+      "fit_anchors": ["face_center", "shoulder_mid", "chest_center", "pelvis_mid"],
+      "fit_rule": "Estimate a,R from trusted Face+Torso anchors. Use the ground/sole anchor to solve final translation t and horizontal contact.",
+      "validation_only": ["hands", "elbows", "knees", "ankles", "feet", "cape contour"],
+      "paste_rule": "scene_scale=1/a; donor_scale=1.0; integer donor paste; Virtual Master.",
+      "do_not": ["Do not let low-confidence hand/leg points pull a.", "Do not call placement a pose pass."]
+    },
+    "DDXX_WHOLEBODY_SIMILARITY_V1": {
+      "purpose": "Whole-body similarity fit when all paired landmarks are semantically corresponding, visible and trusted.",
+      "fit_rule": "Weighted Umeyama similarity with optional Huber IRLS: q = a * (p @ R) + t.",
+      "inverse_rule": "Apply inverse transform to scene: A_scene = inverse(R)/a; donor remains native and is pasted at the derived integer offset.",
+      "anchor_rule": "Each landmark records semantic_name, source_image_sha, coordinate_frame, crop_offset, confidence, occlusion and annotation_method.",
+      "reference_fixture": "DDXX_MANUAL_PANEL_GOLD_01",
+      "fixture_limit": "The recorded 11-point result came from a manually annotated, flattened contact-sheet panel. It is a solver regression fixture only, not a production-image quality threshold and not evidence that every new image has 7.5px residual."
+    },
+    "DDXX_MECHA_CORE_SIMILARITY_V1": {
+      "purpose": "One-mecha SOLO fit. Reuses the DDXX similarity mathematics but uses machine-specific semantic anchors.",
+      "fit_anchors": ["head_center", "chest_center", "pelvis_center", "left_shoulder_joint", "right_shoulder_joint"],
+      "validation_only": ["left_elbow", "right_elbow", "left_wrist", "right_wrist", "left_knee", "right_knee", "left_ankle", "right_ankle", "left_foot_sole", "right_foot_sole", "weapon_axis", "shield_axis", "wing_tips", "backpack_extent", "silhouette"],
+      "annotation_rule": "Manual or a mecha-specific semantic keypoint annotator. Arbitrary contour samples, rubble pixels and background-connected silhouette points are NOT joint landmarks.",
+      "pose_rule": "The donor must preserve target articulation, facing, camera perspective and object axes. A global similarity cannot repair a different arm/leg pose.",
+      "paste_rule": "Only after anchor audit, fit gate, pose gate and native-size/aspect gate pass."
+    },
+    "SHQ_MULTI_RETURN_V1": {
+      "purpose": "Compose N independently validated SOLO donors onto one common scene.",
+      "phase_a": "For each unit i, treat only target i as the subject; all other units remain scenery/context. Produce one independent target record, donor, fit and pose report.",
+      "phase_b": "Remove all original target units from a common EMPTY scene, transform the scene once, then paste the N accepted donors in audited far-to-near z-order.",
+      "scale_rule": "A common S_star is permitted only with explicit ratio_i = S_star/S_i. If ratio_i deviates beyond the declared tolerance, label MULTI_SCALE_COMPROMISE; never claim exact per-unit slot fit.",
+      "full_exact_rule": "For all units to have exact slot ratio 1.0 in one global scene, their S_i must agree within tolerance, or all donors must be generated at the common S_star native dimensions before paste."
+    }
+  },
+  "acceptance_dimensions": [
+    "ANCHOR_VALIDITY",
+    "POSE_GEOMETRY",
+    "NATIVE_SIZE_AND_ASPECT",
+    "PLACEMENT",
+    "PIXEL_PROVENANCE",
+    "LAYER_AND_OCCLUSION",
+    "FINAL_COMPOSITION"
+  ],
+  "non_substitution": {
+    "feet_lock_does_not_prove": ["pose", "silhouette", "view_direction", "weapon_axis", "layer_order"],
+    "core_exact_does_not_prove": ["correct donor", "correct placement", "pose", "composition"],
+    "size_ok_does_not_prove": ["pose", "identity", "aspect ratio unless separately checked"],
+    "soft_to_ai_similarity_does_not_prove": ["target_to_soft_pose fidelity"]
+  }
+}

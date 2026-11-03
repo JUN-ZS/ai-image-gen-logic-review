@@ -3,7 +3,7 @@ name: shengqing-huiwei
 description: 升清回位（SHQ / SC-H）— 高清人物原生像素硬貼回風景槽。person_scale 永遠 1.0；公式對位 COREFIT 優先；放大場景；Imagine region_edit 只刪原人；Virtual Master 不回縮。用在遠/中人換高清人、峰頂換女主、DDXX-AR、PATH1E 全身、A8B 銀甲、不降 PIXEL 拼回、locked donor_xy paste。
 metadata:
   type: workflow
-  version: "1.1"
+  version: "1.2"
   code: SHQ
   alias: SC-H
   zh: 升清回位
@@ -15,7 +15,7 @@ metadata:
   sample_legacy: "PROJ_R5_SILVER_ARMOR_2394 / DDXX_IMAGINE_DEL_PASTE"
 ---
 
-# 升清回位（SHQ）v1.1
+# 升清回位（SHQ）v1.2
 
 **一句正典：** 不是把人縮到風景，而是把風景擴到能容納原生的人；**公式對位是主幹**；刪原人用 Imagine 局部；貼新人用鎖位硬貼。
 
@@ -40,6 +40,36 @@ metadata:
 **首成樣板（legacy）：** `DDXX_IMAGINE_DEL_PASTE` · a≈0.28985 · VM 3623×6263 · 用戶「終於對到了」。
 
 Read this before any far/mid-person / high-res donor / landscape re-paste that claims **不降 PIXEL**.
+
+
+## v1.2 — 強制方法選擇與防失憶執行鎖（新增，優先於舊式自由敘述）
+
+**先選 method_id；不得把兩種公式混成一條，也不得靜默 fallback。**
+
+| method_id | 適用 | 尺度估算 | 其他部位 |
+|---|---|---|---|
+| `SHQ_BEST_CORE_V1_1` | 單一人物；臉／軀幹清晰，手腳可能姿態不同 | Face+Torso 求 a,R；sole/ground 鎖 t | hands/legs/cape 只作獨立驗證 |
+| `DDXX_WHOLEBODY_SIMILARITY_V1` | 全身配對標點可信、遮擋少 | 全部可信語意點做 weighted Umeyama + Huber：q=a(p@R)+t | 逐點殘差與低置信點審核 |
+| `DDXX_MECHA_CORE_SIMILARITY_V1` | 一台機甲 SOLO | head/chest/pelvis/左右肩關節作 core fit | 肘腕膝踝、武器軸、盾、翼端及 silhouette 作 pose validation；禁止用岩石連接的 contour 點冒充關節 |
+| `SHQ_MULTI_RETURN_V1` | N 個獨立物件回拼 | N 次 SOLO 各自算；最後才共景 | 每個 slot_ratio 必須報告 |
+
+**注意：**
+- DDXX 手動 11 點範例 `DDXX_MANUAL_PANEL_GOLD_01` 來自縮圖拼板、人工初標、DONOR 披風亦被裁切。它只用來測 solver 數學實作有否改壞，不是 production pose 閘值。
+- V16 U0 的 DDXX solver 確實有跑；問題在自動 silhouette 點把左腳／膝混入碎石，導致 RMSE≈21px、單點可達 123px。這是 ANCHOR SEMANTICS FAIL，不是 solver 未執行。
+- `ACCEPT_CORE=true` 若只依據 feet lock≈0.50px，必須作廢；feet lock 只代表 PLACEMENT，不代表 COREFIT／POSE。
+- AI detail 若只對 soft GENFIT 作比較，只能通過 `BASE_TO_DETAIL`；仍要另有 `TARGET_TO_BASE` 對原始 TARGET 的姿態驗收。
+- V14 的 H-only、W/AR 漂移及 soft-extract 循環認證不得重犯；V15 雖補 H+W 並誠實標 `ACCEPT_FULL_HD=false`，仍不能把 soft-base 對 detail 的相似度當成原景姿態完整通過。
+
+### 每次新 Run 的強制前置
+
+1. 讀本 SKILL、`SHQ_METHOD_REGISTRY.json`、`SHQ_EXECUTION_CONTRACT_V1_2.md`、`SHQ_DO_NOT_REPEAT.md`。
+2. 凍結唯一 `run_id` 與 `method_id`。
+3. 執行 `python skills/shengqing-huiwei/tools/test_ddxx_golden_regression.py`，產生 regression JSON。
+4. 建立 `RUN_STATE.json`，填入 canonical 文件 SHA-256、golden regression report 路徑及單位數。
+5. 執行 `python skills/shengqing-huiwei/tools/shq_preflight_guard.py RUN_STATE.json`。Exit code 非 0 即 BLOCK；不准以文字自填 PASS。
+6. 每次換 session 讀取同一 RUN_STATE 與 SHA；從最後有檔案證據的 phase 繼續，不憑對話記憶重建結果。
+
+完整狀態機、報告欄位及硬性 BLOCK 條件見 `SHQ_EXECUTION_CONTRACT_V1_2.md`。
 
 ## First acts
 
@@ -157,7 +187,7 @@ Read this before any far/mid-person / high-res donor / landscape re-paste that c
 
 ## 勿再犯
 
-全文：`references/DO_NOT_REPEAT.md` · **E-SHQ-01…23**
+全文：`references/DO_NOT_REPEAT.md` · **E-SHQ-01…35**
 
 口訣：**公式先；人永遠 1.0；山可放大；刪人只圈人；地平要齊；貼回要 exact；錨錯先修錨。**
 
