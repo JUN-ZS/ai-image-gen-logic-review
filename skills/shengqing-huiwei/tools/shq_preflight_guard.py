@@ -11,10 +11,11 @@ import hashlib
 import json
 import sys
 from pathlib import Path
+from PIL import Image
 
 PHASES = [
-    "PREFLIGHT", "TARGET_CAPTURED", "ANCHORED", "FIT_DONE",
-    "DONOR_READY", "POSE_GATE_DONE", "READY_TO_PASTE", "FINALIZED"
+    "PREFLIGHT", "TARGET_CAPTURED", "TARGET_SPEC_LOCKED", "DONOR_READY",
+    "ANCHORED", "FIT_DONE", "POSE_GATE_DONE", "READY_TO_PASTE", "FINALIZED"
 ]
 METHODS = {
     "SHQ_BEST_CORE_V1_1",
@@ -25,11 +26,12 @@ BASE_ARTIFACTS = {
     "target_solo": "TARGET_SOLO",
     "target_pose_map": "POSE_MAP",
     "target_silhouette": "TARGET_SILHOUETTE",
-    "target_landmarks": "TARGET_LANDMARKS",
     "design_spec": "DESIGN_SPEC"
 }
 PHASE_ARTIFACTS = {
-    "DONOR_READY": {"donor_rgba", "donor_mask", "donor_landmarks", "genfit_report"},
+    "TARGET_SPEC_LOCKED": {"target_landmarks", "size_contract"},
+    "DONOR_READY": {"donor_rgba", "donor_mask", "genfit_report"},
+    "ANCHORED": {"donor_landmarks", "anchor_audit"},
     "FIT_DONE": {"fit_report"},
     "POSE_GATE_DONE": {"pose_report"},
     "READY_TO_PASTE": {"paste_plan"},
