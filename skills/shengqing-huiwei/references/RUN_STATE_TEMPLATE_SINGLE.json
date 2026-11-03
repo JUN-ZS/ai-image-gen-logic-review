@@ -1,0 +1,26 @@
+{
+  "schema_version": "SHQ-RUN-1.2",
+  "run_id": "REPLACE_WITH_UNIQUE_RUN_ID",
+  "repo_root": ".",
+  "method_id": "SHQ_BEST_CORE_V1_1",
+  "phase": "PREFLIGHT",
+  "task": {
+    "mode": "SINGLE",
+    "unit_count": 1,
+    "solo_then_compose": false,
+    "composition_mode": "INDEPENDENT_VM"
+  },
+  "preflight": {
+    "canonical_skill_loaded": true,
+    "do_not_repeat_loaded": true,
+    "method_id_frozen": "SHQ_BEST_CORE_V1_1",
+    "canonical_skill_sha256": "FILL_FROM_shq_preflight_guard.py_--print-canonical-hashes",
+    "do_not_repeat_sha256": "FILL_FROM_shq_preflight_guard.py_--print-canonical-hashes",
+    "method_registry_sha256": "FILL_FROM_shq_preflight_guard.py_--print-canonical-hashes",
+    "golden_solver_regression": "PASS",
+    "golden_regression_report": "runs/REPLACE_WITH_UNIQUE_RUN_ID/DDXX_GOLDEN_REGRESSION_REPORT.json"
+  },
+  "units": [
+    {"unit_id":"U0","unit_dir":"UNIT_U0","artifacts":{}}
+  ]
+}
