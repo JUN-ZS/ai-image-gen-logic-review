@@ -40,9 +40,9 @@ Exit code 0 = gate pass for the declared phase. Exit code 2 = BLOCK. Never overr
 
 At `TARGET_CAPTURED`: `target_solo`, `target_pose_map`, `target_silhouette`, `target_landmarks`, `design_spec`.
 
-At `DONOR_READY`: add `donor_rgba`, `donor_mask`, `donor_landmarks`, `genfit_report`.
-
 At `FIT_DONE`: add `fit_report` with frozen method_id, per-anchor residuals and semantic-anchor audit.
+
+At `DONOR_READY`: use the frozen fit to derive the native W+H/AR contract, then add `donor_rgba`, `donor_mask`, `donor_landmarks`, `genfit_report`.
 
 At `POSE_GATE_DONE`: add `pose_report` whose primary reference role is `ORIGINAL_TARGET` and whose reference SHA equals `target_solo`.
 
