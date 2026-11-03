@@ -99,11 +99,41 @@ def check_run(run_path: Path):
         fail("do_not_repeat_loaded must be evidence-backed true", errors)
     if state.get("preflight", {}).get("golden_solver_regression") != "PASS":
         fail("golden_solver_regression must be PASS before production run", errors)
-    if state.get("preflight", {}).get("method_id_frozen") != method:
+    preflight = state.get("preflight", {})
+    if preflight.get("method_id_frozen") != method:
         fail("preflight method_id does not match run method_id", errors)
 
+    repo_root = Path(state.get("repo_root", Path(__file__).resolve().parents[3])).resolve()
+    skill_file = repo_root / "skills/shengqing-huiwei/SKILL.md"
+    no_repeat_file = repo_root / "skills/shengqing-huiwei/SHQ_DO_NOT_REPEAT.md"
+    registry_file = repo_root / "skills/shengqing-huiwei/SHQ_METHOD_REGISTRY.json"
+    for field, path in [
+        ("canonical_skill_sha256", skill_file),
+        ("do_not_repeat_sha256", no_repeat_file),
+        ("method_registry_sha256", registry_file)
+    ]:
+        if not path.is_file():
+            fail(f"canonical file missing: {path}", errors)
+        elif preflight.get(field) != sha256(path):
+            fail(f"{field} missing or stale; current canonical file was not loaded", errors)
+
+    regression_rel = preflight.get("golden_regression_report")
+    if not regression_rel:
+        fail("golden_regression_report path is required", errors)
+    else:
+        regression_path = (repo_root / regression_rel).resolve()
+        if not regression_path.is_file():
+            fail(f"golden regression report missing: {regression_path}", errors)
+        else:
+            try:
+                regression = load_json(regression_path)
+                if regression.get("fixture_id") != "DDXX_MANUAL_PANEL_GOLD_01" or regression.get("status") != "PASS":
+                    fail("DDXX solver golden regression did not pass", errors)
+            except Exception as exc:
+                fail(f"golden regression report invalid: {exc}", errors)
+
     phase_index = PHASES.index(phase) if phase in PHASES else 0
-    required_keys = set(BASE_ARTIFACTS)
+    required_keys = set(BASE_ARTIFACTS) if phase_index >= PHASES.index("TARGET_CAPTURED") else set()
     for pidx, p_name in enumerate(PHASES):
         if phase_index >= pidx and p_name in PHASE_ARTIFACTS:
             required_keys |= PHASE_ARTIFACTS[p_name]
