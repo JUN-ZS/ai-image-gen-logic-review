@@ -64,7 +64,16 @@ Required phase evidence:
 | FIT_DONE | frozen method_id, a/R/t, inverse scene transform, per-anchor residual CSV, robust weights and plan-vs-fit scale consistency |
 | POSE_GATE_DONE | target-referenced pose report, silhouette/limb/object-axis residuals |
 | READY_TO_PASTE | native size + AR pass, pose pass, fit pass, donor is not resized, all required units pass |
-| FINALIZED | exact hard-paste report, donor SHA provenance, core pixel comparison, final dimensions, z-order and composition report |
+| FINALIZED | paste report + pixel-audit JSON; donor SHA, integer donor_xy, final VM SHA, visible opaque pixel count, dimensions and z-order |
+
+
+
+### Guard status is not visual acceptance
+
+- `status=PASS` means only that the machine-checkable evidence and declared gates for the requested phase are consistent.
+- At FINALIZED the guard emits only `SINGLE_PLACEMENT_PIXEL_VERIFIED_NOT_VISUAL_FULL`, `MULTI_PLACEMENT_PIXEL_VERIFIED_NOT_VISUAL_FULL`, or `MULTI_SCALE_COMPROMISE_PIXEL_VERIFIED_NOT_VISUAL_FULL`.
+- It must **never** emit or imply `ACCEPT_FULL`. Lighting, semantic identity, visual pose plausibility, object overlap quality and artistic composition still require independent review.
+- If any evidence is missing or contradictory, both the machine status and acceptance status are blocked.
 
 ## 3. Pose reference cannot be circular
 
