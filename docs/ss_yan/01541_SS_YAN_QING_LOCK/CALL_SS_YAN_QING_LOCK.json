@@ -1,0 +1,15 @@
+{
+  "call": "SS驗.清鎖",
+  "do": [
+    "1 建 EDIT prompt = build_whole_bite_edit_prompt（含 [[WHOLE_BITE_CONTRACT]]）",
+    "2 外力除/生 只许整件边界；产物若 freeframe → elev_donor_contract_lock",
+    "3 F2 seat_hardlock_sheng（SS验.清）",
+    "4 mark_anti_kou_verify：outside=0 + area_ratio + peep_ratio",
+    "5 全闸 AND 才 claim C2_SS_YAN_QING_LOCK"
+  ],
+  "dont": [
+    "以为 tune=whole_subject 外力就会懂整件",
+    "freeframe elev 直贴当 peep/RETURN",
+    "只升纹理不验 MARK 反扣"
+  ]
+}

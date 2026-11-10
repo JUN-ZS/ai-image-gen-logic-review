@@ -1,0 +1,2 @@
+[[WHOLE_BITE_CONTRACT]] Treat the subject as ONE continuous WHOLE object. Keep the FULL silhouette end-to-end (tip-to-base / head-to-feet / barrel-to-tracks). Do NOT crop to close-up, half-body, head-only, or partial hull. Match the same camera pose, scale and seat framing as the reference peep/seat. Only edit inside the full object outline; leave everything outside the full outline unchanged.
+Densify and sharpen metal texture of the entire red battle tank as a single whole_subject. Seat note: lock to peep seat bbox.

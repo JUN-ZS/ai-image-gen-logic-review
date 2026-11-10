@@ -1,0 +1,55 @@
+{
+  "write_id": "01543",
+  "call": "SS驗.清+A",
+  "call_ascii": "SS_YAN.QING_PLUS_A",
+  "aliases": [
+    "SS验.清+A",
+    "SS.验清+A",
+    "清+A"
+  ],
+  "formal": "SHQ_SS_YAN_QING_PLUS_A_SEMANTIC_MARK_V1",
+  "zh": "SS验.清+A · Imagine EDIT 反扣得语义洞",
+  "stick": "STICK_SS_YAN_QING_PLUS_A",
+  "parent": {
+    "SS验.清": "STICK_SS_YAN_QING / 01539",
+    "SS验.清锁": "STICK_SS_YAN_QING_LOCK / 01541",
+    "path_A": "外力语义认 whole → MARK_semantic"
+  },
+  "one_liner": "同机位 EDIT 除主→空景 L1；|L0−L1| 得 MARK_semantic；面积闸+反扣后接 SS验.清 F2（外力定义 whole 的可落点）",
+  "equation": "SS验.清+A ≡ EDIT_除主(L0)→L1_empty → MARK_sem = f(|L0−L1|) → anti_kou(area,outside) → peep=MARK_sem bbox → [可选] elev_lock + SS验.清(F2)",
+  "path_A": {
+    "name": "Imagine EDIT 反扣",
+    "steps": [
+      "1 同机位：外力 EDIT 除主（写死 whole_bite 契约）→ L1 空景",
+      "2 MARK_semantic = absdiff(L0,L1) → thr → morph → largest CC（可交 kou 校驗）",
+      "3 mark_anti：frac∈[min,max]；禁止构漂后假洞",
+      "4 peep = L0@MARK_sem bbox（几何金框）",
+      "5 densify/elev 只 donor → 清锁 → F2 升清"
+    ],
+    "why": "whole_subject preset 非语义；A 用外力除主定义「是谁」，结果必须冻成 MARK"
+  },
+  "gates": {
+    "G_A1": "L1 存在且与 L0 同机位同尺寸",
+    "G_A2": "EDIT prompt 含 WHOLE_BITE / 除主契约",
+    "G_A3": "MARK_sem 非空 · n_cc≥1",
+    "G_A4": "mark_frac ∈ [min_frac, max_frac]",
+    "G_A5": "若有 peep 比例闸：asp 对齐",
+    "G_A6": "（可选）S9 outside=0 after 清"
+  },
+  "error_codes": {
+    "E-QA-01": "无 L1 空景（外力除主未交）",
+    "E-QA-02": "L0/L1 尺寸或机位不一致",
+    "E-QA-03": "MARK_sem 空 / 全图泥",
+    "E-QA-04": "frac 出窗（构漂或除不净）",
+    "E-QA-05": "把 freeframe elev 当 MARK_sem",
+    "E-QA-06": "跳过 A 直接 whole_subject 冒语义"
+  },
+  "api": [
+    "build_chu_zhu_edit_prompt(subject)",
+    "mark_semantic_from_L0_L1(L0, L1, **)",
+    "ss_yan_qing_plus_a_from_pair(L0, L1, ...)",
+    "ss_yan_qing_plus_a_run(...)"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T22:39:17.060677+00:00"
+}

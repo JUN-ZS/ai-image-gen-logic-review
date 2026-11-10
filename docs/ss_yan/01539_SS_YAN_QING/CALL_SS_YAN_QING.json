@@ -1,0 +1,14 @@
+{
+  "call": "SS驗.清",
+  "do": [
+    "取金位 seat（回洞 RET）",
+    "donor ECC→seat",
+    "F2 I*=seat+α·HF(T')",
+    "hardpaste MARK · outside=0 · map S11/S01"
+  ],
+  "dont": [
+    "freeframe elev 直回",
+    "无 warp 升 TEXTURE",
+    "改 MARK / bbox"
+  ]
+}

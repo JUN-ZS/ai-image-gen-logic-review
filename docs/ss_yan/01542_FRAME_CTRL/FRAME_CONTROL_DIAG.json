@@ -1,0 +1,124 @@
+{
+  "write_id": "01542",
+  "one_liner": "框主權4層：mode咬域→kou/MARK→S0A bbox→peep=MARK外接；第5層 Imagine freeframe 不控 peep 金框",
+  "program": "shq_zheng_tou_shen.py + shq_wai_li_fan_v2_any_object.kou_part",
+  "images": [
+    {
+      "id": "53ff5b7e",
+      "asset": "53ff5b7e-3620-4f68-98cb-65ef928f10a5",
+      "found": true,
+      "w": 1728,
+      "h": 1152,
+      "asp_wh": 1.5,
+      "path": "imagine_images/53ff5b7e-3620-4f68-98cb-65ef928f10a5.jpg",
+      "subject": "紅坦克特寫",
+      "frame_kind": "外力 freeframe densify donor",
+      "whole_or_part": "局部（近距特寫，非 peep 金框）",
+      "controller": "Imagine image_to_image 構圖（不受 MARK/bbox）",
+      "py": [
+        "消費: elev_must_be_child / seat_hardlock_sheng / elev_donor_contract_lock"
+      ],
+      "ok_as": "TEXTURE donor only（SS驗.清 / 清鎖）"
+    },
+    {
+      "id": "9ac0c7a3",
+      "asset": "9ac0c7a3-9298-4648-935d-4390e8e2da10",
+      "found": true,
+      "w": 523,
+      "h": 805,
+      "asp_wh": 0.6497,
+      "path": "imagine_images/9ac0c7a3-9298-4648-935d-4390e8e2da10.jpg",
+      "subject": "白機甲 peep",
+      "frame_kind": "S5 peep / S0A 子集 peep",
+      "whole_or_part": "近整件（頂/底可微裁）",
+      "controller": "MARK 外接 peep；S0A=bbox_from_mark|large_target_bbox",
+      "py": [
+        "kou_part",
+        "bbox_from_mark",
+        "crop_S0A",
+        "bite_hole peep=MARK min-max"
+      ],
+      "ok_as": "幾何 peep 金框（正身）"
+    },
+    {
+      "id": "6df1b0dd",
+      "asset": "6df1b0dd-469e-46b8-9986-7b0fd2449ee3",
+      "found": true,
+      "w": 1408,
+      "h": 1408,
+      "asp_wh": 1.0,
+      "path": "imagine_images/6df1b0dd-469e-46b8-9986-7b0fd2449ee3.jpg",
+      "subject": "電路頭特寫",
+      "frame_kind": "外力 freeframe elev 或 正頭",
+      "whole_or_part": "只頭",
+      "controller": "mode=tou bite=head 或 Imagine elev 構圖",
+      "py": [
+        "MODE_CFG['tou']",
+        "kou_part(human_mid_head)",
+        "外力 elev"
+      ],
+      "ok_as": "正頭 peep 或 elev donor（禁冒正身 peep）"
+    },
+    {
+      "id": "83f904ee",
+      "asset": "83f904ee-d53c-4fc4-a3ad-4706e28ef975",
+      "found": true,
+      "w": 111,
+      "h": 221,
+      "asp_wh": 0.5023,
+      "path": "imagine_images/83f904ee-d53c-4fc4-a3ad-4706e28ef975.jpg",
+      "subject": "小全身機甲 peep",
+      "frame_kind": "S5 peep = MARK 緊 bbox",
+      "whole_or_part": "整件（小 peep 111×221）",
+      "controller": "MARK 像素 min-max 外接矩形",
+      "py": [
+        "mark_from_L0_L1|kou_part",
+        "peep crop",
+        "peep_ratio_gate"
+      ],
+      "ok_as": "正身 peep 金（遠景小物）"
+    },
+    {
+      "id": "c3e3be5e",
+      "asset": "c3e3be5e-02f2-4d9d-b4a9-fe56c244d4ba",
+      "found": true,
+      "w": 544,
+      "h": 677,
+      "asp_wh": 0.8035,
+      "path": "imagine_images/c3e3be5e-02f2-4d9d-b4a9-fe56c244d4ba.jpg",
+      "subject": "電路頭 elev",
+      "frame_kind": "外力 freeframe elev / S7A",
+      "whole_or_part": "只頭",
+      "controller": "正頭 DNA 或 elev freeframe",
+      "py": [
+        "MODE_CFG['tou']",
+        "scale_lock_elev",
+        "S(X)A ephemeral"
+      ],
+      "ok_as": "elev 子域；非 whole peep"
+    }
+  ],
+  "stack": [
+    {
+      "L": "MODE_CFG",
+      "ctrl": "tou=head / shen=full_object + tune"
+    },
+    {
+      "L": "kou_part+TUNE",
+      "ctrl": "MARK 形/面積窗（幾何）"
+    },
+    {
+      "L": "bbox_from_mark|large_target_bbox",
+      "ctrl": "S0A 子集工域"
+    },
+    {
+      "L": "peep=MARK min-max",
+      "ctrl": "S5 金 peep 框"
+    },
+    {
+      "L": "Imagine freeframe",
+      "ctrl": "模型構圖特寫 — 消費須清鎖"
+    }
+  ],
+  "asof": "2026-11-10T22:36:41.864800+00:00"
+}
