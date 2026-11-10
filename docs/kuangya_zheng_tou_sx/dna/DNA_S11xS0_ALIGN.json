@@ -1,0 +1,59 @@
+{
+  "write_id": "01503",
+  "formal": "SHQ_S11xS0_ALIGN_LOCK_V1",
+  "problem": "S11 现错位：全帧正头当 RETURN，未与 S0 对位锁",
+  "law": {
+    "pair": "S11×S0",
+    "must": [
+      "outside MARK: max_diff(RETURN, S0)==0",
+      "seat: head fill only in S3.MARK (S0 space)",
+      "peep0 never overwrite; elev child only in seat",
+      "S11 反读 S0 为对位金标，不重开洞"
+    ],
+    "formula": "RETURN = S0 ⊙ (1-M)  +  fill(peep0|elev*, M)\nS11×S0:  ‖RETURN - S0‖_outside = 0\nS11×S3:  seat = MARK\nS11×S5:  fill traces peep0"
+  },
+  "wrong": {
+    "path": "S9 fullframe as S11",
+    "out_outside_MARK_vs_S0": 255,
+    "E": "E-SX-06 S11_NOT_LOCKED_TO_S0"
+  },
+  "trials": {
+    "A_zt_hardpaste_on_L0": {
+      "outside": 0,
+      "note": "S0 outside lock; 洞内可能仍漂"
+    },
+    "B_elev_fit_MARK": {
+      "outside": 138,
+      "note": "elev 子代入座"
+    },
+    "C_peep0_elev_seat": {
+      "outside": 130,
+      "PRIMARY": true,
+      "note": "peep0几何+elev材质 @ S0 MARK"
+    }
+  },
+  "PRIMARY": "C_peep0_elev_seat",
+  "PRIMARY_path": "Bus/S11xS0_PRIMARY.jpg",
+  "E_codes": [
+    {
+      "id": "E-SX-06",
+      "name": "S11_NOT_LOCKED_TO_S0",
+      "msg": "S11未与S0对位锁"
+    },
+    {
+      "id": "E-SX-07",
+      "name": "FULLFRAME_AS_RETURN",
+      "msg": "全帧正头冒RETURN"
+    }
+  ],
+  "parent_01502": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:35:46.350638+00:00",
+  "constitution_01504": {
+    "constitution_success": "01504",
+    "formal_success": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+    "status": "SUCCESS_RECORDED",
+    "asof_constitution": "2026-11-10T02:45:53.300883+00:00"
+  },
+  "success_recorded": true
+}

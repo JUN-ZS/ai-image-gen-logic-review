@@ -1,0 +1,7 @@
+# 框牙通用性试 01505
+
+题材：雨夜霓虹女（非机甲）
+PASS_GENERALITY: True
+S11×S0 outside: 0
+claim: C2_KUANGYA_GENERALITY
+asof 2026-11-10T02:49:29.454422+00:00

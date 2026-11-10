@@ -1,0 +1,33 @@
+{
+  "write_id": "01502",
+  "formal": "SHQ_SX_RELOCK_BOOST_ZHENG_TOU_HD_V1",
+  "diagnosis": {
+    "boost_fail_without": "升清不回锁各S层 E-SX-01",
+    "fix": "(S)×(S) 每刀写Bus 子代指回 peep0 正头绑 S3"
+  },
+  "sx_done": true,
+  "boost_and": true,
+  "zheng_tou_hd": "Bus/S9_ZHENG_TOU_HD.jpg",
+  "assets": {
+    "L1": "7f2d026e-09d4-49e0-abd4-35c58a4f0905",
+    "peep0": "b3de9833-9c04-48fd-ba49-b7ea9c10e165",
+    "elev_child": "d28c3399-028a-4d80-89ad-7e4ea580d380",
+    "zheng_tou_A": "c5ac93c4-e13d-4a03-b951-8497a2ad2d82",
+    "zheng_tou_HD": "bd0d56ec-3767-44d4-9bcf-b2064befa718"
+  },
+  "claim": "C2_SX_ZHENG_TOU_HD",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:28:46.598395+00:00",
+  "S11xS0": {
+    "write": "01503",
+    "law": "outside MARK max_diff(RETURN,S0)=0; seat=MARK; fill traces peep0",
+    "E-SX-06": "S11_NOT_LOCKED_TO_S0"
+  },
+  "constitution_01504": {
+    "constitution_success": "01504",
+    "formal_success": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+    "status": "SUCCESS_RECORDED",
+    "asof_constitution": "2026-11-10T02:45:53.300883+00:00"
+  },
+  "success_recorded": true
+}

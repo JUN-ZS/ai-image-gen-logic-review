@@ -1,0 +1,42 @@
+{
+  "subject": "woman_rain_alley_not_mecha",
+  "generality_test": true,
+  "S3": {
+    "frac": 0.18942433744331066,
+    "sha": "d9334f45425097f41b8290c7d4f825c8790ecac14b684f2d453049ec24bc53b5"
+  },
+  "S5": {
+    "peep0_sha": "cc636f0d5976901e9878e71737ddbeff181f5285659086c5e597149b0620a2b8",
+    "never_overwrite": true
+  },
+  "S6": {
+    "parent": "S5.peep0",
+    "scale_from_peep0": true
+  },
+  "S7": {
+    "elev_child": true,
+    "parent": "peep0"
+  },
+  "S8": {
+    "boost_and": true,
+    "sx": true
+  },
+  "S9": {
+    "正头": true
+  },
+  "S11xS0": {
+    "outside0": true
+  },
+  "generality": {
+    "prior_subject": "dual_mecha",
+    "this_subject": "woman_rain_neon_alley",
+    "same_DNA": [
+      "正头 EDIT 多层",
+      "peep0 只读",
+      "(S)×(S) 槽",
+      "S11×S0 outside0",
+      "强心针 认∩放大∩升质"
+    ],
+    "works_cross_subject": true
+  }
+}

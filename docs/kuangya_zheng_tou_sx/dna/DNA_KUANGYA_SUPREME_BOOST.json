@@ -1,0 +1,155 @@
+{
+  "write_id": "01487",
+  "formal": "KUANGYA_SUPREME_BOOST_PART_RECOG_SCALE_ELEV_V1",
+  "zh": "至高強心針 · 部件認∩放大∩升質×物",
+  "rank": "SUPREME_BOOST",
+  "precedence": 0,
+  "parent_supreme": "01483",
+  "user_inject": "至高：[(生,除,洞,扣)×(反)] ← 外力GROK ← 注入[部件'認'∩'放大'∩'升質X物'] 強心針",
+  "binding": {
+    "base": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效",
+    "boost_needle": "[部件'認' ∩ '放大' ∩ '升質×物']",
+    "full": "[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件'認' ∩ '放大' ∩ '升質×物']",
+    "one_line": "至高外力驅動的四態反，必須以「部件認∩放大∩升質×物」為升清/生路徑的強心針：先認部件為整件，再放大鎖尺，再對該物升質；缺一則 生/升清 不得報正。"
+  },
+  "intersection": {
+    "部件認": {
+      "code": "PART_RECOG",
+      "zh": "部件'認'",
+      "must": [
+        "把 peep 當「整件」識別（邊閉合 + 身份），非 band 切條",
+        "認 = 幾何身份 + 材質歸屬，不靠 self_peep bbox",
+        "認失敗 → 禁 放大/升質 冒充 生"
+      ],
+      "forbid": [
+        "band_head_torso_leg_overlap",
+        "self_peep_as_recog",
+        "random_crop_as_part"
+      ],
+      "E": "E-KY-BOOST-01"
+    },
+    "放大": {
+      "code": "SCALE_DENSIFY",
+      "zh": "'放大'",
+      "must": [
+        "scale-lock densify（grow_max 鎖）",
+        "放大綁在 認 過的整件邊，不綁碎邊",
+        "放大 ≠ freeframe 特寫主權，≠ Lanczos 冒充 HD"
+      ],
+      "forbid": [
+        "freeframe_master",
+        "lanczos_as_hd",
+        "head_scale_grow_unbound"
+      ],
+      "E": "E-KY-BOOST-02",
+      "refs": [
+        "SHQ_EDGE_WHOLE_PART_ELEV",
+        "scale-lock grow_max",
+        "01482 DONOR1 elev_candidate"
+      ]
+    },
+    "升質X物": {
+      "code": "ELEV_X_MAT",
+      "zh": "'升質×物'",
+      "must": [
+        "升質 = 外力GROK 對「該物」材質/細節 densify",
+        "×物 = 材質鎖在 認 的物件上，非通用模糊升清",
+        "升質結果 = elev_candidate / densify plate，默認不是 正生 完成圖"
+      ],
+      "forbid": [
+        "generic_upscale_as_elev",
+        "elev_mislabel_as_正生",
+        "mat_from_wrong_object"
+      ],
+      "E": "E-KY-BOOST-03",
+      "refs": [
+        "01484 ATX",
+        "01466 外力GROK",
+        "MAT structure-lock"
+      ]
+    }
+  },
+  "intersection_law": {
+    "formula": "BOOST = 部件'認' ∩ 放大 ∩ 升質×物",
+    "truth": "三者同時成立才允許 生/升清 路徑帶 BOOST 標；缺一 = 弱針 / 無針",
+    "and_not_or": true,
+    "inject_point": "外力GROK 驅動 除→扣→洞→生 時，生 前必須過 BOOST 三關"
+  },
+  "inject_into_supreme": {
+    "target": "01483 DNA_KUANGYA_SUPREME_CLAUSE",
+    "where": [
+      "semantics.驅動_priority",
+      "semantics.生效_priority",
+      "gates_supreme",
+      "E_codes"
+    ],
+    "effect": "至高條款不變根；強心針補強 生/升清 路徑的物向質量"
+  },
+  "gates_boost": {
+    "part_recog_ok": true,
+    "scale_densify_ok": true,
+    "elev_x_mat_ok": true,
+    "boost_all_three": true,
+    "elev_not_正生": true,
+    "wai_li_grok_driver": true
+  },
+  "E_codes": {
+    "E-KY-BOOST-01": "部件'認' 失敗仍跑 放大/升質/生",
+    "E-KY-BOOST-02": "放大 無 scale-lock 或 freeframe 主權",
+    "E-KY-BOOST-03": "升質×物 缺材質鎖 / 通用升清冒充",
+    "E-KY-BOOST-04": "強心針三關缺一仍報 BOOST/正生 PASS",
+    "E-KY-BOOST-05": "把 elev 特寫當 正生（兼 ATX）"
+  },
+  "金句": [
+    "至高：[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件認∩放大∩升質×物]。",
+    "先認件，再放大，再對該物升質；三關齊，針才強。",
+    "缺認 = 假件；缺放大 = 假清；缺升質×物 = 假材。",
+    "強心針不是捷徑；是物向質量的 AND 閘。"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:02:52.554828+00:00",
+  "reverse_flow_write": "01489",
+  "forward_stages": [
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10",
+    "S11"
+  ],
+  "peep_scale_is_only": "S5+S6",
+  "root_equation_full": "[(生,除,洞,扣)×(反)]  ⊕  強心針[部件'認' ∩ '放大' ∩ '升質×物']  ←  外力GROK 驅動",
+  "s4_to_end_try": {
+    "write": "01496",
+    "claim": "C2_BOOST_S4_END",
+    "boost_and": true
+  },
+  "scale_inherit_origin": {
+    "write": "01497",
+    "law": "放大繼承 peep0=SRC∩MARK",
+    "debug": "ELEV/DONOR 錯用 E-ED-01..06"
+  },
+  "technique_zheng_tou": {
+    "name": "正頭",
+    "write": "01500",
+    "formal": "TECH_ZHENG_TOU_EDIT_HOLE_INPAINT_V1"
+  },
+  "sx_recursive_lock": {
+    "write": "01500",
+    "law": "(S)×(S) 遞迴鎖",
+    "fail": "E-SX-01 NO_S_RELOCK"
+  },
+  "constitution_01504": {
+    "constitution_success": "01504",
+    "formal_success": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+    "status": "SUCCESS_RECORDED",
+    "asof_constitution": "2026-11-10T02:45:53.300883+00:00"
+  },
+  "success_recorded": true
+}
