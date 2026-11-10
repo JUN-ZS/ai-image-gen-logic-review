@@ -1,0 +1,32 @@
+{
+  "write_id": "01545",
+  "call": "SS驗.清+A眾",
+  "formal": "SHQ_SS_YAN_QING_PLUS_A_HEZHONG_V1",
+  "equation": "FINAL=L0; for i hardpaste(M_i^excl,I*_i); exclusive area-priority",
+  "subjects": [
+    {
+      "id": "tank",
+      "outside": 0,
+      "frac": 0.08311742665816327,
+      "PASS": true
+    },
+    {
+      "id": "mecha",
+      "outside": 0,
+      "frac": 0.06357399730725624,
+      "PASS": true
+    },
+    {
+      "id": "soldier",
+      "outside": 0,
+      "frac": 0.011901993870464853,
+      "PASS": true
+    }
+  ],
+  "outside_union": 0,
+  "outside_jpg_reload_note": 12,
+  "PASS_HEZHONG": true,
+  "claim": "C2_SS_YAN_QING_PLUS_A_HEZHONG",
+  "method": "3x 清+A independent then 合众 exclusive hardpaste",
+  "ACCEPT_FULL_HD": false
+}
