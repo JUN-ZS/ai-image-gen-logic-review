@@ -1,0 +1,113 @@
+{
+  "write_id": "01502",
+  "diagnosis": "强心针升清必须回锁各S；(S)×(S) 后才正头HD",
+  "before_SX_risk": [
+    "elev 占 peep0 槽 → E-SX-02",
+    "放大孤儿 → E-SX-03",
+    "MARK 未回绑 → E-SX-04",
+    "BOOST 无 SX → E-SX-05"
+  ],
+  "locks_now": {
+    "S0": {
+      "locked": true,
+      "SRC": "layers/L0.jpg",
+      "L1": "layers/L1.jpg"
+    },
+    "S1": {
+      "locked": true,
+      "chu": "EDIT 除头 L1",
+      "driver": "外力GROK"
+    },
+    "S2": {
+      "locked": true,
+      "kou": "有头×无头 + magenta"
+    },
+    "S3": {
+      "locked": true,
+      "pair": "S3×S3",
+      "MARK": "Bus/S3_MARK.png",
+      "mark_sha": "4975f1b02a88480aca04219da1583ef70b69dbaa1c697bcedbc10790139df504",
+      "source": "EDIT 品红 detector REBIND once",
+      "frac": 0.04430792499291383
+    },
+    "S4": {
+      "locked": true,
+      "pair": "S4×S4",
+      "part_role": "head",
+      "ren_ok": true
+    },
+    "S5": {
+      "locked": true,
+      "pair": "S5×S5",
+      "peep0": "Bus/S5_peep0_crop.jpg",
+      "peep0_sha": "8b0c8b6ea0d6da1cd21c2effffaafdc4fe168136dce1aeab7abc6827ac169e7f",
+      "never_overwrite": true,
+      "plate": "Bus/S5_peep0_plate.jpg"
+    },
+    "S6": {
+      "locked": true,
+      "pair": "S6×S5",
+      "peep_s": "Bus/S6_peep_s.jpg",
+      "peep_s_sha": "1325a1802204e4e44822c8d216772f7fda84863493b819e0fc769910ecce5a38",
+      "parent_sha": "8b0c8b6ea0d6da1cd21c2effffaafdc4fe168136dce1aeab7abc6827ac169e7f",
+      "parent_slot": "S5.peep0",
+      "scale_from_peep0": true,
+      "E-SX-03": false
+    },
+    "S7": {
+      "locked": true,
+      "pair": "S7×S5",
+      "elev": "Bus/S7_elev_child.jpg",
+      "elev_sha": "e1e1c9d190e4c1d25da3aff41d3c301503bba49db7c188313a0c80854cb05deb",
+      "parent_sha": "8b0c8b6ea0d6da1cd21c2effffaafdc4fe168136dce1aeab7abc6827ac169e7f",
+      "parent_slot": "S5.peep0",
+      "role": "candidate_child",
+      "E-SX-02": false,
+      "peep0_still_intact": true
+    },
+    "S8": {
+      "locked": true,
+      "pair": "S8×(S4∩S6∩S7)",
+      "boost_and": true,
+      "REN": true,
+      "SCALE": true,
+      "ELEV_X_MAT": true,
+      "sx_ok": true,
+      "E-SX-05": false
+    },
+    "S9": {
+      "locked": true,
+      "pair": "S9×S3",
+      "I_sheng": "Bus/S9_ZHENG_TOU_HD.jpg",
+      "sha": "fc09e9ba55fa35240ccdcba04337ead73499f39831f7c4f222b4742e6747efb8",
+      "method": "EDIT 洞内INPAINT 正头 HD",
+      "refs": [
+        "S5.peep0 primary",
+        "S7.elev optional densify"
+      ],
+      "seat": "S3.MARK / L1 hole",
+      "peep0_not_overwritten": true
+    },
+    "S10": {
+      "locked": true,
+      "pair": "S10×S0×S3×S9",
+      "RETURN_primary": "S9 EDIT 正头 full frame",
+      "hardpaste_optional_out": 0,
+      "claim": "C2_SX_ZHENG_TOU_HD",
+      "RETURN_aligned_S0": "SETS/PROJ_SHQ_S11xS0_ALIGN_01503/Bus/S11xS0_PRIMARY.jpg",
+      "outside0": true
+    },
+    "S11": {
+      "locked": true,
+      "pair": "S11×S0",
+      "fix_write": "01503",
+      "outside0_vs_S0": false,
+      "PRIMARY": "S11xS0_C peep0+elev seat",
+      "was_wrong": "fullframe 正头 drift",
+      "E-SX-06_fixed": true
+    }
+  },
+  "peep0_sha": "8b0c8b6ea0d6da1cd21c2effffaafdc4fe168136dce1aeab7abc6827ac169e7f",
+  "mark_sha": "4975f1b02a88480aca04219da1583ef70b69dbaa1c697bcedbc10790139df504",
+  "asof": "2026-11-10T02:27:47.053565+00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "latest_constitution": "01504",
+  "stick": "STICK_ZHENG_TOU_SX_S11xS0",
+  "success": true,
+  "docs": "SHQ_CONSTITUTION_SUCCESS_ZHENG_TOU_SX.md",
+  "lineage_tail": [
+    {
+      "write": "01500",
+      "what": "技名「正头」；(S)×(S) 递归锁"
+    },
+    {
+      "write": "01501",
+      "what": "全出图连试谁对"
+    },
+    {
+      "write": "01502",
+      "what": "SX 回锁 + 强心针 + 高清正头"
+    },
+    {
+      "write": "01503",
+      "what": "S11×S0 对位锁 outside=0"
+    },
+    {
+      "write": "01504",
+      "what": "入宪 · 成功记录锁定"
+    }
+  ],
+  "asof": "2026-11-10T02:45:53.300883+00:00"
+}

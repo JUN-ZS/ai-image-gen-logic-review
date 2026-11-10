@@ -1,0 +1,102 @@
+{
+  "write_id": "01497",
+  "formal": "SHQ_SCALE_INHERIT_ORIGIN_ELEV_DONOR_DEBUG_V1",
+  "zh": "放大繼承對的原 · DEBUG ELEV/DONOR 錯用",
+  "update_from_user": "放大的物件要繼承對的原；DEBUG 是 ELEV 和 DONOR 的錯用",
+  "parent": [
+    "01495",
+    "01496",
+    "01481",
+    "01482"
+  ],
+  "correct_inheritance": {
+    "law": "放大的物件必須繼承對的原 = peep@MARK from SRC（L0∩正洞）",
+    "chain": [
+      "原 SRC/L0",
+      "正洞 MARK 凍",
+      "peep = SRC∩MARK（對的原 · 身份域）",
+      "放大 scale-lock(peep) — 只放大這個原",
+      "elev densify ONLY on peep crop（可選 · 候選）",
+      "donor = peep@MARK 或 elev(peep) — 仍是同一原的子代",
+      "外力座生 ref 用該 donor/peep · base=洞座"
+    ],
+    "formula": "peep₀ = SRC ⊙ MARK          # 對的原\npeep_s = scale_lock(peep₀)   # 放大繼承 peep₀\nelev*  = densify(peep_s)     # 只升 peep 域 · 角色=候選\ndonor  = peep₀ | elev*       # 同源子代 · 非 freeframe 場景\nI_sheng = WLG(base=洞座, ref=donor)\nRETURN = hardpaste(base, MARK, I_sheng)"
+  },
+  "debug_elev_donor_misuse": {
+    "title": "DEBUG：錯在 ELEV 與 DONOR 的錯用",
+    "not_the_main_bug": [
+      "feather/blend 調參",
+      "單純 grow 數值"
+    ],
+    "root_bugs": [
+      {
+        "id": "E-ED-01",
+        "name": "ELEV_AS_ORIGIN",
+        "wrong": "把 elev 特写當成「對的原」再放大/回洞",
+        "right": "原 = peep@MARK from SRC；elev 只是 peep 的升質子代"
+      },
+      {
+        "id": "E-ED-02",
+        "name": "ELEV_AS_DONOR_SCENE",
+        "wrong": "donor = 整圖 freeframe elev / 無 MARK 特写",
+        "right": "donor 必須可溯 peep₀（同 MARK · 同原）"
+      },
+      {
+        "id": "E-ED-03",
+        "name": "ELEV_AS_RETURN_OR_SHENG",
+        "wrong": "elev 當正生 / RETURN",
+        "right": "elev_candidate ≠ I_sheng ≠ RETURN"
+      },
+      {
+        "id": "E-ED-04",
+        "name": "DONOR_FROM_WRONG_SRC",
+        "wrong": "donor 來自另一張圖 / 另一洞 / 重算 mask 裁出",
+        "right": "donor 繼承同一 RUN 的 SRC+MARK peep₀"
+      },
+      {
+        "id": "E-ED-05",
+        "name": "SCALE_WITHOUT_ORIGIN",
+        "wrong": "放大未綁 peep₀（對任意 elev 圖 scale）",
+        "right": "scale 輸入必須是 peep₀ 或其鎖定子代"
+      },
+      {
+        "id": "E-ED-06",
+        "name": "DONOR_TOXIN_FREEFRAME",
+        "wrong": "freeframe 全景 donor 污染回洞",
+        "right": "01481/01482 toxin-free：peep@MARK + elev only on peep crop"
+      }
+    ]
+  },
+  "role_table": {
+    "原 peep₀": "SRC∩MARK · 唯一合法放大起點",
+    "放大 peep_s": "scale_lock(peep₀) · 繼承原",
+    "elev*": "densify(peep_s) · 升質候選 · 非原 · 非回",
+    "donor": "peep₀ 或 elev*(peep) · 身份 ref · 可溯原",
+    "I_sheng": "外力在洞座上 · ref=donor",
+    "RETURN": "hardpaste @ MARK"
+  },
+  "kuangya_update": {
+    "boost_S6": "放大必須 inherit peep₀；禁 scale(elev freeframe)",
+    "boost_S7": "elev 只升 peep 域；產出 elev_candidate",
+    "donor_gate": "donor_origin_sha 可溯 peep₀ · 否則 E-ED-04",
+    "return": "01495 不變 · ref 必須同源 donor"
+  },
+  "金句": [
+    "放大的物件要繼承對的原 = peep@MARK from SRC。",
+    "DEBUG 根因：ELEV 與 DONOR 錯用，不是 feather。",
+    "elev 不是原、不是 donor 場景、不是正生、不是 RETURN。",
+    "donor 必須可溯 peep₀；freeframe elev 當 donor = 毒。"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:57:10.276069+00:00",
+  "edit_hole_layer_fix": "01499",
+  "must_inpaint_in_hole_frame": true,
+  "ban_silhouette_only_hole": true,
+  "constitution_01504": {
+    "constitution_success": "01504",
+    "formal_success": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+    "status": "SUCCESS_RECORDED",
+    "asof_constitution": "2026-11-10T02:45:53.300883+00:00"
+  },
+  "success_recorded": true
+}

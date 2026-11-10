@@ -1,0 +1,117 @@
+{
+  "write_id": "01504",
+  "formal": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+  "zh": "入宪：正头 + (S)×(S) + S11×S0 成功记录",
+  "status": "SUCCESS_RECORDED",
+  "ACCEPT_FULL_HD": false,
+  "stick": "STICK_ZHENG_TOU_SX_S11xS0",
+  "techniques_locked": {
+    "正头": {
+      "formal": "TECH_ZHENG_TOU_EDIT_HOLE_INPAINT_V1",
+      "def": "EDIT多层（有头×无头·有背×无背）+ 洞框内INPAINT → 对位回颈座",
+      "parent": "01499"
+    },
+    "强心针": {
+      "formal": "BOOST[认∩放大∩升质×物]",
+      "requires": "SX 回锁后才 AND"
+    },
+    "S×S递归锁": {
+      "formal": "SHQ_SX_RECURSIVE_LOCK_V1",
+      "law": "∀Si out→Bus[Si]; 子代指回 peep0 不覆盖",
+      "parent": "01500/01502"
+    },
+    "S11×S0": {
+      "formal": "SHQ_S11xS0_ALIGN_LOCK_V1",
+      "law": "RETURN=S0⊙(1-M)+fill⊙M; ‖RETURN-S0‖_out=0",
+      "parent": "01503",
+      "result": "outside0=true"
+    }
+  },
+  "success_claims": [
+    {
+      "id": "C2_EDIT_INPAINT_IN_HOLE",
+      "write": "01499",
+      "ok": true
+    },
+    {
+      "id": "C2_SX_ZHENG_TOU_HD",
+      "write": "01502",
+      "ok": true
+    },
+    {
+      "id": "C2_S11xS0_ALIGN",
+      "write": "01503",
+      "ok": true,
+      "asset_primary": "8ac49ef1-18aa-4038-adb8-79ce63bfbd69",
+      "asset_S0": "d1b51384-e127-4764-9e86-b78cf9ed5a89"
+    }
+  ],
+  "invariants_locked": [
+    "同机位",
+    "同 MARK",
+    "peep0 只读永不覆写",
+    "elev=子代 ≠ 原 ≠ RETURN",
+    "donor 可溯 peep0",
+    "除/生 外力GROK",
+    "洞外 max_diff vs S0 = 0",
+    "强心针 AND 必须 SX",
+    "HD 在洞框生 / EDIT@S0 后 hard 外锁"
+  ],
+  "E_codes_locked": [
+    "E-ED-01..06",
+    "E-EDT-01..05",
+    "E-SX-01",
+    "E-SX-02",
+    "E-SX-03",
+    "E-SX-04",
+    "E-SX-05",
+    "E-SX-06",
+    "E-SX-07"
+  ],
+  "金句": [
+    "正头解对位；(S)×(S) 解强心针连动；S11×S0 解回位金标。",
+    "放大继承 peep0；elev 是子代不是原。",
+    "洞错位一定是偷步；高清在洞框里生。",
+    "S11 必须锁 S0：洞外 bit-exact。",
+    "独立 PASS ≠ 可组合。"
+  ],
+  "lineage": [
+    {
+      "write": "01492",
+      "what": "四态架构重整 F ⊕ 强心针"
+    },
+    {
+      "write": "01497",
+      "what": "放大继承 peep0；ELEV/DONOR 错用 DEBUG"
+    },
+    {
+      "write": "01498",
+      "what": "测：放大来自原；回洞几何"
+    },
+    {
+      "write": "01499",
+      "what": "洞错位=偷步；EDIT 多层；洞内INPAINT"
+    },
+    {
+      "write": "01500",
+      "what": "技名「正头」；(S)×(S) 递归锁"
+    },
+    {
+      "write": "01501",
+      "what": "全出图连试谁对"
+    },
+    {
+      "write": "01502",
+      "what": "SX 回锁 + 强心针 + 高清正头"
+    },
+    {
+      "write": "01503",
+      "what": "S11×S0 对位锁 outside=0"
+    },
+    {
+      "write": "01504",
+      "what": "入宪 · 成功记录锁定"
+    }
+  ],
+  "asof": "2026-11-10T02:45:53.300883+00:00"
+}

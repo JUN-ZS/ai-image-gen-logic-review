@@ -1,0 +1,103 @@
+{
+  "write_id": "01499",
+  "formal": "SHQ_EDIT_MULTI_LAYER_HOLE_RETURN_NO_STEAL_V1",
+  "zh": "洞错位=偷步 · 必用 Imagine EDIT 多层 有无头×有无背 · 洞内INPAINT",
+  "trigger_asset": "53485649-c6a7-4ce1-97ea-692c7a1aa8f2",
+  "diagnosis": {
+    "symptom": "洞错位",
+    "root": "偷步：用剪影/absdiff MARK hardpaste 代替 EDIT 认边洞内INPAINT",
+    "missing_step": "高清图必须在洞框中 INPAINT 生成，不会对错位",
+    "kou_dong_steal": "扣与洞关系层偷步就会出错"
+  },
+  "must_EDIT_layers": {
+    "L0": "有头·有背",
+    "CLIP_除背": "EDIT 除背 → 有头·无背",
+    "L1_除头": "EDIT 除头 → 无头·有背（洞座场景）",
+    "optional_solid": "备选：EDIT 把头变成剪影 detector 能全扣中的色相",
+    "I_sheng": "EDIT 在 L1 洞框内 INPAINT 生头（同机位）",
+    "anti": "有头×无头 · 有背×无背 反板"
+  },
+  "matrix": {
+    "axes": [
+      "头",
+      "背"
+    ],
+    "cells": {
+      "有头有背": "L0 SRC",
+      "有头无背": "EDIT 除背 CLIP",
+      "无头有背": "EDIT 除头 L1 洞座",
+      "无头无背": "可选 双除 / 空"
+    },
+    "kou": "图与图差分：有头↔无头 证洞；有背↔无背 证件",
+    "dong": "洞位来自 EDIT 认边 + 有头/无头 关系，不是事后剪影硬猜"
+  },
+  "correct_return": {
+    "law": "HD 在洞框内 INPAINT 生成 → 不对错位",
+    "path": [
+      "EDIT 除背",
+      "EDIT 除头得 L1 洞座",
+      "（可选）EDIT 头→纯色 供 detector 全扣",
+      "EDIT 在 L1 洞内 INPAINT 高清头",
+      "反：有头/无头 · 洞外 · 同机位"
+    ],
+    "ban": [
+      "absdiff 剪影 MARK 当唯一洞主权",
+      "freeframe elev hardpaste 进错 MARK",
+      "OpenCV 魔法棒冒充 EDIT 认边",
+      "少除背层 · 少有无头对照"
+    ]
+  },
+  "E_codes": [
+    {
+      "id": "E-EDT-01",
+      "name": "HOLE_MISALIGN_STEAL",
+      "msg": "洞错位=偷步"
+    },
+    {
+      "id": "E-EDT-02",
+      "name": "SILHOUETTE_AS_EDIT_HOLE",
+      "msg": "剪影冒 EDIT 洞"
+    },
+    {
+      "id": "E-EDT-03",
+      "name": "SKIP_CHU_BEI_LAYER",
+      "msg": "少除背层"
+    },
+    {
+      "id": "E-EDT-04",
+      "name": "SKIP_INPAINT_IN_HOLE",
+      "msg": "HD 未在洞框 INPAINT"
+    },
+    {
+      "id": "E-EDT-05",
+      "name": "KOU_DONG_LAYER_STEAL",
+      "msg": "扣洞关系层偷步"
+    }
+  ],
+  "金句": [
+    "洞错位一定是偷步。",
+    "极用 Imagine 原生 EDIT：除背、除头、洞内INPAINT。",
+    "有头×无头 · 有背×无背 才扣得出回洞回框多层。",
+    "高清在洞框里生，才不会对错位。"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:08:28.679943+00:00",
+  "technique_zheng_tou": {
+    "name": "正頭",
+    "write": "01500",
+    "formal": "TECH_ZHENG_TOU_EDIT_HOLE_INPAINT_V1"
+  },
+  "sx_recursive_lock": {
+    "write": "01500",
+    "law": "(S)×(S) 遞迴鎖",
+    "fail": "E-SX-01 NO_S_RELOCK"
+  },
+  "tech_name": "正頭",
+  "constitution_01504": {
+    "constitution_success": "01504",
+    "formal_success": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+    "status": "SUCCESS_RECORDED",
+    "asof_constitution": "2026-11-10T02:45:53.300883+00:00"
+  },
+  "success_recorded": true
+}
