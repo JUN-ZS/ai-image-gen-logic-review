@@ -1,0 +1,113 @@
+{
+  "write_id": "01605",
+  "series": "01600–01605",
+  "call": "框位回鎖",
+  "call_ascii": "KUANG_WEI_HUI_SUO",
+  "call_family": "SS驗.框位鏈",
+  "call_family_ascii": "SS_YAN.KUANG_WEI",
+  "formal": "SHQ_SS_YAN_KUANG_WEI_CHAIN_V1",
+  "zh": "框位回鎖",
+  "stick": "STICK_SS_YAN_KUANG_WEI",
+  "parent": {
+    "SS验.清": "STICK_SS_YAN_QING / 01539",
+    "SS验.清锁": "STICK_SS_YAN_QING_LOCK / 01541",
+    "先读": "01580",
+    "先读MAX": "01596",
+    "层回锁": "01590",
+    "勤力DNA": "CONSTITUTION_FOLDER_QINLI_DNA"
+  },
+  "one_liner": "pad 管框全 · 同框 densify 管 freeframe · pad 對位 1:1 管回位；outside=0 不足證比例",
+  "equation": "框位回鎖 ≡ peep_pad(touch_sides=0) ∧ densify_sameframe|ratio_lock ∧ paste_pad_aligned(elev.shape==peep==pad_box) ∧ outside_png=0",
+  "gold_path": [
+    "1 先讀／離散選物 → MARK 真剪影（非格洞）",
+    "2 peep = tight + PAD → touch_sides=0（物完整在框）",
+    "3 升清：同框 densify（禁 freeframe HI 當幾何源）或 peep 比例鎖後仍須 pad 對位",
+    "4 paste_pad_aligned：elev[y,x]→L0[py0+y,px0+x] where M；禁止 peep→tight resize",
+    "5 PNG 重讀 outside=0 + size_ok"
+  ],
+  "sub_calls": [
+    {
+      "call": "離散5",
+      "write": "01600",
+      "zh": "離散分區選5→凍座→扣移→BATCH"
+    },
+    {
+      "call": "真剪影座",
+      "write": "01601",
+      "zh": "multi-CC true silhouette 替格洞偽座"
+    },
+    {
+      "call": "peep比例鎖",
+      "write": "01602",
+      "zh": "HI center-crop 回 peep AR（不足單獨成立）"
+    },
+    {
+      "call": "框切診斷",
+      "write": "01603",
+      "zh": "tight BBOX/像素CC 切頂根因"
+    },
+    {
+      "call": "先讀·pad",
+      "write": "01604",
+      "zh": "先讀5+語義整件+peep pad+清鎖（含 E-PAD-01 暴露）"
+    },
+    {
+      "call": "位回",
+      "write": "01605",
+      "zh": "paste_pad_aligned + sameframe 去 freeframe"
+    }
+  ],
+  "error_codes": {
+    "E-PAD-01": "PAD_PEEP_TIGHT_PASTE_SCALE — peep+pad 被 resize 進 tight MARK → 1.3–1.7× 壓扁",
+    "E-FF-01": "FREEFRAME_NO_CORRESPONDENCE — freeframe densify 無像素對應，不可當幾何源",
+    "E-DISC5-01": "格洞偽座 fill≈1",
+    "E-DISC5-02": "freeframe 壓格",
+    "E-DISC5-03": "outside 內存偽 PASS（須 PNG 重讀）",
+    "E-DISC5-04": "格鋪滿 exclusive 失敗",
+    "E-BBOX-01": "tight bbox 切頂／切邊（需 pad）"
+  },
+  "invariants": [
+    "elev.shape == peep.shape == pad_box_size",
+    "R[pad_box][M] = elev[M]; R[~M] = L0[~M]",
+    "touch_sides==0 after pad（物完整在 peep）",
+    "densify 幾何源 ≠ freeframe HI",
+    "outside_png==0 且 非 only outside（比例另驗 size_ok）",
+    "MARK 真剪影 fill_bbox 合理（非格洞）"
+  ],
+  "gates": {
+    "G_KW_1": "peep touch_sides==0",
+    "G_KW_2": "elev.shape == peep.shape == pad_box",
+    "G_KW_3": "paste_pad_aligned only（禁 paste_fill→tight）",
+    "G_KW_4": "densify mode ∈ {sameframe, peep_ratio_lock_with_pad_align}",
+    "G_KW_5": "outside_png==0",
+    "G_KW_6": "size_ok AND no E-PAD-01 scale"
+  },
+  "api": [
+    "peep_pad_from_mark(L0, M, pad_frac)",
+    "densify_sameframe(peep, pm)",
+    "paste_pad_aligned(base, elev, M, pad_box)",
+    "ban: paste_fill(peep_elev → tight_MARK_bbox)"
+  ],
+  "proof": {
+    "01604_claim": "C2_XIAN5_PAD_ANTIFF_QING (偽：outside=0 但比例錯)",
+    "01605_claim": "C2_PAD_ALIGN_ANTIFF",
+    "bug_scale_example_crystal": [
+      1.682,
+      1.467
+    ],
+    "projects": [
+      "SETS/PROJ_DISCRETE5_XIAN_CENG_BATCH_01600",
+      "SETS/PROJ_DISC5_TRUEHOLE_FIX_01601",
+      "SETS/PROJ_IMAGINE_PEEP_RATIO_LOCK_01602",
+      "SETS/PROJ_XIAN5_PAD_CRYSTAL_01604",
+      "SETS/PROJ_PAD_ALIGN_ANTIFF_01605"
+    ]
+  },
+  "qinli": [
+    "I-ID-BAN",
+    "I-PROCESS",
+    "I-SEAT-QING"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T08:50:40.531570+00:00"
+}
