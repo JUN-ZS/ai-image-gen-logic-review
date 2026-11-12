@@ -1,0 +1,17 @@
+{
+  "write": "01638",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "call": "四态·独自补给·框回鎖",
+  "semantic_kill": "E-SEM-YING-01",
+  "stack": [
+    "BOOKS",
+    "JAR",
+    "KETTLE",
+    "PEAR"
+  ],
+  "claim": "C2_F_BUJI_KUANG_HUI_01638",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:58:12.339991+00:00"
+}

@@ -1,0 +1,36 @@
+{
+  "write_id": "01525",
+  "formal": "SHQ_PEEP_RATIO_LOCK_V1",
+  "E": "E-PEEP-RATIO",
+  "bug": "bbox_from_mark min_side → square 257x257 S0A → peep ratio break",
+  "fix": "preserve MARK aspect when grow min_side; S5 peep_ratio_gate",
+  "S5": {
+    "ok": true,
+    "code": null,
+    "mark_wh": [
+      103,
+      213
+    ],
+    "peep_hw": [
+      221,
+      111
+    ],
+    "mark_aspect_wh": 0.4836,
+    "peep_aspect_wh": 0.5023,
+    "err": 0.0387,
+    "tol": 0.15,
+    "law": "peep ratio = MARK tight bbox ratio；禁 S0A 正方形撑开污染 peep"
+  },
+  "S0A_old": [
+    257,
+    257
+  ],
+  "S0A_new": [
+    543,
+    257
+  ],
+  "aspect_wh": 0.4733,
+  "PASS_SX_FULL": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T12:56:53.296930+00:00"
+}

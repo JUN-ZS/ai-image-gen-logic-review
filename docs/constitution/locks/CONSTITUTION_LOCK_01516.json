@@ -1,0 +1,10 @@
+{
+  "write_id": "01516",
+  "zh": "回S0=只有洞(S)×(S)DEBUG；正確 elev freeframe + 外力GROK + 强心针",
+  "donor": "elev 3a42b3b4 freeframe 正機",
+  "chain": "S0R: R0凍→MARK洞→认→放大→升质→AND→生seat→反",
+  "PASS": true,
+  "outside": 0,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T10:41:03.579290+00:00"
+}

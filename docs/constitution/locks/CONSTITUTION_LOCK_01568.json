@@ -1,0 +1,7 @@
+{
+  "write_id": "01568",
+  "test": "虚回红测",
+  "PASS": true,
+  "bug": "E-XU-RED-02 contract kills elev content",
+  "ACCEPT_FULL_HD": false
+}

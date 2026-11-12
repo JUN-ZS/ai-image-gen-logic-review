@@ -1,0 +1,55 @@
+{
+  "write_id": "01529",
+  "formal": "SHQ_SXA_NEW_PROJECT_MESH_VERIFY_V1",
+  "zh": "新PROJECT（密網機械）同驗 S(X)A",
+  "scene": {
+    "name": "mesh_mecha",
+    "vs_prev": "NOT yuanjing_3",
+    "L0_from": "GENERALITY_MESH_01506"
+  },
+  "PASS_ALL": true,
+  "results": {
+    "RATIO": {
+      "ok": true,
+      "mark_aspect_wh": 0.7964,
+      "peep_aspect_wh": 0.8035,
+      "err": 0.0089
+    },
+    "ELEV": {
+      "ok": true,
+      "S7A_hw": [
+        677,
+        544
+      ],
+      "peep_hw": [
+        677,
+        544
+      ]
+    },
+    "FREEFRAME": {
+      "ok": true,
+      "S5A": 0,
+      "S7A": 0,
+      "S9A": 0
+    },
+    "PEEP_ZOOM_IN": {
+      "ok": true,
+      "back_outside": 0
+    },
+    "PEEP_ZOOM_OUT": {
+      "ok": true,
+      "up_outside": 0
+    },
+    "SX_ALIGN": {
+      "ok": true,
+      "outside": 0
+    },
+    "PIPELINE": {
+      "ok": true,
+      "claim": "C2_S11xS0_ALIGN",
+      "PASS_SX_FULL": true
+    }
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:20:38.766353+00:00"
+}

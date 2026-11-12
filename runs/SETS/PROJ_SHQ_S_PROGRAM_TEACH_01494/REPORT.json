@@ -1,0 +1,15 @@
+{
+  "write_id": "01494",
+  "formal": "SHQ_S_PROGRAM_TEACH_V1",
+  "lessons": 12,
+  "board": "SETS/PROJ_SHQ_S_PROGRAM_TEACH_01494/boards/S_PROGRAM_TEACH.jpg",
+  "md": "SHQ_S_PROGRAM_TEACH.md",
+  "combined_yes": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:34:51.750867+00:00",
+  "assets": {
+    "S_PROGRAM_STRUCT": "42a5e363-2230-474c-9418-934c60fef2a6",
+    "S_PROGRAM_HUD": "a1e88b34-e0cf-427e-b33b-1d532dce7c95"
+  },
+  "combined_answer": "YES — 01492+01487+01489+01493 已結合為 S0–S11 可跟練程序"
+}

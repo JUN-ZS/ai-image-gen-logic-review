@@ -1,0 +1,17 @@
+{
+  "write_id": "01605",
+  "series": "01600-01605",
+  "zh": "入憲技 框位回鎖 · SS驗.框位鏈",
+  "call": "框位回鎖",
+  "call_family": "SS驗.框位鏈",
+  "formal": "SHQ_SS_YAN_KUANG_WEI_CHAIN_V1",
+  "stick": "STICK_SS_YAN_KUANG_WEI",
+  "claim": "C2_PAD_ALIGN_ANTIFF",
+  "PASS": true,
+  "bugs_closed": [
+    "E-PAD-01",
+    "E-FF-01"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T08:50:40.531570+00:00"
+}

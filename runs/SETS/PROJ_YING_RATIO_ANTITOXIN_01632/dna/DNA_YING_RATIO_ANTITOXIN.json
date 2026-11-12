@@ -1,0 +1,38 @@
+{
+  "write_id": "01632",
+  "call": "影扣回·RATIO杀毒",
+  "formal": "SHQ_YING_RATIO_ANTITOXIN_V1",
+  "derived": [
+    "E-PAD-01",
+    "E-FF-01",
+    "01602 peep ratio lock",
+    "01605 PAD align",
+    "01631 影扣回"
+  ],
+  "toxins": [
+    {
+      "code": "E-RATIO-01",
+      "name": "CHUBEI_FREEFRAME_MARK_RESIZE",
+      "desc": "除背 freeframe 影直接 resize 到 peep 当 MARK → 比例错"
+    },
+    {
+      "code": "E-PAD-01",
+      "name": "PAD_PEEP_TIGHT_PASTE_SCALE",
+      "desc": "pad窗与tight影不一致硬贴 → 1.3-1.7x 压扁"
+    },
+    {
+      "code": "E-FF-01",
+      "name": "FREEFRAME_NO_PIXEL_CORRESPONDENCE",
+      "desc": "freeframe 无 peep 像素对应"
+    }
+  ],
+  "rules": [
+    "fill 与 peep0 必须同高宽（scale-lock 尺寸）",
+    "影 必须 peep-lock 几何；freeframe 除背须 register 或弃用",
+    "scale sx,sy ∈ [1/1.15, 1.15] 相对 peep 参考物框",
+    "禁 色带窗框造 MASK；禁 无注册 freeframe 影",
+    "中心轴仅虚回认位"
+  ],
+  "SCALE_MAX": 1.15,
+  "asof": "2026-11-11T23:32:22.937763+00:00"
+}

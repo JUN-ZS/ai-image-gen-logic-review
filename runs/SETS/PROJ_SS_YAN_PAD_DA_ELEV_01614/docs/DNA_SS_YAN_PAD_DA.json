@@ -1,0 +1,43 @@
+{
+  "write_id": "01614",
+  "call": "SS.验.PAD大",
+  "formal": "SHQ_SS_YAN_PAD_DA_V1",
+  "zh": "SS验 · PAD加大版",
+  "derived_from": [
+    "01613 虚回+PAD高",
+    "01605 PAD加大锁",
+    "01612 外力认背景",
+    "清+A 原物/elev"
+  ],
+  "PAD_default": 0.32,
+  "PAD_min": 0.28,
+  "equation_return": "peep=L0[pad_high]; LOCK=FREEZE(pad_box,M); 虚回 hard outside=0",
+  "equation_elev": "elev=外力densify(peep); I=(1-w)·base + w·blend(peep,elev)  # 心强缘弱",
+  "pipeline": [
+    "1 外力认 / 差分 得 tight 座",
+    "2 PAD大 expand → peep@L0 冻锁 Bus",
+    "3 背景可先 L_bg 清（可选）",
+    "4 elev = 外力 densify(peep) 同框防 freeframe",
+    "5 w 径向：心=1 缘=0；座缘护线",
+    "6 I = (1-w)·base + w·blend(peep, elev)",
+    "7 虚回：只读冻锁，禁重开洞"
+  ],
+  "w_rules": {
+    "center": "w→1 生动 densify",
+    "edge": "w→0 线清晰 改小",
+    "blend_peep_elev": "α peep 压 freeframe 身份"
+  },
+  "qinli": [
+    "I-SEAT 冻锁",
+    "I-PROCESS elev 必经",
+    "I-ID-BAN freeframe冒原",
+    "PAD大 防框切"
+  ],
+  "error_codes": [
+    "E-PAD-01 紧框贴",
+    "E-FF-01 freeframe",
+    "E-SEAT-REOPEN 重开座"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T20:58:57.424958+00:00"
+}

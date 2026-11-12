@@ -1,0 +1,36 @@
+{
+  "write_id": "01565",
+  "call": "虛回",
+  "elev_method": "R4_强心针_认∩放大∩升质×物",
+  "effect_rank": 4,
+  "boost_AND": true,
+  "scale": 2.5,
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "rover",
+      "boost": "认∩放大×2.5∩升质×物",
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_XU_HUI_R4_BOOST"
+    },
+    {
+      "id": "mecha",
+      "boost": "认∩放大×2.5∩升质×物",
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_XU_HUI_R4_BOOST"
+    },
+    {
+      "id": "climber",
+      "boost": "认∩放大×2.5∩升质×物",
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_XU_HUI_R4_BOOST"
+    }
+  ],
+  "equation": "认(peep/MARK) → 放大×2.5 → 升质×物(Imagine) ≔ 虚拟未回 → 虚回(L_bg_qing,M)",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T02:59:58.647487+00:00"
+}

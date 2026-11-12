@@ -1,0 +1,174 @@
+{
+  "write_id": "01485",
+  "formal": "SHQ_KUANGYA_PROOF_V1",
+  "zh": "框牙實踐證明",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "driver": "外力GROK",
+  "supreme": "01483",
+  "anti_toxin": "01484",
+  "all_ok": true,
+  "units": [
+    {
+      "unit": "A_DNA_GATES",
+      "passed": 15,
+      "total": 15,
+      "ok": true,
+      "tests": [
+        {
+          "name": "DNA_SUPREME_exists",
+          "ok": true,
+          "detail": "DNA_KUANGYA_SUPREME_CLAUSE.json"
+        },
+        {
+          "name": "DNA_ATX_exists",
+          "ok": true,
+          "detail": "DNA_KUANGYA_ANTI_TOXIN_ALGEBRA_IMG.json"
+        },
+        {
+          "name": "DNA_DONOR_exists",
+          "ok": true,
+          "detail": "DNA_DONOR_TOXIN_FREE.json"
+        },
+        {
+          "name": "supreme_binding_algebra",
+          "ok": true,
+          "detail": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效"
+        },
+        {
+          "name": "supreme_driver_wlg",
+          "ok": true,
+          "detail": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效"
+        },
+        {
+          "name": "supreme_rank_0",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "atx_8_cells_defined",
+          "ok": true,
+          "detail": "keys=['正除', '反除', '正扣', '反扣', '正洞', '反洞', '正生', '反生', '正回', '反回']"
+        },
+        {
+          "name": "正生_bans_freeframe_特写",
+          "ok": true,
+          "detail": "freeframe特写主權 黑底頭特寫當完成"
+        },
+        {
+          "name": "wrong_guess_asset_locked",
+          "ok": true,
+          "detail": "327a8469-c8d0-4ea7-b179-4e503b748944"
+        },
+        {
+          "name": "mislabel_elev_as_正生_FAIL",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "elev_as_candidate_OK",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "seat_born_正生_OK",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "donor0_defined",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "donor_toxic_freeframe_banned",
+          "ok": true,
+          "detail": ""
+        },
+        {
+          "name": "outside_alone_not_enough",
+          "ok": true,
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "unit": "B_MISLABEL_ELEV_AS_正生",
+      "ok": true,
+      "proves": "elev 特寫標 正生 → 框牙/F8 不得 PASS",
+      "E": [
+        "E-POLLUTE-or-FAIL"
+      ],
+      "detail": {
+        "returncode": 1,
+        "status": "FAIL_POLLUTED",
+        "F8_PASS": false,
+        "anti_toxin": {},
+        "sheng_seat_born": false,
+        "stdout_tail": "{\n  \"status\": \"FAIL_POLLUTED\",\n  \"F8_PASS\": false,\n  \"outside\": 0,\n  \"return_base\": \"L0\",\n  \"claim\": \"C0_POLLUTED\",\n  \"anti_toxin\": {\n    \"role_label\": \"正生\",\n    \"elev_risk_black_bg\": false,\n    \"black_frac\": 0.47487016157670453,\n    \"E-KY-ATX-01\": false\n  },\n  \"gates\": {\n    \"no_self_peep_CLIP\": true,\n    \"CLIP_from_chu_bei\": true,\n    \"four_anti_F8_cells\": true,\n    \"return_outside_0\": true,\n    \"wai_li_grok_sheng\": true,\n    \"no_local_elev_as_sheng\": true,\n    \"MARK_frozen\": true,\n    \"algebra_F\": \"[(生,除,洞,扣)×(反)]\",\n    \"sheng_seat_born\": false,\n    \"no_freeframe_hole_return\": false\n  },\n  \"supreme\": true\n}\n",
+        "stderr_tail": ""
+      }
+    },
+    {
+      "unit": "C_SEAT_BORN_STRUCTURE",
+      "ok": true,
+      "F8_PASS": true,
+      "status": "PASS",
+      "outside": 0,
+      "gates_key": {
+        "no_self_peep_CLIP": true,
+        "CLIP_from_chu_bei": true,
+        "sheng_seat_born": true,
+        "return_outside_0": true,
+        "algebra_F": "[(生,除,洞,扣)×(反)]",
+        "wai_li_grok_sheng": true
+      },
+      "cells_pass": {
+        "正除": true,
+        "反除": true,
+        "正扣": true,
+        "反扣": true,
+        "正洞": true,
+        "反洞": true,
+        "正生": true,
+        "反生": true,
+        "正回": true,
+        "反回": true
+      },
+      "sheng_path": "SETS/PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475/ingest/I_seat_xnv2.jpg",
+      "note": "結構閘必須齊；F8_PASS 另依 outside/洞frac（誠實）",
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"F8_PASS\": true,\n  \"outside\": 0,\n  \"return_base\": \"L0\",\n  \"claim\": \"C2\",\n  \"anti_toxin\": {\n    \"role_label\": \"正生\",\n    \"elev_risk_black_bg\": false,\n    \"black_frac\": 0.19556549833475056,\n    \"E-KY-ATX-01\": false\n  },\n  \"gates\": {\n    \"no_self_peep_CLIP\": true,\n    \"CLIP_from_chu_bei\": true,\n    \"four_anti_F8_cells\": true,\n    \"return_outside_0\": true,\n    \"wai_li_grok_sheng\": true,\n    \"no_local_elev_as_sheng\": true,\n    \"MARK_frozen\": true,\n    \"algebra_F\": \"[(生,除,洞,扣)×(反)]\",\n    \"sheng_seat_born\": true,\n    \"no_freeframe_hole_return\": true\n  },\n  \"supreme\": true\n}\n"
+    },
+    {
+      "unit": "D_OUTSIDE_ALONE_NOT_PASS",
+      "ok": true,
+      "proves": "outside=0 alone 不足；無 seat_born → F8_PASS=False",
+      "outside": 0,
+      "sheng_seat_born": false,
+      "F8_PASS": false,
+      "status": "FAIL_POLLUTED",
+      "pollution": "E-POLLUTE-HOLE_RETURN_FREEFRAME"
+    },
+    {
+      "unit": "E_KUANGYA_SELFTEST",
+      "ok": true,
+      "returncode": 0,
+      "tail": "   ]\n    },\n    {\n      \"name\": \"no_af_c5\",\n      \"ok\": true,\n      \"status\": \"FAIL_STEAL\",\n      \"E\": [\n        \"E-AUDIT-00\",\n        \"E-AUDIT-01\",\n        \"E-DRIFT-04\",\n        \"E-STEAL-01\"\n      ]\n    },\n    {\n      \"name\": \"claim_over_af\",\n      \"ok\": true,\n      \"status\": \"WARN_DRIFT\",\n      \"E\": [\n        \"E-AUDIT-01\",\n        \"E-DRIFT-04\"\n      ]\n    },\n    {\n      \"name\": \"xnv2_summary\",\n      \"ok\": true,\n      \"status\": \"PASS_AUDIT\",\n      \"E\": []\n    }\n  ],\n  \"ACCEPT_FULL_HD\": false\n}\n"
+    }
+  ],
+  "board": "SETS/PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475/runs/KUANGYA_PROOF_01485/PROOF_BOARD.jpg",
+  "how_to_run": [
+    "python3 shq_kuangya_proof.py",
+    "python3 shq_kuangya.py proof",
+    "python3 shq_four_anti_f8.py --L0 ... --chu-part ... --chu-bei ... --sheng ... --out DIR --seat-born --role-label 正生"
+  ],
+  "claims": {
+    "A": "DNA 至高/反毒/八格 可載入且單元閘可執行",
+    "B": "elev 特寫誤標 正生 → F8 必 FAIL（E-KY-ATX-01）",
+    "C": "seat-born 路徑有完整 F8 結構閘（同機位除扣洞生回）",
+    "D": "無 seat_born → outside  alone 不得 F8_PASS",
+    "E": "框牙 selftest 審查力活"
+  },
+  "ACCEPT_FULL_HD": false,
+  "claim_level": "C2_PROOF_STRUCTURE",
+  "asof": "2026-11-10T00:53:09.053693+00:00"
+}

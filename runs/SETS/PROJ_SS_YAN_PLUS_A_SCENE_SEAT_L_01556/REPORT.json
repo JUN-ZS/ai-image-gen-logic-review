@@ -1,0 +1,60 @@
+{
+  "outside_scene_vs_Lbg": 0,
+  "outside_final_vs_Lbg_qing": 0,
+  "scenes": [
+    {
+      "id": "S01_sky_storm",
+      "gain": 2.7196285724639893,
+      "outside": 0,
+      "ok": true,
+      "seat_note": "band_minus_obj",
+      "area": 715383
+    },
+    {
+      "id": "S02_horizon_mountains",
+      "gain": 2.6573574542999268,
+      "outside": 0,
+      "ok": true,
+      "seat_note": "band_minus_obj",
+      "area": 276389
+    },
+    {
+      "id": "S03_wet_ground",
+      "gain": 2.655913829803467,
+      "outside": 0,
+      "ok": true,
+      "seat_note": "band_minus_obj",
+      "area": 626812
+    },
+    {
+      "id": "S04_sunset_glow_right",
+      "gain": 2.655038595199585,
+      "outside": 0,
+      "ok": true,
+      "seat_note": "band_minus_obj",
+      "area": 187687
+    },
+    {
+      "id": "S05_mist_haze",
+      "gain": 2.9747023582458496,
+      "outside": 0,
+      "ok": true,
+      "seat_note": "band_minus_obj",
+      "area": 255855
+    }
+  ],
+  "objects_on_qing": [
+    {
+      "id": "tank",
+      "outside": 0
+    },
+    {
+      "id": "mecha",
+      "outside": 0
+    },
+    {
+      "id": "soldier",
+      "outside": 0
+    }
+  ]
+}

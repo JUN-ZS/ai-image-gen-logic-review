@@ -1,0 +1,50 @@
+{
+  "write": "01607",
+  "call": "SS驗.背景清",
+  "maps_to": "SS驗.清+A->景 / STICK_SS_YAN_QING_PLUS_A_TO_SCENE",
+  "formal": "SHQ_SS_YAN_BG_QING_DENSIFY_RUN_V1",
+  "L0_src": "3ceec60a-09e7-4d61-a5c5-ba4ed17daee5",
+  "chain": [
+    [
+      "S0_L0",
+      "3ceec60a-09e7-4d61-a5c5-ba4ed17daee5",
+      "有景有物 图书馆废墟"
+    ],
+    [
+      "除主→L_bg",
+      "c4c1f8c4-0f88-4906-9719-1c3c4604ca72",
+      "去物件空景 架构+城景"
+    ],
+    [
+      "densify→L_bg_qing",
+      "04efa874-33f2-4a4c-b757-5f8ab71e70e0",
+      "生成级 densify 升清 同框意图 anti-FF"
+    ]
+  ],
+  "claim": "C_scene_BG_QING_DENSIFY",
+  "not_claim": "C2_object (本刀只背景清 densify，未物回贴)",
+  "gates": {
+    "G_S1_L_bg": true,
+    "G_S3_peep_from_L_bg": true,
+    "G_S5_not_on_L0_with_objects": true,
+    "I_PROCESS": true,
+    "I_SCENE": true,
+    "anti_freeframe_prompt": true,
+    "honest_geom_note": "Imagine 全帧 elev 仍可能微漂城景纵深；真硬锁需 MARK_seat band∩¬M_obj + outside vs L_bg（本跑为全帧背景 densify 演示）"
+  },
+  "qinli": [
+    "I-PROCESS",
+    "I-SCENE",
+    "I-SEAT-QING"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "assets": {
+    "L0": "3ceec60a-09e7-4d61-a5c5-ba4ed17daee5",
+    "L_bg": "c4c1f8c4-0f88-4906-9719-1c3c4604ca72",
+    "L_bg_qing_densify": "04efa874-33f2-4a4c-b757-5f8ab71e70e0",
+    "board": "74edf3c9-e868-4845-add3-7e38e7be08f6"
+  },
+  "asof": "2026-11-11T15:54:46.854422+00:00",
+  "PASS_demo": true,
+  "board": "74edf3c9-e868-4845-add3-7e38e7be08f6"
+}

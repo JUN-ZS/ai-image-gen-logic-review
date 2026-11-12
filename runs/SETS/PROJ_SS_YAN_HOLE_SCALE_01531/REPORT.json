@@ -1,0 +1,277 @@
+{
+  "write_id": "01531",
+  "SS_YAN": {
+    "formal": "SS驗",
+    "domains": {
+      "(1008, 1792)": [
+        "S0",
+        "S01"
+      ],
+      "(984, 572)": [
+        "S0A",
+        "S3",
+        "S9",
+        "S10",
+        "S11"
+      ],
+      "(855, 523)": [
+        "S5",
+        "S7"
+      ],
+      "(1282, 784)": [
+        "S6"
+      ]
+    },
+    "pairs": [
+      {
+        "pair": "S5×S7",
+        "domain": "peep",
+        "gate": "G4_ELEV",
+        "ok": true,
+        "reasons": [],
+        "out": null,
+        "same": true
+      },
+      {
+        "pair": "S9×S0A",
+        "domain": "工",
+        "gate": "G2_OUTSIDE",
+        "ok": true,
+        "reasons": [],
+        "out": 0,
+        "same": true
+      },
+      {
+        "pair": "S11×S0A",
+        "domain": "工",
+        "gate": "G2_OUTSIDE",
+        "ok": true,
+        "reasons": [],
+        "out": 0,
+        "same": true
+      },
+      {
+        "pair": "S01×S0",
+        "domain": "母",
+        "gate": "G5_S11xS0",
+        "ok": true,
+        "reasons": [],
+        "out": 0,
+        "same": true
+      },
+      {
+        "pair": "S10×S11",
+        "domain": "工",
+        "gate": "G1_SIZE",
+        "ok": true,
+        "reasons": [],
+        "out": null,
+        "same": true
+      },
+      {
+        "pair": "S3×S0A",
+        "domain": "工",
+        "gate": "G1_SIZE",
+        "ok": true,
+        "reasons": [],
+        "out": null,
+        "same": true
+      },
+      {
+        "pair": "S5×S3",
+        "domain": "RATIO",
+        "gate": "G3_RATIO",
+        "ok": true,
+        "reasons": [],
+        "err": 0.0060319082495883004,
+        "asp_peep": 0.6116959064327485,
+        "asp_hole": 0.6080283353010626
+      },
+      {
+        "pair": "S6×S5",
+        "domain": "放大暫態",
+        "gate": "G0_DOMAIN",
+        "ok": true,
+        "reasons": [],
+        "note": "暫態允許不同尺；禁當 peep",
+        "same": false,
+        "warn": true
+      }
+    ],
+    "ratio": {
+      "err": 0.0060319082495883004,
+      "asp_peep": 0.6116959064327485,
+      "asp_hole": 0.6080283353010626,
+      "ok": true
+    },
+    "PASS_SS_YAN": true,
+    "n_fail": 0
+  },
+  "hole_return": {
+    "S6_to_hole_scale": {
+      "We": 784,
+      "He": 1282,
+      "Wh": 515,
+      "Hh": 847,
+      "sx": 0.6568877551020408,
+      "sy": 0.6606864274570983,
+      "s_fit": 0.6568877551020408,
+      "s_cover": 0.6606864274570983,
+      "s_used": {
+        "sx": 0.6568877551020408,
+        "sy": 0.6606864274570983,
+        "kind": "fill_hole"
+      },
+      "k_zoom": 1.4994152046783626,
+      "We_eq": 523.0,
+      "He_eq": 855.0,
+      "tile_hw": [
+        847,
+        515
+      ],
+      "canvas_hw": [
+        847,
+        515
+      ],
+      "offset_xy": [
+        0,
+        0
+      ],
+      "frame_bbox": [
+        33,
+        72,
+        547,
+        918
+      ],
+      "asp_hole": 0.6080283353010626,
+      "asp_enlarged": 0.6115444617784711,
+      "asp_err": 0.005782833255077685,
+      "formula": "s_x=Wh/We; s_y=Hh/He; fill_hole→(Wh,Hh); 置中硬貼@bbox",
+      "law": "放大圖回洞 = resize→洞尺 · 框標置中 · 根因k_zoom可先折 peep"
+    },
+    "S7_to_hole_scale": {
+      "We": 523,
+      "He": 855,
+      "Wh": 515,
+      "Hh": 847,
+      "sx": 0.9847036328871893,
+      "sy": 0.9906432748538012,
+      "s_fit": 0.9847036328871893,
+      "s_cover": 0.9906432748538012,
+      "s_used": {
+        "sx": 0.9847036328871893,
+        "sy": 0.9906432748538012,
+        "kind": "fill_hole"
+      },
+      "k_zoom": 1.4994152046783626,
+      "We_eq": 523.0,
+      "He_eq": 855.0,
+      "tile_hw": [
+        847,
+        515
+      ],
+      "canvas_hw": [
+        847,
+        515
+      ],
+      "offset_xy": [
+        0,
+        0
+      ],
+      "frame_bbox": [
+        33,
+        72,
+        547,
+        918
+      ],
+      "asp_hole": 0.6080283353010626,
+      "asp_enlarged": 0.6116959064327485,
+      "asp_err": 0.0060319082495883004,
+      "formula": "s_x=Wh/We; s_y=Hh/He; fill_hole→(Wh,Hh); 置中硬貼@bbox",
+      "law": "放大圖回洞 = resize→洞尺 · 框標置中 · 根因k_zoom可先折 peep"
+    },
+    "peep_to_hole_scale": {
+      "We": 523,
+      "He": 855,
+      "Wh": 515,
+      "Hh": 847,
+      "sx": 0.9847036328871893,
+      "sy": 0.9906432748538012,
+      "s_fit": 0.9847036328871893,
+      "s_cover": 0.9906432748538012,
+      "s_used": {
+        "sx": 0.9847036328871893,
+        "sy": 0.9906432748538012,
+        "kind": "fill_hole"
+      },
+      "k_zoom": 1.4994152046783626,
+      "We_eq": 523.0,
+      "He_eq": 855.0,
+      "tile_hw": [
+        847,
+        515
+      ],
+      "canvas_hw": [
+        847,
+        515
+      ],
+      "offset_xy": [
+        0,
+        0
+      ],
+      "frame_bbox": [
+        33,
+        72,
+        547,
+        918
+      ],
+      "asp_hole": 0.6080283353010626,
+      "asp_enlarged": 0.6116959064327485,
+      "asp_err": 0.0060319082495883004,
+      "formula": "s_x=Wh/We; s_y=Hh/He; fill_hole→(Wh,Hh); 置中硬貼@bbox",
+      "law": "放大圖回洞 = resize→洞尺 · 框標置中 · 根因k_zoom可先折 peep"
+    },
+    "outside": {
+      "S6_fill_outside": 0,
+      "S7_fill_outside": 0,
+      "peep_fill_outside": 0
+    },
+    "PASS_HOLE_RETURN": true
+  },
+  "root": {
+    "k_S0A": 0.9761904761904762,
+    "k_peep": 0.8689024390243902,
+    "k_zoom": 1.4994152046783626,
+    "tol_ratio": 0.15,
+    "tol_outside": 0,
+    "measured": {
+      "k_S0A": 0.9761904761904762,
+      "k_peep": 0.8689024390243902,
+      "k_zoom": 1.4994152046783626
+    },
+    "presets_used": {
+      "tol_ratio": 0.15,
+      "tol_outside": 0
+    }
+  },
+  "frame": {
+    "bbox_xyxy": [
+      33,
+      72,
+      547,
+      918
+    ],
+    "Wh": 515,
+    "Hh": 847,
+    "cx": 290.0,
+    "cy": 495.0,
+    "area": 215800.0,
+    "asp_wh": 0.6080283353010626,
+    "cover_frac": 0.38340724316334074
+  },
+  "PASS_SS_YAN": true,
+  "PASS_HOLE_RETURN": true,
+  "PASS_ALL": true,
+  "asof": "2026-11-10T13:43:06.397960+00:00",
+  "ACCEPT_FULL_HD": false
+}

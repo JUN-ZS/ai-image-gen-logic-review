@@ -1,0 +1,149 @@
+{
+  "formal": "HOLE_SEAT_HARDLOCK_SHENG_V1",
+  "zh": "洞座硬锁升清：升TEXTURE不影响位",
+  "write": "01538",
+  "gold_seat": "RET_S6_SS / peep fill_hole",
+  "donor_role": "TEXTURE only after warp→seat",
+  "equations": {
+    "warp": "T' = ECC_affine(TEX → seat_gold)",
+    "F1": "I* = LF(seat) + HF(T')",
+    "F2": "I* = seat + α·HF(T')",
+    "F3": "I* = seat + clip(α·HF(T'), ±τ)",
+    "F4": "I* = bilateral(seat) + β·HF(T')",
+    "hard": "S9 = S0A⊙(1−M) + I*⊙M   outside≡0"
+  },
+  "invariant": [
+    "洞形 MARK 不改",
+    "框標 bbox 不改",
+    "LF 结构 / 金位像素主权",
+    "donor 不得未 warp 进洞"
+  ],
+  "accept": "pose dx=dy=0 ∧ struct_lf_mad<5 ∧ outside=0",
+  "ban": "freeframe elev/resize 当 I*（E-SS-08）",
+  "ecc_cc": 0.9974538993237536,
+  "warp_matrix": [
+    [
+      0.9176284074783325,
+      -4.694072049460374e-05,
+      9.843961715698242
+    ],
+    [
+      -0.00017480281530879438,
+      0.9273344874382019,
+      21.460407257080078
+    ]
+  ],
+  "best": "F2_seat_plus_aHF",
+  "results": {
+    "F0_BAN_no_warp": {
+      "desc": "freeframe resize 无对齐",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 322618624.0,
+        "edge_iou": 0.2748261873393945,
+        "inside_mad": 34.572906494140625,
+        "struct_lf_mad": 24.155675888061523,
+        "pose_lock": false
+      },
+      "tex_gain": 1.2581303791827432,
+      "pos_ok": false,
+      "PASS": false,
+      "ban": true,
+      "ecc_cc": 0.9974538993237536
+    },
+    "F1_LF_seat_HF_tex": {
+      "desc": "I*=LF(金)+HF(warp)",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 485297920.0,
+        "edge_iou": 0.6885745833114254,
+        "inside_mad": 3.885756492614746,
+        "struct_lf_mad": 0.26634037494659424,
+        "pose_lock": true
+      },
+      "tex_gain": 0.8188554479038774,
+      "pos_ok": true,
+      "PASS": true,
+      "ban": false,
+      "ecc_cc": 0.9974538993237536
+    },
+    "F2_seat_plus_aHF": {
+      "desc": "I*=金+α·HF(warp)",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 536682656.0,
+        "edge_iou": 0.7459844428730175,
+        "inside_mad": 9.263190269470215,
+        "struct_lf_mad": 2.00714111328125,
+        "pose_lock": true
+      },
+      "tex_gain": 1.5791084027590132,
+      "pos_ok": true,
+      "PASS": true,
+      "ban": false,
+      "ecc_cc": 0.9974538993237536
+    },
+    "F3_seat_plus_capHF": {
+      "desc": "I*=金+clip(α·HF)",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 532540832.0,
+        "edge_iou": 0.7478246234115964,
+        "inside_mad": 8.680813789367676,
+        "struct_lf_mad": 1.9653418064117432,
+        "pose_lock": true
+      },
+      "tex_gain": 1.5341691293175224,
+      "pos_ok": true,
+      "PASS": true,
+      "ban": false,
+      "ecc_cc": 0.9974538993237536
+    },
+    "F4_bilateral_HF": {
+      "desc": "bilateral(金)+HF",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 525522624.0,
+        "edge_iou": 0.7643636363636364,
+        "inside_mad": 6.657497406005859,
+        "struct_lf_mad": 1.6857038736343384,
+        "pose_lock": true
+      },
+      "tex_gain": 1.2750440372067142,
+      "pos_ok": true,
+      "PASS": true,
+      "ban": false,
+      "ecc_cc": 0.9974538993237536
+    },
+    "FAIL_01537_C": {
+      "desc": "上轮 C densify 位动",
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 498875104.0,
+        "edge_iou": 0.5383797911909584,
+        "inside_mad": 8.240004539489746,
+        "struct_lf_mad": 0.9985442757606506,
+        "pose_lock": true
+      },
+      "outside_S9": 11,
+      "PASS": false,
+      "ban": true
+    }
+  }
+}

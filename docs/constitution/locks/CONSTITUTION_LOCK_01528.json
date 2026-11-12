@@ -1,0 +1,15 @@
+{
+  "write_id": "01528",
+  "zh": "S(X)A 通用+验RATIO/ELEV/FF/ZOOM",
+  "PASS_ALL": true,
+  "gates": {
+    "RATIO": true,
+    "ELEV": true,
+    "FREEFRAME": true,
+    "PEEP_ZOOM_IN": true,
+    "PEEP_ZOOM_OUT": true,
+    "SX_ALIGN": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:13:03.024358+00:00"
+}

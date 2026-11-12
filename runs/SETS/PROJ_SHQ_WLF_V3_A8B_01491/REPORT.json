@@ -1,0 +1,78 @@
+{
+  "write_id": "01491",
+  "formal": "WAI_LI_FAN_V3_A8B_TRY_V1",
+  "zh": "外力反 V3 · 女主A8B 頭大咬 MARK-first",
+  "STICK": "STICK_WAI_LI_FAN_V3",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "chain": [
+    "S0 SRC",
+    "S1 MARK",
+    "S2 真洞",
+    "S3 peep",
+    "S4 外力除",
+    "S5 扣證",
+    "S6 洞座生",
+    "S7 回",
+    "S8 反",
+    "ERROR無洞教材"
+  ],
+  "assets": {
+    "L0": "b8faaff0-a40e-468d-a3d2-6cd90c1c7e12",
+    "CLIP_subj": "9b58d86a-7d52-4ebf-88f5-cce9dfb32589",
+    "L1_chu": "71fecbc6-f5e5-46f1-99a2-8794b735d186",
+    "I_sheng": "78385a46-8a5f-40e5-8a84-3348abef0c33"
+  },
+  "state_bus": {
+    "SRC": "ingest/L0.jpg",
+    "MARK": "run/S1_MARK_M.png",
+    "L1": "ingest/L1_chu.jpg",
+    "peep": "run/S1_peep_MARK.png",
+    "I_sheng": "ingest/I_sheng_seat.jpg",
+    "RETURN": "run/S7_RETURN_on_L0.jpg",
+    "TRUE_HOLE": "run/S2_TRUE_HOLE_checker.jpg",
+    "ERROR_NO_HOLE": "ERROR_TEXTBOOK/E_WLF3_01_RETURN_WITHOUT_HOLE.jpg"
+  },
+  "gates": {
+    "MARK_defined": true,
+    "hole_frac": 0.06061220060941043,
+    "kou_cover_MARK": 0.7871508686042051,
+    "chu_via_Imagine": true,
+    "sheng_via_Imagine_seat": true,
+    "sheng_not_freeframe_without_hole": true,
+    "outside_L0": 0,
+    "outside_L1": 0,
+    "outside_0": true,
+    "elev_remap": false,
+    "sovereignty_MARK": true,
+    "E-FA-08": false,
+    "E-FA-12": false,
+    "E-WLF3-01_textbook": true
+  },
+  "corners_4": [
+    [
+      513,
+      68
+    ],
+    [
+      948,
+      68
+    ],
+    [
+      948,
+      457
+    ],
+    [
+      513,
+      457
+    ]
+  ],
+  "status": "PASS",
+  "claim": "C2_WAI_LI_FAN_V3_A8B",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:22:50.302037+00:00",
+  "金句": [
+    "洞是抓走前的座位；除是離開；扣是驗票；生是升級；回是入座。",
+    "CLIP 是身份，洞是座位。無洞回 = E-WLF3-01 錯位教材。",
+    "除與生主權在 外力GROK；OpenCV 只扣、只貼、只反查。"
+  ]
+}

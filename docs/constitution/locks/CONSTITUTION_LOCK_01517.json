@@ -1,0 +1,14 @@
+{
+  "write_id": "01517",
+  "zh": "遠景3人機：MARK-first S0A子集 + S0R只有洞 ← elev+外力GROK+强心针",
+  "PASS": true,
+  "S0R_outside": 0,
+  "bbox": [
+    119,
+    293,
+    375,
+    549
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T11:06:09.324822+00:00"
+}

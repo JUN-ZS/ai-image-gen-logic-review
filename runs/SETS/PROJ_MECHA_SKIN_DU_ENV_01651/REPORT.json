@@ -1,0 +1,26 @@
+{
+  "write": "01651",
+  "call": "独·环境反射",
+  "test": "mecha+skin",
+  "PASS": true,
+  "out": 0,
+  "judges": [
+    {
+      "name": "MECHA",
+      "mat": "metal",
+      "path": "独·环境反射 沙漠",
+      "F8": true,
+      "area": 212868
+    },
+    {
+      "name": "HUMAN",
+      "mat": "skin",
+      "path": "独·环境反射 沙漠",
+      "F8": true,
+      "area": 141283
+    }
+  ],
+  "claim": "C2_DU_ENV_MECHA_SKIN_01651",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T01:29:53.232293+00:00"
+}

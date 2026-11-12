@@ -1,0 +1,111 @@
+{
+  "write_id": "01496",
+  "formal": "KUANGYA_BOOST_S4_TO_END_TRY_V1",
+  "zh": "框牙·強心針 S4→尾 實測",
+  "needle": "[部件'認'∩放大∩升質×物]",
+  "range": "S4→S11 + 外力回正洞",
+  "assets": {
+    "L0": "e91f1f94-3f6d-4505-a39f-cbe7afe76c8a",
+    "L1": "d4300a9f-0f94-441a-bae5-a5088c240c5a",
+    "CLIP": "2ab36e45-618b-44ae-ba30-fe734433875d",
+    "elev_candidate": "bb889e9a-0e26-47a0-b984-56b45bbf6ebe",
+    "I_sheng": "a8a871c4-15ee-4f1a-9245-210433013c18"
+  },
+  "boost_and": true,
+  "all_ok": true,
+  "outside": 0,
+  "F8_PASS": true,
+  "stages": {
+    "S4": {
+      "name": "部件'認' 外力+整中之件",
+      "ok": true,
+      "part_role": "mecha_head_independent_whole_part",
+      "hole_frac": 0.07207684506094104,
+      "centroid": [
+        0.25032840696220626,
+        0.49703062593609587
+      ],
+      "bbox": [
+        573,
+        18,
+        1255,
+        392
+      ],
+      "not_band": true,
+      "boost": "REN"
+    },
+    "S5": {
+      "name": "獨立部件 peep=身份",
+      "ok": true,
+      "crop_hw": [
+        386,
+        694
+      ],
+      "is_identity_not_return": true
+    },
+    "S6": {
+      "name": "放大 scale-lock",
+      "ok": true,
+      "scale_up": 1.5,
+      "return_lock": 1.0,
+      "grow_max": 1.15,
+      "not_yet_return_to_hole": true,
+      "boost": "SCALE",
+      "peep_scale_is": "S5+S6 only"
+    },
+    "S7": {
+      "name": "升質×物 elev_candidate",
+      "ok": true,
+      "role": "elev_candidate_NOT_正生",
+      "driver": "外力GROK",
+      "black_frac": 0.06604917357568027,
+      "boost": "ELEV_x"
+    },
+    "S8": {
+      "name": "強心針 AND",
+      "ok": true,
+      "REN": true,
+      "SCALE": true,
+      "ELEV_x": true,
+      "E-KY-BOOST-04": false
+    },
+    "S9": {
+      "name": "正生 seat-born 外力回正洞",
+      "ok": true,
+      "driver": "外力GROK",
+      "base": "L1 hole seat",
+      "ref": "part identity / elev optional",
+      "method": "01495 外力 seat-born on MARK"
+    },
+    "S10": {
+      "name": "正回 hardpaste 入正洞",
+      "ok": true,
+      "outside_L0": 0,
+      "outside_L1": 0,
+      "proves": "洞外≡base"
+    },
+    "S11": {
+      "name": "反板 F8",
+      "ok": true,
+      "F8_PASS": true,
+      "status": "PASS",
+      "outside_f8": 0
+    }
+  },
+  "state_bus": {
+    "SRC": "ingest/L0.jpg",
+    "L1": "ingest/L1_chu.jpg",
+    "MARK": "run/MARK_M.png",
+    "peep": "S4_END/S5_peep_crop.jpg",
+    "elev_candidate": "ingest/ELEV_CANDIDATE.jpg",
+    "I_sheng": "ingest/I_sheng_seat.jpg",
+    "RETURN": "run/RETURN_on_L0.jpg",
+    "driver": "外力GROK",
+    "part_role": "mecha_head_independent_whole_part"
+  },
+  "claim": "C2_BOOST_S4_END",
+  "return_method": "01495 外力 seat-born on MARK → hardpaste",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:45:59.636127+00:00",
+  "f8_tail": "088523951247,\n    \"E-KY-ATX-01\": false\n  },\n  \"gates\": {\n    \"no_self_peep_CLIP\": true,\n    \"CLIP_from_chu_bei\": true,\n    \"four_anti_F8_cells\": true,\n    \"return_outside_0\": true,\n    \"wai_li_grok_sheng\": true,\n    \"no_local_elev_as_sheng\": true,\n    \"MARK_frozen\": true,\n    \"algebra_F\": \"[(生,除,洞,扣)×(反)]\",\n    \"sheng_seat_born\": true,\n    \"no_freeframe_hole_return\": true\n  },\n  \"supreme\": true\n}\n"
+}

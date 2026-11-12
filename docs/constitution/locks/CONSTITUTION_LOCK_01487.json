@@ -1,0 +1,11 @@
+{
+  "write_id": "01487",
+  "formal": "KUANGYA_SUPREME_BOOST_PART_RECOG_SCALE_ELEV_V1",
+  "zh": "至高強心針 · 部件認∩放大∩升質×物",
+  "rank": "SUPREME_BOOST",
+  "injects_into": "01483",
+  "needle": "[部件'認' ∩ '放大' ∩ '升質×物']",
+  "full_binding": "[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件'認' ∩ '放大' ∩ '升質×物']",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:02:52.554828+00:00"
+}

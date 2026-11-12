@@ -1,0 +1,39 @@
+{
+  "write_id": "01674",
+  "call": "追·B0B3",
+  "formal": "SHQ_BOUNCE_B0_B3_FOV_HARDPASTE_V1",
+  "equation": "B0 ENV0=mix(↓FF,reflect); B1 glass sample ENV0 独; ENV1=ENV0⊕inject(B1); B2 metal ENV1 FAR; B3 diff ENV1 MID; S11 FOV-hardpaste B2→B3→B1 outside=0",
+  "order": [
+    "B0",
+    "B1+inject",
+    "B2",
+    "B3",
+    "S11 FOV hardpaste"
+  ],
+  "depth": {
+    "FAR": "B2 metal soft",
+    "MID": "B3 diff mid",
+    "NEAR": "B1 glass sharp"
+  },
+  "gates": {
+    "outside_vs_L1": 0,
+    "outside_0": true,
+    "n_NEAR": 398310,
+    "n_MID": 71343,
+    "n_FAR": 300239,
+    "aperture": 15089
+  },
+  "DNA_not_ying": true,
+  "method": "外力 L1/GOLD as FF; sample/inject/hardpaste 实现",
+  "parent": [
+    "正追",
+    "先光01672",
+    "外力应变01673",
+    "镂空01670",
+    "禁框01671"
+  ],
+  "PASS": true,
+  "asof": "2026-11-12T04:54:18.016752+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_BOUNCE_B0B3_FOV"
+}

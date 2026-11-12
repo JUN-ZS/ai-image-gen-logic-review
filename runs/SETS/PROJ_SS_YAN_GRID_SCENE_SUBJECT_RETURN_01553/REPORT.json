@@ -1,0 +1,19 @@
+{
+  "outside": 0,
+  "C2_pass": true,
+  "whole_gains": {
+    "W01_mecha": 1.7770848274230957,
+    "W02_soldier": 1.4853121042251587,
+    "W03_tank": 2.03661847114563
+  },
+  "scene_gains": {
+    "S01_sky_storm": 2.200566053390503,
+    "S02_horizon_mountains": 2.119800329208374,
+    "S03_wet_ground": 2.3641774654388428,
+    "S04_sunset_glow_right": 2.1420607566833496,
+    "R01_left_stage": 2.4249045848846436,
+    "R02_center_stage": 2.303954839706421,
+    "R03_right_stage": 2.139796018600464
+  },
+  "n_returnable": 11
+}

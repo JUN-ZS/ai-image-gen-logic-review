@@ -1,0 +1,293 @@
+{
+  "write_id": "01573",
+  "call": "虛回 × SS驗.清+A · 頭手腳身4",
+  "金句": "1 个 PART = 1 次独立 SS验.清+A（除该(頭手腳身4件)主 → 留身(即移走該主/頭手腳等) → 座洞鎖同概念 GROK外力认图·放大 升清 → 自座洞）× 勤力DNA",
+  "parts": [
+    {
+      "id": "tou",
+      "zh": "頭"
+    },
+    {
+      "id": "shou",
+      "zh": "手"
+    },
+    {
+      "id": "shen",
+      "zh": "身"
+    },
+    {
+      "id": "jiao",
+      "zh": "腳"
+    }
+  ],
+  "equation": "∀p∈{頭,手,腳,身}: 除p主→留身→GROK认图放大升清→自座洞; assemble→虚回",
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "mecha",
+      "N": 4,
+      "parts_ok": true,
+      "PASS_inner": true,
+      "claim_inner": "C2_INNER_SS_A",
+      "out_inner": 0,
+      "mad_wh": 5.9,
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "parts": [
+        {
+          "pid": "tou",
+          "zh": "頭",
+          "out_inner": 0,
+          "mad": 6.69,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 3609,
+          "bbox": [
+            61,
+            0,
+            178,
+            111
+          ],
+          "logic": "除頭主 → 留身(移走頭) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/mecha/tou_頭_xN.jpg"
+        },
+        {
+          "pid": "shou",
+          "zh": "手",
+          "out_inner": 0,
+          "mad": 6.01,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 13919,
+          "bbox": [
+            0,
+            112,
+            209,
+            244
+          ],
+          "logic": "除手主 → 留身(移走手) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/mecha/shou_手_xN.jpg"
+        },
+        {
+          "pid": "shen",
+          "zh": "身",
+          "out_inner": 0,
+          "mad": 5.16,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 20697,
+          "bbox": [
+            3,
+            112,
+            226,
+            316
+          ],
+          "logic": "除身主 → 留身(移走身) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/mecha/shen_身_xN.jpg"
+        },
+        {
+          "pid": "jiao",
+          "zh": "腳",
+          "out_inner": 0,
+          "mad": 6.52,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 17188,
+          "bbox": [
+            6,
+            317,
+            223,
+            511
+          ],
+          "logic": "除腳主 → 留身(移走腳) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/mecha/jiao_腳_xN.jpg"
+        }
+      ],
+      "勤力": {
+        "I-PROCESS": true,
+        "I-SEAT": true,
+        "I-ID-BAN": true
+      }
+    },
+    {
+      "id": "climber",
+      "N": 4,
+      "parts_ok": true,
+      "PASS_inner": true,
+      "claim_inner": "C2_INNER_SS_A",
+      "out_inner": 0,
+      "mad_wh": 4.27,
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "parts": [
+        {
+          "pid": "tou",
+          "zh": "頭",
+          "out_inner": 0,
+          "mad": 4.89,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 1693,
+          "bbox": [
+            5,
+            0,
+            78,
+            43
+          ],
+          "logic": "除頭主 → 留身(移走頭) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/climber/tou_頭_xN.jpg"
+        },
+        {
+          "pid": "shou",
+          "zh": "手",
+          "out_inner": 0,
+          "mad": 3.73,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 2238,
+          "bbox": [
+            0,
+            44,
+            84,
+            96
+          ],
+          "logic": "除手主 → 留身(移走手) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/climber/shou_手_xN.jpg"
+        },
+        {
+          "pid": "shen",
+          "zh": "身",
+          "out_inner": 0,
+          "mad": 2.45,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 1746,
+          "bbox": [
+            15,
+            44,
+            71,
+            125
+          ],
+          "logic": "除身主 → 留身(移走身) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/climber/shen_身_xN.jpg"
+        },
+        {
+          "pid": "jiao",
+          "zh": "腳",
+          "out_inner": 0,
+          "mad": 5.09,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 4027,
+          "bbox": [
+            0,
+            126,
+            73,
+            203
+          ],
+          "logic": "除腳主 → 留身(移走腳) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/climber/jiao_腳_xN.jpg"
+        }
+      ],
+      "勤力": {
+        "I-PROCESS": true,
+        "I-SEAT": true,
+        "I-ID-BAN": true
+      }
+    },
+    {
+      "id": "rover",
+      "N": 4,
+      "parts_ok": true,
+      "PASS_inner": true,
+      "claim_inner": "C2_INNER_SS_A",
+      "out_inner": 0,
+      "mad_wh": 3.45,
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "parts": [
+        {
+          "pid": "tou",
+          "zh": "頭",
+          "out_inner": 0,
+          "mad": 7.64,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 6409,
+          "bbox": [
+            116,
+            0,
+            293,
+            70
+          ],
+          "logic": "除頭主 → 留身(移走頭) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/rover/tou_頭_xN.jpg"
+        },
+        {
+          "pid": "shou",
+          "zh": "手",
+          "out_inner": 0,
+          "mad": 4.56,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 12307,
+          "bbox": [
+            58,
+            71,
+            376,
+            154
+          ],
+          "logic": "除手主 → 留身(移走手) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/rover/shou_手_xN.jpg"
+        },
+        {
+          "pid": "shen",
+          "zh": "身",
+          "out_inner": 0,
+          "mad": 3.06,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 19169,
+          "bbox": [
+            26,
+            71,
+            377,
+            199
+          ],
+          "logic": "除身主 → 留身(移走身) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/rover/shen_身_xN.jpg"
+        },
+        {
+          "pid": "jiao",
+          "zh": "腳",
+          "out_inner": 0,
+          "mad": 2.43,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "area": 32377,
+          "bbox": [
+            0,
+            200,
+            430,
+            323
+          ],
+          "logic": "除腳主 → 留身(移走腳) → GROK认图放大升清 → 自座洞",
+          "xN": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/rover/jiao_腳_xN.jpg"
+        }
+      ],
+      "勤力": {
+        "I-PROCESS": true,
+        "I-SEAT": true,
+        "I-ID-BAN": true
+      }
+    }
+  ],
+  "勤力DNA": true,
+  "ACCEPT_FULL_HD": false,
+  "GROK_xN_crops": "SETS/PROJ_XU_HUI_A_4PART_01573/crops/ (外力 densify 槽)",
+  "asof": "2026-11-11T04:07:57.826401+00:00"
+}

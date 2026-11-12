@@ -1,0 +1,18 @@
+{
+  "write_id": "01629",
+  "call": "除背座軸",
+  "formal": "SHQ_RECOG_CHUBEI_MARK_AXIS_V1",
+  "seat_source": "外力認物除背 alpha",
+  "align": [
+    "cx",
+    "cy",
+    "axis_deg"
+  ],
+  "ban": [
+    "乱CC当座",
+    "乱差分当座"
+  ],
+  "bubu": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:10:44.294324+00:00"
+}

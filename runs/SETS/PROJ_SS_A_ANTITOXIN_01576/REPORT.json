@@ -1,0 +1,28 @@
+{
+  "write_id": "01576",
+  "call": "SS验.清+A 新图验毒",
+  "散散_kept": "SETS/PROJ_SS_A_ANTITOXIN_01576/散散_POLLUTE",
+  "new_scene": "Tokyo alley woman red umbrella",
+  "PASS": true,
+  "outside": 0,
+  "mad": 18.74,
+  "tox": {
+    "T2_vertical_band_PART_used": false,
+    "T3_GROK_chu_zhu": true,
+    "T1_PART_peep_from_SRC_while_other_parts_removed": false,
+    "T4_claim_seat": true,
+    "elev_has_forbidden_removed_parts": "N/A WHOLE",
+    "染毒": false
+  },
+  "染毒": false,
+  "claim": "C2_SS_A_CLEAN_ANTITOXIN",
+  "path": "L0→GROK除主L1→MARK→peep WHOLE→GROK densify→seat RETURN",
+  "no_PART_rerun": true,
+  "勤力": {
+    "I-PROCESS": true,
+    "I-SEAT": true,
+    "GROK_chu": true
+  },
+  "asof": "2026-11-11T04:28:36.155581+00:00",
+  "ACCEPT_FULL_HD": false
+}

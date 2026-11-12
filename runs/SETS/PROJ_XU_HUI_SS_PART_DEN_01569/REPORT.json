@@ -1,0 +1,79 @@
+{
+  "write_id": "01569",
+  "call": "虛回",
+  "flow": "peep→SS验.清+A分部件→Imagine densify→组elev→虚回B_direct",
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "mecha",
+      "outside": 0,
+      "mad_vs_peep": 14.95,
+      "follow": "B_direct_hard",
+      "parts_den": {
+        "P0_upper": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/mecha/den_P0_upper.jpg",
+          "src": "imagine"
+        },
+        "P1_mid": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/mecha/den_P1_mid.jpg",
+          "src": "imagine"
+        },
+        "P2_lower": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/mecha/den_P2_lower.jpg",
+          "src": "imagine"
+        }
+      },
+      "ok": true
+    },
+    {
+      "id": "climber",
+      "outside": 0,
+      "mad_vs_peep": 19.14,
+      "follow": "B_direct_hard",
+      "parts_den": {
+        "P0_upper": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/climber/den_P0_upper.jpg",
+          "src": "imagine"
+        },
+        "P1_mid": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/climber/den_P1_mid.jpg",
+          "src": "imagine"
+        },
+        "P2_lower": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/climber/den_P2_lower.jpg",
+          "src": "imagine"
+        }
+      },
+      "ok": true
+    },
+    {
+      "id": "rover",
+      "outside": 0,
+      "mad_vs_peep": 14.44,
+      "follow": "B_direct_hard",
+      "parts_den": {
+        "P0_upper": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/rover/den_P0_upper.jpg",
+          "src": "imagine"
+        },
+        "P1_mid": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/rover/den_P1_mid.jpg",
+          "src": "imagine"
+        },
+        "P2_lower": {
+          "path": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/leaf/rover/den_P2_lower.jpg",
+          "src": "imagine"
+        }
+      },
+      "ok": true
+    }
+  ],
+  "gates": {
+    "B_direct_hard": true,
+    "exclusive_parts": true,
+    "no_contract_lock": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T03:31:52.219474+00:00"
+}

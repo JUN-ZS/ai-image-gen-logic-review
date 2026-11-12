@@ -1,0 +1,29 @@
+[
+  {
+    "ok": false,
+    "errs": [
+      "E-QL-01",
+      "E-QL-02",
+      "E-QL-03"
+    ],
+    "PASS_RETURN": false
+  },
+  {
+    "ok": true,
+    "errs": [],
+    "PASS_RETURN": true
+  },
+  {
+    "ok": false,
+    "errs": [
+      "E-QL-02",
+      "E-QL-03"
+    ],
+    "PASS_RETURN": false
+  },
+  {
+    "ok": true,
+    "errs": [],
+    "PASS_RETURN": false
+  }
+]

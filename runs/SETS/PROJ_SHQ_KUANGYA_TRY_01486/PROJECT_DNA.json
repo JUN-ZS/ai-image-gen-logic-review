@@ -1,0 +1,104 @@
+{
+  "project_id": "PROJ_SHQ_KUANGYA_TRY_01486",
+  "write_id": "01486",
+  "formal": "KUANGYA_TRY_INHERIT_DNA_V1",
+  "zh": "框牙試跑 · 繼承至高/反毒/無毒DONOR/F8",
+  "boundary": {
+    "exec_dna": {
+      "supreme_clause": {
+        "write": "01483",
+        "binding": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效",
+        "rank": "SUPREME",
+        "precedence": 0
+      },
+      "anti_toxin_algebra_img": {
+        "write": "01484",
+        "ban": [
+          "elev_as_正生",
+          "elev_as_algebra_image",
+          "freeframe_特写主權"
+        ]
+      },
+      "donor_toxin_free": {
+        "write": "01482",
+        "DONOR0": "L0 peep@MARK",
+        "DONOR1": "elev_candidate only NOT 正生"
+      },
+      "algebra_F8": "[(生,除,洞,扣)×(反)]",
+      "must_wai_li_grok": true,
+      "sheng_seat_born": true,
+      "no_self_peep": true,
+      "outside_alone_not_pass": true,
+      "require": [
+        "[(生,除,洞,扣)×(反)]",
+        "must_wai_li_grok",
+        "supreme_F8_via_wai_li_grok",
+        "drive_chu_sheng_via_imagine",
+        "sheng_seat_born",
+        "donor_toxin_free",
+        "no_mislabel_elev"
+      ],
+      "forbid": [
+        "E-KY-SUPREME-01",
+        "E-KY-SUPREME-02",
+        "E-KY-ATX-01",
+        "E-KY-ATX-03",
+        "E-WLG-06",
+        "E-DNA-CANCER-SELF_PEEP",
+        "E-POLLUTE-HOLE_RETURN_FREEFRAME",
+        "local_drive_substitute",
+        "elev_as_正生"
+      ],
+      "supreme_boost": {
+        "write": "01487",
+        "needle": "[部件'認' ∩ '放大' ∩ '升質×物']",
+        "full": "[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件'認' ∩ '放大' ∩ '升質×物']"
+      }
+    }
+  },
+  "dock": {
+    "binds": [
+      "STICK_WAI_LI_GROK",
+      "STICK_WAI_LI_FAN_V2",
+      "STICK_FOUR_ANTI_ARCH",
+      "KUANGYA_SUPREME_01483",
+      "DNA_DONOR_TOXIN_FREE_V1",
+      "DNA_KUANGYA_ANTI_TOXIN_01484",
+      "CALL_KUANGYA",
+      "FOUR_ANTI_F8"
+    ],
+    "parents": [
+      "01472",
+      "01473",
+      "01476",
+      "01477",
+      "01482",
+      "01483",
+      "01484",
+      "01485"
+    ]
+  },
+  "authority": {
+    "CALL": "框牙",
+    "driver": "外力GROK",
+    "algebra": "[(生,除,洞,扣)×(反)]",
+    "ACCEPT_FULL_HD": false
+  },
+  "try": {
+    "scene": "new mid industrial single-mecha head-bite (not dual 01475 copy)",
+    "chain": "L0 freeze → 外力除件 → 外力除背 → kou MARK → 外力洞座生 → hardpaste → F8 8格+反"
+  },
+  "asof": "2026-11-10T00:55:30.103534+00:00",
+  "try_result": {
+    "F8_PASS": true,
+    "outside": 0,
+    "claim": "C2",
+    "assets": {
+      "L0": "453009ca-0aa3-4cea-908e-e560adec7942",
+      "正除_chu_part": "0d8f1cd0-c3a8-47f8-b672-605591963b17",
+      "除背": "aacb02cb-2fe6-417d-9483-51dc03570641",
+      "正生_seat": "318385be-1f81-45e1-87b5-fc9558095204"
+    },
+    "asof": "2026-11-10T00:57:16.104101+00:00"
+  }
+}

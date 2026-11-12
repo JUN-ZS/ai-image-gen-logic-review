@@ -1,0 +1,184 @@
+{
+  "write_id": "01509",
+  "formal": "SHQ_ZHENG_SHEN_SX_S0_S11_V1",
+  "zh": "框牙驱动正身 S0→S11 全 (S)×(S)",
+  "stick": "STICK_ZHENG_SHEN",
+  "call": "框牙",
+  "driver": "外力GROK",
+  "chain": [
+    [
+      "S0",
+      true,
+      "f80e6a3e61e4"
+    ],
+    [
+      "S1",
+      true,
+      "8f58c0abb113"
+    ],
+    [
+      "S2",
+      true,
+      "c80e3f51428b"
+    ],
+    [
+      "S3",
+      true,
+      "6a98175cc234"
+    ],
+    [
+      "S4",
+      true,
+      "3f1066c1575e"
+    ],
+    [
+      "S5",
+      true,
+      "9e14677d7c99"
+    ],
+    [
+      "S6",
+      true,
+      "20f4011c3974"
+    ],
+    [
+      "S7",
+      true,
+      "6382b308c29a"
+    ],
+    [
+      "S8",
+      true,
+      "04ab66079ae8"
+    ],
+    [
+      "S9",
+      true,
+      "abd9f8921eb9"
+    ],
+    [
+      "S10",
+      true,
+      "6afb65eb24a5"
+    ],
+    [
+      "S11",
+      true,
+      "out=0"
+    ]
+  ],
+  "sx_table": {
+    "S0": {
+      "writes": "L0",
+      "reads": [],
+      "lock": "never_overwrite"
+    },
+    "S1": {
+      "writes": "L1",
+      "reads": [
+        "S0"
+      ],
+      "lock": "parent_sha"
+    },
+    "S2": {
+      "writes": "diff",
+      "reads": [
+        "S0",
+        "S1"
+      ],
+      "lock": "parent_sha"
+    },
+    "S3": {
+      "writes": "MARK",
+      "reads": [
+        "S2"
+      ],
+      "lock": "never_overwrite MARK"
+    },
+    "S4": {
+      "writes": "recog",
+      "reads": [
+        "S3"
+      ],
+      "lock": "part_role"
+    },
+    "S5": {
+      "writes": "peep_full",
+      "reads": [
+        "S0",
+        "S3"
+      ],
+      "lock": "never_overwrite peep"
+    },
+    "S6": {
+      "writes": "scale",
+      "reads": [
+        "S5"
+      ],
+      "lock": "scale_from peep only"
+    },
+    "S7": {
+      "writes": "elev",
+      "reads": [
+        "S5",
+        "S6"
+      ],
+      "lock": "elev child; peep intact"
+    },
+    "S8": {
+      "writes": "BOOST AND",
+      "reads": [
+        "S4",
+        "S6",
+        "S7"
+      ],
+      "lock": "三关 AND"
+    },
+    "S9": {
+      "writes": "正身",
+      "reads": [
+        "S1",
+        "S3",
+        "S5",
+        "S8"
+      ],
+      "lock": "reload MARK+peep"
+    },
+    "S10": {
+      "writes": "hardpaste",
+      "reads": [
+        "S0",
+        "S3",
+        "S9"
+      ],
+      "lock": "M fill only"
+    },
+    "S11": {
+      "writes": "gate",
+      "reads": [
+        "S0",
+        "S3",
+        "S10"
+      ],
+      "lock": "S11×S0 outside=0"
+    }
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 222,
+  "PASS_SX_FULL": true,
+  "claim": "C2_ZHENG_SHEN_SX_S0_S11",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T09:29:44.067598+00:00",
+  "kuangya": {
+    "harness": "01472",
+    "audit": "01473",
+    "supreme": "[(生,除,洞,扣)×(反)]←外力GROK ⊕ 强心针 ⊕ (S)×(S) ⊕ S11×S0"
+  }
+}

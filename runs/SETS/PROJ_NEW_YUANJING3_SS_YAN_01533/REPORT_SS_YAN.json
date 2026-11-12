@@ -1,0 +1,157 @@
+{
+  "write_id": "01533",
+  "formal": "SHQ_NEW_YUANJING3_SS_YAN_V1",
+  "zh": "新远景三物试 SS验",
+  "L0_asset": "3bb63a3f-a3fa-4b88-831f-5c811c9ab406",
+  "L1_asset": "c6c95f2f-a82b-4853-8d18-901a39e2ad73",
+  "PASS_SS_YAN": true,
+  "PASS_SX_FULL": true,
+  "claim": "C2_S11xS0_ALIGN_BOOST_SHEN",
+  "pairs": [
+    {
+      "pair": "S5×S7",
+      "gate": "G4_ELEV",
+      "ok": true,
+      "reasons": [],
+      "out": null,
+      "same": true,
+      "optional": false
+    },
+    {
+      "pair": "S9×S0A",
+      "gate": "G2_OUTSIDE",
+      "ok": true,
+      "reasons": [],
+      "out": 0,
+      "same": true,
+      "optional": false
+    },
+    {
+      "pair": "S11×S0A",
+      "gate": "G2_OUTSIDE",
+      "ok": true,
+      "reasons": [],
+      "out": 0,
+      "same": true,
+      "optional": false
+    },
+    {
+      "pair": "S10×S11",
+      "gate": "G1_SIZE",
+      "ok": true,
+      "reasons": [],
+      "out": null,
+      "same": true,
+      "optional": false
+    },
+    {
+      "pair": "S3×S0A",
+      "gate": "G1_SIZE",
+      "ok": true,
+      "reasons": [],
+      "out": null,
+      "same": true,
+      "optional": false
+    },
+    {
+      "pair": "S01×S0",
+      "gate": "G5_S11xS0",
+      "ok": true,
+      "reasons": [],
+      "out": 0,
+      "same": true,
+      "optional": false
+    },
+    {
+      "pair": "S1×S0",
+      "gate": "G0_DOMAIN",
+      "ok": false,
+      "reasons": [
+        "E-SS-01"
+      ],
+      "out": null,
+      "same": false,
+      "optional": true
+    },
+    {
+      "pair": "S5×S3",
+      "gate": "G3_RATIO",
+      "ok": true,
+      "reasons": [],
+      "err": 0.003680959881076719,
+      "asp_peep": 0.7851239669421488,
+      "asp_hole": 0.7822445561139029
+    },
+    {
+      "pair": "S6×S5",
+      "gate": "G0_DOMAIN",
+      "ok": true,
+      "reasons": [],
+      "same": false,
+      "note": "暂态可不同尺",
+      "optional": true
+    }
+  ],
+  "domains": {
+    "(1008, 1792)": [
+      "S0",
+      "S01"
+    ],
+    "(646, 508)": [
+      "S0A",
+      "S1",
+      "S3",
+      "S9",
+      "S10",
+      "S11"
+    ],
+    "(605, 475)": [
+      "S5",
+      "S7"
+    ],
+    "(907, 712)": [
+      "S6"
+    ]
+  },
+  "ratio": {
+    "err": 0.003680959881076719,
+    "asp_peep": 0.7851239669421488,
+    "asp_hole": 0.7822445561139029,
+    "ok": true
+  },
+  "hole_return": {
+    "meta": {
+      "We": 712,
+      "He": 907,
+      "Wh": 467,
+      "Hh": 597,
+      "sx": 0.6558988764044944,
+      "sy": 0.6582138919514884,
+      "s_fit": 0.6558988764044944,
+      "s_cover": 0.6582138919514884,
+      "s_used": {
+        "kind": "fill_hole",
+        "val": [
+          0.6558988764044944,
+          0.6582138919514884
+        ]
+      },
+      "k_zoom": 1.4991735537190083,
+      "offset_xy": [
+        0,
+        0
+      ],
+      "formula": "s_x=Wh/We; s_y=Hh/He; resize→洞; 框標置中",
+      "law": "01531 HOLE_RETURN_SCALE_V1"
+    },
+    "outside": 0,
+    "PASS": true
+  },
+  "3D_SS": {
+    "outside": 0,
+    "inside_p95": 35.0,
+    "detected_3D_SS": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:52:23.469088+00:00"
+}

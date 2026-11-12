@@ -1,0 +1,141 @@
+{
+  "write": "01626",
+  "PASS": true,
+  "outside": 0,
+  "n": 7,
+  "order": [
+    "O05",
+    "O06",
+    "O03",
+    "O01",
+    "O02",
+    "O07",
+    "O04"
+  ],
+  "logs": [
+    {
+      "name": "O01",
+      "kou": {
+        "gate": "WARN_FRAC",
+        "frac": 0.04,
+        "n_cc": 53
+      },
+      "scale_lock": true,
+      "mad": 19.19,
+      "flow": "無底→扣→全象補給→座洞鎖"
+    },
+    {
+      "name": "O02",
+      "kou": {
+        "gate": "WARN_FRAC",
+        "frac": 0.056,
+        "n_cc": 118
+      },
+      "scale_lock": true,
+      "mad": 13.71,
+      "flow": "無底→扣→全象補給→座洞鎖"
+    },
+    {
+      "name": "O03",
+      "kou": {
+        "gate": "OK",
+        "frac": 0.23,
+        "n_cc": 18
+      },
+      "scale_lock": true,
+      "mad": 13.13,
+      "flow": "無底→扣→全象補給→座洞鎖"
+    },
+    {
+      "name": "O04",
+      "kou": {
+        "gate": "OK",
+        "frac": 0.114,
+        "n_cc": 23
+      },
+      "scale_lock": true,
+      "mad": 27.88,
+      "flow": "無底→扣→全象補給→座洞鎖"
+    },
+    {
+      "name": "O05",
+      "kou": {
+        "gate": "OK",
+        "frac": 0.119,
+        "n_cc": 31
+      },
+      "scale_lock": true,
+      "mad": 27.62,
+      "flow": "無底→扣→全象補給→座洞鎖"
+    },
+    {
+      "name": "O06",
+      "kou": {
+        "gate": "OK",
+        "frac": 0.096,
+        "n_cc": 13
+      },
+      "scale_lock": true,
+      "mad": 25.27,
+      "flow": "無底→扣→全象補給→座洞鎖"
+    },
+    {
+      "name": "O07",
+      "kou": {
+        "gate": "OK",
+        "frac": 0.11,
+        "n_cc": 32
+      },
+      "scale_lock": true,
+      "mad": 15.21,
+      "flow": "無底→扣→全象補給→座洞鎖"
+    }
+  ],
+  "occ": [
+    {
+      "name": "O05",
+      "role": "BACK",
+      "overwrote": 0,
+      "pix": 11012
+    },
+    {
+      "name": "O06",
+      "role": "BACK",
+      "overwrote": 0,
+      "pix": 8295
+    },
+    {
+      "name": "O03",
+      "role": "BACK",
+      "overwrote": 0,
+      "pix": 32533
+    },
+    {
+      "name": "O01",
+      "role": "MID",
+      "overwrote": 0,
+      "pix": 15129
+    },
+    {
+      "name": "O02",
+      "role": "MID",
+      "overwrote": 32533,
+      "pix": 36890
+    },
+    {
+      "name": "O07",
+      "role": "FRONT",
+      "overwrote": 0,
+      "pix": 5585
+    },
+    {
+      "name": "O04",
+      "role": "FRONT",
+      "overwrote": 0,
+      "pix": 11156
+    }
+  ],
+  "claim": "C2_BUBU_WUDI_KOU_01626",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:47:31.671006+00:00"
+}

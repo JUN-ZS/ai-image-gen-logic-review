@@ -1,0 +1,34 @@
+{
+  "write": "01648",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "n_axial_IoU_PASS": 4,
+  "n_REJECT_to_peep": 0,
+  "per": {
+    "G4_UR": {
+      "IoU": 0.9271,
+      "gate": "PASS",
+      "supply": "axial+peep_edge"
+    },
+    "G2_MID": {
+      "IoU": 0.8012,
+      "gate": "PASS",
+      "supply": "axial+peep_edge"
+    },
+    "G1_FL": {
+      "IoU": 0.9413,
+      "gate": "PASS",
+      "supply": "axial+peep_edge"
+    },
+    "G3_FR": {
+      "IoU": 0.7974,
+      "gate": "PASS",
+      "supply": "axial+peep_edge"
+    }
+  },
+  "claim": "C2_POSE_IOU_EDGE_PEEP_01648",
+  "parent_call": "轴.反射.生",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T01:08:03.625653+00:00"
+}

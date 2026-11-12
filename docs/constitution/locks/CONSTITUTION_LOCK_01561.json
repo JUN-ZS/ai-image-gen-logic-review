@@ -1,0 +1,10 @@
+{
+  "write_id": "01561",
+  "call": "SS联动·洞座材质补给",
+  "formal": "SHQ_SS_LIAN_DONG_SEAT_TEX_SUPPLY_V1",
+  "py": "ss_lian_dong_seat_tex_supply.py",
+  "PASS": true,
+  "parent": "SS 聯動",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T02:39:05.145877+00:00"
+}

@@ -1,0 +1,204 @@
+{
+  "write_id": "01514",
+  "mode": "shen",
+  "zh": "正身",
+  "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+  "stick": "STICK_ZHENG_SHEN",
+  "bite": "full_object",
+  "dna_equation": "正身 = 正頭DNA[ bite: head → full_object ]",
+  "tune": {
+    "kou_thr": 20,
+    "min_area": 5000,
+    "min_frac": 0.08,
+    "max_frac": 0.55,
+    "roi_prior": "none",
+    "cc_mode": "largest",
+    "morph_open": 5,
+    "morph_close": 21,
+    "dilate": 7,
+    "chu_bei_dist": 20,
+    "grow_max": 1.1,
+    "part_role": "whole"
+  },
+  "kou": {
+    "thr": 20,
+    "n_cc": 91,
+    "policy": "largest",
+    "frac": 0.13044929071889172,
+    "area": 942541,
+    "gate": "OK"
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0A_outside": 0,
+  "S01_S0_outside": 0,
+  "S0A": {
+    "source": "L0_L1_kou_largest_cc",
+    "cc_area": 831638,
+    "bbox_xyxy_in_S0": [
+      0,
+      0,
+      1791,
+      1007
+    ],
+    "corners_in_S0": {
+      "TL": [
+        0,
+        0
+      ],
+      "TR": [
+        1791,
+        0
+      ],
+      "BR": [
+        1791,
+        1007
+      ],
+      "BL": [
+        0,
+        1007
+      ]
+    },
+    "S0A_size": [
+      1008,
+      1792
+    ],
+    "S0_size": [
+      1008,
+      1792
+    ],
+    "map_back": "S0A_work → resize native → paste S0 bbox → S01",
+    "native_size": [
+      1008,
+      1792
+    ],
+    "work_size": [
+      2016,
+      3584
+    ],
+    "s0a_scale": 2.0,
+    "s0a_min_side": 1024,
+    "why": "S0A 放大看 → S2 扣更易；回 S01 时缩回 native bbox"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 0,
+  "S9_seat_born_outside": 0,
+  "hole_layers_magnified_align": {
+    "enabled": true,
+    "law": "洞位(S)各层同 S0A×scale 对位",
+    "fixes": [
+      "elev peep-child",
+      "freeframe seat-born",
+      "S2 denser kou"
+    ]
+  },
+  "anti_freeframe_elev": {
+    "E-FF-01": "freeframe S9 banned as PRIMARY",
+    "E-FF-02": "elev not RETURN",
+    "E-FF-03": "peep never overwrite",
+    "shared_with": "正头 ERROR_TEXTBOOK freeframe/elev"
+  },
+  "PASS_SX_FULL": true,
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "4e1cab2c0175",
+      "role": "冻 SRC 全景"
+    },
+    {
+      "si": "S0A",
+      "ok": true,
+      "sha12": "e2691b8eb045",
+      "role": "目標大切塊+放大×2.00 work domain（S2易扣）"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "d0dc33d2e29f",
+      "role": "外力除整件 @ S0A"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "af4ef3d354c8",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "a31c2dc4a311",
+      "role": "洞 MARK_full 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "fc33f3173ce2",
+      "role": "认 whole"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "38ae2b9b6dd1",
+      "role": "peep_full=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "2d4c96b55ff7",
+      "role": "放大 peep_full 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "2eb003ee3acd",
+      "role": "升质×物 elev 子 @S0A洞位放大域"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "7dd569042475",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "ff7a292ab37c",
+      "role": "正身 洞内 INPAINT · seat-born"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "73b503002076",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "59750f9bf05a",
+      "role": "S11×S0 洞外 bitexact"
+    },
+    {
+      "si": "S01",
+      "ok": true,
+      "sha12": "f65ecf5de339",
+      "role": "S0A 对位回 S0 全景"
+    }
+  ],
+  "assets": {
+    "L0": "SETS/PROJ_WLF3_TUIJING_3_01514_VERIFY/src/L0.jpg",
+    "L1": "SETS/PROJ_WLF3_TUIJING_3_01514_VERIFY/src/L1.jpg",
+    "IHD": "SETS/PROJ_WLF3_TUIJING_3_01514_VERIFY/src/I_HD_from_L0.jpg"
+  },
+  "claim": "C2_ZHENG_SHEN_SX_S0_S0A_S01",
+  "ACCEPT_FULL_HD": false,
+  "kuangya": {
+    "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max"
+  },
+  "asof": "2026-11-10T10:22:39.641690+00:00"
+}

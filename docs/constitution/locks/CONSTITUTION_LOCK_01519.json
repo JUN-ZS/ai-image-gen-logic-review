@@ -1,0 +1,14 @@
+{
+  "write_id": "01519",
+  "inherits": "01503 S11×S0 對位鎖",
+  "zh": "S11×S0 (S)×(S) + 強心針 认∩放大∩升质×物",
+  "formula": "RETURN=S0⊙(1−M)+fill⊙M ; outside=0",
+  "E": [
+    "E-SX-06",
+    "E-SX-07"
+  ],
+  "PASS": true,
+  "claim": "C2_S11xS0_ALIGN_BOOST_SHEN",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T11:34:37.112918+00:00"
+}

@@ -1,0 +1,38 @@
+{
+  "write": "01595",
+  "formal": "SHQ_XIAN1_50_DISCOVERY_XIAN2_MMAX_CENG_V1",
+  "call": "先读1≤50 grid+CC → elev → 先读2 multi-CC M_max → 层回锁",
+  "bloodline": "library_01592",
+  "先读1": {
+    "n": 50,
+    "n_max": 50,
+    "mode": "grid_local_CC"
+  },
+  "elev": {
+    "mode": "local_peepx3_all",
+    "note": "50 量级用本地 densify；Imagine top-k 可补"
+  },
+  "先读2": {
+    "mode": "true_discovery_multi_CC",
+    "M_max": 6,
+    "total_kids": 298,
+    "fanout_actual": 298,
+    "fanout_cap": 300
+  },
+  "层回锁": {
+    "n": 50,
+    "n_ok": 50,
+    "outside_union": 0,
+    "PASS": true
+  },
+  "gates": {
+    "N_MAX_XIAN1": 50,
+    "M_MAX_XIAN2": 6,
+    "D2-01": true,
+    "depth": 2
+  },
+  "PASS": true,
+  "claim": "C2_XIAN1_50_DISCOVERY_XIAN2_CENG",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T07:25:33.960189+00:00"
+}

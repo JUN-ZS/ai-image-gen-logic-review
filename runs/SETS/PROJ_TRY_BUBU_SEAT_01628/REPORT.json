@@ -1,0 +1,42 @@
+{
+  "write": "01628",
+  "PASS": true,
+  "outside": 0,
+  "n": 4,
+  "order": [
+    "POT",
+    "CLOCK",
+    "VASE",
+    "APPLE"
+  ],
+  "kou": {
+    "POT": {
+      "gate": "OK",
+      "frac": 0.231,
+      "window_cc_only": true
+    },
+    "VASE": {
+      "gate": "OK",
+      "frac": 0.295,
+      "window_cc_only": true
+    },
+    "CLOCK": {
+      "gate": "OK",
+      "frac": 0.132,
+      "window_cc_only": true
+    },
+    "APPLE": {
+      "gate": "OK",
+      "frac": 0.364,
+      "window_cc_only": true
+    }
+  },
+  "doctrine": "01627",
+  "claim": "C2_TRY_BUBU_SEAT_01628",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:02:03.483447+00:00",
+  "assets": {
+    "L0": "f684632d",
+    "L1": "73343cf3"
+  }
+}

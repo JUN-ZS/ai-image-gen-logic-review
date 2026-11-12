@@ -1,0 +1,51 @@
+{
+  "write_id": "01643",
+  "call": "禁差分CC扫",
+  "formal": "SHQ_DNA_BAN_DIFF_CC_SCAN_V1",
+  "zh": "禁用 |L0−L_rm| + 阈值 + 连通域CC 作为洞/描图主法",
+  "ref_bad": {
+    "asset": "8af27b75-5bfb-495d-87c0-e34fd1679d24",
+    "board": "01642 VDIR_MIAO 黄锯齿描图",
+    "symptom": "缘不贴物、杯破、白缺、锯齿假洞；outside=0 仍可假绿"
+  },
+  "E-SCAN-DIFF-CC-01": {
+    "status": "DEAD",
+    "name": "差分CC扫洞",
+    "aka": [
+      "|L0−L_rm| + thr + connectedComponents",
+      "kou_hole absdiff scan",
+      "percentile/Otsu 差分再最大CC当洞",
+      "01642 kou_hole()"
+    ],
+    "why_dead": [
+      "外力除构图微漂 → 差分≠真物缘",
+      "CC 吃影/桌纹 → 假瓣、破杯把",
+      "描图只是画毒M → 黄锯齿框病变体",
+      "与至高「洞=除之座、外力GROK驱动」冲突"
+    ],
+    "dao_fan": "若差分CC可当洞主法 ∧ 外力除背真缘为洞真法 → 两套洞 → 矛盾 → 差分CC DEAD"
+  },
+  "DEAD": [
+    "E-SCAN-DIFF-CC-01 差分CC扫洞",
+    "|L0-L_rm|+CC 主洞",
+    "阈值差分最大CC当MARK",
+    "用差分描图当锁回缘"
+  ],
+  "LIVE_instead": {
+    "洞": "外力认物·除背/除主 → 同机位真缘座（Imagine EDIT 语义洞）再 MARK 反扣验；禁止差分CC主路径",
+    "描图": "由外力真缘洞 contour；或 peep 全相 alpha 回投到冻座——不得从 absdiff CC 生成",
+    "扣": "证票：可对已冻洞做 outside/cover/尺闸；扣≠重新差分扫洞",
+    "至高": "[(生,除,洞,扣)×(反)] ← 外力GROK"
+  },
+  "ban_in_code": [
+    "cv2.absdiff(L0,L_rm) → threshold → connectedComponents 作为 HOLE 唯一来源",
+    "kou_hole() 类作为正路径"
+  ],
+  "parent": [
+    "01640 描图锁回",
+    "01642 暴露毒",
+    "E-SEM-KUANG-01"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:23:49.116886+00:00"
+}

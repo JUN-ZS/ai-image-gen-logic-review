@@ -1,0 +1,30 @@
+{
+  "write": "01645",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "外力GROK判定": {
+    "LEMON": "PASS",
+    "BOWL": "PASS",
+    "CINN": "PASS"
+  },
+  "DNA_audit": {
+    "primary": "轴向生",
+    "quanxiang": "BACKUP only",
+    "diff_cc": false,
+    "judges": {
+      "LEMON": "PASS",
+      "BOWL": "PASS",
+      "CINN": "PASS"
+    },
+    "white_frac": {
+      "LEMON": 0.0,
+      "BOWL": 0.0,
+      "CINN": 0.0
+    }
+  },
+  "claim": "C2_AXIAL_SHENG_BACKUP_01645",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:35:28.471867+00:00"
+}

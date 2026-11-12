@@ -1,0 +1,22 @@
+{
+  "write": "01610",
+  "pipeline": "SS驗.清+A ⊕ 先讀(除主后)",
+  "order": [
+    "L0",
+    "除主→L_bg",
+    "先讀 strip multi-CC",
+    "peep=L0原物",
+    "清+A hardpaste 搬回"
+  ],
+  "equation": "先讀(M)=CC(|L0−L_bg|); peep=L0[pad]; FINAL=L_bg⊙(1−M_pads)+peep",
+  "gold": "除主后先讀座；回仍是原物，不 freeframe 重生",
+  "n_seats": 11,
+  "thr": 28,
+  "outside_png": 0,
+  "PASS": true,
+  "claim": "C2_QING_A_XIAN_AFTER_STRIP_01610",
+  "stick_xian": "STICK_XIAN_DU / 01580",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T20:25:34.922131+00:00",
+  "honest": "L_bg Imagine 构漂 → 差分座碎/偏；先讀仍优于手标 ROI 的可重复发现"
+}

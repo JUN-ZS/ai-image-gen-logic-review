@@ -1,0 +1,7 @@
+{
+  "S11xS0": true,
+  "outside_max_diff": 0,
+  "fullframe_outside_max": 216,
+  "PASS": true,
+  "formula": "‖RETURN-S0‖_outside MARK = 0"
+}

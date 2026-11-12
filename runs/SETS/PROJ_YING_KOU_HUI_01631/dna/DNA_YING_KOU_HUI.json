@@ -1,0 +1,20 @@
+{
+  "write_id": "01631",
+  "call": "影扣回",
+  "formal": "SHQ_YING_KOU_HUI_V1",
+  "MARK": "除背影",
+  "axis": "虚回认位ONLY",
+  "ban": [
+    "色带MASK",
+    "窗框MASK",
+    "乱CC",
+    "乱差分"
+  ],
+  "bases": [
+    "S0",
+    "L1無底"
+  ],
+  "bubu": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:25:09.059986+00:00"
+}

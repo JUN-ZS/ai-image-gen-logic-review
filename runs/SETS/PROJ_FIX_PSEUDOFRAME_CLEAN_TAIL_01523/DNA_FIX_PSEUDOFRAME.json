@@ -1,0 +1,5 @@
+{
+  "E": "E-PSEUDOFRAME-01",
+  "law": "禁全幅MARK；禁 freeframe elev 当 RETURN；fill 只在 peep 同尺洞座",
+  "algebra": "[(生,除,洞,扣)×(反)] ⊕ S11×S0"
+}

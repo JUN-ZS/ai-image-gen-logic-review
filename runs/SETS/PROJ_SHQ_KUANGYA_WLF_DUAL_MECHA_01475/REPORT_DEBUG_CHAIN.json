@@ -1,0 +1,76 @@
+{
+  "codename": "框牙",
+  "write_id": "01475",
+  "formal": "DEBUG_CHAIN_BREAK_WAI_LI_GROK",
+  "STICK": "STICK_WAI_LI_FAN_V2",
+  "user": "鏈斷了, 回不了原圖, 重走DEBUG, 外力GROK介入",
+  "probes": {
+    "L1_vs_L0_outside_hole": 227,
+    "L1_vs_L0_outside_mean": 9.583193702980953,
+    "I_sc_vs_L0_outside": 249,
+    "I_sc_vs_L1_outside": 244,
+    "I_old_vs_L0_outside": 248,
+    "I_old_vs_L1_outside": 239,
+    "hole_frac": 0.07686166914682539,
+    "diagnosis": [
+      "E-CHAIN-01: 除件 freeframe 已污染洞外 → 以 L1 為 base 的「回」≠ 原圖 L0",
+      "E-CHAIN-02: 外力生 freeframe 洞外≠L0 → 整圖當回必斷鏈",
+      "E-CHAIN-03: 外力生 freeframe 洞外≠L1 → 必須 MARK 硬貼，禁整圖替換",
+      "E-CHAIN-04: 鏈斷根因=把 freeframe 當 RETURN，未 L0/L1 座 + M 只填洞"
+    ],
+    "fix": "重走: L0 freeze → 外力GROK除/生 asset → M 凍 → RETURN=L0; RETURN[M]=GROK[M] → 洞外≡L0"
+  },
+  "results": {
+    "A_L0_base_Isc_hole": {
+      "outside_vs_L0": 0,
+      "outside_vs_L1": 227,
+      "goal": "回原圖",
+      "pass": true
+    },
+    "B_L1_base_Isc_hole": {
+      "outside_vs_L1": 0,
+      "outside_vs_L0": 227,
+      "goal": "回空座",
+      "pass": true
+    },
+    "C_L0_base_elev1_GROK": {
+      "outside_vs_L0": 0,
+      "pass": true
+    },
+    "D_L0_base_Iold": {
+      "outside_vs_L0": 0,
+      "pass": true
+    }
+  },
+  "primary_return": "RETURN_TO_L0_GROK_A",
+  "outside_primary_vs_L0": 0,
+  "wai_li_grok_assets": {
+    "L0": "bf7479ed-55a2-4b3f-8a04-26cd5fbc49fb",
+    "chu_part": "0fc50825-d652-4af7-9b61-e468b6ac193e",
+    "chu_bei": "58289e05-7e91-4480-afd3-a234536f33c0",
+    "sheng_old": "da1c99d2-5753-4d8a-82dc-3cf5788e507a",
+    "elev0_GROK": "11b64a91-8283-4e5d-b831-22c2189cc4d6",
+    "elev1_GROK": "b3affe3a-aeb0-4494-8419-6aa4fcf56247",
+    "sheng_scene_GROK": "9152d1dc-dad2-46a0-b53f-ebe36b34e2e5"
+  },
+  "chain_rewalk": [
+    "L0 freeze",
+    "外力GROK 除背/除件 (既有 asset)",
+    "kou → MARK 凍",
+    "外力GROK 生 asset (既有)",
+    "DEBUG: RETURN = L0; RETURN[M]=I_GROK[M]  ← 回原圖",
+    "洞外 maxdiff vs L0 必須 0"
+  ],
+  "gates": {
+    "chain_break_recorded": true,
+    "probes_done": true,
+    "return_to_L0_outside_0": true,
+    "wai_li_grok_assets_present": true,
+    "no_freeframe_as_return": true
+  },
+  "status": "PASS",
+  "claim_level": "C2",
+  "ACCEPT_FULL_HD": false,
+  "verdict": "鏈斷已記錄；DEBUG 以 L0 座+外力GROK 只填洞 收回原圖 outside=0",
+  "asof": "2026-11-09T23:36:52.084122+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "write_id": "01518",
+  "zh": "咬合硬契約：咬→洞→升清咬塊→同尺置中回洞",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "size_lock": true,
+  "PASS_align": true,
+  "outside": 0,
+  "driver": "外力GROK",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T11:14:17.046015+00:00"
+}

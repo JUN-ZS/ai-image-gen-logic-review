@@ -1,0 +1,64 @@
+{
+  "write_id": "01532",
+  "formal": "SHQ_3D_SS_MICRO_PARALLAX_V1",
+  "zh": "3D SS",
+  "call": "3D SS",
+  "aka": [
+    "三维SS",
+    "微错位立体",
+    "SS微视差"
+  ],
+  "stick": "STICK_3D_SS",
+  "parent_stick": "STICK_SS_YAN",
+  "named_from": {
+    "asset": "a793b46e-853e-4364-b131-16dde19173d8",
+    "zh": "远景三物 S01 反回：微错位有立体效果 → 命名 3D SS"
+  },
+  "definition": {
+    "one_liner": "回洞后洞缘/洞内微残差形成假视差浅浮雕感；属 SS 体系下的效果名，不是双目真3D，也不是 outside 大错位",
+    "is": [
+      "微错位（micro outside 带 + 洞内/缘 residual）的视觉立体感",
+      "SS验硬闸之「美学/教学伴生名」",
+      "可保留作浮雕，或可压平"
+    ],
+    "is_not": [
+      "真正立体 quant / 双目深度",
+      "ACCEPT_FULL_HD",
+      "outside 大的真错位 FAIL（那叫错位，不叫 3D SS）"
+    ]
+  },
+  "equation": "3D_SS ⇔ outside≤MICRO_OUT ∧ (inside_p95≥τ_in ∨ edge_p95≥τ_edge) ∧ 非 freeframe 假回",
+  "bands": {
+    "outside_0": "SS验金 · 可仍有 3D SS（亚像素/压缩/羽化）",
+    "outside_1_to_MICRO": "微错位带 · 典型 3D SS 立体感来源",
+    "outside_gt_MICRO": "真错位 · E-SS / E-SX · 禁止称 3D SS"
+  },
+  "thresholds": {
+    "MICRO_OUT": 16,
+    "tau_inside_p95": 8,
+    "tau_edge_p95": 6
+  },
+  "measured_on_named_asset": {
+    "outside_max": 7,
+    "inside_max": 115,
+    "inside_mean": 11.285912882298424,
+    "inside_p95": 33.0,
+    "edge_p95": 26.0,
+    "edge_max": 106,
+    "band": "MICRO",
+    "detected_3D_SS": true
+  },
+  "relation": {
+    "SS验": "硬闸（域/尺/洞外）",
+    "3D SS": "硬闸附近微残差的命名效果；不替代 SS验",
+    "回洞公式 01531": "fill_hole 后仍可残留 3D SS（JPEG/缘/升清）"
+  },
+  "error_codes": {
+    "E-3DSS-01": "把 3D SS 当成 SS验 FAIL",
+    "E-3DSS-02": "outside>MICRO 却称 3D SS（真错位）",
+    "E-3DSS-03": "把 3D SS 报成 FULL_HD / bitexact 完美"
+  },
+  "claim_class": "C1_NAMED_EFFECT",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:48:35.113339+00:00"
+}

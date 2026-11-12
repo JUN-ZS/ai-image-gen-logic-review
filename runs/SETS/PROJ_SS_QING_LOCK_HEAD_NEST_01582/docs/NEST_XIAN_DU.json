@@ -1,0 +1,15 @@
+{
+  "write_try": "01582",
+  "先读": true,
+  "L0": "peep_HEAD from 01581 (asset c2210ffb)",
+  "meaning": "对「已 peep 的 PART」再套 01580：件→新 whole→再结构→再清锁",
+  "order": "先读 → structure(mecha) → batch",
+  "PASS": true,
+  "outside_union": 0,
+  "诚实": {
+    "profile_mecha_on_head_crop": "角色名仍是 HEAD/ARM/TORSO/LEG 几何带，不是真·解剖头内件",
+    "value": "证明 先读 同构可嵌套：任意图（含 peep）皆可作 L0 走 structure→batch",
+    "next": "头内语义件需新 profile（antenna/sensor/dome）或外力反扣，不单改名"
+  },
+  "asof": "2026-11-11T05:25:26.521382+00:00"
+}

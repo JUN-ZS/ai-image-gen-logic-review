@@ -1,0 +1,24 @@
+{
+  "write_id": "01626",
+  "call": "步步為一·無底扣",
+  "formal": "SHQ_BUBU_WUDI_KOU_SEAT_V1",
+  "zh": "SS驗.清扣圖不亂扣全圖；步步為一：無底圖→扣→座洞鎖",
+  "rule": {
+    "discovery": "粗CC只找窗，不當最終洞",
+    "kou": "peep0(有物) vs peep_L1(無底同窗) → 局部 MARK",
+    "seat": "MARK 嵌回 S0 座標 FREEZE",
+    "supply": "1物1全象補給 peep-lock",
+    "stack": "後→前 hardpaste"
+  },
+  "ban": [
+    "全圖亂扣當座",
+    "discovery blob 直接 hard"
+  ],
+  "parent": [
+    "01523 SS驗.清",
+    "01625 步步為一",
+    "01623 咬物"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:47:31.671006+00:00"
+}

@@ -1,0 +1,46 @@
+{
+  "write_id": "01567",
+  "call": "虛回-4·修",
+  "bugs": [
+    {
+      "id": "E-XU4-01",
+      "zh": "climber densify 脚/靴生成爆出原外形",
+      "fix": "strict silhouette densify on peep_x4"
+    },
+    {
+      "id": "E-XU4-02",
+      "zh": "回图未跟进 elev 内容（F2 过混 peep0）",
+      "fix": "elev_follow 洞内 locked elev alpha0.98 hard"
+    }
+  ],
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "rover",
+      "outside": 0,
+      "ok": true,
+      "fix": "R1",
+      "follow": "elev_high",
+      "claim": "C2_XU_HUI_4_FIX"
+    },
+    {
+      "id": "mecha",
+      "outside": 0,
+      "ok": true,
+      "fix": "R1",
+      "follow": "elev_high",
+      "claim": "C2_XU_HUI_4_FIX"
+    },
+    {
+      "id": "climber",
+      "outside": 0,
+      "ok": true,
+      "fix": "foot_sil_lock",
+      "follow": "elev_high",
+      "claim": "C2_XU_HUI_4_FIX"
+    }
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T03:15:49.665463+00:00"
+}

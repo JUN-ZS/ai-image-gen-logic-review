@@ -1,0 +1,24 @@
+{
+  "write_id": "01487",
+  "formal": "KUANGYA_SUPREME_BOOST_PART_RECOG_SCALE_ELEV_V1",
+  "injected": true,
+  "into": "01483",
+  "full_binding": "[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件'認' ∩ '放大' ∩ '升質×物']",
+  "gates_boost": {
+    "part_recog_ok": true,
+    "scale_densify_ok": true,
+    "elev_x_mat_ok": true,
+    "boost_all_three": true,
+    "elev_not_正生": true,
+    "wai_li_grok_driver": true
+  },
+  "E_codes": [
+    "E-KY-BOOST-01",
+    "E-KY-BOOST-02",
+    "E-KY-BOOST-03",
+    "E-KY-BOOST-04",
+    "E-KY-BOOST-05"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:02:52.554828+00:00"
+}

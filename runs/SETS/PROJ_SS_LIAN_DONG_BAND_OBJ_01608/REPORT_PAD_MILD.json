@@ -1,0 +1,105 @@
+{
+  "write": "01608b",
+  "call": "物清+A回贴 · PAD加大鎖 · densify mild α=0.25",
+  "PAD_JIA_DA_SUO": {
+    "pad_frac": 0.18,
+    "paste": "pad_aligned 1:1 elev.shape==peep==pad_box",
+    "ban": "paste→tight MARK",
+    "stick": "STICK_PAD_JIA_DA_SUO / 01606"
+  },
+  "densify_strength": {
+    "prompt": "mild 20%",
+    "blend_alpha": 0.25,
+    "formula": "I*=(1-α)·peep + α·ratio_lock(elev)",
+    "why": "降低生成强度，减少 freeframe 身份漂；几何主权在 peep pad"
+  },
+  "objects": {
+    "CRYSTAL": {
+      "pad_box": [
+        576,
+        934,
+        521,
+        911
+      ],
+      "elev_asset": "741c0be7-a145-4080-bd56-e17a74dc3894",
+      "alpha_densify": 0.25,
+      "mad_vs_peep": 3.3034546149071287,
+      "shape_ok": true,
+      "paste": "pad_aligned_1to1",
+      "call": "PAD加大鎖"
+    },
+    "RADIO": {
+      "pad_box": [
+        494,
+        946,
+        1215,
+        1776
+      ],
+      "elev_asset": "91946a81-d473-4688-93d9-3f7c07a93701",
+      "alpha_densify": 0.25,
+      "mad_vs_peep": 1.8935213667124131,
+      "shape_ok": true,
+      "paste": "pad_aligned_1to1",
+      "call": "PAD加大鎖"
+    },
+    "BUST": {
+      "pad_box": [
+        346,
+        620,
+        700,
+        1090
+      ],
+      "elev_asset": "a6fd0227-8c92-44c7-9263-7d5606fe187d",
+      "alpha_densify": 0.25,
+      "mad_vs_peep": 2.6875382119907667,
+      "shape_ok": true,
+      "paste": "pad_aligned_1to1",
+      "call": "PAD加大鎖"
+    },
+    "MAGIC_BOX": {
+      "pad_box": [
+        540,
+        869,
+        78,
+        565
+      ],
+      "elev_asset": "4064b8d2-1755-4ab8-9210-e8e9c17ee609",
+      "alpha_densify": 0.25,
+      "mad_vs_peep": 3.1331082304038746,
+      "shape_ok": true,
+      "paste": "pad_aligned_1to1",
+      "call": "PAD加大鎖"
+    },
+    "SCOPE": {
+      "pad_box": [
+        368,
+        779,
+        1332,
+        1792
+      ],
+      "elev_asset": "5dd67ac3-e9a2-4d94-9571-68dfaaea49e3",
+      "alpha_densify": 0.25,
+      "mad_vs_peep": 2.1435346803483903,
+      "shape_ok": true,
+      "paste": "pad_aligned_1to1",
+      "call": "PAD加大鎖"
+    }
+  },
+  "gates": {
+    "G_PAD_1_touch_pad": true,
+    "G_PAD_2_shape_eq": true,
+    "G_PAD_3_pad_aligned_only": true,
+    "G_PAD_4_outside_png": 0,
+    "PASS_PAD": true
+  },
+  "elev_assets_mild": {
+    "CRYSTAL": "741c0be7-a145-4080-bd56-e17a74dc3894",
+    "RADIO": "91946a81-d473-4688-93d9-3f7c07a93701",
+    "BUST": "a6fd0227-8c92-44c7-9263-7d5606fe187d",
+    "MAGIC_BOX": "4064b8d2-1755-4ab8-9210-e8e9c17ee609",
+    "SCOPE": "5dd67ac3-e9a2-4d94-9571-68dfaaea49e3"
+  },
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_OBJ_PAD_MILD_RETURN_ON_BG_QING",
+  "asof": "2026-11-11T16:08:20.331757+00:00"
+}

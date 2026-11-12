@@ -1,0 +1,48 @@
+{
+  "source": "L0_L1_kou_largest_cc",
+  "cc_area": 889109,
+  "bbox_xyxy_in_S0": [
+    0,
+    110,
+    1791,
+    1007
+  ],
+  "corners_in_S0": {
+    "TL": [
+      0,
+      110
+    ],
+    "TR": [
+      1791,
+      110
+    ],
+    "BR": [
+      1791,
+      1007
+    ],
+    "BL": [
+      0,
+      1007
+    ]
+  },
+  "S0A_size": [
+    898,
+    1792
+  ],
+  "S0_size": [
+    1008,
+    1792
+  ],
+  "map_back": "S0A_work → resize native → paste S0 bbox → S01",
+  "native_size": [
+    898,
+    1792
+  ],
+  "work_size": [
+    1796,
+    3584
+  ],
+  "s0a_scale": 2.0,
+  "s0a_min_side": 1024,
+  "why": "S0A 放大看 → S2 扣更易；回 S01 时缩回 native bbox"
+}

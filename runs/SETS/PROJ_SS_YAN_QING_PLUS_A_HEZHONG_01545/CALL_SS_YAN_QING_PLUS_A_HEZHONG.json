@@ -1,0 +1,14 @@
+{
+  "call": "SS驗.清+A眾",
+  "do": [
+    "对每个 subject 跑 清+A（除主 L1 → MARK_sem → peep → F2 I*）",
+    "面积优先 exclusive owner",
+    "hardpaste 到同一 L0",
+    "outside_union==0 才 claim"
+  ],
+  "dont": [
+    "重叠 peep 直接叠画",
+    "用 JPEG 金标",
+    "三物一次除主混洞"
+  ]
+}

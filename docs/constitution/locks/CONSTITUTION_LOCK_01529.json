@@ -1,0 +1,16 @@
+{
+  "write_id": "01529",
+  "zh": "新PROJECT mesh 同验S(X)A",
+  "PASS_ALL": true,
+  "gates": {
+    "RATIO": true,
+    "ELEV": true,
+    "FREEFRAME": true,
+    "PEEP_ZOOM_IN": true,
+    "PEEP_ZOOM_OUT": true,
+    "SX_ALIGN": true,
+    "PIPELINE": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:20:38.766353+00:00"
+}

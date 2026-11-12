@@ -1,0 +1,49 @@
+{
+  "write": "01585",
+  "rev": "b",
+  "call": "虚回·支线→终极S11",
+  "base": "01559/L/FINAL.jpg",
+  "parts": [
+    {
+      "id": "mecha",
+      "outside_solo_vs_S11": 0,
+      "mad_inside": 84.562,
+      "elev_source": "BRANCH_XUHUI/NEST → densify",
+      "cross_line_branch": true,
+      "ok": true,
+      "I_PROCESS": true,
+      "tex_gain_proxy_mad": 84.562
+    },
+    {
+      "id": "climber",
+      "outside_solo_vs_S11": 0,
+      "mad_inside": 8.037,
+      "elev_source": "LINE densify",
+      "cross_line_branch": false,
+      "ok": true,
+      "I_PROCESS": true,
+      "tex_gain_proxy_mad": 8.037
+    },
+    {
+      "id": "rover",
+      "outside_solo_vs_S11": 0,
+      "mad_inside": 7.389,
+      "elev_source": "LINE densify",
+      "cross_line_branch": false,
+      "ok": true,
+      "I_PROCESS": true,
+      "tex_gain_proxy_mad": 7.389
+    }
+  ],
+  "outside_union_vs_S11": 0,
+  "PASS": true,
+  "claim": "C2_XU_HUI_BRANCH_TO_ULTIMATE_S11",
+  "qinli": {
+    "outside0": true,
+    "I_PROCESS": true,
+    "seat_frozen": true
+  },
+  "诚实_mecha_cross": "雪原 densify 进远景 mecha 座：几何 out=0；mad 高=身份跨线实验",
+  "asof": "2026-11-11T05:53:36.764439+00:00",
+  "ACCEPT_FULL_HD": false
+}

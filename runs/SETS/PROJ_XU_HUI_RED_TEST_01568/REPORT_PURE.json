@@ -1,0 +1,55 @@
+{
+  "write_id": "01568b",
+  "test": "纯红硬染 elev → 虚回",
+  "PASS": true,
+  "outside": 0,
+  "red_final": 1.0,
+  "leaf": [
+    {
+      "id": "rover",
+      "outside": 0,
+      "path": "B_direct_hard",
+      "red_elev": 1.0,
+      "red_A_contract": 0.0,
+      "red_B_direct": 1.0,
+      "red_S9": 1.0,
+      "red_S9_jpg": 0.97,
+      "has_red": true,
+      "ok": true,
+      "debug_contract_kills_red": true
+    },
+    {
+      "id": "mecha",
+      "outside": 0,
+      "path": "B_direct_hard",
+      "red_elev": 1.0,
+      "red_A_contract": 0.0,
+      "red_B_direct": 1.0,
+      "red_S9": 1.0,
+      "red_S9_jpg": 0.966,
+      "has_red": true,
+      "ok": true,
+      "debug_contract_kills_red": true
+    },
+    {
+      "id": "climber",
+      "outside": 0,
+      "path": "B_direct_hard",
+      "red_elev": 1.0,
+      "red_A_contract": 0.0,
+      "red_B_direct": 1.0,
+      "red_S9": 1.0,
+      "red_S9_jpg": 0.945,
+      "has_red": true,
+      "ok": true,
+      "debug_contract_kills_red": true
+    }
+  ],
+  "root_cause": [
+    "rover: elev_donor_contract_lock 冲掉纯红 (E-XU-RED-02)",
+    "mecha: elev_donor_contract_lock 冲掉纯红 (E-XU-RED-02)",
+    "climber: elev_donor_contract_lock 冲掉纯红 (E-XU-RED-02)"
+  ],
+  "gate": "red_ratio pure R>=180 G,B<=40 >=0.85",
+  "asof": "2026-11-11T03:21:40.784154+00:00"
+}

@@ -1,0 +1,184 @@
+{
+  "write_id": "01558",
+  "title": "SS验.清+A × SS验.清+A->景 联动不乱（勤力DNA）",
+  "formal": "SHQ_PLUS_A_DUAL_LINK_QINLI_V1",
+  "stick": "STICK_PLUS_A_DUAL_LINK",
+  "calls": {
+    "A": "SS驗.清+A",
+    "A2S": "SS驗.清+A->景",
+    "qinli": "勤力DNA"
+  },
+  "problem": "两技都叫清+A 族，若同帧乱序/共 claim/共 peep 源 → 伪组合",
+  "one_liner": "先 A 得物洞与 L_bg；再 A->景 只动 L_bg；最后 A 物回贴升清景；claim 分轨；勤力合闸",
+  "ownership": {
+    "A_owns": [
+      "L0",
+      "L1_i",
+      "M_obj_i",
+      "peep_obj@L0",
+      "I*_obj",
+      "S9_obj",
+      "C2_object"
+    ],
+    "A2S_owns": [
+      "L_bg",
+      "M_seat_scene",
+      "peep_scene@L_bg",
+      "I*_scene",
+      "L_bg_qing",
+      "C_scene"
+    ],
+    "shared_bus_read_only": [
+      "L0 size/camera",
+      "M_obj_union（只读给景座减法）",
+      "driver=外力GROK"
+    ],
+    "never_share": [
+      "peep 源图（A=L0 / A2S=L_bg）",
+      "claim 字符串",
+      "outside 金标底图（A vs L0；A2S vs L_bg）"
+    ]
+  },
+  "phase_order_mandatory": [
+    {
+      "phase": "P0",
+      "name": "冻 L0",
+      "who": "Bus",
+      "do": "SRC 同机位；禁中途换底"
+    },
+    {
+      "phase": "P1",
+      "name": "清+A 物叶（可 N 叶并行）",
+      "who": "A",
+      "do": "每叶 EDIT除主→L1→MARK_obj→（可选先不 F2 只取洞）",
+      "emit": [
+        "L1_i",
+        "M_obj_i"
+      ],
+      "claim_max": "C1_MARK_READY 或 C2 若本叶已清（见策略）"
+    },
+    {
+      "phase": "P2",
+      "name": "合成 L_bg",
+      "who": "link",
+      "do": "L_bg[M_obj]=L1；写 L_bg；M_obj_union",
+      "gate": "G_LBG: L_bg 存在且尺寸=L0"
+    },
+    {
+      "phase": "P3",
+      "name": "清+A->景",
+      "who": "A2S",
+      "do": "只在 L_bg 上风景座 peep→清锁→L_bg_qing",
+      "forbid": "读 L0 带物 peep；改 M_obj",
+      "claim": "C_scene only",
+      "gate": "outside vs L_bg == 0"
+    },
+    {
+      "phase": "P4",
+      "name": "清+A 物回（合众）",
+      "who": "A",
+      "do": "peep@L0 几何；I* densify；hardpaste 到 **L_bg_qing**（不是生图 L0）",
+      "note": "金标 outside 相对 L_bg_qing（物洞外=升清景）",
+      "claim": "C2_object_on_qing_scene"
+    },
+    {
+      "phase": "P5",
+      "name": "勤力合闸",
+      "who": "勤力DNA",
+      "do": "I-ID-BAN · I-PROCESS · I-SCOPE · I-SCENE · I-SEAT-QING"
+    }
+  ],
+  "strategies_for_try": [
+    {
+      "id": "S_SEQ_FULL",
+      "zh": "全序联动（推荐试）",
+      "steps": "P0→P1(洞)→P2→P3→P1/P4(物清+回)→P5",
+      "use_when": "要风景升清 + 物回同一闭环"
+    },
+    {
+      "id": "S_A_ONLY",
+      "zh": "只物",
+      "steps": "P0→P1全清+A众→合众 L0",
+      "use_when": "不验风景",
+      "forbid": "同时报 A->景完成"
+    },
+    {
+      "id": "S_A2S_ONLY",
+      "zh": "只景（L_bg 已有）",
+      "steps": "P0→P1洞→P2→P3；停在 L_bg_qing",
+      "use_when": "只验风景洞座锁",
+      "forbid": "C2_object"
+    },
+    {
+      "id": "S_PARALLEL_SAFE",
+      "zh": "安全并行",
+      "steps": "P1 多叶 MARK 可并行；P3 多风景叶可并行；P2/P4 必须串行栅栏",
+      "barrier": "P2 前等齐所有 M_obj；P4 前等 L_bg_qing"
+    }
+  ],
+  "anti_chaos_rules": [
+    "R1 一 Bus 一 RUN；A 与 A2S 写不同字段前缀 obj_* / scn_*",
+    "R2 claim 分轨：C2_object ≠ C_scene ≠ C2_object_on_qing_scene",
+    "R3 peep 源闸：A 读 L0；A2S 读 L_bg；违→E-A2S-02 / E-QL",
+    "R4 outside 底图：A 默认 vs L0；A2S vs L_bg；物回升清景 vs L_bg_qing",
+    "R5 A->景 不得改写 M_obj；A 不得改写 M_seat_scene",
+    "R6 未 P2 禁进 P3；未 P3 完成禁把 L_bg_qing 当地景金标给物回（若策略要求景先）",
+    "R7 勤力：donor=peep 禁 C2；无 densify 证据禁 C2；风景入格≠升清"
+  ],
+  "state_bus_fields": {
+    "obj": [
+      "L0",
+      "L1_i",
+      "M_obj_i",
+      "peep_obj",
+      "I_star_obj",
+      "S9_obj",
+      "claim_obj"
+    ],
+    "scn": [
+      "L_bg",
+      "M_seat_j",
+      "peep_scn",
+      "I_star_scn",
+      "L_bg_qing",
+      "claim_scn"
+    ],
+    "link": [
+      "M_obj_union",
+      "phase",
+      "strategy",
+      "qinli_gates"
+    ]
+  },
+  "qinli_joint_gate": {
+    "PASS_LINK": "phase_order_ok ∧ (if A2S_ran: outside_scn_vs_Lbg==0 ∧ peep_from_Lbg) ∧ (if A_return: outside_obj_vs_base==0 ∧ ¬identity ∧ tex_gain≥τ) ∧ claim_scope_ok",
+    "BAN": [
+      "同板只写 PASS 不写 claim 轨",
+      "A 与 A2S 交换 peep 源",
+      "outside 底图偷换仍报金"
+    ]
+  },
+  "try_checklist": [
+    "1 选策略 S_SEQ_FULL / S_A_ONLY / S_A2S_ONLY",
+    "2 开 RUN Bus；phase 指针只前进不跳",
+    "3 P1 出 L1/M_obj 板",
+    "4 P2 出 L_bg（目视无主物）",
+    "5 P3 出 L_bg_qing + 风景 I* 格；outside_scn=0",
+    "6 P4 物回 L_bg_qing；outside_obj=0",
+    "7 P5 勤力表：I-ID-BAN/I-PROCESS/I-SCOPE/I-SCENE 全勾",
+    "8 报告分栏：obj 轨 | scn 轨 | link 轨"
+  ],
+  "reference_runs": {
+    "A": "01543 / 01545 清+A众",
+    "A2S": "01556 风景洞座 L",
+    "constitution_call": "01557 SS验.清+A->景"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:43:35.926399+00:00",
+  "xu_hui": {
+    "write": "01563",
+    "call": "虛回",
+    "formal": "SHQ_XU_HUI_VIRTUAL_RETURN_V1",
+    "stick": "STICK_XU_HUI"
+  }
+}

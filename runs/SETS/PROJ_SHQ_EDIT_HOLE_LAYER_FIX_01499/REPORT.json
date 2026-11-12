@@ -1,0 +1,25 @@
+{
+  "write_id": "01499",
+  "formal": "SHQ_EDIT_MULTI_LAYER_HOLE_RETURN_NO_STEAL_V1",
+  "diagnosis": "洞错位=偷步：剪影hardpaste 代替 EDIT洞内INPAINT",
+  "fix_path": [
+    "EDIT 除背 → 有头无背",
+    "EDIT 除头 → 无头有背洞座",
+    "EDIT 头→品红 反扣洞色",
+    "EDIT 洞内INPAINT 高清回"
+  ],
+  "layers": {
+    "L0": "31355301-3d53-49ad-acd6-81adc42240ba",
+    "EDIT_除背": "6d46e699-1b75-4184-a9a0-7abd5833db1a",
+    "EDIT_除头": "270d82d0-0492-4a0d-b1b9-cdfdba79c30c",
+    "EDIT_品红洞": "71f964ad-047e-40f9-bccd-6a58691f5a3f",
+    "EDIT_洞内INPAINT": "9f82a297-b8f9-42dc-ab9c-4bdf57b31d06",
+    "CLIP": "74752ad7-4088-40ec-9979-eb91749ed0d3"
+  },
+  "matrix_ok": true,
+  "magenta_hole_frac": 0.0442957456420068,
+  "claim": "C2_EDIT_INPAINT_IN_HOLE",
+  "honesty": "主回=EDIT洞内INPAINT全图；品红M仅反扣/detector；禁剪影主权hardpaste",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:10:15.758859+00:00"
+}

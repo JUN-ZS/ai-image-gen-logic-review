@@ -1,0 +1,117 @@
+{
+  "write_id": "01554",
+  "call": "SS驗.清+C·风景主体回格",
+  "formal": "SHQ_SS_YAN_GRID_SCENE_SUBJECT_RETURN_SEAT_V2",
+  "zh": "风景主体回格 V2：WHOLE C2 必经 MARK_seat + SS验.清洞座锁回",
+  "stick": "STICK_SS_YAN_SCENE_SUBJECT_RETURN",
+  "parent": "01553",
+  "勤力DNA": true,
+  "SS验.清": true,
+  "mandatory_for_C2": [
+    "MARK_seat",
+    "清锁(elev_lock+seat_hardlock)",
+    "I-ID-BAN",
+    "I-PROCESS",
+    "outside=0"
+  ],
+  "equation": "C2_WHOLE ⇔ MARK_seat ∧ 清锁 ∧ densify_donor ∧ seat_born ∧ outside=0 ∧ tex_gain≥τ ∧ ¬identity; RETURN = L0⊙(1−M) + F2(lock(densify))⊙M; 禁 bbox-only paste 冒 C2",
+  "error_codes": {
+    "E-SEAT-01": "无 MARK_seat",
+    "E-SEAT-02": "无清锁",
+    "E-QL-01": "身份 donor",
+    "E-QL-02": "tex_gain",
+    "E-OUTSIDE": "洞外非0"
+  },
+  "proof": {
+    "outside_union": 0,
+    "C2_all": true,
+    "subjects": [
+      {
+        "id": "W01_mecha",
+        "ok": true,
+        "errs": [],
+        "claim": "C2_SS_YAN_QING_SEAT_RETURN",
+        "gain": 1.7470436096191406,
+        "outside": 0,
+        "mark": {
+          "method": "grabcut_cc",
+          "seat_ok": true,
+          "area": 157316,
+          "bbox_xyxy": [
+            170,
+            156,
+            582,
+            852
+          ],
+          "roi_xyxy": [
+            166,
+            152,
+            586,
+            856
+          ]
+        },
+        "qing_lock": true,
+        "donor_is_peep": false,
+        "formula": "MARK_seat + elev_lock + seat_hardlock_F2 + hardpaste⊙M"
+      },
+      {
+        "id": "W02_soldier",
+        "ok": true,
+        "errs": [],
+        "claim": "C2_SS_YAN_QING_SEAT_RETURN",
+        "gain": 1.7862311601638794,
+        "outside": 0,
+        "mark": {
+          "method": "grabcut_cc",
+          "seat_ok": true,
+          "area": 34394,
+          "bbox_xyxy": [
+            717,
+            509,
+            878,
+            912
+          ],
+          "roi_xyxy": [
+            713,
+            505,
+            882,
+            916
+          ]
+        },
+        "qing_lock": true,
+        "donor_is_peep": false,
+        "formula": "MARK_seat + elev_lock + seat_hardlock_F2 + hardpaste⊙M"
+      },
+      {
+        "id": "W03_tank",
+        "ok": true,
+        "errs": [],
+        "claim": "C2_SS_YAN_QING_SEAT_RETURN",
+        "gain": 1.7198505401611328,
+        "outside": 0,
+        "mark": {
+          "method": "grabcut_cc",
+          "seat_ok": true,
+          "area": 181864,
+          "bbox_xyxy": [
+            923,
+            398,
+            1676,
+            832
+          ],
+          "roi_xyxy": [
+            919,
+            394,
+            1680,
+            836
+          ]
+        },
+        "qing_lock": true,
+        "donor_is_peep": false,
+        "formula": "MARK_seat + elev_lock + seat_hardlock_F2 + hardpaste⊙M"
+      }
+    ]
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:13:14.610532+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "write": "01675",
+  "PASS": true,
+  "mad_wrong": 55.7581173074062,
+  "mad_fix": 16.259918696244828,
+  "outside": 0,
+  "claim": "C2_FACE_ZHUI_FIX",
+  "asof": "2026-11-12T05:02:29.531225+00:00",
+  "wai_li_face": "b8fa9e0e-1715-4e91-b811-b296b2db9357",
+  "cv_fix": "27e31a5f-4309-437b-a2c7-7ba470c0d055"
+}

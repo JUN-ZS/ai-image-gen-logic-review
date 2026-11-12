@@ -1,0 +1,6 @@
+{
+  "write": "01594",
+  "formal": "SHQ_XIAN1_IMAGINE_XIAN2_CENG_V1",
+  "PASS": true,
+  "rule": "Imagine elev 后必须再先读 才可层回锁"
+}

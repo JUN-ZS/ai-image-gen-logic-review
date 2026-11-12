@@ -1,0 +1,12 @@
+{
+  "S01_from": "S0A_map_back",
+  "outside_in_S0": 0,
+  "PASS": true,
+  "bbox": [
+    151,
+    163,
+    1186,
+    1906
+  ],
+  "formula": "S0A@corners → S0 ; ‖S01-S0‖_outside MARK_full = 0"
+}

@@ -1,0 +1,13 @@
+{
+  "write_id": "01482",
+  "formal": "DNA_DONOR_TOXIN_FREE_V1",
+  "zh": "無毒DONOR · 入DNA",
+  "try_anchor": "01481",
+  "parents": [
+    "01480",
+    "01478",
+    "01436"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T00:27:19.845215+00:00"
+}

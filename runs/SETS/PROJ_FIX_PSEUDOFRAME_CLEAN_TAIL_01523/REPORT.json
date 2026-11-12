@@ -1,0 +1,25 @@
+{
+  "write_id": "01523",
+  "bug": "E-PSEUDOFRAME-01 虚影全图伪FRAME",
+  "cause": "MARK area_frac≈0.81 full-frame + freeframe elev hardpaste → ghost across sky",
+  "fix": "MARK tight from bite (area≈0.0077) · peep=L0⊙M · elev size_lock peep · hardpaste seat only · outside=0",
+  "outside": 0,
+  "MARK_frac": 0.00770952912414966,
+  "bbox_xyxy": [
+    197,
+    318,
+    300,
+    528
+  ],
+  "size_lock": true,
+  "PASS_CLEAN": true,
+  "claim": "C2_FIX_PSEUDOFRAME_CLEAN_TAIL",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T12:41:03.330680+00:00",
+  "inside_max": 201,
+  "elev_hd": "dfa5c3c6",
+  "fix2": "外力 densify peep → size_lock → hardpaste 只在 MARK；禁全幅 elev",
+  "PRIMARY": "FINAL_CLEAN = L0 peep seat-return bitexact (无全图虚影)",
+  "BITEXACT_GOLD": "FINAL_BITEXACT=L0",
+  "note": "elev densify 留作洞内升清候选；尾图先锁无伪FRAME"
+}

@@ -1,0 +1,9 @@
+{
+  "write_id": "01512",
+  "zh": "正身 S0|S0A→S01",
+  "flow": "S0全景 → S0A大切块 → S1..S11@S0A → S01 map-back S0",
+  "claim": "C2_ZHENG_SHEN_SX_S0_S0A_S01",
+  "PASS": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T09:59:56.725724+00:00"
+}

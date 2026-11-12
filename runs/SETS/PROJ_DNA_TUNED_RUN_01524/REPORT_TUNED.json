@@ -1,0 +1,14 @@
+{
+  "write_id": "01524",
+  "DNA": "DNA_KUANGYA_TUNED",
+  "SRC_gold": "b741fd1e-39ed-4110-9a17-73bc527bc97d",
+  "L1_fullframe": "c7ef778b-d08d-4c96-b8b1-4c1f34921d7f",
+  "elev_role": "S7 only",
+  "PASS_SX_FULL": true,
+  "S01_S0_outside": 0,
+  "S0R_S0_outside": 0,
+  "boost_AND": true,
+  "claim": "C2_DNA_TUNED_S01_RETURN",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T12:50:49.743961+00:00"
+}

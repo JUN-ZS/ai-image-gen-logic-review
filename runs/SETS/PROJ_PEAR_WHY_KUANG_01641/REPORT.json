@@ -1,0 +1,36 @@
+{
+  "write": "01641",
+  "PEAR_why_框": {
+    "why": "PEAR 洞 ≈ 01637 先验矩形窗，不是梨真缘",
+    "chain": [
+      "1. 01637 priors: PEAR 窗 (0.55–0.78)×(0.38–0.92) = 手写矩形",
+      "2. 窗内 CC/差分 填满或贴窗 → M 近似矩形块",
+      "3. 01640 描图 = drawContours(M) → 画出矩形框",
+      "4. 外力判定 rect_like=True → PEAR FAIL（正确）"
+    ],
+    "prior_window_xyxy": [
+      985,
+      383,
+      1397,
+      927
+    ],
+    "M_tight_bbox": [
+      985,
+      383,
+      1397,
+      927
+    ],
+    "meta_hole_from_M": [
+      383,
+      927,
+      985,
+      1397
+    ],
+    "extent_area_over_bbox": 0.9957,
+    "n_approx_vertices": 4,
+    "circularity": 0.7704,
+    "iou_M_vs_prior_window": 1.0,
+    "fill_ratio_inside_prior": 1.0,
+    "not": "不是外力除背梨缘；不是 VIRTUAL_DIR 全相 alpha 回投"
+  }
+}

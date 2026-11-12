@@ -1,0 +1,13 @@
+{
+  "write_id": "01485",
+  "formal": "SHQ_KUANGYA_PROOF_V1",
+  "all_ok": true,
+  "parents": [
+    "01483",
+    "01484",
+    "01477",
+    "01472"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T00:53:11.079639+00:00"
+}

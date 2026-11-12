@@ -1,0 +1,45 @@
+{
+  "write_id": "01527",
+  "formal": "SHQ_S7A_S9A_SHENG_EPHEMERAL_V1",
+  "zh": "S7/S9 升清成 S7A/S9A · (S)×(S) 更洞准 · 用完可销",
+  "pattern": "S* seat/child → S*A 升清 TEMP → (S)×(S) → destroy S*A",
+  "S7A": {
+    "role": "elev 升清 temp",
+    "for": "(S)×(S) 洞准",
+    "ephemeral": true
+  },
+  "S9A": {
+    "role": "seat 升清 temp",
+    "for": "S11×S0 fill",
+    "ephemeral": true
+  },
+  "S7A_used": true,
+  "S9A_used": true,
+  "outside_S11": 0,
+  "PASS_SX_FULL": true,
+  "destroyed": {
+    "destroyed": [
+      "S9A_SHENG_TEMP.png",
+      "S9A_SHENG_TEMP.jpg",
+      "Bus/S9A/S9A_SHENG_TEMP.jpg",
+      "Bus/S9A/S9A_SHENG_TEMP.png",
+      "S7A_SHENG_TEMP.png",
+      "S7A_SHENG_TEMP.jpg",
+      "Bus/S7A/S7A_SHENG_TEMP.jpg",
+      "Bus/S7A/S7A_SHENG_TEMP.png"
+    ],
+    "kept": [
+      "S7A_META.json",
+      "Bus/S7A/S7A_META.json",
+      "Bus/S7A/SLOT.json",
+      "S9A_META.json",
+      "Bus/S9A/S9A_META.json",
+      "Bus/S9A/SLOT.json"
+    ],
+    "why": "S7A/S9A ephemeral — (S)×(S) 洞准用完可销毁；S11 已锁 S0",
+    "S11_PASS": true,
+    "pattern": "S7→S7A→…→S9→S9A→S11 → destroy S7A&S9A"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:07:11.799553+00:00"
+}

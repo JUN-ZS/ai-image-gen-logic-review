@@ -1,0 +1,40 @@
+{
+  "write_id": "01506",
+  "formal": "SHQ_KUANGYA_GENERALITY_MESH_V1",
+  "zh": "框牙通用性·密电路机械网人",
+  "subject": "dense_circuit_mesh_android",
+  "cross_subjects": [
+    "dual_mecha",
+    "rain_woman_01505",
+    "mesh_android_01506"
+  ],
+  "gates": {
+    "EDIT_除背": true,
+    "EDIT_除头_洞座": true,
+    "EDIT_品红": true,
+    "peep0_intact": true,
+    "scale_from_peep0": true,
+    "elev_is_child": true,
+    "正头_洞内INPAINT": true,
+    "S11xS0_outside0": true,
+    "subject_mesh_android": true,
+    "not_prior_woman": true,
+    "not_dual_mecha": true
+  },
+  "out_wrong_fullframe": 255,
+  "out_S11xS0": 0,
+  "PASS_GENERALITY": true,
+  "claim": "C2_KUANGYA_GENERALITY_MESH",
+  "assets": {
+    "L0": "915db2fc-4097-44e4-b890-fb8929656c9b",
+    "CLIP_bei": "e7de200c-baa5-4925-9014-4ccebf72bae9",
+    "L1": "530015cb-4e62-4e71-b68e-850148ed94b4",
+    "magenta": "35e2459d-2a1b-443e-96e3-b28cbc504241",
+    "elev": "6df1b0dd-469e-46b8-9986-7b0fd2449ee3",
+    "正头": "d7a191b6-d535-487e-8dfc-c49715b902ac",
+    "S11_edit": "7bac3f84-92f4-4ab3-975c-a5136c2ba97b"
+  },
+  "constitution_parent": "01504",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:59:21.698012+00:00"
+}

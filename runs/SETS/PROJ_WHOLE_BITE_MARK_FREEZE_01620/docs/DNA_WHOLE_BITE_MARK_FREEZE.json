@@ -1,0 +1,10 @@
+{
+  "write_id": "01620",
+  "call": "整件咬MARK冻",
+  "formal": "SHQ_WHOLE_BITE_MARK_FREEZE_AFTER_R2_V1",
+  "equation": "R2 → extract_subject/whole_bite → MARK_freeze → peep_lock densify → hard 座洞 · outside=0",
+  "qing_lock": "01541",
+  "dual_pad": "01619",
+  "asof": "2026-11-11T22:05:18.302162+00:00",
+  "ACCEPT_FULL_HD": false
+}

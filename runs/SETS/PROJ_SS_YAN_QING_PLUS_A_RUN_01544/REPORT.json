@@ -1,0 +1,37 @@
+{
+  "write_id": "01544",
+  "call": "SS驗.清+A",
+  "project": "SETS/PROJ_SS_YAN_QING_PLUS_A_RUN_01544",
+  "L0_asset": "a519ea09-1c96-4b7b-8fa8-487678473799",
+  "L1_asset": "248e6667-7a37-4af2-9c84-e5ddbd7d91a4",
+  "subject": "red tank right",
+  "PASS": true,
+  "claim": "C2_SS_YAN_QING_PLUS_A",
+  "sem_frac": 0.08311742665816327,
+  "outside": 0,
+  "frame": {
+    "bbox_xyxy": [
+      957,
+      472,
+      1621,
+      790
+    ],
+    "Wh": 665,
+    "Hh": 319,
+    "cx": 1289.0,
+    "cy": 631.0,
+    "asp_wh": 2.084639498432602,
+    "area": 150138.0
+  },
+  "note": null,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T22:51:16.916296+00:00",
+  "densify": {
+    "donor_asset": "6ea79ce0-3418-40d5-9d49-7b94de2d6965",
+    "was_freeframe": true,
+    "outside": 0,
+    "struct_lf_mad": 1.9083776473999023,
+    "PASS": true,
+    "claim": "C2_SS_YAN_QING_PLUS_A"
+  }
+}

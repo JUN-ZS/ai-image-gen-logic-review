@@ -1,0 +1,136 @@
+{
+  "write_id": "01636",
+  "call": "DNA·倒反证更新",
+  "formal": "SHQ_DNA_DAO_FAN_ZHENG_DEPRECATE_V1",
+  "zh": "新法入宪必须废止冲突旧法；倒反证强制更新",
+  "problem": "知道用新法后，不更新冲突的 CC MARK 旧法等 → 双轨 → 假 PASS 走旧路",
+  "dao_fan_schema": {
+    "assume": "旧法 L 仍合法 且 新法 N 为宪真",
+    "then": "存在 RUN 使 claim(L)=PASS 且 claim(N)=FAIL（同物同步）",
+    "but": "单一合规定义下 PASS∧FAIL 不可同真",
+    "hence": "L 不得再合法 → status(L)=DEAD 并写入 registry"
+  },
+  "update_rule": [
+    "任何新 DNA/闸 write 必须附 conflict_table",
+    "表中 old 一律标 DEAD 或 SUPERSEDED，并写替代 id",
+    "RUN 宣称不得引用 DEAD 法为 PASS 依据",
+    "自检: 若 REPORT 同时出现 DEAD 路径与 LIVE 路径 → E-DUAL-TRACK-01 FAIL",
+    "倒反证板: 每条冲突写「若旧仍立则矛盾」一句"
+  ],
+  "E_codes": {
+    "E-DUAL-TRACK-01": "新旧法双轨并立未废止",
+    "E-STALE-CC-MARK": "仍用乱CC/色带当座",
+    "E-STALE-OUTSIDE-ALONE": "仍用 outside0 alone PASS",
+    "E-NO-CONFLICT-TABLE": "新法入宪无 conflict 表"
+  },
+  "conflicts": [
+    {
+      "id": "C1",
+      "old": {
+        "id": "OLD_CC_MARK",
+        "name": "全图/乱 CC 造 MARK",
+        "status_was": "LIVE"
+      },
+      "new": {
+        "id": "YING_KOU_HUI",
+        "name": "除背影 MARK（01631）",
+        "write": "01631"
+      },
+      "dao_fan": "若 CC 仍可当座 ∧ 影扣回为真座 → 同物可有两套互斥 MARK 皆称 PASS → 矛盾",
+      "must": "DEAD: 乱CC/乱差分当座"
+    },
+    {
+      "id": "C2",
+      "old": {
+        "id": "OLD_OUTSIDE_ALONE",
+        "name": "outside=0 即 PASS",
+        "status_was": "LIVE"
+      },
+      "new": {
+        "id": "FRAME_GATE",
+        "name": "框内闸 cover/contain（01634）",
+        "write": "01634"
+      },
+      "dao_fan": "APPLE cover=0.62 新 F8=FAIL 但旧 outside=0 仍 PASS → 同 RUN 真假绿 → 矛盾",
+      "must": "DEAD: outside alone PASS；F8 必含 cover"
+    },
+    {
+      "id": "C3",
+      "old": {
+        "id": "OLD_FREEFRAME_AS_PEEP",
+        "name": "無背 freeframe 直接当 peep 影源",
+        "status_was": "LIVE"
+      },
+      "new": {
+        "id": "BEI_SIZE_GATE",
+        "name": "有背無背尺闸（01635）",
+        "write": "01635"
+      },
+      "dao_fan": "APPLE sx=1.318 尺裂 FAIL，若 freeframe 直贴仍合法 → 尺度闸形同虚设 → 矛盾",
+      "must": "DEAD: 无 peep-lock 的 freeframe 直贴为合法扣"
+    },
+    {
+      "id": "C4",
+      "old": {
+        "id": "OLD_COLOR_BAND_RECT",
+        "name": "色带膨胀/窗矩形 MASK",
+        "status_was": "LIVE"
+      },
+      "new": {
+        "id": "YING_ONLY",
+        "name": "MARK:=除背影 only",
+        "write": "01631"
+      },
+      "dao_fan": "色带大方框 vs 除背真影 同称 MARK → 影扣回定义瓦解 → 矛盾",
+      "must": "DEAD: 色带/窗框造 MASK"
+    },
+    {
+      "id": "C5",
+      "old": {
+        "id": "OLD_ANTITOXIN_REWRITE",
+        "name": "杀毒时 FALLBACK 重写影/改序",
+        "status_was": "LIVE briefly 01632"
+      },
+      "new": {
+        "id": "ORDER_LOCK",
+        "name": "E-ORDER-01 回退（01633）",
+        "write": "01633"
+      },
+      "dao_fan": "杀毒若可改写主链，则主链非锁 → 01631 金与 01632 坏可同时称合规 → 矛盾",
+      "must": "DEAD: 闸杀毒 rewrite 影源与次序"
+    },
+    {
+      "id": "C6",
+      "old": {
+        "id": "OLD_AXIS_AS_SEAT",
+        "name": "中心轴当座本体",
+        "status_was": "confused"
+      },
+      "new": {
+        "id": "AXIS_XUHUI_ONLY",
+        "name": "轴=虚回认位 only",
+        "write": "01631"
+      },
+      "dao_fan": "轴若当座 ∧ 影当座 → 二座 → 矛盾",
+      "must": "DEAD: 轴=座；轴只虚回"
+    }
+  ],
+  "DEAD_methods": [
+    "全图乱CC造MARK",
+    "乱差分当座",
+    "色带膨胀/窗矩形MASK",
+    "outside=0 alone PASS",
+    "無背 freeframe 无尺锁直贴",
+    "杀毒 FALLBACK 重写影/改序",
+    "中心轴当座本体"
+  ],
+  "LIVE_methods": [
+    "认物→除背→MARK=除背影→影扣回（01631）",
+    "RATIO/尺/框 闸只审计不改影（01633–01635）",
+    "轴=虚回认位 only",
+    "步步為一 后→前",
+    "[(生,除,洞,扣)×(反)] 外力GROK 驱动"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:49:24.931043+00:00"
+}

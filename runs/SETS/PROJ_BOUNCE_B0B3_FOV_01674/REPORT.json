@@ -1,0 +1,13 @@
+{
+  "write": "01674",
+  "call": "追·B0B3",
+  "PASS": true,
+  "outside": 0,
+  "areas": {
+    "NEAR": 398310,
+    "MID": 71343,
+    "FAR": 300239
+  },
+  "claim": "C2_BOUNCE_B0B3_FOV",
+  "asof": "2026-11-12T04:54:18.016752+00:00"
+}

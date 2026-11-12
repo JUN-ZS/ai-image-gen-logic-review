@@ -1,0 +1,81 @@
+{
+  "write_id": "01547",
+  "http_grok_vlm": {
+    "provider": "grok_vlm",
+    "labels": [
+      "mecha",
+      "person",
+      "tank"
+    ],
+    "score_min": 0.25,
+    "path": "C",
+    "ok": false,
+    "code": "E-QC-00",
+    "n": 0,
+    "note": "无 XAI_API_KEY；本沙箱 Grok 代理可用 manual_bbox 由 Agent 估框",
+    "provider_resolved": "grok_vlm_unavailable"
+  },
+  "agent_runs": {
+    "mecha": {
+      "PASS": true,
+      "claim": "C2_SS_YAN_QING_PLUS_C",
+      "outside": 0,
+      "label": "bipedal mecha",
+      "frac": 0.15639559860402494
+    },
+    "soldier": {
+      "PASS": true,
+      "claim": "C2_SS_YAN_QING_PLUS_C",
+      "outside": 0,
+      "label": "person soldier",
+      "frac": 0.033300559807256234
+    },
+    "tank": {
+      "PASS": true,
+      "claim": "C2_SS_YAN_QING_PLUS_C",
+      "outside": 0,
+      "label": "battle tank",
+      "frac": 0.17978382759353742
+    }
+  },
+  "hezhong_outside": 0,
+  "honesty": {
+    "write_id": "01547",
+    "question": "API试跑 Grok AI / xAI?",
+    "sandbox": {
+      "XAI_API_KEY": false,
+      "http_grok_vlm": {
+        "provider": "grok_vlm",
+        "labels": [
+          "mecha",
+          "person",
+          "tank"
+        ],
+        "score_min": 0.25,
+        "path": "C",
+        "ok": false,
+        "code": "E-QC-00",
+        "n": 0,
+        "note": "无 XAI_API_KEY；本沙箱 Grok 代理可用 manual_bbox 由 Agent 估框",
+        "provider_resolved": "grok_vlm_unavailable"
+      }
+    },
+    "xai_capability": {
+      "native_open_vocab_OD_API": false,
+      "image_understanding_VLM": true,
+      "pattern": "chat completions + image → JSON boxes (Roboflow-style box_2d / xyxy_norm)",
+      "docs": "https://docs.x.ai/developers/model-capabilities/images/understanding"
+    },
+    "this_run": {
+      "provider": "manual_bbox",
+      "boxes_source": "grok_agent_vision (in-chat multimodal estimate of L0)",
+      "not": "http api.x.ai (no key in env)"
+    },
+    "how_to_wire_real_api": {
+      "env": "export XAI_API_KEY=... ; optional XAI_VISION_MODEL=grok-4",
+      "provider": "grok_vlm",
+      "call": "ss_yan_qing_plus_c_run(L0, labels, provider='grok_vlm')"
+    }
+  },
+  "asof": "2026-11-10T23:57:52.887321+00:00"
+}

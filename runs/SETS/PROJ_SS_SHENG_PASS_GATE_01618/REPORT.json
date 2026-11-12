@@ -1,0 +1,100 @@
+{
+  "write": "01618",
+  "PASS": true,
+  "outside": 0,
+  "TEX_MIN": 6.0,
+  "alpha": 0.28,
+  "parts": [
+    {
+      "name": "O01",
+      "has_elev": true,
+      "mad_tex": 9.78,
+      "part_PASS": true,
+      "required": true,
+      "elev_src": "imagine+peep_lock"
+    },
+    {
+      "name": "O02",
+      "has_elev": true,
+      "mad_tex": 7.04,
+      "part_PASS": true,
+      "required": true,
+      "elev_src": "imagine+peep_lock"
+    },
+    {
+      "name": "O03",
+      "has_elev": true,
+      "mad_tex": 9.52,
+      "part_PASS": true,
+      "required": true,
+      "elev_src": "imagine+peep_lock"
+    },
+    {
+      "name": "O04",
+      "has_elev": true,
+      "mad_tex": 15.88,
+      "part_PASS": true,
+      "required": true,
+      "elev_src": "peep_lock_USM"
+    },
+    {
+      "name": "O05",
+      "has_elev": true,
+      "mad_tex": 13.46,
+      "part_PASS": true,
+      "required": true,
+      "elev_src": "imagine+peep_lock"
+    },
+    {
+      "name": "O06",
+      "has_elev": true,
+      "mad_tex": 6.79,
+      "part_PASS": true,
+      "required": true,
+      "elev_src": "imagine+peep_lock"
+    },
+    {
+      "name": "O07",
+      "has_elev": false,
+      "mad_tex": 0.93,
+      "part_PASS": true,
+      "required": false,
+      "elev_src": "none"
+    },
+    {
+      "name": "O08",
+      "has_elev": true,
+      "mad_tex": 17.0,
+      "part_PASS": true,
+      "required": true,
+      "elev_src": "imagine+peep_lock"
+    },
+    {
+      "name": "O09",
+      "has_elev": false,
+      "mad_tex": 1.03,
+      "part_PASS": true,
+      "required": false,
+      "elev_src": "none"
+    },
+    {
+      "name": "O10",
+      "has_elev": false,
+      "mad_tex": 1.05,
+      "part_PASS": true,
+      "required": false,
+      "elev_src": "none"
+    }
+  ],
+  "peep_only_mad_mean": 1.065,
+  "gates": {
+    "outside0": true,
+    "sheng_all": true,
+    "peep_only_fails": true
+  },
+  "rule": "PASS ⇔ outside=0 ∧ 每必升件(elev peep-lock|imagine) ∧ mad_tex≥TEX_MIN",
+  "note_O04": "freeframe elev 对不齐 peep → 改 peep_lock densify 才过清锁位",
+  "claim": "C2_SHENG_PASS_01618",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:47:13.539478+00:00"
+}

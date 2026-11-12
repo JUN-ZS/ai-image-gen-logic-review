@@ -1,0 +1,25 @@
+{
+  "write": "01659",
+  "PASS": true,
+  "out": {
+    "叠": 0,
+    "斜": 0,
+    "折": 0
+  },
+  "mad_desert_vs_S0": 32.792501505810655,
+  "meta_env": {
+    "ok": true,
+    "n": 135886,
+    "bbox": [
+      291,
+      773,
+      36,
+      536
+    ]
+  },
+  "claim": "C2_ZHUI_DU_SAN_SAN_01659",
+  "answer": "会有应变：独·环境反射在此组合下成立（desert吐光，S0锁座，追出独补给）",
+  "PRIMARY": "斜_FOV",
+  "asof": "2026-11-12T02:51:27.143164+00:00",
+  "ACCEPT_FULL_HD": false
+}

@@ -1,0 +1,37 @@
+{
+  "outside_union": 0,
+  "PASS": true,
+  "subjects": [
+    {
+      "id": "mecha",
+      "PASS": true,
+      "outside": 0,
+      "gain": 1.7366760969161987,
+      "frac": 0.06327615681689343,
+      "api_PASS": true,
+      "claim": "C2_SS_YAN_QING_PLUS_A",
+      "path": "EDIT除主L1 → MARK_sem → peep → densify_lock → F2 → hardpaste⊙M"
+    },
+    {
+      "id": "soldier",
+      "PASS": true,
+      "outside": 0,
+      "gain": 1.71563720703125,
+      "frac": 0.011502843324829932,
+      "api_PASS": true,
+      "claim": "C2_SS_YAN_QING_PLUS_A",
+      "path": "EDIT除主L1 → MARK_sem → peep → densify_lock → F2 → hardpaste⊙M"
+    },
+    {
+      "id": "tank",
+      "PASS": true,
+      "outside": 0,
+      "gain": 1.720989465713501,
+      "frac": 0.08263911033163265,
+      "api_PASS": true,
+      "claim": "C2_SS_YAN_QING_PLUS_A",
+      "path": "EDIT除主L1 → MARK_sem → peep → densify_lock → F2 → hardpaste⊙M"
+    }
+  ],
+  "n_scene_cells": 8
+}

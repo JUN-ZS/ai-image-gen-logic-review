@@ -1,0 +1,38 @@
+{
+  "boundary": {
+    "exec_dna": {
+      "supreme_clause": {
+        "write": "01483",
+        "rank": "SUPREME",
+        "precedence": 0,
+        "binding": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效",
+        "algebra": "[(生,除,洞,扣)×(反)]",
+        "driver": "外力GROK",
+        "doc": "docs/SHQ_KUANGYA_SUPREME_CLAUSE.md",
+        "asof": "2026-11-10T00:30:14.814596+00:00"
+      },
+      "require": [
+        "drive_chu_sheng_via_imagine",
+        "supreme_F8_via_wai_li_grok",
+        "must_wai_li_grok",
+        "[(生,除,洞,扣)×(反)]"
+      ],
+      "forbid": [
+        "E-KY-SUPREME-01",
+        "E-KY-SUPREME-02",
+        "E-KY-SUPREME-03",
+        "E-WLG-DRIVE-01",
+        "local_drive_substitute"
+      ]
+    }
+  },
+  "authority": {},
+  "dock": {
+    "binds": [
+      "KUANGYA_SUPREME_01483",
+      "STICK_WAI_LI_GROK",
+      "[(生,除,洞,扣)×(反)]"
+    ]
+  },
+  "zh": "框牙·至高外力驅動四態"
+}

@@ -1,0 +1,13 @@
+{
+  "write": "01522b",
+  "stick": "框牙",
+  "gate": "elev 禁冒 S11",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "S7": "升质×物 elev child only",
+  "S11": "S11×S0 RETURN only",
+  "ban": [
+    "elev as RETURN",
+    "freeframe as 正回",
+    "skip S8–S11"
+  ]
+}

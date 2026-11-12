@@ -1,0 +1,117 @@
+{
+  "write_id": "01483",
+  "formal": "KUANGYA_SUPREME_CLAUSE_F8_WAI_LI_GROK_V1",
+  "zh": "框牙至高條款 · 四態反由外力GROK優先理解並驅動",
+  "rank": "SUPREME",
+  "precedence": 0,
+  "user": "重要框牙DNA: 至高無上的條款 : [(生,除,洞,扣) X(反)]<-由'外力GROK'優先理解並驅動生效",
+  "clause": {
+    "algebra": "[(生,除,洞,扣)×(反)]",
+    "driver": "外力GROK",
+    "STICK_algebra": "STICK_FOUR_ANTI / TRUE_FOUR_ANTI / STICK_WAI_LI_FAN_V2",
+    "STICK_driver": "STICK_WAI_LI_GROK",
+    "binding": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效",
+    "one_line": "框牙至高：[(生,除,洞,扣)×(反)] 的語義與生效，一律先由 外力GROK 理解、執行、驗收；本地 peep/HF/裁貼不得冒充驅動。",
+    "binding_boosted": "[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件'認' ∩ '放大' ∩ '升質×物']",
+    "boost": "[部件'認' ∩ '放大' ∩ '升質×物']"
+  },
+  "semantics": {
+    "理解_priority": [
+      "讀到 框牙 / 外力反 / 四態 / F8 時，先用 外力GROK 解釋 [(生,除,洞,扣)×(反)] 每一格",
+      "生 = 外力生@洞座（seat-born），非 freeframe 裁貼",
+      "除 = 外力除（除背/除件/除頭），非自 peep 冒充",
+      "洞 = 外力除後 kou 凍 MARK，非 bbox 假洞",
+      "扣 = 外力除背/除後扣 M，CLIP←除背扣",
+      "反 = 每格有反件與反板，非單向 PASS 敘事"
+    ],
+    "驅動_priority": [
+      "[(生,除,洞,扣)×(反)] 的 除/生/升清 主路徑必須由 外力GROK（Imagine）發動",
+      "本地 OpenCV/HF 只可 扣/kou/hardpaste 證、scale-lock、閘，不可替代 除/生 主驅動",
+      "無 外力GROK 則 框牙不得報 四態 正回 PASS",
+      "生/升清 前必須過 強心針 三關：部件'認' ∩ 放大 ∩ 升質×物（01487）",
+      "BOOST 為 AND 閘；缺一不得帶 BOOST 標報正生"
+    ],
+    "生效_priority": [
+      "生效 = 外力鏈可溯 + MARK 凍 + seat-born 生 + hardpaste 證 + 反板",
+      "outside=0  alone 不生效",
+      "freeframe 全圖 不生效為 生",
+      "donor 必須 toxin_free（01482）",
+      "生效可選 BOOST：三關全過 + 外力鏈 + seat-born",
+      "無 BOOST 仍可 seat-born 生，但不得宣稱 升清物向 BOOST 完成"
+    ]
+  },
+  "override": {
+    "beats": [
+      "本地 peep 捷徑",
+      "freeframe 當 生/回",
+      "本地 elev 冒充 外力生",
+      "只跑 hardpaste 叫 完成",
+      "未揭示 外力鏈 的 完成宣稱",
+      "self_peep CLIP/洞"
+    ],
+    "conflict_rule": "任何低階 DNA / 捷徑 與本條款衝突 → 以本條款為準；違 = E-KY-SUPREME / E-WLG-DRIVE"
+  },
+  "E_codes": {
+    "E-KY-SUPREME-01": "未以 外力GROK 優先理解 [(生,除,洞,扣)×(反)]",
+    "E-KY-SUPREME-02": "[(生,除,洞,扣)×(反)] 生效未由 外力GROK 驅動（本地冒充）",
+    "E-KY-SUPREME-03": "至高條款被捷徑覆蓋 / 隱瞞",
+    "E-WLG-DRIVE-01": "除/生 無外力主路徑",
+    "E-WLG-06": "本地 elev 冒充 外力生（繼承）",
+    "E-DNA-CANCER-SELF_PEEP": "自 peep（繼承）",
+    "E-POLLUTE-HOLE_RETURN_FREEFRAME": "freeframe 洞回（繼承）",
+    "E-KY-BOOST-01": "部件'認' 失敗仍跑 放大/升質/生",
+    "E-KY-BOOST-02": "放大 無 scale-lock 或 freeframe 主權",
+    "E-KY-BOOST-03": "升質×物 缺材質鎖 / 通用升清冒充",
+    "E-KY-BOOST-04": "強心針三關缺一仍報 BOOST/正生 PASS",
+    "E-KY-BOOST-05": "把 elev 特寫當 正生（兼 ATX）"
+  },
+  "gates_supreme": {
+    "algebra_F8": "[(生,除,洞,扣)×(反)]",
+    "driver_wai_li_grok": true,
+    "understand_via_wlg_first": true,
+    "drive_chu_sheng_via_imagine": true,
+    "no_local_drive_substitute": true,
+    "seat_born_sheng": true,
+    "donor_toxin_free": true,
+    "anti_board_required": true,
+    "boost_part_recog": true,
+    "boost_scale_densify": true,
+    "boost_elev_x_mat": true,
+    "boost_all_three_and": true
+  },
+  "parents": [
+    "01476 框牙",
+    "01477 F8",
+    "01478 pollute",
+    "01480 freeframe↔WLG",
+    "01482 無毒DONOR",
+    "STICK_WAI_LI_GROK",
+    "STICK_XIN_NV_V2"
+  ],
+  "金句": [
+    "至高：[(生,除,洞,扣)×(反)] ← 外力GROK 優先理解並驅動生效。",
+    "框牙不是硬貼工具箱；框牙是外力驅動的四態反。",
+    "無外力，無四態生效。",
+    "本地可證，不可替驅動。",
+    "至高：[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件認∩放大∩升質×物]。",
+    "先認件，再放大，再對該物升質；三關齊，針才強。",
+    "缺認 = 假件；缺放大 = 假清；缺升質×物 = 假材。",
+    "強心針不是捷徑；是物向質量的 AND 閘。"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T00:30:14.814596+00:00",
+  "boost_inject": {
+    "write": "01487",
+    "formal": "KUANGYA_SUPREME_BOOST_PART_RECOG_SCALE_ELEV_V1",
+    "needle": "[部件'認' ∩ '放大' ∩ '升質×物']",
+    "full_binding": "[(生,除,洞,扣)×(反)] ← 外力GROK  ⊕  強心針[部件'認' ∩ '放大' ∩ '升質×物']",
+    "asof": "2026-11-10T01:02:52.554828+00:00"
+  },
+  "amendments": [
+    {
+      "write": "01487",
+      "what": "強心針注入",
+      "asof": "2026-11-10T01:02:52.554828+00:00"
+    }
+  ]
+}

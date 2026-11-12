@@ -1,0 +1,55 @@
+{
+  "write": "01587",
+  "call": "先读高清 → 同物 densify → 虚回终极 S11",
+  "formal": "SHQ_XIAN_DU_SAMEOBJ_XU_HUI_ULTIMATE_S11_V1",
+  "base_S11": "01559/L/FINAL.jpg",
+  "xian_du_inputs": {
+    "73c1068a": "RETURN_BATCH full",
+    "b4a0b3d4": "HEAD nest RETURN",
+    "846f4be6": "I_virtual peep"
+  },
+  "protocol": "peep_mecha 主锁 + 三先读 HD 只供纹理 densify；climber/rover 同物 peep densify；M 冻座虚回",
+  "parts": [
+    {
+      "id": "mecha",
+      "outside_solo_vs_S11": 0,
+      "mad_inside": 40.595,
+      "mad_elev_vs_peep": 40.595,
+      "same_object_peep": true,
+      "xian_du_texture_refs": true,
+      "I_PROCESS": true,
+      "ok": true
+    },
+    {
+      "id": "climber",
+      "outside_solo_vs_S11": 0,
+      "mad_inside": 24.362,
+      "mad_elev_vs_peep": 24.362,
+      "same_object_peep": true,
+      "xian_du_texture_refs": false,
+      "I_PROCESS": true,
+      "ok": true
+    },
+    {
+      "id": "rover",
+      "outside_solo_vs_S11": 0,
+      "mad_inside": 16.889,
+      "mad_elev_vs_peep": 16.889,
+      "same_object_peep": true,
+      "xian_du_texture_refs": false,
+      "I_PROCESS": true,
+      "ok": true
+    }
+  ],
+  "outside_union": 0,
+  "PASS": true,
+  "claim": "C2_XIAN_DU_SAMEOBJ_XU_HUI_ULTIMATE_S11",
+  "qinli": {
+    "outside0": true,
+    "I_PROCESS": true,
+    "I_SEAT": true,
+    "I_ID_BAN": "mad_elev_vs_peep>=0.5"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T06:14:11.308687+00:00"
+}

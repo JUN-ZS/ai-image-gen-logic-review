@@ -1,0 +1,16 @@
+{
+  "write_id": "01606",
+  "zh": "入憲代號 PAD加大鎖",
+  "call": "PAD加大鎖",
+  "formal": "SHQ_PAD_EXPAND_SEAT_LOCK_V1",
+  "stick": "STICK_PAD_JIA_DA_SUO",
+  "parent_call": "框位回鎖",
+  "parent_formal": "SHQ_SS_YAN_KUANG_WEI_CHAIN_V1",
+  "claim": "C2_PAD_JIA_DA_SUO",
+  "closes": [
+    "E-PAD-01",
+    "E-BBOX-01"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T15:48:24.294840+00:00"
+}

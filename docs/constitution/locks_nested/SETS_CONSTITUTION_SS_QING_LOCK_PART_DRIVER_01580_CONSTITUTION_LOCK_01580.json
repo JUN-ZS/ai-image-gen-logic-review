@@ -1,0 +1,15 @@
+{
+  "write": "01580",
+  "formal": "SHQ_SS_QING_LOCK_PART_STRUCTURE_DRIVER_V1",
+  "call": "SS验.清锁·件 / 结构前置",
+  "stick": "STICK_SS_QING_LOCK_PART",
+  "py": "shq_ss_qing_lock_part_driver.py",
+  "先读": true,
+  "preflight_required": true,
+  "PASS_selftest": true,
+  "PASS_robot": true,
+  "gold": "SETS/PROJ_SS_QING_LOCK_DRIVER_ROBOT_01580",
+  "constitution_dir": "SETS/CONSTITUTION_SS_QING_LOCK_PART_DRIVER_01580",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T05:12:54.478993+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "write": "01583",
+  "call": "虚回 × 先读嵌套回 S11",
+  "S层映射": {
+    "be09e993": "整机大图（≈L0/S0 或同源 elev 成图，非 peep）",
+    "73c1068a": "S11 大图 · 01581 RETURN_BATCH（全机清锁终）",
+    "b4a0b3d4": "S11 头层 · 01582 嵌套 RETURN（头 peep 内清锁终）"
+  },
+  "虚回": {
+    "I_virtual": "b4a0b3d4 / NEST RETURN",
+    "seat": "FULL M_HEAD + frame bbox from PART_STRUCTURE",
+    "base_S11": "73c1068a RETURN_BATCH",
+    "禁": "不重开洞、不自开回位计划"
+  },
+  "outside_S11": 0,
+  "mad_S11": 3.16,
+  "outside_S0": 0,
+  "PASS": true,
+  "claim": "C2_XU_HUI_NEST_TO_S11",
+  "equation": "S11* = S11⊙(1−M_head) + resize(I_head_S11)⊙M_head · out=0",
+  "asof": "2026-11-11T05:29:40.329474+00:00",
+  "ACCEPT_FULL_HD": false
+}

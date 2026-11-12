@@ -1,0 +1,19 @@
+{
+  "write_id": "01504",
+  "formal": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+  "status": "SUCCESS_RECORDED",
+  "techniques": [
+    "正头",
+    "强心针",
+    "S×S递归锁",
+    "S11×S0"
+  ],
+  "claims": [
+    "C2_EDIT_INPAINT_IN_HOLE",
+    "C2_SX_ZHENG_TOU_HD",
+    "C2_S11xS0_ALIGN"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "stick": "STICK_ZHENG_TOU_SX_S11xS0",
+  "asof": "2026-11-10T02:45:53.300883+00:00"
+}

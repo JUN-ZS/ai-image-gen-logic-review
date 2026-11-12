@@ -1,0 +1,20 @@
+{
+  "write": "01653",
+  "call": "移轴FOV·3D SHARP叠",
+  "PASS": true,
+  "out": 0,
+  "sharp_var": {
+    "FAR": 163.9591827392578,
+    "MID": 1829.7796630859375,
+    "NEAR": 13010.15234375
+  },
+  "sharp_var_src": {
+    "FAR": 939.7772216796875,
+    "MID": 1454.77734375,
+    "NEAR": 671.4710083007812
+  },
+  "gradient_ok": true,
+  "claim": "C2_TILT_FOV_3D_SHARP_01653",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T01:46:42.760220+00:00"
+}

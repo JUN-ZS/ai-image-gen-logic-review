@@ -1,0 +1,87 @@
+{
+  "write_id": "01556",
+  "call": "SS驗.清+A·风景洞座锁",
+  "call_ascii": "SS_YAN.QING_PLUS_A_SCENE_SEAT_L",
+  "formal": "SHQ_SS_YAN_QING_PLUS_A_SCENE_SEAT_ON_LBG_V1",
+  "zh": "L流程：去物件背景 L_bg 上的清+A 风景洞座锁变体",
+  "stick": "STICK_SS_YAN_PLUS_A_SCENE_SEAT",
+  "bone": "SS驗.清+A",
+  "L_flow": [
+    "L0 有景有物",
+    "清+A 除主 → L1_i / MARK_obj",
+    "合成 L_bg = 去物件空景（洞位贴 L1）",
+    "在 L_bg 上咬风景层 → MARK_scene_seat = 风景带 ∩ ¬物件",
+    "peep@L_bg → densify → 清锁 F2 → 合众 L_bg_qing",
+    "可选：物 清+A 回贴到 L_bg_qing（L闭环）"
+  ],
+  "equation": "L_bg = strip_objects(L0; {L1_i,M_obj_i}); ∀ scene: M_seat = band ∩ ¬M_obj; peep = L_bg⊙M_seat; I* = F2(lock(densify(peep))); L_bg_qing = exclusive_paste(L_bg, I*, M_seat); FINAL = hezhong_objects(L_bg_qing)  # optional",
+  "vs_object_plus_A": {
+    "object_A": "除主得物洞 · peep 自 L0 · 回 L0",
+    "scene_variant": "去物件得空景 · peep 自 L_bg · 风景座锁回 L_bg"
+  },
+  "proof": {
+    "outside_scene_vs_Lbg": 0,
+    "outside_final_vs_Lbg_qing": 0,
+    "scenes": [
+      {
+        "id": "S01_sky_storm",
+        "gain": 2.7196285724639893,
+        "outside": 0,
+        "ok": true,
+        "seat_note": "band_minus_obj",
+        "area": 715383
+      },
+      {
+        "id": "S02_horizon_mountains",
+        "gain": 2.6573574542999268,
+        "outside": 0,
+        "ok": true,
+        "seat_note": "band_minus_obj",
+        "area": 276389
+      },
+      {
+        "id": "S03_wet_ground",
+        "gain": 2.655913829803467,
+        "outside": 0,
+        "ok": true,
+        "seat_note": "band_minus_obj",
+        "area": 626812
+      },
+      {
+        "id": "S04_sunset_glow_right",
+        "gain": 2.655038595199585,
+        "outside": 0,
+        "ok": true,
+        "seat_note": "band_minus_obj",
+        "area": 187687
+      },
+      {
+        "id": "S05_mist_haze",
+        "gain": 2.9747023582458496,
+        "outside": 0,
+        "ok": true,
+        "seat_note": "band_minus_obj",
+        "area": 255855
+      }
+    ],
+    "objects_on_qing": [
+      {
+        "id": "tank",
+        "outside": 0
+      },
+      {
+        "id": "mecha",
+        "outside": 0
+      },
+      {
+        "id": "soldier",
+        "outside": 0
+      }
+    ]
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:28:55.547234+00:00",
+  "call_canonical": "SS驗.清+A->景",
+  "constitution_write": "01557",
+  "formal_skill": "SHQ_SS_YAN_QING_PLUS_A_TO_SCENE_V1"
+}

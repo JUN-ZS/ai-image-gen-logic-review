@@ -1,0 +1,12 @@
+{
+  "write_id": "01535",
+  "zh": "GROK INPAINT 洞座锁位",
+  "PASS": true,
+  "shift": {
+    "dx": 0,
+    "dy": 0,
+    "corr": 496388032.0
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T14:02:35.792774+00:00"
+}

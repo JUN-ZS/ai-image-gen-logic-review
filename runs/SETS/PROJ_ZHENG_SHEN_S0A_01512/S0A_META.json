@@ -1,0 +1,37 @@
+{
+  "source": "L0_L1_kou_largest_cc",
+  "cc_area": 889109,
+  "bbox_xyxy_in_S0": [
+    0,
+    86,
+    1791,
+    1007
+  ],
+  "corners_in_S0": {
+    "TL": [
+      0,
+      86
+    ],
+    "TR": [
+      1791,
+      86
+    ],
+    "BR": [
+      1791,
+      1007
+    ],
+    "BL": [
+      0,
+      1007
+    ]
+  },
+  "S0A_size": [
+    922,
+    1792
+  ],
+  "S0_size": [
+    1008,
+    1792
+  ],
+  "map_back": "S0A_RETURN → paste into S0 at bbox → S01"
+}

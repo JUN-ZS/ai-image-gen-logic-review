@@ -1,0 +1,102 @@
+{
+  "write_id": "01668",
+  "call": "正追",
+  "formal": "SHQ_ZHENG_ZHUI_MIN_B1_V2",
+  "parent": "01665",
+  "formula_old_BAN": "peep*(1-w)+ENV*w + CLAHE  // E-ZZ-05 换材",
+  "formula_v2": "peep' = LockAB(peep0) + alpha * s(g) * (ENV - mean_ENV); densify=light highpass; no CLAHE metal",
+  "alpha": {
+    "metal": 0.16,
+    "diffuse": 0.1
+  },
+  "gates": [
+    "outside=0",
+    "dsat<=0.12",
+    "dgray<=18",
+    "mad<=22"
+  ],
+  "error_codes": {
+    "E-ZZ-05": "座内 Δsat 过大（铜→银）",
+    "E-ZZ-06": "座内 mean 抬亮过猛",
+    "E-ZZ-07": "hue/albedo 未锁",
+    "E-ZZ-08": "使用旧线性混 ENV"
+  },
+  "min_chain": [
+    "S0",
+    "MARK_NEAR",
+    "ENV(μ=正)",
+    "追·B1"
+  ],
+  "test_01668": {
+    "PASS": true,
+    "n_ok": 3,
+    "results": [
+      {
+        "obj": "teapot",
+        "mode": "metal",
+        "outside": 0,
+        "sat0": 0.59,
+        "sat1": 0.605,
+        "dsat": -0.015,
+        "dsat_old": 0.185,
+        "g0": 76.9,
+        "g1": 76.2,
+        "dgray": -0.6,
+        "dgray_old": 12.3,
+        "mad": 1.29,
+        "mad_old": 24.91,
+        "gate_out": true,
+        "gate_sat": true,
+        "gate_gray": true,
+        "gate_mad": true,
+        "mat_OK": true,
+        "leaf_OK": true
+      },
+      {
+        "obj": "thermos",
+        "mode": "metal",
+        "outside": 0,
+        "sat0": 0.356,
+        "sat1": 0.367,
+        "dsat": -0.011,
+        "dsat_old": 0.094,
+        "g0": 78.2,
+        "g1": 78.0,
+        "dgray": -0.3,
+        "dgray_old": 12.0,
+        "mad": 1.33,
+        "mad_old": 23.03,
+        "gate_out": true,
+        "gate_sat": true,
+        "gate_gray": true,
+        "gate_mad": true,
+        "mat_OK": true,
+        "leaf_OK": true
+      },
+      {
+        "obj": "vase",
+        "mode": "diffuse",
+        "outside": 0,
+        "sat0": 0.301,
+        "sat1": 0.322,
+        "dsat": -0.021,
+        "dsat_old": 0.063,
+        "g0": 75.9,
+        "g1": 75.5,
+        "dgray": -0.4,
+        "dgray_old": 27.4,
+        "mad": 1.38,
+        "mad_old": 33.67,
+        "gate_out": true,
+        "gate_sat": true,
+        "gate_gray": true,
+        "gate_mad": true,
+        "mat_OK": true,
+        "leaf_OK": true
+      }
+    ]
+  },
+  "asof": "2026-11-12T04:13:46.411405+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim_class": "C1_LEAF_B1_ONLY"
+}

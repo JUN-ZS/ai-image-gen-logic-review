@@ -1,0 +1,211 @@
+{
+  "write": "01569",
+  "flow": "peep(已抽出) → SS验.清+A 分部件互斥 → Imagine densify 各部件 → 组 elev → 虚回",
+  "subjects": [
+    {
+      "id": "mecha",
+      "exclusive_ok": true,
+      "n_parts": 3,
+      "parts": [
+        {
+          "name": "P0_upper",
+          "bbox": [
+            19,
+            0,
+            211,
+            175
+          ],
+          "scale": 2.0,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/mecha/P0_upper_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/mecha/P0_upper_sil.jpg",
+          "area": 13093,
+          "label": "white mecha robot armor part P0_upper"
+        },
+        {
+          "name": "P1_mid",
+          "bbox": [
+            0,
+            172,
+            226,
+            344
+          ],
+          "scale": 2.0,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/mecha/P1_mid_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/mecha/P1_mid_sil.jpg",
+          "area": 27039,
+          "label": "white mecha robot armor part P1_mid"
+        },
+        {
+          "name": "P2_lower",
+          "bbox": [
+            4,
+            341,
+            217,
+            511
+          ],
+          "scale": 2.0,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/mecha/P2_lower_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/mecha/P2_lower_sil.jpg",
+          "area": 15281,
+          "label": "white mecha robot armor part P2_lower"
+        }
+      ],
+      "peep_shape": [
+        512,
+        227,
+        3
+      ],
+      "frame": {
+        "bbox_xyxy": [
+          260,
+          211,
+          486,
+          722
+        ],
+        "Wh": 227,
+        "Hh": 512,
+        "cx": 373.0,
+        "cy": 466.5,
+        "asp_wh": 0.443359375,
+        "area": 55413.0
+      }
+    },
+    {
+      "id": "climber",
+      "exclusive_ok": true,
+      "n_parts": 3,
+      "parts": [
+        {
+          "name": "P0_upper",
+          "bbox": [
+            0,
+            0,
+            84,
+            70
+          ],
+          "scale": 3.011764705882353,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/climber/P0_upper_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/climber/P0_upper_sil.jpg",
+          "area": 2831,
+          "label": "person orange jacket backpack part P0_upper"
+        },
+        {
+          "name": "P1_mid",
+          "bbox": [
+            0,
+            67,
+            84,
+            137
+          ],
+          "scale": 3.011764705882353,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/climber/P1_mid_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/climber/P1_mid_sil.jpg",
+          "area": 3335,
+          "label": "person orange jacket backpack part P1_mid"
+        },
+        {
+          "name": "P2_lower",
+          "bbox": [
+            0,
+            134,
+            75,
+            203
+          ],
+          "scale": 3.3684210526315788,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/climber/P2_lower_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/climber/P2_lower_sil.jpg",
+          "area": 3538,
+          "label": "person orange jacket backpack part P2_lower"
+        }
+      ],
+      "peep_shape": [
+        204,
+        85,
+        3
+      ],
+      "frame": {
+        "bbox_xyxy": [
+          832,
+          545,
+          916,
+          748
+        ],
+        "Wh": 85,
+        "Hh": 204,
+        "cx": 874.0,
+        "cy": 646.5,
+        "asp_wh": 0.4166666666666667,
+        "area": 9704.0
+      }
+    },
+    {
+      "id": "rover",
+      "exclusive_ok": true,
+      "n_parts": 3,
+      "parts": [
+        {
+          "name": "P0_upper",
+          "bbox": [
+            70,
+            0,
+            363,
+            111
+          ],
+          "scale": 2.0,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/rover/P0_upper_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/rover/P0_upper_sil.jpg",
+          "area": 13298,
+          "label": "red tracked rover vehicle part P0_upper"
+        },
+        {
+          "name": "P1_mid",
+          "bbox": [
+            24,
+            108,
+            379,
+            218
+          ],
+          "scale": 2.0,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/rover/P1_mid_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/rover/P1_mid_sil.jpg",
+          "area": 26980,
+          "label": "red tracked rover vehicle part P1_mid"
+        },
+        {
+          "name": "P2_lower",
+          "bbox": [
+            0,
+            215,
+            430,
+            323
+          ],
+          "scale": 2.0,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/rover/P2_lower_xN.jpg",
+          "path_sil": "SETS/PROJ_XU_HUI_SS_PART_DEN_01569/parts/rover/P2_lower_sil.jpg",
+          "area": 29984,
+          "label": "red tracked rover vehicle part P2_lower"
+        }
+      ],
+      "peep_shape": [
+        324,
+        431,
+        3
+      ],
+      "frame": {
+        "bbox_xyxy": [
+          1176,
+          417,
+          1606,
+          740
+        ],
+        "Wh": 431,
+        "Hh": 324,
+        "cx": 1391.0,
+        "cy": 578.5,
+        "asp_wh": 1.3302469135802468,
+        "area": 70262.0
+      }
+    }
+  ],
+  "asof": "2026-11-11T03:27:35.788421+00:00"
+}

@@ -1,0 +1,64 @@
+{
+  "write": "01634",
+  "APPLE": {
+    "cover": 0.619,
+    "contain": 1.0,
+    "frac": 0.4236,
+    "F8_PASS": false,
+    "codes": [
+      "E-MARK-UNDERCOVER",
+      "E-OUTSIDE-ALONE-01"
+    ],
+    "pix_m": 32511,
+    "pix_s": 28600,
+    "undercover_area": false,
+    "ff_touch_border": false
+  },
+  "all": [
+    {
+      "name": "POT",
+      "cover": 0.9772,
+      "contain": 1.0,
+      "F8_PASS": true,
+      "codes": [],
+      "frac": 0.2376
+    },
+    {
+      "name": "VASE",
+      "cover": 0.9997,
+      "contain": 1.0,
+      "F8_PASS": true,
+      "codes": [],
+      "frac": 0.4407
+    },
+    {
+      "name": "CLOCK",
+      "cover": 0.9997,
+      "contain": 1.0,
+      "F8_PASS": true,
+      "codes": [],
+      "frac": 0.4965
+    },
+    {
+      "name": "APPLE",
+      "cover": 0.619,
+      "contain": 1.0,
+      "F8_PASS": false,
+      "codes": [
+        "E-MARK-UNDERCOVER",
+        "E-OUTSIDE-ALONE-01"
+      ],
+      "frac": 0.4236
+    }
+  ],
+  "old_logic_all_PASS_if_outside0": true,
+  "new_F8": {
+    "POT": true,
+    "VASE": true,
+    "CLOCK": true,
+    "APPLE": false
+  },
+  "claim": "C2_DNA_FRAME_GATE_01634",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:40:44.160005+00:00"
+}

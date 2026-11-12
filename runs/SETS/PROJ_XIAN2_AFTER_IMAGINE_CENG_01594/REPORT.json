@@ -1,0 +1,477 @@
+{
+  "write": "01594",
+  "call": "先读1 → Imagine elev → 先读2 → 层回锁",
+  "formal": "SHQ_XIAN1_IMAGINE_XIAN2_CENG_V1",
+  "bloodline": "library_01592",
+  "equation": "先读1(OBJ) → elev_Imagine → 先读2(structure on elev) → 清锁2 → 层回锁 → S11*",
+  "先读1": {
+    "call": "先读1",
+    "n": 8,
+    "objs": [
+      {
+        "id": "OBJ_CRYSTAL",
+        "zh": "水晶球",
+        "area": 83659
+      },
+      {
+        "id": "OBJ_BREAD",
+        "zh": "左面包烛",
+        "area": 104496
+      },
+      {
+        "id": "OBJ_PENTACLE",
+        "zh": "五芒星盒",
+        "area": 76962
+      },
+      {
+        "id": "OBJ_RADIO",
+        "zh": "五芒星收音机",
+        "area": 111504
+      },
+      {
+        "id": "OBJ_STATUE",
+        "zh": "雕像头",
+        "area": 62721
+      },
+      {
+        "id": "OBJ_SCOPE",
+        "zh": "右显微镜",
+        "area": 57816
+      },
+      {
+        "id": "OBJ_GLOW",
+        "zh": "绿药水",
+        "area": 75936
+      },
+      {
+        "id": "OBJ_COINS",
+        "zh": "金币中前",
+        "area": 63693
+      }
+    ],
+    "source": "01592 solo_objects"
+  },
+  "Imagine_elev": "01593 elev_imagine ×8",
+  "先读2": {
+    "n": 8,
+    "reports": [
+      {
+        "parent_obj": "OBJ_CRYSTAL",
+        "zh": "水晶球",
+        "whole_meta": {
+          "n_cc": 2,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.80032343148267,
+          "area": 1596037,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 392919
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 297535
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 285879
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 619704
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_CRYSTAL/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_CRYSTAL.jpg"
+      },
+      {
+        "parent_obj": "OBJ_BREAD",
+        "zh": "左面包烛",
+        "whole_meta": {
+          "n_cc": 18,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.7476754403684551,
+          "area": 1480517,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 387366
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 288766
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 267592
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 536793
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_BREAD/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_BREAD.jpg"
+      },
+      {
+        "parent_obj": "OBJ_PENTACLE",
+        "zh": "五芒星盒",
+        "whole_meta": {
+          "n_cc": 44,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.6476618448893229,
+          "area": 1273355,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 287323
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 248579
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 263109
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 474344
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_PENTACLE/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_PENTACLE.jpg"
+      },
+      {
+        "parent_obj": "OBJ_RADIO",
+        "zh": "五芒星收音机",
+        "whole_meta": {
+          "n_cc": 59,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.6512619805090206,
+          "area": 1293771,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 353324
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 230734
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 254171
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 455542
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_RADIO/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_RADIO.jpg"
+      },
+      {
+        "parent_obj": "OBJ_STATUE",
+        "zh": "雕像头",
+        "whole_meta": {
+          "n_cc": 17,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.7157059721504264,
+          "area": 1417762,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 291992
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 261615
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 279850
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 584305
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_STATUE/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_STATUE.jpg"
+      },
+      {
+        "parent_obj": "OBJ_SCOPE",
+        "zh": "右显微镜",
+        "whole_meta": {
+          "n_cc": 24,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.6473562338917526,
+          "area": 1286012,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 352494
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 214498
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 250875
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 468145
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_SCOPE/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_SCOPE.jpg"
+      },
+      {
+        "parent_obj": "OBJ_GLOW",
+        "zh": "绿药水",
+        "whole_meta": {
+          "n_cc": 2,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.7781737774208204,
+          "area": 1534733,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 349479
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 296717
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 277924
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 610613
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_GLOW/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_GLOW.jpg"
+      },
+      {
+        "parent_obj": "OBJ_COINS",
+        "zh": "金币中前",
+        "whole_meta": {
+          "n_cc": 9,
+          "policy": "largest_cc+prior",
+          "kind": "whole_subject_CV",
+          "frac": 0.7866358901515151,
+          "area": 1568338,
+          "gate": "OK"
+        },
+        "profile": "mecha",
+        "n_parts": 4,
+        "parts": [
+          {
+            "id": "HEAD",
+            "ok": true,
+            "area": 406943
+          },
+          {
+            "id": "ARM",
+            "ok": true,
+            "area": 302407
+          },
+          {
+            "id": "TORSO",
+            "ok": true,
+            "area": 285309
+          },
+          {
+            "id": "LEG",
+            "ok": true,
+            "area": 573679
+          }
+        ],
+        "batch_PASS": true,
+        "batch_outside": 0,
+        "child_S11": "xian2/OBJ_COINS/RETURN_BATCH.jpg",
+        "elev1": "elev/ELEV1_OBJ_COINS.jpg"
+      }
+    ]
+  },
+  "层回锁": {
+    "parts": [
+      {
+        "id": "OBJ_CRYSTAL",
+        "zh": "水晶球",
+        "outside": 0,
+        "mad_elev_vs_peep": 13.381,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      },
+      {
+        "id": "OBJ_BREAD",
+        "zh": "左面包烛",
+        "outside": 0,
+        "mad_elev_vs_peep": 11.501,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      },
+      {
+        "id": "OBJ_PENTACLE",
+        "zh": "五芒星盒",
+        "outside": 0,
+        "mad_elev_vs_peep": 11.729,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      },
+      {
+        "id": "OBJ_RADIO",
+        "zh": "五芒星收音机",
+        "outside": 0,
+        "mad_elev_vs_peep": 8.219,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      },
+      {
+        "id": "OBJ_STATUE",
+        "zh": "雕像头",
+        "outside": 0,
+        "mad_elev_vs_peep": 12.479,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      },
+      {
+        "id": "OBJ_SCOPE",
+        "zh": "右显微镜",
+        "outside": 0,
+        "mad_elev_vs_peep": 6.875,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      },
+      {
+        "id": "OBJ_GLOW",
+        "zh": "绿药水",
+        "outside": 0,
+        "mad_elev_vs_peep": 10.884,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      },
+      {
+        "id": "OBJ_COINS",
+        "zh": "金币中前",
+        "outside": 0,
+        "mad_elev_vs_peep": 11.373,
+        "PASS": true,
+        "claim": "C2_XIAN2_CENG",
+        "chain": "先读1→Imagine elev→先读2→层回锁",
+        "bloodline": "library_01592"
+      }
+    ],
+    "outside_union": 0,
+    "PASS": true
+  },
+  "qinli": {
+    "I-PROCESS": "Imagine + 先读2 batch",
+    "I-SEAT": true,
+    "ban_skip_xian2_after_elev": true,
+    "bloodline_match": true,
+    "outside0": true
+  },
+  "PASS": true,
+  "claim": "C2_XIAN1_IMAGINE_XIAN2_CENG",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T07:08:30.742568+00:00"
+}

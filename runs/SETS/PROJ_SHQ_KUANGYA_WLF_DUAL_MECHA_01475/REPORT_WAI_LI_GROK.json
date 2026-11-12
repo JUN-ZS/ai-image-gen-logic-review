@@ -1,0 +1,39 @@
+{
+  "codename": "框牙",
+  "write_id": "01475",
+  "formal": "KUANGYA_WLF_V21_STACK_WAI_LI_GROK",
+  "STICK": "STICK_WAI_LI_FAN_V2",
+  "phase": "外力GROK升清重跑",
+  "error_supersedes": "runs/stack_recurse local HF elev",
+  "E_codes_recorded": [
+    "E-WLG-06",
+    "LOCAL_ELEV_AS_WAI_LI_GROK"
+  ],
+  "wai_li_grok_assets": {
+    "elev0_full_GROK": "11b64a91-8283-4e5d-b831-22c2189cc4d6",
+    "elev1_head_GROK": "b3affe3a-aeb0-4494-8419-6aa4fcf56247",
+    "sheng_scene_GROK": "9152d1dc-dad2-46a0-b53f-ebe36b34e2e5",
+    "peep0": "6543785c-a433-4a00-844e-efe82cb2b259",
+    "peep1": "3625fde5-f451-44cb-b3fe-e479215d2e61",
+    "L1": "dd57b6d4-287a-4ec3-9772-269c11160362",
+    "L0": "bf7479ed-55a2-4b3f-8a04-26cd5fbc49fb",
+    "chu_bei": "58289e05-7e91-4480-afd3-a234536f33c0"
+  },
+  "outside_max": 0,
+  "gates": {
+    "Imagine_elev0_full": true,
+    "Imagine_elev1_head": true,
+    "Imagine_sheng_scene": true,
+    "outside_0": true,
+    "no_local_elev_as_success": true
+  },
+  "claim_level": "C2",
+  "audit_force": "AF2",
+  "ACCEPT_FULL_HD": false,
+  "status": "PASS",
+  "verdict": "升清必須外力GROK · 已重跑 X0/X1/生 · 本地elev記錯題",
+  "asof": "2026-11-09T23:29:34.168359+00:00",
+  "outside_stack_body": 221,
+  "outside_head_only": 0,
+  "return_primary": "RETURN_HEAD_ONLY_GROK (外力生 on L1 seat) + elev0/1 GROK assets recorded"
+}

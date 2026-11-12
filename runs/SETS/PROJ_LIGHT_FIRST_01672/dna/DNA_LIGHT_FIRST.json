@@ -1,0 +1,35 @@
+{
+  "write_id": "01672",
+  "call": "先光",
+  "formal": "SHQ_LIGHT_FIRST_THEN_SEAT_V1",
+  "zh": "先走光，再做之后的处理",
+  "order": [
+    "S0 冻结构",
+    "① 先光 LIGHT_FIRST：ENV(μ=正)/追·B1/soft_relight+residual → L1",
+    "② 再座：剪影 M_metal 结构叠在 L1 上（非 bbox）",
+    "③ 镂空·内腔 M_aperture := L1 空间光",
+    "④ 禁框 E-BOX-01"
+  ],
+  "BAN_order": "先座后光 / 事后只给金属补光当主光",
+  "gold_ref": "f7045d67 B1 正 空间光+人质感",
+  "equation": "S11 = Structure(S0|M) ⊙  on  LightFirst(S0, ENV正, 追B1)  ;  aperture = LightFirst",
+  "gates": {
+    "dL_S0_vs_GOLD": 33.214,
+    "dL_L1_vs_GOLD": 20.878,
+    "dL_S11_vs_GOLD": 30.698,
+    "dL_wrong_vs_GOLD": 18.842,
+    "aperture_eq_L1": true,
+    "aperture_area": 91664
+  },
+  "PASS": true,
+  "parent": [
+    "正追",
+    "合取·座光 01669",
+    "镂空 01670",
+    "禁框 01671"
+  ],
+  "stick": "STICK_LIGHT_FIRST",
+  "asof": "2026-11-12T04:46:07.459162+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_LIGHT_FIRST_ORDER"
+}

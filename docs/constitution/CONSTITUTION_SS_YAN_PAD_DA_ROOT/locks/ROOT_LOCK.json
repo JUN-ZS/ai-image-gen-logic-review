@@ -1,0 +1,7 @@
+{
+  "write_id": "01616",
+  "sha256_16": "6ffd9d6732e6877b",
+  "path": "defaults/PAD_DA_DEFAULTS.json",
+  "rule": "FORBIDDEN to rewrite from project run; only human/constitution write may bump write_root",
+  "asof": "2026-11-11T21:17:16.066841+00:00"
+}

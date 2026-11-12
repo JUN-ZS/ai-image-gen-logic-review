@@ -1,0 +1,50 @@
+{
+  "write_id": "01505",
+  "formal": "SHQ_KUANGYA_GENERALITY_TRY_V1",
+  "zh": "框牙通用性新图验",
+  "subject": "woman_rain_neon_alley",
+  "prior_mecha": true,
+  "gates": {
+    "EDIT_除背": true,
+    "EDIT_除头_洞座": true,
+    "EDIT_品红_反扣": true,
+    "peep0_from_S0_MARK": true,
+    "peep0_intact": true,
+    "scale_from_peep0": true,
+    "elev_is_child": true,
+    "elev_not_RETURN": true,
+    "正头_洞内INPAINT": true,
+    "S11xS0_outside0": true,
+    "not_mecha_subject": true,
+    "boost_SX_slots": true
+  },
+  "generality": {
+    "prior_subject": "dual_mecha",
+    "this_subject": "woman_rain_neon_alley",
+    "same_DNA": [
+      "正头 EDIT 多层",
+      "peep0 只读",
+      "(S)×(S) 槽",
+      "S11×S0 outside0",
+      "强心针 认∩放大∩升质"
+    ],
+    "works_cross_subject": true
+  },
+  "out_wrong_fullframe": 250,
+  "out_S11xS0": 0,
+  "PASS_GENERALITY": true,
+  "claim": "C2_KUANGYA_GENERALITY",
+  "assets": {
+    "L0": "b0523553-c36a-4265-9702-92b6f5c400e2",
+    "CLIP_bei": "abf1f041-e108-4727-90ae-83f660586004",
+    "L1": "9bdf9f65-b09e-4654-b0a6-4d83976f7710",
+    "magenta": "47fa3f08-3366-4e5c-b41c-b56282d18262",
+    "elev": "32ac760a-18ac-4da2-892f-81ffee25802d",
+    "正头": "0585a43c-e5bc-4172-a0cb-178667afac7d",
+    "S11_edit": "5d40a830-760a-4d7c-9364-a7ead4134b58"
+  },
+  "constitution_parent": "01504",
+  "ACCEPT_FULL_HD": false,
+  "honesty": "跨题材架构门通过；MARK 面积极大(发)需后续收紧；非 Full HD 宣称",
+  "asof": "2026-11-10T02:49:29.454422+00:00"
+}

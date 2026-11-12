@@ -1,0 +1,28 @@
+{
+  "write": "01644",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "外力GROK判定": {
+    "LEMON": "PASS",
+    "BOWL": "PASS",
+    "CINN": "PASS"
+  },
+  "DNA_audit": {
+    "E-SCAN-DIFF-CC-01_used": false,
+    "absdiff_path": false,
+    "prior_window": false,
+    "ying": false,
+    "hole": "外力EDIT 物→neon green 语义座 + chroma key（非 absdiff+CC）",
+    "judges": {
+      "LEMON": "PASS",
+      "BOWL": "PASS",
+      "CINN": "PASS"
+    },
+    "toxins": []
+  },
+  "claim": "C2_DNA_ADAPT_GREEN_SEAT_01644",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:26:34.432132+00:00"
+}

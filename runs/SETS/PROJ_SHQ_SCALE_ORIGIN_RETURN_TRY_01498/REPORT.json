@@ -1,0 +1,43 @@
+{
+  "write_id": "01498",
+  "formal": "SHQ_TRY_SCALE_FROM_ORIGIN_RETURN_HOLE_V1",
+  "questions": {
+    "放大来自对的原?": true,
+    "回得上正洞?": true
+  },
+  "audit_scale": {
+    "origin_exact_peep0_eq_SRC_MARK": true,
+    "scale_input": "ingest/peep0_crop.jpg",
+    "scale_from_peep0": true,
+    "elev_used_as_scale_input": false,
+    "peep0_sha": "0d17a6ab6b21d57f",
+    "elev_sha": "1818dda1dbaa181f",
+    "scale_sha_of_output": "e3bca8427b58b73b",
+    "E-ED-01": false,
+    "E-ED-05": false,
+    "PASS_SCALE_ORIGIN": true
+  },
+  "audit_return": {
+    "method": "外力 seat-born ref=peep0_crop on L1 base → hardpaste MARK",
+    "outside_L0": 0,
+    "outside_L1": 0,
+    "hole_fill_mean_vs_L1": 32.913918865291805,
+    "outside0": true,
+    "control_peep0_paste_outside": 0,
+    "elev_not_direct_RETURN": true,
+    "PASS_RETURN_GEOMETRY": true
+  },
+  "hole_mae_sheng_vs_L0": 38.36322784423828,
+  "PASS_ALL": true,
+  "claim": "C2_SCALE_ORIGIN_RETURN",
+  "honesty": "C2=几何(outside=0+scale inherit peep0); 观感mae仅参考; elev≠RETURN",
+  "assets": {
+    "peep0_plate": "4c057b4f-e147-4d6f-a01f-0e253da28471",
+    "elev_from_peep0": "3968bc66-90d1-4c76-8166-e4b5e72693ba",
+    "peep0_crop": "5e6557a1-5349-4983-b139-0147163e9429",
+    "L1": "a34db541-14c2-40c6-b918-598b922ffe2e",
+    "I_sheng": "951e2835-2ac7-4805-9ad4-d500028aa92f"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:00:59.189410+00:00"
+}

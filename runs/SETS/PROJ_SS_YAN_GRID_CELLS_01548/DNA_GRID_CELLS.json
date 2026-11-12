@@ -1,0 +1,14 @@
+{
+  "write_id": "01548",
+  "call": "SS驗.清+C·格框",
+  "formal": "SHQ_SS_YAN_GRID_CELLS_V1",
+  "zh": "认全图事物 → 化格框 peep；WHOLE 可回洞，PART 仅格展",
+  "equation": "∀ object_i: cell_i=frame(peep_i); RETURN=hardpaste(WHOLE only)",
+  "n_boxes": 6,
+  "n_whole": 3,
+  "n_part": 3,
+  "outside_return": 0,
+  "note": "当前回图是整框(bbox)填回；格框是同 peep 的展示态；真剪影洞可用+A 差分收紧",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T00:06:57.090463+00:00"
+}

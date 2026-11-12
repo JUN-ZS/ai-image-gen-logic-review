@@ -1,0 +1,31 @@
+{
+  "write_id": "01635",
+  "call": "有背無背尺闸",
+  "formal": "SHQ_DNA_BEI_TO_WUBEI_SIZE_V1",
+  "zh": "有背 peep 与 无背除背 主体大小必须同锁；不一则不得 PASS",
+  "why_still_PASS": {
+    "E-BEI-SIZE-01": "旧闸不比 有背主体尺寸 vs 无背除背主体尺寸",
+    "E-OUTSIDE-ALONE-01": "outside=0 与尺度无关",
+    "E-FF-01": "无背 freeframe 常改构图/尺度，却被当同 peep 影源"
+  },
+  "measure": {
+    "有背": "peep0 窗内主体 bbox / area（对 L1 差分或边缘）",
+    "无背": "除背 alpha 主体 bbox / area（同 canvas 尺寸 peep）",
+    "sx": "w_bei / w_wubei",
+    "sy": "h_bei / h_wubei",
+    "s": "sqrt(sx*sy) 或 sqrt(area_bei/area_wubei)"
+  },
+  "gate": {
+    "G_size": "sx,sy,s ∈ [1/1.15, 1.15]",
+    "G_ar": "ar_bei/ar_wubei ∈ [0.85, 1.15]",
+    "F8": "G_size ∧ G_ar；失败 → FAIL 不 rewrite"
+  },
+  "parent": [
+    "01631",
+    "01633",
+    "01634 框内闸",
+    "scale-lock"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:44:11.173450+00:00"
+}

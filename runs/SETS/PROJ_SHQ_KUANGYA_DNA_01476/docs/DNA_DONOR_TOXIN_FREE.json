@@ -1,0 +1,99 @@
+{
+  "write_id": "01482",
+  "formal": "DNA_DONOR_TOXIN_FREE_V1",
+  "zh": "無毒DONOR · 入DNA",
+  "user": "記錄入DNA",
+  "parent": {
+    "try": "01481 DONOR_TOXIN_FREE_TRY",
+    "freeframe_vs_wlg": "01480",
+    "pollute_hole": "01478",
+    "woman_Q": "01436 Q4 peep same bbox · Q5 scale_lock · Q6 no freeframe steal",
+    "xnv2": "STICK_XIN_NV_V2 生只在洞座"
+  },
+  "asof": "2026-11-10T00:27:19.845215+00:00",
+  "ACCEPT_FULL_HD": false,
+  "definition": {
+    "無毒DONOR": "可進入洞座 hardpaste / 生 ref 的 donor，不引入 freeframe 全圖毒、不自 peep 冒充 CLIP、不 elev_remap 破座",
+    "有毒DONOR": "全圖 freeframe 裁 M、本地 HF 冒充 elev 主源、無 MARK 的 peep、跳洞直貼全圖"
+  },
+  "classes": {
+    "DONOR0_PEEP_L0": {
+      "source": "L0 原像素 peep @ MARK same bbox",
+      "外力GROK": false,
+      "freeframe": false,
+      "toxin_free": true,
+      "role": "身份/姿 金錨 · bitexact 可回",
+      "Q": "Q4 peep_same_bbox"
+    },
+    "DONOR1_ELEV_PEEP_ONLY": {
+      "source": "外力GROK elev 只升 peep 裁塊 → scale-lock 回 peep wh",
+      "外力GROK": true,
+      "freeframe_full_scene": false,
+      "elev_remap": false,
+      "grow_max": 1.15,
+      "toxin_free": true,
+      "role": "升清 donor · 非全景 freeframe",
+      "Q": "Q5 scale_lock · Q8 elev_remap_false",
+      "claim_note": "洞外 hardpaste C2；骨相/姿若 remap → 敘述 C1 soft"
+    },
+    "DONOR_TOXIC_FREEFRAME": {
+      "source": "Imagine 全圖 freeframe 再裁 M",
+      "toxin_free": false,
+      "E": [
+        "E-POLLUTE-HOLE_RETURN_FREEFRAME",
+        "E-XHN2-01",
+        "E-XHN2-03",
+        "Q6_FAIL"
+      ],
+      "ban_as": [
+        "RETURN",
+        "seat_born_proof",
+        "primary_donor"
+      ]
+    }
+  },
+  "laws": [
+    "D0  無毒主錨 = DONOR0 L0 peep@MARK；可無外力。",
+    "D1  升清 donor 必須 peep-domain 外力GROK，禁全圖 freeframe 當 donor。",
+    "D2  elev → scale-lock 回 peep wh；grow≤grow_max；elev_remap=false。",
+    "D3  hardpaste 只填 M；outside=0 證洞外，不證 donor 無毒（毒源要另標）。",
+    "D4  freeframe 全圖只可 ERROR_TEXTBOOK / 對照 D，不可 primary donor。",
+    "D5  RESET_DONOR 每試清空；禁跨試 donor 污染。",
+    "D6  外力GROK ≠ freeframe；peep-only elev = 外力∩無毒。",
+    "D7  F8/框牙：primary donor 必須 toxin_free；否則 FAIL_POLLUTED 或 claim≤C0。"
+  ],
+  "gates": {
+    "donor_toxin_free": true,
+    "peep_same_bbox": true,
+    "scale_lock": true,
+    "elev_remap_false": true,
+    "no_freeframe_as_donor": true,
+    "must_wai_li_grok_for_elev": true,
+    "hardpaste_proof_only": true,
+    "RESET_DONOR": true
+  },
+  "E_codes": {
+    "E-DONOR-TOXIC-FREEFRAME": "用 freeframe 全圖當 donor",
+    "E-DONOR-NO-MARK": "無 MARK 凍 peep",
+    "E-DONOR-ELEV-REMAP": "elev_remap 破 peep 座",
+    "E-DONOR-LOCAL-HF-AS-PRIMARY": "本地 HF 當主 donor 冒充外力",
+    "E-POLLUTE-HOLE_RETURN_FREEFRAME": "繼承 01478"
+  },
+  "try_01481_anchor": {
+    "project": "PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475",
+    "run": "runs/DONOR_TOXIN_FREE_TRY",
+    "assets": {
+      "DONOR0_peep": "86a5df0b-63f8-41e0-9000-7973c91f4df9",
+      "DONOR0_iso": "a112e5c1-7a8e-4700-96d4-dab36decd33f",
+      "DONOR1_elev": "327a8469-c8d0-4ea7-b179-4e503b748944"
+    },
+    "outside_B": 0,
+    "status": "PASS"
+  },
+  "金句": [
+    "無毒 DONOR0 = 原像素 peep；無毒 DONOR1 = 外力只升 peep。",
+    "freeframe 全圖不是 donor，是毒。",
+    "outside=0 不洗 donor 毒源。",
+    "RESET_DONOR · MARK · scale-lock · 禁 remap。"
+  ]
+}

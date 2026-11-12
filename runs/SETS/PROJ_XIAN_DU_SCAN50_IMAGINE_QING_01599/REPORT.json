@@ -1,0 +1,30 @@
+{
+  "write": "01599",
+  "call": "先读 → Imagine densify 本升清",
+  "formal": "SHQ_XIAN_SCAN50_IMAGINE_QING_V1",
+  "rollback_from": [
+    "01597双 densify 乱",
+    "01598 仅 local"
+  ],
+  "scope": "只先读 scan≤50 最显眼 → Imagine densify(top12)+local38 → 硬座回 L0；无先读2",
+  "先读": {
+    "n": 50,
+    "n_max": 50,
+    "mode": "salience_grid_CC"
+  },
+  "Imagine_densify": {
+    "K": 12,
+    "n_Imagine": 12,
+    "n_local": 38
+  },
+  "本升清": {
+    "n": 50,
+    "n_ok": 50,
+    "outside_union": 0,
+    "method": "Imagine_or_local peep seat hard"
+  },
+  "PASS": true,
+  "claim": "C2_XIAN_SCAN50_IMAGINE_QING",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T07:55:56.071959+00:00"
+}

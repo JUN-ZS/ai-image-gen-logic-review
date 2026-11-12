@@ -1,0 +1,44 @@
+{
+  "formal": "SHQ_SS_LIAN_DONG_SEAT_TEX_SUPPLY_V1",
+  "call": "SS联动·洞座材质补给",
+  "parent_call": "SS 聯動",
+  "run_src": "SETS/PROJ_DUAL_LINK_NEW_01559",
+  "base": "L_bg_qing.jpg",
+  "PASS": true,
+  "outside_union": 0,
+  "subjects": [
+    {
+      "id": "climber",
+      "ok": true,
+      "gain": 1.9039541482925415,
+      "outside": 0,
+      "identity": false,
+      "claim": "C2_SEAT_TEX_SUPPLY",
+      "peep_src": "L0_geometry",
+      "donor": "imagine_images/b95e7d52-c57b-4d97-8b6c-85cf01bb882d.jpg"
+    },
+    {
+      "id": "mecha",
+      "ok": true,
+      "gain": 1.8831218481063843,
+      "outside": 0,
+      "identity": false,
+      "claim": "C2_SEAT_TEX_SUPPLY",
+      "peep_src": "L0_geometry",
+      "donor": "imagine_images/a28cf2e2-f4d3-43df-9089-67f987595180.jpg"
+    },
+    {
+      "id": "rover",
+      "ok": true,
+      "gain": 2.0608654022216797,
+      "outside": 0,
+      "identity": false,
+      "claim": "C2_SEAT_TEX_SUPPLY",
+      "peep_src": "L0_geometry",
+      "donor": "imagine_images/76bdb84e-5769-41e4-85db-275576543526.jpg"
+    }
+  ],
+  "equation": "∀ leaf: peep,M from SS联动锁位; donor=Imagine gen densify(peep); I*=F2(lock(donor)@pm); FINAL=hardpaste(L_bg_qing, I*, M) exclusive",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T02:38:55.809429+00:00"
+}

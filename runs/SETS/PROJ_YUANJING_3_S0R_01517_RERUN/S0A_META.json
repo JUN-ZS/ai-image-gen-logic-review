@@ -1,0 +1,61 @@
+{
+  "source": "MARK_full_percentile",
+  "bbox_xyxy_in_S0": [
+    119,
+    293,
+    375,
+    549
+  ],
+  "corners_in_S0": {
+    "TL": [
+      119,
+      293
+    ],
+    "TR": [
+      375,
+      293
+    ],
+    "BR": [
+      375,
+      549
+    ],
+    "BL": [
+      119,
+      549
+    ]
+  },
+  "S0A_size": [
+    257,
+    257
+  ],
+  "S0_size": [
+    1008,
+    1792
+  ],
+  "area_frac": 0.036565179457199545,
+  "subset_zheng_shen": true,
+  "scale": 1.0,
+  "mark_frac": 0.00770952912414966,
+  "law": "S0A←全幅MARK；peep 自框更正中；不放大",
+  "kou_full": {
+    "thr": 20,
+    "n_cc": 3,
+    "policy": "largest",
+    "frac": 0.00770952912414966,
+    "area": 13926,
+    "gate": "FAIL_FRAC_TOO_SMALL"
+  },
+  "mark_pre_frac": 0.00770952912414966,
+  "native_size": [
+    257,
+    257
+  ],
+  "work_size": [
+    257,
+    257
+  ],
+  "s0a_scale": 1.0,
+  "why": "S0A=子集正身起點；自框 peep 更正中；不放大",
+  "map_back": "S0A (native) paste → S0 bbox → S01",
+  "peep_frame": "peep bbox 相对 S0A 居中，非相对全景边角"
+}

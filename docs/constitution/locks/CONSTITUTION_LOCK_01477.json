@@ -1,0 +1,15 @@
+{
+  "write_id": "01477",
+  "formal": "FOUR_ANTI_F8_NO_SELF_PEEP_V1",
+  "py": "shq_four_anti_f8.py",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "E_CANCER": "E-DNA-CANCER-SELF_PEEP",
+  "try_run": {
+    "project": "01475",
+    "status": "PASS",
+    "F8_PASS": true,
+    "outside": 0
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-09T23:49:50.872573+00:00"
+}

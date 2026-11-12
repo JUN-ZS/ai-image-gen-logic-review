@@ -1,0 +1,9 @@
+{
+  "write_id": "01474",
+  "formal": "SHQ_DNA_SYSTEM_V1",
+  "action": "PROJECT_DNA universal + PERSONA independent lib",
+  "selftest": "PASS",
+  "bootstrap_projects": 4,
+  "persona_n": 4,
+  "ACCEPT_FULL_HD": false
+}

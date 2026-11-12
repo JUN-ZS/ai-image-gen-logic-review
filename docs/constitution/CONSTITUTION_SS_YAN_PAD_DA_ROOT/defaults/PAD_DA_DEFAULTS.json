@@ -1,0 +1,66 @@
+{
+  "formal": "SHQ_SS_YAN_PAD_DA_ROOT_V1",
+  "call": "SS.验.PAD大",
+  "write_root": "01616",
+  "immutable": true,
+  "note": "根程序参数。禁止 run/project 直接改此文件。调参只写 sandbox MOD。",
+  "PAD": {
+    "pad_frac": 0.32,
+    "pad_min": 0.28,
+    "pad_max": 0.4,
+    "paste_mode": "pad_aligned_1to1",
+    "ban_tight_resize_to_MARK": true
+  },
+  "S_program": {
+    "chain": [
+      "S0",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7",
+      "S8",
+      "S9",
+      "S10",
+      "S11"
+    ],
+    "locks": [
+      "S5xS7_scale",
+      "S10xS3_MARK",
+      "S11xL1_outside0",
+      "S11xS0_no_claim_swap"
+    ]
+  },
+  "boost": {
+    "name": "强心针",
+    "AND": [
+      "认",
+      "放大",
+      "升质×物"
+    ]
+  },
+  "supreme": {
+    "algebra": "[(生,除,洞,扣)×(反)]",
+    "driver": "外力GROK"
+  },
+  "elev": {
+    "alpha_peep": 0.45,
+    "same_frame": true,
+    "ban_freeframe_as_identity": true
+  },
+  "return": {
+    "mode": "hardpaste_MARK",
+    "outside_gate": 0,
+    "xu_hui": true,
+    "freeze_seat": true
+  },
+  "qinli": [
+    "I-SEAT",
+    "I-PROCESS",
+    "I-ID-BAN"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:17:16.066841+00:00"
+}

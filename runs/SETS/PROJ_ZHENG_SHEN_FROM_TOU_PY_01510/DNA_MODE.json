@@ -1,0 +1,67 @@
+{
+  "mode": "shen",
+  "cfg": {
+    "zh": "正身",
+    "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+    "stick": "STICK_ZHENG_SHEN",
+    "bite": "full_object",
+    "peep_key": "peep_full",
+    "tune": "whole_subject",
+    "part_role": "whole",
+    "S9_role": "正身 洞内 INPAINT"
+  },
+  "diff": {
+    "equation": "正身 = 正頭DNA[ bite: head → full_object ]",
+    "same": [
+      "[(生,除,洞,扣)×(反)]",
+      "外力GROK 除/生",
+      "強心針 認∩放大∩升質×物",
+      "(S)×(S) Bus 每步 sha",
+      "S11×S0 outside=0",
+      "peep 只讀 · elev=子",
+      "禁 freeframe 無洞回",
+      "kou_part / hardpaste / outside_max 來自框牙內 外力反V2.1"
+    ],
+    "diff_only": {
+      "bite": {
+        "tou": "head",
+        "shen": "full_object"
+      },
+      "peep_name": {
+        "tou": "peep0",
+        "shen": "peep_full"
+      },
+      "MARK": {
+        "tou": "M_head",
+        "shen": "M_full"
+      },
+      "tune_default": {
+        "tou": "human_mid_head|mecha_dual_part",
+        "shen": "whole_subject"
+      },
+      "part_role": {
+        "tou": "head",
+        "shen": "whole"
+      },
+      "S4_认": {
+        "tou": "认头",
+        "shen": "认整件原子"
+      },
+      "S9": {
+        "tou": "正头洞内INPAINT",
+        "shen": "正身洞内INPAINT"
+      },
+      "E_codes": {
+        "tou": [
+          "E-ZT-01 head freeframe",
+          "E-ZT-02 elev as RETURN"
+        ],
+        "shen": [
+          "E-ZS-01 头洞冒身洞",
+          "E-ZS-02 无洞回整件",
+          "E-ZS-05 伪组合"
+        ]
+      }
+    }
+  }
+}

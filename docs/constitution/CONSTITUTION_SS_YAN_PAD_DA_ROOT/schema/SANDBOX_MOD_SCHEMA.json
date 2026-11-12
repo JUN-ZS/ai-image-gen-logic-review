@@ -1,0 +1,39 @@
+{
+  "formal": "SANDBOX_MOD_SCHEMA_V1",
+  "zh": "沙盒-(X) 外挂 MOD：只覆盖「允许微调」字段，不改根",
+  "merge": "deep_merge(ROOT_DEFAULTS, sandbox/MOD.json) → effective for THIS project only",
+  "allowed_override_paths": [
+    "PAD.pad_frac",
+    "PAD.pad_min",
+    "PAD.pad_max",
+    "elev.alpha_peep",
+    "return.mode",
+    "sandbox_meta.note",
+    "sandbox_meta.tune_log",
+    "PAD.pad_frac_r1",
+    "PAD.pad_frac_r2"
+  ],
+  "forbidden_override_paths": [
+    "immutable",
+    "formal",
+    "call",
+    "supreme",
+    "qinli",
+    "S_program.chain",
+    "return.outside_gate",
+    "return.freeze_seat",
+    "PAD.ban_tight_resize_to_MARK",
+    "elev.ban_freeframe_as_identity",
+    "ACCEPT_FULL_HD",
+    "scan.L2.prefer_qing_lock",
+    "inherit.primary"
+  ],
+  "sandbox_layout": {
+    "sandbox/MOD.json": "参数覆盖表",
+    "sandbox/MOD_META.json": "谁改、为何、何时",
+    "sandbox/PRESET_*.json": "可选命名预设（试跑用）",
+    "sandbox/effective.json": "merge 后只读快照（可重建）"
+  },
+  "scan_stack_pointer": "SETS/CONSTITUTION_SCAN_L2_QING_LOCK_INHERIT_01617",
+  "dual_pad_pointer": "SETS/CONSTITUTION_DUAL_PAD_XU_HUI_WHOLE_01619"
+}

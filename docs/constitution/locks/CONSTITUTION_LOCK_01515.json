@@ -1,0 +1,10 @@
+{
+  "write_id": "01515",
+  "zh": "S0A=子集正身起點·不放大；peep 自框更正中",
+  "NOT": "放大不是主因",
+  "IS": "S0A nested 正身 SRC → 全S → map S01",
+  "PASS": true,
+  "scale": 1.0,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T10:31:31.354110+00:00"
+}

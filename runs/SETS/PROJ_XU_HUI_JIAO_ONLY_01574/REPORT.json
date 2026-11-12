@@ -1,0 +1,18 @@
+{
+  "write_id": "01574",
+  "call": "脚-only 示范 · 除头身手留脚",
+  "logic": "SRC peep → GROK 除头身手 留脚 → MARK脚 → bbox peep 对 → GROK 外力升清 → 座洞锁回 SRC · outside=0",
+  "outside": 0,
+  "mad": 31.45,
+  "PASS": true,
+  "claim": "C2_INNER_PART_JIAO",
+  "勤力": {
+    "I-PROCESS": true,
+    "I-SEAT": true,
+    "GROK_除": true,
+    "GROK_升清": true
+  },
+  "anti_pollution": "禁 竖带假PART；真 外力EDIT 除头身手",
+  "asof": "2026-11-11T04:15:02.476369+00:00",
+  "ACCEPT_FULL_HD": false
+}

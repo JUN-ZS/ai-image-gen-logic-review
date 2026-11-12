@@ -1,0 +1,19 @@
+{
+  "write_id": "01575",
+  "fix": "peep 必须从 L1（已除头身手、只留脚）取；elev 程序上不得有头身手",
+  "same_logic": {
+    "full_scene": "除主留景 · SS验.清+A",
+    "this_PART": "除(头身手)留(脚) · 格局收到 peep 内 PART",
+    "equation": "除主→洞/留件→外力认放大升清→座洞锁回  同构，只是对象大小格局变"
+  },
+  "outside": 0,
+  "mad": 24.25,
+  "PASS": true,
+  "claim": "C2_INNER_PART_JIAO_PURE",
+  "gates": {
+    "peep_source": "L1_only_jiao",
+    "no_head_hand_body_in_peep": true
+  },
+  "asof": "2026-11-11T04:21:58.066170+00:00",
+  "ACCEPT_FULL_HD": false
+}

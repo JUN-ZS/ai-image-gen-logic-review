@@ -1,0 +1,88 @@
+{
+  "write": "01588",
+  "call": "勤力·高像素 densify → 虚回终极 S11",
+  "error_prev": {
+    "code": "E-QL-SKIP_CRUSH_ELEV",
+    "zh": "01587 把 4f6d 高DENSE 过早压进 peep 小图 elev_mecha，跳过 peep×N densify 链",
+    "refs": [
+      "4f6d0702 高像素",
+      "cfb311bf 压碎座图"
+    ]
+  },
+  "fix": [
+    "1 保留 4f6d 等高像素 densify 为 HI",
+    "2 peep×4 上 densify + HI 混（同物形）",
+    "3 仅 hardpaste 一枪 AREA/LANCZOS 回座",
+    "4 冻 M_obj 虚回 S11 outside=0"
+  ],
+  "parts": [
+    {
+      "id": "mecha",
+      "hi_px": [
+        899,
+        2048
+      ],
+      "peep_px": [
+        227,
+        512
+      ],
+      "peepx4_dense": true,
+      "outside_solo": 0,
+      "mad_inside": 26.115,
+      "mad_elev_vs_peep": 26.115,
+      "crush01587_mad_vs_peep": 40.581,
+      "I_PROCESS": true,
+      "ok": true,
+      "hi_source": "4f6d0702-ec21-41ab-9dea-eec3f713cf47.jpg"
+    },
+    {
+      "id": "climber",
+      "hi_px": [
+        858,
+        2048
+      ],
+      "peep_px": [
+        85,
+        204
+      ],
+      "peepx4_dense": true,
+      "outside_solo": 0,
+      "mad_inside": 15.68,
+      "mad_elev_vs_peep": 15.68,
+      "crush01587_mad_vs_peep": null,
+      "I_PROCESS": true,
+      "ok": true,
+      "hi_source": "14b58536-9ea0-426e-b9cb-2cd3517cc1cb.jpg"
+    },
+    {
+      "id": "rover",
+      "hi_px": [
+        1616,
+        1216
+      ],
+      "peep_px": [
+        431,
+        324
+      ],
+      "peepx4_dense": true,
+      "outside_solo": 0,
+      "mad_inside": 10.987,
+      "mad_elev_vs_peep": 10.987,
+      "crush01587_mad_vs_peep": null,
+      "I_PROCESS": true,
+      "ok": true,
+      "hi_source": "41042710-fc27-45d3-b534-a7316b1ab0bb.jpg"
+    }
+  ],
+  "outside_union": 0,
+  "PASS": true,
+  "claim": "C2_QINLI_HIDENSE_XU_HUI_ULTIMATE_S11",
+  "qinli": {
+    "I-PROCESS": "hi densify + peepx4 densify",
+    "I-SEAT": true,
+    "outside0": true,
+    "ban_crush_elev_as_primary": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T06:17:40.463733+00:00"
+}

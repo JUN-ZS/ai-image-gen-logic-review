@@ -1,0 +1,329 @@
+{
+  "write_id": "01572",
+  "call": "虛回 × SS驗.清+A · PART RERUN",
+  "equation": "∀ PART_i: RERUN[除PART主→留背景→升清→自座洞] → 全PASS → 虚回外层",
+  "N_PARTS": 5,
+  "妙法": "有5 PARTS 就要 RERUN 5次不一样的，才是 SS验.清 的虚回",
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "mecha",
+      "N_PARTS": 5,
+      "parts_ok": true,
+      "PASS_inner": true,
+      "out_inner": 0,
+      "mad_wh": 5.45,
+      "claim_inner": "C2_INNER_SS_A",
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "parts": [
+        {
+          "pid": "P0",
+          "rerun": 1,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 5.62,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            61,
+            0,
+            178,
+            101
+          ],
+          "area": 2530,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P1",
+          "rerun": 2,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 5.41,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            12,
+            102,
+            209,
+            203
+          ],
+          "area": 16096,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P2",
+          "rerun": 3,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 5.02,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            0,
+            204,
+            226,
+            306
+          ],
+          "area": 18462,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P3",
+          "rerun": 4,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 5.82,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            27,
+            307,
+            226,
+            408
+          ],
+          "area": 9341,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P4",
+          "rerun": 5,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 5.97,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            6,
+            409,
+            215,
+            511
+          ],
+          "area": 8984,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        }
+      ],
+      "勤力": {
+        "I-PROCESS": true,
+        "I-SEAT": true,
+        "I-ID-BAN": true,
+        "RERUN_N": 5
+      }
+    },
+    {
+      "id": "climber",
+      "N_PARTS": 5,
+      "parts_ok": true,
+      "PASS_inner": true,
+      "out_inner": 0,
+      "mad_wh": 3.95,
+      "claim_inner": "C2_INNER_SS_A",
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "parts": [
+        {
+          "pid": "P0",
+          "rerun": 1,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 4.5,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            6,
+            0,
+            77,
+            39
+          ],
+          "area": 1503,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P1",
+          "rerun": 2,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 3.72,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            0,
+            40,
+            84,
+            80
+          ],
+          "area": 1742,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P2",
+          "rerun": 3,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 2.44,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            1,
+            81,
+            84,
+            121
+          ],
+          "area": 2237,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P3",
+          "rerun": 4,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 3.48,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            6,
+            122,
+            65,
+            162
+          ],
+          "area": 2108,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P4",
+          "rerun": 5,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 5.83,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            0,
+            163,
+            73,
+            203
+          ],
+          "area": 2114,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        }
+      ],
+      "勤力": {
+        "I-PROCESS": true,
+        "I-SEAT": true,
+        "I-ID-BAN": true,
+        "RERUN_N": 5
+      }
+    },
+    {
+      "id": "rover",
+      "N_PARTS": 5,
+      "parts_ok": true,
+      "PASS_inner": true,
+      "out_inner": 0,
+      "mad_wh": 3.19,
+      "claim_inner": "C2_INNER_SS_A",
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "parts": [
+        {
+          "pid": "P0",
+          "rerun": 1,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 7.37,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            151,
+            0,
+            293,
+            63
+          ],
+          "area": 5373,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P1",
+          "rerun": 2,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 4.79,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            58,
+            64,
+            374,
+            128
+          ],
+          "area": 13766,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P2",
+          "rerun": 3,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 2.24,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            38,
+            129,
+            377,
+            193
+          ],
+          "area": 17302,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P3",
+          "rerun": 4,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 2.73,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            1,
+            194,
+            381,
+            258
+          ],
+          "area": 12229,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        },
+        {
+          "pid": "P4",
+          "rerun": 5,
+          "of": 5,
+          "out_inner": 0,
+          "mad": 2.15,
+          "claim": "C2_INNER_PART",
+          "ok": true,
+          "bbox": [
+            0,
+            259,
+            430,
+            323
+          ],
+          "area": 21592,
+          "logic": "除该PART主 → 留peep其余背景 → 升清 → 自座洞"
+        }
+      ],
+      "勤力": {
+        "I-PROCESS": true,
+        "I-SEAT": true,
+        "I-ID-BAN": true,
+        "RERUN_N": 5
+      }
+    }
+  ],
+  "勤力DNA": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T04:00:15.001345+00:00"
+}

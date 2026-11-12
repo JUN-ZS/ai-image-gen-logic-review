@@ -1,0 +1,9 @@
+{
+  "write": "01522",
+  "formal": "SHQ_S0_ALL_SX_BOOST_FOURANTI_V1",
+  "equation": "∀S: (S)×(S) ∧ BOOST_layer(S) → F_return ∧ S11×S0 out=0",
+  "BOOST": "认∩放大∩升质×物",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "driver": "外力GROK",
+  "ACCEPT_FULL_HD": false
+}

@@ -1,0 +1,56 @@
+{
+  "write_id": "01528",
+  "formal": "SHQ_SXA_EPHEMERAL_UNIVERSAL_V1",
+  "zh": "未知問題在 S(X) → S(X)A 升清 TEMP · (S)×(S) 更洞准 · 用完可銷",
+  "equation": "S(X)A = 升清(S(X)) | ephemeral | for (S)×(S) only",
+  "pattern": "S(X) → S(X)A(升清) → (S)×(S) → destroy S(X)A",
+  "gates": [
+    "RATIO",
+    "ELEV",
+    "FREEFRAME",
+    "PEEP_ZOOM_IN",
+    "PEEP_ZOOM_OUT",
+    "SX_ALIGN"
+  ],
+  "results": {
+    "RATIO": {
+      "ok": true,
+      "mark_aspect_wh": 0.4836,
+      "peep_aspect_wh": 0.5023,
+      "err": 0.0387
+    },
+    "ELEV": {
+      "ok": true,
+      "S7A_hw": [
+        221,
+        111
+      ],
+      "peep_hw": [
+        221,
+        111
+      ],
+      "elev_is_not_RETURN": true
+    },
+    "FREEFRAME": {
+      "ok": true,
+      "S5A": 0,
+      "S7A": 0,
+      "S9A": 0
+    },
+    "PEEP_ZOOM_IN": {
+      "ok": true,
+      "back_outside": 0
+    },
+    "PEEP_ZOOM_OUT": {
+      "ok": true,
+      "up_outside": 0
+    },
+    "SX_ALIGN": {
+      "ok": true,
+      "outside": 0
+    }
+  },
+  "PASS_ALL": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:13:03.024358+00:00"
+}

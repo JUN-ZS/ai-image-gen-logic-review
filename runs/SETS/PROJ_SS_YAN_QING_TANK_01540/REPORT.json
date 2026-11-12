@@ -1,0 +1,101 @@
+{
+  "write_id": "01540",
+  "call": "SS驗.清",
+  "subject": "red_tank",
+  "formal": "SHQ_SS_YAN_QING_SEAT_HARDLOCK_V1",
+  "meta": {
+    "bbox_xyxy_in_S0": [
+      888,
+      365,
+      1764,
+      626
+    ],
+    "tank_tight_xyxy": [
+      896,
+      373,
+      1756,
+      618
+    ],
+    "S0A_hw": [
+      262,
+      877
+    ],
+    "peep_hw": [
+      246,
+      861
+    ],
+    "hole": [
+      861,
+      246
+    ],
+    "subject": "red_tank",
+    "call": "SS驗.清"
+  },
+  "meta_F2A": {
+    "mode": "F2",
+    "ecc_cc": 0.9963740317986604,
+    "alpha": 0.85,
+    "law": "HOLE_SEAT_HARDLOCK_SHENG_V1"
+  },
+  "results": {
+    "F2_donor_near": {
+      "PASS": true,
+      "ban": false,
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "struct_lf_mad": 1.2407854795455933,
+        "edge_iou": 0.6710460430625432
+      },
+      "tex_gain": 1.5153426761622395,
+      "pos_ok": true
+    },
+    "F2_donor_ff": {
+      "PASS": true,
+      "ban": false,
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "struct_lf_mad": 1.217254400253296,
+        "edge_iou": 0.5750244162301341
+      },
+      "tex_gain": 1.3284195181342608,
+      "pos_ok": true
+    },
+    "F3_donor_near": {
+      "PASS": true,
+      "ban": false,
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "struct_lf_mad": 1.2118151187896729,
+        "edge_iou": 0.6729237227496064
+      },
+      "tex_gain": 1.4965072681398508,
+      "pos_ok": true
+    },
+    "BAN_freeframe": {
+      "PASS": false,
+      "ban": true,
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "metrics": {
+        "dx": 0,
+        "dy": 0,
+        "struct_lf_mad": 30.532703399658203,
+        "edge_iou": 0.24386314265025344
+      },
+      "tex_gain": 1.4297548178668529,
+      "pos_ok": false
+    }
+  },
+  "best": "F2_donor_near",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T14:24:29.077272+00:00"
+}

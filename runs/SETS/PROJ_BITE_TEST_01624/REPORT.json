@@ -1,0 +1,92 @@
+{
+  "write": "01624",
+  "call": "测图·咬物链",
+  "L0": "c114df87",
+  "L1": "c1e7a7d8",
+  "gates": [
+    {
+      "step": "S0",
+      "ok": true,
+      "sha": "e9c0d9b8"
+    },
+    {
+      "step": "①除",
+      "ok": true,
+      "mad_L0_L1": 17.97,
+      "note": "咬=除主→洞将现"
+    },
+    {
+      "step": "②扣",
+      "ok": true,
+      "n": 7,
+      "note": "咬出块=peep0"
+    },
+    {
+      "step": "③洞FREEZE",
+      "ok": true,
+      "inside_max": 254,
+      "note": "必有洞·1次冻"
+    },
+    {
+      "step": "④生′elev",
+      "ok": true,
+      "n_ff": 3,
+      "note": "升清块·FF仅donor"
+    },
+    {
+      "step": "⑤⑥虚回+SS验.清",
+      "ok": true,
+      "xu_times": 1,
+      "note": "放回声明·锁peep"
+    },
+    {
+      "step": "⑦hard",
+      "ok": true,
+      "note": "放回洞"
+    },
+    {
+      "step": "⑧反",
+      "ok": true,
+      "outside": 0,
+      "no_reopen": true,
+      "note": "对得上"
+    }
+  ],
+  "tex": [
+    {
+      "name": "O01",
+      "mad": 30.84
+    },
+    {
+      "name": "O02",
+      "mad": 34.74
+    },
+    {
+      "name": "O03",
+      "mad": 31.77
+    },
+    {
+      "name": "O04",
+      "mad": 49.77
+    },
+    {
+      "name": "O05",
+      "mad": 11.8
+    },
+    {
+      "name": "O06",
+      "mad": 44.48
+    },
+    {
+      "name": "O07",
+      "mad": 31.83
+    }
+  ],
+  "outside": 0,
+  "PASS": true,
+  "n_seats": 7,
+  "order": "除→扣→洞冻→elev→虚回+SS验.清→hard→反",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:32:04.259621+00:00",
+  "claim": "C2_BITE_TEST_01624"
+}

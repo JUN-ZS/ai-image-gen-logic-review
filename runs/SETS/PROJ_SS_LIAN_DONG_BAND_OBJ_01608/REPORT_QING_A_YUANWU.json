@@ -1,0 +1,29 @@
+{
+  "write": "01608c",
+  "call": "SS驗.清+A 原物回贴",
+  "correction": "清+A 自有把除去的原物搬回来的能力；禁 freeframe 重生冒原物",
+  "equation": "L0 有物 → 除主 L_bg → M=|L0-L_bg| → peep_原=L0⊙M → FINAL=L_bg_qing⊙(1-M)+原⊙M",
+  "vs_wrong": {
+    "wrong": "ROI peep → Imagine densify freeframe → pad paste（重生）",
+    "right": "差分得原物座 → L0 原像素硬贴回 L_bg_qing（搬回）"
+  },
+  "gates": {
+    "outside_vs_L_bg_qing_pure": 0,
+    "outside_vs_L_bg_qing_mild": 0,
+    "PASS_geom": true,
+    "frac_M": 0.07503476651077097,
+    "thr": 63,
+    "mad_FINAL_vs_L0_in_M": 0.7730550349963355
+  },
+  "claims": {
+    "C_scene": "C_scene_BAND (unchanged seats outside M)",
+    "C2_object": "C2_QING_A_YUANWU_RETURN"
+  },
+  "qinli": [
+    "I-ID-BAN freeframe冒原物",
+    "I-PROCESS 真除→真回",
+    "I-SEAT M from strip"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T16:13:03.697987+00:00"
+}

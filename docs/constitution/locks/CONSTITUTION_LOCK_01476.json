@@ -1,0 +1,28 @@
+{
+  "write_id": "01476",
+  "formal": "SHQ_KUANGYA_EXEC_DNA_V1",
+  "codename": "框牙",
+  "rules": [
+    "DISCLOSE_CHAIN",
+    "EXEC_DRIFT_IN_DNA"
+  ],
+  "E_KY": [
+    "E-KY-01",
+    "E-KY-02",
+    "E-KY-03",
+    "E-KY-04",
+    "E-KY-05"
+  ],
+  "user_ruling": [
+    "不只是不該再要用戶重講",
+    "規則DNA：點名外力反V2.1時代理根本沒提示過有更後續流程",
+    "執行偏差同寫進框牙DNA"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "DNA_CANCER": {
+    "code": "E-DNA-CANCER-SELF_PEEP",
+    "zh": "自PEEP的DNA CANCER",
+    "py_must": "[(生,除,洞,扣)×(反)]",
+    "asof": "2026-11-09T23:40:08.391221+00:00"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "call": "SS驗.清+C",
+  "do": [
+    "选 provider: http_open_vocab | boxes_json | manual_bbox",
+    "labels 写死 whole 名（tank/mecha/person）",
+    "box→MARK→peep→清"
+  ],
+  "dont": [
+    "无 API 时用 kou whole_subject 冒称 +C",
+    "把 freeframe elev 当检测框",
+    "多物不选 label 就最大框"
+  ]
+}

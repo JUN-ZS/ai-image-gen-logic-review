@@ -1,0 +1,19 @@
+{
+  "write_id": "01552",
+  "event": "QINLI_DNA_ON_FOLDER",
+  "stick": "STICK_QINLI_DNA",
+  "bound_to": [
+    "SS驗.清+C·全景万物格",
+    "SS驗.清+C·格框",
+    "FOLDER SETS/CONSTITUTION_FOLDER_QINLI_DNA"
+  ],
+  "invariants": [
+    "I-ID-BAN",
+    "I-PROCESS",
+    "I-GATE",
+    "I-SCOPE",
+    "I-SCENE"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:02:26.889076+00:00"
+}

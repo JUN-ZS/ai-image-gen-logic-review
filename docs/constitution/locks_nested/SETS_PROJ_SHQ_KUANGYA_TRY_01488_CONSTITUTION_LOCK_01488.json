@@ -1,0 +1,13 @@
+{
+  "write_id": "01488",
+  "formal": "KUANGYA_TRY_INHERIT_DNA_BOOST_V1",
+  "inherits": [
+    "01483",
+    "01487",
+    "01484",
+    "01482",
+    "01477"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:04:21.947680+00:00"
+}

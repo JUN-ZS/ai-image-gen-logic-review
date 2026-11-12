@@ -1,0 +1,266 @@
+{
+  "write": "01622",
+  "call": "次序试跑·失真回塑性",
+  "formal": "SHQ_ORDER_PLASTICITY_RUN_V1",
+  "parent_order": "01621",
+  "mothers": [
+    "01448",
+    "01523",
+    "01563",
+    "01590"
+  ],
+  "counts": {
+    "FREEZE": 1,
+    "xu_hui": 1,
+    "ss_qing_same_beat": true,
+    "ff_elev_per_seat": "0|1"
+  },
+  "gates": [
+    {
+      "step": "S0",
+      "name": "冻SRC",
+      "sha": "99fbf5ad",
+      "ok": true
+    },
+    {
+      "step": "①除",
+      "name": "外力除主→L1",
+      "metric": {
+        "mad_L0_L1": 16.04,
+        "sha_L1": "631bd542"
+      },
+      "ok": true,
+      "失真": "物件被移除 · 景仍同机位",
+      "回塑条件": "后须 生@洞 把物 identity 回；洞外须 bitexact 锁 L1"
+    },
+    {
+      "step": "②扣",
+      "name": "差分扣→peep0",
+      "n_seats": 6,
+      "metric": {
+        "kou_coverage_vs_th": 0.989,
+        "n": 6
+      },
+      "ok": true,
+      "失真": "连续体切成 peep 切片 · 全局→局部",
+      "回塑条件": "peep0 可溯 L0 同 pad；后虚回须能拼回 union"
+    },
+    {
+      "step": "③洞FREEZE",
+      "name": "MARK 冻座 1次",
+      "metric": {
+        "sha_M": "cb085efd",
+        "inside_L0_L1_max": 253,
+        "freeze_times": 1
+      },
+      "ok": true,
+      "失真": "洞内清空态已锁定 · 坐标主权冻结",
+      "回塑条件": "RETURN 洞外 bitexact L1；洞内 seat-born 生；禁第二次 FREEZE"
+    },
+    {
+      "step": "④生′elev",
+      "name": "densify(peep0) · FF 仅 donor",
+      "metric": {
+        "n_ff": 3,
+        "n_lock": 3,
+        "mean_mad": 38.93
+      },
+      "ok": true,
+      "counts": {
+        "freeframe_elev": "0或1 per seat (本跑半开试验)"
+      },
+      "失真": "纹理增强 + 可选 freeframe 构图微漂（坐标未写入座）",
+      "回塑条件": "⑤⑥ 必须把 elev 当 donor 锁回 peep0 尺寸与 MARK；禁 elev 当座"
+    },
+    {
+      "step": "⑤⑥虚回+SS验.清",
+      "name": "1×虚回 同拍 清锁",
+      "metric": {
+        "xu_hui_times_each": 1,
+        "scale_lock_all": true,
+        "mean_plasticity_delta": 11.25,
+        "ff_recovered": true
+      },
+      "ok": true,
+      "失真处理": "FF elev 被 resize+α 锁回 peep0；座几何不改",
+      "回塑": "mad_fill ≤ mad_elev 趋势 · shape peep0"
+    },
+    {
+      "step": "⑦hard",
+      "name": "hardpaste 冻座",
+      "ok": true,
+      "失真": "无（几何已锁）",
+      "回塑": "fill 入 MARK only"
+    },
+    {
+      "step": "⑧反",
+      "name": "outside=0 + 锁尺 + 不重开洞",
+      "metric": {
+        "outside": 0,
+        "tex_all": true,
+        "no_reopen_MARK": true,
+        "freeze_times": 1,
+        "xu_hui_times": 1
+      },
+      "ok": true,
+      "失真回塑总判": "若 outside=0 且 ⑤⑥ scale_lock 且 no_reopen → 全流程回塑 PASS"
+    }
+  ],
+  "xu_hui_log": [
+    {
+      "name": "O01",
+      "role": "SS联动_已抽出放大升清未回",
+      "times": 1,
+      "mad_peep_elev": 30.51,
+      "mad_peep_fill": 21.5,
+      "回塑_toward_peep": true,
+      "scale_lock": true,
+      "ff_was": false
+    },
+    {
+      "name": "O02",
+      "role": "SS联动_已抽出放大升清未回",
+      "times": 1,
+      "mad_peep_elev": 53.09,
+      "mad_peep_fill": 37.99,
+      "回塑_toward_peep": true,
+      "scale_lock": true,
+      "ff_was": true
+    },
+    {
+      "name": "O03",
+      "role": "SS联动_已抽出放大升清未回",
+      "times": 1,
+      "mad_peep_elev": 36.01,
+      "mad_peep_fill": 25.47,
+      "回塑_toward_peep": true,
+      "scale_lock": true,
+      "ff_was": false
+    },
+    {
+      "name": "O04",
+      "role": "SS联动_已抽出放大升清未回",
+      "times": 1,
+      "mad_peep_elev": 46.57,
+      "mad_peep_fill": 33.26,
+      "回塑_toward_peep": true,
+      "scale_lock": true,
+      "ff_was": true
+    },
+    {
+      "name": "O05",
+      "role": "SS联动_已抽出放大升清未回",
+      "times": 1,
+      "mad_peep_elev": 27.58,
+      "mad_peep_fill": 19.45,
+      "回塑_toward_peep": true,
+      "scale_lock": true,
+      "ff_was": false
+    },
+    {
+      "name": "O06",
+      "role": "SS联动_已抽出放大升清未回",
+      "times": 1,
+      "mad_peep_elev": 39.81,
+      "mad_peep_fill": 28.38,
+      "回塑_toward_peep": true,
+      "scale_lock": true,
+      "ff_was": true
+    }
+  ],
+  "plasticity": {
+    "definition": "失真回塑性 = 对 freeframe/升清失真后，能否经 虚回+SS验.清 锁回 peep0 座洞并 outside=0",
+    "formula": "P = 1{scale_lock} · 1{outside=0} · 1{no_reopen} · mean(1{mad_fill≤mad_elev+ε})",
+    "ff_seats": [
+      {
+        "name": "O02",
+        "role": "SS联动_已抽出放大升清未回",
+        "times": 1,
+        "mad_peep_elev": 53.09,
+        "mad_peep_fill": 37.99,
+        "回塑_toward_peep": true,
+        "scale_lock": true,
+        "ff_was": true
+      },
+      {
+        "name": "O04",
+        "role": "SS联动_已抽出放大升清未回",
+        "times": 1,
+        "mad_peep_elev": 46.57,
+        "mad_peep_fill": 33.26,
+        "回塑_toward_peep": true,
+        "scale_lock": true,
+        "ff_was": true
+      },
+      {
+        "name": "O06",
+        "role": "SS联动_已抽出放大升清未回",
+        "times": 1,
+        "mad_peep_elev": 39.81,
+        "mad_peep_fill": 28.38,
+        "回塑_toward_peep": true,
+        "scale_lock": true,
+        "ff_was": true
+      }
+    ],
+    "lock_seats": [
+      {
+        "name": "O01",
+        "mad_peep_fill": 21.5
+      },
+      {
+        "name": "O03",
+        "mad_peep_fill": 25.47
+      },
+      {
+        "name": "O05",
+        "mad_peep_fill": 19.45
+      }
+    ],
+    "P_components": {
+      "scale_lock_all": true,
+      "outside0": true,
+      "no_reopen": true,
+      "ff_recovered_frac": 1.0
+    },
+    "P_PASS": true
+  },
+  "part_tex": [
+    {
+      "name": "O01",
+      "mad_tex": 27.4,
+      "tex_ok": true
+    },
+    {
+      "name": "O02",
+      "mad_tex": 36.91,
+      "tex_ok": true
+    },
+    {
+      "name": "O03",
+      "mad_tex": 26.08,
+      "tex_ok": true
+    },
+    {
+      "name": "O04",
+      "mad_tex": 36.16,
+      "tex_ok": true
+    },
+    {
+      "name": "O05",
+      "mad_tex": 18.67,
+      "tex_ok": true
+    },
+    {
+      "name": "O06",
+      "mad_tex": 47.75,
+      "tex_ok": true
+    }
+  ],
+  "outside": 0,
+  "PASS": true,
+  "P_PASS": true,
+  "claim": "C2_ORDER_PLASTICITY_01622",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:21:22.453120+00:00"
+}

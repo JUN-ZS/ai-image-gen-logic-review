@@ -1,0 +1,18 @@
+{
+  "write": "01640",
+  "PASS": false,
+  "out_S0": 0,
+  "out_L1": 0,
+  "外力GROK判定": {
+    "BOOKS": "PASS",
+    "JAR": "PASS",
+    "KETTLE": "PASS",
+    "PEAR": "FAIL"
+  },
+  "DEAD": "E-SEM-KUANG-01",
+  "VIRTUAL_DIR": "SETS/PROJ_VDIR_MIAO_SUO_WAI_LI_01640/VIRTUAL_DIR",
+  "claim": "FAIL",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK 优先理解并驱动生效",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:10:07.188190+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "write": "01598",
+  "call": "先读 → 本升清",
+  "formal": "SHQ_XIAN_DU_SCAN50_BEN_QING_V1",
+  "rollback_from": "01597 先讀MAX金（densify1/2 freeframe 乱）",
+  "bloodline": "library_01592",
+  "scope": "只先读·扫全物最显眼≤50·本升清(peep×3座锁)·无先读2·无双 densify 外力乱位",
+  "先读": {
+    "n": 50,
+    "n_max": 50,
+    "mode": "salience_grid_CC"
+  },
+  "本升清": {
+    "method": "local_peepx3_unsharp_seat",
+    "n": 50,
+    "n_ok": 50,
+    "outside_union": 0
+  },
+  "PASS": true,
+  "claim": "C2_XIAN_SCAN50_BEN_QING",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T07:53:10.075383+00:00"
+}

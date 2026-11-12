@@ -1,0 +1,13 @@
+{
+  "project_id": "PROJ_SHQ_KUANGYA_BOOST_S4_END_01496",
+  "write_id": "01496",
+  "formal": "KUANGYA_BOOST_S4_TO_END_TRY_V1",
+  "zh": "框牙·強心針 S4→尾 實測",
+  "needle": "[部件'認'∩放大∩升質×物]",
+  "range": "S4→S11（強心針+回正洞）",
+  "prereq": "S0–S3 已備 L0/L1/MARK（本測含最短前置）",
+  "return_to_hole": "01495 外力 seat-born on MARK",
+  "must_wai_li_grok": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:44:17.840873+00:00"
+}

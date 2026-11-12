@@ -1,0 +1,51 @@
+{
+  "write_id": "01493",
+  "formal": "SHQ_LINKED_GEN_TEACH_ALL_CONCLUSIONS_V1",
+  "zh": "聯動生圖教學 · 全結論更新",
+  "updates_from": [
+    "01487",
+    "01489",
+    "01492"
+  ],
+  "refs": {
+    "src_boost": "01365019-ef45-47cd-9c59-dbfe6cf4fd54",
+    "src_reverse": "dc065c63-46da-4b17-9059-a526c77b2b9d",
+    "src_arch": "392b9cbf-4196-4659-a34b-c43378c2aa04",
+    "teach_master": "ca0cd86f-57b3-4b5a-bf5c-3a35e09220bc",
+    "teach_bite": "9452638a-855f-4aed-aa7e-ff74851a28d6",
+    "teach_pseudo": "909a1cb8-5aa0-4214-9526-9ef00fb1bf4f"
+  },
+  "curriculum": [
+    {
+      "id": "T0",
+      "title": "根方程",
+      "asset_key": "teach_master"
+    },
+    {
+      "id": "T1",
+      "title": "咬物契約 咬→洞→升清→回",
+      "asset_key": "teach_bite"
+    },
+    {
+      "id": "T2",
+      "title": "偽組合 vs 真聯動",
+      "asset_key": "teach_pseudo"
+    },
+    {
+      "id": "T3",
+      "title": "八格代數 F",
+      "asset_key": "teach_f8"
+    }
+  ],
+  "all_conclusions": {
+    "equation": "[(生,除,洞,扣)×(反)] ← 外力GROK ⊕ 強心針[認∩放大∩升質×物]",
+    "bite": "咬→洞座位→升清塊→回洞 同構必對上",
+    "peep_scale": "抽圖放大=S5+S6 only",
+    "pseudo": "獨立PASS ≠ 可組合",
+    "compose_iff": "Bus+不變量+同宣稱+外力除生+BOOST AND",
+    "layers": "A咬頭 → B升清回 → C多件(頭鎖後)",
+    "driver": "外力GROK 除/生；OpenCV 扣/貼/反"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:30:26.913039+00:00"
+}

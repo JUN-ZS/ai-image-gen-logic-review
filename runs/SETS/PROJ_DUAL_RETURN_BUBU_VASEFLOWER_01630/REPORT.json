@@ -1,0 +1,49 @@
+{
+  "write": "01630",
+  "PASS": true,
+  "outside_S0": 0,
+  "outside_L1": 0,
+  "stack": [
+    "CLOCK",
+    "VASE",
+    "POT",
+    "APPLE"
+  ],
+  "roles": {
+    "POT": "MID",
+    "VASE": "MID",
+    "CLOCK": "BACK",
+    "APPLE": "FRONT"
+  },
+  "VASE_frac_window": 255.0,
+  "VASE_whole": "瓶+花",
+  "occ_L1": [
+    {
+      "name": "CLOCK",
+      "role": "BACK",
+      "overwrote_px": 0,
+      "pix": 183626
+    },
+    {
+      "name": "VASE",
+      "role": "MID",
+      "overwrote_px": 0,
+      "pix": 178356
+    },
+    {
+      "name": "POT",
+      "role": "MID",
+      "overwrote_px": 0,
+      "pix": 84128
+    },
+    {
+      "name": "APPLE",
+      "role": "FRONT",
+      "overwrote_px": 0,
+      "pix": 33737
+    }
+  ],
+  "claim": "C2_DUAL_RETURN_BUBU_01630",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:18:03.874873+00:00"
+}

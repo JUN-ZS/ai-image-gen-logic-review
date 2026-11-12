@@ -1,0 +1,57 @@
+{
+  "write": "01600_BUG",
+  "subject_asset": "30a616e5-18a3-46c9-8367-3d3a9ec0dcdb",
+  "claim_was": "C2_DISCRETE5_CENG_BATCH PASS outside_union=0",
+  "remeasure": {
+    "outside_union_max": 22,
+    "outside_changed_px": 150318,
+    "inside_mean": 15.88
+  },
+  "bugs": [
+    {
+      "id": "E-DISC5-01",
+      "name": "格洞伪座 (GRID_CELL_AS_HOLE)",
+      "zh": "离散分区每格取最大CC并膨胀 → MARK≈满格矩形，不是物件真剪影",
+      "evidence": {
+        "peep_all": "115x215",
+        "MASK_NEAR_FULL_BBOX": "28/30",
+        "bbox_fill": "0.96~0.98"
+      },
+      "breaks": "层层回锁的洞=座位；格洞≠物洞 → 回错域"
+    },
+    {
+      "id": "E-DISC5-02",
+      "name": "Imagine freeframe 压回格 (FREEFRAME_CRUSH)",
+      "zh": "densify 生成 1792x1008 特写，再 resize 进 115x215 peep 硬贴",
+      "evidence": {
+        "HI": "1792x1008",
+        "peep": "115x215",
+        "R1_O2": "蜡烛特写≠原格构图"
+      },
+      "breaks": "层回必须 peep0 同框升清；freeframe 是偷步"
+    },
+    {
+      "id": "E-DISC5-03",
+      "name": "outside 伪 PASS",
+      "zh": "跑时宣称 outside_union=0，复测 FINAL 对 L0 洞外 max=22、改动15万px",
+      "evidence": {
+        "report": 0,
+        "remeasure": 22
+      },
+      "breaks": "未用磁盘终稿重算 / 或贴边与 JPEG；闸门不可信"
+    },
+    {
+      "id": "E-DISC5-04",
+      "name": "座洞互不真互斥语义",
+      "zh": "30 格铺满前景黄带，batch 像整片 peep 贴回而非独立物件",
+      "breaks": "离散5应每物独立真洞；现是 tiling"
+    }
+  ],
+  "root": "离散选物实现 = 网格最大块，不是 whole_subject 语义/剪影；升清用 freeframe；回锁用满格。三错叠加 → 层回失败。",
+  "fix_direction": [
+    "MARK 必须是物件剪影（面积比 bbox 明显 <0.85，或二次 peep 内 CC）",
+    "Imagine densify 必须同 peep 框（禁止 16:9 全幅 freeframe 再压）",
+    "终稿磁盘重读再算 outside",
+    "扣移后下一轮扫的是 working，但 peep 仍 L0 — 正确；错在格洞"
+  ]
+}

@@ -1,0 +1,406 @@
+{
+  "write_id": "01522",
+  "zh": "試齊 S0→ALL (S)×(S) 強心針 X射 → [(生,除,洞,扣)×(反)] 回正位",
+  "BOOST": {
+    "formula": "认 ∩ 放大 ∩ 升质×物",
+    "driver": "外力GROK"
+  },
+  "PASS_SX_FULL": true,
+  "PASS_XRAY_BOOST": true,
+  "PASS_FOUR_ANTI": true,
+  "PASS_RETURN_正位": true,
+  "outside": 0,
+  "S01_S0_outside": 0,
+  "claim": "C2_S11xS0_ALIGN_BOOST_SHEN",
+  "boost_AND_S8": true,
+  "xray_gates": {
+    "S0": true,
+    "S0A": true,
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true,
+    "S7": true,
+    "S8": true,
+    "S9": true,
+    "S10": true,
+    "S11": true,
+    "S01": true,
+    "S0R_认": true,
+    "S0R_放大": true,
+    "S0R_升质": true,
+    "S0R_AND": true,
+    "S0R_生": true,
+    "S0R_反": true
+  },
+  "four_anti": {
+    "正除": true,
+    "正扣": true,
+    "正洞": true,
+    "正生": true,
+    "正回": true,
+    "反 peep": true,
+    "反洞·outside0": true,
+    "反回·S11xS0": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T12:34:44.704137+00:00",
+  "xray": {
+    "S0": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "凍 SRC",
+      "F": "反·金",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S0A": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "子集正身",
+      "F": "洞域",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S1": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "外力除",
+      "F": "正除",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S2": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "扣",
+      "F": "正扣",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S3": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "洞",
+      "F": "正洞",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S4": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "认",
+      "F": "反扣·认",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S5": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "peep",
+      "F": "反 peep",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S6": {
+      "认": true,
+      "放大": true,
+      "升质×物": false,
+      "role": "放大",
+      "F": "反·放大",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S7": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "升质 elev",
+      "F": "正生·elev*",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S8": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "針 AND",
+      "F": "針合",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S9": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "洞座生",
+      "F": "正生",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S10": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "hardpaste",
+      "F": "正回",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S11": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "S11×S0",
+      "F": "反回·對位",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S01": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "回母集",
+      "F": "反·S0",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S0R_认": {
+      "认": true,
+      "放大": false,
+      "升质×物": false,
+      "role": "回S0认",
+      "F": "反·认",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S0R_放大": {
+      "认": true,
+      "放大": true,
+      "升质×物": false,
+      "role": "回S0放大",
+      "F": "反·放大",
+      "boost_AND": false,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S0R_升质": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "回S0升质",
+      "F": "正生",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S0R_AND": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "回S0針",
+      "F": "針合",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S0R_生": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "咬回洞",
+      "F": "正回",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    },
+    "S0R_反": {
+      "认": true,
+      "放大": true,
+      "升质×物": true,
+      "role": "反洞外0",
+      "F": "反洞",
+      "boost_AND": true,
+      "needle_gate": true,
+      "slot_exists": true,
+      "chain_ok": true
+    }
+  },
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "a312229160ed",
+      "role": "冻 SRC 全景"
+    },
+    {
+      "si": "S0A",
+      "ok": true,
+      "sha12": "4dc596167c68",
+      "role": "子集正身起點（crop only · 不放大）· peep 自框更正中"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "092680cac12e",
+      "role": "外力除整件 @ S0A"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "0562f8c76444",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "90156be0be5f",
+      "role": "洞 MARK_full 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "3197cc935d53",
+      "role": "认 whole"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "26e6372dbc44",
+      "role": "peep_full=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "35aae90e7f85",
+      "role": "放大 peep_full 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "5781bce2dde7",
+      "role": "升质×物 elev 子 @S0A洞位放大域"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "2607a26ffcb6",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "cc3d9b7590cb",
+      "role": "正身 洞内 INPAINT · seat-born"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "36d67269bb58",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "c975ce9adf1e",
+      "role": "S11×S0 對位鎖 (S)×(S) + 強心針"
+    },
+    {
+      "si": "S0R_R0",
+      "ok": true,
+      "sha12": "e88dff828974",
+      "role": "回S0·凍母集"
+    },
+    {
+      "si": "S0R_MARK",
+      "ok": true,
+      "sha12": "b12da6b16b29",
+      "role": "只有洞 · 回S0 唯一座位"
+    },
+    {
+      "si": "S0R_认",
+      "ok": true,
+      "sha12": "2b0c2c3f8f63",
+      "role": "強心針·認：洞内 peep 身份（母集）"
+    },
+    {
+      "si": "S0R_放大",
+      "ok": true,
+      "sha12": "1aac0a811cd8",
+      "role": "強心針·放大：peep×2 子域（非整幅升采样冒充）"
+    },
+    {
+      "si": "S0R_升质",
+      "ok": true,
+      "sha12": "1616f3e9b5fc",
+      "role": "強心針·升質×物：正確圖 elev freeframe → peep 尺（外力GROK donor）"
+    },
+    {
+      "si": "S0R_AND",
+      "ok": true,
+      "sha12": "a9e684c7ba7b",
+      "role": "強心針 AND：认∩放大∩升质×物"
+    },
+    {
+      "si": "S0R_生",
+      "ok": true,
+      "sha12": "2f5833206d4d",
+      "role": "咬→升清咬塊→同尺置中回洞（外力GROK donor 锁 peep 大細）"
+    },
+    {
+      "si": "S0R_反",
+      "ok": true,
+      "sha12": "e3dc6ce05339",
+      "role": "反：洞外 bitexact · 只有洞 DEBUG 閉環"
+    },
+    {
+      "si": "S01",
+      "ok": true,
+      "sha12": "272fd8aaa508",
+      "role": "S0A 对位回 S0 全景"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "write_id": "01486",
+  "formal": "KUANGYA_TRY_INHERIT_DNA_V1",
+  "zh": "框牙新PROJECT試跑 · DNA繼承",
+  "inherits": [
+    "01483 SUPREME",
+    "01484 ATX",
+    "01482 DONOR",
+    "01477 F8",
+    "01476 框牙"
+  ],
+  "assets": {
+    "L0": "453009ca-0aa3-4cea-908e-e560adec7942",
+    "正除_chu_part": "0d8f1cd0-c3a8-47f8-b672-605591963b17",
+    "除背": "aacb02cb-2fe6-417d-9483-51dc03570641",
+    "正生_seat": "318385be-1f81-45e1-87b5-fc9558095204"
+  },
+  "F8": {
+    "PASS": true,
+    "status": "PASS",
+    "outside": 0,
+    "claim": "C2",
+    "gates": {
+      "no_self_peep_CLIP": true,
+      "CLIP_from_chu_bei": true,
+      "four_anti_F8_cells": true,
+      "return_outside_0": true,
+      "wai_li_grok_sheng": true,
+      "no_local_elev_as_sheng": true,
+      "MARK_frozen": true,
+      "algebra_F": "[(生,除,洞,扣)×(反)]",
+      "sheng_seat_born": true,
+      "no_freeframe_hole_return": true
+    },
+    "anti_toxin": null
+  },
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "driver": "外力GROK",
+  "sheng_seat_born": true,
+  "elev_mislabel": false,
+  "ACCEPT_FULL_HD": false,
+  "claim_level": "C1",
+  "asof": "2026-11-10T00:57:16.104101+00:00",
+  "how_to_rerun": [
+    "python3 shq_four_anti_f8.py --L0 SETS/PROJ_SHQ_KUANGYA_TRY_01486/ingest/L0.jpg --chu-part SETS/PROJ_SHQ_KUANGYA_TRY_01486/ingest/L1_chu_part.jpg --chu-bei SETS/PROJ_SHQ_KUANGYA_TRY_01486/ingest/L_chu_bei.jpg --sheng SETS/PROJ_SHQ_KUANGYA_TRY_01486/ingest/I_sheng_seat.jpg --out SETS/PROJ_SHQ_KUANGYA_TRY_01486/runs/F8_TRY_SEAT --seat-born --role-label 正生",
+    "python3 shq_kuangya.py proof"
+  ],
+  "audit_stamp": {
+    "write_id": "01473",
+    "formal": "SHQ_STEAL_DRIFT_AUDIT_FORCE_V1",
+    "source": "SETS/PROJ_SHQ_KUANGYA_TRY_01486/REPORT.json",
+    "status": "WARN_DRIFT",
+    "audit_force_declared": null,
+    "audit_force_effective": "AF0",
+    "claim_declared": "C2",
+    "claim_allowed": "C1",
+    "steal_flags": [],
+    "drift_flags": [
+      "CLAIM_OVER_AF"
+    ],
+    "E_codes": [
+      "E-AUDIT-00",
+      "E-AUDIT-01",
+      "E-DRIFT-04"
+    ],
+    "notes": [
+      "missing audit_force → AF0",
+      "claim C2 needs AF2, have AF0"
+    ],
+    "ACCEPT_FULL_HD": false,
+    "rule": "STEAL→C0 ban SUCCESS; DRIFT→≤C1; AF gates claim"
+  },
+  "audit_force": "AF0",
+  "steal_flags": [],
+  "drift_flags": [
+    "CLAIM_OVER_AF"
+  ],
+  "E_codes": [
+    "E-AUDIT-00",
+    "E-AUDIT-01",
+    "E-DRIFT-04"
+  ]
+}

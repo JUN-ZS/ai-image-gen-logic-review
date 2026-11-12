@@ -1,0 +1,135 @@
+{
+  "write": "01592",
+  "call": "先读 + SS验.清锁 + 层回锁",
+  "formal": "SHQ_FULL_CHAIN_XIAN_SS_CENG_LIBRARY_V1",
+  "qinli_DNA": true,
+  "L0": "SETS/PROJ_L0_RUIN_LIBRARY_ARTIFACTS_01591/L0.jpg",
+  "bloodline": "library_01592",
+  "S0": "L0",
+  "S11": "RETURN_BATCH.jpg",
+  "先读": {
+    "n_whole": 1,
+    "n_part": 3,
+    "parts": [
+      {
+        "id": "WHOLE_A",
+        "zh": "主前景块A",
+        "role": "whole_cc",
+        "area": 1213429
+      },
+      {
+        "id": "PART_TOP",
+        "zh": "主块上段",
+        "role": "part_band",
+        "area": 425696
+      },
+      {
+        "id": "PART_MID",
+        "zh": "主块中段",
+        "role": "part_band",
+        "area": 423835
+      },
+      {
+        "id": "PART_BOT",
+        "zh": "主块下段",
+        "role": "part_band",
+        "area": 363898
+      }
+    ]
+  },
+  "SS验_清锁": {
+    "parts": [
+      {
+        "id": "WHOLE_A",
+        "zh": "主前景块A",
+        "role": "whole_cc",
+        "outside": 0,
+        "mad": 1.741,
+        "PASS": true,
+        "claim": "C2_SS_QING_LOCK",
+        "bloodline": "library_01592",
+        "I_PROCESS": "peepx4_densify",
+        "I_SEAT": true,
+        "elev_source": "local_peepx4"
+      },
+      {
+        "id": "PART_TOP",
+        "zh": "主块上段",
+        "role": "part_band",
+        "outside": 0,
+        "mad": 1.659,
+        "PASS": true,
+        "claim": "C2_SS_QING_LOCK",
+        "bloodline": "library_01592",
+        "I_PROCESS": "peepx4_densify",
+        "I_SEAT": true,
+        "elev_source": "local_peepx4"
+      },
+      {
+        "id": "PART_MID",
+        "zh": "主块中段",
+        "role": "part_band",
+        "outside": 0,
+        "mad": 1.729,
+        "PASS": true,
+        "claim": "C2_SS_QING_LOCK",
+        "bloodline": "library_01592",
+        "I_PROCESS": "peepx4_densify",
+        "I_SEAT": true,
+        "elev_source": "local_peepx4"
+      },
+      {
+        "id": "PART_BOT",
+        "zh": "主块下段",
+        "role": "part_band",
+        "outside": 0,
+        "mad": 1.293,
+        "PASS": true,
+        "claim": "C2_SS_QING_LOCK",
+        "bloodline": "library_01592",
+        "I_PROCESS": "peepx4_densify",
+        "I_SEAT": true,
+        "elev_source": "local_peepx4"
+      }
+    ],
+    "outside_union": 0,
+    "PASS": true,
+    "claim": "C2_SS_QING_LOCK_PART_BATCH"
+  },
+  "层回锁": {
+    "call": "层回锁",
+    "S0": "L0",
+    "S11": "RETURN_BATCH",
+    "elev_bloodline": "library_01592",
+    "ban_cross_line": true,
+    "E_CC_check": {
+      "E-CC-01": "elev all from this run leaf — OK",
+      "E-CC-02": "claim on this S11 only — OK",
+      "E-CC-03": "peepx4 densify before seat — OK",
+      "E-CC-04": "parts PASS 4/4 before union",
+      "E-CC-05": "MARK frozen per part — OK"
+    },
+    "outside_S11": 0,
+    "PASS": true,
+    "claim": "C2_CENG_CENG_HUI_SUO"
+  },
+  "勤力合闸": {
+    "I-ID-BAN": "elev 仅本线 leaf peepx4",
+    "I-PROCESS": "peep×4 densify",
+    "I-SEAT": true,
+    "outside0": true,
+    "bloodline_match": true,
+    "合闸": true
+  },
+  "E_CC": {
+    "E-CC-01": "elev all from this run leaf — OK",
+    "E-CC-02": "claim on this S11 only — OK",
+    "E-CC-03": "peepx4 densify before seat — OK",
+    "E-CC-04": "parts PASS 4/4 before union",
+    "E-CC-05": "MARK frozen per part — OK"
+  },
+  "PASS": true,
+  "claim": "C2_FULL_CHAIN_XIAN_SS_CENG",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T06:42:04.021171+00:00"
+}
