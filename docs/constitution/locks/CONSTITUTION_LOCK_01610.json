@@ -1,0 +1,15 @@
+{
+  "write_id": "01610",
+  "zh": "清+A：除主L_bg后接先讀",
+  "order": [
+    "L0",
+    "除主→L_bg",
+    "先讀 strip multi-CC",
+    "peep=L0原物",
+    "清+A hardpaste 搬回"
+  ],
+  "PASS": true,
+  "n_seats": 11,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T20:25:34.922131+00:00"
+}

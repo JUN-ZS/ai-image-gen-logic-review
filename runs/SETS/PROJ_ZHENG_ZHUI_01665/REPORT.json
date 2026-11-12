@@ -1,0 +1,14 @@
+{
+  "write": "01665",
+  "call": "正追",
+  "status": "LOCKED",
+  "min_chain": [
+    "S0",
+    "MARK_NEAR",
+    "ENV(μ=正)",
+    "追·B1"
+  ],
+  "demo": "01664 B1 应·正 挂为叶示",
+  "claim_class": "C1_LEAF_B1_ONLY",
+  "asof": "2026-11-12T03:56:28.752975+00:00"
+}

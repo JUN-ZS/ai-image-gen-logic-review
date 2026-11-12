@@ -1,0 +1,7 @@
+{
+  "write": "01605",
+  "PASS": true,
+  "claim": "C2_PAD_ALIGN_ANTIFF",
+  "bug": "E-PAD-01",
+  "fix": "paste_pad_aligned+sameframe"
+}

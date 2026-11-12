@@ -1,0 +1,6 @@
+{
+  "paste_pad_aligned": "R[py0:py1,px0:px1][M]=elev[M]; elev.shape==(py1-py0+1,px1-px0+1)",
+  "ban_paste_tight": "forbid resize(elev_peep → tight_MARK_bbox)",
+  "densify_sameframe": "peep×4 unsharp → seat; elev[pm]=seat[pm]",
+  "peep_pad": "pad_box = expand(tight, PAD_FRAC); touch_sides→0"
+}

@@ -1,0 +1,23 @@
+{
+  "write_id": "01661",
+  "call": "逆",
+  "zh": "逆",
+  "formal": "SHQ_NI_SELF_LIGHT_DUAL_V1",
+  "dual": {
+    "轨A": "逆=本光逆向反推补给",
+    "轨B": "独·环境反射（冷棚偏置）",
+    "融合": "逆×独 双轨"
+  },
+  "parent": [
+    "追/01658",
+    "独·环境反射"
+  ],
+  "equation": "studio S0 --本光逆向--> ENV_逆 --追--> || --独·环境--> ENV_独 --追--> → 斜/叠 hardpaste out=0",
+  "not": [
+    "desert",
+    "爆换景 freeframe"
+  ],
+  "PRIMARY": "轨A_逆",
+  "asof": "2026-11-12T03:05:11.655527+00:00",
+  "ACCEPT_FULL_HD": false
+}

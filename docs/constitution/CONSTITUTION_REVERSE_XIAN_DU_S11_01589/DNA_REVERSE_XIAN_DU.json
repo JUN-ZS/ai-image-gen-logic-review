@@ -1,0 +1,35 @@
+{
+  "write": "01589",
+  "call": "反推·先读成果 vs 虚回底",
+  "formal": "SHQ_REVERSE_XIAN_DU_ELEV_MUST_MATCH_S11_V1",
+  "stick": "STICK_XIAN_DU / STICK_XU_HUI",
+  "qinli": "I-ID-BAN · I-PROCESS · 禁伪先读 elev",
+  "用户点名": {
+    "be09e993": "先读线 S0/整机大图",
+    "73c1068a": "先读线 S11 · 01581 RETURN_BATCH 清锁终"
+  },
+  "正确链": {
+    "S0": "be09e993",
+    "driver": "先读 01580 structure → batch 清锁·件",
+    "S11": "73c1068a",
+    "虚回底必须是": "73c1068a（或同源 S11*）",
+    " densify 必须来自": "先读 leaf/peep elev 或 nest b4a0/846f 同线"
+  },
+  "我错在哪": {
+    "E-code": "E-QL-WRONG_ELEV_NOT_XIAN_DU",
+    "现象": "把 freeframe densify / 远景 peep densify / peep×4 混成 elev，却声称先读→虚回终极",
+    "错底": "01559 远景三物 FINAL 被当成先读 S11",
+    "错 donor": "4f6d / peep 远景 densify ≠ 73c 先读成果",
+    "反推": "先读成果 = 73c 系；非 73c 系 densify 不可冒「先读虚回」"
+  },
+  "两线勿混": {
+    "先读线": "be09 → 73c（雪原整机 清锁 batch）",
+    "终极远景线": "01559 L0 → FINAL（三物 SS联动）",
+    "金": "先读 densify 虚回 → 先读 S11=73c；远景 densify 虚回 → 远景 S11=01559 FINAL",
+    "禁": "远景 freeframe densify 冒先读；先读 elev 硬塞远景 mecha 座却仍叫先读虚回"
+  },
+  "正确虚回方程": "S11*_先读 = 73c ⊙ (1−M) + elev_先读⊙M · elev∈{01581 leaf elev, b4a0 nest, 846f}",
+  "01583已做对一半": "nest b4a0 虚回 73c out=0；错在后续把线改接到 01559 还叫先读",
+  "asof": "2026-11-11T06:25:24.095140+00:00",
+  "ACCEPT_FULL_HD": false
+}

@@ -1,0 +1,37 @@
+{
+  "write_id": "01678",
+  "call": "独.环境反射",
+  "formal": "SHQ_DU_ENV_REFLECT_NEWSCENE_VERIFY_V1",
+  "scene": "neon rainy cafe · helmet · glass · thermos · woman",
+  "objects_独": [
+    "helmet chrome",
+    "glass",
+    "thermos metal",
+    "jacket leather",
+    "face soft GOLD"
+  ],
+  "gates": {
+    "outside": 0,
+    "mad_face": 1.1847961354725616,
+    "dL_helmet": 15.899197578430176,
+    "n": {
+      "helmet": 27926,
+      "glass": 20157,
+      "thermos": 4158,
+      "face": 74731
+    }
+  },
+  "PASS": true,
+  "assets": {
+    "S0": "20e52e58-4ef2-4de8-8d8c-3f8d520688cc",
+    "GOLD": "fb0d50fe-2f79-4e5c-8256-004ad33c7ca5"
+  },
+  "parent": [
+    "01677",
+    "独·环境反射",
+    "至高"
+  ],
+  "asof": "2026-11-12T05:18:22.832122+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_DU_ENV_NEWSCENE"
+}

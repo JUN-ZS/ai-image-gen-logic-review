@@ -1,0 +1,36 @@
+{
+  "write_id": "01680",
+  "call": "轴.反射.生",
+  "formal": "SHQ_ZHOU_FAN_SHE_SHENG_V1",
+  "stick": "STICK_ZHOU_FAN_SHE_SHENG",
+  "exists": true,
+  "constitution": "01647",
+  "equation": "绿语义座同形态轴向 ⊕ VDIR全相BACKUP → HD反射重建 → MARK hardpaste outside=0",
+  "scene": "neon cafe (user ref FAIL 7c029d09 as contrast only)",
+  "objects": [
+    "helmet chrome",
+    "glass",
+    "thermos"
+  ],
+  "gates": {
+    "outside": 0,
+    "green_frac": 4.428854875283447e-06,
+    "ok_nonbox": true,
+    "mad_vs_FAIL_sharpen": 7.96919122466695
+  },
+  "PASS": true,
+  "BAN": [
+    "全图瞎锐化冒充本技",
+    "全相主贴",
+    "freeframe换原",
+    "框死贴"
+  ],
+  "vs_FAIL_global_sharpen": "本技=座内轴向反射生；FAIL=全帧unsharp 完全不同",
+  "assets": {
+    "elev_helmet": "d9b93841-db33-43ce-8a5a-9ae3e5e181f9",
+    "elev_glass": "2de87048-329c-4ecf-a11a-303cf13cd70d"
+  },
+  "claim": "C2_ZHOU_FAN_SHE_SHENG",
+  "asof": "2026-11-12T05:33:41.265511+00:00",
+  "ACCEPT_FULL_HD": false
+}

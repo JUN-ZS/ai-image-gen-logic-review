@@ -1,0 +1,49 @@
+{
+  "write_id": "01676",
+  "call": "新壶人验正确版",
+  "formal": "SHQ_NEW_TEAPOT_PERSON_CORRECT_VERIFY_V1",
+  "chain": [
+    "先光L1=GOLD",
+    "B0 ENV",
+    "B1 NEAR glass 独 inject",
+    "B2 FAR metal",
+    "B3 MID body no face",
+    "脸独 soft GOLD",
+    "镂空 aperture",
+    "FOV hardpaste B2→B3→B1",
+    "outside=0"
+  ],
+  "DNA": [
+    "至高脸≠metal",
+    "E-FACE-Z01 ban",
+    "先光",
+    "追B0B3",
+    "镂空",
+    "禁框"
+  ],
+  "gates": {
+    "outside": 0,
+    "mad_face_GOLD": 2.481826162416511,
+    "n_NEAR": 346780,
+    "n_FACE": 264657,
+    "n_aperture": 4524
+  },
+  "PASS": true,
+  "assets": {
+    "S0": "11b5681a-7600-4435-872b-b9460d9c1bc0",
+    "GOLD": "400f5263-8eb8-4025-9d57-b1b83666a6b7"
+  },
+  "asof": "2026-11-12T05:06:27.475784+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_NEW_TEAPOT_PERSON_CORRECT",
+  "face_bgr": [
+    52.68278564330435,
+    71.2365552394231,
+    95.32291229780432
+  ],
+  "gold_bgr": [
+    53.10909592415844,
+    71.9966447137238,
+    96.90360353211894
+  ]
+}

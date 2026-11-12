@@ -1,0 +1,35 @@
+{
+  "name": "整体辨识×实践回图 测试",
+  "scenes": [
+    "夜市桌面",
+    "远景三物",
+    "乱库房"
+  ],
+  "cases": [
+    {
+      "id": "T1",
+      "title": "单轮读物（对照错）",
+      "do": "一次 CC/小PAD 直接 elev 回",
+      "expect": "FAIL 或 ERROR_TEXTBOOK 剪影碎"
+    },
+    {
+      "id": "T2",
+      "title": "双轮虚回无强心针",
+      "do": "R1 扣底 + R2 大PAD 再读 → 原物 peep 虚回",
+      "expect": "整体座完整；outside=0；TEX 可 FAIL（无升清）"
+    },
+    {
+      "id": "T3",
+      "title": "双轮 + 强心针 peep-lock",
+      "do": "T2 + elev peep-lock densify",
+      "expect": "PASS：整体∧洞外0∧TEX≥min∧无 freeframe 直贴"
+    },
+    {
+      "id": "T4",
+      "title": "污染试：freeframe elev 直贴座",
+      "do": "故意 elev freeframe hardpaste",
+      "expect": "FAIL E-FF-POLLUTE；框回锁/座洞拒收"
+    }
+  ],
+  "PASS_C2": "T3 only when whole_ok ∧ outside=0 ∧ tex_ok ∧ no_ff_pollute"
+}

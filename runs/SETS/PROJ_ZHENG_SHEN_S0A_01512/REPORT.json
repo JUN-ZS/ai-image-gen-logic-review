@@ -1,0 +1,184 @@
+{
+  "write_id": "01512",
+  "mode": "shen",
+  "zh": "正身",
+  "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+  "stick": "STICK_ZHENG_SHEN",
+  "bite": "full_object",
+  "dna_equation": "正身 = 正頭DNA[ bite: head → full_object ]",
+  "tune": {
+    "kou_thr": 20,
+    "min_area": 5000,
+    "min_frac": 0.08,
+    "max_frac": 0.55,
+    "roi_prior": "none",
+    "cc_mode": "largest",
+    "morph_open": 5,
+    "morph_close": 21,
+    "dilate": 7,
+    "chu_bei_dist": 20,
+    "grow_max": 1.1,
+    "part_role": "whole"
+  },
+  "kou": {
+    "thr": 20,
+    "n_cc": 6,
+    "policy": "largest",
+    "frac": 0.05273558548961884,
+    "area": 87131,
+    "gate": "FAIL_FRAC_TOO_SMALL"
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0A_outside": 0,
+  "S01_S0_outside": 0,
+  "S0A": {
+    "source": "L0_L1_kou_largest_cc",
+    "cc_area": 889109,
+    "bbox_xyxy_in_S0": [
+      0,
+      86,
+      1791,
+      1007
+    ],
+    "corners_in_S0": {
+      "TL": [
+        0,
+        86
+      ],
+      "TR": [
+        1791,
+        86
+      ],
+      "BR": [
+        1791,
+        1007
+      ],
+      "BL": [
+        0,
+        1007
+      ]
+    },
+    "S0A_size": [
+      922,
+      1792
+    ],
+    "S0_size": [
+      1008,
+      1792
+    ],
+    "map_back": "S0A_RETURN → paste into S0 at bbox → S01"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 0,
+  "S9_seat_born_outside": 0,
+  "anti_freeframe_elev": {
+    "E-FF-01": "freeframe S9 banned as PRIMARY",
+    "E-FF-02": "elev not RETURN",
+    "E-FF-03": "peep never overwrite",
+    "shared_with": "正头 ERROR_TEXTBOOK freeframe/elev"
+  },
+  "PASS_SX_FULL": true,
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "a44ec48fc146",
+      "role": "冻 SRC 全景"
+    },
+    {
+      "si": "S0A",
+      "ok": true,
+      "sha12": "e39439a08384",
+      "role": "目標大切塊 work domain"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "511ef9c83d72",
+      "role": "外力除整件 @ S0A"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "9375f51ce2d1",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "a98d88151a72",
+      "role": "洞 MARK_full 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "34203671ef61",
+      "role": "认 whole"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "a7f03efb08f6",
+      "role": "peep_full=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "5c290e490a5a",
+      "role": "放大 peep_full 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "69b12f18a137",
+      "role": "升质×物 elev 子 ≠ 正生 ≠ freeframe金"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "591eb72e13c6",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "ca1b8e654756",
+      "role": "正身 洞内 INPAINT · seat-born"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "fd0561a56805",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "f2116d2e47b0",
+      "role": "S11×S0 洞外 bitexact"
+    },
+    {
+      "si": "S01",
+      "ok": true,
+      "sha12": "147fa43c3552",
+      "role": "S0A 对位回 S0 全景"
+    }
+  ],
+  "assets": {
+    "L0": "SETS/PROJ_SHQ_ZHENG_SHEN_TRY_01508/L0.jpg",
+    "L1": "SETS/PROJ_SHQ_ZHENG_SHEN_TRY_01508/A_mecha_full/L1_full_hole.jpg",
+    "IHD": "imagine_images/212c0c47-e158-46d9-927e-7705adabf229.jpg"
+  },
+  "claim": "C2_ZHENG_SHEN_SX_S0_S0A_S01",
+  "ACCEPT_FULL_HD": false,
+  "kuangya": {
+    "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max"
+  },
+  "asof": "2026-11-10T09:59:14.432153+00:00"
+}

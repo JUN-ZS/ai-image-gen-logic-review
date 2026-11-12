@@ -1,0 +1,81 @@
+{
+  "write_id": "01559",
+  "strategy": "S_SEQ_FULL",
+  "phases": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "PASS_LINK": true,
+  "qinli": {
+    "ok": true,
+    "errs": []
+  },
+  "out_scn_vs_Lbg": 0,
+  "out_final_vs_Lbg_qing": 0,
+  "scene": [
+    {
+      "id": "sky",
+      "gain": 2.8060543537139893,
+      "outside": 0,
+      "ok": true,
+      "claim": "C_scene",
+      "peep_src": "L_bg"
+    },
+    {
+      "id": "mountains",
+      "gain": 2.890810251235962,
+      "outside": 0,
+      "ok": true,
+      "claim": "C_scene",
+      "peep_src": "L_bg"
+    },
+    {
+      "id": "forest",
+      "gain": 2.844651222229004,
+      "outside": 0,
+      "ok": true,
+      "claim": "C_scene",
+      "peep_src": "L_bg"
+    },
+    {
+      "id": "ground",
+      "gain": 2.3375802040100098,
+      "outside": 0,
+      "ok": true,
+      "claim": "C_scene",
+      "peep_src": "L_bg"
+    }
+  ],
+  "obj": [
+    {
+      "id": "rover",
+      "gain": 2.5755152702331543,
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_object_on_qing_scene",
+      "peep_src": "L0"
+    },
+    {
+      "id": "mecha",
+      "gain": 2.3463399410247803,
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_object_on_qing_scene",
+      "peep_src": "L0"
+    },
+    {
+      "id": "climber",
+      "gain": 2.5404131412506104,
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_object_on_qing_scene",
+      "peep_src": "L0"
+    }
+  ],
+  "L0_asset": "f29eaed8-9d6a-4fef-ae83-713e57871d2b",
+  "asof": "2026-11-11T01:48:49.970909+00:00"
+}

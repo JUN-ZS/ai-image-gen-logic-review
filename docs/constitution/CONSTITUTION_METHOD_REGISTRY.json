@@ -1,0 +1,326 @@
+{
+  "asof": "2026-11-12T01:46:42.760220+00:00",
+  "write": "01636",
+  "DEAD": [
+    "全图乱CC造MARK",
+    "乱差分当座",
+    "色带膨胀/窗矩形MASK",
+    "outside=0 alone PASS",
+    "無背 freeframe 无尺锁直贴",
+    "杀毒 FALLBACK 重写影/改序",
+    "中心轴当座本体",
+    "影技术",
+    "影扣回(主法名)",
+    "lock影",
+    "旧框法矩形窗当座",
+    "画框叠图当架构",
+    "peep 窗裁冒充全相补给",
+    "旧框法",
+    "矩形窗当座",
+    "E-SEM-KUANG-01",
+    "矩形先验窗画框",
+    "outside alone PASS",
+    "旧框法E-SEM-KUANG-01",
+    "E-SCAN-DIFF-CC-01 差分CC扫洞",
+    "|L0-L_rm|+CC 主洞",
+    "阈值差分最大CC当MARK",
+    "用差分描图当锁回缘",
+    "E-SCAN-DIFF-CC-01",
+    "差分CC扫",
+    "kou_hole absdiff",
+    "全相主贴白晕路径",
+    "freeframe换原冒正生",
+    "全相作主补给",
+    "无闸硬贴漂姿轴向生",
+    "断环境 freeframe 独当正生",
+    "无座全图反射重绘冒独",
+    "旧散散部件乱散"
+  ],
+  "LIVE": [
+    "轴=虚回认位 only",
+    "步步為一 后→前",
+    "[(生,除,洞,扣)×(反)] 外力GROK 驱动",
+    "[(生,除,洞,扣)×(反)]",
+    "独自补给（每物一次生）",
+    "框回鎖",
+    "DNA 闸只判不 rewrite（01633）",
+    "VIRTUAL_DIR 全相补给",
+    "洞=扣(除)",
+    "独自生→存VDIR→入座",
+    "步步為一",
+    "至高F←外力GROK",
+    "VDIR描图",
+    "VDIR全相",
+    "洞座锁回",
+    "VIRTUAL_DIR描图锁回",
+    "外力GROK判定",
+    "外力除背真缘洞",
+    "描图←真缘洞非差分CC",
+    "扣=验已冻洞不重扫",
+    "[(生,除,洞,扣)×(反)] ← 外力GROK",
+    "轴向生主路",
+    "全相BACKUP",
+    "绿座洞",
+    "步步锁回",
+    "轴向生≡绿座形态",
+    "全相BACKUP only",
+    "轴.反射.生",
+    "绿座洞+chroma",
+    "步步為一 后→前 叠反射",
+    "轴向生（同形态轴向）· HD 反射重建",
+    "E-POSE-IOU-01",
+    "轴.反射.生+姿IoU",
+    "peep内 densify 反射",
+    "缘锁抑幽灵",
+    "独·环境反射",
+    "绿座全景条件",
+    "全相BACKUP身份",
+    "散散·3D·独环境",
+    "深度层散开 FAR|MID|NEAR",
+    "移轴FOV·3D SHARP叠",
+    "逻辑3D SHARP叠",
+    "NEAR>MID>FAR FOV",
+    "叠·散散升清",
+    "斜·移轴FOV",
+    "折·对角折面",
+    "叠斜折中景验",
+    "叠斜折×移轴FOV×独环境",
+    "斜×独·环境反射 PRIMARY",
+    "光追递式·独补给",
+    "RAY_DU_SUPPLY_REC",
+    "B0→B1→B2→B3 独环境",
+    "追",
+    "ZHUI",
+    "追×独环境×散散",
+    "爆",
+    "BAO",
+    "SHQ_BAO_BURST_ENV_ZHUI",
+    "逆",
+    "NI",
+    "逆×独·环境反射",
+    "正",
+    "本光正向",
+    "正×独",
+    "应",
+    "YING",
+    "应变通用式",
+    "正追",
+    "ZHENG_ZHUI"
+  ],
+  "conflicts": [
+    {
+      "id": "C1",
+      "old": "OLD_CC_MARK",
+      "new": "YING_KOU_HUI",
+      "must": "DEAD: 乱CC/乱差分当座",
+      "dao_fan": "若 CC 仍可当座 ∧ 影扣回为真座 → 同物可有两套互斥 MARK 皆称 PASS → 矛盾"
+    },
+    {
+      "id": "C2",
+      "old": "OLD_OUTSIDE_ALONE",
+      "new": "FRAME_GATE",
+      "must": "DEAD: outside alone PASS；F8 必含 cover",
+      "dao_fan": "APPLE cover=0.62 新 F8=FAIL 但旧 outside=0 仍 PASS → 同 RUN 真假绿 → 矛盾"
+    },
+    {
+      "id": "C3",
+      "old": "OLD_FREEFRAME_AS_PEEP",
+      "new": "BEI_SIZE_GATE",
+      "must": "DEAD: 无 peep-lock 的 freeframe 直贴为合法扣",
+      "dao_fan": "APPLE sx=1.318 尺裂 FAIL，若 freeframe 直贴仍合法 → 尺度闸形同虚设 → 矛盾"
+    },
+    {
+      "id": "C4",
+      "old": "OLD_COLOR_BAND_RECT",
+      "new": "YING_ONLY",
+      "must": "DEAD: 色带/窗框造 MASK",
+      "dao_fan": "色带大方框 vs 除背真影 同称 MARK → 影扣回定义瓦解 → 矛盾"
+    },
+    {
+      "id": "C5",
+      "old": "OLD_ANTITOXIN_REWRITE",
+      "new": "ORDER_LOCK",
+      "must": "DEAD: 闸杀毒 rewrite 影源与次序",
+      "dao_fan": "杀毒若可改写主链，则主链非锁 → 01631 金与 01632 坏可同时称合规 → 矛盾"
+    },
+    {
+      "id": "C6",
+      "old": "OLD_AXIS_AS_SEAT",
+      "new": "AXIS_XUHUI_ONLY",
+      "must": "DEAD: 轴=座；轴只虚回",
+      "dao_fan": "轴若当座 ∧ 影当座 → 二座 → 矛盾"
+    }
+  ],
+  "write_update": "01653",
+  "rename": {
+    "影扣回": "框回鎖（生后入座）",
+    "除背影 MARK": "洞 = 扣(除) 之座",
+    "YING_*.png": "MARK_HOLE_*.png / 洞",
+    "lock影": "FORBIDDEN 语义病"
+  },
+  "至高无上": {
+    "clause": "[(生,除,洞,扣)×(反)] ← 外力GROK 优先理解并驱动生效",
+    "code": "SUPREME_F_WAI_LI_GROK",
+    "rank": 0,
+    "overrides": [
+      "旧框法",
+      "影技术",
+      "outside alone",
+      "乱CC座",
+      "矩形窗"
+    ]
+  },
+  "E-SCAN-DIFF-CC-01": {
+    "status": "DEAD",
+    "name": "差分CC扫洞",
+    "aka": [
+      "|L0−L_rm| + thr + connectedComponents",
+      "kou_hole absdiff scan",
+      "percentile/Otsu 差分再最大CC当洞",
+      "01642 kou_hole()"
+    ],
+    "why_dead": [
+      "外力除构图微漂 → 差分≠真物缘",
+      "CC 吃影/桌纹 → 假瓣、破杯把",
+      "描图只是画毒M → 黄锯齿框病变体",
+      "与至高「洞=除之座、外力GROK驱动」冲突"
+    ],
+    "dao_fan": "若差分CC可当洞主法 ∧ 外力除背真缘为洞真法 → 两套洞 → 矛盾 → 差分CC DEAD"
+  },
+  "VIRTUAL_DIR全相": "BACKUP only",
+  "calls": {
+    "轴.反射.生": {
+      "write": "01647",
+      "verify_run": "01680",
+      "asof": "2026-11-12T05:33:41.265511+00:00"
+    },
+    "独·环境反射": {
+      "write": "01649",
+      "formal": "SHQ_DU_SHENG_ENV_REFLECT_V1",
+      "asof": "2026-11-12T01:15:32.120864+00:00"
+    },
+    "散散·3D·独环境": {
+      "write": "01652",
+      "asof": "2026-11-12T01:39:33.820763+00:00"
+    },
+    "移轴FOV·3D SHARP叠": {
+      "write": "01653",
+      "asof": "2026-11-12T01:46:42.760220+00:00"
+    },
+    "叠斜折": {
+      "write": "01654",
+      "asof": "2026-11-12T02:07:10.275178+00:00"
+    },
+    "叠斜折×移轴FOV×独": {
+      "write": "01655",
+      "asof": "2026-11-12T02:13:32.091457+00:00"
+    },
+    "光追递式·独补给": {
+      "write": "01657",
+      "asof": "2026-11-12T02:32:03.399944+00:00",
+      "short_call": "追"
+    },
+    "追": {
+      "write": "01658",
+      "formal": "SHQ_ZHUI_RAY_DU_V1",
+      "parent": "01657",
+      "asof": "2026-11-12T02:44:30.072141+00:00"
+    },
+    "追×独环境×散散": {
+      "write": "01659",
+      "asof": "2026-11-12T02:51:27.143164+00:00"
+    },
+    "爆": {
+      "write": "01660",
+      "formal": "SHQ_BAO_BURST_ENV_ZHUI_V1",
+      "parent": "追",
+      "env": "burst_not_desert",
+      "asof": "2026-11-12T03:00:04.029858+00:00"
+    },
+    "逆": {
+      "write": "01661",
+      "formal": "SHQ_NI_SELF_LIGHT_DUAL_V1",
+      "dual": true,
+      "asof": "2026-11-12T03:05:11.655527+00:00"
+    },
+    "正": {
+      "write": "01662",
+      "formal": "SHQ_NI_ZHENG_FORWARD_DUAL_V1",
+      "parent": "逆",
+      "asof": "2026-11-12T03:31:39.625879+00:00"
+    },
+    "应": {
+      "write": "01664",
+      "formal": "SHQ_YING_UNIVERSAL_DU_ENV_V1",
+      "asof": "2026-11-12T03:45:24.780498+00:00"
+    },
+    "正追": {
+      "write": "01668",
+      "formal": "SHQ_ZHENG_ZHUI_MIN_B1_V2",
+      "formula": "V2 residual+LockAB",
+      "asof": "2026-11-12T04:13:46.411405+00:00"
+    },
+    "禁框死贴": {
+      "write": "01671",
+      "formal": "SHQ_BAN_BOX_DEAD_PASTE_V1",
+      "code": "E-BOX-01",
+      "asof": "2026-11-12T04:39:11.621624+00:00"
+    },
+    "先光": {
+      "write": "01672",
+      "formal": "SHQ_LIGHT_FIRST_THEN_SEAT_V1",
+      "asof": "2026-11-12T04:46:07.459162+00:00"
+    },
+    "外力应变法": {
+      "write": "01673",
+      "asof": "2026-11-12T04:51:45.488782+00:00"
+    },
+    "追·B0B3": {
+      "write": "01674",
+      "asof": "2026-11-12T04:54:18.016752+00:00"
+    },
+    "脸追修": {
+      "write": "01675",
+      "asof": "2026-11-12T05:02:29.531225+00:00"
+    },
+    "环境反射.独": {
+      "write": "01677",
+      "asof": "2026-11-12T05:11:43.852421+00:00"
+    },
+    "独.环境反射": {
+      "write": "01678",
+      "verify_newscene": true,
+      "asof": "2026-11-12T05:18:22.832122+00:00"
+    },
+    "FAIL_global_sharpen": {
+      "write": "01679",
+      "status": "FAIL_TEXTBOOK",
+      "asof": "2026-11-12T05:26:06.839349+00:00"
+    },
+    "SS验.清锁": {
+      "write": "01541",
+      "stick": "STICK_SS_YAN_QING_LOCK",
+      "verify_run": "01681",
+      "asof": "2026-11-12T05:44:20.087085+00:00"
+    },
+    "SS驗.清鎖": {
+      "write": "01541",
+      "stick": "STICK_SS_YAN_QING_LOCK",
+      "verify_run": "01681",
+      "asof": "2026-11-12T05:44:20.087085+00:00"
+    }
+  },
+  "轴.反射.生": "轴.反射.生 = 绿语义座同形态轴向 ⊕ VDIR全相BACKUP(反射/材质身份) → 每件 HD 高光/折射/水纹 重建 → 只在 MARK 洞座 hardpaste",
+  "E-POSE-IOU-01": {
+    "thr": 0.55,
+    "parent": "轴.反射.生",
+    "write": "01648"
+  },
+  "error_codes": {
+    "E-BOX-01": "DEAD_RECT_PEEP_PASTE 方框死贴 BAN",
+    "E-FACE-Z01": "ENV copper inject on skin",
+    "E-FACE-Z02": "incomplete MID as face 追",
+    "E-FACE-Z03": "L1 face dark without GOLD person light",
+    "E-SHARP-01": "FAIL_global_sharpen 全图瞎锐化"
+  }
+}

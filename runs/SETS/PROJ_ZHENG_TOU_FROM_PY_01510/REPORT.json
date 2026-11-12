@@ -1,0 +1,126 @@
+{
+  "write_id": "01510",
+  "mode": "tou",
+  "zh": "正頭",
+  "formal": "SHQ_ZHENG_TOU_EDIT_INPAINT_IN_HOLE_V1",
+  "stick": "STICK_ZHENG_TOU_SX_S11xS0",
+  "bite": "head",
+  "dna_equation": "正頭 = 母本",
+  "tune": {
+    "kou_thr": 26,
+    "min_area": 3000,
+    "min_frac": 0.01,
+    "max_frac": 0.2,
+    "roi_prior": "side",
+    "cc_mode": "score_roi",
+    "morph_open": 5,
+    "morph_close": 17,
+    "dilate": 11,
+    "chu_bei_dist": 24,
+    "grow_max": 1.15,
+    "part_role": "head"
+  },
+  "kou": {
+    "thr": 26,
+    "n_cc": 1,
+    "policy": "score_roi",
+    "frac": 0.0015628321641156463,
+    "area": 2823,
+    "gate": "FAIL_FRAC_TOO_SMALL"
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 195,
+  "PASS_SX_FULL": true,
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "57e2f5eed2b3",
+      "role": "冻 SRC"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "f2df5c6286f0",
+      "role": "外力除头 → L1"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "dcdc12defb6f",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "0785ddb725d4",
+      "role": "洞 MARK_head 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "6d3b33640745",
+      "role": "认 head"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "5afb4bd5dcb6",
+      "role": "peep0=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "1267e308e4ae",
+      "role": "放大 peep0 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "772066c2aadc",
+      "role": "升质×物 elev 子 ≠ 正生"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "ef89188686a0",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "a3ce2cf352bd",
+      "role": "正頭 洞内 INPAINT"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "7b18685370b0",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "ef9d93beb638",
+      "role": "S11×S0 洞外 bitexact"
+    }
+  ],
+  "assets": {
+    "L0": "SETS/PROJ_SHQ_KUANGYA_3SUBJ_INDEP_01507/L0/L0.jpg",
+    "L1": "SETS/PROJ_SHQ_KUANGYA_3SUBJ_INDEP_01507/A_mecha/L1_hole.jpg",
+    "IHD": "imagine_images/565cb6c7-d5b4-4c16-ad13-ba883b5ce124.jpg"
+  },
+  "claim": "C2_ZHENG_TOU_SX_S0_S11",
+  "ACCEPT_FULL_HD": false,
+  "kuangya": {
+    "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max"
+  },
+  "asof": "2026-11-10T09:36:06.741351+00:00"
+}

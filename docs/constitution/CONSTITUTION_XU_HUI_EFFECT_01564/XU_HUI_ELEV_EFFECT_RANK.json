@@ -1,0 +1,155 @@
+{
+  "write_id": "01564",
+  "for_call": "虛回",
+  "metric": "形一样(同MARK/frame)下 物内容生成极限",
+  "methods": [
+    {
+      "rank": 1,
+      "call": "外力GROK · Imagine 生成级 densify（材质/微结构）",
+      "formal_refs": [
+        "STICK_WAI_LI_GROK",
+        "SS验.清 donor 契约"
+      ],
+      "effect": 95,
+      "shape_lock": "prompt 写死 same silhouette + elev_donor_contract_lock",
+      "content_what": "金属板缝/织物/履带纹/铆钉——像素级新生内容",
+      "risk": "构漂；必须虚回锁位，禁 freeframe 当 RETURN",
+      "hub_local": "skill 外力GROK · 01562 已证"
+    },
+    {
+      "rank": 2,
+      "call": "SS驗.清 · densify + 清锁 F2（洞座内）",
+      "formal_refs": [
+        "SS验.清",
+        "elev_donor_contract_lock",
+        "seat_hardlock"
+      ],
+      "effect": 88,
+      "shape_lock": "pm 内硬锁；洞外0",
+      "content_what": "在座内把 donor 高清压回 peep 形",
+      "risk": "donor 若弱则内容上限低",
+      "hub_local": "DNA SS验.清 支路"
+    },
+    {
+      "rank": 3,
+      "call": "SS驗.清+A · 除主语义洞 peep 再外力 densify",
+      "formal_refs": [
+        "SHQ_SS_YAN_QING_PLUS_A",
+        "01543"
+      ],
+      "effect": 86,
+      "shape_lock": "MARK_semantic + 反扣面积闸",
+      "content_what": "整件 whole_subject 咬准后再升，内容边界正确",
+      "risk": "除主构漂 → 洞歪",
+      "hub_local": "Hub/本地 01543 清+A"
+    },
+    {
+      "rank": 4,
+      "call": "强心针 BOOST · 认∩放大∩升质×物",
+      "formal_refs": [
+        "DNA_KUANGYA_SUPREME_BOOST",
+        "S4–S8"
+      ],
+      "effect": 84,
+      "shape_lock": "放大须继承对的原（ELEV≠换原）",
+      "content_what": "放大后细节生成空间最大；升质×物",
+      "risk": "ELEV/DONOR 错用；S5 ratio",
+      "hub_local": "框牙 DNA"
+    },
+    {
+      "rank": 5,
+      "call": "正头 / 正身 S6–S9 elev 子代",
+      "formal_refs": [
+        "STICK_ZHENG_TOU",
+        "STICK_ZHENG_SHEN",
+        "SX"
+      ],
+      "effect": 82,
+      "shape_lock": "(S)×(S) + S11×S0",
+      "content_what": "整件/头 HD 子代，内容可极高",
+      "risk": "全帧正头冒 RETURN；须虚回或 S11×S0",
+      "hub_local": "01500–01509"
+    },
+    {
+      "rank": 6,
+      "call": "EDIT 洞内 INPAINT（正头 DNA 补步）",
+      "formal_refs": [
+        "DNA_EDIT_HOLE_LAYER_FIX"
+      ],
+      "effect": 80,
+      "shape_lock": "洞框内 inpaint，形由洞定",
+      "content_what": "洞内生成纹理不破框",
+      "risk": "少一步 inpaint 则位漂",
+      "hub_local": "EDIT_HOLE_LAYER"
+    },
+    {
+      "rank": 7,
+      "call": "回车大炮 / 机炸回 · 分件高清再认回",
+      "formal_refs": [
+        "HUI_CHE_DA_PAO",
+        "JI_ZHA_HUI"
+      ],
+      "effect": 78,
+      "shape_lock": "分件后须 peep 同构回",
+      "content_what": "零件级极限细节",
+      "risk": "伪组合；无 State Bus 连动败",
+      "hub_local": "UP-engine docs/shq"
+    },
+    {
+      "rank": 8,
+      "call": "SS驗.清+C · 格/全景万物 peep densify",
+      "formal_refs": [
+        "SS验.清+C·格框",
+        "勤力 I-PROCESS"
+      ],
+      "effect": 72,
+      "shape_lock": "格框几何；WHOLE 须清锁",
+      "content_what": "多主体批量升",
+      "risk": "I-ID-BAN 身份自贴无内容",
+      "hub_local": "01548+"
+    },
+    {
+      "rank": 9,
+      "call": "新画女 / freeframe elev（教学位）",
+      "formal_refs": [
+        "DNA_FREEFRAME_VS_WAI_LI_GROK",
+        "外力反V3"
+      ],
+      "effect": 70,
+      "shape_lock": " alone 无；必须虚回座",
+      "content_what": "画面极清但形易漂",
+      "risk": "E-WLF3-01 无洞回",
+      "hub_local": "外力反 V3 错例教材"
+    },
+    {
+      "rank": 10,
+      "call": "OpenCV local densify（USM/CLAHE）",
+      "formal_refs": [
+        "01559 local path"
+      ],
+      "effect": 45,
+      "shape_lock": "形完美（像素同源）",
+      "content_what": "对比度/锐度；无新生材质语义",
+      "risk": "假升清；勤力 I-PROCESS 弱",
+      "hub_local": "本地"
+    },
+    {
+      "rank": 11,
+      "call": "peep 身份自贴",
+      "formal_refs": [
+        "I-ID-BAN"
+      ],
+      "effect": 0,
+      "shape_lock": "完美",
+      "content_what": "零",
+      "risk": "勤力 BAN",
+      "hub_local": "禁"
+    }
+  ],
+  "top3_try": [
+    "外力GROK · Imagine 生成级 densify（材质/微结构）",
+    "SS驗.清 · densify + 清锁 F2（洞座内）",
+    "SS驗.清+A · 除主语义洞 peep 再外力 densify"
+  ],
+  "asof": "2026-11-11T02:54:45.749523+00:00"
+}

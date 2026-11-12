@@ -1,0 +1,116 @@
+{
+  "write": "01682",
+  "title": "HUB_SHA_THUMBS",
+  "policy": "thumb max320 + sha256 full source",
+  "asof": "2026-11-12T05:56:39.361221+00:00",
+  "items": [
+    {
+      "id": "01678_S0",
+      "src": "SETS/PROJ_DU_ENV_NEWSCENE_01678/L/S0.jpg",
+      "sha256_full": "9ad047f891855e1c4aee8e327ae87614a7365f283a17617ccf0ab915d177173a",
+      "sha256_thumb": "1d8681be8cf2865c87aa1fcb93fbbaeacfeb2fe3f2208a9c6b143e375bde158c",
+      "thumb_path": "docs/hub_thumbs/01678_S0.jpg",
+      "bytes_full": 549864,
+      "bytes_thumb": 7458
+    },
+    {
+      "id": "01678_S11",
+      "src": "SETS/PROJ_DU_ENV_NEWSCENE_01678/L/S11_DU_ENV.jpg",
+      "sha256_full": "89e8240bd6439bde6f928b01eb46ffec74c4856f7127ac238eb33e5605156648",
+      "sha256_thumb": "4f7fb4f4a8950e1a83421f4cc3964c0d5376e82b40b2b2820aa29a512d5f3e6a",
+      "thumb_path": "docs/hub_thumbs/01678_S11.jpg",
+      "bytes_full": 585014,
+      "bytes_thumb": 7467
+    },
+    {
+      "id": "01679_FAIL_sharp",
+      "src": "SETS/PROJ_FAIL_GLOBAL_SHARPEN_01679/L/FAIL_global_sharpen_HARD.jpg",
+      "sha256_full": "e827be859af95f46f3a827a8ff427903d1c7bf86c5c0e9fa2d0083c65263dfb0",
+      "sha256_thumb": "50f3f0602ceb54fa86984a0bce604ae718c4b9ca955ef6c76e6bb51261590ca7",
+      "thumb_path": "docs/hub_thumbs/01679_FAIL_sharp.jpg",
+      "bytes_full": 779425,
+      "bytes_thumb": 8826
+    },
+    {
+      "id": "01679_RIGHT",
+      "src": "SETS/PROJ_FAIL_GLOBAL_SHARPEN_01679/L/RIGHT_DU_ENV_FOV.jpg",
+      "sha256_full": "ae333611b5a332c87f7d1a9ada1fc34e31d8f921012accd2f109f8b0b3a5add2",
+      "sha256_thumb": "34b4729fd3dbd8764fcb6758930a2c7d5cdde8046413553fadc4e5d655b52b60",
+      "thumb_path": "docs/hub_thumbs/01679_RIGHT.jpg",
+      "bytes_full": 539194,
+      "bytes_thumb": 7479
+    },
+    {
+      "id": "01679_board",
+      "src": "SETS/PROJ_FAIL_GLOBAL_SHARPEN_01679/boards/FAIL_VS_RIGHT.jpg",
+      "sha256_full": "a0da63dae8ac765c0cc0c354b18eabb24ff1754ea577214d5cef6b37416023a0",
+      "sha256_thumb": "9eb30d45716ff9ab9b4d3eb2f37093e47d801b2da36ddcd2ab03b41f5dd53c61",
+      "thumb_path": "docs/hub_thumbs/01679_board.jpg",
+      "bytes_full": 186764,
+      "bytes_thumb": 6593
+    },
+    {
+      "id": "01680_S11_zhou",
+      "src": "SETS/PROJ_ZHOU_FAN_SHE_SHENG_CAFE_01680/L/S11_ZHOU_FAN_SHE_SHENG.jpg",
+      "sha256_full": "ca9a5fc5ab9539ebd288f02fcfc8c504b3676027788646a7040a4d93f7c48a0a",
+      "sha256_thumb": "e48f129f03d97b2e46097a49372503c9e30773c0f22b40c8df9e41d82a8404e7",
+      "thumb_path": "docs/hub_thumbs/01680_S11_zhou.jpg",
+      "bytes_full": 604433,
+      "bytes_thumb": 7721
+    },
+    {
+      "id": "01680_board",
+      "src": "SETS/PROJ_ZHOU_FAN_SHE_SHENG_CAFE_01680/boards/ZHOU_VS_FAIL.jpg",
+      "sha256_full": "7b8ae4071781eab1a652057ea819e31399bc78ad7af92a944025aa980ca88ac0",
+      "sha256_thumb": "e587edacccbad2d8add13217083b996b4989fa0651fb8c064d7b89067c0080c1",
+      "thumb_path": "docs/hub_thumbs/01680_board.jpg",
+      "bytes_full": 199109,
+      "bytes_thumb": 7767
+    },
+    {
+      "id": "01681_S11_sslock",
+      "src": "SETS/PROJ_SS_YAN_QING_LOCK_ON_FAIL_01681/L/S11_SS_YAN_QING_LOCK.jpg",
+      "sha256_full": "03e603dc083ed0f004d76b0c3297dae734c3fbb6ea78d3cc4365f454241f056e",
+      "sha256_thumb": "0c16e3d008350d4bd52b31230d878d1d357dd4a25e7a5b268baf45b599d159db",
+      "thumb_path": "docs/hub_thumbs/01681_S11_sslock.jpg",
+      "bytes_full": 850643,
+      "bytes_thumb": 8745
+    },
+    {
+      "id": "01681_board",
+      "src": "SETS/PROJ_SS_YAN_QING_LOCK_ON_FAIL_01681/boards/SS_QING_LOCK.jpg",
+      "sha256_full": "eb6c31f3f06d0b26e0509f4bc57ca48916fe12f645b608597ae53af10284215d",
+      "sha256_thumb": "6c79576adf2396db53dc61452edf9610085dedda3b9eaa55e5f9ace83cd017db",
+      "thumb_path": "docs/hub_thumbs/01681_board.jpg",
+      "bytes_full": 207384,
+      "bytes_thumb": 7405
+    },
+    {
+      "id": "01677_S11",
+      "src": "SETS/PROJ_ENV_REFLECT_DU_01677/L/S11_ENV_REFLECT_DU.jpg",
+      "sha256_full": "34ee741eade3446917b96e177d83aa76d35ce4701590f0548926c7e09b6b715a",
+      "sha256_thumb": "6dcbdf9896bb1b2245fd8b6a3042b334b98c1917e857cce6476851ecc25e3705",
+      "thumb_path": "docs/hub_thumbs/01677_S11.jpg",
+      "bytes_full": 477803,
+      "bytes_thumb": 8446
+    },
+    {
+      "id": "01676_S11_CORRECT",
+      "src": "SETS/PROJ_NEW_TEAPOT_PERSON_VERIFY_01676/L/S11_CORRECT.jpg",
+      "sha256_full": "55fd9533ad064697cb613c4ff044e1ecf46116a91129fb8f0ea3f0c8bb1bb9ae",
+      "sha256_thumb": "73239067df43bb89304267ce54e53468d0d1690fd2b7c249a419f7bb4e5e13bc",
+      "thumb_path": "docs/hub_thumbs/01676_S11_CORRECT.jpg",
+      "bytes_full": 502859,
+      "bytes_thumb": 8856
+    },
+    {
+      "id": "01669_HYBRID_PRIMARY",
+      "src": "SETS/PROJ_HYBRID_SEAT_LIGHT_01669/L/HYBRID_PRIMARY.jpg",
+      "sha256_full": "558376a9f9f7897e4c1028b0ff757f60206c3e464613da98da857e1a9f216f3d",
+      "sha256_thumb": "b6e2fc39f4282736a5dc08a5f71dd37f8b779eae6c534c0ae818e9dd84abb5b3",
+      "thumb_path": "docs/hub_thumbs/01669_HYBRID_PRIMARY.jpg",
+      "bytes_full": 684620,
+      "bytes_thumb": 12692
+    }
+  ]
+}

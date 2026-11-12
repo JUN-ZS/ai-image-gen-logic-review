@@ -1,0 +1,48 @@
+{
+  "write_id": "01541",
+  "call": "SS驗.清鎖",
+  "selftest": {
+    "bad_no_contract": {
+      "PASS": false,
+      "G1": {
+        "ok": false,
+        "code": "E-QINGLOCK-01",
+        "has_marker": false
+      },
+      "claim": "FAIL_QING_LOCK"
+    },
+    "ff_with_contract": {
+      "PASS": true,
+      "anti": {
+        "outside": 0,
+        "mark_frac": 0.4472742782038003,
+        "PASS": true,
+        "codes": [],
+        "claim": "C2_SS_YAN_QING_LOCK"
+      },
+      "G7": {
+        "ok": true,
+        "struct_lf_mad": 1.4789695739746094,
+        "code": null
+      },
+      "claim": "C2_SS_YAN_QING_LOCK"
+    },
+    "near_with_contract": {
+      "PASS": true,
+      "anti": {
+        "outside": 0,
+        "mark_frac": 0.4472742782038003,
+        "PASS": true,
+        "codes": [],
+        "claim": "C2_SS_YAN_QING_LOCK"
+      },
+      "G7": {
+        "ok": true,
+        "struct_lf_mad": 1.676552653312683,
+        "code": null
+      },
+      "claim": "C2_SS_YAN_QING_LOCK"
+    }
+  },
+  "prompt_sample_head": "[[WHOLE_BITE_CONTRACT]] Treat the subject as ONE continuous WHOLE object. Keep the FULL silhouette end-to-end (tip-to-base / head-to-feet / barrel-to-tracks). Do NOT crop to close-up, half-body, head-"
+}

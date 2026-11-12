@@ -1,0 +1,26 @@
+{
+  "write": "01661",
+  "call": "逆",
+  "PASS": true,
+  "out": {
+    "逆": 0,
+    "独环境": 0,
+    "双轨": 0,
+    "叠_逆": 0,
+    "叠_独": 0
+  },
+  "meta_逆": {
+    "ok": true,
+    "n_samp": 788775,
+    "n_bright": 332032,
+    "method": "本光逆向 peep高光+场景亮源+ambient"
+  },
+  "meta_独": {
+    "ok": true,
+    "kind": "cool_studio_dual_B"
+  },
+  "claim": "C2_NI_SELF_LIGHT_DUAL_01661",
+  "PRIMARY": "逆",
+  "asof": "2026-11-12T03:05:11.655527+00:00",
+  "ACCEPT_FULL_HD": false
+}

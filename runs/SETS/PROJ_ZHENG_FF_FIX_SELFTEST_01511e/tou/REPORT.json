@@ -1,0 +1,129 @@
+{
+  "write_id": "01511",
+  "mode": "tou",
+  "zh": "正頭",
+  "formal": "SHQ_ZHENG_TOU_EDIT_INPAINT_IN_HOLE_V1",
+  "stick": "STICK_ZHENG_TOU_SX_S11xS0",
+  "bite": "head",
+  "dna_equation": "正頭 = 母本",
+  "tune": {
+    "kou_thr": 22,
+    "min_area": 2500,
+    "min_frac": 0.02,
+    "max_frac": 0.22,
+    "roi_prior": "upper",
+    "cc_mode": "score_roi",
+    "morph_open": 5,
+    "morph_close": 15,
+    "dilate": 11,
+    "chu_bei_dist": 22,
+    "grow_max": 1.15,
+    "part_role": "head"
+  },
+  "kou": {
+    "thr": 22,
+    "n_cc": 1,
+    "policy": "score_roi",
+    "frac": 0.05944010416666667,
+    "area": 4565,
+    "gate": "OK"
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 0,
+  "S9_seat_born_outside": 0,
+  "anti_freeframe_elev": {
+    "E-FF-01": "freeframe S9 banned as PRIMARY",
+    "E-FF-02": "elev not RETURN",
+    "E-FF-03": "peep never overwrite",
+    "shared_with": "正头 ERROR_TEXTBOOK freeframe/elev"
+  },
+  "PASS_SX_FULL": true,
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "dbe2967661b6",
+      "role": "冻 SRC"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "f0ebfc7cda79",
+      "role": "外力除头 → L1"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "db96032794b1",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "cea53ec6c0ae",
+      "role": "洞 MARK_head 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "5d0d53148421",
+      "role": "认 head"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "4add9d322307",
+      "role": "peep0=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "a21638bad213",
+      "role": "放大 peep0 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "303e82d60c08",
+      "role": "升质×物 elev 子 ≠ 正生 ≠ freeframe金"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "688737f6e02e",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "23ca54014dc4",
+      "role": "正頭 洞内 INPAINT · seat-born"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "b4b3089ab56f",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "e0c175f7079f",
+      "role": "S11×S0 洞外 bitexact"
+    }
+  ],
+  "assets": {},
+  "claim": "C2_ZHENG_TOU_SX_S0_S11",
+  "ACCEPT_FULL_HD": false,
+  "kuangya": {
+    "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max"
+  },
+  "asof": "2026-11-10T09:45:26.240320+00:00"
+}

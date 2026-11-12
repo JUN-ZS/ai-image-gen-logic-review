@@ -1,0 +1,112 @@
+{
+  "write_id": "01621",
+  "call": "次序·FF虚回四态清",
+  "formal": "SHQ_ORDER_FF_XU_HUI_FOUR_ANTI_SS_QING_V1",
+  "zh": "组织：freeframe 与座洞虚回的次数/次序 + 四态反 + SS验.清（记忆纠错，非新发明）",
+  "admission": {
+    "user": "一定是 FREEFRAME 和座洞虚回 的次数和次序不对；这问题已解决过，是你记忆出错",
+    "agent": "承认：01618–01620 把「再发明读物/双轮PAD」当成主药，打乱了已解的 次数·次序 元规则"
+  },
+  "already_solved_in": {
+    "四态反": "01448 SHQ_FOUR_ANTI_ALGEBRA_ARCH · [(生,除,洞,扣)×(反)]",
+    "外力反V3": "01459 洞座回；无洞 freeframe 回 = E-WLF3-01",
+    "SS验.清": "01523/01539 洞座硬锁升清不移位",
+    "SS验.清锁": "01541 whole_bite + donor 锁回 peep",
+    "虚回": "01563 升清图虚拟成「已抽出放大升清未回」；只跟冻锁",
+    "层层回锁": "01590 每层 densify 只虚回本层座；子 out=0 才开外层",
+    "SS联动": "01560 分轨有序合闸"
+  },
+  "counts": {
+    "座洞FREEZE": "每对象 / 每层 k：1 次（四态 扣+洞 完成后冻死；禁 elev 后重开）",
+    "freeframe_elev": "每层 k：允许 1 次（仅 elev densify 生成；可不 freeframe 若 peep-lock densify）",
+    "虚回": "每层 k：恰好 1 次（elev 完成后；把 I_elev 虚拟成未回 peep 跟锁）",
+    "SS验.清": "每层虚回时 1 次（seat_hardlock / F2；与虚回同拍，不另开洞）",
+    "外层虚回": "子层 outside=0 后才 +1（层层回锁）"
+  },
+  "order_canonical": [
+    "S0  冻 SRC",
+    "① 除   外力除主 → L1（正除）",
+    "② 扣   |L0−L1| / 反扣 → peep0 几何（正扣）",
+    "③ 洞   MARK FREEZE 座洞（正洞）· 反洞=洞外 bitexact 预备",
+    "—— 以上 = 四态前半；座洞次数用尽（本层 1）——",
+    "④ 生′  elev densify(peep0)：此处 freeframe 可发生（仅纹理 donor）",
+    "        elev ≠ 正生座；elev ≠ RETURN；elev_remap=false 主权",
+    "⑤ 虚回  I_elev ≔ 虚拟「已抽出·放大升清·未回」",
+    "⑥ SS验.清 / 清锁  elev_donor_contract_lock → seat_hardlock → 正生 fill@MARK",
+    "⑦ 回   hardpaste 冻座（框回锁）",
+    "⑧ 反   ‖RETURN−L1‖_outside=0 · 反生 peep↔elev 锁尺 · 反扣缘",
+    "（多层）子 ⑧ PASS → 父层再 ⑤⑥⑦⑧，不重走 ①②③ 重开洞"
+  ],
+  "algebra": {
+    "F": "[(生,除,洞,扣)×(反)]",
+    "driver": "外力GROK",
+    "boost": "认∩放大∩升质×物 在 ④⑤ 之间，不得跳过 ①②③",
+    "seat_born": "正生只在 ⑥ 洞座上；无 ③ 则 E-WLF3-01"
+  },
+  "freeframe_rule": {
+    "allowed_at": "仅 ④ elev densify",
+    "forbidden_as": [
+      "座洞坐标",
+      "RETURN 本体",
+      "第二次虚回的 peep 主权",
+      "无洞回有景"
+    ],
+    "after_ff": "必须 ⑤虚回 + ⑥SS验.清 锁回 peep0/MARK；否则 E-FF-02 / E-QINGLOCK-02"
+  },
+  "xu_hui_rule": {
+    "from": "01563",
+    "times_per_layer": 1,
+    "when": "④ elev 完成之后，⑦ hard 之前",
+    "do_not": "重算 MARK；自开新回位计划；把 peep 源改成 L0 带物当新座",
+    "virtual_role": "SS联动_已抽出放大升清未回"
+  },
+  "ss_yan_qing_rule": {
+    "from": "01523/01541",
+    "role": "⑥ 洞座硬锁：升清不移位；donor 锁回 peep",
+    "with_xu_hui": "虚回 = 身份声明；SS验.清 = 几何执行；同拍一次"
+  },
+  "ceng_ceng": {
+    "from": "01590",
+    "rule": "每层 densify 只虚回本层冻座 S_k",
+    "E": [
+      "E-CC-01 血缘错",
+      "E-CC-03 过早压 peep",
+      "E-CC-04 子未出就开外",
+      "E-CC-05 无冻MARK"
+    ]
+  },
+  "vs_wrong_recent": {
+    "01618": "单轮读物 CC 冒整体 + peep-only/TEX 闸；缺 ③ 整件冻后 ④FF→⑤虚回",
+    "01619": "双轮 PAD 当两次虚回 — 错：PAD 是 peep 上下文，不是虚回次数；虚回应在 elev 后各 1 次",
+    "01620": "extract MARK 后 peep-lock USM 当生 — 缺正规 ④ 外力 densify + ⑤虚回 声明；次序把清锁与虚回揉进 USM",
+    "correct_fix": "PAD 可 R1/R2 调大（沙盒）只服务 ② peep 完整度；不增加 虚回 次数"
+  },
+  "test_order_selfcheck": [
+    {
+      "q": "本层 MARK 冻了几次？",
+      "ok": 1
+    },
+    {
+      "q": "elev freeframe 几次？",
+      "ok": "0或1，且仅在④"
+    },
+    {
+      "q": "虚回几次？",
+      "ok": 1
+    },
+    {
+      "q": "虚回是否在 MARK 冻之后、hard 之前？",
+      "ok": true
+    },
+    {
+      "q": "SS验.清是否与虚回同拍锁回 peep0？",
+      "ok": true
+    },
+    {
+      "q": "有无把 freeframe 图当座？",
+      "ok": false
+    }
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:14:05.380843+00:00"
+}

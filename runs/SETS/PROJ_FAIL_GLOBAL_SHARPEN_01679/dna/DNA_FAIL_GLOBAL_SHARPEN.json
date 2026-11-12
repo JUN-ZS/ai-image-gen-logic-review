@@ -1,0 +1,20 @@
+{
+  "write_id": "01679",
+  "call": "FAIL_global_sharpen",
+  "zh": "全图瞎锐化",
+  "code": "E-SHARP-01",
+  "status": "FAIL_TEXTBOOK",
+  "IS_FAIL": true,
+  "metrics": {
+    "hf_L1_bg": 347.71417236328125,
+    "hf_FAIL_bg": 2589.717041015625,
+    "hf_RIGHT_bg": 299.4045104980469,
+    "outside_bg_FAIL": 173,
+    "outside_bg_RIGHT": 110,
+    "bg_hf_ratio": 7.4478328663289775
+  },
+  "BAN": "禁止全图锐化冒充升清/独.环境/移轴3D SHARP",
+  "asof": "2026-11-12T05:26:06.839349+00:00",
+  "claim": "NONE",
+  "ACCEPT_FULL_HD": false
+}

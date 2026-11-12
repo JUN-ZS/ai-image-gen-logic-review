@@ -1,0 +1,126 @@
+{
+  "write_id": "01510",
+  "mode": "shen",
+  "zh": "正身",
+  "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+  "stick": "STICK_ZHENG_SHEN",
+  "bite": "full_object",
+  "dna_equation": "正身 = 正頭DNA[ bite: head → full_object ]",
+  "tune": {
+    "kou_thr": 20,
+    "min_area": 5000,
+    "min_frac": 0.08,
+    "max_frac": 0.55,
+    "roi_prior": "none",
+    "cc_mode": "largest",
+    "morph_open": 5,
+    "morph_close": 21,
+    "dilate": 7,
+    "chu_bei_dist": 20,
+    "grow_max": 1.1,
+    "part_role": "whole"
+  },
+  "kou": {
+    "thr": 20,
+    "n_cc": 6,
+    "policy": "largest",
+    "frac": 0.04823631926729025,
+    "area": 87131,
+    "gate": "FAIL_FRAC_TOO_SMALL"
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 216,
+  "PASS_SX_FULL": true,
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "57e2f5eed2b3",
+      "role": "冻 SRC"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "10e82c36cfa5",
+      "role": "外力除整件 → L1"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "d80a429e6225",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "2f1aebcab876",
+      "role": "洞 MARK_full 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "70e1fbf14faf",
+      "role": "认 whole"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "6a5d5ef0e05f",
+      "role": "peep_full=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "772af2faf7a1",
+      "role": "放大 peep_full 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "465c82fb2a0c",
+      "role": "升质×物 elev 子 ≠ 正生"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "be6b2b16b473",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "da88c9d09793",
+      "role": "正身 洞内 INPAINT"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "2d13eef4dd2f",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "f7bdea848500",
+      "role": "S11×S0 洞外 bitexact"
+    }
+  ],
+  "assets": {
+    "L0": "SETS/PROJ_SHQ_ZHENG_SHEN_TRY_01508/L0.jpg",
+    "L1": "SETS/PROJ_SHQ_ZHENG_SHEN_TRY_01508/A_mecha_full/L1_full_hole.jpg",
+    "IHD": "imagine_images/212c0c47-e158-46d9-927e-7705adabf229.jpg"
+  },
+  "claim": "C2_ZHENG_SHEN_SX_S0_S11",
+  "ACCEPT_FULL_HD": false,
+  "kuangya": {
+    "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max"
+  },
+  "asof": "2026-11-10T09:35:44.934669+00:00"
+}

@@ -1,0 +1,36 @@
+{
+  "write_id": "01623",
+  "call": "咬物北極星",
+  "formal": "SHQ_BITE_METAPHOR_SKILL_NORTH_STAR_V1",
+  "zh": "回想：咬出→洞→升清塊→回洞；功能碼技能方向 = 為咬物服務",
+  "source_quote": "你想像把一物咬出來,他一定有一個洞, 那你把咬出來的那塊做'升清' ,再放回去洞, 一定是對得上那洞的 ; 當然,當中包含了大量圖層 [(生,除,洞,扣) X(反)]",
+  "function_codes": "docs/GROK_IMAGINE_FUNCTION_CODES.md §23",
+  "maps": {
+    "咬": "除 EDIT",
+    "洞": "M_hole FREEZE",
+    "塊": "peep",
+    "升清": "生′ densify/INPAINT",
+    "放回": "虛回+SS驗.清+hard",
+    "對得上": "反 outside=0 scale-lock",
+    "圖層": "F=四態×正反"
+  },
+  "skill_direction": {
+    "grow": [
+      "洞主權",
+      "外力除生",
+      "洞內升清",
+      "每態有反",
+      "層層小咬"
+    ],
+    "ban": [
+      "FF當RETURN",
+      "框回",
+      "無洞回",
+      "偽組合",
+      "PAD冒虛回"
+    ]
+  },
+  "order_01621": "除→扣→洞凍→elev→虛回+SS驗.清→hard→反",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:29:18.532593+00:00"
+}

@@ -1,0 +1,35 @@
+{
+  "write_id": "01673",
+  "call": "外力应变法",
+  "formal": "SHQ_WAI_LI_ADAPT_METHOD_V1",
+  "zh": "DNA不影；方法由外力GROK应变",
+  "DNA_role": "只锁序/BAN/闸（先光·镂空·禁框·合取）— 不影、不改条文当算法",
+  "method_role": "外力 Imagine EDIT / reference 找实现",
+  "BAN": [
+    "把DNA当OpenCV影/剪影/方框死贴算法本体",
+    "用fill_holes/色扫代替外力认光与镂空",
+    "影技术当回位（语义病）"
+  ],
+  "MUST": [
+    "DNA=契约闸；实现=外力GROK",
+    "先光：外力把ENV/B1光吃进S0构图",
+    "后处理：外力镂空手把内腔透光+禁框"
+  ],
+  "pipeline_this_run": [
+    "① ref S0+GOLD → Imagine 先光 L1 (4355582c)",
+    "② ref L1+镂空座A → Imagine 手把开洞透光 S11 (69b4bcc6)"
+  ],
+  "assets": {
+    "L1": "4355582c-93e1-4911-9af0-11f559befce0",
+    "S11": "69b4bcc6-6f4c-4d24-8f9a-5d3abf3842e7"
+  },
+  "parent_DNA": [
+    "先光01672",
+    "镂空01670",
+    "禁框01671",
+    "合取01669"
+  ],
+  "asof": "2026-11-12T04:51:45.488782+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_WAI_LI_ADAPT"
+}

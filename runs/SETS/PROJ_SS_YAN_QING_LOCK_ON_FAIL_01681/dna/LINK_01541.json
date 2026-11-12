@@ -1,0 +1,35 @@
+{
+  "write_run": "01681",
+  "call": "SS驗.清鎖",
+  "constitution_write": "01541",
+  "formal": "SHQ_SS_YAN_QING_LOCK_WHOLE_BITE_V1",
+  "stick": "STICK_SS_YAN_QING_LOCK",
+  "equation": "SS验.清锁 ≡ SS验.清(F2) ∧ elev_donor_contract_lock(peep) ∧ whole_bite_EDIT_prompt ∧ MARK_anti_kou(outside=0, area_ratio)",
+  "selftest_01541": {
+    "bad_no_contract": "FAIL E-QINGLOCK-01",
+    "ff_with_contract": "PASS C2_SS_YAN_QING_LOCK outside=0",
+    "near_with_contract": "PASS C2_SS_YAN_QING_LOCK"
+  },
+  "run_01681_AND": {
+    "1_WHOLE_BITE_EDIT_prompt": {
+      "required": true,
+      "01681": "partial — densify prompt said same crop; not full [[WHOLE_BITE_CONTRACT]] text",
+      "ok": "partial"
+    },
+    "2_elev_donor_contract_lock_peep": {
+      "required": true,
+      "01681": "YES — elev resized to peep0 tight HW then ⊙M (anti E-FF/E-PAD)",
+      "ok": true
+    },
+    "3_MARK_anti_kou_outside0_area": {
+      "required": true,
+      "01681": "outside=0 seat_changed ok",
+      "ok": true
+    }
+  },
+  "run_01681_PASS": true,
+  "src": "7c029d09 FAIL_global_sharpen → peep densify → ratio lock hardpaste",
+  "vs_FAIL_global_sharpen": "清锁只改 MARK 座；≠ 全图瞎锐化",
+  "note": "01681 C2 on donor+outside; WHOLE_BITE prompt upgrade optional next",
+  "asof": "2026-11-12T05:44:20.087085+00:00"
+}

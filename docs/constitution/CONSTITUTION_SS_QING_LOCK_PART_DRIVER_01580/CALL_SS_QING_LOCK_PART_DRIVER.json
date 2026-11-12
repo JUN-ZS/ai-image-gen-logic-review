@@ -1,0 +1,18 @@
+{
+  "call": "SS验.清锁·件",
+  "write": "01580",
+  "先读": true,
+  "seconds": 15,
+  "must_read": [
+    "SETS/CONSTITUTION_SS_QING_LOCK_PART_DRIVER_01580/docs/SHQ_SS_QING_LOCK_PART_DRIVER.md",
+    "DNA_SS_QING_LOCK_PART_DRIVER.json",
+    "CONSTITUTION_LOCK_01580.json"
+  ],
+  "first_command": "python3 shq_ss_qing_lock_part_driver.py selftest",
+  "then": "structure → (optional elev) → batch",
+  "ban": [
+    "跳过 structure 直接分件清锁",
+    "用 GROK 语义代替 MARK",
+    "outside≠0 报 PASS"
+  ]
+}

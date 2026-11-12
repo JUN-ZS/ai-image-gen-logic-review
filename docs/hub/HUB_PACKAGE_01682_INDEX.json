@@ -1,0 +1,23 @@
+{
+  "write": "01682",
+  "event": "HUB_PUSH_PACKAGE",
+  "repo": "JUN-ZS/ai-image-gen-logic-review",
+  "range": "01647–01681 + 01541 SS验.清锁 link + registry",
+  "files_n": 279,
+  "sha_items": 12,
+  "policy": "text DNA/locks/docs + thumb SHA + b64 thumbs; no full JPEG",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T05:56:39.361221+00:00",
+  "calls_highlight": [
+    "轴.反射.生",
+    "独.环境反射",
+    "环境反射.独",
+    "FAIL_global_sharpen",
+    "SS驗.清鎖",
+    "正追",
+    "先光",
+    "追·B0B3",
+    "禁框死贴",
+    "合取·座光"
+  ]
+}

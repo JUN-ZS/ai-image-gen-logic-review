@@ -1,0 +1,17 @@
+{
+  "write": "01633",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "restored_from": "01631",
+  "reject": "01632_MARK_rewrite",
+  "stack": [
+    "CLOCK",
+    "VASE",
+    "POT",
+    "APPLE"
+  ],
+  "claim": "C2_YING_RESTORE_01633",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:37:09.174907+00:00"
+}

@@ -1,0 +1,6 @@
+{
+  "write": "01601",
+  "PASS": true,
+  "claim": "C2_DISC5_TRUEHOLE_FIX",
+  "parent_bug": "01600 E-DISC5-01..04"
+}

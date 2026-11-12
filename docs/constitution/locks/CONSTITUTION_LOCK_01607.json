@@ -1,0 +1,11 @@
+{
+  "write_id": "01607",
+  "zh": "跑 SS驗.背景清 densify 升清（图书馆L0）",
+  "call": "SS驗.背景清",
+  "maps_to": "SS驗.清+A->景",
+  "claim": "C_scene_BG_QING_DENSIFY",
+  "L_bg": "c4c1f8c4-0f88-4906-9719-1c3c4604ca72",
+  "L_bg_qing": "04efa874-33f2-4a4c-b757-5f8ab71e70e0",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T15:54:46.854422+00:00"
+}

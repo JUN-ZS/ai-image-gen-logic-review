@@ -1,0 +1,37 @@
+{
+  "write_id": "01671",
+  "call": "禁框死贴",
+  "formal": "SHQ_BAN_BOX_DEAD_PASTE_V1",
+  "zh": "禁止方框式死贴",
+  "error_code": "E-BOX-01",
+  "name": "DEAD_RECT_PEEP_PASTE",
+  "BAN": [
+    "peep/elev 整 bbox 矩形 hard 进全图",
+    "可见直角死边、切锅切景",
+    "无剪影 mask 的框贴",
+    "fill_holes 实心块当整框贴"
+  ],
+  "MUST": [
+    "只 hardpaste 剪影 M_metal（或 M_subj 真洞）",
+    "M_aperture 内腔 = 底景空间光",
+    "禁止输出可见 peep 矩形边界",
+    "合取·座光 + 镂空·内腔 叠用"
+  ],
+  "textbook": "error_textbook/E_BOX_01_DEAD_RECT_PASTE.jpg",
+  "ref_user_crop": "62784f3d-0117-4412-8559-473193de11c2",
+  "gates": {
+    "bbox_seam_frac_GOOD": 0.5082,
+    "bbox_seam_frac_BAD": 0.575,
+    "seam_mean_GOOD": 10.518,
+    "seam_mean_BAD": 20.585
+  },
+  "PASS": false,
+  "stick": "STICK_BAN_BOX_DEAD_PASTE",
+  "parent": [
+    "01670 镂空·内腔",
+    "01669 合取·座光"
+  ],
+  "asof": "2026-11-12T04:39:11.621624+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim_class": "C2_DNA_BAN"
+}

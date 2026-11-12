@@ -1,0 +1,41 @@
+{
+  "write": "01632",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "n_ratio_ok": 4,
+  "n": 4,
+  "seats": {
+    "POT": {
+      "RATIO_PASS": true,
+      "path": "除背影_direct",
+      "sx": 1.002,
+      "sy": 1.008,
+      "toxin_hit": false
+    },
+    "VASE": {
+      "RATIO_PASS": true,
+      "path": "FALLBACK_peep_lock_影_因E-FF-01",
+      "sx": 1.0,
+      "sy": 1.0,
+      "toxin_hit": true
+    },
+    "CLOCK": {
+      "RATIO_PASS": true,
+      "path": "除背影_direct",
+      "sx": 0.993,
+      "sy": 0.882,
+      "toxin_hit": false
+    },
+    "APPLE": {
+      "RATIO_PASS": true,
+      "path": "FALLBACK_peep_lock_影_因E-FF-01",
+      "sx": 1.0,
+      "sy": 1.0,
+      "toxin_hit": true
+    }
+  },
+  "claim": "C2_YING_RATIO_ANTITOXIN_01632",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:32:22.937763+00:00"
+}

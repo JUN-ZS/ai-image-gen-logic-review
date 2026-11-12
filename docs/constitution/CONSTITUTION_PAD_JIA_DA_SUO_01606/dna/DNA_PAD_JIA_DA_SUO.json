@@ -1,0 +1,70 @@
+{
+  "write_id": "01606",
+  "call": "PAD加大鎖",
+  "call_ascii": "PAD_JIA_DA_SUO",
+  "aliases": [
+    "pad加大鎖",
+    "PAD_JIA_DA_SUO",
+    "peep_pad_lock"
+  ],
+  "zh": "PAD加大鎖",
+  "formal": "SHQ_PAD_EXPAND_SEAT_LOCK_V1",
+  "stick": "STICK_PAD_JIA_DA_SUO",
+  "parent": {
+    "family": "SS驗.框位鏈 / STICK_SS_YAN_KUANG_WEI / 01605",
+    "parent_call": "框位回鎖",
+    "peep_pad_expose": "01604 先讀·pad",
+    "paste_fix": "01605 位回 paste_pad_aligned"
+  },
+  "one_liner": "tight 框易切邊 → PAD 加大 peep 管框全；回座必須 pad 對位 1:1 鎖死，禁止 peep→tight 壓扁",
+  "equation": "PAD加大鎖 ≡ peep:=pad(tight, δ) ∧ touch_sides=0 ∧ elev.shape=peep.shape=pad_box ∧ paste_pad_aligned ∧ ¬paste_fill(→tight) ∧ outside_png=0 ∧ size_ok",
+  "what_it_is": {
+    "加大": "peep = expand(MARK_tight_bbox, PAD_FRAC)；物完整入框（水晶球頂等不再切）",
+    "鎖": "座洞座標 = pad_box；升清結果 elev 與 peep 同形；硬貼回 L0[pad_box] where M"
+  },
+  "why": {
+    "E-BBOX-01": "tight BBOX/像素CC 切頂切邊",
+    "E-PAD-01": "若只加大不對位 → peep elev 被 resize 進 tight → 1.3–1.7× 壓扁",
+    "gold": "加大 + 對位 必須 AND；缺一不可"
+  },
+  "api": [
+    "peep, pm, pad_box = peep_pad_from_mark(L0, M, pad_frac)",
+    "elev = densify_sameframe(peep, pm)",
+    "R = paste_pad_aligned(L0, elev, M_in_pad, pad_box)"
+  ],
+  "ban": [
+    "paste_fill(elev_peep → tight_MARK_bbox)  # E-PAD-01",
+    "freeframe HI 當 peep/RETURN 幾何源  # E-FF-01",
+    "只 outside=0 不查 size_ok / elev.shape"
+  ],
+  "gates": {
+    "G_PAD_1": "pad_frac>0 且 touch_sides==0",
+    "G_PAD_2": "elev.shape == peep.shape == pad_box_wh",
+    "G_PAD_3": "paste mode == pad_aligned only",
+    "G_PAD_4": "outside_png==0",
+    "G_PAD_5": "size_ok / bug_scale≈1.0（禁 1.3–1.7 壓）"
+  },
+  "error_codes": {
+    "E-PAD-01": "PAD_PEEP_TIGHT_PASTE_SCALE",
+    "E-FF-01": "FREEFRAME_NO_CORRESPONDENCE",
+    "E-BBOX-01": "tight clip → need 加大",
+    "E-PAD-02": "加大後未對位回（缺 鎖）"
+  },
+  "relation_to_框位回鎖": {
+    "框位回鎖": "族總名（01600–01605 鏈）",
+    "PAD加大鎖": "原子 call：只鎖定 peep pad 加大 + pad 對位回座這一段",
+    "位回": "01605 子名 ≈ 本 call 的貼回半段",
+    "先讀·pad": "01604 暴露 bug 的測跑"
+  },
+  "qinli": [
+    "I-SEAT-QING",
+    "I-PROCESS"
+  ],
+  "claim": "C2_PAD_JIA_DA_SUO",
+  "proof_write": [
+    "01604",
+    "01605"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T15:48:24.294840+00:00"
+}

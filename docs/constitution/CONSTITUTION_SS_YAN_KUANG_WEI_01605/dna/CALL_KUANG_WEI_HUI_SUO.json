@@ -1,0 +1,18 @@
+{
+  "call": "框位回鎖",
+  "family": "SS驗.框位鏈",
+  "do": [
+    "先讀／離散選物 → 真剪影 MARK",
+    "peep_pad → touch_sides=0",
+    "sameframe densify（或 HI 後仍 pad 對位）",
+    "paste_pad_aligned 1:1",
+    "PNG outside=0 + size_ok"
+  ],
+  "dont": [
+    "paste_fill 把 peep 尺寸 elev resize 進 tight MARK（E-PAD-01）",
+    "freeframe HI 當 peep/RETURN 幾何源（E-FF-01）",
+    "只靠 outside=0 宣稱比例對",
+    "格洞偽座當真洞"
+  ],
+  "gold": "pad 管框全 · 同框管 freeframe · 對位 1:1 管回位"
+}
