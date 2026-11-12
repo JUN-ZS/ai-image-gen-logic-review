@@ -1,0 +1,30 @@
+{
+  "write": "01684",
+  "event": "SHA_TECH_JOIN",
+  "title": "SHA ↔ technique JOIN (path+write+call+proj+role)",
+  "parent": "01683",
+  "n_images": 7983,
+  "n_parts": 6,
+  "parts": [
+    "SHA_TECH_JOIN_01684_part00.json",
+    "SHA_TECH_JOIN_01684_part01.json",
+    "SHA_TECH_JOIN_01684_part02.json",
+    "SHA_TECH_JOIN_01684_part03.json",
+    "SHA_TECH_JOIN_01684_part04.json",
+    "SHA_TECH_JOIN_01684_part05.json"
+  ],
+  "stats": {
+    "rows": 7983,
+    "with_call": 6509,
+    "with_write": 7983,
+    "with_proj": 7983,
+    "no_call": 1474
+  },
+  "n_writes_indexed": 181,
+  "how_to_use": {
+    "zh": "用 sha256 或 path 查 items；write→call 見 WRITE_CALL_INDEX；技本體見 CONSTITUTION_*/DNA_*",
+    "join": "SHA(path,sha256) + write + LOCK.call + PROJ/tech_hint + role"
+  },
+  "asof": "2026-11-12T17:02:54.411834+00:00",
+  "ACCEPT_FULL_HD": false
+}
