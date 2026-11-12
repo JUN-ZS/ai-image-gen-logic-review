@@ -1,0 +1,17 @@
+{
+  "write": "01684",
+  "event": "SHA_TECH_JOIN",
+  "n_images": 7983,
+  "n_files": 9,
+  "parent": "01683",
+  "pr_parent": 24,
+  "stats": {
+    "rows": 7983,
+    "with_call": 6509,
+    "with_write": 7983,
+    "with_proj": 7983,
+    "no_call": 1474
+  },
+  "asof": "2026-11-12T17:02:54.411834+00:00",
+  "ACCEPT_FULL_HD": false
+}
