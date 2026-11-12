@@ -1,0 +1,124 @@
+{
+  "write_id": "01619",
+  "call": "双轮PAD虚回·整体读物",
+  "formal": "SHQ_DUAL_PAD_XU_HUI_WHOLE_READ_V1",
+  "zh": "PAD加大分两次虚回：一轮定主座扣底；二轮加大PAD再读物求完整 → 强心针；框回锁/座洞禁 freeframe elev 污染",
+  "reject_01618": {
+    "code": "E-READ-01",
+    "name": "单轮读物伪整体",
+    "desc": "一次差分CC/小PAD peep 当主主体 → 剪影碎、机器人消失、罐破、仙人掌浮 = 读物错"
+  },
+  "pursuit": {
+    "goal": "对物是整体辨识（whole subject identity）",
+    "practice": "实践回图 = 虚回 + 四态扣底 + 强心针升清 + 框回锁座洞 bitexact",
+    "not": "freeframe elev 好看特写冒 peep/RETURN"
+  },
+  "supreme": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "boost": "认 ∩ 放大 ∩ 升质×物",
+  "qinli": [
+    "I-SEAT",
+    "I-PROCESS",
+    "I-ID-BAN"
+  ],
+  "L2_inherit": "01617 扫瞄.L2←清锁 优取 SS验.清锁",
+  "round_1": {
+    "name": "R1 主座·扣底",
+    "PAD": "根 pad_frac 或 沙盒偏低档（如 0.28–0.32）",
+    "read": "外力认 / 差分 认主主体（粗整件）",
+    "lock_later": "产出 CANDIDATE_SEAT → 稍后 LOCK 做四态类 扣+底",
+    "四态扣底": {
+      "除": "除主 → L1 空景",
+      "扣": "|L0−L1| 或 反扣 得 M_r1",
+      "洞": "MARK_r1 FREEZE 座底（尚未最终整体）",
+      "生": "本轮不升清（或仅记 peep0）",
+      "反": "洞外0 vs L1 预备"
+    },
+    "xu_hui_1": "peep_r1 = L0[pad_r1] 虚拟已抽出；座锁 FREEZE_R1；不重开",
+    "ban": "本轮 elev freeframe 不得写进座洞"
+  },
+  "round_2": {
+    "name": "R2 PAD加大·再读物·整体完整度",
+    "PAD": "调大（如 0.36–0.40，仅沙盒；根不动）",
+    "read": "在 R1 座邻域 / 放大 peep 上 再外力认 主主体完整度（whole completeness）",
+    "why_bigger_pad": "上下文足 → 外力更易读到整件边界（头到脚/嘴到底），降半身 freeframe",
+    "after_ok": "才开 强心针：认∩放大∩升质",
+    "xu_hui_2": "peep_r2 = L0[pad_r2]；可扩座但 框回锁 必须映回 R1 洞坐标或 明确 S11×S0 映射",
+    "completeness_gate": [
+      "外力/结构 判 whole（非局部特写）",
+      "mark_frac 与 peep asp 合理",
+      "SS验.清锁 G_LOCK 子集"
+    ]
+  },
+  "anti_pollute": {
+    "frame_return_lock": "框回锁 = pad/MARK 坐标主权在 Bus；elev 只 donor 纹理",
+    "seat_hole": "座洞 = R1 FREEZE MARK（或 R2 扩后仍 hard 映回 R1 座）",
+    "E-FF-POLLUTE": "freeframe elev 像素不得直接 hardpaste 进座洞（无 peep-lock / scale_lock）",
+    "elev_path": "elev → peep_lock densify 或 ECC/warp 回 peep_r* → 再 fill → hard 入 MARK",
+    "I-ID-BAN": "特写 elev 冒身份 peep"
+  },
+  "pipeline": [
+    "0 根 PAD 只读；沙盒可调两轮 pad",
+    "1 R1: 认主 → peep_r1 → 虚回槽1 → 四态扣底 LOCK_R1",
+    "2 R2: PAD加大 → 再读物整体完整度 → peep_r2 虚回槽2",
+    "3 完整度 PASS → 强心针 elev（peep-lock）",
+    "4 fill 只经 peep_lock → hard 入座洞（框回锁）",
+    "5 S11 反：outside=0 + 升清 TEX 闸 + 整体完整性闸"
+  ],
+  "test_protocol": {
+    "name": "整体辨识×实践回图 测试",
+    "scenes": [
+      "夜市桌面",
+      "远景三物",
+      "乱库房"
+    ],
+    "cases": [
+      {
+        "id": "T1",
+        "title": "单轮读物（对照错）",
+        "do": "一次 CC/小PAD 直接 elev 回",
+        "expect": "FAIL 或 ERROR_TEXTBOOK 剪影碎"
+      },
+      {
+        "id": "T2",
+        "title": "双轮虚回无强心针",
+        "do": "R1 扣底 + R2 大PAD 再读 → 原物 peep 虚回",
+        "expect": "整体座完整；outside=0；TEX 可 FAIL（无升清）"
+      },
+      {
+        "id": "T3",
+        "title": "双轮 + 强心针 peep-lock",
+        "do": "T2 + elev peep-lock densify",
+        "expect": "PASS：整体∧洞外0∧TEX≥min∧无 freeframe 直贴"
+      },
+      {
+        "id": "T4",
+        "title": "污染试：freeframe elev 直贴座",
+        "do": "故意 elev freeframe hardpaste",
+        "expect": "FAIL E-FF-POLLUTE；框回锁/座洞拒收"
+      }
+    ],
+    "PASS_C2": "T3 only when whole_ok ∧ outside=0 ∧ tex_ok ∧ no_ff_pollute"
+  },
+  "sandbox_keys": {
+    "allowed": [
+      "PAD.pad_frac_r1",
+      "PAD.pad_frac_r2",
+      "elev.alpha_peep",
+      "sandbox_meta.*"
+    ],
+    "forbidden": [
+      "return.outside_gate",
+      "return.freeze_seat",
+      "anti_pollute",
+      "supreme"
+    ]
+  },
+  "defaults_suggest": {
+    "pad_frac_r1": 0.3,
+    "pad_frac_r2": 0.38,
+    "alpha_peep": 0.3,
+    "TEX_MIN": 6.0
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:58:18.764141+00:00"
+}

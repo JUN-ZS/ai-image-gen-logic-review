@@ -1,0 +1,16 @@
+{
+  "call": "SS 聯動",
+  "stick": "STICK_SS_LIAN_DONG",
+  "10s": "P0→P1清+A→P2 L_bg→P3清+A->景→P4物回升清景→P5勤力",
+  "strategies": [
+    "S_SEQ_FULL",
+    "S_A_ONLY",
+    "S_A2S_ONLY"
+  ],
+  "dont": [
+    "交换 peep 源",
+    "C_scene 冒 C2_object",
+    "跳相",
+    "同板一 PASS 糊两技"
+  ]
+}

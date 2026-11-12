@@ -1,0 +1,16 @@
+{
+  "write": "01664",
+  "call": "应",
+  "PASS": true,
+  "out": {
+    "正": 0,
+    "逆": 0,
+    "独": 0,
+    "正×独": 0
+  },
+  "claim": "C2_YING_UNIVERSAL_01664",
+  "PRIMARY": "正×独",
+  "scene": "雨夜机车",
+  "asof": "2026-11-12T03:45:24.780498+00:00",
+  "ACCEPT_FULL_HD": false
+}

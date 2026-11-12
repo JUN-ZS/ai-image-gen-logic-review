@@ -1,0 +1,35 @@
+# 追 01658
+
+短代号 call=`追` = 光追递式·独补给（01657）。
+
+{
+  "write_id": "01658",
+  "call": "追",
+  "zh": "追",
+  "formal": "SHQ_ZHUI_RAY_DU_V1",
+  "parent": "光追递式·独补给 / 01657",
+  "equation": "追 ≡ B0→B1玻璃→B2→B3 独·环境反射补给递式 × 斜FOV hardpaste S0",
+  "alias": [
+    "光追递式·独补给",
+    "RAY_DU",
+    "猜式光追"
+  ],
+  "test_scene": "水晶工作街",
+  "PASS": true,
+  "out": {
+    "斜": 0,
+    "叠": 0
+  },
+  "meta_glass": {
+    "ok": true,
+    "n": 126157,
+    "bbox": [
+      291,
+      773,
+      36,
+      536
+    ]
+  },
+  "asof": "2026-11-12T02:44:30.072141+00:00",
+  "ACCEPT_FULL_HD": false
+}

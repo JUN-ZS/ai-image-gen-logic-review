@@ -1,0 +1,15 @@
+{
+  "write": "01631",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "stack": [
+    "CLOCK",
+    "VASE",
+    "POT",
+    "APPLE"
+  ],
+  "claim": "C2_YING_KOU_HUI_01631",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:25:09.059986+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "write_id": "01665",
+  "call": "正追",
+  "formal": "SHQ_ZHENG_ZHUI_MIN_B1_V1",
+  "min_chain": [
+    "S0",
+    "MARK_NEAR",
+    "ENV(μ=正)",
+    "追·B1"
+  ],
+  "claim_class": "C1_LEAF_B1_ONLY",
+  "parent": "应/01664",
+  "asof": "2026-11-12T03:56:28.752975+00:00",
+  "ACCEPT_FULL_HD": false
+}

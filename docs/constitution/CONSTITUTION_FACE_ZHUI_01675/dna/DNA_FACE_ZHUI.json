@@ -1,0 +1,33 @@
+{
+  "write_id": "01675",
+  "call": "脸追修",
+  "formal": "SHQ_FACE_ZHUI_DEBUG_SUPREME_V1",
+  "至高": "[(生,除,洞,扣)×(反)] ← 外力GROK；脸追=独·皮肤ENV，非铜inject",
+  "bug": {
+    "E-FACE-Z01": "ENV1 copper inject 污染皮肤/脸",
+    "E-FACE-Z02": "MID 盖脸不全(6%)却仍自称B3 face追",
+    "E-FACE-Z03": "L1先光脸过暗，未合取 GOLD 人光"
+  },
+  "fix": {
+    "M_FACE": "YCrCb skin 头座",
+    "ENV_face": "soft GOLD 非 ENV1",
+    "SUPPLY": "sample residual + hue lock GOLD ab",
+    "BAN": "glass/metal 槽用于脸"
+  },
+  "gates": {
+    "mad_face_GOLD_wrong": 55.7581173074062,
+    "mad_face_GOLD_fix": 16.259918696244828,
+    "outside_untouched": 0,
+    "n_FACE": 165798
+  },
+  "PASS": true,
+  "parent": [
+    "01674",
+    "至高",
+    "合取·座光01669",
+    "外力应变01673"
+  ],
+  "asof": "2026-11-12T05:02:29.531225+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_FACE_ZHUI_FIX"
+}

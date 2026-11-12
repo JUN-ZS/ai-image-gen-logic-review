@@ -1,0 +1,10 @@
+{
+  "call": "扫瞄.L2←清锁",
+  "aliases": [
+    "L2清锁",
+    "座认清锁",
+    "SCAN_L2_QING_LOCK"
+  ],
+  "write": "01617",
+  "inherit": "SS驗.清鎖 / 01541"
+}

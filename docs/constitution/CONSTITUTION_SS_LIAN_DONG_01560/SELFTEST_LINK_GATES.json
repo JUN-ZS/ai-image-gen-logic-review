@@ -1,0 +1,31 @@
+[
+  {
+    "case": "good",
+    "ok": true,
+    "errs": [],
+    "phase": true
+  },
+  {
+    "case": "chaos_peep",
+    "ok": false,
+    "errs": [
+      "E-A2S-02"
+    ]
+  },
+  {
+    "case": "claim_mix",
+    "ok": false,
+    "errs": [
+      "E-A2S-05",
+      "E-SCOPE-MIX"
+    ]
+  },
+  {
+    "case": "identity",
+    "ok": false,
+    "errs": [
+      "E-QL-01",
+      "E-QL-02"
+    ]
+  }
+]

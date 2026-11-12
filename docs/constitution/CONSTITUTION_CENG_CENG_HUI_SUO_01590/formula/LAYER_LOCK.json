@@ -1,0 +1,6 @@
+{
+  "RETURN_k": "S_k * (1-M_k) + resize(I_star_k) * M_k",
+  "outside": 0,
+  "open_next": "PASS_k",
+  "bloodline_match": "elev.line == S_k.line"
+}

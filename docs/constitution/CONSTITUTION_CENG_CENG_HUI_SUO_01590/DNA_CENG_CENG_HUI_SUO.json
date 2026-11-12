@@ -1,0 +1,68 @@
+{
+  "write_id": "01590",
+  "formal": "SHQ_CENG_CENG_HUI_SUO_V1",
+  "zh": "層層回鎖",
+  "stick": "STICK_CENG_CENG_HUI_SUO",
+  "call": "層層回鎖",
+  "parent": [
+    "STICK_XU_HUI",
+    "STICK_XIAN_DU",
+    "STICK_SS_YAN_QING",
+    "勤力DNA"
+  ],
+  "derived_from": [
+    "01589 反推先读",
+    "01580 先读",
+    "01563 虚回",
+    "01523 SS验.清",
+    "E-QL-WRONG_ELEV",
+    "E-QL-SKIP_CRUSH"
+  ],
+  "equation": "RETURN_k = S_k⊙(1−M_k)+resize(I*_k)⊙M_k · out=0; nest: parent* = parent⊙(1−M_c)+resize(child*)⊙M_c",
+  "golden": [
+    "每层 densify 只虚回本层冻座 S_k",
+    "先读成果→先读 S11(73c)；远景 densify→远景 S11(01559)",
+    "高像素 DENSE 到一枪回座；禁 peep 压碎当主 elev",
+    "子 out=0 才开外层"
+  ],
+  "bloodlines": {
+    "xian_du": {
+      "S0": "be09e993",
+      "S11": "73c1068a",
+      "elev": "01581 leaf|b4a0|846f"
+    },
+    "yuanjing3": {
+      "S0": "01559/L0",
+      "S11": "01559/FINAL",
+      "elev": "same-object peep densify"
+    },
+    "nest_head": {
+      "S0": "HEAD peep",
+      "S11": "b4a0",
+      "elev": "inner 清锁"
+    }
+  },
+  "error_codes": {
+    "E-CC-01": "elev 血缘 ≠ 回锁底 S11",
+    "E-CC-02": "跨线虚回仍挂本线 claim",
+    "E-CC-03": "高像素 densify 过早压 peep",
+    "E-CC-04": "子层未 out=0 开外层",
+    "E-CC-05": "无冻 MARK 硬贴"
+  },
+  "qinli_gates": {
+    "I-ID-BAN": "elev 可溯本线 peep0/leaf",
+    "I-PROCESS": "真 densify 高像素完成",
+    "I-SEAT": "冻 MARK+frame 才回",
+    "outside0": "每层",
+    "claim_split": "C2 不跨线冒称",
+    "合闸": "ALL AND"
+  },
+  "vs": {
+    "虚回": "虚回=跟锁动作；层回锁=血缘+层级元规则",
+    "先读": "先读=产结构与 elev；层回锁=规定 elev 只能回自己的 S11",
+    "SS验.清": "洞座硬锁单层；层回锁=多层链与分线"
+  },
+  "ACCEPT_FULL_HD": false,
+  "claim_class": "C2_CENG_CENG_HUI_SUO",
+  "asof": "2026-11-11T06:30:15.449094+00:00"
+}

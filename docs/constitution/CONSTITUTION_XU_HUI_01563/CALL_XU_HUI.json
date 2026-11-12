@@ -1,0 +1,11 @@
+{
+  "call": "虛回",
+  "stick": "STICK_XU_HUI",
+  "10s": "升清图虚成联动未回 peep → 只用 MARK/frame/L_bg_qing 回",
+  "parent": "SS 聯動",
+  "dont": [
+    "另写材质补给/新策略冒充回位",
+    "重算 MARK / 重开洞",
+    "peep 源改读生图 L0 带物当座（座几何仍来联动冻 MARK）"
+  ]
+}

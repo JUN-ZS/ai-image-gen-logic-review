@@ -1,0 +1,169 @@
+{
+  "write_id": "01511",
+  "mode": "shen",
+  "zh": "正身",
+  "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+  "stick": "STICK_ZHENG_SHEN",
+  "bite": "full_object",
+  "dna_equation": "正身 = 正頭DNA[ bite: head → full_object ]",
+  "tune": {
+    "kou_thr": 20,
+    "min_area": 5000,
+    "min_frac": 0.08,
+    "max_frac": 0.55,
+    "roi_prior": "none",
+    "cc_mode": "largest",
+    "morph_open": 5,
+    "morph_close": 21,
+    "dilate": 7,
+    "chu_bei_dist": 20,
+    "grow_max": 1.1,
+    "part_role": "whole"
+  },
+  "kou": {
+    "thr": 20,
+    "n_cc": 6,
+    "policy": "largest",
+    "frac": 0.04823631926729025,
+    "area": 87131,
+    "gate": "FAIL_FRAC_TOO_SMALL"
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 0,
+  "S9_seat_born_outside": 0,
+  "anti_freeframe_elev": {
+    "E-FF-01": "freeframe S9 banned as PRIMARY",
+    "E-FF-02": "elev not RETURN",
+    "E-FF-03": "peep never overwrite",
+    "shared_with": "正头 ERROR_TEXTBOOK freeframe/elev"
+  },
+  "PASS_SX_FULL": true,
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "f7ec590974d2",
+      "role": "冻 SRC"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "ae703a7429fb",
+      "role": "外力除整件 → L1"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "e9350677ebc5",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "8e01c08cf027",
+      "role": "洞 MARK_full 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "8fda45c66760",
+      "role": "认 whole"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "11880eb16780",
+      "role": "peep_full=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "8912fc429241",
+      "role": "放大 peep_full 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "03a29916560b",
+      "role": "升质×物 elev 子 ≠ 正生 ≠ freeframe金"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "99f90da25ed0",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "f11a75b1e67b",
+      "role": "正身 洞内 INPAINT · seat-born"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "cb81b0a1b261",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "b2fe44523295",
+      "role": "S11×S0 洞外 bitexact"
+    }
+  ],
+  "assets": {
+    "L0": "SETS/PROJ_SHQ_ZHENG_SHEN_TRY_01508/L0.jpg",
+    "L1": "SETS/PROJ_SHQ_ZHENG_SHEN_TRY_01508/A_mecha_full/L1_full_hole.jpg",
+    "IHD": "imagine_images/212c0c47-e158-46d9-927e-7705adabf229.jpg"
+  },
+  "claim": "C2_ZHENG_SHEN_SX_S0_S11",
+  "ACCEPT_FULL_HD": false,
+  "kuangya": {
+    "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max"
+  },
+  "asof": "2026-11-10T09:44:52.401562+00:00",
+  "audit_stamp": {
+    "write_id": "01473",
+    "formal": "SHQ_STEAL_DRIFT_AUDIT_FORCE_V1",
+    "source": "SETS/PROJ_ZHENG_SHEN_FF_FIX_01511d/REPORT.json",
+    "status": "WARN_DRIFT",
+    "audit_force_declared": null,
+    "audit_force_effective": "AF0",
+    "claim_declared": "C2",
+    "claim_allowed": "C1",
+    "steal_flags": [],
+    "drift_flags": [
+      "CLAIM_OVER_AF"
+    ],
+    "E_codes": [
+      "E-AUDIT-00",
+      "E-AUDIT-01",
+      "E-DRIFT-04"
+    ],
+    "notes": [
+      "missing audit_force → AF0",
+      "claim C2 needs AF2, have AF0"
+    ],
+    "ACCEPT_FULL_HD": false,
+    "rule": "STEAL→C0 ban SUCCESS; DRIFT→≤C1; AF gates claim"
+  },
+  "audit_force": "AF0",
+  "steal_flags": [],
+  "drift_flags": [
+    "CLAIM_OVER_AF"
+  ],
+  "E_codes": [
+    "E-AUDIT-00",
+    "E-AUDIT-01",
+    "E-DRIFT-04"
+  ],
+  "claim_level": "C1"
+}

@@ -1,0 +1,15 @@
+{
+  "call": "PAD加大鎖",
+  "do": [
+    "1 peep_pad：tight+PAD → touch_sides=0（加大）",
+    "2 densify 同框 peep（禁 freeframe 當幾何）",
+    "3 paste_pad_aligned 1:1（鎖）",
+    "4 PNG outside=0 + size_ok"
+  ],
+  "dont": [
+    "加大後仍 paste 進 tight MARK（E-PAD-01）",
+    "只有 pad 無對位鎖",
+    "outside=0 當比例 PASS"
+  ],
+  "gold": "加大 ∧ 對位鎖 AND"
+}

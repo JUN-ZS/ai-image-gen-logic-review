@@ -1,0 +1,37 @@
+{
+  "write_id": "01596",
+  "formal": "SHQ_XIAN_DU_MAX_V1",
+  "zh": "先讀MAX",
+  "stick": "STICK_XIAN_DU_MAX",
+  "call": "先讀MAX",
+  "qinli_DNA": true,
+  "parent": [
+    "STICK_XIAN_DU_01580",
+    "STICK_CENG_CENG_HUI_SUO_01590",
+    "01594",
+    "01595"
+  ],
+  "equation": "先读1≤N ⊕ densify1_Imagine → 先读2 discovery≤M ⊕ densify2_Imagine → 层回锁 S11",
+  "gates": {
+    "N_MAX": 50,
+    "M_MAX": 6,
+    "depth": 2,
+    "densify1_at": "after_xian1_before_xian2",
+    "densify2_at": "after_xian2_before_ceng",
+    "ban_skip_densify1": "E-CC-08",
+    "ban_skip_xian2": "E-CC-06"
+  },
+  "I_PROCESS": {
+    "densify1": "Imagine generation-level on peep0 (xian1 objects)",
+    "densify2": "Imagine generation-level again on peep2 (xian2 kids; enlarged)",
+    "local_fallback_must_label": true
+  },
+  "勤力": {
+    "I-ID-BAN": true,
+    "I-PROCESS": "densify1@先读1 + densify2@先读2",
+    "I-SEAT": "层回锁 parent M → S11"
+  },
+  "claim": "C2_XIAN_DU_MAX",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T07:34:26.696218+00:00"
+}

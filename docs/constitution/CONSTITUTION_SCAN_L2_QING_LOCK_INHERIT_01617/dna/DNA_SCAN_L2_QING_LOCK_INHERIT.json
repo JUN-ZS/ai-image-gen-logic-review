@@ -1,0 +1,109 @@
+{
+  "write_id": "01617",
+  "call": "扫瞄.L2←清锁",
+  "formal": "SHQ_SCAN_LAYER2_QING_LOCK_INHERIT_V1",
+  "zh": "扫瞄第2层优取继承 SS验.清锁",
+  "one_liner": "座认层不以裸语义框为准；优先吃 SS验.清锁 的 whole_bite + donor锁回 + MARK反扣 能力包",
+  "supreme": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "boost": "认∩放大∩升质×物",
+  "qinli": [
+    "I-SEAT",
+    "I-PROCESS",
+    "I-ID-BAN"
+  ],
+  "inherit": {
+    "primary": {
+      "call": "SS驗.清鎖",
+      "write": "01541",
+      "formal": "SHQ_SS_YAN_QING_LOCK_WHOLE_BITE_V1",
+      "stick": "STICK_SS_YAN_QING_LOCK"
+    },
+    "optional_part": {
+      "call": "SS验.清锁·件",
+      "write": "01580",
+      "when": "分件/批量 peep"
+    },
+    "mode": "prefer_inherit"
+  },
+  "scan_stack": {
+    "L1_除主": {
+      "name": "除主 L_bg",
+      "do": "外力/契约 除主 → 空景洞座底",
+      "inherit": null
+    },
+    "L2_座认": {
+      "name": "座认（第2层）",
+      "priority": "优取继承 SS验.清锁",
+      "call_inherit": [
+        "SS驗.清鎖",
+        "SS_YAN.QING_LOCK",
+        "STICK_SS_YAN_QING_LOCK"
+      ],
+      "parent_write": "01541",
+      "part_driver_optional": "01580 SS验.清锁·件",
+      "prefer_over": [
+        "纯语义点名框（无清锁闸）",
+        "裸 multi-CC 先读无 MARK 反扣",
+        "whole_subject 名当外力已懂"
+      ],
+      "must_capabilities": [
+        "WHOLE_BITE_CONTRACT EDIT 整件边界",
+        "elev/densify donor 契约锁回 peep（非 freeframe 主权）",
+        "MARK 反扣 outside=0",
+        "mark_frac 窗 + peep_ratio vs MARK",
+        "struct_lf 位锁（清锁位）",
+        "G_LOCK_1..7 AND"
+      ],
+      "equation": "L2 ≡ 优取(SS验.清锁) → seat_candidate = whole_bite ∧ MARK_anti ∧ peep_ratio",
+      "gates_from_01541": [
+        "G_LOCK_1",
+        "G_LOCK_2",
+        "G_LOCK_3",
+        "G_LOCK_4",
+        "G_LOCK_5",
+        "G_LOCK_6",
+        "G_LOCK_7"
+      ]
+    },
+    "L3_洞MARK": {
+      "name": "洞 MARK 冻",
+      "do": "在 L2 清锁合格座上 |L0−L_bg| 或 清锁 MARK 冻结",
+      "depends": "L2 PASS"
+    },
+    "L4_PAD": {
+      "name": "PAD大 冻 peep",
+      "do": "根 PAD_DA 只读 + 沙盒 MOD；pad_box FREEZE",
+      "root": "CONSTITUTION_SS_YAN_PAD_DA_ROOT"
+    },
+    "L5_虚回S链": {
+      "name": "虚回 / S0–S11",
+      "do": "fill hard 入座 · S11 outside=0 · 强心针 AND"
+    }
+  },
+  "L2_algorithm": {
+    "step": [
+      "1 候选座（外力认 / 先读 / 差分）只作 nominate",
+      "2 对每候选跑 SS验.清锁 能力子集：whole_bite 契约句 + MARK 反扣窗 + peep_ratio",
+      "3 PASS → 升格为 L2 正式座；FAIL → 丢弃或降级 L2_WEAK（禁称清锁座）",
+      "4 仅 L2 正式座 进入 L3 冻洞 / L4 PAD / L5 虚回"
+    ],
+    "prefer_order": [
+      "SS验.清锁 全闸 AND",
+      "SS验.清锁 核心闸（outside0+peep_ratio+whole_bite）",
+      "WARN 降级：仅语义名框（不得继承清锁 claim）"
+    ]
+  },
+  "vs_01613_SEM": {
+    "old_L2": "语义整件外力认定座（点名 ROI）",
+    "new_L2": "同上仅 nominate；正式座必须优取 SS验.清锁 能力包验收",
+    "board_11f8": "旧 SEM 冻座板 = L2 未强制清锁；现为历史对照"
+  },
+  "sandbox_note": "沙-1615 等沙盒可调 PAD/α；不得关闭 L2 清锁优取（禁路径可写入 schema）",
+  "error_codes": {
+    "E-L2-01": "第2层跳过清锁优取，直接语义框当正式座",
+    "E-L2-02": "清锁 FAIL 仍标 FREEZE_SEM 当 C2",
+    "E-L2-03": "把 whole_subject 当 L2 语义完成"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:40:50.375948+00:00"
+}

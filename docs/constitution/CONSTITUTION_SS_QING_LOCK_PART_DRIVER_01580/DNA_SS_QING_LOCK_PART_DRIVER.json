@@ -1,0 +1,90 @@
+{
+  "write_id": "01580",
+  "call": "SS验.清锁·件",
+  "call_ascii": "SS_QING_LOCK_PART",
+  "aliases": [
+    "SS验.清锁·件结构前置",
+    "结构前置驱动",
+    "PART_STRUCTURE",
+    "清锁·件驱动"
+  ],
+  "formal": "SHQ_SS_QING_LOCK_PART_STRUCTURE_DRIVER_V1",
+  "zh": "先智能定义物件部件结构，再批量生效 SS验.清锁·件",
+  "stick": "STICK_SS_QING_LOCK_PART",
+  "skill": "shengqing-huiwei",
+  "先读": true,
+  "preflight_required": true,
+  "read_order": 1,
+  "read_before": [
+    "批量 SS验.清锁·件",
+    "PART 清锁",
+    "elev-dir 外力 densify",
+    "vehicle/person/mecha 分件"
+  ],
+  "parent": {
+    "SS验.清锁·件_tech": "01578",
+    "verify_BODY": "01579",
+    "SS验.清": "01539/01577"
+  },
+  "py": "shq_ss_qing_lock_part_driver.py",
+  "one_liner": "structure(PART_STRUCTURE) → batch(N×清锁·件 · outside=0)；框主权 MARK/peep，elev 只 donor",
+  "equation": "∀p: MARK_p→peep_p→elev_p→RETURN=L0⊙(1−M_p)+elev⊙M_p · ‖·‖_out=0",
+  "phases": {
+    "P0_structure": "whole_subject_CV + profile 角色树 + 互斥 MARK/peep/xN → PART_STRUCTURE.json",
+    "P1_batch": "读结构 N× SS验.清锁·件 → RETURN_BATCH"
+  },
+  "profiles": [
+    "vehicle",
+    "person",
+    "mecha",
+    "auto"
+  ],
+  "elev_sources": {
+    "local_USM": "默认",
+    "elev_dir": "{PART}.jpg donor 槽",
+    "optional_next": [
+      "map",
+      "whole-crop",
+      "xu-hui",
+      "f2"
+    ]
+  },
+  "sovereignty": {
+    "frame_seat": "MARK_part + peep（程式 CV）",
+    "texture": "elev donor（可换）",
+    "grok_reads_preset": false,
+    "whole_subject_note": "程式几何整洞 ≠ GROK 语义 whole subject"
+  },
+  "gates": {
+    "outside_per_part": 0,
+    "outside_union": 0,
+    "mad_min_process": 0.12,
+    "exclusive_preferred": true
+  },
+  "CLI": {
+    "selftest": "python3 shq_ss_qing_lock_part_driver.py selftest",
+    "structure": "python3 shq_ss_qing_lock_part_driver.py structure --l0 L0.jpg --out RUN [--mark M] [--profile vehicle|person|mecha|auto]",
+    "batch": "python3 shq_ss_qing_lock_part_driver.py batch --structure RUN/PART_STRUCTURE.json --out RUN [--elev-dir ELEV]",
+    "run_full": "python3 shq_ss_qing_lock_part_driver.py run-full --l0 L0.jpg --out RUN --profile vehicle"
+  },
+  "金句": [
+    "先读 01580：批量清锁·件前必须先有 PART_STRUCTURE",
+    "whole_subject（程式）= 几何整洞策略，≠ GROK 语义",
+    "真·部件回位 = MARK/peep 金框 + 清锁，不靠模型懂 preset 名",
+    "1 PART = 1 金框 + 1 清锁；批量 = N×同构",
+    "elev-dir 只是 donor 槽之一，可换 local/map/whole-crop/虚回/F2"
+  ],
+  "E_codes": {
+    "E-QLP-01": "无 PART_STRUCTURE 就 batch",
+    "E-QLP-02": "下游重开洞 / 弃 structure 金框",
+    "E-QLP-03": "outside≠0 仍报 C2",
+    "E-QLP-04": "把 GROK prompt 词当 MARK 主权",
+    "E-QLP-05": "elev freeframe 无 peep 契约硬贴"
+  },
+  "gold_run": "SETS/PROJ_SS_QING_LOCK_DRIVER_ROBOT_01580",
+  "selftest_PASS": true,
+  "robot_PASS": true,
+  "claim_batch": "C2_SS_QING_LOCK_PART_BATCH",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T05:12:54.478993+00:00"
+}

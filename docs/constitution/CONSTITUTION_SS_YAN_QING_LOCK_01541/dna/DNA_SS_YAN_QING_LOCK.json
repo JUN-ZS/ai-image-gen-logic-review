@@ -1,0 +1,71 @@
+{
+  "write_id": "01541",
+  "call": "SS驗.清鎖",
+  "call_ascii": "SS_YAN.QING_LOCK",
+  "formal": "SHQ_SS_YAN_QING_LOCK_WHOLE_BITE_V1",
+  "zh": "SS验.清锁",
+  "stick": "STICK_SS_YAN_QING_LOCK",
+  "parent": {
+    "SS验.清": "STICK_SS_YAN_QING / 01539",
+    "SS验": "STICK_SS_YAN_V2 / 01536",
+    "whole_subject": "TUNE_PRESETS geometric only — 本技补语义契约"
+  },
+  "one_liner": "外力 densify/elev 必契约锁回 peep；EDIT 写死整件边界；MARK 反扣 outside=0 + 面积比",
+  "equation": "SS验.清锁 ≡ SS验.清(F2) ∧ elev_donor_contract_lock(peep) ∧ whole_bite_EDIT_prompt ∧ MARK_anti_kou(outside=0, area_ratio)",
+  "why": {
+    "whole_subject_not_semantic": "preset 只是 CV 几何；外力不读该名",
+    "fix": "用 prompt 写死 whole + MARK 闸 + donor 锁回 peep，三件 AND"
+  },
+  "layers": {
+    "L1_EDIT_prompt": "外力除/生 prompt 必须含 whole_bite 契约句（整件边界写死）",
+    "L2_donor_lock": "densify/elev freeframe → 仅 TEXTURE；ECC/scale_lock 回 peep seat 后才可 F2",
+    "L3_MARK_anti": "反扣：洞外 bitexact=0；mark_frac∈[min,max]；peep asp≈MARK asp"
+  },
+  "gates": {
+    "G_LOCK_1": "EDIT prompt 含 WHOLE_BITE_CONTRACT 标记句",
+    "G_LOCK_2": "elev/densify 不得作 peep 主权（elev_is_not_RETURN）",
+    "G_LOCK_3": "donor 经 seat_hardlock_sheng 或 scale_lock_elev 锁回 peep",
+    "G_LOCK_4": "RETURN/S9 outside_max==0 vs L0@MARK",
+    "G_LOCK_5": "mark_frac ∈ [min_frac, max_frac]（默认 whole 0.08–0.55）",
+    "G_LOCK_6": "peep_ratio_gate vs MARK asp",
+    "G_LOCK_7": "struct_lf_mad<5 且 dx=dy=0（清锁位）"
+  },
+  "error_codes": {
+    "E-QINGLOCK-01": "EDIT prompt 缺 whole_bite 契约",
+    "E-QINGLOCK-02": "elev freeframe 未锁回 peep 即当生",
+    "E-QINGLOCK-03": "outside≠0 MARK 反扣失败",
+    "E-QINGLOCK-04": "mark_frac 出 whole 窗",
+    "E-QINGLOCK-05": "peep 比例漂（E-PEEP-RATIO）",
+    "E-QINGLOCK-06": "donor 位漂 struct≥5 或 dxdy≠0",
+    "E-QINGLOCK-07": "把 whole_subject 名误当外力已懂语义"
+  },
+  "EDIT_WHOLE_BITE_CONTRACT": {
+    "marker": "[[WHOLE_BITE_CONTRACT]]",
+    "must_include": [
+      "entire subject as one continuous object",
+      "full silhouette from tip to base / head to feet",
+      "do not crop to close-up or partial body",
+      "keep same camera pose and framing as reference seat/peep",
+      "background only outside the full object outline"
+    ],
+    "zh_must": [
+      "整件连续物体完整剪影",
+      "禁止特写半身/只头/只履带",
+      "同机位同 peep 框边界",
+      "只在整件轮廓外动景"
+    ]
+  },
+  "api": [
+    "build_whole_bite_edit_prompt(subject, action, seat_note)",
+    "elev_donor_contract_lock(peep, pm, elev_im)",
+    "mark_anti_kou_verify(L0, L1_or_RETURN, M, *, min_frac, max_frac)",
+    "ss_yan_qing_lock_run(seat, donor, M_roi, peep, L0, M, ...)"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T22:04:38.156928+00:00",
+  "child_plus_a": {
+    "call": "SS驗.清+A",
+    "write": "01543",
+    "formal": "SHQ_SS_YAN_QING_PLUS_A_SEMANTIC_MARK_V1"
+  }
+}

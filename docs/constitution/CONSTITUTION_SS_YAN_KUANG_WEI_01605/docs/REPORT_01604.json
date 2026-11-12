@@ -1,0 +1,188 @@
+{
+  "write": "01604",
+  "formal": "SHQ_XIAN5_PAD_ANTIFF_QING_LOCK_V1",
+  "zh": "先讀5物(含水晶球)+peep pad/語義整件+Imagine densify防freeframe+SS驗.清鎖",
+  "protocol": [
+    "先讀 n=5 含水晶球語義整件",
+    "peep = tight + PAD_FRAC(~0.22-0.28) → touch_sides=0 物完整在框",
+    "Imagine densify prompt 禁 zoom/reframe",
+    "peep 比例鎖 center-crop + resize 回 peep",
+    "SS驗.清鎖 hardpaste MARK 洞內 · PNG outside=0"
+  ],
+  "PAD_FRAC": 0.22,
+  "n_seats": 5,
+  "touch_all_zero": true,
+  "outside_union_png": 0,
+  "n_ok": 5,
+  "PASS": true,
+  "claim": "C2_XIAN5_PAD_ANTIFF_QING",
+  "reps": [
+    {
+      "id": "O1_CRYSTAL",
+      "touch_sides": 0,
+      "mode": "Imagine_peep_ratio_lock_antiFF",
+      "hi_shape": [
+        1472,
+        1344
+      ],
+      "peep_shape": [
+        330,
+        301
+      ],
+      "peep_ar": 0.9121,
+      "hi_ar": 0.913,
+      "ar_err_raw": 0.001,
+      "mad": 7.899,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true,
+      "pad_box": [
+        650,
+        678,
+        950,
+        1007
+      ],
+      "tight_bbox": [
+        711,
+        752,
+        889,
+        976
+      ]
+    },
+    {
+      "id": "O2_R1_O1",
+      "touch_sides": 0,
+      "mode": "Imagine_peep_ratio_lock_antiFF",
+      "hi_shape": [
+        1584,
+        1248
+      ],
+      "peep_shape": [
+        567,
+        443
+      ],
+      "peep_ar": 0.7813,
+      "hi_ar": 0.7879,
+      "ar_err_raw": 0.0084,
+      "mad": 22.077,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true,
+      "pad_box": [
+        1325,
+        356,
+        1767,
+        922
+      ],
+      "tight_bbox": [
+        1398,
+        448,
+        1694,
+        830
+      ]
+    },
+    {
+      "id": "O3_R1_O4",
+      "touch_sides": 0,
+      "mode": "Imagine_peep_ratio_lock_antiFF",
+      "hi_shape": [
+        992,
+        1984
+      ],
+      "peep_shape": [
+        205,
+        406
+      ],
+      "peep_ar": 1.9805,
+      "hi_ar": 2.0,
+      "ar_err_raw": 0.0099,
+      "mad": 17.657,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true,
+      "pad_box": [
+        1136,
+        803,
+        1541,
+        1007
+      ],
+      "tight_bbox": [
+        1203,
+        844,
+        1474,
+        996
+      ]
+    },
+    {
+      "id": "O4_R2_O1",
+      "touch_sides": 0,
+      "mode": "Imagine_peep_ratio_lock_antiFF",
+      "hi_shape": [
+        1376,
+        1440
+      ],
+      "peep_shape": [
+        319,
+        334
+      ],
+      "peep_ar": 1.047,
+      "hi_ar": 1.0465,
+      "ar_err_raw": 0.0005,
+      "mad": 6.594,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true,
+      "pad_box": [
+        0,
+        237,
+        333,
+        555
+      ],
+      "tight_bbox": [
+        39,
+        291,
+        274,
+        501
+      ]
+    },
+    {
+      "id": "O5_R1_O3",
+      "touch_sides": 0,
+      "mode": "Imagine_peep_ratio_lock_antiFF",
+      "hi_shape": [
+        1184,
+        1680
+      ],
+      "peep_shape": [
+        193,
+        273
+      ],
+      "peep_ar": 1.4145,
+      "hi_ar": 1.4189,
+      "ar_err_raw": 0.0031,
+      "mad": 7.577,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true,
+      "pad_box": [
+        128,
+        815,
+        400,
+        1007
+      ],
+      "tight_bbox": [
+        175,
+        854,
+        353,
+        999
+      ]
+    }
+  ],
+  "ACCEPT_FULL_HD": false,
+  "parent": [
+    "01601 truehole",
+    "01602 peep ratio lock",
+    "01603 bbox clip diag"
+  ],
+  "asof": "2026-11-11T08:39:45.513710+00:00"
+}

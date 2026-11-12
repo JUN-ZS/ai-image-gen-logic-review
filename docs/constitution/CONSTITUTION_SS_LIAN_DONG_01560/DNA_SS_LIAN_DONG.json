@@ -1,0 +1,158 @@
+{
+  "write_id": "01560",
+  "call": "SS 聯動",
+  "call_ascii": "SS_LIAN_DONG",
+  "aliases": [
+    "SS联动",
+    "SS_LINK",
+    "清+A×清+A->景",
+    "S_SEQ_FULL"
+  ],
+  "formal": "SHQ_SS_LIAN_DONG_V1",
+  "zh": "SS 联动：清+A 与 清+A->景 在勤力DNA 下分轨有序合闸",
+  "stick": "STICK_SS_LIAN_DONG",
+  "skill": "shengqing-huiwei",
+  "protocol_write": "01558",
+  "to_scene_write": "01557",
+  "plus_a_write": "01543",
+  "proof_new_try": "01559",
+  "one_liner": "先 A 得物洞与 L_bg；再 A->景 只动 L_bg；最后 A 物回贴升清景；claim 分轨；勤力合闸",
+  "equation": "SS联动 ≡ S_SEQ_FULL: P0 L0 → P1 清+A(L1,M_obj) → P2 L_bg → P3 清+A->景(L_bg_qing,C_scene) → P4 清+A 物回@L_bg_qing(C2_object_on_qing_scene) → P5 勤力合闸",
+  "strategies": [
+    {
+      "id": "S_SEQ_FULL",
+      "zh": "全序联动（推荐试）",
+      "steps": "P0→P1(洞)→P2→P3→P1/P4(物清+回)→P5",
+      "use_when": "要风景升清 + 物回同一闭环"
+    },
+    {
+      "id": "S_A_ONLY",
+      "zh": "只物",
+      "steps": "P0→P1全清+A众→合众 L0",
+      "use_when": "不验风景",
+      "forbid": "同时报 A->景完成"
+    },
+    {
+      "id": "S_A2S_ONLY",
+      "zh": "只景（L_bg 已有）",
+      "steps": "P0→P1洞→P2→P3；停在 L_bg_qing",
+      "use_when": "只验风景洞座锁",
+      "forbid": "C2_object"
+    },
+    {
+      "id": "S_PARALLEL_SAFE",
+      "zh": "安全并行",
+      "steps": "P1 多叶 MARK 可并行；P3 多风景叶可并行；P2/P4 必须串行栅栏",
+      "barrier": "P2 前等齐所有 M_obj；P4 前等 L_bg_qing"
+    }
+  ],
+  "anti_chaos_rules": [
+    "R1 一 Bus 一 RUN；A 与 A2S 写不同字段前缀 obj_* / scn_*",
+    "R2 claim 分轨：C2_object ≠ C_scene ≠ C2_object_on_qing_scene",
+    "R3 peep 源闸：A 读 L0；A2S 读 L_bg；违→E-A2S-02 / E-QL",
+    "R4 outside 底图：A 默认 vs L0；A2S vs L_bg；物回升清景 vs L_bg_qing",
+    "R5 A->景 不得改写 M_obj；A 不得改写 M_seat_scene",
+    "R6 未 P2 禁进 P3；未 P3 完成禁把 L_bg_qing 当地景金标给物回（若策略要求景先）",
+    "R7 勤力：donor=peep 禁 C2；无 densify 证据禁 C2；风景入格≠升清"
+  ],
+  "qinli_joint_gate": {
+    "PASS_LINK": "phase_order_ok ∧ (if A2S_ran: outside_scn_vs_Lbg==0 ∧ peep_from_Lbg) ∧ (if A_return: outside_obj_vs_base==0 ∧ ¬identity ∧ tex_gain≥τ) ∧ claim_scope_ok",
+    "BAN": [
+      "同板只写 PASS 不写 claim 轨",
+      "A 与 A2S 交换 peep 源",
+      "outside 底图偷换仍报金"
+    ]
+  },
+  "ownership": {
+    "A_owns": [
+      "L0",
+      "L1_i",
+      "M_obj_i",
+      "peep_obj@L0",
+      "I*_obj",
+      "S9_obj",
+      "C2_object"
+    ],
+    "A2S_owns": [
+      "L_bg",
+      "M_seat_scene",
+      "peep_scene@L_bg",
+      "I*_scene",
+      "L_bg_qing",
+      "C_scene"
+    ],
+    "shared_bus_read_only": [
+      "L0 size/camera",
+      "M_obj_union（只读给景座减法）",
+      "driver=外力GROK"
+    ],
+    "never_share": [
+      "peep 源图（A=L0 / A2S=L_bg）",
+      "claim 字符串",
+      "outside 金标底图（A vs L0；A2S vs L_bg）"
+    ]
+  },
+  "phase_order_mandatory": [
+    {
+      "phase": "P0",
+      "name": "冻 L0",
+      "who": "Bus",
+      "do": "SRC 同机位；禁中途换底"
+    },
+    {
+      "phase": "P1",
+      "name": "清+A 物叶（可 N 叶并行）",
+      "who": "A",
+      "do": "每叶 EDIT除主→L1→MARK_obj→（可选先不 F2 只取洞）",
+      "emit": [
+        "L1_i",
+        "M_obj_i"
+      ],
+      "claim_max": "C1_MARK_READY 或 C2 若本叶已清（见策略）"
+    },
+    {
+      "phase": "P2",
+      "name": "合成 L_bg",
+      "who": "link",
+      "do": "L_bg[M_obj]=L1；写 L_bg；M_obj_union",
+      "gate": "G_LBG: L_bg 存在且尺寸=L0"
+    },
+    {
+      "phase": "P3",
+      "name": "清+A->景",
+      "who": "A2S",
+      "do": "只在 L_bg 上风景座 peep→清锁→L_bg_qing",
+      "forbid": "读 L0 带物 peep；改 M_obj",
+      "claim": "C_scene only",
+      "gate": "outside vs L_bg == 0"
+    },
+    {
+      "phase": "P4",
+      "name": "清+A 物回（合众）",
+      "who": "A",
+      "do": "peep@L0 几何；I* densify；hardpaste 到 **L_bg_qing**（不是生图 L0）",
+      "note": "金标 outside 相对 L_bg_qing（物洞外=升清景）",
+      "claim": "C2_object_on_qing_scene"
+    },
+    {
+      "phase": "P5",
+      "name": "勤力合闸",
+      "who": "勤力DNA",
+      "do": "I-ID-BAN · I-PROCESS · I-SCOPE · I-SCENE · I-SEAT-QING"
+    }
+  ],
+  "proof_01559": {
+    "PASS_LINK": true,
+    "out_scn": 0,
+    "out_final": 0,
+    "L0": "f29eaed8-9d6a-4fef-ae83-713e57871d2b"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:55:04.466541+00:00",
+  "child_xu_hui": {
+    "write": "01563",
+    "call": "虛回",
+    "formal": "SHQ_XU_HUI_VIRTUAL_RETURN_V1",
+    "stick": "STICK_XU_HUI"
+  }
+}

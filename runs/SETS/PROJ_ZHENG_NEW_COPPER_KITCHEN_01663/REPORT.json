@@ -1,0 +1,21 @@
+{
+  "write": "01663",
+  "scene": "铜锅厨 新图",
+  "call": "正 应变试",
+  "PASS": true,
+  "out": {
+    "正": 0,
+    "逆": 0,
+    "独": 0,
+    "正×独": 0,
+    "逆×独": 0
+  },
+  "meta_正": {
+    "method": "正",
+    "n_lights": 12
+  },
+  "claim": "C2_ZHENG_NEW_COPPER_01663",
+  "PRIMARY": "正×独",
+  "asof": "2026-11-12T03:36:10.043670+00:00",
+  "ACCEPT_FULL_HD": false
+}

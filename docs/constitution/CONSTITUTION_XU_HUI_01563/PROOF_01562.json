@@ -1,0 +1,44 @@
+{
+  "write_id": "01562",
+  "fix": "我的升清图 虚拟成 SS联动 已抽出放大升清未回 → 只用联动 MARK/frame/L_bg_qing 回",
+  "no_own_plan": true,
+  "PASS": true,
+  "outside_union": 0,
+  "leaf": [
+    {
+      "id": "rover",
+      "role": "virtual_SS联动_已抽出放大升清未回",
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_SS_LIAN_DONG_RETURN",
+      "elev_asset_path": "imagine_images/76bdb84e-5769-41e4-85db-275576543526.jpg",
+      "lock_src": "01559 M_obj + peep_from_mark + L_bg_qing"
+    },
+    {
+      "id": "mecha",
+      "role": "virtual_SS联动_已抽出放大升清未回",
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_SS_LIAN_DONG_RETURN",
+      "elev_asset_path": "imagine_images/a28cf2e2-f4d3-43df-9089-67f987595180.jpg",
+      "lock_src": "01559 M_obj + peep_from_mark + L_bg_qing"
+    },
+    {
+      "id": "climber",
+      "role": "virtual_SS联动_已抽出放大升清未回",
+      "outside": 0,
+      "ok": true,
+      "claim": "C2_SS_LIAN_DONG_RETURN",
+      "elev_asset_path": "imagine_images/b95e7d52-c57b-4d97-8b6c-85cf01bb882d.jpg",
+      "lock_src": "01559 M_obj + peep_from_mark + L_bg_qing"
+    }
+  ],
+  "base": "01559 L_bg_qing",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T02:45:24.012080+00:00",
+  "constitution": {
+    "write": "01563",
+    "call": "虛回",
+    "formal": "SHQ_XU_HUI_VIRTUAL_RETURN_V1"
+  }
+}

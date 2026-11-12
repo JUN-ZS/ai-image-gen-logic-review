@@ -1,0 +1,6 @@
+{
+  "pad_frac_default": 0.12,
+  "peep_pad": "pad_box=expand(tight_bbox, pad_frac); peep=L0[pad_box]; pm=M_in_pad",
+  "paste_pad_aligned": "R[py0:py1,px0:px1][M]=elev[M]; elev.shape==(h_pad,w_pad)",
+  "ban": "resize(elev → tight_MARK_bbox)"
+}

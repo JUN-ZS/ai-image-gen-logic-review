@@ -1,0 +1,84 @@
+{
+  "write_id": "01665",
+  "call": "正追",
+  "formal": "SHQ_ZHENG_ZHUI_MIN_B1_V2",
+  "zh": "正追",
+  "parent_calls": [
+    "应",
+    "追",
+    "正"
+  ],
+  "parent_writes": [
+    "01664",
+    "01660+",
+    "01662"
+  ],
+  "role": "B1 叶 / 独补给 intermediate · 非 S11 RETURN",
+  "min_chain": [
+    "S0",
+    "MARK_NEAR",
+    "ENV(μ=正)",
+    "追·B1"
+  ],
+  "equation": "peep' = LockAB(peep0) + alpha * s(g) * (ENV - mean_ENV); densify=light highpass; no CLAHE metal",
+  "kaTeX": "B1^{\\text{正追}}=\\mathrm{densify}\\!\\big(\\mathrm{sample}(S0\\pm t_{\\text{正}},M_{\\text{NEAR}},ENV_{\\text{正}},mode)\\big)",
+  "prerequisites": {
+    "S0": {
+      "hard": true,
+      "desc": "同机位金底；禁 freeframe 换景"
+    },
+    "MARK_NEAR": {
+      "hard": true,
+      "desc": "洞/座冻在 S0；绿座或语义座"
+    },
+    "ENV_正": {
+      "hard": true,
+      "desc": "本光正向：亮源投射 + 入射 tint"
+    },
+    "追·B1": {
+      "hard": true,
+      "desc": "sample_env + densify 写回座内"
+    },
+    "B2_B3_hardpaste": {
+      "hard": false,
+      "desc": "仅 S11 需要；正追可不出"
+    },
+    "正×独": {
+      "hard": false,
+      "desc": "PRIMARY 应 才混"
+    }
+  },
+  "allowed_outputs": [
+    "B1 全帧 intermediate",
+    "VDIR peep 裁切独补给",
+    "教学对照板 S0|B1"
+  ],
+  "forbidden_claims": [
+    "不可 claim C2_RETURN / S11",
+    "不可 outside=0 当最终金闸（未 hardpaste 全层）",
+    "不可称 应 完成",
+    "不可 freeframe 当 正追"
+  ],
+  "gates": {
+    "E-ZZ-01": "无 S0 同机位",
+    "E-ZZ-02": "无 MARK_NEAR",
+    "E-ZZ-03": "ENV 非 μ=正",
+    "E-ZZ-04": "B1 冒充 S11 / RETURN",
+    "E-FF-01": "freeframe densify 无座对应"
+  },
+  "relation": {
+    "追": "递式引擎；正追 = 追 的 B1 叶且 ENV 锁 μ=正",
+    "正": "本光正向 ENV 源；正追 = 正 最小可出物",
+    "应": "通用式 YING(μ)；正追 = 应|μ=正 截到 B1",
+    "独·环境反射": "可后接；非 正追 最小集"
+  },
+  "demo_01664": {
+    "scene": "雨夜机车",
+    "B1_asset_note": "c6dd3c13 / L/B1_正追.jpg",
+    "PASS_leaf": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "claim_class": "C1_LEAF_B1_ONLY",
+  "asof": "2026-11-12T04:13:46.411405+00:00",
+  "formula_v2_write": "01668"
+}

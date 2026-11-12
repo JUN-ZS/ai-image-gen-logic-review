@@ -1,0 +1,8 @@
+{
+  "write_id": "01616",
+  "root": "SETS/CONSTITUTION_SS_YAN_PAD_DA_ROOT",
+  "loader": "ss_pad_da_config.py",
+  "PASS": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:17:16.066841+00:00"
+}

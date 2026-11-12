@@ -1,0 +1,22 @@
+{
+  "write_id": "01627",
+  "call": "除背後·座判",
+  "formal": "SHQ_SEAT_AFTER_WAI_LI_CHU_BEI_V1",
+  "answers": {
+    "need_CC_after_chu_bei": false,
+    "CC_role": "optional discovery/split — not seat ontology",
+    "need_diff_after_chu_bei": "conditional",
+    "diff_when": "no S0-aligned mask → must have peep freeze + local 无底扣/diff/EDIT; aligned alpha may replace primary diff",
+    "always_need_seat_lock": true
+  },
+  "ban": [
+    "全图CC当座",
+    "除背freeframe当座",
+    "无窗无差分无alpha硬回"
+  ],
+  "qinli": true,
+  "bubu": true,
+  "dao_fan_zheng": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:59:38.197757+00:00"
+}

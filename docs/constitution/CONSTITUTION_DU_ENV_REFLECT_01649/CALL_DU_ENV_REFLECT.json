@@ -1,0 +1,16 @@
+{
+  "call": "独·环境反射",
+  "aliases": [
+    "DU_ENV_REFLECT",
+    "独环境反射",
+    "一物独生带全景"
+  ],
+  "formal": "SHQ_DU_SHENG_ENV_REFLECT_V1",
+  "stick": "STICK_DU_ENV_REFLECT",
+  "write_id": "01649",
+  "one_line": "独=MARK主权+全相身份；生=全景绿座上填；环境变→绿座全景重条件→吐再生",
+  "driver": "外力GROK",
+  "supreme": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "回路吐再生": "环境改写 → 重建绿座全景 → 轴.反射.生([新绿座,旧全相BACKUP]) ⊙ MARK → outside 新环境底",
+  "asof": "2026-11-12T01:22:21.071569+00:00"
+}

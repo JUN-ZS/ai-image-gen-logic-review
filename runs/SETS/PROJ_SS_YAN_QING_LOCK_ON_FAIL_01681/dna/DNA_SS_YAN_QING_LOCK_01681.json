@@ -1,0 +1,96 @@
+{
+  "write_id": "01681",
+  "call": "SS验.清锁",
+  "formal": "SHQ_SS_YAN_QING_LOCK_ON_FAIL_SRC_V1",
+  "src_ref": "7c029d09 FAIL_global_sharpen",
+  "equation": "peep0(tight MARK)→外力 densify elev→ratio-lock resize to peep0 HW→hardpaste⊙M →outside=0",
+  "anti": [
+    "E-SHARP-01 全图瞎锐化",
+    "E-FF-01 freeframe 几何",
+    "E-PAD-01 pad 挤比例"
+  ],
+  "locks": [
+    {
+      "key": "helmet",
+      "ok": true,
+      "bb": [
+        458,
+        748,
+        727,
+        1111
+      ],
+      "peep_hw": [
+        290,
+        384
+      ],
+      "elev_hw": [
+        1408,
+        1408
+      ],
+      "bug_scale_if_not_locked": [
+        3.6666666666666665,
+        4.855172413793103
+      ],
+      "note": "paste used peep tight size not elev native — E-FF/E-PAD fixed"
+    },
+    {
+      "key": "glass",
+      "ok": true,
+      "bb": [
+        642,
+        913,
+        1302,
+        1401
+      ],
+      "peep_hw": [
+        271,
+        99
+      ],
+      "elev_hw": [
+        1728,
+        1152
+      ],
+      "bug_scale_if_not_locked": [
+        11.636363636363637,
+        6.376383763837638
+      ],
+      "note": "paste used peep tight size not elev native — E-FF/E-PAD fixed"
+    },
+    {
+      "key": "face",
+      "ok": true,
+      "bb": [
+        146,
+        556,
+        405,
+        759
+      ],
+      "peep_hw": [
+        410,
+        354
+      ],
+      "elev_hw": [
+        1728,
+        1152
+      ],
+      "bug_scale_if_not_locked": [
+        3.2542372881355934,
+        4.214634146341464
+      ],
+      "note": "paste used peep tight size not elev native — E-FF/E-PAD fixed"
+    }
+  ],
+  "gates": {
+    "outside": 0,
+    "seat_changed": 255,
+    "PASS": true
+  },
+  "claim": "C2_SS_YAN_QING_LOCK",
+  "asof": "2026-11-12T05:42:24.899460+00:00",
+  "ACCEPT_FULL_HD": false,
+  "parent": [
+    "01541 SS验.清锁",
+    "01605 PAD",
+    "01679 FAIL sharp contrast"
+  ]
+}

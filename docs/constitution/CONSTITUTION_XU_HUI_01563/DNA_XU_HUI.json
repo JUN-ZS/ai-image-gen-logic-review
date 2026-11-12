@@ -1,0 +1,51 @@
+{
+  "write_id": "01563",
+  "call": "虛回",
+  "call_ascii": "XU_HUI",
+  "aliases": [
+    "虚回",
+    "VIRTUAL_RETURN",
+    "SS联动·虚回"
+  ],
+  "formal": "SHQ_XU_HUI_VIRTUAL_RETURN_V1",
+  "zh": "虚回：把外力升清图虚拟成 SS联动「已抽出·放大升清·未回」，只用联动锁位回图",
+  "stick": "STICK_XU_HUI",
+  "parent_call": "SS 聯動",
+  "parent_formal": "SHQ_SS_LIAN_DONG_V1",
+  "skill": "shengqing-huiwei",
+  "proof_write": "01562",
+  "ss_run_ref": "01559",
+  "one_liner": "升清图 ≔ 虚拟(SS联动 已抽出放大升清未回 peep)；回位只信 联动 MARK·frame·L_bg_qing；禁自开补给计划",
+  "equation": "虛回(I_elev | Bus_SS) := I_elev 虚拟 peep↑；lock = elev_donor_contract_lock(peep0, pm, I_elev)；I* = seat_hardlock_sheng(peep0, lock, pm, F2)；RETURN = hardpaste(L_bg_qing, I*, M)  洞外 bitexact",
+  "inputs": {
+    "I_elev": "外力GROK/Imagine 升清图（本机产出亦可）",
+    "Bus_SS": "SS联动 RUN：M_obj · peep_from_mark 几何 · L_bg_qing（或 L0 金标底）"
+  },
+  "forbidden": [
+    "另写材质补给/新策略冒充回位",
+    "重算 MARK / 重开洞",
+    "peep 源改读生图 L0 带物当座（座几何仍来联动冻 MARK）",
+    "outside 底图偷换",
+    "identity 自贴仍报 C2"
+  ],
+  "gates": {
+    "outside": 0,
+    "claim": "C2_SS_LIAN_DONG_RETURN 或 C2_XU_HUI",
+    "no_own_plan": true,
+    "virtual_role": "SS联动_已抽出放大升清未回"
+  },
+  "vs_wrong_01561": {
+    "wrong": "独立「洞座材质补给」自开计划",
+    "right": "虚拟身份 + 只跟 SS联动 锁位程序"
+  },
+  "procedure": [
+    "1 取得 I_elev（升清）",
+    "2 声明角色：虚拟 = SS联动 已抽出放大升清未回",
+    "3 读 SS联动 冻：M · frame(peep_from_mark) · base(L_bg_qing)",
+    "4 elev_donor_contract_lock + seat_hardlock F2（现成，不新写）",
+    "5 hardpaste 回 base；洞外=0",
+    "6 合众 exclusive 按面积"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T02:49:31.662944+00:00"
+}

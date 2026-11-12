@@ -1,0 +1,66 @@
+{
+  "write_id": "01557",
+  "call": "SS驗.清+A->景",
+  "call_ascii": "SS_YAN.QING_PLUS_A_TO_SCENE",
+  "aliases": [
+    "SS验.清+A->景",
+    "清+A->景",
+    "SS驗.清+A·风景洞座锁",
+    "风景洞座锁"
+  ],
+  "formal": "SHQ_SS_YAN_QING_PLUS_A_TO_SCENE_V1",
+  "zh": "SS验.清+A 的风景变体：在 L 流程去物件背景 L_bg 上做风景洞座锁回",
+  "stick": "STICK_SS_YAN_QING_PLUS_A_TO_SCENE",
+  "skill": "shengqing-huiwei",
+  "bone": "SS驗.清+A / STICK_SS_YAN_QING_PLUS_A / 01543",
+  "proof_run": "01556 SETS/PROJ_SS_YAN_PLUS_A_SCENE_SEAT_L_01556",
+  "one_liner": "L0→除主→L_bg空景→风景座@L_bg 清锁→L_bg_qing；（可选）物清+A 回贴闭环",
+  "equation": "SS验.清+A->景 ≡ L_bg=strip_objects(L0;{L1_i,M_obj_i}); ∀scene: M_seat=band∩¬M_obj; peep=L_bg⊙M_seat; I*=F2(lock(densify(peep))); L_bg_qing=paste(L_bg,I*,M_seat)",
+  "L_flow": [
+    "L0 有景有物",
+    "清+A 除主 → L1_i / MARK_obj",
+    "L_bg = 去物件空景",
+    "M_seat = 风景带 ∩ ¬物件",
+    "peep 只自 L_bg → densify → 清锁 F2",
+    "合众 L_bg_qing",
+    "可选：物 清+A 回贴 L_bg_qing"
+  ],
+  "vs_plus_A": {
+    "SS验.清+A": "除主得物洞 · peep@L0 · 回 L0 · C2_object",
+    "SS验.清+A->景": "去物件得 L_bg · peep@L_bg · 锁回 L_bg · C_scene"
+  },
+  "gates": {
+    "G_S1": "L_bg 存在（物件洞已贴空景）",
+    "G_S2": "M_seat 非空 · 优先 band∩¬M_obj",
+    "G_S3": "peep 源必须是 L_bg 非 L0 带物",
+    "G_S4": "清锁 F2 · outside vs L_bg == 0",
+    "G_S5": "禁在 L0 带物上冒风景清"
+  },
+  "error_codes": {
+    "E-A2S-01": "无 L_bg",
+    "E-A2S-02": "peep 取自 L0 带物",
+    "E-A2S-03": "M_seat 空",
+    "E-A2S-04": "outside≠0 vs L_bg",
+    "E-A2S-05": "把 C_scene 冒 C2_object"
+  },
+  "api": [
+    "ss_yan_qing_plus_a_from_pair  # 取 M_obj / 可选物回",
+    "build_L_bg(L0, L1s, M_objs)",
+    "scene_seat_on_Lbg(L_bg, band, M_obj_union)",
+    "seat_hardlock_sheng / elev_donor_contract_lock"
+  ],
+  "勤力DNA": true,
+  "invariants": [
+    "I-ID-BAN",
+    "I-PROCESS",
+    "I-SCENE",
+    "I-SEAT-QING"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:35:46.442789+00:00",
+  "dual_link": {
+    "write": "01558",
+    "formal": "SHQ_PLUS_A_DUAL_LINK_QINLI_V1",
+    "stick": "STICK_PLUS_A_DUAL_LINK"
+  }
+}

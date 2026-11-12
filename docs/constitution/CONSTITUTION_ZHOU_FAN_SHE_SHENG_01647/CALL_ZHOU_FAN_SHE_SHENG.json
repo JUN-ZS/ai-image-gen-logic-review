@@ -1,0 +1,15 @@
+{
+  "call": "轴.反射.生",
+  "aliases": [
+    "轴向生HD反射",
+    "轴反射生",
+    "ZHOU_FAN_SHE_SHENG",
+    "axial_reflect_sheng"
+  ],
+  "formal": "SHQ_ZHOU_FAN_SHE_SHENG_V1",
+  "stick": "STICK_ZHOU_FAN_SHE_SHENG",
+  "write_id": "01647",
+  "one_line": "绿座同形态轴向 + 全相BACKUP身份 → 每件HD反射重建 → 洞座锁回",
+  "driver": "外力GROK",
+  "supreme": "[(生,除,洞,扣)×(反)] ← 外力GROK"
+}

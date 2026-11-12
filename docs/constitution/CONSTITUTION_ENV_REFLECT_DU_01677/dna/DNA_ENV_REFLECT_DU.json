@@ -1,0 +1,38 @@
+{
+  "write_id": "01677",
+  "call": "环境反射.独",
+  "formal": "SHQ_ENV_REFLECT_DU_ON_PRESET_V1",
+  "preset": "01676 新壶新人 S0+MARK+先光",
+  "equation": "ENV0=mix(↓scene,reflect_pix); 独_i=sample(ENV)⊙M_i; metal inject→ENV1; skin 独 ENV_skin=soft GOLD; hardpaste+镂空 outside=0",
+  "order": [
+    "ENV0",
+    "NEAR 壶 metal 独→inject",
+    "FAR 锅 metal 独",
+    "MID cloth 独",
+    "FACE/HAND skin 独 GOLD",
+    "镂空",
+    "FOV"
+  ],
+  "BAN": [
+    "脸用 ENV1 铜 inject",
+    "方框死贴",
+    "fill_holes 镂空"
+  ],
+  "gates": {
+    "outside": 0,
+    "mad_face": 3.913466612760416,
+    "dL_NEAR": 11.30536937713623
+  },
+  "PASS": true,
+  "parent": [
+    "独·环境反射",
+    "正追",
+    "01674",
+    "01675",
+    "01676",
+    "至高"
+  ],
+  "asof": "2026-11-12T05:11:43.852421+00:00",
+  "ACCEPT_FULL_HD": false,
+  "claim": "C2_ENV_REFLECT_DU"
+}

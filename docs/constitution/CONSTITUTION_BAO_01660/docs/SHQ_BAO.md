@@ -1,0 +1,21 @@
+# 爆 01660
+
+非沙漠 独·环境反射 × 追 开发版。
+
+{
+  "write_id": "01660",
+  "call": "爆",
+  "zh": "爆",
+  "formal": "SHQ_BAO_BURST_ENV_ZHUI_V1",
+  "parent": [
+    "追/01658",
+    "独·环境反射",
+    "01659沙漠版"
+  ],
+  "env_kind": "burst_fireworks_prism_shockwave",
+  "not": "desert",
+  "equation": "studio S0 --独·环境--> 爆光场 peep 反射吐再生 --追 B0→B3--> 散散{叠|斜|折} --hardpaste--> outside=0",
+  "PRIMARY": "斜_FOV",
+  "asof": "2026-11-12T03:00:04.029858+00:00",
+  "ACCEPT_FULL_HD": false
+}

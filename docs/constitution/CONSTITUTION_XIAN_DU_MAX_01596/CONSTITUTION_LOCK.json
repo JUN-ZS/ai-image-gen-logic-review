@@ -1,0 +1,11 @@
+{
+  "write": "01596",
+  "formal": "SHQ_XIAN_DU_MAX_V1",
+  "call": "先讀MAX",
+  "rule": "Imagine densify 在先读1 已生效；先读2 再生效再用（放大后再 densify）",
+  "N_MAX": 50,
+  "M_MAX": 6,
+  "E_CC_08": "先读1后无 densify1 就先读2",
+  "qinli_DNA": true,
+  "asof": "2026-11-11T07:34:27.309459+00:00"
+}

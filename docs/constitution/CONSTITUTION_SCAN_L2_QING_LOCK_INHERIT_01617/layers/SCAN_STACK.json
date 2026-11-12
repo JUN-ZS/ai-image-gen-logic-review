@@ -1,0 +1,55 @@
+{
+  "L1_除主": {
+    "name": "除主 L_bg",
+    "do": "外力/契约 除主 → 空景洞座底",
+    "inherit": null
+  },
+  "L2_座认": {
+    "name": "座认（第2层）",
+    "priority": "优取继承 SS验.清锁",
+    "call_inherit": [
+      "SS驗.清鎖",
+      "SS_YAN.QING_LOCK",
+      "STICK_SS_YAN_QING_LOCK"
+    ],
+    "parent_write": "01541",
+    "part_driver_optional": "01580 SS验.清锁·件",
+    "prefer_over": [
+      "纯语义点名框（无清锁闸）",
+      "裸 multi-CC 先读无 MARK 反扣",
+      "whole_subject 名当外力已懂"
+    ],
+    "must_capabilities": [
+      "WHOLE_BITE_CONTRACT EDIT 整件边界",
+      "elev/densify donor 契约锁回 peep（非 freeframe 主权）",
+      "MARK 反扣 outside=0",
+      "mark_frac 窗 + peep_ratio vs MARK",
+      "struct_lf 位锁（清锁位）",
+      "G_LOCK_1..7 AND"
+    ],
+    "equation": "L2 ≡ 优取(SS验.清锁) → seat_candidate = whole_bite ∧ MARK_anti ∧ peep_ratio",
+    "gates_from_01541": [
+      "G_LOCK_1",
+      "G_LOCK_2",
+      "G_LOCK_3",
+      "G_LOCK_4",
+      "G_LOCK_5",
+      "G_LOCK_6",
+      "G_LOCK_7"
+    ]
+  },
+  "L3_洞MARK": {
+    "name": "洞 MARK 冻",
+    "do": "在 L2 清锁合格座上 |L0−L_bg| 或 清锁 MARK 冻结",
+    "depends": "L2 PASS"
+  },
+  "L4_PAD": {
+    "name": "PAD大 冻 peep",
+    "do": "根 PAD_DA 只读 + 沙盒 MOD；pad_box FREEZE",
+    "root": "CONSTITUTION_SS_YAN_PAD_DA_ROOT"
+  },
+  "L5_虚回S链": {
+    "name": "虚回 / S0–S11",
+    "do": "fill hard 入座 · S11 outside=0 · 强心针 AND"
+  }
+}
