@@ -1,0 +1,71 @@
+{
+  "write_id": "01570",
+  "call": "虛回 × SS驗.清+C",
+  "flow": "peep已抽出 → path_C Detect PART(S) boxes_json → Imagine densify → 组elev → 虚回B_direct",
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "mecha",
+      "outside": 0,
+      "mad_vs_peep": 16.77,
+      "mad_parts": {
+        "P0_head": 18.94,
+        "P1_torso": 13.58,
+        "P2_legs": 20.57
+      },
+      "path_C": "SS验.清+C Detect PART → densify",
+      "follow": "B_direct_hard",
+      "exclusive": true,
+      "n_parts": 3,
+      "ok": true,
+      "claim": "C2_XU_HUI_SS_C_PART"
+    },
+    {
+      "id": "climber",
+      "outside": 0,
+      "mad_vs_peep": 13.95,
+      "mad_parts": {
+        "P0_head": 20.53,
+        "P1_torso": 10.93,
+        "P2_legs": 11.54
+      },
+      "path_C": "SS验.清+C Detect PART → densify",
+      "follow": "B_direct_hard",
+      "exclusive": true,
+      "n_parts": 3,
+      "ok": true,
+      "claim": "C2_XU_HUI_SS_C_PART"
+    },
+    {
+      "id": "rover",
+      "outside": 0,
+      "mad_vs_peep": 28.8,
+      "mad_parts": {
+        "P0_roof": 20.59,
+        "P1_body": 38.72,
+        "P2_tracks": 23.53
+      },
+      "path_C": "SS验.清+C Detect PART → densify",
+      "follow": "B_direct_hard",
+      "exclusive": true,
+      "n_parts": 3,
+      "ok": true,
+      "claim": "C2_XU_HUI_SS_C_PART"
+    }
+  ],
+  "path_C": {
+    "provider": "boxes_json",
+    "G_C0": true,
+    "PART_only_densify": true,
+    "WHOLE_via_assemble": true
+  },
+  "gates": {
+    "B_direct_hard": true,
+    "exclusive_parts": true,
+    "no_contract_lock": true,
+    "E-GRID-01_PART_not_WHOLE_return": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T03:46:28.354693+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "write": "01666",
+  "call": "正追",
+  "min_chain": [
+    "S0",
+    "MARK_NEAR",
+    "ENV(μ=正)",
+    "追·B1"
+  ],
+  "fix": "densify only in peep + hardpaste → outside leaf 0",
+  "scene": "jazz brass sax",
+  "gates": {
+    "E-ZZ-01_S0": true,
+    "E-ZZ-02_MARK": true,
+    "E-ZZ-03_ENV_正": true,
+    "E-ZZ-04_not_S11": true,
+    "E-FF-01_no_freeframe": true,
+    "leaf_outside0": true,
+    "hardpaste_seat_densify": true
+  },
+  "outside_leaf": 0,
+  "PASS": true,
+  "claim": "C1_LEAF_B1_ONLY",
+  "asof": "2026-11-12T03:59:31.491242+00:00",
+  "ACCEPT_FULL_HD": false,
+  "formal": "SHQ_ZHENG_ZHUI_MIN_B1_V1"
+}

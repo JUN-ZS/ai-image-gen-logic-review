@@ -1,0 +1,88 @@
+{
+  "write_id": "01535",
+  "DNA": {
+    "write_id": "01535",
+    "formal": "SHQ_GROK_INPAINT_SEAT_LOCK_V1",
+    "zh": "GROK 洞座 INPAINT 锁位升清",
+    "problem": "freeframe elev (61844e61) 位动 → 禁",
+    "method_rank": [
+      {
+        "name": "region_edit INPAINT @ MARK",
+        "ok": true,
+        "role": "PRIMARY · 洞内升清 洞外不动"
+      },
+      {
+        "name": "reference IP-adapter 锁构图+材质",
+        "ok": false,
+        "role": "易 freeframe 漂移 · 本轮 ref 全图作 FAIL 教材"
+      },
+      {
+        "name": "ControlNet/MESH pose",
+        "ok": "proxy",
+        "role": "本环境无独立 CN；用 peep/RET 位 + MARK 区作 pose/mesh 代理"
+      },
+      {
+        "name": "freeframe elev densify",
+        "ok": false,
+        "role": "BAN · E-WLF3 / elev≠seat"
+      }
+    ],
+    "equation": "S9 = S0A⊙(1−M) + INPAINT(RET|peep, detail_ref)⊙M ; outside=0 ; map 值表 → S11/S01",
+    "ban": [
+      "GROK freeframe 当 S7/S9",
+      "elev 冒 RETURN",
+      "无洞升清"
+    ]
+  },
+  "gates": {
+    "S9_outside_S0A": 0,
+    "S01_outside": 0,
+    "pose_shift_inpaint_vs_RET": {
+      "dx": 0,
+      "dy": 0,
+      "corr": 496388032.0
+    },
+    "pose_shift_freeframe_vs_RET": {
+      "dx": -4,
+      "dy": 4,
+      "corr": 241628768.0
+    },
+    "PASS_LOCK": true
+  },
+  "value_table_bbox": [
+    58,
+    85,
+    565,
+    730
+  ],
+  "chain": [
+    [
+      "公式 RET 金位",
+      true,
+      "17a35c57"
+    ],
+    [
+      "GROK region INPAINT 洞内",
+      true,
+      "274dead4"
+    ],
+    [
+      "hard outside S0A",
+      true,
+      "out=0"
+    ],
+    [
+      "S11≡S9",
+      true,
+      ""
+    ],
+    [
+      "S01 map 值表",
+      true,
+      "out=0"
+    ]
+  ],
+  "PASS": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T14:02:35.792774+00:00"
+}

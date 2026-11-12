@@ -1,0 +1,195 @@
+{
+  "write_id": "01534",
+  "formal": "SHQ_GROK_SHENG_VALUE_TABLE_TO_S11_V1",
+  "zh": "GROK升清 + 凍結值表 → S11",
+  "VALUE_TABLE": {
+    "write_source": "01533 REPORT_SS_YAN + S0A_META + HOLE_RETURN_SCALE_V1",
+    "Wh": 467,
+    "Hh": 597,
+    "sx": 0.6558988764044944,
+    "sy": 0.6582138919514884,
+    "s_used": {
+      "kind": "fill_hole",
+      "val": [
+        0.6558988764044944,
+        0.6582138919514884
+      ]
+    },
+    "k_zoom": 1.4991735537190083,
+    "We_S6": 712,
+    "He_S6": 907,
+    "peep_hw": [
+      605,
+      475
+    ],
+    "S0A_hw": [
+      646,
+      508
+    ],
+    "S0_hw": [
+      1008,
+      1792
+    ],
+    "bbox_xyxy_in_S0": [
+      58,
+      85,
+      565,
+      730
+    ],
+    "corners_in_S0": {
+      "TL": [
+        58,
+        85
+      ],
+      "TR": [
+        565,
+        85
+      ],
+      "BR": [
+        565,
+        730
+      ],
+      "BL": [
+        58,
+        730
+      ]
+    },
+    "ratio_asp_peep": 0.7851239669421488,
+    "ratio_asp_hole": 0.7822445561139029,
+    "fill_mode": "fill_hole",
+    "law": "值表凍結；GROK升清後只走 hole_return_scale + hardpaste + map S01；禁重開洞"
+  },
+  "elev_meta": {
+    "elev_is_child_of_peep": true,
+    "elev_is_not_RETURN": true,
+    "elev_remap": false,
+    "forbid": [
+      "elev_as_正生",
+      "elev_as_S9",
+      "elev_overwrite_peep"
+    ],
+    "source": "scale_lock_elev(peep@S0A, elev_im)",
+    "align": "peep 已在 S0A 放大洞位；elev freeframe 只供 HF 不供布局",
+    "elev_input_shape": [
+      1728,
+      1152
+    ],
+    "peep_shape": [
+      1210,
+      950
+    ]
+  },
+  "s7a_meta": {
+    "name": "S7A",
+    "parent": "S7",
+    "ephemeral": true,
+    "size_lock": true,
+    "elev_is_not_RETURN": true,
+    "law": "S7→S7A 升清 TEMP · (S)×(S) 洞准 · 用完可销"
+  },
+  "r_s9_meta": {
+    "We": 475,
+    "He": 605,
+    "Wh": 467,
+    "Hh": 597,
+    "sx": 0.9831578947368421,
+    "sy": 0.9867768595041322,
+    "s_fit": 0.9831578947368421,
+    "s_cover": 0.9867768595041322,
+    "s_used": {
+      "kind": "fill_hole",
+      "val": [
+        0.9831578947368421,
+        0.9867768595041322
+      ]
+    },
+    "k_zoom": 1.4991735537190083,
+    "offset_xy": [
+      0,
+      0
+    ],
+    "formula": "s_x=Wh/We; s_y=Hh/He; resize→洞; 框標置中",
+    "law": "01531 HOLE_RETURN_SCALE_V1",
+    "value_table_sx": 0.6558988764044944,
+    "value_table_sy": 0.6582138919514884,
+    "measured_sx": 0.9831578947368421,
+    "measured_sy": 0.9867768595041322
+  },
+  "frame": {
+    "bbox_xyxy": [
+      10,
+      24,
+      476,
+      620
+    ],
+    "Wh": 467,
+    "Hh": 597,
+    "cx": 243.0,
+    "cy": 322.0,
+    "asp_wh": 0.7822445561139029,
+    "area": 147921.0
+  },
+  "root": {
+    "k_zoom": 1.4991735537190083,
+    "k_S0A": 0.6408730158730159,
+    "k_peep": 0.9365325077399381,
+    "from": "VALUE_TABLE_01533"
+  },
+  "gates": {
+    "S7_size_lock_peep": true,
+    "S9_outside": 0,
+    "S11_outside": 0,
+    "S01_outside": 0,
+    "elev_is_not_RETURN": true,
+    "value_table_used": true,
+    "PASS": true
+  },
+  "boost": {
+    "AND": true,
+    "认": true,
+    "放大": true,
+    "升质x物": true,
+    "driver": "外力GROK",
+    "elev_asset": "61844e61"
+  },
+  "chain": [
+    [
+      "S5 peep0",
+      true,
+      "605x475"
+    ],
+    [
+      "S7 GROK elev child",
+      true,
+      "605x475"
+    ],
+    [
+      "S8 BOOST",
+      true,
+      "外力GROK"
+    ],
+    [
+      "S9 生 fill_hole",
+      true,
+      "out=0"
+    ],
+    [
+      "S10 hardpaste",
+      true,
+      "≡S9"
+    ],
+    [
+      "S11 工域反",
+      true,
+      "out=0"
+    ],
+    [
+      "S01×S0",
+      true,
+      "out=0"
+    ]
+  ],
+  "PASS_TO_S11": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:57:27.640641+00:00"
+}

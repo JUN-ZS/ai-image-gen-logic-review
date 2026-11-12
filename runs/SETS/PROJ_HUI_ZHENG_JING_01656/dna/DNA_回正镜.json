@@ -1,0 +1,7 @@
+{
+  "write_id": "01656",
+  "call": "回正镜",
+  "formal": "SHQ_HUI_ZHENG_JING_REFLECT_GUESS_V1",
+  "equation": "FF freeframe → 猜式反射像素ENV → 独环境灌S0 → 叠/斜/折 FOV hardpaste outside=0；FF不作金几何",
+  "asof": "2026-11-12T02:25:54.444063+00:00"
+}

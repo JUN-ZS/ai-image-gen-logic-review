@@ -1,0 +1,111 @@
+{
+  "write": "01614",
+  "call": "SS.验.PAD大",
+  "formal": "SHQ_SS_YAN_PAD_DA_ELEV_V1",
+  "PAD": 0.32,
+  "equation": "elev=外力densify(peep); I=(1-w)·base + w·blend(peep,elev)",
+  "alpha_peep": 0.4,
+  "n_elev": 8,
+  "parts": {
+    "CAMERA": {
+      "elev_asset": "3c8ca7d0-a4e1-44a8-a992-c17366399c1a",
+      "pad_box": [
+        405,
+        1008,
+        0,
+        442
+      ],
+      "mad_blend_vs_peep": 4.847,
+      "alpha_peep": 0.4
+    },
+    "BOTTLE": {
+      "elev_asset": "edbccf9f-4965-46b0-b918-9b1c71be947e",
+      "pad_box": [
+        219,
+        940,
+        122,
+        417
+      ],
+      "mad_blend_vs_peep": 10.412,
+      "alpha_peep": 0.4
+    },
+    "VASE": {
+      "elev_asset": "6ea3ee3a-e7bc-4b5e-b85b-1f63363d02bf",
+      "pad_box": [
+        198,
+        871,
+        216,
+        643
+      ],
+      "mad_blend_vs_peep": 5.677,
+      "alpha_peep": 0.4
+    },
+    "CHIPS": {
+      "elev_asset": "ae2d90b4-f5b9-469f-8c2e-65e4ff759309",
+      "pad_box": [
+        297,
+        822,
+        572,
+        1327
+      ],
+      "mad_blend_vs_peep": 4.475,
+      "alpha_peep": 0.4
+    },
+    "SANDWICH": {
+      "elev_asset": "adedba3b-a047-4d4b-9d2b-7149274b2fc4",
+      "pad_box": [
+        629,
+        990,
+        476,
+        903
+      ],
+      "mad_blend_vs_peep": 4.462,
+      "alpha_peep": 0.4
+    },
+    "WATCH": {
+      "elev_asset": "9c411e00-0d71-4033-8c36-5fdde0b3bfba",
+      "pad_box": [
+        722,
+        1008,
+        322,
+        617
+      ],
+      "mad_blend_vs_peep": 5.154,
+      "alpha_peep": 0.4
+    },
+    "CANDLE": {
+      "elev_asset": "48e16d29-e0c2-4448-bd67-12b3585e3e95",
+      "pad_box": [
+        511,
+        1008,
+        1103,
+        1496
+      ],
+      "mad_blend_vs_peep": 6.262,
+      "alpha_peep": 0.4
+    },
+    "TOOLS": {
+      "elev_asset": "f793b255-39a2-45b6-81ad-c10a8dbaf17d",
+      "pad_box": [
+        379,
+        1008,
+        1120,
+        1792
+      ],
+      "mad_blend_vs_peep": 7.123,
+      "alpha_peep": 0.4
+    }
+  },
+  "gates": {
+    "outside": 0,
+    "mad_all": 8.872936338163738,
+    "mad_hi_w": 26.29828825924523,
+    "mad_edge_w": 0.6589426516642529,
+    "edge_lt_center": true
+  },
+  "PASS": true,
+  "claim": "C2_SS_YAN_PAD_DA_ELEV_01614",
+  "constitution": "SETS/CONSTITUTION_SS_YAN_PAD_DA_01614",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:00:07.907539+00:00"
+}

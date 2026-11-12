@@ -1,0 +1,80 @@
+{
+  "write_id": "01507",
+  "formal": "SHQ_KUANGYA_3SUBJ_INDEPENDENT_V1",
+  "zh": "框牙验：图中3物分成3次独立运试",
+  "L0": "52e1ced2-2f47-4f62-9850-174347ea1dd5",
+  "subjects": [
+    "A_mecha 白机甲头",
+    "B_woman 女兵头",
+    "C_tank 红坦克炮塔"
+  ],
+  "rule": "各自独立 A alone / B alone / C alone；禁一次合众冒3独立",
+  "trials": [
+    {
+      "id": "A_mecha",
+      "zh": "白机甲头",
+      "独立": true,
+      "gates": {
+        "L1_洞座": true,
+        "peep0": true,
+        "正头_INPAINT": true,
+        "S11xS0_hard_out": true
+      },
+      "out_S11xS0": 0,
+      "out_fullframe_vs_S0": 195,
+      "assets": {
+        "L1": "7cbbdd31-674a-4327-bb1d-79856409a5cf",
+        "peep0": "fc287d8a-6ae2-44a1-bce1-bfa4a75e6583",
+        "正头": "565cb6c7-d5b4-4c16-ad13-ba883b5ce124",
+        "L1_reg": "07f25b1d-931f-4eb6-b08b-8d70080bfd58"
+      },
+      "PASS_indep": true
+    },
+    {
+      "id": "B_woman",
+      "zh": "女兵头",
+      "独立": true,
+      "gates": {
+        "L1_洞座": true,
+        "peep0": true,
+        "正头_INPAINT": true,
+        "S11xS0_hard_out": true
+      },
+      "out_S11xS0": 0,
+      "out_fullframe_vs_S0": 209,
+      "assets": {
+        "L1": "9cf18b85-a163-4e82-b25f-74c2c0d563ed",
+        "peep0": "45f857cd-8d5d-444b-aca4-4759b980be83",
+        "正头": "dbda0608-eaf2-48be-913a-cd782858b696",
+        "L1_reg": "c18a5b88-c9bb-4283-b01a-79872304a14a"
+      },
+      "PASS_indep": true
+    },
+    {
+      "id": "C_tank",
+      "zh": "红坦克炮塔",
+      "独立": true,
+      "gates": {
+        "L1_洞座": true,
+        "peep0": true,
+        "正头_INPAINT": true,
+        "S11xS0_hard_out": true
+      },
+      "out_S11xS0": 0,
+      "out_fullframe_vs_S0": 210,
+      "assets": {
+        "L1": "259d97db-6610-4790-b100-2ec86c589b22",
+        "peep0": "a2c8cb1d-7b6d-4dc7-8deb-a144c16887bd",
+        "正头": "2329a294-134f-4911-96a2-71968a3d62a1",
+        "L1_reg": "d03ee0d1-abe0-4cb8-9aeb-02b2196e5ce9"
+      },
+      "PASS_indep": true
+    }
+  ],
+  "PASS_all_indep": true,
+  "claim": "C2_KUANGYA_3SUBJ_INDEP",
+  "note": "本轮=3×独立正头大咬（Layer A→B per subject）；未做三物合众连动",
+  "constitution_parent": "01504",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T09:13:38.158256+00:00"
+}

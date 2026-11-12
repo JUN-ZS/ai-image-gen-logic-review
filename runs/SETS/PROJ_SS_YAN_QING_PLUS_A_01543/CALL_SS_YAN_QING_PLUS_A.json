@@ -1,0 +1,14 @@
+{
+  "call": "SS驗.清+A",
+  "do": [
+    "外力 EDIT 除主（build_chu_zhu_edit_prompt）得 L1",
+    "mark_semantic_from_L0_L1 → MARK_sem",
+    "area 闸 + 可选与 kou_part 交验",
+    "peep 裁 L0；donor 清锁；F2 SS验.清"
+  ],
+  "dont": [
+    "无 L1 用 pure CV 冒称 +A",
+    "elev freeframe 当语义洞",
+    "跳过 anti_kou 面积闸"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "write_id": "01526",
+  "formal": "SHQ_S9A_SHENG_EPHEMERAL_V1",
+  "zh": "S9 升清成 S9A · 供 S11×S0 更洞准 · 用完可销毁",
+  "flow": "S9 seat → S9A 升清 temp → S11×S0 fill←S9A → destroy S9A",
+  "S9A_used": true,
+  "outside_S11": 0,
+  "PASS_SX_FULL": true,
+  "destroyed": {
+    "destroyed": [
+      "S9A_SHENG_TEMP.png",
+      "S9A_SHENG_TEMP.jpg",
+      "Bus/S9A/S9A_SHENG_TEMP.jpg",
+      "Bus/S9A/S9A_SHENG_TEMP.png"
+    ],
+    "kept": [
+      "S9A_META.json",
+      "Bus/S9A/S9A_META.json",
+      "Bus/S9A/SLOT.json"
+    ],
+    "why": "S9A ephemeral — 用完可销毁；S11 已锁 S0",
+    "S11_PASS": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:02:27.950367+00:00"
+}

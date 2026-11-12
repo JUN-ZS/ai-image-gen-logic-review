@@ -1,0 +1,35 @@
+{
+  "write": "01642",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "外力GROK判定": {
+    "APPLE": "PASS",
+    "CUP": "PASS",
+    "FORK": "PASS"
+  },
+  "toxin_flags": [],
+  "DNA_audit": {
+    "used_prior_fractional_window": false,
+    "used_ying_tech": false,
+    "outside_alone_as_PASS": false,
+    "hole_source": "逐物外力除 |L0-L_rm| + CC（无手写 prior）",
+    "supply_source": "VIRTUAL_DIR/全相 独立 Imagine",
+    "描图": "contours(M) 无 cv2.rectangle 架构",
+    "toxin_flags": [],
+    "judges": {
+      "APPLE": "PASS",
+      "CUP": "PASS",
+      "FORK": "PASS"
+    }
+  },
+  "stack": [
+    "APPLE",
+    "CUP",
+    "FORK"
+  ],
+  "claim": "C2_CHAIN_ANTITOXIN_01642",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:20:26.680804+00:00"
+}

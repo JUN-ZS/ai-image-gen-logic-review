@@ -1,0 +1,10 @@
+{
+  "write_id": "01531",
+  "zh": "SS驗入憲 + 回洞升清比例公式",
+  "formal_SS": "SHQ_SS_YAN_SX_VERIFY_V1",
+  "formal_scale": "HOLE_RETURN_SCALE_V1",
+  "PASS_SS_YAN": true,
+  "PASS_HOLE_RETURN": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:43:06.397960+00:00"
+}

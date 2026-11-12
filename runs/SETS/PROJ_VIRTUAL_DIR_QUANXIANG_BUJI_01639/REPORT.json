@@ -1,0 +1,17 @@
+{
+  "write": "01639",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "VIRTUAL_DIR": "SETS/PROJ_VIRTUAL_DIR_QUANXIANG_BUJI_01639/VIRTUAL_DIR",
+  "supplies": [
+    "BOOKS",
+    "JAR",
+    "KETTLE",
+    "PEAR"
+  ],
+  "DEAD": "E-SEM-KUANG-01 旧框法",
+  "claim": "C2_VIRTUAL_DIR_QUANXIANG_01639",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:03:47.715875+00:00"
+}

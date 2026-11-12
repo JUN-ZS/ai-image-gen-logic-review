@@ -1,0 +1,18 @@
+{
+  "write": "01603",
+  "symptom": "object (水晶球顶) cut by frame",
+  "answers": {
+    "BBOX错?": "YES — peep=tight bbox of MARK, 0 margin; silhouette always touches frame",
+    "外部认错?": "PARTLY — Imagine freeframe can recompose and crop further",
+    "色PIXEL混扫描?": "YES primary for MARK — multi-CC color/luma diff, not semantic whole",
+    "要SS验.清锁才能使物品在框内?": "NO alone — 清锁 only outside=0 seat return; cannot enlarge incomplete peep"
+  },
+  "need_instead": [
+    "peep/MARK pad or semantic full-object seat BEFORE densify",
+    "SS验.清+A 语义反扣 optional for better MARK",
+    "Imagine densify with full-object-in-frame + peep ratio lock",
+    "THEN SS验.清锁 hard return"
+  ],
+  "focus_seat": "R2_O2 glass-high (illustrative); same class for all tight peeps",
+  "ACCEPT_FULL_HD": false
+}

@@ -1,0 +1,34 @@
+{
+  "write_id": "01535",
+  "formal": "SHQ_GROK_INPAINT_SEAT_LOCK_V1",
+  "zh": "GROK 洞座 INPAINT 锁位升清",
+  "problem": "freeframe elev (61844e61) 位动 → 禁",
+  "method_rank": [
+    {
+      "name": "region_edit INPAINT @ MARK",
+      "ok": true,
+      "role": "PRIMARY · 洞内升清 洞外不动"
+    },
+    {
+      "name": "reference IP-adapter 锁构图+材质",
+      "ok": false,
+      "role": "易 freeframe 漂移 · 本轮 ref 全图作 FAIL 教材"
+    },
+    {
+      "name": "ControlNet/MESH pose",
+      "ok": "proxy",
+      "role": "本环境无独立 CN；用 peep/RET 位 + MARK 区作 pose/mesh 代理"
+    },
+    {
+      "name": "freeframe elev densify",
+      "ok": false,
+      "role": "BAN · E-WLF3 / elev≠seat"
+    }
+  ],
+  "equation": "S9 = S0A⊙(1−M) + INPAINT(RET|peep, detail_ref)⊙M ; outside=0 ; map 值表 → S11/S01",
+  "ban": [
+    "GROK freeframe 当 S7/S9",
+    "elev 冒 RETURN",
+    "无洞升清"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "role": "S7A 升清临时 · 专供 (S)×(S) 洞准",
+  "parent": "S7 elev_child",
+  "from": "S7 ⊕ densify×2 ⊕ scale_lock peep 尺 ⊕ 洞内升清",
+  "NOT": [
+    "S7 gold permanent",
+    "RETURN/S9/S11 endpoint",
+    "freeframe layout"
+  ],
+  "ephemeral": true,
+  "destroy_after_S11": true,
+  "peep_hw": [
+    677,
+    544
+  ],
+  "s7a_hw": [
+    677,
+    544
+  ],
+  "size_lock": true,
+  "elev_is_child_of_peep": true,
+  "elev_is_not_RETURN": true,
+  "law": "S7→S7A(升清)→(S)×(S) 用 S7A；用完可销毁",
+  "algebra": "[(生,除,洞,扣)×(反)] · 升质@S7A temporary",
+  "for": [
+    "S8 BOOST",
+    "S9A fill donor",
+    "S11 hole align"
+  ]
+}

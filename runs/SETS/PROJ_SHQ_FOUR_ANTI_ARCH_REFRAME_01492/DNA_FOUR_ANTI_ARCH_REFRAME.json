@@ -1,0 +1,68 @@
+{
+  "write_id": "01492",
+  "formal": "SHQ_FOUR_ANTI_ARCH_REFRAME_BOOST_V1",
+  "STICK": "STICK_FOUR_ANTI_ARCH",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "root_equation": "[(生,除,洞,扣)×(反)] ← 外力GROK ⊕ 強心針[部件'認'∩放大∩升質×物]",
+  "bite_contract": "咬→洞；升清塊→回洞；同構必對上",
+  "layers": {
+    "A": "EDIT 咬頭 除扣洞反",
+    "B": "升清回位 認放大升質生回反",
+    "C": "分件/合眾 多葉小咬 頭鎖後才開"
+  },
+  "peep_scale_only": "S5+S6",
+  "pseudo_composition": {
+    "def": "獨立PASS≠可組合",
+    "compose_iff": [
+      "State Bus 共享",
+      "六+不變量繼承",
+      "同宣稱級",
+      "外力GROK 除生",
+      "BOOST AND",
+      "鏈頭 RESET_DONOR only"
+    ]
+  },
+  "invariants": [
+    "同機位",
+    "同洞形MARK",
+    "同peep bbox",
+    "elev_remap=false",
+    "洞外max_diff=0",
+    "scale-lock",
+    "外力GROK除生",
+    "part_role",
+    "BOOST AND"
+  ],
+  "state_bus_keys": [
+    "SRC",
+    "L1",
+    "MARK",
+    "peep",
+    "elev_candidate",
+    "I_sheng",
+    "RETURN",
+    "ANTI_boards",
+    "part_role",
+    "claim_level",
+    "corners_4",
+    "grow_max",
+    "driver"
+  ],
+  "parents": [
+    "01386",
+    "01448",
+    "01452",
+    "01453",
+    "01454",
+    "01457",
+    "01459",
+    "01466",
+    "01469",
+    "01483",
+    "01487",
+    "01489",
+    "01491"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:26:04.340599+00:00"
+}

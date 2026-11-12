@@ -1,0 +1,92 @@
+{
+  "CRYSTAL": {
+    "tight": [
+      624,
+      887,
+      573,
+      860
+    ],
+    "pad_box": [
+      576,
+      934,
+      521,
+      911
+    ],
+    "peep": "tmp/01608_peeps_mild/peep_CRYSTAL.jpg",
+    "h": 358,
+    "w": 390,
+    "pad_frac": 0.18
+  },
+  "RADIO": {
+    "tight": [
+      554,
+      887,
+      1290,
+      1702
+    ],
+    "pad_box": [
+      494,
+      946,
+      1215,
+      1776
+    ],
+    "peep": "tmp/01608_peeps_mild/peep_RADIO.jpg",
+    "h": 452,
+    "w": 561,
+    "pad_frac": 0.18
+  },
+  "BUST": {
+    "tight": [
+      383,
+      584,
+      752,
+      1039
+    ],
+    "pad_box": [
+      346,
+      620,
+      700,
+      1090
+    ],
+    "peep": "tmp/01608_peeps_mild/peep_BUST.jpg",
+    "h": 274,
+    "w": 390,
+    "pad_frac": 0.18
+  },
+  "MAGIC_BOX": {
+    "tight": [
+      584,
+      826,
+      143,
+      501
+    ],
+    "pad_box": [
+      540,
+      869,
+      78,
+      565
+    ],
+    "peep": "tmp/01608_peeps_mild/peep_MAGIC_BOX.jpg",
+    "h": 329,
+    "w": 487,
+    "pad_frac": 0.18
+  },
+  "SCOPE": {
+    "tight": [
+      423,
+      725,
+      1397,
+      1756
+    ],
+    "pad_box": [
+      368,
+      779,
+      1332,
+      1792
+    ],
+    "peep": "tmp/01608_peeps_mild/peep_SCOPE.jpg",
+    "h": 411,
+    "w": 460,
+    "pad_frac": 0.18
+  }
+}

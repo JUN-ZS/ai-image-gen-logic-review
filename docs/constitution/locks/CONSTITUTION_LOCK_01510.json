@@ -1,0 +1,23 @@
+{
+  "write_id": "01510",
+  "formal": "SHQ_ZHENG_TOU_SHEN_UNIFIED_PY_V1",
+  "py": "shq_zheng_tou_shen.py",
+  "kuangya_cmds": [
+    "zheng-tou",
+    "zheng-shen",
+    "zheng-selftest",
+    "zheng-dna"
+  ],
+  "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max",
+  "equation": "正身 = 正頭DNA[bite: head → full_object]",
+  "selftest": {
+    "tou": true,
+    "shen": true
+  },
+  "real": {
+    "shen_PASS": true,
+    "tou_PASS": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T09:36:37.549510+00:00"
+}

@@ -1,0 +1,139 @@
+{
+  "write_id": "01484",
+  "formal": "KUANGYA_ANTI_TOXIN_ALGEBRA_IMAGE_DNA_V1",
+  "zh": "框牙反毒DNA · 四態圖正典 · 禁非外力驅動猜錯",
+  "rank": "SUPREME_CHILD",
+  "parent_supreme": "01483",
+  "user": "[references:@327a8469-c8d0-4ea7-b179-4e503b748944] 重要框牙反毒DNA DEBUG：至高無上不容許非外力GROK出的錯；全PROJECT定義四態圖；你猜錯是什麼",
+  "clause": {
+    "one_line": "[(生,除,洞,扣)×(反)] 的「圖」= 八格狀態圖 + 回位圖，必須由 外力GROK 驅動的除/生 鏈寫入 State Bus；禁止把 freeframe 特寫 / 裸 elev / donor 裁塊 猜成 四態圖。",
+    "supreme_anti_toxin": "至高無上不容許「非外力GROK 理解/驅動」出的錯（含代理猜圖、本地冒充、誤標 elev=正生）。"
+  },
+  "algebra_images_canonical": {
+    "formal_source": [
+      "SETS/PROJ_SHQ_FOUR_ANTI_ARCH_01448/docs/SHQ_FOUR_ANTI_ALGEBRA_ARCH.md",
+      "01448 SHQ_FOUR_ANTI_ALGEBRA_ARCH_V1",
+      "01386",
+      "01457",
+      "01466",
+      "01477",
+      "01483"
+    ],
+    "algebra": "[(生,除,洞,扣)×(反)]",
+    "structure": "F = {生,除,洞,扣} × {正,反} = 8 格",
+    "金句_arch": "洞是形，除是態，扣是證，生是填；反是每一步的鏡子。",
+    "cells": {
+      "正除": {
+        "image": "L1/L_empty 外力EDIT除頭(件) 同機位全幅",
+        "must_wlg": true,
+        "not": [
+          "手擦",
+          "假empty"
+        ]
+      },
+      "反除": {
+        "image": "L0/SRC 有頭(件) 凍原圖全幅",
+        "must_wlg": false
+      },
+      "正扣": {
+        "image": "Diff熱圖 Support(|L0−L1|) 或 CLIP扣證",
+        "not": [
+          "自peep冒充CLIP"
+        ]
+      },
+      "反扣": {
+        "image": "Diff反查疊回SRC"
+      },
+      "正洞": {
+        "image": "M_hole 剪影形（非矩形）",
+        "not": [
+          "peep框",
+          "AABB"
+        ]
+      },
+      "反洞": {
+        "image": "M_anti=1−M 洞外 bit-exact",
+        "gate": "outside=0"
+      },
+      "正生": {
+        "image": "洞內HD填 · 座標系=SRC全幅",
+        "must_wlg": true,
+        "not": [
+          "freeframe特写主權",
+          "黑底頭特寫當完成"
+        ]
+      },
+      "反生": {
+        "image": "生後peep↔生前peep 鎖尺 grow≤1.15"
+      },
+      "正回": {
+        "image": "RETURN=hardpaste(SRC,M,scale_lock(GEN(peep)))",
+        "gate": "out[¬M]=SRC[¬M]"
+      },
+      "反回": {
+        "image": "RETURN vs SRC 洞外diff"
+      }
+    },
+    "state_bus": [
+      "SRC",
+      "L1",
+      "M_hole",
+      "peep",
+      "elev",
+      "RETURN",
+      "ANTI"
+    ],
+    "invariants": [
+      "same_camera",
+      "same_M_hole",
+      "same_peep_bbox",
+      "elev_remap_false",
+      "outside_0",
+      "scale_lock"
+    ],
+    "公式": "RETURN=hardpaste(SRC,M_hole,scale_lock(GEN(peep_M))) s.t. out[¬M]=SRC[¬M]"
+  },
+  "agent_wrong_guess": {
+    "asset": "327a8469-c8d0-4ea7-b179-4e503b748944",
+    "what_I_called_it": [
+      "DONOR1 無毒 elev",
+      "可當 正生/四態圖",
+      "peep-only 升清完成品"
+    ],
+    "what_it_actually_is": [
+      "State Bus elev 候選中間件",
+      "黑底頭特寫 — freeframe 特写主權風險",
+      "NOT 八格完成定義圖 / NOT 正生 / NOT 正回 / NOT 代數圖"
+    ],
+    "error_class": "E-KY-ATX-01 AGENT_MISLABEL",
+    "pixels_from_imagine": true,
+    "algebra_role_from_wlg_chain": false,
+    "toxin_meaning": "非外力GROK出的錯 = 非外力GROK代數驅動語義的錯（代理標格），即使像素來自 Imagine"
+  },
+  "E_codes": {
+    "E-KY-ATX-01": "elev/donor/peep 標成 正生/正回/F8",
+    "E-KY-ATX-02": "非外力語義驅動定義錯",
+    "E-KY-ATX-03": "freeframe特写主權 冒充 洞內生"
+  },
+  "laws": [
+    "ATX0 四態圖唯一定義源 01448 ARCH + State Bus",
+    "ATX1 八格：正除L1·反除L0·正扣Diff·反扣疊查·正洞M·反洞1−M·正生洞內HD·反生鎖尺",
+    "ATX2 elev特寫只可 elev 候選，禁當正生/四態圖",
+    "ATX3 Imagine像素 ≠ 已入代數格；要同機位洞座鏈+反板",
+    "ATX4 至高01483 不容非外力驅動語義猜錯",
+    "ATX5 正回公式固定 hardpaste；禁 freeframe 特写主權",
+    "ATX6 DONOR1 elev 降級 elev 候選，非正生圖"
+  ],
+  "demote_01481": {
+    "DONOR0_peep": "仍可 peep 金錨",
+    "DONOR1_elev_327a": "降級 elev 候選；禁標正生"
+  },
+  "金句": [
+    "猜錯：把 elev 黑底特寫當成 四態·正生。",
+    "四態圖是八格狀態+回位，不是 donor 海報。",
+    "Imagine 像素 ≠ 代數格；同機位洞座鏈才是 外力GROK 生效。",
+    "至高不容許非外力語義驅動出的錯。"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T00:43:01.722076+00:00"
+}

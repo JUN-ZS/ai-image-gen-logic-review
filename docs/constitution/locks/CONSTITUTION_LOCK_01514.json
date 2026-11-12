@@ -1,0 +1,10 @@
+{
+  "write_id": "01514",
+  "zh": "洞位(S)各层同 S0A 放大对位 → elev/freeframe 不错",
+  "law": "MARK·peep·elev·S9·S11 share S0A×scale canvas",
+  "elev": "HF donor only; layout=peep@S0A",
+  "freeframe": "crop+scale to S0A then seat-born",
+  "PASS": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T10:18:38.797497+00:00"
+}

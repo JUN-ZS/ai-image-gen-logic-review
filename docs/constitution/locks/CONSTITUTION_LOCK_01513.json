@@ -1,0 +1,10 @@
+{
+  "write_id": "01513",
+  "zh": "S0A 大切块后放大 → S2易扣 → 缩回 S01",
+  "s0a_scale_default": 2.0,
+  "s0a_min_side_default": 1024,
+  "flow": "S0→S0A_native→S0A×scale→S1..S11→resize→S01",
+  "PASS_shen": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T10:09:50.615888+00:00"
+}

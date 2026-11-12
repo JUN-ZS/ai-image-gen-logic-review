@@ -1,0 +1,146 @@
+{
+  "write_id": "01480",
+  "formal": "DNA_FREEFRAME_VS_WAI_LI_GROK_V1",
+  "zh": "freeframe 與 外力GROK 關係 · DNA DEBUG LOG",
+  "user": "log debug dna -->freeframe 與外力GROK<-- 關係",
+  "asof": "2026-11-10T00:20:35.606229+00:00",
+  "ACCEPT_FULL_HD": false,
+  "definitions": {
+    "外力GROK": {
+      "formal": "WAI_LI_GROK",
+      "STICK": "STICK_WAI_LI_GROK",
+      "zh": "外力 = Imagine/Grok 工具鏈介入，非本地 OpenCV/HF 冒充",
+      "role": [
+        "除背 / 除件 / 除頭 的 Imagine EDIT",
+        "生@洞座 的 Imagine 填洞",
+        "升清 elev 的 Imagine densify（禁本地 HF 當 生）"
+      ],
+      "must": true,
+      "E_if_missing": [
+        "E-WLG-02",
+        "E-WLG-06",
+        "E-DNA-CANCER-SELF_PEEP"
+      ]
+    },
+    "freeframe": {
+      "formal": "FREEFRAME",
+      "zh": "同一次 Imagine 輸出整幅景被重繪，洞外像素相對 base 大幅漂移",
+      "symptom": [
+        "maxdiff(I, base, ¬M) >> 0",
+        "ncc(I, base) 明顯下降",
+        "身/景/右機 一併改寫，不只洞內"
+      ],
+      "not": "不是一種合法 STICK；不是 外力GROK 的同義詞",
+      "E_if_as_return": [
+        "E-XHN2-01",
+        "E-XHN2-03",
+        "E-WLF3-01",
+        "E-POLLUTE-HOLE_RETURN_FREEFRAME",
+        "Q6_no_freeframe_steal"
+      ]
+    }
+  },
+  "relation": {
+    "one_line": "外力GROK 是合法工具主權；freeframe 是外力輸出的一種失控形態，不是主權本身。",
+    "formula": {
+      "外力GROK": "ToolAuthority(Imagine)",
+      "freeframe": "FailureMode(ImagineOutput) when outside_hole drifts",
+      "seat_born": "外力GROK ∧ base=L_empty ∧ fill⊆M ∧ outside≈0",
+      "pollute": "RETURN ← freeframe[M]  ∨  freeframe 當 完成圖"
+    },
+    "venn": {
+      "only_外力GROK": "Imagine 生@L_empty 只填洞 · hardpaste 證 · outside≈0",
+      "intersection_danger": "外力GROK 跑了，但輸出 freeframe 漂全身 → 必須 hardpaste 回收洞外；不可整圖當 RETURN",
+      "only_freeframe": "無洞嵌臉 / 全圖重生當回 · 純錯教材",
+      "neither": "本地 peep/HF 冒充 生 · DNA cancer"
+    },
+    "truth_table": [
+      {
+        "外力GROK": true,
+        "freeframe": false,
+        "ok": true,
+        "claim_max": "C2",
+        "note": "seat-born 理想"
+      },
+      {
+        "外力GROK": true,
+        "freeframe": true,
+        "ok": "SOFT",
+        "claim_max": "C1",
+        "note": "生@empty 但洞外漂 → hardpaste 證；未 bitexact 只填"
+      },
+      {
+        "外力GROK": false,
+        "freeframe": true,
+        "ok": false,
+        "claim_max": "C0",
+        "note": "無主權 freeframe 回"
+      },
+      {
+        "外力GROK": false,
+        "freeframe": false,
+        "ok": false,
+        "claim_max": "C0",
+        "note": "本地冒充 / self peep"
+      }
+    ]
+  },
+  "measured_on_01475": {
+    "project": "PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475",
+    "old_I_HD_sheng_freeframe": {
+      "out_vs_L0_outside_M": 236,
+      "ncc_vs_L0": 0.785,
+      "外力GROK": true,
+      "freeframe": true,
+      "use_as_return_crop": "E-POLLUTE"
+    },
+    "I_seat_1e409d6a_on_L_empty": {
+      "base": "L_empty",
+      "外力GROK": true,
+      "out_vs_L_empty_outside_M": 241,
+      "freeframe_soft": true,
+      "hardpaste_outside_L0": 0,
+      "claim": "C1",
+      "note": "外力GROK∩freeframe SOFT → 靠 hardpaste 救洞外"
+    }
+  },
+  "dna_laws": [
+    "L1  外力GROK 強制：除/生/升清 主權在 Imagine，不在本地。",
+    "L2  freeframe 禁止當 RETURN 整圖或「生@洞」完成證明。",
+    "L3  freeframe 可作 ERROR_TEXTBOOK / 中間想像，不可作 正回 源。",
+    "L4  若 外力GROK 輸出 freeframe：必須 MARK 凍 + hardpaste 只填 M；洞外 ≡ base。",
+    "L5  seat_born = 外力GROK ∧ base=L_empty ∧ 意圖只填洞；bitexact 只填 → C2，soft 漂 → C1。",
+    "L6  outside=0 只證 hardpaste，不證 freeframe 消失。",
+    "L7  自 peep / 本地 elev 既非 外力GROK 亦常伴假洞，雙禁。"
+  ],
+  "gates_for_F8_and_框牙": {
+    "must_wai_li_grok_elev": true,
+    "sheng_seat_born": "required for F8_PASS semantic",
+    "no_freeframe_hole_return": "required",
+    "hardpaste_proof_only": true,
+    "outside0_alone_insufficient": true,
+    "measure_freeframe": "maxdiff(I, base, ¬M) ; thr~25–30"
+  },
+  "persona_forbid_require": {
+    "forbid": [
+      "freeframe_as_hole_return",
+      "freeframe_as_RETURN",
+      "outside0_only_PASS",
+      "E-POLLUTE-HOLE_RETURN_FREEFRAME",
+      "local_elev_as_sheng"
+    ],
+    "require": [
+      "must_wai_li_grok",
+      "seat_born_sheng",
+      "hardpaste_proof_only",
+      "log_freeframe_metric",
+      "ERROR_TEXTBOOK_on_no_hole_return"
+    ]
+  },
+  "金句": [
+    "外力GROK 是刀；freeframe 是刀口失控。",
+    "有外力無洞回 = 污染；有洞無外力 = 自 peep 癌。",
+    "freeframe ∩ 外力GROK = 常見；freeframe ≡ 外力GROK = 謬。",
+    "hardpaste 救洞外，不洗 freeframe 原罪。"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "write_id": "01590",
+  "formal": "SHQ_CENG_CENG_HUI_SUO_V1",
+  "zh": "層層回鎖",
+  "stick": "STICK_CENG_CENG_HUI_SUO",
+  "qinli": true,
+  "parent_writes": [
+    "01589",
+    "01580",
+    "01563",
+    "01523",
+    "01587-fail-notes"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T06:30:15.449094+00:00"
+}

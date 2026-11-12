@@ -1,0 +1,56 @@
+{
+  "write_id": "01568",
+  "test": "虚回：物改红→回图；无红DEBUG",
+  "PASS": false,
+  "outside": 0,
+  "red_final": 0.4863,
+  "leaf": [
+    {
+      "id": "rover",
+      "outside": 0,
+      "mode": "direct_red_elev_hard",
+      "red_elev": 0.333,
+      "red_fill": 0.333,
+      "red_S9": 0.333,
+      "has_red_in_return": false,
+      "ok": false
+    },
+    {
+      "id": "mecha",
+      "outside": 0,
+      "mode": "direct_red_elev_hard",
+      "red_elev": 0.704,
+      "red_fill": 0.704,
+      "red_S9": 0.704,
+      "has_red_in_return": true,
+      "ok": true
+    },
+    {
+      "id": "climber",
+      "outside": 0,
+      "mode": "direct_red_elev_hard",
+      "red_elev": 0.358,
+      "red_fill": 0.358,
+      "red_S9": 0.358,
+      "has_red_in_return": false,
+      "ok": false
+    }
+  ],
+  "debug": [
+    {
+      "id": "rover",
+      "bug": "E-XU-RED-01 回图无红",
+      "red_S9": 0.33276877971022745,
+      "red_fill": 0.33276877971022745,
+      "red_elev": 0.33276877971022745
+    },
+    {
+      "id": "climber",
+      "bug": "E-XU-RED-01 回图无红",
+      "red_S9": 0.35768755152514425,
+      "red_fill": 0.35768755152514425,
+      "red_elev": 0.35768755152514425
+    }
+  ],
+  "asof": "2026-11-11T03:20:52.153818+00:00"
+}

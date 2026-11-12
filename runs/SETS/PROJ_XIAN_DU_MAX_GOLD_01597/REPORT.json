@@ -1,0 +1,41 @@
+{
+  "write": "01597",
+  "call": "先讀MAX 金跑",
+  "formal": "SHQ_XIAN_DU_MAX_GOLD_V1",
+  "bloodline": "library_01592",
+  "chain": "先读1≤50 → densify1_Imagine(top8)+local → 先读2 discovery → densify2_Imagine(top8)+local → 层回锁",
+  "先读1": {
+    "n": 50,
+    "N_MAX": 50
+  },
+  "densify1": {
+    "K1": 8,
+    "n_Imagine": 8,
+    "n_local": 42
+  },
+  "先读2": {
+    "total_kids": 53,
+    "M_MAX": 6
+  },
+  "densify2": {
+    "K2": 8,
+    "n_Imagine": 8,
+    "n_local": 45
+  },
+  "层回锁": {
+    "n": 50,
+    "n_ok": 50,
+    "outside_union": 0,
+    "PASS": true
+  },
+  "qinli": {
+    "I-PROCESS": "densify1@xian1 densify2@xian2",
+    "I-SEAT": true,
+    "E-CC-08": false,
+    "E-CC-06": false
+  },
+  "PASS": true,
+  "claim": "C2_XIAN_DU_MAX",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T07:42:58.039076+00:00"
+}

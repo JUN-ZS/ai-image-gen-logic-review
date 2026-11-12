@@ -1,0 +1,19 @@
+{
+  "write_id": "01521",
+  "branch_from": "84a68295 peep 咬塊",
+  "elev": "1381cbe4 外力升清 from peep",
+  "law": "咬→洞→升清→回洞对得上 + 正身 S0-S11 新DNA + S11×S0",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "PASS_SX_FULL": true,
+  "claim": "C2_S11xS0_ALIGN_BOOST_SHEN",
+  "S11xS0_outside": 0,
+  "S01_S0_outside": 0,
+  "boost_AND": true,
+  "size_lock": true,
+  "PASS_align": true,
+  "E-SX-06": "clear",
+  "E-SX-07": "clear",
+  "kuangya_zheng_shen": true,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T12:09:07.414894+00:00"
+}

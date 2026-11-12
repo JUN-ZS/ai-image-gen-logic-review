@@ -1,0 +1,11 @@
+{
+  "hole_only": true,
+  "outside": 0,
+  "PASS": true,
+  "boost_AND": true,
+  "driver": "外力GROK",
+  "donor": "elev_correct freeframe → peep lock → seat-born",
+  "formula": "只有洞 (S)×(S) DEBUG 回 S0",
+  "E-WLF3-01": "无洞回=禁",
+  "claim": "C2_S0R_HOLE_ONLY_SX"
+}

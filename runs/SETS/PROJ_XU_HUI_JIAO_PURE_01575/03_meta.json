@@ -1,0 +1,13 @@
+{
+  "bbox": [
+    0,
+    209,
+    226,
+    511
+  ],
+  "scale": 2.5,
+  "area": 67419,
+  "peep_source": "L1_only_jiao_NOT_SRC",
+  "invariant": "peep 不得含头手身像素",
+  "same_logic_as": "除主留景 / SS验.清+A · 格局=PART"
+}

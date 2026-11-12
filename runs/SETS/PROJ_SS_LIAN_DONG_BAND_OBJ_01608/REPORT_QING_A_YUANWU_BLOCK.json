@@ -1,0 +1,21 @@
+{
+  "write": "01608d",
+  "call": "SS驗.清+A",
+  "gold": "把除去的原物搬回来",
+  "equation": "peep_i = L0[pad_i]（原像素）; FINAL = L_bg_qing ⊙ (1-M_pads) + peep_i ⊙ pads",
+  "ban": "Imagine freeframe densify 重生后冒原物",
+  "objects": [
+    "CRYSTAL",
+    "RADIO",
+    "BUST",
+    "MAGIC_BOX",
+    "SCOPE"
+  ],
+  "outside_png": 0,
+  "PASS": true,
+  "bitexact_obj_vs_L0": true,
+  "claim": "C2_QING_A_YUANWU_BLOCK_RETURN",
+  "note": "pad 框级整块原物；真剪影 MARK 需同机位除主冻座（L_bg 为 Imagine 空景时差分座会碎）",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T16:13:39.872318+00:00"
+}

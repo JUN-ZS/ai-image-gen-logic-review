@@ -1,0 +1,109 @@
+{
+  "write_id": "01536",
+  "formal": "SHQ_SS_YAN_V2_INPAINT_SEAT_V1",
+  "zh": "SS驗",
+  "call": "SS驗",
+  "version": "V2",
+  "stick": "STICK_SS_YAN_V2",
+  "parent_sticks": [
+    "STICK_SS_YAN",
+    "STICK_3D_SS",
+    "STICK_GROK_INPAINT_SEAT"
+  ],
+  "from_writes": [
+    "01531",
+    "01532",
+    "01533",
+    "01534",
+    "01535"
+  ],
+  "one_liner": "同域对位硬闸 + 回洞值表 + 外力GROK只许洞座INPAINT升清 + 禁freeframe；3D SS为伴生名",
+  "equation": "SS驗_V2 = ∀同域(Si×Sj): size_lock ∧ outside(M)=0 ∧ RATIO(peep,洞) ∧ 回洞 s_x=Wh/We,s_y=Hh/He (值表可冻) ∧ 生 = INPAINT@MARK (非 freeframe elev) ∧ elev≠RETURN ∧ S11×S0 锁",
+  "gates": {
+    "G0_DOMAIN": "同域才可比；跨域须 map/S0A",
+    "G1_SIZE": "同域 size_lock",
+    "G2_OUTSIDE": "有 MARK 时洞外 max_diff=0",
+    "G3_RATIO": "peep asp vs 洞 asp",
+    "G4_ELEV": "S7 peep尺；elev≠S11/RETURN",
+    "G5_S11xS0": "S01/S11 回母帧洞外0",
+    "G6_ALGEBRA": "除洞扣生反落点可追溯",
+    "G7_INPAINT_SEAT": "NEW · 升清必须洞座 INPAINT/region@MARK；freeframe elev=BAN · 落点=SS验.清 F2 hardlock",
+    "G8_POSE_LOCK": "NEW · INPAINT vs 金位 peep/RET shift |dx|+|dy|≤1",
+    "G9_VALUE_TABLE": "NEW · 回洞可用冻结 Wh,Hh,sx,sy,k_zoom,bbox"
+  },
+  "sheng_method_rank": [
+    {
+      "rank": 1,
+      "name": "region_edit INPAINT @ MARK",
+      "status": "PRIMARY"
+    },
+    {
+      "rank": 2,
+      "name": "peep+MARK pose/mesh 代理 (CN/MESH 缺时)",
+      "status": "PROXY"
+    },
+    {
+      "rank": 3,
+      "name": "reference IP 锁构图+材质",
+      "status": "慎用·易漂"
+    },
+    {
+      "rank": 99,
+      "name": "freeframe elev densify",
+      "status": "BAN"
+    }
+  ],
+  "formula_hole_return": {
+    "formal": "HOLE_RETURN_SCALE_V1",
+    "s_x": "Wh/We",
+    "s_y": "Hh/He",
+    "mode_gold": "fill_hole",
+    "law": "放大→洞尺→框標置中 hardpaste"
+  },
+  "3D_SS": {
+    "call": "3D SS",
+    "role": "SS验PASS后的微残差效果名，不替代硬闸",
+    "stick": "STICK_3D_SS"
+  },
+  "error_codes": {
+    "E-SS-00": "跨域直接比",
+    "E-SS-01": "同域 size mismatch",
+    "E-SS-02": "洞外 ≠0",
+    "E-SS-03": "peep RATIO",
+    "E-SS-04": "elev≠peep 或 elev 冒 RETURN",
+    "E-SS-05": "S11/S01 未锁 S0",
+    "E-SS-06": "除输入尺 ≠ S0",
+    "E-SS-07": "S6 放大未回锁 peep",
+    "E-SS-08": "NEW · freeframe elev 当生/S9",
+    "E-SS-09": "NEW · INPAINT 位动 |dx|+|dy|>1",
+    "E-SS-10": "NEW · 无值表/无框標硬回洞"
+  },
+  "chain_gold": [
+    "S0 冻",
+    "S0A 子集工域",
+    "S1 外力除",
+    "S2 扣",
+    "S3 洞 MARK",
+    "S5 peep0 金位",
+    "S6 放大暂态 (可值表)",
+    "S7 仅 peep 尺子；真升清=INPAINT@洞",
+    "S8 BOOST",
+    "S9 生 = hard(S0A, INPAINT⊙M)",
+    "S10 hardpaste",
+    "S11 工域反 outside=0",
+    "S01 map 值表 bbox → 母帧"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T14:06:14.275680+00:00",
+  "parents": {
+    "01531": "SHQ_SS_YAN_SX_VERIFY_V1",
+    "01532": "SHQ_3D_SS_MICRO_PARALLAX_V1",
+    "01535": "SHQ_GROK_INPAINT_SEAT_LOCK_V1"
+  },
+  "child_tech": {
+    "call": "SS驗.清",
+    "write": "01539",
+    "formal": "SHQ_SS_YAN_QING_SEAT_HARDLOCK_V1",
+    "stick": "STICK_SS_YAN_QING"
+  }
+}

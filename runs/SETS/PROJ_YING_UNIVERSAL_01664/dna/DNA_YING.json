@@ -1,0 +1,21 @@
+{
+  "write_id": "01664",
+  "call": "应",
+  "formal": "SHQ_YING_UNIVERSAL_DU_ENV_V1",
+  "equation": "S0 --ENV(mu)--> 追 B0→B3 --(×独·环境)?--> hardpaste outside=0",
+  "mu": [
+    "正",
+    "逆",
+    "独",
+    "正×独"
+  ],
+  "extracted_from": [
+    "追/f19885e7",
+    "正B1/faed3745",
+    "正B1/f7045d67"
+  ],
+  "PRIMARY": "正×独",
+  "scene_test": "雨夜机车 neon chrome",
+  "asof": "2026-11-12T03:45:24.780498+00:00",
+  "ACCEPT_FULL_HD": false
+}

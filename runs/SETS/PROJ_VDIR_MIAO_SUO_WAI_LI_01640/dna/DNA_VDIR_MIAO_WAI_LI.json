@@ -1,0 +1,59 @@
+{
+  "write_id": "01640",
+  "call": "描图锁回·外力GROK",
+  "formal": "SHQ_VDIR_MIAO_SUO_WAI_LI_GROK_SUPREME_V1",
+  "zh": "VIRTUAL_DIR 存描图以锁回；外力GROK判定；至高无上",
+  "至高无上": {
+    "clause": "[(生,除,洞,扣)×(反)] ← 外力GROK 优先理解并驱动生效",
+    "code": "SUPREME_F_WAI_LI_GROK",
+    "rank": 0,
+    "overrides": [
+      "旧框法",
+      "影技术",
+      "outside alone",
+      "乱CC座",
+      "矩形窗"
+    ]
+  },
+  "外力GROK判定": {
+    "role": "对 除/生/全相/描图 是否合格做语义判定；OpenCV 只扣、贴、反查",
+    "judge": [
+      "全相是否整件（非半物）",
+      "描图是否贴真缘（非矩形框）",
+      "锁回是否经洞座",
+      "禁止 freeframe 无洞冒回"
+    ],
+    "not": "不读 preset 名 whole_subject 当语义"
+  },
+  "E-SEM-KUANG-01": {
+    "status": "DEAD",
+    "ref": "06caf44d 绿矩形框 = 旧框法",
+    "dao_fan": "框当座 ∧ 洞为真座 → 矛盾 → 框 DEAD"
+  },
+  "VIRTUAL_DIR": {
+    "描图": "每物轮廓描图（锁回用坐标/缘，非矩形框）",
+    "全相": "独立生成补给",
+    "HOLE_座": "洞=扣(除)",
+    "META": "外力判定记录 + freeze"
+  },
+  "锁回": {
+    "eq": "R = B⊙(1−M) + Supply_全相⊙M",
+    "M": "洞；描图只作缘/反查/虚回认位，不当矩形框",
+    "driver": "外力GROK 判定 PASS 才可宣称 C2"
+  },
+  "DEAD": [
+    "旧框法",
+    "矩形先验窗画框",
+    "影技术",
+    "outside alone PASS"
+  ],
+  "LIVE": [
+    "至高F←外力GROK",
+    "VDIR描图",
+    "VDIR全相",
+    "洞座锁回",
+    "步步為一"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:10:07.188190+00:00"
+}

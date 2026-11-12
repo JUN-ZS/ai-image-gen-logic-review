@@ -1,0 +1,16 @@
+{
+  "S01_from": "S0A_map_back",
+  "outside_in_S0": 0,
+  "PASS": true,
+  "bbox": [
+    6,
+    20,
+    480,
+    624
+  ],
+  "formula": "只有洞(S)×(S) ← 外力GROK elev ⊕ 强心针 → S0；outside=0",
+  "s01_note": "只有洞 (S)×(S) DEBUG ← 外力GROK elev_correct ⊕ 强心针",
+  "hole_only_sx": true,
+  "boost_AND": true,
+  "driver": "外力GROK"
+}

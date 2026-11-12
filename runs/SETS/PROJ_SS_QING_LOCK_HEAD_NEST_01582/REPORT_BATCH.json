@@ -1,0 +1,54 @@
+{
+  "write_id": "01580",
+  "call": "SS验.清锁·件",
+  "formal": "SHQ_SS_QING_LOCK_PART_STRUCTURE_DRIVER_V1",
+  "stick": "STICK_SS_QING_LOCK_PART",
+  "structure": "SETS/PROJ_SS_QING_LOCK_HEAD_NEST_01582/PART_STRUCTURE.json",
+  "profile": "mecha",
+  "parts": [
+    {
+      "id": "HEAD",
+      "zh": "头",
+      "outside": 0,
+      "mad": 6.711,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    },
+    {
+      "id": "ARM",
+      "zh": "臂",
+      "outside": 0,
+      "mad": 6.605,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    },
+    {
+      "id": "TORSO",
+      "zh": "躯干",
+      "outside": 0,
+      "mad": 5.733,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    },
+    {
+      "id": "LEG",
+      "zh": "腿",
+      "outside": 0,
+      "mad": 7.229,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    }
+  ],
+  "outside_union": 0,
+  "n_ok": 4,
+  "n_run": 4,
+  "PASS": true,
+  "claim": "C2_SS_QING_LOCK_PART_BATCH",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T05:25:16.549185+00:00",
+  "equation": "∀p: MARK_p → peep_p → elev_p → RETURN = L0⊙(1−M_p)+elev⊙M_p · ‖·‖_out=0"
+}

@@ -1,0 +1,255 @@
+{
+  "write_id": "01494",
+  "formal": "SHQ_S_PROGRAM_TEACH_V1",
+  "zh": "S 程序教學 · 聯動生圖可跟練課綱",
+  "combined": true,
+  "sources": [
+    "01492",
+    "01489",
+    "01487",
+    "01448",
+    "01493"
+  ],
+  "root_equation": "[(生,除,洞,扣)×(反)] ← 外力GROK ⊕ 強心針[認∩放大∩升質×物]",
+  "bite_contract": {
+    "洞": "形＝抓走前座位 MARK",
+    "除": "態＝離開（外力GROK）",
+    "扣": "證＝驗票（不重寫洞）",
+    "生": "填＝洞座升級",
+    "反": "鏡＝每步對板"
+  },
+  "pseudo_composition": {
+    "law": "獨立 PASS ≠ 可組合",
+    "compose_iff": [
+      "State Bus 共享",
+      "不變量繼承",
+      "同宣稱級",
+      "外力GROK 除/生",
+      "強心針三關 AND",
+      "只在鏈頭 RESET_DONOR"
+    ]
+  },
+  "invariants": [
+    "同機位",
+    "同 MARK",
+    "同 peep",
+    "elev_remap=false",
+    "洞外=0",
+    "scale-lock",
+    "外力除生",
+    "BOOST AND"
+  ],
+  "state_bus": [
+    "SRC",
+    "L1",
+    "MARK",
+    "peep",
+    "elev_candidate",
+    "I_sheng",
+    "RETURN",
+    "ANTI_boards",
+    "part_role",
+    "claim_level",
+    "corners_4",
+    "grow_max",
+    "driver"
+  ],
+  "layers": {
+    "A": "S0–S3 咬頭 EDIT",
+    "B": "S4–S11 升清回位 ⊕ 強心針",
+    "C": "頭鎖後 分件/合眾"
+  },
+  "lessons": [
+    {
+      "S": "S0",
+      "name": "L0 凍",
+      "layer": "A",
+      "teach": "同機位原圖寫死；下游禁止重算場景",
+      "do": [
+        "freeze SRC",
+        "RESET_DONOR 僅鏈頭"
+      ],
+      "bus_write": [
+        "SRC"
+      ],
+      "anti": "反除的對照基",
+      "fail_if": "中途換底圖 / 無 freeze"
+    },
+    {
+      "S": "S1",
+      "name": "正除",
+      "layer": "A",
+      "teach": "外力GROK EDIT 去頭/件 → L1；不是 OpenCV 擦",
+      "do": [
+        "imagine_image_to_image 除"
+      ],
+      "bus_write": [
+        "L1"
+      ],
+      "anti": "反除 = L0 有 vs L1 無",
+      "fail_if": "E-FA-12 本地假除"
+    },
+    {
+      "S": "S2",
+      "name": "正扣",
+      "layer": "A",
+      "teach": "扣只作證：差分或除背→CLIP；不重寫洞",
+      "do": [
+        "|L0-L1|",
+        "可選 除背→M_subj"
+      ],
+      "bus_write": [
+        "kou_map",
+        "CLIP?"
+      ],
+      "anti": "反扣 = 緣反查 · 禁 self_peep",
+      "fail_if": "E-FA-09 扣改洞主權 · E-CLIP-01 自 peep 冒 CLIP"
+    },
+    {
+      "S": "S3",
+      "name": "正洞 MARK",
+      "layer": "A",
+      "teach": "洞=抓走前座位；先 MARK 再咬；真洞=像素真去",
+      "do": [
+        "MARK 凍 M · corners_4",
+        "真洞板 checker/void"
+      ],
+      "bus_write": [
+        "MARK",
+        "corners_4"
+      ],
+      "anti": "反洞 = 洞外 bitexact 義務",
+      "fail_if": "E-FA-08 先除後猜 · E-FA-10 紫疊冒洞"
+    },
+    {
+      "S": "S4",
+      "name": "部件'認'",
+      "layer": "B",
+      "teach": "外力認出：咬出塊=整體中的獨立部件（整件身份）",
+      "do": [
+        "part_role 寫 Bus",
+        "認失敗禁放大/生"
+      ],
+      "bus_write": [
+        "part_role"
+      ],
+      "anti": "認錯 → 下游全假",
+      "fail_if": "E-KY-BOOST-01 · E-DNA-CANCER-SELF_PEEP",
+      "boost": "REN"
+    },
+    {
+      "S": "S5",
+      "name": "peep 取域",
+      "layer": "B",
+      "teach": "抽圖 ⊂ 此步；只是取域，不是升清",
+      "do": [
+        "peep = SRC∩MARK"
+      ],
+      "bus_write": [
+        "peep"
+      ],
+      "anti": "peep 必須與洞同構",
+      "fail_if": "整圖 freeframe 當 peep"
+    },
+    {
+      "S": "S6",
+      "name": "放大",
+      "layer": "B",
+      "teach": "強心針第2關；★抽圖放大=S5+S6 only",
+      "do": [
+        "scale-lock densify",
+        "grow_max"
+      ],
+      "bus_write": [
+        "grow_max",
+        "scale_meta"
+      ],
+      "anti": "反生尺度鎖",
+      "fail_if": "E-FA-03 freeframe 主權 · E-KY-BOOST-02",
+      "boost": "SCALE"
+    },
+    {
+      "S": "S7",
+      "name": "升質×物",
+      "layer": "B",
+      "teach": "強心針第3關；外力 densify 該物；elev≠正生",
+      "do": [
+        "外力 elev densify on object"
+      ],
+      "bus_write": [
+        "elev_candidate"
+      ],
+      "anti": "elev 只候選",
+      "fail_if": "E-KY-ATX elev 當正生 · E-KY-BOOST-03",
+      "boost": "ELEV_x"
+    },
+    {
+      "S": "S8",
+      "name": "BOOST AND",
+      "layer": "B",
+      "teach": "認∩放大∩升質 缺一禁 BOOST 正標",
+      "do": [
+        "三關 AND 閘"
+      ],
+      "bus_write": [
+        "boost_all_three"
+      ],
+      "anti": "弱針 = 無針",
+      "fail_if": "E-KY-BOOST-04"
+    },
+    {
+      "S": "S9",
+      "name": "正生",
+      "layer": "B",
+      "teach": "外力在正洞座位上 seat-born 生（回洞關鍵·身份填入座位）",
+      "do": [
+        "Imagine 洞座生"
+      ],
+      "bus_write": [
+        "I_sheng"
+      ],
+      "anti": "反生 = 鎖尺 · 禁 freeframe 完成",
+      "fail_if": "E-WLG-06 本地冒生 · E-WLF3-01 無洞生回"
+    },
+    {
+      "S": "S10",
+      "name": "正回",
+      "layer": "B",
+      "teach": "hardpaste 入 MARK 正洞；outside=0 證回位",
+      "do": [
+        "R[M]=I_sheng[M]",
+        "outside vs base"
+      ],
+      "bus_write": [
+        "RETURN"
+      ],
+      "anti": "反回 = 洞外≡base · 洞內≠空",
+      "fail_if": "outside alone 當 PASS · freeframe hardpaste"
+    },
+    {
+      "S": "S11",
+      "name": "反板",
+      "layer": "B",
+      "teach": "八格齊 · 牙 stamp · 宣稱分級",
+      "do": [
+        "F8 board",
+        "claim C0/C1/C2"
+      ],
+      "bus_write": [
+        "ANTI_boards",
+        "claim_level"
+      ],
+      "anti": "跳過反 = E-FA-06",
+      "fail_if": "E-FA-01 獨立冒全鏈 · E-FA-04 宣稱偷換"
+    }
+  ],
+  "peep_scale_only": "S5+S6",
+  "scope": "只先做頭（大咬）A→B",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:34:51.750867+00:00",
+  "return_to_zheng_dong": {
+    "write": "01495",
+    "key": "外力 seat-born on hole seat → hardpaste MARK",
+    "doc": "SHQ_WAI_LI_RETURN_TO_HOLE.md"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "write_id": "01633",
+  "call": "影扣回·回退",
+  "formal": "SHQ_YING_RESTORE_ORDER_V1",
+  "error": {
+    "code": "E-ORDER-01",
+    "name": "ANTITOXIN_REWRITE_MARK_ORDER",
+    "desc": "杀RATIO时改序并用FALLBACK重写除背影→扣错回错；本来01631仅局部问题"
+  },
+  "rule": [
+    "主链=01631 影扣回，不动",
+    "RATIO闸=只审计/警告，不改写MARK",
+    "禁止 peep-lock FALLBACK 替换除背影（除非用户显式）",
+    "fill≡peep0 尺寸可保，影源不可换"
+  ],
+  "parent": "01631",
+  "rejects_overwrite_from": "01632 FALLBACK paths",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:37:09.174907+00:00"
+}

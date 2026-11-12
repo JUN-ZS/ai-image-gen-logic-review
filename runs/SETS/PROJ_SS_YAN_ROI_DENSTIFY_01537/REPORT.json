@@ -1,0 +1,114 @@
+{
+  "write_id": "01537",
+  "formal": "SHQ_SS_YAN_ROI_MIXLOCK_NEURAL_DENSTIFY_V1",
+  "LOCK": {
+    "Wh": 467,
+    "Hh": 597,
+    "bbox_xyxy": [
+      10,
+      24,
+      476,
+      620
+    ],
+    "asp_hole": 0.7822445561139029,
+    "peep_hw": [
+      605,
+      475
+    ],
+    "S0A_hw": [
+      646,
+      508
+    ],
+    "bbox_in_S0": [
+      58,
+      85,
+      565,
+      730
+    ],
+    "sx_table_S6": 0.6558988764044944,
+    "sy_table_S6": 0.6582138919514884,
+    "k_zoom": 1.4991735537190083,
+    "donor": "1f09f297",
+    "law": "数值与洞形冻结；donor 只供 TEXTURE；禁 freeframe 直回"
+  },
+  "methods": [
+    {
+      "method": "A_ROI_child",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "pose_shift": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 487269312.0
+      },
+      "pose_ok": true,
+      "tex_energy": 23.119976043701172,
+      "tex_gain_vs_peep_seat": 1.1918415931224846,
+      "PASS_SS_YAN_V2": true,
+      "ban": false
+    },
+    {
+      "method": "B_mixlock_HF",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "pose_shift": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 443085344.0
+      },
+      "pose_ok": true,
+      "tex_energy": 19.08613395690918,
+      "tex_gain_vs_peep_seat": 0.9838958422255449,
+      "PASS_SS_YAN_V2": true,
+      "ban": false
+    },
+    {
+      "method": "C_neural_densify",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "pose_shift": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 498818464.0
+      },
+      "pose_ok": true,
+      "tex_energy": 31.518600463867188,
+      "tex_gain_vs_peep_seat": 1.6247931623649257,
+      "PASS_SS_YAN_V2": true,
+      "ban": false
+    },
+    {
+      "method": "D_BAN_freeframe",
+      "outside_S9": 0,
+      "outside_S01": 0,
+      "pose_shift": {
+        "dx": 0,
+        "dy": 0,
+        "corr": 322618624.0
+      },
+      "pose_ok": true,
+      "tex_energy": 25.77218246459961,
+      "tex_gain_vs_peep_seat": 1.3285636174013318,
+      "PASS_SS_YAN_V2": false,
+      "ban": true
+    }
+  ],
+  "best": {
+    "method": "C_neural_densify",
+    "outside_S9": 0,
+    "outside_S01": 0,
+    "pose_shift": {
+      "dx": 0,
+      "dy": 0,
+      "corr": 498818464.0
+    },
+    "pose_ok": true,
+    "tex_energy": 31.518600463867188,
+    "tex_gain_vs_peep_seat": 1.6247931623649257,
+    "PASS_SS_YAN_V2": true,
+    "ban": false
+  },
+  "base_tex_energy_peep_seat": 19.398530960083008,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T14:12:05.644472+00:00"
+}

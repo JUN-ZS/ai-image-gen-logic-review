@@ -1,0 +1,74 @@
+{
+  "write_id": "01539",
+  "call": "SS驗.清",
+  "call_ascii": "SS_YAN.QING",
+  "formal": "SHQ_SS_YAN_QING_SEAT_HARDLOCK_V1",
+  "zh": "SS验.清",
+  "stick": "STICK_SS_YAN_QING",
+  "parent": {
+    "SS验": "STICK_SS_YAN_V2 / 01536",
+    "formula": "HOLE_SEAT_HARDLOCK_SHENG_V1 / 01538",
+    "proof_S01": "f2b42f42-040d-4465-bb85-d6451509e4df",
+    "proof_S9": "c3be2fb2-d256-49c9-80cf-f3fe459ab8b3"
+  },
+  "one_liner": "SS验体系下的升清宪技：金位洞座 + ECC对齐 donor 高频 → 升TEXTURE 不影响位",
+  "equation": "SS验.清 ≡ F2: I* = seat_RET + α·HF(ECC(TEX→seat)); S9=S0A⊙(1-M)+I*⊙M; outside=0",
+  "mode_gold": "F2",
+  "modes": {
+    "F2": "I*=seat+α·HF(T')  金·默认",
+    "F3": "I*=seat+clip(α·HF,±τ)",
+    "F1": "I*=LF(seat)+HF(T')",
+    "F4": "bilateral(seat)+β·HF(T')",
+    "F0": "BAN freeframe 无warp"
+  },
+  "invariants": [
+    "洞形 MARK 不改",
+    "框標 bbox 不改",
+    "金位 seat = 回洞公式 RET / peep fill_hole",
+    "donor 只供 TEXTURE，必 ECC warp→seat",
+    "dx=dy=0 · struct_lf_mad<5 · outside=0"
+  ],
+  "gates": {
+    "G_QING_1": "seat 金位存在（RET 或 peep 洞贴）",
+    "G_QING_2": "ECC warp 完成（cc 记录）",
+    "G_QING_3": "I* 仅 F1–F4，禁 F0",
+    "G_QING_4": "S9 outside=0",
+    "G_QING_5": "pose dx=dy=0 且 struct_lf_mad<5",
+    "G_QING_6": "可 map 值表 → S11/S01"
+  },
+  "api": "seat_hardlock_sheng(seat, donor, mask_roi, mode='F2')",
+  "relation_to_SS_YAN_V2": {
+    "SS验": "硬闸总名 G0–G9",
+    "SS验.清": "G7/G8 升清落点的命名宪技（清=升清且清位）"
+  },
+  "error_codes": {
+    "E-QING-01": "无金位 seat 就升清",
+    "E-QING-02": "donor 未 warp 进洞",
+    "E-QING-03": "struct_lf_mad≥5 位/形漂",
+    "E-QING-04": "outside≠0",
+    "E-QING-05": "把 freeframe elev 当 SS验.清"
+  },
+  "proof": {
+    "ecc_cc": 0.9974538993237536,
+    "best": "F2_seat_plus_aHF",
+    "S01_asset": "f2b42f42-040d-4465-bb85-d6451509e4df",
+    "results_ref": "01538 FORMULA_SEAT_HARDLOCK"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T14:20:57.365040+00:00",
+  "child_lock": {
+    "call": "SS驗.清鎖",
+    "write": "01541",
+    "formal": "SHQ_SS_YAN_QING_LOCK_WHOLE_BITE_V1"
+  },
+  "child_plus_a": {
+    "call": "SS驗.清+A",
+    "write": "01543",
+    "formal": "SHQ_SS_YAN_QING_PLUS_A_SEMANTIC_MARK_V1"
+  },
+  "child_plus_c": {
+    "call": "SS驗.清+C",
+    "write": "01546",
+    "formal": "SHQ_SS_YAN_QING_PLUS_C_DETECT_MARK_V1"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "write_id": "01549",
+  "call": "SS驗.清+C·全景万物格",
+  "call_ascii": "SS_YAN.QING_PLUS_C_ALL_SCENE_GRID",
+  "aliases": [
+    "全景万物格",
+    "格物进化",
+    "风景+事物格"
+  ],
+  "formal": "SHQ_SS_YAN_QING_PLUS_C_ALL_SCENE_GRID_V1",
+  "zh": "格物进化：认出图中所有风景和事物 → 分层格框",
+  "stick": "STICK_SS_YAN_ALL_SCENE_GRID",
+  "parent": {
+    "SS验.清+C·格框": "01548"
+  },
+  "one_liner": "全图分解 SCENE/ATMOS/WHOLE/PART 各化格；仅 WHOLE 默认可 hardpaste 回洞",
+  "equation": "Universe(L0) → {SCENE,ATMOS,WHOLE,PART}_i → cell_i; RETURN_default = hardpaste(WHOLE); SCENE/PART ⊏ grid",
+  "roles": {
+    "SCENE": "天空/山/地/区位 风景层 — 展格，默认可作背景层参考",
+    "ATMOS": "雾/霾/光气 — 展格",
+    "WHOLE": "整件物体 — 展格 + 默认可回洞",
+    "PART": "部件细部 — 只展格"
+  },
+  "counts": {
+    "SCENE": 7,
+    "ATMOS": 1,
+    "WHOLE": 3,
+    "PART": 6
+  },
+  "n_total": 17,
+  "outside_whole_return": 0,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T00:35:22.909133+00:00"
+}

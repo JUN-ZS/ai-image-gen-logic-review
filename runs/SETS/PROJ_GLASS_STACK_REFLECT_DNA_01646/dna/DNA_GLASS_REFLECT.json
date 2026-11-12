@@ -1,0 +1,17 @@
+{
+  "write_id": "01646",
+  "call": "埋叠杯·反射重建",
+  "formal": "SHQ_GLASS_STACK_REFLECT_REBUILD_V1",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "scene": "many nested clear glasses wet table",
+  "洞": "外力neon绿语义座+chroma 禁差分CC",
+  "主生": "绿座同形态轴向 + VDIR全相BACKUP作反射材质身份 → 每件HD反射重建",
+  "VIRTUAL_DIR全相": "BACKUP 反射/材质补给 非主贴",
+  "stack": "步步為一 后→前 叠反射",
+  "DEAD": [
+    "E-SCAN-DIFF-CC-01",
+    "全相主贴白晕",
+    "影技术"
+  ],
+  "asof": "2026-11-12T00:44:08.877824+00:00"
+}

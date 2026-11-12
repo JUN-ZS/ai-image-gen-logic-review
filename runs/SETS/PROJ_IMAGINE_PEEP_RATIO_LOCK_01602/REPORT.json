@@ -1,0 +1,317 @@
+{
+  "write": "01602",
+  "formal": "SHQ_IMAGINE_PEEP_RATIO_LOCK_V1",
+  "zh": "同 peep 比例鎖死 + Imagine 生成級 densify → 真剪影座層回",
+  "parent": "01601 C2_DISC5_TRUEHOLE_FIX",
+  "fixes_retained": [
+    "E-DISC5-01",
+    "E-DISC5-02",
+    "E-DISC5-03",
+    "E-DISC5-04"
+  ],
+  "protocol": [
+    "真剪影座 01601 继承",
+    "Imagine densify 后 center-crop 到 peep 宽高比 再 resize 到 peep 像素",
+    "只在 MARK/pm 内硬贴 + 环混合",
+    "PNG 终稿 outside=0"
+  ],
+  "n_seats": 25,
+  "Imagine_locked": 8,
+  "local": 17,
+  "outside_union_png": 0,
+  "n_ok": 25,
+  "PASS": true,
+  "claim": "C2_IMAGINE_PEEP_RATIO_LOCK",
+  "reps": [
+    {
+      "id": "R1_O1",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1600,
+        1232
+      ],
+      "peep_shape": [
+        379,
+        293
+      ],
+      "peep_ar": 0.7731,
+      "hi_ar": 0.77,
+      "ar_err": 0.004,
+      "mad": 15.267,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R1_O2",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1936,
+        1024
+      ],
+      "peep_shape": [
+        307,
+        163
+      ],
+      "peep_ar": 0.5309,
+      "hi_ar": 0.5289,
+      "ar_err": 0.0038,
+      "mad": 11.937,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R1_O3",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1264,
+        1568
+      ],
+      "peep_shape": [
+        142,
+        175
+      ],
+      "peep_ar": 1.2324,
+      "hi_ar": 1.2405,
+      "ar_err": 0.0066,
+      "mad": 12.256,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R1_O4",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1040,
+        1888
+      ],
+      "peep_shape": [
+        149,
+        268
+      ],
+      "peep_ar": 1.7987,
+      "hi_ar": 1.8154,
+      "ar_err": 0.0093,
+      "mad": 28.623,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R1_O5",
+      "mode": "sameframe_local",
+      "mad": 0.831,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R2_O1",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1328,
+        1488
+      ],
+      "peep_shape": [
+        207,
+        232
+      ],
+      "peep_ar": 1.1208,
+      "hi_ar": 1.1205,
+      "ar_err": 0.0003,
+      "mad": 7.207,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R2_O2",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1200,
+        1648
+      ],
+      "peep_shape": [
+        169,
+        233
+      ],
+      "peep_ar": 1.3787,
+      "hi_ar": 1.3733,
+      "ar_err": 0.0039,
+      "mad": 36.751,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R2_O3",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1392,
+        1424
+      ],
+      "peep_shape": [
+        147,
+        151
+      ],
+      "peep_ar": 1.0272,
+      "hi_ar": 1.023,
+      "ar_err": 0.0041,
+      "mad": 10.634,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R2_O4",
+      "mode": "Imagine_peep_ratio_lock",
+      "hi_shape": [
+        1296,
+        1536
+      ],
+      "peep_shape": [
+        165,
+        195
+      ],
+      "peep_ar": 1.1818,
+      "hi_ar": 1.1852,
+      "ar_err": 0.0028,
+      "mad": 14.785,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R2_O5",
+      "mode": "sameframe_local",
+      "mad": 0.259,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R3_O1",
+      "mode": "sameframe_local",
+      "mad": 1.13,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R3_O2",
+      "mode": "sameframe_local",
+      "mad": 1.197,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R3_O3",
+      "mode": "sameframe_local",
+      "mad": 0.727,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R3_O4",
+      "mode": "sameframe_local",
+      "mad": 0.459,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R3_O5",
+      "mode": "sameframe_local",
+      "mad": 0.719,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R4_O1",
+      "mode": "sameframe_local",
+      "mad": 1.26,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R4_O2",
+      "mode": "sameframe_local",
+      "mad": 0.581,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R4_O3",
+      "mode": "sameframe_local",
+      "mad": 0.733,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R4_O4",
+      "mode": "sameframe_local",
+      "mad": 0.507,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R4_O5",
+      "mode": "sameframe_local",
+      "mad": 0.904,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R5_O1",
+      "mode": "sameframe_local",
+      "mad": 0.848,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R5_O2",
+      "mode": "sameframe_local",
+      "mad": 1.103,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R5_O3",
+      "mode": "sameframe_local",
+      "mad": 1.124,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R5_O4",
+      "mode": "sameframe_local",
+      "mad": 1.008,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    },
+    {
+      "id": "R5_O5",
+      "mode": "sameframe_local",
+      "mad": 0.948,
+      "outside_mem": 0,
+      "outside_png": 0,
+      "PASS": true
+    }
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T08:21:27.008446+00:00"
+}

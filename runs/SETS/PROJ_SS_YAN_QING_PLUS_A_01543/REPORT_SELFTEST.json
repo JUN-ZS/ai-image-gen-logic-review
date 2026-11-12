@@ -1,0 +1,40 @@
+{
+  "write_id": "01543",
+  "call": "SS驗.清+A",
+  "PASS": true,
+  "claim": "C2_SS_YAN_QING_PLUS_A",
+  "sem_frac": 0.13231262022683157,
+  "outside": 0,
+  "gates": {
+    "G_A1": {
+      "ok": true,
+      "code": null
+    },
+    "G_A2": {
+      "ok": true,
+      "code": null
+    },
+    "G_A3": {
+      "ok": true,
+      "n_cc": 16,
+      "code": null
+    },
+    "G_A4": {
+      "ok": true,
+      "frac": 0.13231262022683157,
+      "code": null
+    },
+    "G_A5": {
+      "ok": true,
+      "asp_peep": 2.1549295774647885,
+      "asp_mark": 2.1549295774647885,
+      "drift": 0.0
+    },
+    "G_A6": {
+      "ok": true,
+      "outside": 0
+    }
+  },
+  "bad_pair_PASS": false,
+  "r2_PASS": true
+}

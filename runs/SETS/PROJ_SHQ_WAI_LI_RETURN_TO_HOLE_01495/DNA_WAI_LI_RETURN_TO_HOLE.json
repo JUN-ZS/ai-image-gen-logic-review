@@ -1,0 +1,116 @@
+{
+  "write_id": "01495",
+  "formal": "SHQ_WAI_LI_RETURN_TO_ZHENG_DONG_V1",
+  "zh": "外力認件 → 獨立peep → 放大；外力如何回到正洞",
+  "parent_S_program": "01494",
+  "question": "你要有外力去認出 S4 咬出的是 S5 會是一個整體中的一個獨立部件, 再 S6；但最重要是: 你如何用外力幫助回到正洞",
+  "answer_one_line": "外力先認「整中之件」(S4)→ peep 獨立域(S5)→ 放大鎖尺(S6)；回正洞 = 以外力在「有洞座位」上 seat-born 生，再 hardpaste 入 MARK 正洞；不是 freeframe 漂回，不是 elev 當正生，不是無洞整圖重生。",
+  "S4_S5_S6": {
+    "S4_認": {
+      "driver": "外力GROK 理解 + MARK 邊",
+      "meaning": "咬出塊 = 整體中的一個獨立部件（整件身份，非 band 條）",
+      "must": [
+        "有閉合邊 / 材質歸屬 / part_role",
+        "與正洞 MARK 同構（件在洞裡被咬出）",
+        "認失敗 → 禁 S6/S7/S9"
+      ],
+      "not": [
+        "head/torso/leg 比例 band",
+        "self_peep 冒認"
+      ]
+    },
+    "S5_peep": {
+      "meaning": "該獨立部件的像素域 peep = SRC∩MARK（或 peep@MARK）",
+      "is": "獨立部件樣本 · 身份原料",
+      "not": "升清完成 · 正生 · 可直接當 RETURN"
+    },
+    "S6_放大": {
+      "meaning": "對「已認的獨立件」scale-lock densify",
+      "lock": "回洞時 scale 對齊正洞 bbox / grow_max",
+      "note": "抽圖放大 ⊂ S5+S6，仍只是 BOOST 一關"
+    }
+  },
+  "return_to_zheng_dong": {
+    "title": "外力幫助回到正洞（唯一合法路徑）",
+    "正洞_def": "S3 凍的 MARK = 抓走前座位；形·機位·座標主權",
+    "steps": [
+      {
+        "id": "R0",
+        "name": "正洞在座",
+        "do": "MARK 已凍；真洞可上 L1（外力除後空位）",
+        "bus": "MARK · L1"
+      },
+      {
+        "id": "R1",
+        "name": "外力認件已完成",
+        "do": "S4 認：peep 是整中獨立部件；S5 取域；S6 鎖尺（可選 S7 elev 候選）",
+        "bus": "peep · part_role · elev_candidate?"
+      },
+      {
+        "id": "R2",
+        "name": "外力座生（關鍵）",
+        "do": "base = 有正洞的同機位圖（L1 或 真洞圖），Imagine EDIT/INPAINT：只在洞座位上填回該部件身份；ref = peep/CLIP/elev_candidate 僅作身份，不改構圖主權",
+        "driver": "外力GROK",
+        "output": "I_sheng seat-born",
+        "bus": "I_sheng",
+        "ban": [
+          "整圖 freeframe 重生再裁貼",
+          "elev 特写直接當 RETURN",
+          "OpenCV inpaint 冒正生",
+          "無 MARK 回有景（E-WLF3-01）"
+        ]
+      },
+      {
+        "id": "R3",
+        "name": "入正洞 hardpaste",
+        "do": "R = base.copy(); R[MARK] = I_sheng[MARK]（或 I_sheng 已在座則證）",
+        "prove": "outside max_diff vs base = 0",
+        "bus": "RETURN"
+      },
+      {
+        "id": "R4",
+        "name": "反洞 / 反回",
+        "do": "洞外≡base · 洞內≠空 · peep↔回 鎖尺 · 八格反板",
+        "bus": "ANTI"
+      }
+    ],
+    "formula": "RETURN = hardpaste(base_with_hole, MARK, I_sheng_seat_born_外力)\ns.t.  out[¬MARK] = base[¬MARK]\n      I_sheng = 外力GROK(base=洞座, ref=獨立部件 peep)\n      elev_candidate ≠ I_sheng ≠ RETURN（角色分離）"
+  },
+  "why_wai_li_for_return": [
+    "本地 densify map 易 elev_remap / 尺度漂 → 對不回正洞",
+    "外力在洞座上生 = 同機位填空，天然對座位",
+    "peep 只提供「是誰/是什麼件」；MARK 提供「坐哪」",
+    "身份（peep）與座位（正洞）分離，再由外力在座上結合"
+  ],
+  "wrong_paths": [
+    {
+      "wrong": "S6/S7 elev 特写 → 直接貼全圖",
+      "E": "E-KY-ATX / E-FA-03"
+    },
+    {
+      "wrong": "無洞 freeframe 回有景",
+      "E": "E-WLF3-01"
+    },
+    {
+      "wrong": "下游重算洞再貼",
+      "E": "E-FA-02"
+    },
+    {
+      "wrong": "OpenCV 填洞冒正生",
+      "E": "E-FA-12 / E-WLG-06"
+    },
+    {
+      "wrong": "S4 不認整件就放大回洞",
+      "E": "E-KY-BOOST-01"
+    }
+  ],
+  "金句": [
+    "S4 外力認：咬出的是「整體中的獨立部件」。",
+    "S5 是該件的 peep；S6 放大該件——仍未回洞。",
+    "回正洞：外力在洞座位上 seat-born 生，再 hardpaste 入 MARK。",
+    "peep 管身份，MARK 管座位；外力在座上把身份填回去。",
+    "elev 是升質候選，不是回洞本身。"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:39:47.835607+00:00"
+}

@@ -1,0 +1,362 @@
+{
+  "write": "01608",
+  "call": "SS聯動",
+  "phases": [
+    "A SS驗.背景清/清+A->景: L0→L_bg",
+    "B band座洞 densify清锁 FAR_CITY/COL_L/COL_R → L_bg_qing_band outside=0",
+    "C 物清+A densify + PAD加大鎖 pad_aligned 回贴 → FINAL"
+  ],
+  "band_qing": {
+    "elev_assets": {
+      "FAR_CITY": "38e01ef5-f0dc-4cf6-a5d7-a81703e9ddcf",
+      "COL_L": "faa71669-7130-4725-a154-f0cd7c09b8a9",
+      "COL_R": "7c25421c-9879-403c-be8f-2ccb146ee98c"
+    },
+    "band_results": {
+      "FAR_CITY": {
+        "elev_asset": "38e01ef5-f0dc-4cf6-a5d7-a81703e9ddcf",
+        "peep_wh": [
+          789,
+          604
+        ],
+        "elev_src_wh": [
+          1616,
+          1232
+        ],
+        "ratio_lock": true,
+        "ar_err": 0.0053969209598350165
+      },
+      "COL_L": {
+        "elev_asset": "faa71669-7130-4725-a154-f0cd7c09b8a9",
+        "peep_wh": [
+          501,
+          957
+        ],
+        "elev_src_wh": [
+          1008,
+          1952
+        ],
+        "ratio_lock": true,
+        "ar_err": 0.007117529163882974
+      },
+      "COL_R": {
+        "elev_asset": "7c25421c-9879-403c-be8f-2ccb146ee98c",
+        "peep_wh": [
+          502,
+          957
+        ],
+        "elev_src_wh": [
+          1024,
+          1952
+        ],
+        "ratio_lock": true,
+        "ar_err": 3.426006817752736e-05
+      }
+    },
+    "outside_union_memory": 0,
+    "outside_png": 0,
+    "mad_in_band": 17.837718403603755,
+    "PASS_band_qing": true
+  },
+  "objects": {
+    "CRYSTAL": {
+      "elev_asset": "9995c6ba-24e4-47cc-9108-934cf8135b45",
+      "pad_box": [
+        592,
+        918,
+        538,
+        894
+      ],
+      "peep_wh": [
+        356,
+        326
+      ],
+      "elev_src_wh": [
+        1472,
+        1344
+      ],
+      "ar_err": 0.0032135553607948175,
+      "ratio_lock": true,
+      "paste": "pad_aligned"
+    },
+    "RADIO": {
+      "elev_asset": "0b5833dd-591a-4bd2-88c4-81742f4b6d71",
+      "pad_box": [
+        514,
+        926,
+        1240,
+        1751
+      ],
+      "peep_wh": [
+        511,
+        412
+      ],
+      "elev_src_wh": [
+        1568,
+        1264
+      ],
+      "ar_err": 0.00021506697800166563,
+      "ratio_lock": true,
+      "paste": "pad_aligned"
+    },
+    "BUST": {
+      "elev_asset": "fbdce843-0eff-4fbf-a4ed-84992469ed83",
+      "pad_box": [
+        358,
+        608,
+        717,
+        1073
+      ],
+      "peep_wh": [
+        356,
+        250
+      ],
+      "elev_src_wh": [
+        1680,
+        1184
+      ],
+      "ar_err": 0.005081081081081074,
+      "ratio_lock": true,
+      "paste": "pad_aligned"
+    },
+    "MAGIC_BOX": {
+      "elev_asset": "bf587bdf-2d4c-438b-abe9-de7987b9fe43",
+      "pad_box": [
+        554,
+        855,
+        100,
+        543
+      ],
+      "peep_wh": [
+        443,
+        301
+      ],
+      "elev_src_wh": [
+        1712,
+        1152
+      ],
+      "ar_err": 0.014350313768918488,
+      "ratio_lock": true,
+      "paste": "pad_aligned"
+    },
+    "SCOPE": {
+      "elev_asset": "93961a06-8623-486a-ab08-536ffc34d458",
+      "pad_box": [
+        386,
+        761,
+        1353,
+        1792
+      ],
+      "peep_wh": [
+        439,
+        375
+      ],
+      "elev_src_wh": [
+        1520,
+        1296
+      ],
+      "ar_err": 0.0021728395061728634,
+      "ratio_lock": true,
+      "paste": "pad_aligned"
+    }
+  },
+  "gates": {
+    "band_outside_png": 0,
+    "obj_outside_vs_band_png": 0,
+    "final_outside_vs_Lbg_union_seats": 0,
+    "PASS_band": true,
+    "PASS_obj_pad_outside": true,
+    "PASS_SS_LIAN_DONG_geom": true
+  },
+  "claims": {
+    "C_scene_band": "C_scene_BAND_DENSIFY_QING",
+    "C2_object_on_qing": "C2_OBJ_PAD_RETURN_ON_BG_QING",
+    "dual": "C_SS_LIAN_DONG_01608"
+  },
+  "honest": {
+    "obj_elev_freeframe": " elev 尺寸变了 → 强制 peep ratio_lock 再 pad_aligned；几何身份可能漂（SCOPE elev 构漂较重）",
+    "not_semantic_MARK": "物座为 pad 框，非 CV whole_subject 真剪影",
+    "ACCEPT_FULL_HD": false
+  },
+  "assets": {
+    "L0": "3ceec60a-09e7-4d61-a5c5-ba4ed17daee5",
+    "L_bg": "c4c1f8c4-0f88-4906-9719-1c3c4604ca72",
+    "band_elev": {
+      "FAR_CITY": "38e01ef5-f0dc-4cf6-a5d7-a81703e9ddcf",
+      "COL_L": "faa71669-7130-4725-a154-f0cd7c09b8a9",
+      "COL_R": "7c25421c-9879-403c-be8f-2ccb146ee98c"
+    },
+    "obj_elev": {
+      "CRYSTAL": "9995c6ba-24e4-47cc-9108-934cf8135b45",
+      "RADIO": "0b5833dd-591a-4bd2-88c4-81742f4b6d71",
+      "BUST": "fbdce843-0eff-4fbf-a4ed-84992469ed83",
+      "MAGIC_BOX": "bf587bdf-2d4c-438b-abe9-de7987b9fe43",
+      "SCOPE": "93961a06-8623-486a-ab08-536ffc34d458"
+    },
+    "FINAL": "d7caf521-7746-4d6d-bab8-a7adcd4c0af3",
+    "L_bg_qing_band": "ab5785a4-93e2-4766-aa17-8bf0e676ddd5",
+    "board_chain": "2ca32140-5037-40c7-8e9d-499556c295c8",
+    "board_seats": "77794282-dfd5-4c39-8103-eaad7b11b9e7"
+  },
+  "mad_obj_in": 43.42803640848324,
+  "asof": "2026-11-11T16:01:19.342538+00:00",
+  "v2_pad_mild": {
+    "write": "01608b",
+    "call": "物清+A回贴 · PAD加大鎖 · densify mild α=0.25",
+    "PAD_JIA_DA_SUO": {
+      "pad_frac": 0.18,
+      "paste": "pad_aligned 1:1 elev.shape==peep==pad_box",
+      "ban": "paste→tight MARK",
+      "stick": "STICK_PAD_JIA_DA_SUO / 01606"
+    },
+    "densify_strength": {
+      "prompt": "mild 20%",
+      "blend_alpha": 0.25,
+      "formula": "I*=(1-α)·peep + α·ratio_lock(elev)",
+      "why": "降低生成强度，减少 freeframe 身份漂；几何主权在 peep pad"
+    },
+    "objects": {
+      "CRYSTAL": {
+        "pad_box": [
+          576,
+          934,
+          521,
+          911
+        ],
+        "elev_asset": "741c0be7-a145-4080-bd56-e17a74dc3894",
+        "alpha_densify": 0.25,
+        "mad_vs_peep": 3.3034546149071287,
+        "shape_ok": true,
+        "paste": "pad_aligned_1to1",
+        "call": "PAD加大鎖"
+      },
+      "RADIO": {
+        "pad_box": [
+          494,
+          946,
+          1215,
+          1776
+        ],
+        "elev_asset": "91946a81-d473-4688-93d9-3f7c07a93701",
+        "alpha_densify": 0.25,
+        "mad_vs_peep": 1.8935213667124131,
+        "shape_ok": true,
+        "paste": "pad_aligned_1to1",
+        "call": "PAD加大鎖"
+      },
+      "BUST": {
+        "pad_box": [
+          346,
+          620,
+          700,
+          1090
+        ],
+        "elev_asset": "a6fd0227-8c92-44c7-9263-7d5606fe187d",
+        "alpha_densify": 0.25,
+        "mad_vs_peep": 2.6875382119907667,
+        "shape_ok": true,
+        "paste": "pad_aligned_1to1",
+        "call": "PAD加大鎖"
+      },
+      "MAGIC_BOX": {
+        "pad_box": [
+          540,
+          869,
+          78,
+          565
+        ],
+        "elev_asset": "4064b8d2-1755-4ab8-9210-e8e9c17ee609",
+        "alpha_densify": 0.25,
+        "mad_vs_peep": 3.1331082304038746,
+        "shape_ok": true,
+        "paste": "pad_aligned_1to1",
+        "call": "PAD加大鎖"
+      },
+      "SCOPE": {
+        "pad_box": [
+          368,
+          779,
+          1332,
+          1792
+        ],
+        "elev_asset": "5dd67ac3-e9a2-4d94-9571-68dfaaea49e3",
+        "alpha_densify": 0.25,
+        "mad_vs_peep": 2.1435346803483903,
+        "shape_ok": true,
+        "paste": "pad_aligned_1to1",
+        "call": "PAD加大鎖"
+      }
+    },
+    "gates": {
+      "G_PAD_1_touch_pad": true,
+      "G_PAD_2_shape_eq": true,
+      "G_PAD_3_pad_aligned_only": true,
+      "G_PAD_4_outside_png": 0,
+      "PASS_PAD": true
+    },
+    "elev_assets_mild": {
+      "CRYSTAL": "741c0be7-a145-4080-bd56-e17a74dc3894",
+      "RADIO": "91946a81-d473-4688-93d9-3f7c07a93701",
+      "BUST": "a6fd0227-8c92-44c7-9263-7d5606fe187d",
+      "MAGIC_BOX": "4064b8d2-1755-4ab8-9210-e8e9c17ee609",
+      "SCOPE": "5dd67ac3-e9a2-4d94-9571-68dfaaea49e3"
+    },
+    "ACCEPT_FULL_HD": false,
+    "claim": "C2_OBJ_PAD_MILD_RETURN_ON_BG_QING",
+    "asof": "2026-11-11T16:08:20.331757+00:00"
+  },
+  "FINAL_v2": "L/FINAL_PAD_MILD.jpg",
+  "v3_qing_a_yuanwu": {
+    "write": "01608c",
+    "call": "SS驗.清+A 原物回贴",
+    "correction": "清+A 自有把除去的原物搬回来的能力；禁 freeframe 重生冒原物",
+    "equation": "L0 有物 → 除主 L_bg → M=|L0-L_bg| → peep_原=L0⊙M → FINAL=L_bg_qing⊙(1-M)+原⊙M",
+    "vs_wrong": {
+      "wrong": "ROI peep → Imagine densify freeframe → pad paste（重生）",
+      "right": "差分得原物座 → L0 原像素硬贴回 L_bg_qing（搬回）"
+    },
+    "gates": {
+      "outside_vs_L_bg_qing_pure": 0,
+      "outside_vs_L_bg_qing_mild": 0,
+      "PASS_geom": true,
+      "frac_M": 0.07503476651077097,
+      "thr": 63,
+      "mad_FINAL_vs_L0_in_M": 0.7730550349963355
+    },
+    "claims": {
+      "C_scene": "C_scene_BAND (unchanged seats outside M)",
+      "C2_object": "C2_QING_A_YUANWU_RETURN"
+    },
+    "qinli": [
+      "I-ID-BAN freeframe冒原物",
+      "I-PROCESS 真除→真回",
+      "I-SEAT M from strip"
+    ],
+    "ACCEPT_FULL_HD": false,
+    "asof": "2026-11-11T16:13:03.697987+00:00"
+  },
+  "FINAL_v3_yuanwu": "L/FINAL_QING_A_YUANWU_PURE.jpg",
+  "correction_note": "清+A 自有把除去的原物搬回来的能力；禁 freeframe 重生冒原物",
+  "v4_yuanwu_block": {
+    "write": "01608d",
+    "call": "SS驗.清+A",
+    "gold": "把除去的原物搬回来",
+    "equation": "peep_i = L0[pad_i]（原像素）; FINAL = L_bg_qing ⊙ (1-M_pads) + peep_i ⊙ pads",
+    "ban": "Imagine freeframe densify 重生后冒原物",
+    "objects": [
+      "CRYSTAL",
+      "RADIO",
+      "BUST",
+      "MAGIC_BOX",
+      "SCOPE"
+    ],
+    "outside_png": 0,
+    "PASS": true,
+    "bitexact_obj_vs_L0": true,
+    "claim": "C2_QING_A_YUANWU_BLOCK_RETURN",
+    "note": "pad 框级整块原物；真剪影 MARK 需同机位除主冻座（L_bg 为 Imagine 空景时差分座会碎）",
+    "ACCEPT_FULL_HD": false,
+    "asof": "2026-11-11T16:13:39.872318+00:00"
+  },
+  "FINAL_correct": "L/FINAL_QING_A_YUANWU_BLOCK.jpg"
+}

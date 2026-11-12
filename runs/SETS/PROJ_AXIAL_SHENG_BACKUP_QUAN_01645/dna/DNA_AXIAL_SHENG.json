@@ -1,0 +1,13 @@
+{
+  "write_id": "01645",
+  "call": "轴向生·全相BACKUP",
+  "formal": "SHQ_AXIAL_SHENG_QUANXIANG_BACKUP_V1",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "VIRTUAL_DIR全相": {
+    "role": "BACKUP only",
+    "not": "主补给"
+  },
+  "主生": "外力绿座同形态轴向填（同机位同姿同尺同座）",
+  "洞": "neon绿+chroma 禁差分CC",
+  "asof": "2026-11-12T00:35:28.471867+00:00"
+}

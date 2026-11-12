@@ -1,0 +1,33 @@
+{
+  "write_id": "01653",
+  "call": "移轴FOV·3D SHARP叠",
+  "formal": "SHQ_TILT_FOV_3D_SHARP_STACK_V1",
+  "parent": [
+    "散散·3D·独环境",
+    "独·环境反射",
+    "3D SS",
+    "步步為一"
+  ],
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "equation": "散散 MARK_FAR|MID|NEAR 冻\n  FOV: NEAR=sharp · MID=mid · FAR=soft · 洞外=miniature soft\n  叠: 后→前 hardpaste ⊙ MARK\n  逻辑3D SHARP ⇔ sharp(NEAR) ≥ sharp(MID) ≥ soft(FAR) ∧ outside=0",
+  "policy": {
+    "NEAR": {
+      "mode": "sharp",
+      "label": "焦点平面 FOV sharp"
+    },
+    "MID": {
+      "mode": "mid",
+      "label": "中景 controlled"
+    },
+    "FAR": {
+      "mode": "soft",
+      "label": "远景 soft DOF"
+    }
+  },
+  "vs": {
+    "真光学移轴": "镜头倾斜；本技=深度座逻辑 FOV 清晰度梯度",
+    "伪全图锐化": "禁止；必须按 MARK 层",
+    "3D SS": "可并存：洞内微残差浮雕 + FOV 梯度"
+  },
+  "asof": "2026-11-12T01:46:42.760220+00:00"
+}

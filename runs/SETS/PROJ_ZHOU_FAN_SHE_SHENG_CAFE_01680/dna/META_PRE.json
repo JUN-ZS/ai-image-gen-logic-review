@@ -1,0 +1,33 @@
+{
+  "write": "01680",
+  "call": "轴.反射.生",
+  "scene": "neon cafe helmet glass thermos",
+  "ref_user": "7c029d09 FAIL_global_sharpen — contrast only; base=clean S0/L1",
+  "objs": [
+    "helmet",
+    "glass",
+    "thermos"
+  ],
+  "bboxes": {
+    "helmet": [
+      452,
+      754,
+      721,
+      1117
+    ],
+    "glass": [
+      636,
+      919,
+      1296,
+      1407
+    ],
+    "thermos": [
+      603,
+      703,
+      1299,
+      1507
+    ]
+  },
+  "green_residual_ratio": 1.083995329339025,
+  "asof": "2026-11-12T05:32:37.266403+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "write_id": "01511",
+  "zh": "正身同染 freeframe/elev → 与正头同闸",
+  "fix": [
+    "S9 seat-born hardpaste if freeframe I_HD",
+    "elev only scale_lock child never RETURN",
+    "JPEG 后再锁洞外 L0",
+    "ERROR_TEXTBOOK E-FF-01 raw freeframe"
+  ],
+  "codes": [
+    "E-FF-01",
+    "E-FF-02",
+    "E-FF-03",
+    "E-FF-04"
+  ],
+  "py": "shq_zheng_tou_shen.py",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T09:43:20.676519+00:00"
+}

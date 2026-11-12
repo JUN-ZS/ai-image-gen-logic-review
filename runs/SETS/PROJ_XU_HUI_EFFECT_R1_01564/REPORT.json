@@ -1,0 +1,32 @@
+{
+  "write": "01564",
+  "call": "虛回",
+  "elev_method": "R1_外力GROK_Imagine_生成级densify_极限",
+  "effect_rank": 1,
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "rover",
+      "outside": 0,
+      "ok": true,
+      "method": "R1_外力GROK_Imagine_生成级densify_极限",
+      "claim": "C2_XU_HUI"
+    },
+    {
+      "id": "mecha",
+      "outside": 0,
+      "ok": true,
+      "method": "R1_外力GROK_Imagine_生成级densify_极限",
+      "claim": "C2_XU_HUI"
+    },
+    {
+      "id": "climber",
+      "outside": 0,
+      "ok": true,
+      "method": "R1_外力GROK_Imagine_生成级densify_极限",
+      "claim": "C2_XU_HUI"
+    }
+  ],
+  "asof": "2026-11-11T02:56:08.376412+00:00"
+}

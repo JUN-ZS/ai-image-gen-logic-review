@@ -1,0 +1,172 @@
+{
+  "write": "01605",
+  "formal": "SHQ_PAD_ALIGN_ANTIFF_QING_V1",
+  "zh": "修 E-PAD-01 pad peep 错压 tight 洞 + 去 freeframe",
+  "bug": {
+    "code": "E-PAD-01",
+    "name": "PAD_PEEP_TIGHT_PASTE_SCALE",
+    "desc": "peep+pad > tight MARK; paste_fill resize peep elev into tight bbox → scale 1.3-1.7x squash",
+    "also": "E-FF-01 Imagine freeframe densify has no pixel correspondence; ratio-lock still wrong geometry"
+  },
+  "fix": [
+    "paste_pad_aligned: elev[y,x] -> L0[py0+y,px0+x] where M (1:1 pad_box)",
+    "densify_sameframe: peep x4 unsharp only — freeframe HI not geometry source",
+    "PNG outside=0 retained"
+  ],
+  "equation": "elev.shape == peep.shape == pad_box; R[pad][M]=elev[M]; R[~M]=L0[~M]",
+  "n_seats": 5,
+  "outside_union_png": 0,
+  "n_ok": 5,
+  "PASS": true,
+  "claim": "C2_PAD_ALIGN_ANTIFF",
+  "reps": [
+    {
+      "id": "O1_CRYSTAL",
+      "mode": "sameframe_antiFF",
+      "mad": 0.635,
+      "pad_box": [
+        650,
+        678,
+        950,
+        1007
+      ],
+      "tight_bbox": [
+        711,
+        752,
+        889,
+        976
+      ],
+      "peep_shape": [
+        330,
+        301
+      ],
+      "bug_scale_if_tight_paste": [
+        1.682,
+        1.467
+      ],
+      "outside_mem": 0,
+      "outside_png": 0,
+      "size_ok": true,
+      "PASS": true
+    },
+    {
+      "id": "O2_R1_O1",
+      "mode": "sameframe_antiFF",
+      "mad": 1.003,
+      "pad_box": [
+        1325,
+        356,
+        1767,
+        922
+      ],
+      "tight_bbox": [
+        1398,
+        448,
+        1694,
+        830
+      ],
+      "peep_shape": [
+        567,
+        443
+      ],
+      "bug_scale_if_tight_paste": [
+        1.492,
+        1.48
+      ],
+      "outside_mem": 0,
+      "outside_png": 0,
+      "size_ok": true,
+      "PASS": true
+    },
+    {
+      "id": "O3_R1_O4",
+      "mode": "sameframe_antiFF",
+      "mad": 0.556,
+      "pad_box": [
+        1136,
+        803,
+        1541,
+        1007
+      ],
+      "tight_bbox": [
+        1203,
+        844,
+        1474,
+        996
+      ],
+      "peep_shape": [
+        205,
+        406
+      ],
+      "bug_scale_if_tight_paste": [
+        1.493,
+        1.34
+      ],
+      "outside_mem": 0,
+      "outside_png": 0,
+      "size_ok": true,
+      "PASS": true
+    },
+    {
+      "id": "O4_R2_O1",
+      "mode": "sameframe_antiFF",
+      "mad": 0.758,
+      "pad_box": [
+        0,
+        237,
+        333,
+        555
+      ],
+      "tight_bbox": [
+        39,
+        291,
+        274,
+        501
+      ],
+      "peep_shape": [
+        319,
+        334
+      ],
+      "bug_scale_if_tight_paste": [
+        1.415,
+        1.512
+      ],
+      "outside_mem": 0,
+      "outside_png": 0,
+      "size_ok": true,
+      "PASS": true
+    },
+    {
+      "id": "O5_R1_O3",
+      "mode": "sameframe_antiFF",
+      "mad": 0.391,
+      "pad_box": [
+        128,
+        815,
+        400,
+        1007
+      ],
+      "tight_bbox": [
+        175,
+        854,
+        353,
+        999
+      ],
+      "peep_shape": [
+        193,
+        273
+      ],
+      "bug_scale_if_tight_paste": [
+        1.525,
+        1.322
+      ],
+      "outside_mem": 0,
+      "outside_png": 0,
+      "size_ok": true,
+      "PASS": true
+    }
+  ],
+  "ACCEPT_FULL_HD": false,
+  "parent": "01604",
+  "asof": "2026-11-11T08:46:39.573482+00:00"
+}

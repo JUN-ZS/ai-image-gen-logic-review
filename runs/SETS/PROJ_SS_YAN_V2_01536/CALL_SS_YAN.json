@@ -1,0 +1,19 @@
+{
+  "call": "SS驗",
+  "alias": [
+    "SS验",
+    "SS_YAN",
+    "STICK_SS_YAN_V2"
+  ],
+  "do": [
+    "跑同域 (S)×(S) 闸 G0–G6",
+    "升清只用洞座 INPAINT (G7–G8)",
+    "回洞用值表/公式 (G9)",
+    "S11×S0 outside=0"
+  ],
+  "dont": [
+    "freeframe elev 当 RETURN",
+    "跨域直接比",
+    "无洞回位"
+  ]
+}

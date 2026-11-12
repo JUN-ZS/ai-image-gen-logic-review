@@ -1,0 +1,11 @@
+{
+  "write_id": "01579",
+  "call": "SS验.清锁·件",
+  "part": "BODY",
+  "PASS": true,
+  "outside": 0,
+  "mad": 6.92,
+  "same_proc_as": "01578 WHEEL",
+  "inter_wheel": 1126,
+  "claim": "C2_SS_QING_LOCK_PART_BODY"
+}

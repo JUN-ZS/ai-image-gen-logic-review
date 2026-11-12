@@ -1,0 +1,40 @@
+{
+  "write": "01652",
+  "call": "散散·3D·独环境",
+  "PASS": true,
+  "out": 0,
+  "3D_SS": {
+    "outside_max": 0,
+    "inside_p95": 58.0,
+    "edge_p95": 59.0,
+    "band": "OUT0",
+    "detected_3D_SS": true
+  },
+  "judges": [
+    {
+      "depth": "FAR",
+      "subject": "MECHA",
+      "rank": 0,
+      "area": 48575,
+      "F8": true
+    },
+    {
+      "depth": "MID",
+      "subject": "HUMAN",
+      "rank": 1,
+      "area": 94832,
+      "F8": true
+    },
+    {
+      "depth": "NEAR",
+      "subject": "GLASS",
+      "rank": 2,
+      "area": 79767,
+      "F8": true
+    }
+  ],
+  "exclusive_MARK_hard": true,
+  "claim": "C2_SANSAN_3D_DU_ENV_01652",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T01:39:33.820763+00:00"
+}

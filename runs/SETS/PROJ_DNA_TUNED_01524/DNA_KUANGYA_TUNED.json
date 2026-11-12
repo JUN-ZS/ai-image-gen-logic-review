@@ -1,0 +1,69 @@
+{
+  "write_id": "01524",
+  "formal": "SHQ_KUANGYA_DNA_TUNED_V1",
+  "zh": "框牙調好新DNA · 全錄後重走",
+  "call": "框牙",
+  "driver": "外力GROK",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "boost": "认 ∩ 放大 ∩ 升质×物",
+  "equation": "F ← 外力GROK ⊕ BOOST ⊕ (S)×(S) ⊕ S11×S0",
+  "SRC_GOLD": {
+    "asset": "b741fd1e-39ed-4110-9a17-73bc527bc97d",
+    "role": "S0 金標全景 · 無幽靈 · 3物遠景",
+    "slot": "S0"
+  },
+  "records_ingested": [
+    "01500-01504 正头 SX / S11×S0",
+    "01508-01509 正身 DNA / S0→S11",
+    "01514-01521 S0A / bite-hole / peep branch",
+    "01522 齐S0 X射 BOOST · 回正位闸",
+    "01522b elev NOT S11 E-SX-07",
+    "01523 clean FINAL residual notes"
+  ],
+  "hard_gates": {
+    "elev_is_S7_only": true,
+    "elev_ban_as_S11": true,
+    "L1_must_fullframe_same_size_as_L0": true,
+    "L1_ban_257_upscale": true,
+    "MARK_from_L0_minus_L1_full": true,
+    "S11_must_lock_S0_outside_0": true,
+    "boost_AND_before_S9": true,
+    "seat_born_not_freeframe": true,
+    "peep0_immutable": true,
+    "bite_same_size_return": true
+  },
+  "error_codes": {
+    "E-SX-06": "S11 未与 S0 对位锁",
+    "E-SX-07": "elev/全帧正头冒 RETURN",
+    "E-FF-01": "freeframe 冒 seat-born",
+    "E-FF-02": "elev 当正回",
+    "E-L1-01": "L1 非同尺全帧（如 257×257 拉伸）",
+    "E-WLF3-01": "无洞回位"
+  },
+  "S_program": [
+    "S0 冻 SRC gold",
+    "S0A 子集 crop only 不放大",
+    "S1 外力除 全帧 L1 同尺",
+    "S2 扣 差分",
+    "S3 洞 MARK 锁",
+    "S4 认 whole",
+    "S5 peep0 只读",
+    "S6 放大 peep 子",
+    "S7 升质 elev child only",
+    "S8 BOOST AND",
+    "S9 洞座生 seat-born",
+    "S10 hardpaste",
+    "S11 S11×S0 outside=0",
+    "S01 map 回母集"
+  ],
+  "ban": [
+    "elev as RETURN",
+    "skip S8-S11",
+    "257 L1 stretch as MARK source",
+    "freeframe paste as 正回",
+    "outside=0 alone without seat_born"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "claim_class": "C2",
+  "asof": "2026-11-10T12:48:01.907080+00:00"
+}

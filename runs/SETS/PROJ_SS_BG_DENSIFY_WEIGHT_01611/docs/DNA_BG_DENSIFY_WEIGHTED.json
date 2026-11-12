@@ -1,0 +1,37 @@
+{
+  "write": "01611",
+  "formal": "SHQ_SS_BG_DENSIFY_WEIGHTED_V1",
+  "zh": "L_bg 背景 densify · 差分加权",
+  "call": "SS驗.背景清·加权",
+  "intent": "除主后背景升清：物件边缘改小(线清晰)，越近认物中心越生动 densify；涉及背景认物",
+  "pipeline": [
+    "L0 → 除主 L_bg",
+    "差分 M_obj 护座缘",
+    "背景认物 multi-CC on L_bg",
+    "wmap: 中心高 / 边缘低 / 座缘≈0",
+    "elev densify L_bg",
+    "L_bg_qing=(1-w)·L_bg + w·elev",
+    "可选 清+A 原物搬回"
+  ],
+  "weight_rules": {
+    "object_edge_M_obj": "w*=0.12 改小 加强线清晰",
+    "bg_object_center": "w→1 生动 densify",
+    "far_bg": "0.45·dist",
+    "seat_edge": "w≤0.05 护回贴",
+    "hole_center": "w≤0.35 空座微升"
+  },
+  "metrics": {
+    "mad_all": 1.7358715838766061,
+    "mad_edge_M_obj": 0.26775098118036017,
+    "mad_hi_w": 7.116972187548212,
+    "mad_lo_w": 0.5256414829611662,
+    "gate_edge_lt_center": true
+  },
+  "elev_asset": "6dbee041-de59-45d4-bdb2-f76603eb8bc5",
+  "outside_after_yuanwu": 0,
+  "PASS_geom_return": true,
+  "PASS_weight_logic": true,
+  "claim": "C2_BG_DENSIFY_WEIGHTED_01611",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T20:34:35.982513+00:00"
+}

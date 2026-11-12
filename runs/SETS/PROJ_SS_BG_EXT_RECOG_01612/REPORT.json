@@ -1,0 +1,113 @@
+{
+  "write": "01612",
+  "formal": "SHQ_SS_BG_EXT_RECOG_WEIGHTED_QING_A_V1",
+  "zh": "背景：SS验.清+A外力认 → 扣图 → 加权densify → 清+A原物搬回",
+  "pipeline": [
+    "除主 L_bg",
+    "外力认（语义整件座，同清+A外部认习惯）",
+    "扣图 peep@L_bg",
+    "Imagine densify 每件 peep（外力升）",
+    "加权贴回：中心强·边缘弱·M_obj座缘≈0",
+    "清+A：L0原物 hardpaste 搬回"
+  ],
+  "equation": "peep_bg=L_bg[pad]; elev=外力densify(peep); I=(1-w)·L_bg+w·blend(peep,elev); FINAL=I⊙(1-M_obj)+L0⊙M_obj_pads",
+  "bg_parts": {
+    "NEON_REPAIR": {
+      "elev_asset": "002310b0-27d4-479b-9d1d-943494092433",
+      "mad_blend": 6.2146288167008095,
+      "pad": [
+        9,
+        210,
+        17,
+        442
+      ]
+    },
+    "NEON_PARTS": {
+      "elev_asset": "2cb0de94-ee7e-4233-a86a-316b6dd923e2",
+      "mad_blend": 6.604991589026915,
+      "pad": [
+        5,
+        189,
+        402,
+        738
+      ]
+    },
+    "GRAFFITI_WALL": {
+      "elev_asset": "eb666728-125b-4947-a5a2-b183ed7d3acb",
+      "mad_blend": 7.706130145893925,
+      "pad": [
+        159,
+        540,
+        0,
+        740
+      ]
+    },
+    "CRATES_L": {
+      "elev_asset": "1759e0f8-281f-4863-b7c7-be5c760c748c",
+      "mad_blend": 9.410190612583163,
+      "pad": [
+        359,
+        740,
+        53,
+        546
+      ]
+    },
+    "CRATES_MID": {
+      "elev_asset": "a628513d-3d2d-47ad-8d4f-41808d277093",
+      "mad_blend": 10.49275610452081,
+      "pad": [
+        297,
+        722,
+        494,
+        975
+      ]
+    },
+    "STREET_WET": {
+      "elev_asset": "fa4914e7-aef5-437e-8c4a-3d87df5069f4",
+      "mad_blend": 6.521102240896359,
+      "pad": [
+        377,
+        802,
+        870,
+        1430
+      ]
+    },
+    "LAUNDRY": {
+      "elev_asset": "de7baf1a-b76e-4256-9429-9357d651be8d",
+      "mad_blend": 18.02272208622049,
+      "pad": [
+        23,
+        336,
+        1167,
+        1783
+      ]
+    },
+    "CRATES_R": {
+      "elev_asset": "864c3cc8-1fc2-4b8a-bc11-d5ebfd70cf58",
+      "mad_blend": 4.0536309790453435,
+      "pad": [
+        394,
+        875,
+        1430,
+        1792
+      ]
+    }
+  },
+  "metrics": {
+    "mad_all": 0.947371732981387,
+    "mad_edge_M_obj": 0.0,
+    "mad_hi_w": 7.890555322254884,
+    "edge_lt_center": true
+  },
+  "outside_png": 0,
+  "PASS": true,
+  "claim": "C2_BG_EXT_WEIGHTED_QING_A_01612",
+  "qinli": [
+    "I-PROCESS 外力认+扣+升",
+    "I-SEAT 缘护",
+    "I-ID-BAN freeframe冒原物"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T20:42:23.426461+00:00",
+  "honest": "外力 elev 仍可 freeframe（洗衣更多件等）；用 peep 混 α + 径向 w 压几何；真语义分割 API 可再换"
+}

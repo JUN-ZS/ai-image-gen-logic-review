@@ -1,0 +1,25 @@
+{
+  "write_id": "01546",
+  "call": "SS驗.清+C",
+  "unavailable_PASS": false,
+  "tank": {
+    "PASS": true,
+    "claim": "C2_SS_YAN_QING_PLUS_C",
+    "outside": 0,
+    "frac": 0.12662151449121314
+  },
+  "mecha": {
+    "PASS": true,
+    "claim": "C2_SS_YAN_QING_PLUS_C",
+    "outside": 0,
+    "frac": 0.12179350907029478
+  },
+  "best_without_label": null,
+  "providers_ready": [
+    "http_open_vocab",
+    "boxes_json",
+    "manual_bbox",
+    "unavailable"
+  ],
+  "asof": "2026-11-10T23:34:57.081904+00:00"
+}

@@ -1,0 +1,52 @@
+{
+  "elev_assets": {
+    "FAR_CITY": "38e01ef5-f0dc-4cf6-a5d7-a81703e9ddcf",
+    "COL_L": "faa71669-7130-4725-a154-f0cd7c09b8a9",
+    "COL_R": "7c25421c-9879-403c-be8f-2ccb146ee98c"
+  },
+  "band_results": {
+    "FAR_CITY": {
+      "elev_asset": "38e01ef5-f0dc-4cf6-a5d7-a81703e9ddcf",
+      "peep_wh": [
+        789,
+        604
+      ],
+      "elev_src_wh": [
+        1616,
+        1232
+      ],
+      "ratio_lock": true,
+      "ar_err": 0.0053969209598350165
+    },
+    "COL_L": {
+      "elev_asset": "faa71669-7130-4725-a154-f0cd7c09b8a9",
+      "peep_wh": [
+        501,
+        957
+      ],
+      "elev_src_wh": [
+        1008,
+        1952
+      ],
+      "ratio_lock": true,
+      "ar_err": 0.007117529163882974
+    },
+    "COL_R": {
+      "elev_asset": "7c25421c-9879-403c-be8f-2ccb146ee98c",
+      "peep_wh": [
+        502,
+        957
+      ],
+      "elev_src_wh": [
+        1024,
+        1952
+      ],
+      "ratio_lock": true,
+      "ar_err": 3.426006817752736e-05
+    }
+  },
+  "outside_union_memory": 0,
+  "outside_png": 0,
+  "mad_in_band": 17.837718403603755,
+  "PASS_band_qing": true
+}

@@ -1,0 +1,109 @@
+{
+  "write": "01619",
+  "case": "T3",
+  "formal": "SHQ_DUAL_PAD_XU_HUI_WHOLE_READ_V1",
+  "PAD_R1": 0.3,
+  "PAD_R2": 0.38,
+  "ALPHA": 0.3,
+  "TEX_MIN": 6.0,
+  "R1_n": 8,
+  "R2_n": 8,
+  "whole_pass": true,
+  "n_whole": 8,
+  "outside": 0,
+  "parts": [
+    {
+      "name": "R201",
+      "parent": "R101",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 26.46,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    },
+    {
+      "name": "R202",
+      "parent": "R102",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 23.69,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    },
+    {
+      "name": "R203",
+      "parent": "R103",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 25.02,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    },
+    {
+      "name": "R204",
+      "parent": "R104",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 24.55,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    },
+    {
+      "name": "R205",
+      "parent": "R105",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 16.39,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    },
+    {
+      "name": "R206",
+      "parent": "R106",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 27.13,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    },
+    {
+      "name": "R207",
+      "parent": "R107",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 28.06,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    },
+    {
+      "name": "R208",
+      "parent": "R108",
+      "completeness": "grow",
+      "whole_ok": true,
+      "mad_tex": 22.22,
+      "tex_ok": true,
+      "elev_src": "peep_lock_USM_R2→R1",
+      "ff_pollute": false
+    }
+  ],
+  "gates": {
+    "outside0": true,
+    "whole": true,
+    "tex_all": true,
+    "no_ff_pollute": true
+  },
+  "PASS": true,
+  "T4_pollute_detected": true,
+  "T4_pollute_score": 765,
+  "claim": "C2_DUAL_PAD_T3_01619",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:00:49.318654+00:00",
+  "pipeline": "R1扣底FREEZE → R2 PAD大再读完整 → 强心针peep-lock → hard R1座洞 → 反"
+}

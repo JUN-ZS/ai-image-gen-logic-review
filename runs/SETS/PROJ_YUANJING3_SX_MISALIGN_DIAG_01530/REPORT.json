@@ -1,0 +1,261 @@
+{
+  "write_id": "01530",
+  "formal": "SHQ_YUANJING3_SX_MISALIGN_DIAG_V1",
+  "zh": "远景三物 · 哪对(S)x(S)对不上 · 四态影响",
+  "clusters": {
+    "(1008, 1792)": [
+      "S0",
+      "S01"
+    ],
+    "(984, 572)": [
+      "S0A",
+      "S1",
+      "S3",
+      "S9",
+      "S10",
+      "S11"
+    ],
+    "(855, 523)": [
+      "S5",
+      "S7"
+    ],
+    "(1282, 784)": [
+      "S6"
+    ]
+  },
+  "pairs": [
+    {
+      "pair": "S1src×S0",
+      "law": "輸入L1對S0尺",
+      "ok": false,
+      "fail_reason": [
+        "INPUT_L1=[2016, 3584] ≠ S0 · 2x假洞"
+      ],
+      "A_shape": [
+        2016,
+        3584
+      ],
+      "B_shape": [
+        1008,
+        1792
+      ]
+    },
+    {
+      "pair": "S1×S0",
+      "law": "除：鏈內L1對S0",
+      "ok": false,
+      "fail_reason": [
+        "S1=[984, 572] 在S0A域非母幀"
+      ],
+      "A_shape": [
+        984,
+        572
+      ],
+      "B_shape": [
+        1008,
+        1792
+      ],
+      "note": "鏈內S1=S0A域裁切L1"
+    },
+    {
+      "pair": "S0A⊂S0",
+      "law": "子集",
+      "ok": true,
+      "fail_reason": []
+    },
+    {
+      "pair": "S3×S0A",
+      "law": "洞在工域",
+      "ok": true,
+      "fail_reason": []
+    },
+    {
+      "pair": "S5×S3",
+      "law": "扣RATIO",
+      "ok": true,
+      "fail_reason": [],
+      "err": 0.0060319082495883004
+    },
+    {
+      "pair": "S7×S5",
+      "law": "elev peep尺",
+      "ok": true,
+      "fail_reason": []
+    },
+    {
+      "pair": "S9×S0A",
+      "law": "生洞外0",
+      "ok": true,
+      "fail_reason": [],
+      "outside": 0
+    },
+    {
+      "pair": "S10×S11",
+      "law": "貼→反",
+      "ok": true,
+      "fail_reason": []
+    },
+    {
+      "pair": "S11×S0A",
+      "law": "反工域0",
+      "ok": true,
+      "fail_reason": [],
+      "outside": 0
+    },
+    {
+      "pair": "S01×S0",
+      "law": "反母幀0",
+      "ok": true,
+      "fail_reason": [],
+      "outside": 0
+    },
+    {
+      "pair": "S7≠S11",
+      "law": "elev≠RETURN",
+      "ok": true,
+      "fail_reason": []
+    },
+    {
+      "pair": "S6×S5",
+      "law": "放大層",
+      "ok": false,
+      "fail_reason": [
+        "S6=[1282, 784] ≠ peep 中間放大域 OK-as-temp"
+      ],
+      "note": "S6 可為放大暫態；回 peep 靠 S7"
+    }
+  ],
+  "fails": [
+    {
+      "pair": "S1src×S0",
+      "law": "輸入L1對S0尺",
+      "ok": false,
+      "fail_reason": [
+        "INPUT_L1=[2016, 3584] ≠ S0 · 2x假洞"
+      ],
+      "A_shape": [
+        2016,
+        3584
+      ],
+      "B_shape": [
+        1008,
+        1792
+      ]
+    },
+    {
+      "pair": "S1×S0",
+      "law": "除：鏈內L1對S0",
+      "ok": false,
+      "fail_reason": [
+        "S1=[984, 572] 在S0A域非母幀"
+      ],
+      "A_shape": [
+        984,
+        572
+      ],
+      "B_shape": [
+        1008,
+        1792
+      ],
+      "note": "鏈內S1=S0A域裁切L1"
+    },
+    {
+      "pair": "S6×S5",
+      "law": "放大層",
+      "ok": false,
+      "fail_reason": [
+        "S6=[1282, 784] ≠ peep 中間放大域 OK-as-temp"
+      ],
+      "note": "S6 可為放大暫態；回 peep 靠 S7"
+    }
+  ],
+  "algebra": [
+    {
+      "cell": "除",
+      "pair": "S1src×S0",
+      "ok": false,
+      "S_affects": "S1→S2/S3/S5",
+      "issue": "輸入L1=2×S0 時，除態 freeframe；鏈內若裁到S0A可自洽，但母幀除證假"
+    },
+    {
+      "cell": "洞",
+      "pair": "S3×S0A",
+      "ok": true,
+      "S_affects": "S5/S9/S11",
+      "issue": null
+    },
+    {
+      "cell": "扣",
+      "pair": "S5×S3",
+      "ok": true,
+      "S_affects": "S6/S7/S9",
+      "issue": null
+    },
+    {
+      "cell": "生",
+      "pair": "S9×S0A",
+      "ok": true,
+      "S_affects": "S10/S11",
+      "issue": null
+    },
+    {
+      "cell": "反",
+      "pair": "S01×S0",
+      "ok": true,
+      "S_affects": "終態 vs S0",
+      "issue": null
+    }
+  ],
+  "cascade": [
+    "三域並存: (1008, 1792):['S0', 'S01'] | (984, 572):['S0A', 'S1', 'S3', 'S9', 'S10', 'S11'] | (855, 523):['S5', 'S7'] | (1282, 784):['S6']",
+    "ROOT 輸入: L1_src=2016x3584 = 2× S0(1008x1792) → 除態尺錯（S1src×S0 FAIL）",
+    "鏈內修復: run 把 L1 裁進 S0A 工域 → S1 變 984x572 與 S0A/S3/S9/S11 同域 → 生/反工域可 PASS",
+    "peep 域: S5/S7=855x523；S6=1282x784 是放大暫態（S6×S5 故意不同尺）",
+    "對不上位的真實點: ① 跨域直接比（母↔工↔peep）② 輸入除尺 ③ S6 放大未回鎖時當 peep 用",
+    "四態影響圖: 除(S1)尺 → 影響洞/扣座標；扣(S5)比例 → 影響升/生；生(S9)座 → 影響反；反(S01)必須×S0",
+    "FAIL S1src×S0: ['INPUT_L1=[2016, 3584] ≠ S0 · 2x假洞']",
+    "FAIL S1×S0: ['S1=[984, 572] 在S0A域非母幀']",
+    "FAIL S6×S5: ['S6=[1282, 784] ≠ peep 中間放大域 OK-as-temp']"
+  ],
+  "PASS_CRITICAL": false,
+  "key_finding": {
+    "L1_2x_bug": true,
+    "input_L1": [
+      2016,
+      3584
+    ],
+    "S0": [
+      1008,
+      1792
+    ],
+    "three_domains": {
+      "(1008, 1792)": [
+        "S0",
+        "S01"
+      ],
+      "(984, 572)": [
+        "S0A",
+        "S1",
+        "S3",
+        "S9",
+        "S10",
+        "S11"
+      ],
+      "(855, 523)": [
+        "S5",
+        "S7"
+      ],
+      "(1282, 784)": [
+        "S6"
+      ]
+    },
+    "where_misalign": [
+      "S1src×S0: 除输入尺",
+      "S1×S0: 链内除在S0A域，与母帧不同域（预期，靠S01 map）",
+      "S6×S5: 放大暂态不同尺（预期，需回锁peep）",
+      "跨域矩阵暗格: 母帧 vs 工域 vs peep 不可直接比"
+    ]
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:30:36.006266+00:00"
+}

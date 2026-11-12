@@ -1,0 +1,33 @@
+{
+  "write": "01567b",
+  "PASS": true,
+  "outside": 0,
+  "leaf": [
+    {
+      "id": "rover",
+      "outside": 0,
+      "mad_vs_peep": 8.55,
+      "mode": "contract_lock_100",
+      "ok": true
+    },
+    {
+      "id": "mecha",
+      "outside": 0,
+      "mad_vs_peep": 15.76,
+      "mode": "contract_lock_100",
+      "ok": true
+    },
+    {
+      "id": "climber",
+      "outside": 0,
+      "mad_vs_peep": 11.29,
+      "mode": "contract_lock_100",
+      "ok": true
+    }
+  ],
+  "fix": [
+    "E-XU4-01 silhouette",
+    "E-XU4-02 elev 100% inside MARK + mad gate"
+  ],
+  "asof": "2026-11-11T03:16:36.956304+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "S11xS0": true,
+  "outside_max_diff": 0,
+  "S9_outside_after_seat": 6,
+  "fullframe_outside_max": 6,
+  "PASS": false,
+  "formula": "‖RETURN-S0‖_outside MARK = 0",
+  "PRIMARY": "S10/S11 hardpaste seat — never freeframe S9 alone",
+  "anti_toxin": [
+    "E-FF-01",
+    "E-FF-02",
+    "E-FF-03"
+  ]
+}

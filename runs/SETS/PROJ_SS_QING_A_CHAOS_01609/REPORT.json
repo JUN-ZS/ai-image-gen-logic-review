@@ -1,0 +1,75 @@
+{
+  "write": "01609",
+  "call": "SS驗.清+A",
+  "scene": "chaos repair alley stall clutter",
+  "L0_asset": "5dac7637-b657-426a-be6a-0a21e9a8c168",
+  "L_bg_asset": "20036370-7f17-4ecd-b248-12352980339f",
+  "equation": "peep=L0[pad]原物; FINAL=L_bg⊙(1-M)+peep⊙pads",
+  "gold": "把除去的原物搬回来",
+  "ban": "freeframe densify 重生冒回",
+  "objects": {
+    "CAMERA": {
+      "pad": [
+        524,
+        956,
+        12,
+        344
+      ],
+      "bitexact_vs_L0": 0
+    },
+    "BOTTLE": {
+      "pad": [
+        350,
+        818,
+        203,
+        369
+      ],
+      "bitexact_vs_L0": 0
+    },
+    "VASE": {
+      "pad": [
+        322,
+        754,
+        304,
+        554
+      ],
+      "bitexact_vs_L0": 0
+    },
+    "CHIPS": {
+      "pad": [
+        402,
+        705,
+        723,
+        1139
+      ],
+      "bitexact_vs_L0": 0
+    },
+    "TOOLS": {
+      "pad": [
+        527,
+        913,
+        1252,
+        1792
+      ],
+      "bitexact_vs_L0": 0
+    },
+    "CANDLE": {
+      "pad": [
+        601,
+        929,
+        1203,
+        1411
+      ],
+      "bitexact_vs_L0": 0
+    }
+  },
+  "gates": {
+    "outside_png": 0,
+    "bitexact_all_obj": true,
+    "PASS": true
+  },
+  "claim": "C2_QING_A_CHAOS_01609",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T20:18:33.802502+00:00",
+  "honest": "L_bg Imagine 除主桌面透视可微漂；原物身份 bitexact 于 L0 pad，几何座仍 pad 框级"
+}

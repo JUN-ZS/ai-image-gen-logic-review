@@ -1,0 +1,206 @@
+{
+  "write": "01570",
+  "call": "虛回 × SS驗.清+C",
+  "flow": "peep已抽出 → Detect PART(S) path_C boxes_json → densify → 组elev → 虚回 B_direct",
+  "subjects": [
+    {
+      "id": "mecha",
+      "n_parts": 3,
+      "exclusive": true,
+      "provider": "boxes_json",
+      "path_C": "SS验.清+C",
+      "parts": [
+        {
+          "pid": "P0_head",
+          "label": "mecha_head_sensor_antenna",
+          "bbox": [
+            19,
+            0,
+            211,
+            175
+          ],
+          "score": 0.75,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/mecha/P0_head_xN.jpg",
+          "scale": 2.0,
+          "area": 13093
+        },
+        {
+          "pid": "P1_torso",
+          "label": "mecha_torso_arms_hydraulics",
+          "bbox": [
+            0,
+            172,
+            226,
+            344
+          ],
+          "score": 0.8,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/mecha/P1_torso_xN.jpg",
+          "scale": 2.0,
+          "area": 27039
+        },
+        {
+          "pid": "P2_legs",
+          "label": "mecha_legs_actuators_feet",
+          "bbox": [
+            4,
+            341,
+            217,
+            511
+          ],
+          "score": 0.85,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/mecha/P2_legs_xN.jpg",
+          "scale": 2.0,
+          "area": 15281
+        }
+      ],
+      "frame": {
+        "bbox_xyxy": [
+          260,
+          211,
+          486,
+          722
+        ],
+        "Wh": 227,
+        "Hh": 512,
+        "cx": 373.0,
+        "cy": 466.5,
+        "asp_wh": 0.443359375,
+        "area": 55413.0
+      },
+      "n_boxes": 4
+    },
+    {
+      "id": "climber",
+      "n_parts": 3,
+      "exclusive": true,
+      "provider": "boxes_json",
+      "path_C": "SS验.清+C",
+      "parts": [
+        {
+          "pid": "P0_head",
+          "label": "person_head_beanie_hood",
+          "bbox": [
+            0,
+            0,
+            84,
+            70
+          ],
+          "score": 0.75,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/climber/P0_head_xN.jpg",
+          "scale": 3.011764705882353,
+          "area": 2831
+        },
+        {
+          "pid": "P1_torso",
+          "label": "person_torso_backpack_jacket",
+          "bbox": [
+            0,
+            67,
+            84,
+            137
+          ],
+          "score": 0.8,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/climber/P1_torso_xN.jpg",
+          "scale": 3.011764705882353,
+          "area": 3335
+        },
+        {
+          "pid": "P2_legs",
+          "label": "person_legs_boots",
+          "bbox": [
+            0,
+            134,
+            75,
+            203
+          ],
+          "score": 0.85,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/climber/P2_legs_xN.jpg",
+          "scale": 3.3684210526315788,
+          "area": 3538
+        }
+      ],
+      "frame": {
+        "bbox_xyxy": [
+          832,
+          545,
+          916,
+          748
+        ],
+        "Wh": 85,
+        "Hh": 204,
+        "cx": 874.0,
+        "cy": 646.5,
+        "asp_wh": 0.4166666666666667,
+        "area": 9704.0
+      },
+      "n_boxes": 4
+    },
+    {
+      "id": "rover",
+      "n_parts": 3,
+      "exclusive": true,
+      "provider": "boxes_json",
+      "path_C": "SS验.清+C",
+      "parts": [
+        {
+          "pid": "P0_roof",
+          "label": "rover_roof_tanks_antennas",
+          "bbox": [
+            70,
+            0,
+            363,
+            111
+          ],
+          "score": 0.75,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/rover/P0_roof_xN.jpg",
+          "scale": 2.0,
+          "area": 13298
+        },
+        {
+          "pid": "P1_body",
+          "label": "rover_cabin_body_vents",
+          "bbox": [
+            24,
+            108,
+            379,
+            218
+          ],
+          "score": 0.8,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/rover/P1_body_xN.jpg",
+          "scale": 2.0,
+          "area": 26980
+        },
+        {
+          "pid": "P2_tracks",
+          "label": "rover_tracks_wheels",
+          "bbox": [
+            0,
+            215,
+            430,
+            323
+          ],
+          "score": 0.85,
+          "path_xN": "SETS/PROJ_XU_HUI_SS_C_PART_01570/parts/rover/P2_tracks_xN.jpg",
+          "scale": 2.0,
+          "area": 29984
+        }
+      ],
+      "frame": {
+        "bbox_xyxy": [
+          1176,
+          417,
+          1606,
+          740
+        ],
+        "Wh": 431,
+        "Hh": 324,
+        "cx": 1391.0,
+        "cy": 578.5,
+        "asp_wh": 1.3302469135802468,
+        "area": 70262.0
+      },
+      "n_boxes": 4
+    }
+  ],
+  "asof": "2026-11-11T03:45:26.094165+00:00"
+}

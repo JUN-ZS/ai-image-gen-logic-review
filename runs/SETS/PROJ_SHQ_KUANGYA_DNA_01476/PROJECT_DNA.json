@@ -1,0 +1,97 @@
+{
+  "dna_version": "1",
+  "dna_kind": "PROJECT",
+  "project_id": "PROJ_SHQ_KUANGYA_DNA_01476",
+  "write_id": "01476",
+  "formal": "SHQ_KUANGYA_EXEC_DNA_V1",
+  "STICK": "STICK_KUANGYA",
+  "zh": "框牙執行DNA·至高外力驅動四態",
+  "boundary": {
+    "exec_dna": {
+      "codename": "框牙",
+      "disclose_chain": true,
+      "E_KY_catalog": [
+        "E-KY-01",
+        "E-KY-02",
+        "E-KY-03",
+        "E-KY-04",
+        "E-KY-05"
+      ],
+      "donor_toxin_free": {
+        "write": "01482",
+        "formal": "DNA_DONOR_TOXIN_FREE_V1",
+        "doc": "docs/DNA_DONOR_TOXIN_FREE.md",
+        "DONOR0": "L0 peep@MARK bitexact",
+        "DONOR1": "外力GROK elev peep-only scale-lock",
+        "ban": [
+          "freeframe_as_donor",
+          "elev_remap",
+          "local_HF_primary"
+        ],
+        "try_01481": "SETS/PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475/runs/DONOR_TOXIN_FREE_TRY",
+        "asof": "2026-11-10T00:27:19.845215+00:00",
+        "DONOR1_note": "elev peep 僅 Bus 中間件；不得標為四態圖/正生（01484）",
+        "DONOR1_is_algebra_cell": false
+      },
+      "forbid": [
+        "E-DONOR-TOXIC-FREEFRAME",
+        "E-KY-ATX-01",
+        "E-KY-SUPREME-01",
+        "E-KY-SUPREME-02",
+        "E-KY-SUPREME-03",
+        "E-POLLUTE-HOLE_RETURN_FREEFRAME",
+        "E-WLG-DRIVE-01",
+        "elev_as_algebra_image",
+        "elev_as_正生",
+        "freeframe_as_donor",
+        "local_drive_substitute"
+      ],
+      "require": [
+        "drive_chu_sheng_via_imagine",
+        "supreme_F8_via_wai_li_grok",
+        "must_wai_li_grok",
+        "[(生,除,洞,扣)×(反)]",
+        "RESET_DONOR",
+        "donor_toxin_free",
+        "peep_same_bbox",
+        "scale_lock_elev"
+      ],
+      "supreme_clause": {
+        "write": "01483",
+        "rank": "SUPREME",
+        "precedence": 0,
+        "binding": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效",
+        "algebra": "[(生,除,洞,扣)×(反)]",
+        "driver": "外力GROK",
+        "doc": "docs/SHQ_KUANGYA_SUPREME_CLAUSE.md",
+        "asof": "2026-11-10T00:30:14.814596+00:00"
+      },
+      "anti_toxin_algebra_img": {
+        "write": "01484",
+        "doc": "docs/SHQ_KUANGYA_ANTI_TOXIN_ALGEBRA_IMG.md",
+        "wrong_guess_asset": "327a8469-c8d0-4ea7-b179-4e503b748944",
+        "correct": "8 cells from 01448; elev≠正生",
+        "asof": "2026-11-10T00:40:24.406185+00:00"
+      }
+    },
+    "ACCEPT_FULL_HD": false
+  },
+  "authority": {
+    "audit_force": "AF2",
+    "claim_level_max": "C2"
+  },
+  "dock": {
+    "persona_ids": [
+      "PERSONA_KUANGYA_EXEC",
+      "PERSONA_AUDIT_FORCE_SELF"
+    ],
+    "binds": [
+      "DNA_DONOR_TOXIN_FREE_V1",
+      "KUANGYA_SUPREME_01483",
+      "STICK_WAI_LI_GROK",
+      "STICK_XIN_NV_V2",
+      "[(生,除,洞,扣)×(反)]"
+    ]
+  },
+  "fingerprints": {}
+}

@@ -1,0 +1,112 @@
+{
+  "NEON_REPAIR": {
+    "pad_box": [
+      9,
+      210,
+      17,
+      442
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_NEON_REPAIR.jpg",
+    "h": 201,
+    "w": 425
+  },
+  "NEON_PARTS": {
+    "pad_box": [
+      5,
+      189,
+      402,
+      738
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_NEON_PARTS.jpg",
+    "h": 184,
+    "w": 336
+  },
+  "NEON_FEAR": {
+    "pad_box": [
+      30,
+      209,
+      703,
+      1016
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_NEON_FEAR.jpg",
+    "h": 179,
+    "w": 313
+  },
+  "GRAFFITI_WALL": {
+    "pad_box": [
+      159,
+      540,
+      0,
+      740
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_GRAFFITI_WALL.jpg",
+    "h": 381,
+    "w": 740
+  },
+  "CRATES_L": {
+    "pad_box": [
+      359,
+      740,
+      53,
+      546
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_CRATES_L.jpg",
+    "h": 381,
+    "w": 493
+  },
+  "CRATES_MID": {
+    "pad_box": [
+      297,
+      722,
+      494,
+      975
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_CRATES_MID.jpg",
+    "h": 425,
+    "w": 481
+  },
+  "STREET_WET": {
+    "pad_box": [
+      377,
+      802,
+      870,
+      1430
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_STREET_WET.jpg",
+    "h": 425,
+    "w": 560
+  },
+  "CRATES_R": {
+    "pad_box": [
+      394,
+      875,
+      1430,
+      1792
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_CRATES_R.jpg",
+    "h": 481,
+    "w": 362
+  },
+  "LAUNDRY": {
+    "pad_box": [
+      23,
+      336,
+      1167,
+      1783
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_LAUNDRY.jpg",
+    "h": 313,
+    "w": 616
+  },
+  "CITY_FAR": {
+    "pad_box": [
+      163,
+      466,
+      1271,
+      1792
+    ],
+    "peep": "SETS/PROJ_SS_BG_EXT_RECOG_01612/objects/bg_CITY_FAR.jpg",
+    "h": 303,
+    "w": 521
+  }
+}

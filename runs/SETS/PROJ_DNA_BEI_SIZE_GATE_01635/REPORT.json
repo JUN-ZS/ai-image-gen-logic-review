@@ -1,0 +1,91 @@
+{
+  "write": "01635",
+  "APPLE": {
+    "sx": 1.318,
+    "sy": 1.086,
+    "s_bbox": 1.197,
+    "s_area": 0.938,
+    "ar_ratio": 1.214,
+    "w_bei": 265,
+    "h_bei": 227,
+    "w_wu": 201,
+    "h_wu": 209,
+    "area_bei": 28600,
+    "area_wu": 32510,
+    "F8_PASS": false,
+    "codes": [
+      "E-BEI-SIZE-01",
+      "E-BEI-AR-01",
+      "E-OUTSIDE-ALONE-01"
+    ]
+  },
+  "all": [
+    {
+      "name": "POT",
+      "sx": 1.016,
+      "sy": 1.01,
+      "s_bbox": 1.013,
+      "s_area": 0.927,
+      "F8_PASS": true,
+      "codes": [],
+      "w_bei": 447,
+      "h_bei": 509,
+      "w_wu": 440,
+      "h_wu": 504
+    },
+    {
+      "name": "VASE",
+      "sx": 0.989,
+      "sy": 0.786,
+      "s_bbox": 0.882,
+      "s_area": 0.858,
+      "F8_PASS": false,
+      "codes": [
+        "E-BEI-SIZE-01",
+        "E-BEI-AREA-01",
+        "E-BEI-AR-01",
+        "E-OUTSIDE-ALONE-01"
+      ],
+      "w_bei": 268,
+      "h_bei": 368,
+      "w_wu": 271,
+      "h_wu": 468
+    },
+    {
+      "name": "CLOCK",
+      "sx": 0.993,
+      "sy": 0.973,
+      "s_bbox": 0.983,
+      "s_area": 0.692,
+      "F8_PASS": false,
+      "codes": [
+        "E-BEI-AREA-01",
+        "E-OUTSIDE-ALONE-01"
+      ],
+      "w_bei": 410,
+      "h_bei": 551,
+      "w_wu": 413,
+      "h_wu": 566
+    },
+    {
+      "name": "APPLE",
+      "sx": 1.318,
+      "sy": 1.086,
+      "s_bbox": 1.197,
+      "s_area": 0.938,
+      "F8_PASS": false,
+      "codes": [
+        "E-BEI-SIZE-01",
+        "E-BEI-AR-01",
+        "E-OUTSIDE-ALONE-01"
+      ],
+      "w_bei": 265,
+      "h_bei": 227,
+      "w_wu": 201,
+      "h_wu": 209
+    }
+  ],
+  "claim": "C2_DNA_BEI_SIZE_01635",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:44:11.173450+00:00"
+}

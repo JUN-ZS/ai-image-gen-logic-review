@@ -1,0 +1,7 @@
+{
+  "edge_of_M_obj": "w*=0.12 改小 线清晰",
+  "bg_object_center": "w→1 生动 densify",
+  "far_bg": "w≈0.45*dist",
+  "seat_edge_band": "w≤0.05 护原物回贴缘",
+  "hole_center_on_L_bg": "w≤0.35 空座填纹理可微升"
+}

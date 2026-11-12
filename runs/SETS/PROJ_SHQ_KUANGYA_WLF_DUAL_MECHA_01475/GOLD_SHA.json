@@ -1,0 +1,29 @@
+{
+  "write_id": "01475",
+  "STICK": "STICK_WAI_LI_FAN_V2",
+  "codename": "框牙",
+  "L0": {
+    "asset_id": "bf7479ed-55a2-4b3f-8a04-26cd5fbc49fb",
+    "file_sha256": "a93c11de5d9c4e209e22c2a44ead23e9d7a67758a868a0746b4417695c97de92",
+    "role": "中景雙機 KEEP"
+  },
+  "chu_part": {
+    "asset_id": "0fc50825-d652-4af7-9b61-e468b6ac193e",
+    "file_sha256": "e49000f616a3d1b52c9b7fcd10ffe8eef22709156ab8815acaa6352bd28413aa",
+    "role": "外力除头"
+  },
+  "chu_bei": {
+    "asset_id": "58289e05-7e91-4480-afd3-a234536f33c0",
+    "file_sha256": "45da4f301252b3e67206653b98cf58ce8c20cbe162bd44c9692383f1bad2de75",
+    "role": "外力除背→CLIP"
+  },
+  "sheng": {
+    "asset_id": "da1c99d2-5753-4d8a-82dc-3cf5788e507a",
+    "file_sha256": "9b2fb3e07ccb360701c6c0c934318e80c7855ca994ecc51cd58eb0f8ca36d538",
+    "role": "外力生"
+  },
+  "RETURN": {
+    "role": "框牙硬貼回",
+    "outside": 0
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "locks": [
+    {
+      "id": "SX-S3",
+      "pair": "S3×S3",
+      "lock": "MARK_freeze",
+      "write": "Bus[S3].MARK · corners · hole_from_EDIT",
+      "reload_before": [
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S9",
+        "S10"
+      ],
+      "zheng_tou": "正頭洞框必須回寫 S3，禁止 absdiff 另開洞"
+    },
+    {
+      "id": "SX-S4",
+      "pair": "S4×S4",
+      "lock": "part_role_REN",
+      "write": "Bus[S4].part_role · ren_ok",
+      "reload_before": [
+        "S5",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "zheng_tou": "正頭件=整中之頭，認結果回鎖 S4"
+    },
+    {
+      "id": "SX-S5",
+      "pair": "S5×S5",
+      "lock": "peep0_ORIGIN",
+      "write": "Bus[S5].peep0 · peep0_sha · never_overwrite",
+      "reload_before": [
+        "S6",
+        "S7",
+        "S9"
+      ],
+      "rule": "peep0 槽只讀；升清子代另槽 peep_child",
+      "zheng_tou": "正頭身份域= peep0；升清不得佔 peep0 槽"
+    },
+    {
+      "id": "SX-S6",
+      "pair": "S6×S5",
+      "lock": "scale_from_peep0_relock",
+      "write": "Bus[S6].peep_s · grow_max · parent=S5.peep0",
+      "reload_before": [
+        "S7",
+        "S8"
+      ],
+      "rule": "放大輸出回鎖 S6，並**指回** S5.peep0（S×S 邊）",
+      "fail_if": "E-SX-03 SCALE_ORPHAN"
+    },
+    {
+      "id": "SX-S7",
+      "pair": "S7×S5",
+      "lock": "elev_child_not_origin",
+      "write": "Bus[S7].elev* · parent=S5.peep0|S6.peep_s · role=candidate",
+      "reload_before": [
+        "S8",
+        "S9"
+      ],
+      "rule": "elev 回鎖 S7 槽；**禁止**回寫進 S5.peep0；S9 只讀 elev 為 optional ref",
+      "fail_if": "E-SX-02"
+    },
+    {
+      "id": "SX-S8",
+      "pair": "S8×(S4∩S6∩S7)",
+      "lock": "BOOST_AND_with_SX",
+      "write": "Bus[S8].boost_and · requires all SX-S4..S7 locked",
+      "reload_before": [
+        "S9"
+      ],
+      "rule": "強心針 AND 必須驗證三關**且**各自已 S×S 回鎖",
+      "fail_if": "E-SX-05"
+    },
+    {
+      "id": "SX-S9",
+      "pair": "S9×S3",
+      "lock": "seat_born_on_S3_MARK",
+      "write": "Bus[S9].I_sheng · base=L1 · seat=Bus[S3].MARK",
+      "reload_before": [
+        "S10",
+        "S11"
+      ],
+      "rule": "正頭：I_sheng = EDIT 洞內 INPAINT；座= S3 回鎖洞",
+      "zheng_tou": "正頭本體在此落地"
+    },
+    {
+      "id": "SX-S10",
+      "pair": "S10×S3×S9",
+      "lock": "return_binds_S3_S9",
+      "write": "Bus[S10].RETURN · outside0 vs base",
+      "reload_before": [
+        "S11"
+      ],
+      "rule": "回位綁 S3 洞 + S9 生；不綁 orphan elev"
+    },
+    {
+      "id": "SX-S11",
+      "pair": "S11×(S1..S10)",
+      "lock": "anti_reads_all_S",
+      "write": "Bus[S11].ANTI · F8",
+      "rule": "反板讀全鏈已鎖 S 槽，不重算"
+    }
+  ],
+  "law": {
+    "name": "(S)×(S) 遞迴鎖",
+    "formula": "∀ S_i: out_i → Bus[S_i]  (寫死)\n∀ S_j (j>i): 消費前必須 reload Bus[S_i]\n升清邊: S6×S5 · S7×S5  (子代指回 peep0，不覆蓋)\n正頭邊: S9×S3 · S10×(S3×S9)\n強心針: S8×(S4∩S6∩S7) 且 三關均已 SX 回鎖",
+    "recursion": "遞迴 = 每做完一刀升清/EDIT，立刻 (S)×(S) 回鎖；下一刀只讀鎖，不重開洞、不換原。",
+    "possible_implementations": [
+      {
+        "id": "P1",
+        "name": "Bus 槽分離",
+        "how": "peep0 | peep_s | elev* | I_sheng 四槽分寫；強心針只 AND 旗標不合併像素槽"
+      },
+      {
+        "id": "P2",
+        "name": "parent_sha 邊",
+        "how": "每個 S6/S7 產物帶 parent_sha=peep0_sha；S8/S9 校驗邊在才 PASS"
+      },
+      {
+        "id": "P3",
+        "name": "正頭後 REBIND S3",
+        "how": "洞內 INPAINT 成功後，用 EDIT 品红/認邊 更新 Bus[S3].MARK 一次（只允許正頭完成時）"
+      },
+      {
+        "id": "P4",
+        "name": "S×S 閘門表",
+        "how": "進入 S_j 前 checklist: required locks from S_i；缺一 E-SX-01"
+      },
+      {
+        "id": "P5",
+        "name": "升清回灌 peep_child 不占 peep0",
+        "how": "densify 結果 → Bus[S5].peep_child；S9 ref 優先 peep0，elev 可選"
+      }
+    ]
+  }
+}

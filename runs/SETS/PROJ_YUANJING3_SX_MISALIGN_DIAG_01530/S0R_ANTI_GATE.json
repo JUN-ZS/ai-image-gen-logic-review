@@ -1,0 +1,19 @@
+{
+  "hole_only": true,
+  "outside": 0,
+  "PASS": true,
+  "boost_AND": true,
+  "driver": "外力GROK",
+  "donor": "elev → peep 同尺置中 → hardpaste 回洞",
+  "formula": "咬→洞→升清咬塊→同尺置中回洞  [(生,除,洞,扣)×(反)]",
+  "E-WLF3-01": "无洞回=禁",
+  "size_lock": true,
+  "PASS_align": true,
+  "bbox_xyxy": [
+    76,
+    83,
+    590,
+    929
+  ],
+  "claim": "C2_BITE_HOLE_ALIGN_SX"
+}

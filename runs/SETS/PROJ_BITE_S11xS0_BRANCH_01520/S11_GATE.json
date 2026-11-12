@@ -1,0 +1,48 @@
+{
+  "S11xS0": true,
+  "S11xS3_MARK_seat": true,
+  "S11xS5_peep0_trace": true,
+  "outside_max_diff": 0,
+  "PASS": true,
+  "formula": "RETURN = S0 ⊙ (1−M) + fill ⊙ M ; ‖RETURN−S0‖_outside = 0",
+  "PRIMARY": "bite_hole_sheng_return(donor=3c25934d) → hardpaste seat",
+  "boost_AND": true,
+  "boost_formula": "认 ∩ 放大 ∩ 升质×物",
+  "bite_align": {
+    "law": "咬→洞→升清咬塊→同尺置中回洞",
+    "algebra": "[(生,除,洞,扣)×(反)]",
+    "bite": "peep = L0 ⊙ MARK",
+    "hole": "MARK 座位",
+    "sheng": "elev/HD → scale_lock 同 peep 大細置中",
+    "return": "hardpaste seat-born 置中對位",
+    "bbox_xyxy": [
+      197,
+      318,
+      299,
+      527
+    ],
+    "peep_hw": [
+      210,
+      103
+    ],
+    "I_sheng_hw": [
+      210,
+      103
+    ],
+    "size_lock": true,
+    "outside": 0,
+    "PASS_align": true,
+    "center_in_frame": [
+      0.1384,
+      0.4191
+    ],
+    "branch_from": "3c25934d-3382-467c-ac3a-f89617bda857",
+    "write": "01520"
+  },
+  "E-SX-06": "clear",
+  "E-SX-07": "clear (教材已留 wrong fullframe)",
+  "wrong_fullframe_outside": 239,
+  "claim": "C2_BITE_S11xS0_BRANCH",
+  "branch_from": "3c25934d",
+  "write": "01520"
+}

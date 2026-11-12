@@ -1,0 +1,318 @@
+{
+  "dna_version": "1",
+  "dna_kind": "PROJECT",
+  "write_id_dna": "01474",
+  "formal_dna": "SHQ_DNA_SYSTEM_V1",
+  "project_id": "PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475",
+  "write_id": "01475",
+  "formal": "KUANGYA_WLF_V21_CONTINUE_CLIP_SCALELOCK",
+  "STICK": "STICK_WAI_LI_FAN_V2",
+  "zh": "框牙·新女畫DNA debug + seat-born 試·至高外力驅動四態",
+  "boundary": {
+    "empty_mode": "imagine_remove_chu_part",
+    "outside_basis": "frozen_M_hole",
+    "ACCEPT_FULL_HD": false,
+    "mutex_peeps": true,
+    "layers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exec_dna": {
+      "codename": "框牙",
+      "write_id_exec_dna": "01476",
+      "disclose_chain": true,
+      "stick_named": "STICK_WAI_LI_FAN_V2",
+      "chain_authority_doc": "SHQ_WAI_LI_FAN_V2_1.md",
+      "chain_steps_done": [
+        "V21-0",
+        "V21-1",
+        "V21-2",
+        "V21-3",
+        "V21-4",
+        "V21-5",
+        "V21-6_ELEV_VIA_WAI_LI_GROK",
+        "V21-7",
+        "V21-8_STACK_WITH_GROK_ELEV",
+        "V21-9",
+        "F8_PY_TRY_RUN"
+      ],
+      "chain_steps_pending": [],
+      "exec_drift_flags": [],
+      "E_KY_history": [
+        "E-KY-01",
+        "E-KY-02",
+        "E-KY-03"
+      ],
+      "E_KY_cleared_this_run": true,
+      "note": "续跑已揭示并补 CLIP/锁尺/数值反；历史偏差保留在 E_KY_history",
+      "stack": {
+        "layers": [
+          "X0_full_object",
+          "X1_head"
+        ],
+        "flow": "進遞:景→全物件扣圖→folder升清→頭四態; 回:頭→全物件→景",
+        "folder_elev_techs": [
+          "ELEV_SCALELOCK",
+          "ELEV_HF_BLEND",
+          "ELEV_HARDPASTE_SEAT",
+          "ELEV_PEEP_LETTERBOX",
+          "ELEV_IMAGINE_ASSET"
+        ],
+        "user_update": "全物件扣圖用FOLDER各憲技升清，再接頭[(生除洞扣)×反]升清，層層進遞又回",
+        "ref_elev_asset": "413ce9af-316a-440c-83dc-1167fa614b98"
+      },
+      "error_recorded": [
+        "E-WLG-06",
+        "LOCAL_ELEV_AS_WAI_LI_GROK"
+      ],
+      "must_wai_li_grok_elev": true,
+      "wai_li_grok_assets": {
+        "elev0_full_GROK": "11b64a91-8283-4e5d-b831-22c2189cc4d6",
+        "elev1_head_GROK": "b3affe3a-aeb0-4494-8419-6aa4fcf56247",
+        "sheng_scene_GROK": "9152d1dc-dad2-46a0-b53f-ebe36b34e2e5",
+        "peep0": "6543785c-a433-4a00-844e-efe82cb2b259",
+        "peep1": "3625fde5-f451-44cb-b3fe-e479215d2e61",
+        "L1": "dd57b6d4-287a-4ec3-9772-269c11160362",
+        "L0": "bf7479ed-55a2-4b3f-8a04-26cd5fbc49fb",
+        "chu_bei": "58289e05-7e91-4480-afd3-a234536f33c0"
+      },
+      "supersedes_local_stack_recurse": true,
+      "chain_break": {
+        "recorded": true,
+        "code": "E-CHAIN-BREAK-NO_RETURN_TO_SRC",
+        "fix": "RETURN=L0; RETURN[M]=外力GROK[M]",
+        "debug_run": "runs/DEBUG_CHAIN_BREAK_GROK",
+        "outside_vs_L0": 0
+      },
+      "return_base": "L0_for_回原圖",
+      "self_peep_cancer": {
+        "code": "E-DNA-CANCER-SELF_PEEP",
+        "recorded": true,
+        "status": "STILL_OPEN_PLUS_HOLE_RETURN_POLLUTE",
+        "py": "shq_four_anti_f8.py",
+        "try_run": "runs/F8_TRY",
+        "F8_PASS": true,
+        "asof": "2026-11-09T23:49:50.872573+00:00"
+      },
+      "four_anti_algebra_required": true,
+      "forbid": [
+        "E-DONOR-TOXIC-FREEFRAME",
+        "E-KY-ATX-01",
+        "E-KY-SUPREME-01",
+        "E-KY-SUPREME-02",
+        "E-KY-SUPREME-03",
+        "E-POLLUTE-HOLE_RETURN_FREEFRAME",
+        "E-WLG-DRIVE-01",
+        "bbox_as_CLIP",
+        "elev_as_algebra_image",
+        "elev_as_正生",
+        "freeframe_as_RETURN",
+        "freeframe_as_donor",
+        "freeframe_as_hole_return",
+        "local_drive_substitute",
+        "local_elev_as_sheng",
+        "outside0_only_PASS",
+        "py_without_F8",
+        "self_peep"
+      ],
+      "py_f8": "shq_four_anti_f8.py",
+      "pollution": {
+        "code": "E-POLLUTE-HOLE_RETURN_FREEFRAME",
+        "status": "TREATING_SEAT_BORN",
+        "F8_TRY_semantic": "FAIL_POLLUTED",
+        "reason": "洞回用 freeframe 裁貼，非 seat-born 生",
+        "xin_nv_log": "SETS/PROJ_SHQ_XHN_V2_VERIFY_01463/ERROR_TEXTBOOK",
+        "asof": "2026-11-10T00:00:40.167955+00:00"
+      },
+      "hole_return": {
+        "order": [
+          "S0 SRC L0 freeze",
+          "S1 MARK 凍（虛擬洞座標）before remove",
+          "S2 TRUE_HOLE 真剪像素出洞（checker/void/alpha）",
+          "S3 BITE peep = L0@MARK same bbox（非 CLIP；非 self_peep 當洞）",
+          "S4 REMOVE L1 外力GROK（同框）",
+          "S5 扣 作證 · 禁重寫 MARK",
+          "S6 生 elev scale-lock same bbox · elev_remap=false · 外力GROK",
+          "S7 RETURN hardpaste 只填 TRUE_HOLE",
+          "S8 反 boards"
+        ],
+        "ban": [
+          "peep rect as hole",
+          "freeframe densify grow",
+          "steal freeframe map as RETURN",
+          "outside=0 only as SUCCESS",
+          "kou rewrite MARK",
+          "half-body mask as head hole"
+        ],
+        "qa_from_01436": [
+          "Q0_RESET_DONOR",
+          "Q1_L0_L1",
+          "Q2_kou_same_camera",
+          "Q3_hole_silhouette_not_rect",
+          "Q4_peep_same_bbox",
+          "Q5_scale_lock",
+          "Q6_no_freeframe_steal",
+          "Q7_outside",
+          "Q8_elev_remap_false",
+          "Q9_anti_board"
+        ]
+      },
+      "hole_return_law": {
+        "from": "STICK_XIN_NV_V2",
+        "sheng_base": "L_empty",
+        "fill": "only_hole",
+        "hardpaste": "proof_only",
+        "ban": [
+          "freeframe_crop_into_M",
+          "outside0_as_sole_PASS"
+        ]
+      },
+      "xnv2_dna_debug": {
+        "asof": "2026-11-10T00:05:37.452376+00:00",
+        "status": "FAIL_DNA_DEBUG",
+        "claim": "C0_POLLUTED",
+        "report": "runs/XNV2_DNA_DEBUG/DEBUG_REPORT.json",
+        "is_freeframe_sheng": true,
+        "next": "seat_born_Imagine_sheng_on_L_empty",
+        "seat_born_try": {
+          "I_seat": "1e409d6a-4143-40b0-bb37-2da5a26b22a0",
+          "honest": {
+            "sheng_base": "L_empty",
+            "sheng_asset": "1e409d6a-4143-40b0-bb37-2da5a26b22a0",
+            "soft_freeframe_outside_hole": true,
+            "out_seat_vs_empty_outside_M": 241,
+            "hardpaste_outside_L0": 0,
+            "hardpaste_outside_empty": 0,
+            "frac_M": 0.016891098887471655,
+            "note": "Imagine 生@L_empty 可能仍漂；RETURN 以 hardpaste 證洞外0"
+          },
+          "F8_SEAT": {
+            "status": "PASS",
+            "F8_PASS": true,
+            "outside": 0,
+            "pollution": null
+          },
+          "F8_SEAT_BASE_EMPTY": {
+            "status": "PASS",
+            "F8_PASS": true,
+            "outside": 0
+          },
+          "claim_after_seat_try": "C1"
+        }
+      },
+      "freeframe_vs_wai_li_grok": {
+        "write": "01480",
+        "doc": "docs/DNA_FREEFRAME_VS_WAI_LI_GROK.md",
+        "one_line": "外力GROK 是合法工具主權；freeframe 是外力輸出的一種失控形態，不是主權本身。",
+        "asof": "2026-11-10T00:20:35.606229+00:00"
+      },
+      "donor_toxin_free": {
+        "write": "01482",
+        "formal": "DNA_DONOR_TOXIN_FREE_V1",
+        "doc": "docs/DNA_DONOR_TOXIN_FREE.md",
+        "DONOR0": "L0 peep@MARK bitexact",
+        "DONOR1": "外力GROK elev peep-only scale-lock",
+        "ban": [
+          "freeframe_as_donor",
+          "elev_remap",
+          "local_HF_primary"
+        ],
+        "try_01481": "SETS/PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475/runs/DONOR_TOXIN_FREE_TRY",
+        "asof": "2026-11-10T00:27:19.845215+00:00",
+        "DONOR1_note": "elev peep 僅 Bus 中間件；不得標為四態圖/正生（01484）",
+        "DONOR1_is_algebra_cell": false,
+        "DONOR1_role": "elev_candidate_NOT_正生"
+      },
+      "require": [
+        "drive_chu_sheng_via_imagine",
+        "supreme_F8_via_wai_li_grok",
+        "must_wai_li_grok",
+        "[(生,除,洞,扣)×(反)]",
+        "RESET_DONOR",
+        "donor_toxin_free",
+        "peep_same_bbox",
+        "scale_lock_elev"
+      ],
+      "supreme_clause": {
+        "write": "01483",
+        "rank": "SUPREME",
+        "precedence": 0,
+        "binding": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效",
+        "algebra": "[(生,除,洞,扣)×(反)]",
+        "driver": "外力GROK",
+        "doc": "docs/SHQ_KUANGYA_SUPREME_CLAUSE.md",
+        "asof": "2026-11-10T00:30:14.814596+00:00"
+      },
+      "anti_toxin_algebra_img": {
+        "write": "01484",
+        "wrong_asset": "327a8469-c8d0-4ea7-b179-4e503b748944",
+        "demote_DONOR1": "elev_candidate_only",
+        "asof": "2026-11-10T00:43:01.722076+00:00"
+      }
+    }
+  },
+  "authority": {
+    "audit_force": "AF2",
+    "claim_level_max": "C1",
+    "steal_flags": [],
+    "drift_flags": [],
+    "E_codes": [],
+    "audit_status": "PASS_AUDIT",
+    "exec_drift": false,
+    "notes": "XNV2 debug+seat try: 生@L_empty + hardpaste; soft freeframe possible"
+  },
+  "dock": {
+    "binds": [
+      "DNA_DONOR_TOXIN_FREE_V1",
+      "KUANGYA_SUPREME_01483",
+      "STICK_FOUR_ANTI_ARCH",
+      "STICK_WAI_LI_FAN_V2",
+      "STICK_WAI_LI_GROK",
+      "STICK_XIN_NV_V2",
+      "[(生,除,洞,扣)×(反)]"
+    ],
+    "consumers": [],
+    "harness_preset": null,
+    "gold_assets": [
+      "bf7479ed-55a2-4b3f-8a04-26cd5fbc49fb",
+      "0fc50825-d652-4af7-9b61-e468b6ac193e",
+      "da1c99d2-5753-4d8a-82dc-3cf5788e507a",
+      "58289e05-7e91-4480-afd3-a234536f33c0",
+      "11b64a91-8283-4e5d-b831-22c2189cc4d6",
+      "b3affe3a-aeb0-4494-8419-6aa4fcf56247",
+      "9152d1dc-dad2-46a0-b53f-ebe36b34e2e5",
+      "6543785c-a433-4a00-844e-efe82cb2b259",
+      "3625fde5-f451-44cb-b3fe-e479215d2e61",
+      "dd57b6d4-287a-4ec3-9772-269c11160362"
+    ],
+    "hub_paths": [],
+    "persona_ids": [
+      "PERSONA_WLF_MECHA_DUAL",
+      "PERSONA_AUDIT_FORCE_SELF",
+      "PERSONA_KUANGYA_EXEC",
+      "PERSONA_HOLE_RETURN_VACCINE"
+    ]
+  },
+  "fingerprints": {
+    "keep_sha256": "b0845ec4f447f48fd208682eee7ba7b073cb5ecade6905c351ca9023751f2fce",
+    "empty_sha256": "b48a2d3462ce545a8b3d543e18cc0108d21de8616e7fdab39edafb33c5e7b4e8",
+    "hole_sha256": "3b3aef7818f4a0bee0ad52b880760a470af8856dee4f015bc33b302a4bfb8836",
+    "summary_sha256": "5eda5ce964213a9ec0a4e77d9c957480164e29ca62cf96daebfb6987e25cdb7c",
+    "dna_sha256": "32f0f84e8fd3387e69f390252c5d22f17c491a058757c2aa804832f42fe9bb5f"
+  },
+  "optimize": {
+    "schema": "PROJECT_DNA_V1",
+    "rules": [
+      "boundary locks sovereignty",
+      "authority caps external claim",
+      "dock lists legal binds only",
+      "fingerprints make external replay checkable",
+      "persona_ids link independent character DNA without merging libraries"
+    ]
+  },
+  "asof": "2026-11-09T23:07:25Z",
+  "extra": {
+    "source_summary": "SETS/PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475/runs/kuangya_AB_v21_continue/SUMMARY.json"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "write_id": "01637",
+  "call": "倒反证·叠物步步驗",
+  "formal": "SHQ_DAO_FAN_STACK_BUBU_V1",
+  "kills": [
+    "OLD_CC_MARK",
+    "OLD_OUTSIDE_ALONE",
+    "OLD_FREEFRAME_AS_PEEP",
+    "OLD_COLOR_BAND",
+    "OLD_ANTITOXIN_REWRITE",
+    "OLD_AXIS_AS_SEAT"
+  ],
+  "live_chain": "发现窗→peep→有物vs無底影→elev peep-lock→步步為一后→前影扣回",
+  "stack": [
+    "BOOKS",
+    "JAR",
+    "KETTLE",
+    "PEAR"
+  ],
+  "overlap": [
+    {
+      "back": "BOOKS",
+      "front": "JAR",
+      "inter_px": 25820
+    },
+    {
+      "back": "JAR",
+      "front": "KETTLE",
+      "inter_px": 102556
+    },
+    {
+      "back": "KETTLE",
+      "front": "PEAR",
+      "inter_px": 75264
+    }
+  ],
+  "parent": [
+    "01631",
+    "01633",
+    "01636"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:53:13.692935+00:00"
+}

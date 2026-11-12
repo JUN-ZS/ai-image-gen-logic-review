@@ -1,0 +1,38 @@
+{
+  "write_id": "01634",
+  "call": "框内闸",
+  "formal": "SHQ_DNA_SUBJECT_IN_PEEP_FRAME_V1",
+  "zh": "物必须在 peep 框内被影扣住；outside=0 alone 不足 PASS",
+  "parent": [
+    "01631 影扣回",
+    "01633 回退不改影",
+    "D_OUTSIDE_ALONE_NOT_PASS"
+  ],
+  "why_APPLE_passed_wrong": {
+    "bug": "E-OUTSIDE-ALONE-01",
+    "desc": "outside=0 只看 MARK 外相对 base bitexact；MARK 若是小椭圆/错影，洞外仍 0 → 假 PASS",
+    "also": [
+      "E-MARK-UNDERCOVER：影未盖住 peep 内真物",
+      "E-FF-FRAME：除背 freeframe 物相对 peep 框 比例/位 脱框仍被当 PASS",
+      "E-SUBJECT-OUTSIDE-PEEP：物主体落在 peep 窗外或影落在窗缘外过量"
+    ]
+  },
+  "gates": {
+    "G0_outside": "洞外 max_diff==0（必要不充分）",
+    "G1_mark_nonempty": "MARK pix >= peep*min_frac",
+    "G2_cover_peep": "cover = |M ∩ S_peep| / |S_peep| >= COVER_MIN",
+    "G3_contain_mark": "contain = |M ∩ peep_rect| / |M| >= CONTAIN_MIN（影不得大量在窗外）",
+    "G4_chubei_vs_peep_ratio": "除背主体 bbox 与 peep 主体 ar/scale 闸；超限 → WARN/FAIL 不 rewrite",
+    "G5_no_pass_if_G2_fail": "G2 失败则 F8_PASS=false，无论 outside=0"
+  },
+  "thresholds": {
+    "COVER_MIN": 0.72,
+    "CONTAIN_MIN": 0.98,
+    "MIN_FRAC": 0.04,
+    "MAX_FRAC": 0.92,
+    "SCALE_LO": 0.8695652173913044,
+    "SCALE_HI": 1.15
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:40:44.160005+00:00"
+}

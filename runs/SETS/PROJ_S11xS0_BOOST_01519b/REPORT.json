@@ -1,0 +1,21 @@
+{
+  "write_id": "01519",
+  "project": "PROJ_S11xS0_BOOST_01519b",
+  "mode": "shen",
+  "zh": "正身",
+  "PASS_SX_FULL": true,
+  "S11xS0_outside": 0,
+  "S01_S0_outside": 0,
+  "boost_AND": true,
+  "size_lock": true,
+  "PASS_align": true,
+  "E-SX-06": "clear",
+  "E-SX-07": "clear",
+  "formula": "RETURN = S0 ⊙ (1−M) + fill ⊙ M ; ‖RETURN−S0‖_outside = 0",
+  "boost_formula": "认 ∩ 放大 ∩ 升质×物",
+  "claim": "C2_S11xS0_ALIGN_BOOST",
+  "formal": "S11xS0_ALIGN_LOCK_V1",
+  "ACCEPT_FULL_HD": false,
+  "law": "S11 必須鎖 S0：洞外 bit-exact；座在 S3.MARK；升清子代不換原",
+  "asof": "2026-11-10T11:31:30.697931+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "call": "SS驗.清+C·格框",
+  "do": [
+    "认全图 boxes（Grok VLM / Agent / 检测 API）",
+    "每物 peep → 黄框 cell 入格",
+    "标 WHOLE vs PART",
+    "WHOLE exclusive hardpaste 回 L0"
+  ],
+  "dont": [
+    "PART 独立回洞冒 claim",
+    "无框 silent whole_subject",
+    "JPEG 当 outside 金标"
+  ]
+}

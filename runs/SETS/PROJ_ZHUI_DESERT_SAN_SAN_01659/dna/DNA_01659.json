@@ -1,0 +1,18 @@
+{
+  "write_id": "01659",
+  "call": "追×独环境×散散",
+  "formal": "SHQ_ZHUI_DU_ENV_SAN_SAN_COMPOSE_V1",
+  "equation": "studio S0 --独·环境--> desert peep 反射吐再生 --散散 MARK--> {叠 hard | 斜 FOV PRIMARY | 折+FOV} --hardpaste--> outside=0",
+  "compose": [
+    "追/01658",
+    "独·环境反射",
+    "散散",
+    "叠",
+    "斜",
+    "折",
+    "移轴FOV"
+  ],
+  "应变_独环境反射": true,
+  "rule": "desert=光场; S0=座; 追=递式补给",
+  "asof": "2026-11-12T02:51:27.143164+00:00"
+}

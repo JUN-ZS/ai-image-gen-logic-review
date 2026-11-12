@@ -1,0 +1,11 @@
+{
+  "write": "01636",
+  "call": "DNA·倒反证更新",
+  "n_conflicts": 6,
+  "n_DEAD": 7,
+  "n_LIVE": 5,
+  "claim": "C2_DNA_DAO_FAN_ZHENG_01636",
+  "registry": "SETS/CONSTITUTION_METHOD_REGISTRY.json",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:49:24.931043+00:00"
+}

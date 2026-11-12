@@ -1,0 +1,124 @@
+{
+  "write": "01593",
+  "call": "Imagine生成级 elev × 全单一物件 → 层回锁本线 S11",
+  "formal": "SHQ_IMAGINE_SOLO_OBJ_CENG_LOCK_V1",
+  "bloodline": "library_01592",
+  "S0": "01592/L0",
+  "S11_base": "01592/RETURN_BATCH",
+  "S11_star": "S11_IMAGINE_CENG.jpg",
+  "n_obj": 8,
+  "parts": [
+    {
+      "id": "OBJ_CRYSTAL",
+      "zh": "水晶球",
+      "outside": 0,
+      "mad_inside": 13.057,
+      "mad_elev_vs_peep": 12.863,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/9502d6bc-29eb-4039-8128-bed0579bf26e.jpg"
+    },
+    {
+      "id": "OBJ_BREAD",
+      "zh": "左面包烛",
+      "outside": 0,
+      "mad_inside": 11.199,
+      "mad_elev_vs_peep": 11.154,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/af7d2510-58f4-480b-97d6-aef93f6fab6f.jpg"
+    },
+    {
+      "id": "OBJ_PENTACLE",
+      "zh": "五芒星盒",
+      "outside": 0,
+      "mad_inside": 11.288,
+      "mad_elev_vs_peep": 11.262,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/d2f0e000-b8e8-4b80-a352-95fd3e023ca9.jpg"
+    },
+    {
+      "id": "OBJ_RADIO",
+      "zh": "五芒星收音机",
+      "outside": 0,
+      "mad_inside": 8.095,
+      "mad_elev_vs_peep": 7.92,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/002fdf62-2faf-4eff-a53a-137ca8eef7a3.jpg"
+    },
+    {
+      "id": "OBJ_STATUE",
+      "zh": "雕像头",
+      "outside": 0,
+      "mad_inside": 12.263,
+      "mad_elev_vs_peep": 12.16,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/3b4b3e6f-6afc-4eea-a3d6-c95606fa335c.jpg"
+    },
+    {
+      "id": "OBJ_SCOPE",
+      "zh": "右显微镜",
+      "outside": 0,
+      "mad_inside": 6.882,
+      "mad_elev_vs_peep": 6.731,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/3b6eddf2-d564-4c6e-91ad-70fd0288232b.jpg"
+    },
+    {
+      "id": "OBJ_GLOW",
+      "zh": "绿药水",
+      "outside": 0,
+      "mad_inside": 10.899,
+      "mad_elev_vs_peep": 10.706,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/3101ada8-5290-42a9-bfae-113b7d29b528.jpg"
+    },
+    {
+      "id": "OBJ_COINS",
+      "zh": "金币中前",
+      "outside": 0,
+      "mad_inside": 11.196,
+      "mad_elev_vs_peep": 11.066,
+      "PASS": true,
+      "claim": "C2_IMAGINE_SOLO_QING",
+      "I_PROCESS": "Imagine_generation_elev",
+      "bloodline": "library_01592",
+      "elev_asset": "imagine_images/fd89fdb4-90d9-4e25-9fdb-1d75457760bc.jpg"
+    }
+  ],
+  "outside_union": 0,
+  "PASS": true,
+  "claim": "C2_IMAGINE_SOLO_CENG_HUI_SUO",
+  "qinli": {
+    "I-PROCESS": "Imagine densify per object",
+    "I-SEAT": true,
+    "I-ID-BAN": "same peep0 seat",
+    "bloodline_match": true,
+    "outside0": true
+  },
+  "E_CC": {
+    "E-CC-01": "elev from this run Imagine on peep",
+    "E-CC-02": "claim on library_01592 only"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T06:52:54.871943+00:00"
+}

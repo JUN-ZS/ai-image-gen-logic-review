@@ -1,0 +1,12 @@
+{
+  "call": "SS驗.背景清",
+  "aliases": [
+    "SS验.背景清",
+    "背景清",
+    "SS_YAN.BG_QING"
+  ],
+  "maps_to": "SS驗.清+A->景",
+  "formal_parent": "SHQ_SS_YAN_QING_PLUS_A_TO_SCENE_V1",
+  "this_run": "densify elev on L_bg only (C_scene)",
+  "write_run": "01607"
+}

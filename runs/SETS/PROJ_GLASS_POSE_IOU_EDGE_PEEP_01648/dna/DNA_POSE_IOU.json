@@ -1,0 +1,12 @@
+{
+  "write_id": "01648",
+  "call": "轴.反射.生+姿IoU",
+  "parent_call": "轴.反射.生",
+  "formal": "SHQ_ZHOU_FAN_SHE_SHENG_POSE_IOU_EDGE_PEEP_V1",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "gates": {
+    "E-POSE-IOU-01": "IoU<0.55→REJECT轴向→peep densify",
+    "edge": "缘环强制peep"
+  },
+  "asof": "2026-11-12T01:08:03.625653+00:00"
+}

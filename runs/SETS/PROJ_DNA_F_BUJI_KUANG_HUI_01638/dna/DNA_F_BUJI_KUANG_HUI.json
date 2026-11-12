@@ -1,0 +1,68 @@
+{
+  "write_id": "01638",
+  "call": "四态·独自补给·框回鎖",
+  "formal": "SHQ_F_ALGEBRA_SOLO_SUPPLY_KUANG_HUI_V1",
+  "zh": "废影语义病；真链=[(生,除,洞,扣)×(反)] + 独自补给 + 框回鎖",
+  "semantic_disease": {
+    "name": "影技术 / 影扣回 / lock影",
+    "code": "E-SEM-YING-01",
+    "why": "从来不用「影」作技术主名；易与剪影/alpha 魔术棒混，偏离四态代数",
+    "status": "DEAD"
+  },
+  "algebra": {
+    "F": "[(生,除,洞,扣)×(反)]",
+    "cells": {
+      "除": "外力/有物→無底：离开（除主/除背）",
+      "扣": "有物 vs 無底 证洞（不重开乱CC座）",
+      "洞": "座位 MARK（框坐标）= 扣之结果，不是「影技术」",
+      "生": "独自补给 = 只对该物 peep 生成升清 fill（不与他物混）",
+      "反": "洞外 bitexact · 框回锁 · cover/尺闸"
+    },
+    "relate": "除得洞 → 扣证洞 → 生(独自补给)只在洞 → 框回鎖入座 → 反验"
+  },
+  "solo_supply": {
+    "zh": "独自补给",
+    "rule": "1 物 = 1 次 生；fill 只来自该 peep0 elev/densify；尺寸≡peep；禁 freeframe 换原",
+    "ban": [
+      "多物一次混生",
+      "用邻物像素补给",
+      "freeframe 无 peep-lock 补给当生"
+    ]
+  },
+  "kuang_hui_suo": {
+    "zh": "框回鎖",
+    "eq": "R = B ⊙ (1−M) + Supply_i ⊙ M；M 在 peep 框坐标；‖R−B‖_outside=0",
+    "lock": [
+      "同机位",
+      "同 M 洞",
+      "同 peep bbox",
+      "scale-lock",
+      "后→前步步為一"
+    ]
+  },
+  "rename_map": {
+    "影扣回": "框回鎖（生后入座）",
+    "除背影 MARK": "洞 = 扣(除) 之座",
+    "YING_*.png": "MARK_HOLE_*.png / 洞",
+    "lock影": "FORBIDDEN 语义病"
+  },
+  "DEAD_add": [
+    "影技术",
+    "影扣回(主法名)",
+    "lock影"
+  ],
+  "LIVE": [
+    "[(生,除,洞,扣)×(反)]",
+    "独自补给（每物一次生）",
+    "框回鎖",
+    "步步為一 后→前",
+    "DNA 闸只判不 rewrite（01633）"
+  ],
+  "parent": [
+    "01448/01492 四态",
+    "01631–01637 纠错",
+    "01636 倒反证"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:58:12.339991+00:00"
+}

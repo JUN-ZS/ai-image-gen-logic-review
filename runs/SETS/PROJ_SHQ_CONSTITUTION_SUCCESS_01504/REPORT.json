@@ -1,0 +1,12 @@
+{
+  "write_id": "01504",
+  "status": "SUCCESS_RECORDED",
+  "formal": "CONSTITUTION_LOCK_SUCCESS_ZHENG_TOU_SX_S11xS0_V1",
+  "claims": [
+    "C2_EDIT_INPAINT_IN_HOLE",
+    "C2_SX_ZHENG_TOU_HD",
+    "C2_S11xS0_ALIGN"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:45:53.300883+00:00"
+}

@@ -1,0 +1,30 @@
+{
+  "write_id": "01508",
+  "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+  "stick": "STICK_ZHENG_SHEN",
+  "parent": "正头 STICK_ZHENG_TOU_SX_S11xS0",
+  "zh": "正身=正头DNA整件升级",
+  "equation": "正身 = 正头DNA[bite: head → full_object]",
+  "trial": "A_mecha_full",
+  "gates": {
+    "DNA_LOCKED": true,
+    "EDIT_除整件": true,
+    "peep_full": true,
+    "elev_child": true,
+    "正身_洞内INPAINT": true,
+    "S11xS0_outside0": true
+  },
+  "out_S11xS0": 0,
+  "out_fullframe": 222,
+  "PASS_TRY": true,
+  "claim": "C2_ZHENG_SHEN_TRY",
+  "assets": {
+    "L0": "52e1ced2-2f47-4f62-9850-174347ea1dd5",
+    "L1_full": "58061f04-481e-4b41-abec-6a5427d360f0",
+    "peep_full": "3dfec439-0c77-4ac6-8cb8-ddb08a2362cd",
+    "elev": "d6402601-11e4-4706-994b-2d4ee4231c01",
+    "正身": "212c0c47-e158-46d9-927e-7705adabf229"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T09:25:31.142161+00:00"
+}

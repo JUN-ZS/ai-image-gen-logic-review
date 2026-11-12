@@ -1,0 +1,141 @@
+{
+  "write": "01608",
+  "call": "SS聯動 · band座洞 densify清鎖 → 物清+A回貼",
+  "parent": [
+    "SS驗.清+A->景",
+    "SS 聯動",
+    "PAD加大鎖"
+  ],
+  "size": [
+    1792,
+    1008
+  ],
+  "paths": {
+    "L0": "imagine_images/3ceec60a-09e7-4d61-a5c5-ba4ed17daee5.jpg",
+    "L_bg": "imagine_images/c4c1f8c4-0f88-4906-9719-1c3c4604ca72.jpg",
+    "L_bg_qing0": "imagine_images/04efa874-33f2-4a4c-b757-5f8ab71e70e0.jpg"
+  },
+  "bands": {
+    "FAR_CITY": {
+      "y0": 20,
+      "y1": 624,
+      "x0": 501,
+      "x1": 1290,
+      "h": 604,
+      "w": 789,
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/peeps/peep_FAR_CITY.jpg",
+      "mask": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/bands/M_FAR_CITY.png",
+      "frac": 0.2638246704931973
+    },
+    "COL_L": {
+      "y0": 0,
+      "y1": 957,
+      "x0": 0,
+      "x1": 501,
+      "h": 957,
+      "w": 501,
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/peeps/peep_COL_L.jpg",
+      "mask": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/bands/M_COL_L.png",
+      "frac": 0.2654306839923469
+    },
+    "COL_R": {
+      "y0": 0,
+      "y1": 957,
+      "x0": 1290,
+      "x1": 1792,
+      "h": 957,
+      "w": 502,
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/peeps/peep_COL_R.jpg",
+      "mask": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/bands/M_COL_R.png",
+      "frac": 0.2659604857568027
+    }
+  },
+  "objects": {
+    "CRYSTAL": {
+      "tight": [
+        624,
+        887,
+        573,
+        860
+      ],
+      "pad_box": [
+        592,
+        918,
+        538,
+        894
+      ],
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/objects/peep_CRYSTAL.jpg",
+      "h": 326,
+      "w": 356
+    },
+    "RADIO": {
+      "tight": [
+        554,
+        887,
+        1290,
+        1702
+      ],
+      "pad_box": [
+        514,
+        926,
+        1240,
+        1751
+      ],
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/objects/peep_RADIO.jpg",
+      "h": 412,
+      "w": 511
+    },
+    "BUST": {
+      "tight": [
+        383,
+        584,
+        752,
+        1039
+      ],
+      "pad_box": [
+        358,
+        608,
+        717,
+        1073
+      ],
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/objects/peep_BUST.jpg",
+      "h": 250,
+      "w": 356
+    },
+    "MAGIC_BOX": {
+      "tight": [
+        584,
+        826,
+        143,
+        501
+      ],
+      "pad_box": [
+        554,
+        855,
+        100,
+        543
+      ],
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/objects/peep_MAGIC_BOX.jpg",
+      "h": 301,
+      "w": 443
+    },
+    "SCOPE": {
+      "tight": [
+        423,
+        725,
+        1397,
+        1756
+      ],
+      "pad_box": [
+        386,
+        761,
+        1353,
+        1792
+      ],
+      "peep": "SETS/PROJ_SS_LIAN_DONG_BAND_OBJ_01608/objects/peep_SCOPE.jpg",
+      "h": 375,
+      "w": 439
+    }
+  },
+  "asof": "2026-11-11T15:59:25.757905+00:00"
+}

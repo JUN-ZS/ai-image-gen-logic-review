@@ -1,0 +1,7 @@
+{
+  "write": "01608c",
+  "call": "SS驗.清+A",
+  "gold": "除去的原物搬回座洞",
+  "ban": "freeframe densify 重生冒原物回贴",
+  "equation": "FINAL = L_bg_qing ⊙ (1-M) + L0_原 ⊙ M ; M=strip_mask(L0,L_bg)"
+}

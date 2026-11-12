@@ -1,0 +1,16 @@
+{
+  "write_try": "01581",
+  "先读": true,
+  "read": [
+    "SHQ_SS_QING_LOCK_PART_DRIVER.md",
+    "DNA_SS_QING_LOCK_PART_DRIVER.json",
+    "CONSTITUTION_LOCK_01580"
+  ],
+  "src_asset": "592d2e33-4b70-45e9-9ae4-a55c0956bc1f",
+  "src_note": "R1 mecha densify elev 参考；本刀作 L0 走 01580 全序",
+  "order": "先读 → structure(mecha) → batch(local_USM)",
+  "no_E_QLP_01": true,
+  "PASS": true,
+  "claim": "C2_SS_QING_LOCK_PART_BATCH",
+  "asof": "2026-11-11T05:18:59.860426+00:00"
+}

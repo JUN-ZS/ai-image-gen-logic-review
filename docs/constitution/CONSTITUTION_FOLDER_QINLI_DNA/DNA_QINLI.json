@@ -1,0 +1,82 @@
+{
+  "write_id": "01552",
+  "call": "勤力DNA",
+  "call_ascii": "QINLI_DNA",
+  "aliases": [
+    "勤力",
+    "勤力闸",
+    "FORCE_DNA",
+    "enforcement DNA"
+  ],
+  "formal": "SHQ_QINLI_DNA_ENFORCEMENT_V1",
+  "zh": "勤力DNA：宪技强制闸 · 禁身份捷径 · 回洞必真处理",
+  "stick": "STICK_QINLI_DNA",
+  "one_liner": "凡挂勤力DNA的 call：donor=peep 不得冒 C2 回洞；WHOLE回必须 I-PROCESS",
+  "scope": "FOLDER 宪技层 · 绑定 SS验.清 family / 框牙 / 正身 回洞支路",
+  "invariants": {
+    "I-ID-BAN": {
+      "id": "I-ID-BAN",
+      "zh": "禁身份 donor 冒高宣称",
+      "rule": "if donor is peep (identity) ⇒ claim ≤ C0_IDENTITY; BAN C2_WHOLE_RETURN / C2_*_RETURN",
+      "code_gate": "assert not (fill_is_peep and claim.startswith('C2'))",
+      "error": "E-QL-01_IDENTITY_DONOR_CLAIM"
+    },
+    "I-PROCESS": {
+      "id": "I-PROCESS",
+      "zh": "WHOLE/正回 必须真处理证据",
+      "rule": "WHOLE return claim requires: densify_asset_id|elev_child AND tex_gain ≥ τ (default 1.15) AND seat_born AND outside==0",
+      "code_gate": "PASS_RETURN = outside==0 and processed and seat_born and tex_gain>=tau",
+      "error": "E-QL-02_NO_PROCESS_EVIDENCE",
+      "tau_default": 1.15
+    },
+    "I-GATE": {
+      "id": "I-GATE",
+      "zh": "几何闸 ∧ 处理闸 合取",
+      "rule": "PASS_RETURN = outside==0 ∧ processed ∧ seat_born",
+      "error": "E-QL-03_GATE_INCOMPLETE"
+    },
+    "I-SCOPE": {
+      "id": "I-SCOPE",
+      "zh": "认格 claim 与 回洞 claim 分拆",
+      "rule": "全景万物格 claim ≠ WHOLE回 claim；一张板不可同时冒两种完成",
+      "error": "E-QL-04_CLAIM_SCOPE_MIX"
+    },
+    "I-SCENE": {
+      "id": "I-SCENE",
+      "zh": "风景入格≠升清",
+      "rule": "SCENE/ATMOS/PART 入格只证明分类；升清须另 claim",
+      "error": "E-QL-05_SCENE_AS_PROCESSED"
+    },
+    "I-SEAT-QING": {
+      "id": "I-SEAT-QING",
+      "zh": "C2 必经洞座+清锁",
+      "rule": "C2_WHOLE requires MARK_seat and 清锁 (SS验.清)",
+      "error": "E-SEAT-01/02",
+      "write": "01554"
+    }
+  },
+  "parent_debug": "01551 DEBUG 继承根因 RC-1..RC-5",
+  "binds_calls": [
+    "SS驗.清+C·全景万物格",
+    "SS驗.清+C·格框",
+    "SS驗.清+C",
+    "SS驗.清+A众",
+    "SS驗.清",
+    "框牙",
+    "正身",
+    "正头",
+    "SS驗.清+A->景"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:02:26.889076+00:00",
+  "child_scene_subject_return": {
+    "call": "SS驗.清+C·风景主体回格",
+    "write": "01553"
+  },
+  "child_seat_return": "01554",
+  "dual_link_plus_a": {
+    "write": "01558",
+    "formal": "SHQ_PLUS_A_DUAL_LINK_QINLI_V1",
+    "stick": "STICK_PLUS_A_DUAL_LINK"
+  }
+}

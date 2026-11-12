@@ -1,0 +1,38 @@
+{
+  "write": "01613",
+  "formal": "SHQ_XU_HUI_PAD_HIGH_QING_A_V1",
+  "zh": "虚回+PAD加大高 · 冻座原物回",
+  "fixes": [
+    "PAD加大 pad_frac=0.32（高）",
+    "清+A 原物回改 虚回：座锁 FREEZE_AT_STRIP，禁事后重开 ROI"
+  ],
+  "PAD": 0.32,
+  "xu_hui": {
+    "virtual": "peep=L0@冻pad = 已抽出原物未回",
+    "lock": "Bus/SEAT_LOCK.json pad_box+MARK",
+    "return": "hardpaste 到 L_bg_qing 同坐标；outside=0",
+    "ban": "densify后重标座 / 错ROI矩形冒锁"
+  },
+  "n_seats": 10,
+  "gates": {
+    "outside_pad": 0,
+    "outside_mark": 0,
+    "bitexact_MARK_vs_L0": 0,
+    "PASS_pad": true,
+    "PASS_mark": true
+  },
+  "PRIMARY": "FINAL_XU_HUI_MARK（剪影虚回）",
+  "ALT": "FINAL_XU_HUI_PAD（高PAD 1:1）",
+  "claim": "C2_XU_HUI_PAD_HIGH_01613",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T20:49:55.597126+00:00",
+  "v2_sem": {
+    "PAD": 0.32,
+    "n": 11,
+    "outside": 0,
+    "PASS": true,
+    "PRIMARY": "FINAL_XU_HUI_SEM_PAD",
+    "claim": "C2_XU_HUI_SEM_PAD_HIGH_01613b",
+    "asof": "2026-11-11T20:50:34.961051+00:00"
+  }
+}

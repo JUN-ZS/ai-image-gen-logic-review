@@ -1,0 +1,83 @@
+{
+  "write_id": "01548",
+  "call": "SS驗.清+C·格框",
+  "call_ascii": "SS_YAN.QING_PLUS_C_GRID",
+  "aliases": [
+    "SS验.清+C·格框",
+    "清+C格框",
+    "格框",
+    "GRID_CELLS"
+  ],
+  "formal": "SHQ_SS_YAN_QING_PLUS_C_GRID_CELLS_V1",
+  "zh": "认全图事物 → 化格框 peep；WHOLE 可回洞，PART 仅展格",
+  "stick": "STICK_SS_YAN_QING_PLUS_C_GRID",
+  "parent": {
+    "SS验.清+C": "01546 STICK_SS_YAN_QING_PLUS_C",
+    "SS验.清+A众": "01545 HEZHONG exclusive",
+    "Grok try": "01547"
+  },
+  "one_liner": "Detect/认全图 → 每物一格 peep cell（黄框卡）；WHOLE hardpaste 回 L0；PART 只入格不独立回洞",
+  "equation": "∀i: cell_i = frame(peep(box_i)); RETURN = hardpaste(WHOLE only, exclusive); PART ⊏ grid only",
+  "layers": {
+    "格框": "展示/认物 · 每物一 cell peep",
+    "回图": "仅 WHOLE · bbox 或 接+A 剪影后 hardpaste · outside=0",
+    "PART": "细部格 · 不独立回洞"
+  },
+  "gates": {
+    "G_G0": "至少 1 个 box/label",
+    "G_G1": "WHOLE/PART 标记明确",
+    "G_G2": "格框 cell 有框有 id",
+    "G_G3": "WHOLE 回图 outside_union=0（PNG 金）",
+    "G_G4": "PART 不得冒 WHOLE claim"
+  },
+  "error_codes": {
+    "E-GRID-00": "无识别框",
+    "E-GRID-01": "PART 当 WHOLE 回洞",
+    "E-GRID-02": "回图 outside≠0",
+    "E-GRID-03": "格框无 id/label"
+  },
+  "proof_01548": {
+    "n_boxes": 6,
+    "n_whole": 3,
+    "n_part": 3,
+    "outside_return": 0,
+    "project": "SETS/PROJ_SS_YAN_GRID_CELLS_01548"
+  },
+  "vs_plain_C": {
+    "C": "Detect→MARK→peep→F2 单/多目标",
+    "C_grid": "全图万物格展 + WHOLE/PART 分流 + 可选合众回"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T00:19:33.315361+00:00",
+  "child_all_scene": {
+    "call": "SS驗.清+C·全景万物格",
+    "write": "01549",
+    "formal": "SHQ_SS_YAN_QING_PLUS_C_ALL_SCENE_GRID_V1"
+  },
+  "勤力DNA": {
+    "stick": "STICK_QINLI_DNA",
+    "write": "01552",
+    "forced": true
+  },
+  "invariants": {
+    "I-ID-BAN": {
+      "id": "I-ID-BAN",
+      "zh": "禁身份 donor 冒高宣称",
+      "rule": "if donor is peep (identity) ⇒ claim ≤ C0_IDENTITY; BAN C2_WHOLE_RETURN / C2_*_RETURN",
+      "code_gate": "assert not (fill_is_peep and claim.startswith('C2'))",
+      "error": "E-QL-01_IDENTITY_DONOR_CLAIM"
+    },
+    "I-PROCESS": {
+      "id": "I-PROCESS",
+      "zh": "WHOLE/正回 必须真处理证据",
+      "rule": "WHOLE return claim requires: densify_asset_id|elev_child AND tex_gain ≥ τ (default 1.15) AND seat_born AND outside==0",
+      "code_gate": "PASS_RETURN = outside==0 and processed and seat_born and tex_gain>=tau",
+      "error": "E-QL-02_NO_PROCESS_EVIDENCE",
+      "tau_default": 1.15
+    }
+  },
+  "child_scene_subject_return": {
+    "call": "SS驗.清+C·风景主体回格",
+    "write": "01553"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "write": "01586",
+  "call": "同物 densify → 虚回终极 S11",
+  "formal": "SHQ_XU_HUI_SAME_OBJECT_ULTIMATE_S11_GOLD_V1",
+  "stick": "STICK_XU_HUI",
+  "base_S11": "SETS/PROJ_DUAL_LINK_NEW_01559/L/FINAL.jpg",
+  "equation": "elev_i = densify(peep_i) · S11* = S11⊙(1−M_i)+elev_i⊙M_i · out=0",
+  "parts": [
+    {
+      "id": "mecha",
+      "outside_solo_vs_S11": 0,
+      "mad_inside_S11": 34.642,
+      "mad_elev_vs_peep": 34.642,
+      "elev": "Imagine densify(peep) lock seat + edge safe",
+      "same_object": true,
+      "cross_line": false,
+      "I_PROCESS": true,
+      "ok": true,
+      "imagine_asset": "72b3c109-8390-49b8-bf21-feca83b4ef5b"
+    },
+    {
+      "id": "climber",
+      "outside_solo_vs_S11": 0,
+      "mad_inside_S11": 26.802,
+      "mad_elev_vs_peep": 26.802,
+      "elev": "Imagine densify(peep) lock seat + edge safe",
+      "same_object": true,
+      "cross_line": false,
+      "I_PROCESS": true,
+      "ok": true,
+      "imagine_asset": "3e9b00ca-7060-408a-a38b-00969c007684"
+    },
+    {
+      "id": "rover",
+      "outside_solo_vs_S11": 0,
+      "mad_inside_S11": 17.66,
+      "mad_elev_vs_peep": 17.66,
+      "elev": "Imagine densify(peep) lock seat + edge safe",
+      "same_object": true,
+      "cross_line": false,
+      "I_PROCESS": true,
+      "ok": true,
+      "imagine_asset": "eb000ff6-aef6-48be-ae0b-9575072d893f"
+    }
+  ],
+  "outside_union": 0,
+  "PASS": true,
+  "claim": "C2_XU_HUI_SAMEOBJ_ULTIMATE_S11",
+  "qinli": {
+    "I-ID-BAN": "elev≠identity peep (mad_elev_vs_peep≥0.5)",
+    "I-PROCESS": "Imagine densify per peep",
+    "I-SEAT": "冻 M_obj 不重开洞",
+    "outside0": true
+  },
+  "vs_01585": "01585 跨线雪原 elev；01586 同物 peep densify 金跑",
+  "freeframe_note": "Imagine densify 仍 freeframe；回位靠 peep 尺寸+M 硬锁",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T05:59:40.548511+00:00"
+}

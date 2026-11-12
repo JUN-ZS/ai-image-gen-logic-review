@@ -1,0 +1,16 @@
+{
+  "call": "SS驗.清+A->景",
+  "stick": "STICK_SS_YAN_QING_PLUS_A_TO_SCENE",
+  "do": [
+    "先清+A 除主得 L1/M_obj",
+    "合成 L_bg 去物件空景",
+    "风景座只在 L_bg 上 peep+清锁",
+    "金标 outside vs L_bg"
+  ],
+  "dont": [
+    "在 L0 带物上直接咬风景当清",
+    "C_scene 冒 C2_object",
+    "无 L_bg 报风景洞座完成"
+  ],
+  "10s": "L0→除主→L_bg→景座清锁→L_bg_qing"
+}

@@ -1,0 +1,17 @@
+{
+  "write_id": "01577",
+  "call": "SS验.清",
+  "vs_SS验.清+A": "本刀无除主空景；只在 L0 洞座 densify hard 回",
+  "散散": "不走污染链",
+  "PASS": true,
+  "outside": 0,
+  "mad": 9.86,
+  "claim": "C2_SS_QING_SEAT_HARD",
+  "gates": {
+    "seat_hardlock": true,
+    "I-PROCESS": true,
+    "no_chu_zhu_required": true
+  },
+  "asof": "2026-11-11T04:32:04.477886+00:00",
+  "ACCEPT_FULL_HD": false
+}

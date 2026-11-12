@@ -1,0 +1,60 @@
+{
+  "write_id": "01555",
+  "call": "SS驗.清+A·风景主体回格",
+  "call_ascii": "SS_YAN.QING_PLUS_A_SCENE_SUBJECT_GRID",
+  "formal": "SHQ_SS_YAN_QING_PLUS_A_SCENE_SUBJECT_RETURN_V1",
+  "zh": "风景主体回格以原 SS验.清+A 为骨：除主语义洞+清锁合众；风景只展格",
+  "stick": "STICK_SS_YAN_PLUS_A_SCENE_SUBJECT",
+  "bone": "SS驗.清+A / 01543",
+  "hezhong": "SS驗.清+A众 / 01545",
+  "勤力DNA": true,
+  "equation": "主体 WHOLE: ∀i 清+A(L0,L1_i)= MARK_sem→peep→lock(densify)→F2→S9_i; FINAL=exclusive_hezhong(S9); 风景 SCENE: cell only (I-SCENE); C2 ⇔ path A ∧ 清锁 ∧ outside=0 ∧ ¬identity",
+  "replaces": {
+    "01553": "bbox hardpaste 假座",
+    "01554": "GrabCut 自造座（非除主语义洞）"
+  },
+  "why_not_01554": "洞座必须来自 清+A 的 L0|L1 反扣，不是 GrabCut 猜剪影",
+  "proof": {
+    "outside_union": 0,
+    "PASS": true,
+    "subjects": [
+      {
+        "id": "mecha",
+        "PASS": true,
+        "outside": 0,
+        "gain": 1.7366760969161987,
+        "frac": 0.06327615681689343,
+        "api_PASS": true,
+        "claim": "C2_SS_YAN_QING_PLUS_A",
+        "path": "EDIT除主L1 → MARK_sem → peep → densify_lock → F2 → hardpaste⊙M"
+      },
+      {
+        "id": "soldier",
+        "PASS": true,
+        "outside": 0,
+        "gain": 1.71563720703125,
+        "frac": 0.011502843324829932,
+        "api_PASS": true,
+        "claim": "C2_SS_YAN_QING_PLUS_A",
+        "path": "EDIT除主L1 → MARK_sem → peep → densify_lock → F2 → hardpaste⊙M"
+      },
+      {
+        "id": "tank",
+        "PASS": true,
+        "outside": 0,
+        "gain": 1.720989465713501,
+        "frac": 0.08263911033163265,
+        "api_PASS": true,
+        "claim": "C2_SS_YAN_QING_PLUS_A",
+        "path": "EDIT除主L1 → MARK_sem → peep → densify_lock → F2 → hardpaste⊙M"
+      }
+    ],
+    "n_scene_cells": 8
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:23:00.928073+00:00",
+  "child_scene_seat_L": {
+    "call": "SS驗.清+A·风景洞座锁",
+    "write": "01556"
+  }
+}

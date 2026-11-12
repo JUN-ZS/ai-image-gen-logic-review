@@ -1,0 +1,46 @@
+{
+  "write_id": "01615",
+  "call": "SS.验.PAD大·S链",
+  "formal": "SHQ_SS_PAD_DA_S0_S11_HOLE_RETURN_V1",
+  "supreme": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "boost": "认 ∩ 放大 ∩ 升质×物",
+  "qinli": [
+    "I-SEAT",
+    "I-PROCESS",
+    "I-ID-BAN",
+    "层层层回锁"
+  ],
+  "reject": {
+    "E-01615-01": "热图 w 加权 densify 冒 S0-S11",
+    "why": "无 MARK hard、无 (S)×(S) Bus、无 S11×座 洞外0 作为主闸"
+  },
+  "S_program": [
+    "S0 SRC",
+    "S1 外力除主 L1",
+    "S2 扣",
+    "S3 洞 MARK FREEZE",
+    "S4 认",
+    "S5 peep PAD大",
+    "S6 放大域",
+    "S7 外力 elev",
+    "S8 强心针 AND",
+    "S9 洞座生 fill",
+    "S10 hardpaste",
+    "S11 反 outside=0"
+  ],
+  "sx_locks": [
+    "S5×S7 同尺",
+    "S10×S3 MARK",
+    "S11×L1 洞外0",
+    "S11×S0 宣称不偷换"
+  ],
+  "equation": "RETURN = L1⊙(1−M) + fill(peep,elev)⊙M ; ‖RETURN−L1‖_outside=0",
+  "PAD": 0.32,
+  "outside_L1": 0,
+  "PASS_SX_FULL": true,
+  "n_parts": 11,
+  "n_boost_AND": 8,
+  "claim": "C2_S0_S11_HOLE_RETURN_01615",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:04:38.843328+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "write_id": "01478",
+  "formal": "HOLE_RETURN_VACCINE_FROM_WRONG_LOG",
+  "zh": "洞回疫苗 · 自新畫女/WOMAN錯LOG進化",
+  "E": "E-AGENT-POLLUTED-HOLE_RETURN",
+  "personas": [
+    "PERSONA_HOLE_RETURN_VACCINE",
+    "PERSONA_KUANGYA_EXEC"
+  ],
+  "sources": [
+    "01436",
+    "01438",
+    "01443",
+    "01452"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-09T23:57:58.050406+00:00"
+}

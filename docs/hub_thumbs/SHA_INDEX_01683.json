@@ -1,0 +1,19 @@
+{
+  "write": "01683",
+  "n_images": 7983,
+  "n_parts": 10,
+  "parts": [
+    "SHA_ALL_IMAGES_01683_part00.json",
+    "SHA_ALL_IMAGES_01683_part01.json",
+    "SHA_ALL_IMAGES_01683_part02.json",
+    "SHA_ALL_IMAGES_01683_part03.json",
+    "SHA_ALL_IMAGES_01683_part04.json",
+    "SHA_ALL_IMAGES_01683_part05.json",
+    "SHA_ALL_IMAGES_01683_part06.json",
+    "SHA_ALL_IMAGES_01683_part07.json",
+    "SHA_ALL_IMAGES_01683_part08.json",
+    "SHA_ALL_IMAGES_01683_part09.json"
+  ],
+  "asof": "2026-11-12T06:45:44.407536+00:00",
+  "policy": "all image sha256 write>=01474 PROJ; no full JPEG"
+}

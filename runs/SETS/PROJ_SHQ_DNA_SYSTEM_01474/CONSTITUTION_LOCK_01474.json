@@ -1,0 +1,19 @@
+{
+  "write_id": "01474",
+  "formal": "SHQ_DNA_SYSTEM_V1",
+  "zh": "通用 Project DNA + 獨立 Persona DNA 庫",
+  "libs": {
+    "project_dna": "lib/project_dna",
+    "persona_dna": "lib/persona_dna"
+  },
+  "seed_personas": [
+    "PERSONA_A8B_STANDARD",
+    "PERSONA_HUAN_YA_CLIFF",
+    "PERSONA_WLF_MECHA_DUAL",
+    "PERSONA_AUDIT_FORCE_SELF"
+  ],
+  "py": "shq_dna_system.py",
+  "selftest": "PASS",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T06:25:00+08:00"
+}

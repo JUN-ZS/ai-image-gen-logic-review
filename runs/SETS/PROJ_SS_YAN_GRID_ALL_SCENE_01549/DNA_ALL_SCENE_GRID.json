@@ -1,0 +1,107 @@
+{
+  "write_id": "01549",
+  "call": "SS驗.清+C·全景万物格",
+  "call_ascii": "SS_YAN.QING_PLUS_C_ALL_SCENE_GRID",
+  "aliases": [
+    "全景万物格",
+    "格物进化",
+    "风景+事物格"
+  ],
+  "formal": "SHQ_SS_YAN_QING_PLUS_C_ALL_SCENE_GRID_V1",
+  "zh": "格物进化：认出图中所有风景和事物 → 分层格框",
+  "stick": "STICK_SS_YAN_ALL_SCENE_GRID",
+  "parent": {
+    "SS验.清+C·格框": "01548"
+  },
+  "one_liner": "全图分解 SCENE/ATMOS/WHOLE/PART 各化格；仅 WHOLE 默认可 hardpaste 回洞",
+  "equation": "Universe(L0) → {SCENE,ATMOS,WHOLE,PART}_i → cell_i; RETURN_default = hardpaste(WHOLE); SCENE/PART ⊏ grid",
+  "roles": {
+    "SCENE": "天空/山/地/区位 风景层 — 展格，默认可作背景层参考",
+    "ATMOS": "雾/霾/光气 — 展格",
+    "WHOLE": "整件物体 — 展格 + 默认可回洞",
+    "PART": "部件细部 — 只展格"
+  },
+  "counts": {
+    "SCENE": 7,
+    "ATMOS": 1,
+    "WHOLE": 3,
+    "PART": 6
+  },
+  "n_total": 17,
+  "outside_whole_return": 0,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T00:35:22.909133+00:00",
+  "勤力DNA": {
+    "stick": "STICK_QINLI_DNA",
+    "write": "01552",
+    "forced": true,
+    "invariants_ref": [
+      "I-ID-BAN",
+      "I-PROCESS",
+      "I-GATE",
+      "I-SCOPE",
+      "I-SCENE"
+    ]
+  },
+  "invariants": {
+    "I-ID-BAN": {
+      "id": "I-ID-BAN",
+      "zh": "禁身份 donor 冒高宣称",
+      "rule": "if donor is peep (identity) ⇒ claim ≤ C0_IDENTITY; BAN C2_WHOLE_RETURN / C2_*_RETURN",
+      "code_gate": "assert not (fill_is_peep and claim.startswith('C2'))",
+      "error": "E-QL-01_IDENTITY_DONOR_CLAIM"
+    },
+    "I-PROCESS": {
+      "id": "I-PROCESS",
+      "zh": "WHOLE/正回 必须真处理证据",
+      "rule": "WHOLE return claim requires: densify_asset_id|elev_child AND tex_gain ≥ τ (default 1.15) AND seat_born AND outside==0",
+      "code_gate": "PASS_RETURN = outside==0 and processed and seat_born and tex_gain>=tau",
+      "error": "E-QL-02_NO_PROCESS_EVIDENCE",
+      "tau_default": 1.15
+    },
+    "I-GATE": {
+      "id": "I-GATE",
+      "zh": "几何闸 ∧ 处理闸 合取",
+      "rule": "PASS_RETURN = outside==0 ∧ processed ∧ seat_born",
+      "error": "E-QL-03_GATE_INCOMPLETE"
+    },
+    "I-SCOPE": {
+      "id": "I-SCOPE",
+      "zh": "认格 claim 与 回洞 claim 分拆",
+      "rule": "全景万物格 claim ≠ WHOLE回 claim；一张板不可同时冒两种完成",
+      "error": "E-QL-04_CLAIM_SCOPE_MIX"
+    },
+    "I-SCENE": {
+      "id": "I-SCENE",
+      "zh": "风景入格≠升清",
+      "rule": "SCENE/ATMOS/PART 入格只证明分类；升清须另 claim",
+      "error": "E-QL-05_SCENE_AS_PROCESSED"
+    }
+  },
+  "gates_return": {
+    "G_outside": "outside_union == 0",
+    "G_id_ban": "donor != peep identity for C2",
+    "G_process": "tex_gain >= 1.15 and densify|elev evidence",
+    "G_seat": "seat_born True",
+    "PASS_RETURN": "G_outside ∧ G_id_ban ∧ G_process ∧ G_seat"
+  },
+  "equation_return": "RETURN_WHOLE = hardpaste(F2(lock(densify(peep)))) s.t. I-ID-BAN ∧ I-PROCESS;  禁 hardpaste(peep)",
+  "forbidden": [
+    "seat_hardlock_sheng(peep, peep) 作为 C2_WHOLE_RETURN",
+    "outside=0 alone 报 WHOLE 回完成",
+    "N=17 入格 冒 全处理完成"
+  ],
+  "error_codes": {
+    "E-QL-01": "身份 donor 冒 C2",
+    "E-QL-02": "无处理证据",
+    "E-QL-03": "闸不全",
+    "E-QL-04": "claim 范围混用",
+    "E-QL-05": "SCENE 入格当升清"
+  },
+  "qinli_write": "01552",
+  "asof_qinli": "2026-11-11T01:02:26.889076+00:00",
+  "child_scene_subject_return": {
+    "call": "SS驗.清+C·风景主体回格",
+    "write": "01553"
+  }
+}

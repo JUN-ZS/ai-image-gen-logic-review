@@ -1,0 +1,22 @@
+{
+  "write_id": "01520",
+  "branch_from": "3c25934d-3382-467c-ac3a-f89617bda857",
+  "law": "咬→洞→升清咬塊(同 peep 大細)→置中 hardpaste→洞外 bitexact → S11×S0 (S)×(S)",
+  "algebra": "[(生,除,洞,扣)×(反)]",
+  "PASS": true,
+  "outside": 0,
+  "size_lock": true,
+  "PASS_align": true,
+  "peep_hw": [
+    210,
+    103
+  ],
+  "I_sheng_hw": [
+    210,
+    103
+  ],
+  "wrong_fullframe_outside": 239,
+  "claim": "C2_BITE_S11xS0_BRANCH",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T12:02:58.624189+00:00"
+}

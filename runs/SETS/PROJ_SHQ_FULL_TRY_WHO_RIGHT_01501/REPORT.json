@@ -1,0 +1,63 @@
+{
+  "write_id": "01501",
+  "formal": "SHQ_FULL_TRY_WHO_RIGHT_V1",
+  "zh": "全出图连试谁对",
+  "winner_chain": "L0→EDIT除背→EDIT除头→peep0→(S6/S7 child+SX)→正头INPAINT@S9×S3→S10/S11",
+  "right": [
+    "EDIT 除背 / 除头 / 品红反扣",
+    "peep0 对的原",
+    "正头 洞内 INPAINT",
+    "目标：正头+(S)×(S)+强心针"
+  ],
+  "wrong": [
+    "剪影 hardpaste（洞错位偷步）",
+    "elev 当回 / 当原",
+    "强心针升清不回 S 层"
+  ],
+  "table": [
+    {
+      "method": "剪影 MARK hardpaste",
+      "align": false,
+      "origin": false,
+      "boost_safe": false,
+      "verdict": "WRONG 偷步 洞错位"
+    },
+    {
+      "method": "elev 当 RETURN",
+      "align": false,
+      "origin": false,
+      "boost_safe": false,
+      "verdict": "WRONG E-ED"
+    },
+    {
+      "method": "peep0 = SRC∩MARK",
+      "align": true,
+      "origin": true,
+      "boost_safe": true,
+      "verdict": "RIGHT 对的原"
+    },
+    {
+      "method": "正头 EDIT 洞内INPAINT",
+      "align": true,
+      "origin": true,
+      "boost_safe": "needs SX",
+      "verdict": "RIGHT 对位"
+    },
+    {
+      "method": "强心针 S4-S7 无 SX",
+      "align": "?",
+      "origin": "risk",
+      "boost_safe": false,
+      "verdict": "FAIL E-SX-01"
+    },
+    {
+      "method": "正头 + (S)×(S) + 强心针",
+      "align": true,
+      "origin": true,
+      "boost_safe": true,
+      "verdict": "TARGET 全对"
+    }
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:24:07.647909+00:00"
+}

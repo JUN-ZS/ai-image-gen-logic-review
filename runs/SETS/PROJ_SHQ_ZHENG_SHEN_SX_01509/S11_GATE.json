@@ -1,0 +1,15 @@
+{
+  "role": "S11×S0 洞外 bitexact",
+  "parent": "S10",
+  "parent_sha": "6afb65eb24a50aade43e18ea733499dedf1f9fcbe5fdeb601474892c5c8665e4",
+  "S11xS0": true,
+  "outside_max_diff": 0,
+  "fullframe_outside_max": 222,
+  "PASS": true,
+  "formula": "‖RETURN-S0‖_{outside MARK}=0",
+  "inherits": [
+    "S0",
+    "S3",
+    "S10"
+  ]
+}

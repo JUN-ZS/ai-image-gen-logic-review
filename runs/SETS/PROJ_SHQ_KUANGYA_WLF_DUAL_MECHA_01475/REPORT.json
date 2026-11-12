@@ -1,0 +1,105 @@
+{
+  "codename": "框牙",
+  "write_id": "01475",
+  "formal": "KUANGYA_WLF_V21_CONTINUE_CLIP_SCALELOCK",
+  "STICK": "STICK_WAI_LI_FAN_V2",
+  "phase": "v21_continue",
+  "disclose": "V21-0..9 listed; this run fills CLIP strict + scale-lock + anti numeric",
+  "empty_mode": "imagine_remove_chu_part",
+  "outside_basis": "frozen_M_hole",
+  "A_n_pass": 14,
+  "A_n_fail_ban": 4,
+  "A_n_fail_outside": 0,
+  "B_status": "PASS_B",
+  "B_mutex": true,
+  "B_order": true,
+  "outside_max": 0,
+  "anti_numeric": {
+    "反除_有无": {
+      "mean_abs_L0_L1": 11.592162624598451,
+      "max_abs_L0_L1": 253,
+      "note": "L0 有头 vs L1 无头"
+    },
+    "反扣_洞叠": {
+      "hole_frac": 0.15329650740504536,
+      "overlap_head_diff": 0.9908921832397393
+    },
+    "反洞_洞外bit": {
+      "outside_max_vs_L1": 0,
+      "pass": true
+    },
+    "反CLIP_Mbg": {
+      "M_subj_frac": 0.9746043925382653,
+      "M_bg_frac": 0.025395607461734693
+    },
+    "反生_尺": {
+      "scale_bbox_before_lock": 1.0,
+      "grow_max": 1.15,
+      "scale_locked": true,
+      "scale_after_seat": 1.0,
+      "grow_ok": true,
+      "ncc_peep_before_after_in_roi": 0.5466080651669089
+    },
+    "反回_L0": {
+      "ncc_R_vs_L0_in_hole": 0.5466080651669089,
+      "ncc_R_vs_IHD_in_hole": 0.999999999999996,
+      "outside_max": 0
+    }
+  },
+  "gates": {
+    "Imagine_除件": true,
+    "Imagine_除背_CLIP": true,
+    "Imagine_生": true,
+    "MARK_frozen": true,
+    "true_hole": true,
+    "outside_0": true,
+    "no_self_peep_as_CLIP": true,
+    "CLIP_from_chu_bei": true,
+    "CLIP_formula_L0_odot_M": true,
+    "scale_lock": true,
+    "grow_ok": true,
+    "anti_numeric": true,
+    "tune_pack": true,
+    "any_object": true,
+    "V21_6_done": true,
+    "V21_1_strict_CLIP": true
+  },
+  "imagine": {
+    "L0": "bf7479ed-55a2-4b3f-8a04-26cd5fbc49fb",
+    "chu_part": "0fc50825-d652-4af7-9b61-e468b6ac193e",
+    "sheng": "da1c99d2-5753-4d8a-82dc-3cf5788e507a",
+    "chu_bei": "58289e05-7e91-4480-afd3-a234536f33c0"
+  },
+  "grow_max": 1.15,
+  "scale_bbox": 1.0,
+  "claim_level": "C2",
+  "audit_force": "AF2",
+  "exec_drift_flags": [],
+  "E_KY": [],
+  "status": "PASS",
+  "ACCEPT_FULL_HD": false,
+  "verdict": "C2 · V2.1 续跑：CLIP扣图出 + 放大加清锁尺 + 数值反 · 非 FULL_HD · 非C5",
+  "asof": "2026-11-09T23:07:18.508713+00:00",
+  "audit_stamp": {
+    "write_id": "01473",
+    "formal": "SHQ_STEAL_DRIFT_AUDIT_FORCE_V1",
+    "source": "SETS/PROJ_SHQ_KUANGYA_WLF_DUAL_MECHA_01475/runs/kuangya_AB_v21_continue/SUMMARY.json",
+    "status": "PASS_AUDIT",
+    "audit_force_declared": "AF2",
+    "audit_force_effective": "AF2",
+    "claim_declared": "C2",
+    "claim_allowed": "C2",
+    "steal_flags": [],
+    "drift_flags": [],
+    "E_codes": [],
+    "notes": [
+      "true-ish empty_mode=imagine_remove_chu_part"
+    ],
+    "ACCEPT_FULL_HD": false,
+    "rule": "STEAL→C0 ban SUCCESS; DRIFT→≤C1; AF gates claim"
+  },
+  "steal_flags": [],
+  "drift_flags": [],
+  "E_codes": [],
+  "audit_status": "PASS_AUDIT"
+}

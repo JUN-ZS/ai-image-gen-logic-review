@@ -1,0 +1,23 @@
+{
+  "write_id": "01669",
+  "call": "合取·座光",
+  "formal": "SHQ_HYBRID_SEAT_LIGHT_V1",
+  "zh": "镂空重贴 × 空间光人质感 各取",
+  "equation": "R = hard(B_space_person, A_teapot, M_teapot); person hard from B",
+  "take": {
+    "from_A": "茶壶镂空重贴 seat hardpaste",
+    "from_B": "空间光·人·衣物质感"
+  },
+  "BAN": "0.5A+0.5B 均混毁两头",
+  "gates": {
+    "teapot_hard_from_A": true,
+    "person_hard_from_B": true,
+    "not_soft_average": true
+  },
+  "out_teapot_vs_A": 0,
+  "out_person_vs_B": 0,
+  "PASS": true,
+  "asof": "2026-11-12T04:32:09.969977+00:00",
+  "ACCEPT_FULL_HD": false,
+  "aperture_fix_01670": "M_metal hard + M_aperture=B; BAN fill_holes"
+}

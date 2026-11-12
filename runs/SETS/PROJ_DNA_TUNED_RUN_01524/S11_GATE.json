@@ -1,0 +1,49 @@
+{
+  "S11xS0": true,
+  "S11xS3_MARK_seat": true,
+  "S11xS5_peep0_trace": true,
+  "outside_max_diff": 0,
+  "PASS": true,
+  "formula": "RETURN = S0 ⊙ (1−M) + fill ⊙ M ; ‖RETURN−S0‖_outside = 0",
+  "PRIMARY": "S11×S0 hardpaste seat — never freeframe alone",
+  "boost_AND": true,
+  "boost_formula": "认 ∩ 放大 ∩ 升质×物",
+  "bite_align": {
+    "law": "咬→洞→升清咬塊→同尺置中回洞",
+    "algebra": "[(生,除,洞,扣)×(反)]",
+    "bite": "peep = L0 ⊙ MARK",
+    "hole": "MARK 座位",
+    "sheng": "elev/HD → scale_lock 同 peep 大細置中",
+    "return": "hardpaste seat-born 置中對位",
+    "bbox_xyxy": [
+      78,
+      24,
+      180,
+      236
+    ],
+    "peep_hw": [
+      213,
+      103
+    ],
+    "I_sheng_hw": [
+      213,
+      103
+    ],
+    "size_lock": true,
+    "outside": 0,
+    "PASS_align": true,
+    "center_in_frame": [
+      0.5019,
+      0.5058
+    ]
+  },
+  "E-SX-06": "clear",
+  "E-SX-07": "clear",
+  "anti_toxin": [
+    "E-FF-01",
+    "E-FF-02",
+    "E-SX-06",
+    "E-SX-07"
+  ],
+  "claim": "C2_S11xS0_ALIGN"
+}

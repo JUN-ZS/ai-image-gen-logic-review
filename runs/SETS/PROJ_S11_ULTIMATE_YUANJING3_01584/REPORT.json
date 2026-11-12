@@ -1,0 +1,57 @@
+{
+  "write": "01584",
+  "更正": "上一刀把雪原单机 batch 误标 S11；终极线上 S11 = 远景三物/人 勤力DNA 终图",
+  "S11_ultimate": {
+    "run": "SETS/PROJ_DUAL_LINK_NEW_01559",
+    "file": "L/FINAL.jpg",
+    "write_id": "01559",
+    "call": "SS 联动",
+    "qinli": {
+      "ok": true,
+      "errs": []
+    },
+    "PASS_LINK": true,
+    "objects": [
+      "rover",
+      "mecha",
+      "climber"
+    ],
+    "L0_asset": "f29eaed8-9d6a-4fef-ae83-713e57871d2b",
+    "claims": "C_scene + C2_object_on_qing_scene · 勤力合闸"
+  },
+  "非线上": {
+    "73c1068a / 592d mecha batch": "单机雪原 01581 · 可作支线 peep 试验，≠ 终极 S11",
+    "b4a0b3d4 head nest": "支线嵌套 S11_head · 须虚回进 终极S11 才算上线"
+  },
+  "虚回能力试": {
+    "base": "01559 FINAL = S11",
+    "layers": "I_star_{rover,mecha,climber}",
+    "seat": "M_obj_* 冻座",
+    "outside_union": 0,
+    "parts": [
+      {
+        "id": "rover",
+        "outside_vs_S11": 0,
+        "mad": 2.547,
+        "ok": true
+      },
+      {
+        "id": "mecha",
+        "outside_vs_S11": 0,
+        "mad": 3.108,
+        "ok": true
+      },
+      {
+        "id": "climber",
+        "outside_vs_S11": 0,
+        "mad": 2.767,
+        "ok": true
+      }
+    ],
+    "PASS": true,
+    "claim": "C2_XU_HUI_TO_ULTIMATE_S11"
+  },
+  "勤力DNA": "I-ID-BAN · I-PROCESS · I-SEAT-QING · claim 分轨",
+  "asof": "2026-11-11T05:36:11.479855+00:00",
+  "ACCEPT_FULL_HD": false
+}

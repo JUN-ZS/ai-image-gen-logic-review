@@ -1,0 +1,230 @@
+{
+  "write": "01610",
+  "call": "先讀",
+  "after": "除主 L_bg",
+  "method": "strip_multi_CC",
+  "thr": 28,
+  "n_picked": 11,
+  "seats": [
+    {
+      "name": "O01",
+      "bbox_tight": [
+        426,
+        1008,
+        30,
+        1792
+      ],
+      "pad_box": [
+        367,
+        1008,
+        0,
+        1792
+      ],
+      "area": 382974,
+      "peep": "objects/yuanwu_O01.jpg",
+      "mask": "objects/mask_O01.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O02",
+      "bbox_tight": [
+        252,
+        536,
+        235,
+        381
+      ],
+      "pad_box": [
+        223,
+        564,
+        220,
+        395
+      ],
+      "area": 10855,
+      "peep": "objects/yuanwu_O02.jpg",
+      "mask": "objects/mask_O02.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O03",
+      "bbox_tight": [
+        412,
+        519,
+        587,
+        810
+      ],
+      "pad_box": [
+        401,
+        529,
+        564,
+        832
+      ],
+      "area": 6982,
+      "peep": "objects/yuanwu_O03.jpg",
+      "mask": "objects/mask_O03.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O04",
+      "bbox_tight": [
+        927,
+        1008,
+        735,
+        895
+      ],
+      "pad_box": [
+        918,
+        1008,
+        719,
+        911
+      ],
+      "area": 4465,
+      "peep": "objects/yuanwu_O04.jpg",
+      "mask": "objects/mask_O04.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O05",
+      "bbox_tight": [
+        368,
+        427,
+        400,
+        527
+      ],
+      "pad_box": [
+        362,
+        432,
+        387,
+        539
+      ],
+      "area": 2700,
+      "peep": "objects/yuanwu_O05.jpg",
+      "mask": "objects/mask_O05.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O06",
+      "bbox_tight": [
+        884,
+        922,
+        1571,
+        1730
+      ],
+      "pad_box": [
+        880,
+        925,
+        1555,
+        1745
+      ],
+      "area": 1833,
+      "peep": "objects/yuanwu_O06.jpg",
+      "mask": "objects/mask_O06.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O07",
+      "bbox_tight": [
+        347,
+        425,
+        1668,
+        1792
+      ],
+      "pad_box": [
+        339,
+        432,
+        1655,
+        1792
+      ],
+      "area": 1104,
+      "peep": "objects/yuanwu_O07.jpg",
+      "mask": "objects/mask_O07.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O08",
+      "bbox_tight": [
+        517,
+        579,
+        1318,
+        1408
+      ],
+      "pad_box": [
+        510,
+        585,
+        1309,
+        1417
+      ],
+      "area": 1094,
+      "peep": "objects/yuanwu_O08.jpg",
+      "mask": "objects/mask_O08.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O09",
+      "bbox_tight": [
+        791,
+        841,
+        11,
+        84
+      ],
+      "pad_box": [
+        786,
+        846,
+        3,
+        91
+      ],
+      "area": 977,
+      "peep": "objects/yuanwu_O09.jpg",
+      "mask": "objects/mask_O09.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O10",
+      "bbox_tight": [
+        820,
+        860,
+        272,
+        357
+      ],
+      "pad_box": [
+        816,
+        864,
+        263,
+        365
+      ],
+      "area": 872,
+      "peep": "objects/yuanwu_O10.jpg",
+      "mask": "objects/mask_O10.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    },
+    {
+      "name": "O11",
+      "bbox_tight": [
+        773,
+        807,
+        186,
+        268
+      ],
+      "pad_box": [
+        769,
+        810,
+        177,
+        276
+      ],
+      "area": 861,
+      "peep": "objects/yuanwu_O11.jpg",
+      "mask": "objects/mask_O11.png",
+      "source": "先讀 strip multi-CC after 除主 L_bg",
+      "identity": "L0原物"
+    }
+  ]
+}

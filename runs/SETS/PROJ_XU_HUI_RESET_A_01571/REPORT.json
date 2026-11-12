@@ -1,0 +1,87 @@
+{
+  "write_id": "01571",
+  "RESET": true,
+  "call": "虛回 × SS驗.清+A",
+  "zh": "退回重置：清+A 用除物留背景同逻辑在独立 peep 层筛选升清+自座洞锁回；成功后再虚回外层",
+  "layers": {
+    "inner_independent": {
+      "name": "SS验.清+A 内层",
+      "SRC": "peep0",
+      "除物留背景": "L1_peep empty seat",
+      "升清": "elev densify (I-PROCESS)",
+      "自座洞锁回": "I_inner = L1*(1-M)+elev*M · outside_inner=0",
+      "勤力": [
+        "I-ID-BAN",
+        "I-PROCESS",
+        "I-SEAT",
+        "独立性 per subject"
+      ]
+    },
+    "outer_xu_hui": {
+      "name": "虚回 外层",
+      "virtual": "I_inner = 已抽出放大升清未回",
+      "base": "L_bg_qing（除物留景已清）",
+      "return": "B_direct hard @ MARK outer · outside_union=0",
+      "no_replan": true
+    }
+  },
+  "NOT": "不在 peep 上冒 +C 分部件 Detect 当本 call；部件可另刀",
+  "勤力DNA": "STICK_QINLI_DNA",
+  "PASS": true,
+  "outside_outer": 0,
+  "leaf": [
+    {
+      "id": "mecha",
+      "PASS_inner": true,
+      "out_inner": 0,
+      "mad": 16.8,
+      "claim_inner": "C2_INNER_SS_A",
+      "elev_kind": "file",
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "independence": true,
+      "勤力": {
+        "I-PROCESS": true,
+        "I-ID-BAN": true,
+        "I-SEAT": true
+      }
+    },
+    {
+      "id": "climber",
+      "PASS_inner": true,
+      "out_inner": 0,
+      "mad": 13.94,
+      "claim_inner": "C2_INNER_SS_A",
+      "elev_kind": "file",
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "independence": true,
+      "勤力": {
+        "I-PROCESS": true,
+        "I-ID-BAN": true,
+        "I-SEAT": true
+      }
+    },
+    {
+      "id": "rover",
+      "PASS_inner": true,
+      "out_inner": 0,
+      "mad": 27.95,
+      "claim_inner": "C2_INNER_SS_A",
+      "elev_kind": "file",
+      "out_outer": 0,
+      "claim_outer": "C2_XU_HUI_AFTER_INNER_A",
+      "ok": true,
+      "independence": true,
+      "勤力": {
+        "I-PROCESS": true,
+        "I-ID-BAN": true,
+        "I-SEAT": true
+      }
+    }
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T03:54:39.039854+00:00"
+}

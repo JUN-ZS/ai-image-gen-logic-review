@@ -1,0 +1,42 @@
+{
+  "write": "01616",
+  "formal": "SHQ_PAD_DA_ROOT_SANDBOX_MOD_V1",
+  "zh": "根PAD大冻结 + 沙盒-(X) MOD",
+  "root": {
+    "path": "SETS/CONSTITUTION_SS_YAN_PAD_DA_ROOT/defaults/PAD_DA_DEFAULTS.json",
+    "pad_frac": 0.32,
+    "sha16": "6ffd9d6732e6877b",
+    "frozen_ok": true,
+    "unchanged_after_mod": true
+  },
+  "demo_project": "SETS/PROJ_SANDBOX_MOD_DEMO_01616",
+  "sandbox_mod_pad": 0.35,
+  "effective_pad": 0.35,
+  "forbidden_test": {
+    "rejected": {
+      "return.outside_gate": {
+        "val": 99,
+        "reason": "FORBIDDEN_ROOT"
+      },
+      "return.freeze_seat": {
+        "val": false,
+        "reason": "FORBIDDEN_ROOT"
+      },
+      "PAD.ban_tight_resize_to_MARK": {
+        "val": false,
+        "reason": "FORBIDDEN_ROOT"
+      },
+      "supreme.driver": {
+        "val": "OpenCV",
+        "reason": "FORBIDDEN_ROOT"
+      }
+    },
+    "outside_gate_still": 0,
+    "freeze_seat_still": true,
+    "supreme_driver_still": "外力GROK"
+  },
+  "PASS": true,
+  "claim": "C2_ROOT_PAD_SANDBOX_MOD_01616",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T21:17:16.066841+00:00"
+}

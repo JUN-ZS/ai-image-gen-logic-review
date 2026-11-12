@@ -1,0 +1,64 @@
+{
+  "write_id": "01508",
+  "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+  "zh": "正身",
+  "derived_from": "正头 STICK_ZHENG_TOU_SX_S11xS0 / 01500-01504",
+  "equation": "正身 = 正头DNA[ bite: head → full_object ]",
+  "stick": "STICK_ZHENG_SHEN",
+  "parent_stick": "STICK_ZHENG_TOU_SX_S11xS0",
+  "bite_metaphor": {
+    "正头": "咬出头 → 洞=头座 → 升清头 → 回头洞",
+    "正身": "咬出整件 → 洞=整件座 → 升清整件 → 回整件洞"
+  },
+  "algebra": "[(生,除,洞,扣)×(反)] ← 外力GROK ⊕ 强心针 ⊕ (S)×(S) ⊕ S11×S0",
+  "F_cells": {
+    "除": "外力 EDIT 除整件（非仅头）→ L1 景中空整件洞",
+    "扣": "MARK_full = 整件剪影/反扣；禁下游重开洞",
+    "洞": "整件座位 SEAT；同机位同框",
+    "生": "洞内 seat-born 升清（外力）；elev 是 peep 子代",
+    "反": "S11×S0：洞外 vs S0 bitexact=0；整件 peep0 只读"
+  },
+  "vs_正头": {
+    "same": [
+      "EDIT 多层",
+      "peep0 只读",
+      "elev≠正生",
+      "洞内INPAINT/seat-born",
+      "(S)×(S)",
+      "S11×S0",
+      "外力GROK",
+      "强心针三关"
+    ],
+    "diff": {
+      "bite_domain": "head → full_object",
+      "peep0": "头域 → 整件域 peep_full",
+      "MARK": "M_head → M_full",
+      "S4_认": "认头 → 认整件为一独立部件（仍可再分件，但本层整件为原子）",
+      "Layer_C": "多物合众前：每物先正身独立 PASS"
+    }
+  },
+  "S_program": {
+    "S0": "冻 SRC",
+    "S1": "外力除整件",
+    "S2": "扣 → MARK_full",
+    "S3": "洞 MARK 锁 Bus",
+    "S4": "认 整件 = 独立部件",
+    "S5": "peep_full = SRC⊙MARK_full（只读）",
+    "S6": "放大 peep_full 子",
+    "S7": "升质×物 elev 子",
+    "S8": "强心针 AND",
+    "S9": "正身：洞内 INPAINT 整件",
+    "S10": "hardpaste 辅",
+    "S11": "S11×S0 洞外=0"
+  },
+  "error_codes": {
+    "E-ZS-01": "头洞冒充身洞",
+    "E-ZS-02": "整件 freeframe 无洞回 = 偷步",
+    "E-ZS-03": "peep_full 被 elev 覆盖",
+    "E-ZS-04": "除件重开洞 / 下游重算 MARK",
+    "E-ZS-05": "伪组合：三独立正身 PASS 冒合众"
+  },
+  "ACCEPT_FULL_HD": false,
+  "claim_class": "C2_architecture",
+  "asof": "2026-11-10T09:24:17.776824+00:00"
+}

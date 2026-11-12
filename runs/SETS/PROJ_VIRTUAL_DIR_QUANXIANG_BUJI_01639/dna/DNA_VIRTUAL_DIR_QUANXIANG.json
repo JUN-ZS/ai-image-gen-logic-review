@@ -1,0 +1,37 @@
+{
+  "write_id": "01639",
+  "call": "VIRTUAL_DIR·全相补给",
+  "formal": "SHQ_VIRTUAL_DIR_QUANXIANG_SUPPLY_V1",
+  "zh": "废旧框法；独立 VIRTUAL_DIR 存每物全相补给",
+  "E-SEM-KUANG-01": {
+    "name": "旧框法",
+    "status": "DEAD",
+    "desc": "矩形先验窗 / 绿方框叠图当座（如 STACK_SEATS 06caf44d）= 旧法",
+    "dao_fan": "若矩形框仍当座 ∧ 洞=扣(除)为真 → 两套座 → 矛盾 → 框法 DEAD"
+  },
+  "VIRTUAL_DIR": {
+    "path": "VIRTUAL_DIR/",
+    "SUPPLY_全相": "独立生成的分出物全貌（1物1文件，非 peep 窗裁升清）",
+    "HOLE_座": "洞=扣之座（非框）",
+    "META": "manifest · asset_id · 非框坐标"
+  },
+  "supply_rule": "生=全相独立生成 → 存 VIRTUAL_DIR → 框回锁时仅按 洞 入座（全相缩放到洞域，不按矩形框造座）",
+  "algebra": "[(生,除,洞,扣)×(反)]  生←VIRTUAL_DIR全相  洞←扣  禁框",
+  "DEAD": [
+    "旧框法矩形窗当座",
+    "画框叠图当架构",
+    "peep 窗裁冒充全相补给"
+  ],
+  "LIVE": [
+    "VIRTUAL_DIR 全相补给",
+    "洞=扣(除)",
+    "独自生→存VDIR→入座",
+    "步步為一"
+  ],
+  "parent": [
+    "01638 废影",
+    "01636 倒反证"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:03:47.715875+00:00"
+}

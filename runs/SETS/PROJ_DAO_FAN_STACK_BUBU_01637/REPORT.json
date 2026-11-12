@@ -1,0 +1,34 @@
+{
+  "write": "01637",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "stack": [
+    "BOOKS",
+    "JAR",
+    "KETTLE",
+    "PEAR"
+  ],
+  "overlap": [
+    {
+      "back": "BOOKS",
+      "front": "JAR",
+      "inter_px": 25820
+    },
+    {
+      "back": "JAR",
+      "front": "KETTLE",
+      "inter_px": 102556
+    },
+    {
+      "back": "KETTLE",
+      "front": "PEAR",
+      "inter_px": 75264
+    }
+  ],
+  "n_obj": 4,
+  "claim": "C2_DAO_FAN_STACK_BUBU_01637",
+  "DEAD_paths_used": false,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T23:53:13.692935+00:00"
+}

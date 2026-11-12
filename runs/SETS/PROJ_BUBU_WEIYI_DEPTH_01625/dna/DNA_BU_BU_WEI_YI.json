@@ -1,0 +1,22 @@
+{
+  "write_id": "01625",
+  "call": "步步為一",
+  "formal": "SHQ_BU_BU_WEI_YI_DEPTH_STACK_V1",
+  "zh": "每次只针对一物全象补给；仔(peep)与座洞锁；后→前堆叠；被挡像素仍尽定位功",
+  "equation": "∀i: elev_i=Supply(peep_i); fill_i=Lock(peep_i,elev_i); RET=Paste_back_to_front(fill_i@MARK_i)",
+  "order": "back→front by centroid_y",
+  "occlusion": "front covers back supply; back still seated (定位)",
+  "with": [
+    "01621次序",
+    "01623咬物",
+    "01563虚回",
+    "01523 SS验.清"
+  ],
+  "counts": {
+    "FREEZE": 1,
+    "xu_hui_per_obj": 1,
+    "objects_serial": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:40:42.918722+00:00"
+}

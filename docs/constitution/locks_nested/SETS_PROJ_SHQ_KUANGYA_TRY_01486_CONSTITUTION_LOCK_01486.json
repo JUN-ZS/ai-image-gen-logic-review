@@ -1,0 +1,14 @@
+{
+  "write_id": "01486",
+  "formal": "KUANGYA_TRY_INHERIT_DNA_V1",
+  "zh": "框牙試跑 · 繼承至高/反毒/無毒DONOR/F8",
+  "inherits": [
+    "01483",
+    "01484",
+    "01482",
+    "01477",
+    "01476"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T00:55:30.103534+00:00"
+}

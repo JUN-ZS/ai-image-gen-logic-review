@@ -1,0 +1,60 @@
+{
+  "dna_version": "1",
+  "dna_kind": "PROJECT",
+  "write_id_dna": "01474",
+  "formal_dna": "SHQ_DNA_SYSTEM_V1",
+  "project_id": "PROJ_SHQ_DNA_SYSTEM_01474",
+  "write_id": "01474",
+  "formal": "",
+  "STICK": "STICK_DNA_SYSTEM",
+  "zh": "DNA System",
+  "boundary": {
+    "empty_mode": "n/a",
+    "outside_basis": "frozen_M_hole",
+    "ACCEPT_FULL_HD": false,
+    "mutex_peeps": true,
+    "layers": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "authority": {
+    "audit_force": "AF2",
+    "claim_level_max": "C2",
+    "steal_flags": [],
+    "drift_flags": [],
+    "E_codes": [],
+    "audit_status": ""
+  },
+  "dock": {
+    "binds": [
+      "STICK_AUDIT_FORCE"
+    ],
+    "consumers": [],
+    "harness_preset": null,
+    "gold_assets": [],
+    "hub_paths": [],
+    "persona_ids": [
+      "PERSONA_AUDIT_FORCE_SELF"
+    ]
+  },
+  "fingerprints": {
+    "keep_sha256": null,
+    "empty_sha256": null,
+    "hole_sha256": null,
+    "summary_sha256": null,
+    "dna_sha256": "20ed373b1f0abc235f8ad3b3d647e208242dda146ee0517bcd79ded940879a9b"
+  },
+  "optimize": {
+    "schema": "PROJECT_DNA_V1",
+    "rules": [
+      "boundary locks sovereignty",
+      "authority caps external claim",
+      "dock lists legal binds only",
+      "fingerprints make external replay checkable",
+      "persona_ids link independent character DNA without merging libraries"
+    ]
+  },
+  "asof": "2026-11-09T22:22:51Z"
+}

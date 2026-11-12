@@ -1,0 +1,23 @@
+{
+  "write_id": "01497",
+  "formal": "SHQ_SCALE_INHERIT_ORIGIN_ELEV_DONOR_DEBUG_V1",
+  "law": "放大的物件必須繼承對的原 = peep@MARK from SRC（L0∩正洞）",
+  "debug_root": "ELEV and DONOR misuse",
+  "E-ED": [
+    "E-ED-01",
+    "E-ED-02",
+    "E-ED-03",
+    "E-ED-04",
+    "E-ED-05",
+    "E-ED-06"
+  ],
+  "demo": {
+    "peep0": "CORRECT/peep0_ORIGIN.jpg",
+    "scale_from_peep0": "CORRECT/S6_scale_from_peep0.jpg",
+    "wrong_elev_as_origin": "ERROR_TEXTBOOK/E_ED_01_elev_as_origin.jpg",
+    "wrong_elev_as_donor": "ERROR_TEXTBOOK/E_ED_02_elev_as_donor_in_mark.jpg",
+    "board": "boards/DEBUG_ELEV_DONOR.jpg"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:57:10.276069+00:00"
+}

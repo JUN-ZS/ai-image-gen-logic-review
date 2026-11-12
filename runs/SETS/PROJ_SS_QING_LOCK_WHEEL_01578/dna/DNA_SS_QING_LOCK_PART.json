@@ -1,0 +1,40 @@
+{
+  "write_id": "01578",
+  "formal": "SHQ_SS_QING_LOCK_PART_V1",
+  "call": "SS验.清锁·件",
+  "zh": "部件清锁",
+  "stick": "STICK_SS_QING_LOCK_PART",
+  "parent": "SS验.清 / SS验.清锁",
+  "part_demo": "WHEEL",
+  "金句": [
+    "whole_subject（程式）= 几何整洞策略（CV），不是 GROK 语义整件",
+    "外力不读 preset 名；语义只在 prompt，且会漂",
+    "真·部件回位 = MARK_part/peep 金框 + densify + B_direct 清锁 · outside=0",
+    "1 部件 = 1 金框 + 1 清锁，不靠模型懂 WHEEL 这个词"
+  ],
+  "equation": "PART_LOCK = MARK_part(CV|反扣) ⊙ peep  →  elev(GROK densify|可)  →  RETURN=L0⊙(1-M)+elev⊙M · ‖·‖_out=0",
+  "vs": {
+    "whole_subject_CV": "几何最大合理变区；缩到 PART 同构 = A",
+    "GROK_prompt_only": "B：可认出轮但 freeframe，无 peep 契约",
+    "SS验.清锁·件": "C：框主权在 MARK/peep；GROK 只当 donor 材质"
+  },
+  "methods_result": {
+    "A": {
+      "role": "金框供给",
+      "semantic": false
+    },
+    "B": {
+      "role": "对照·语义漂",
+      "outside_vs_L0_rough": 241,
+      "note": "四轮散落 freeframe"
+    },
+    "C": {
+      "role": "正法",
+      "outside": 0,
+      "mad": 18.14,
+      "PASS": true
+    }
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T04:44:16.632215+00:00"
+}

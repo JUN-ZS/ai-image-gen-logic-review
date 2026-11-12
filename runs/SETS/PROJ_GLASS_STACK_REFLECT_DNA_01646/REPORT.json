@@ -1,0 +1,28 @@
+{
+  "write": "01646",
+  "PASS": true,
+  "out_S0": 0,
+  "out_L1": 0,
+  "外力GROK判定": {
+    "G4_UR": "PASS",
+    "G2_MID": "PASS",
+    "G1_FL": "PASS",
+    "G3_FR": "PASS"
+  },
+  "DNA_audit": {
+    "diff_cc": false,
+    "quanxiang": "BACKUP reflect identity",
+    "primary": "axial HD reflect",
+    "judges": {
+      "G4_UR": "PASS",
+      "G2_MID": "PASS",
+      "G1_FL": "PASS",
+      "G3_FR": "PASS"
+    },
+    "n_glass_processed": 4
+  },
+  "claim": "C2_GLASS_STACK_REFLECT_01646",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T00:44:08.877824+00:00"
+}

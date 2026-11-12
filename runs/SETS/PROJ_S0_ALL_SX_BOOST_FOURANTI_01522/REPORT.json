@@ -1,0 +1,261 @@
+{
+  "write_id": "01519",
+  "mode": "shen",
+  "zh": "正身",
+  "formal": "SHQ_ZHENG_SHEN_FULL_OBJECT_V1",
+  "stick": "STICK_ZHENG_SHEN",
+  "bite": "full_object",
+  "dna_equation": "正身 = 正頭DNA[ bite: head → full_object ]",
+  "tune": {
+    "kou_thr": 20,
+    "min_area": 5000,
+    "min_frac": 0.08,
+    "max_frac": 0.55,
+    "roi_prior": "none",
+    "cc_mode": "largest",
+    "morph_open": 5,
+    "morph_close": 21,
+    "dilate": 7,
+    "chu_bei_dist": 20,
+    "grow_max": 1.1,
+    "part_role": "whole"
+  },
+  "kou": {
+    "thr": 20,
+    "n_cc": 7,
+    "policy": "largest",
+    "frac": 0.813578979768991,
+    "area": 1469597,
+    "gate": "FAIL_FRAC_TOO_LARGE"
+  },
+  "boost": {
+    "PART_RECOG": true,
+    "SCALE_DENSIFY": true,
+    "ELEV_X_MAT": true,
+    "AND": true,
+    "formula": "认 ∩ 放大 ∩ 升质×物"
+  },
+  "S11xS0A_outside": 0,
+  "S01_S0_outside": 0,
+  "S0A": {
+    "source": "MARK_full_percentile",
+    "bbox_xyxy_in_S0": [
+      0,
+      0,
+      1791,
+      1007
+    ],
+    "corners_in_S0": {
+      "TL": [
+        0,
+        0
+      ],
+      "TR": [
+        1791,
+        0
+      ],
+      "BR": [
+        1791,
+        1007
+      ],
+      "BL": [
+        0,
+        1007
+      ]
+    },
+    "S0A_size": [
+      1008,
+      1792
+    ],
+    "S0_size": [
+      1008,
+      1792
+    ],
+    "area_frac": 1.0,
+    "subset_zheng_shen": true,
+    "scale": 1.0,
+    "mark_frac": 0.813578979768991,
+    "law": "S0A←全幅MARK；peep 自框更正中；不放大",
+    "kou_full": {
+      "thr": 20,
+      "n_cc": 7,
+      "policy": "largest",
+      "frac": 0.813578979768991,
+      "area": 1469597,
+      "gate": "FAIL_FRAC_TOO_LARGE"
+    },
+    "mark_pre_frac": 0.813578979768991,
+    "native_size": [
+      1008,
+      1792
+    ],
+    "work_size": [
+      1008,
+      1792
+    ],
+    "s0a_scale": 1.0,
+    "why": "S0A=子集正身起點；自框 peep 更正中；不放大",
+    "map_back": "S0A (native) paste → S0 bbox → S01",
+    "peep_frame": "peep bbox 相对 S0A 居中，非相对全景边角"
+  },
+  "S11xS0_outside": 0,
+  "fullframe_outside": 0,
+  "S9_seat_born_outside": 0,
+  "subset_zheng_shen_S0A": {
+    "enabled": true,
+    "law": "S0A=子集正身起點·不放大；peep 自框更正中",
+    "fixes": [
+      "peep frame center on S0A",
+      "elev peep-child",
+      "freeframe seat-born"
+    ]
+  },
+  "anti_freeframe_elev": {
+    "E-FF-01": "freeframe S9 banned as PRIMARY",
+    "E-FF-02": "elev not RETURN",
+    "E-FF-03": "peep never overwrite",
+    "shared_with": "正头 ERROR_TEXTBOOK freeframe/elev"
+  },
+  "PASS_SX_FULL": true,
+  "chain": [
+    {
+      "si": "S0",
+      "ok": true,
+      "sha12": "a312229160ed",
+      "role": "冻 SRC 全景"
+    },
+    {
+      "si": "S0A",
+      "ok": true,
+      "sha12": "4dc596167c68",
+      "role": "子集正身起點（crop only · 不放大）· peep 自框更正中"
+    },
+    {
+      "si": "S1",
+      "ok": true,
+      "sha12": "092680cac12e",
+      "role": "外力除整件 @ S0A"
+    },
+    {
+      "si": "S2",
+      "ok": true,
+      "sha12": "0562f8c76444",
+      "role": "扣=差分证"
+    },
+    {
+      "si": "S3",
+      "ok": true,
+      "sha12": "90156be0be5f",
+      "role": "洞 MARK_full 锁"
+    },
+    {
+      "si": "S4",
+      "ok": true,
+      "sha12": "3197cc935d53",
+      "role": "认 whole"
+    },
+    {
+      "si": "S5",
+      "ok": true,
+      "sha12": "26e6372dbc44",
+      "role": "peep_full=S0⊙MARK 只读"
+    },
+    {
+      "si": "S6",
+      "ok": true,
+      "sha12": "35aae90e7f85",
+      "role": "放大 peep_full 子"
+    },
+    {
+      "si": "S7",
+      "ok": true,
+      "sha12": "5781bce2dde7",
+      "role": "升质×物 elev 子 @S0A洞位放大域"
+    },
+    {
+      "si": "S8",
+      "ok": true,
+      "sha12": "2607a26ffcb6",
+      "role": "强心针 AND"
+    },
+    {
+      "si": "S9",
+      "ok": true,
+      "sha12": "cc3d9b7590cb",
+      "role": "正身 洞内 INPAINT · seat-born"
+    },
+    {
+      "si": "S10",
+      "ok": true,
+      "sha12": "36d67269bb58",
+      "role": "hardpaste 辅 S0⊙(1-M)+S9⊙M"
+    },
+    {
+      "si": "S11",
+      "ok": true,
+      "sha12": "c975ce9adf1e",
+      "role": "S11×S0 對位鎖 (S)×(S) + 強心針"
+    },
+    {
+      "si": "S0R_R0",
+      "ok": true,
+      "sha12": "e88dff828974",
+      "role": "回S0·凍母集"
+    },
+    {
+      "si": "S0R_MARK",
+      "ok": true,
+      "sha12": "b12da6b16b29",
+      "role": "只有洞 · 回S0 唯一座位"
+    },
+    {
+      "si": "S0R_认",
+      "ok": true,
+      "sha12": "2b0c2c3f8f63",
+      "role": "強心針·認：洞内 peep 身份（母集）"
+    },
+    {
+      "si": "S0R_放大",
+      "ok": true,
+      "sha12": "1aac0a811cd8",
+      "role": "強心針·放大：peep×2 子域（非整幅升采样冒充）"
+    },
+    {
+      "si": "S0R_升质",
+      "ok": true,
+      "sha12": "1616f3e9b5fc",
+      "role": "強心針·升質×物：正確圖 elev freeframe → peep 尺（外力GROK donor）"
+    },
+    {
+      "si": "S0R_AND",
+      "ok": true,
+      "sha12": "a9e684c7ba7b",
+      "role": "強心針 AND：认∩放大∩升质×物"
+    },
+    {
+      "si": "S0R_生",
+      "ok": true,
+      "sha12": "2f5833206d4d",
+      "role": "咬→升清咬塊→同尺置中回洞（外力GROK donor 锁 peep 大細）"
+    },
+    {
+      "si": "S0R_反",
+      "ok": true,
+      "sha12": "e3dc6ce05339",
+      "role": "反：洞外 bitexact · 只有洞 DEBUG 閉環"
+    },
+    {
+      "si": "S01",
+      "ok": true,
+      "sha12": "272fd8aaa508",
+      "role": "S0A 对位回 S0 全景"
+    }
+  ],
+  "assets": {},
+  "claim": "C2_S11xS0_ALIGN_BOOST_SHEN",
+  "ACCEPT_FULL_HD": false,
+  "kuangya": {
+    "reuse": "shq_wai_li_fan_v2_any_object.kou_part/hardpaste/outside_max"
+  },
+  "asof": "2026-11-10T12:30:41.816954+00:00"
+}

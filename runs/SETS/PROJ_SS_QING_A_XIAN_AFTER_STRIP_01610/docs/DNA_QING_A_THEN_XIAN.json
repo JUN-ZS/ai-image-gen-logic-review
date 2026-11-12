@@ -1,0 +1,7 @@
+{
+  "call_chain": "SS驗.清+A / 除主 → 先讀 → 原物搬回",
+  "xian_input": "L0 + L_bg",
+  "xian_method": "strip_multi_CC",
+  "return": "L0原物 peep hardpaste",
+  "ban": "先讀后改 freeframe densify 冒原物"
+}

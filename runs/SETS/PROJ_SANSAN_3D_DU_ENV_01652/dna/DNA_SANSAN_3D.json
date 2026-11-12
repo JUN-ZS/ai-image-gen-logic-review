@@ -1,0 +1,31 @@
+{
+  "write_id": "01652",
+  "call": "散散·3D·独环境",
+  "formal": "SHQ_SANSAN_3D_DU_ENV_REFLECT_V1",
+  "parent": [
+    "独·环境反射",
+    "3D SS",
+    "轴.反射.生",
+    "步步為一"
+  ],
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "from_toxin": {
+    "旧·散散": "部件乱散 peep 毒",
+    "正用·散散": "深度 FAR|MID|NEAR 每层独·环境反射"
+  },
+  "depth_lanes": [
+    {
+      "id": "FAR",
+      "subject": "MECHA"
+    },
+    {
+      "id": "MID",
+      "subject": "HUMAN"
+    },
+    {
+      "id": "NEAR",
+      "subject": "GLASS"
+    }
+  ],
+  "asof": "2026-11-12T01:39:33.820763+00:00"
+}

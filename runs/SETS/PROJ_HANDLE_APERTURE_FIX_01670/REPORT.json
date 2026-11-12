@@ -1,0 +1,12 @@
+{
+  "write": "01670",
+  "PASS": true,
+  "aperture_area": 34557,
+  "aperture_eq_B": true,
+  "bug": "E-APERTURE-01",
+  "fix": "M_metal hard + M_aperture=B space light",
+  "cause": "fill_holes/chroma solid + elev peep solid handle",
+  "claim": "C2_APERTURE_SPACE_LIGHT",
+  "asof": "2026-11-12T04:34:08.765161+00:00",
+  "ACCEPT_FULL_HD": false
+}

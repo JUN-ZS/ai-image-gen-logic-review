@@ -1,0 +1,67 @@
+{
+  "codename": "框牙",
+  "write_id": "01475",
+  "formal": "KUANGYA_WLF_V21_8_STACK_RECURSE",
+  "STICK": "STICK_WAI_LI_FAN_V2",
+  "phase": "V21-8_STACK_層層進遞又回",
+  "disclose": {
+    "X0": "全物件扣圖+folder升清",
+    "X1": "頭四態升清",
+    "RETURN": "X1→X0→景"
+  },
+  "folder_elev_techs": [
+    {
+      "id": "ELEV_SCALELOCK",
+      "stick": "STICK_WAI_LI_FAN_V2",
+      "note": "放大加清 scale-lock ≤1.15"
+    },
+    {
+      "id": "ELEV_HF_BLEND",
+      "stick": "STICK_FOUR_ANTI_ARCH",
+      "note": "洞內 HF 疊 peep 升清"
+    },
+    {
+      "id": "ELEV_HARDPASTE_SEAT",
+      "stick": "STICK_WAI_LI_GROK",
+      "note": "座硬貼 · outside=0"
+    },
+    {
+      "id": "ELEV_PEEP_LETTERBOX",
+      "stick": "換涯人",
+      "note": "peep letterbox 鎖構圖"
+    },
+    {
+      "id": "ELEV_IMAGINE_ASSET",
+      "stick": "STICK_WAI_LI_GROK",
+      "note": "外力生 asset 作 elev 源"
+    }
+  ],
+  "outside_scene_vs_L1_Msubj": 0,
+  "bb0_full": [
+    0,
+    1008,
+    0,
+    936
+  ],
+  "bb1_head": [
+    49,
+    423,
+    198,
+    755
+  ],
+  "scale0": 1.0,
+  "scale1": 1.0,
+  "gates": {
+    "CLIP_full_object": true,
+    "folder_elev_multi": true,
+    "head_four_anti_elev": true,
+    "stack_return": true,
+    "outside_0": true
+  },
+  "claim_level": "C2",
+  "audit_force": "AF2",
+  "ACCEPT_FULL_HD": false,
+  "status": "PASS",
+  "verdict": "V21-8 層層進遞又回 · C2",
+  "asof": "2026-11-09T23:23:34.822908+00:00"
+}

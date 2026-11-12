@@ -1,0 +1,107 @@
+{
+  "write": "01600",
+  "call": "离散分区×5轮先读 → 冻座洞 → 扣移 → Imagine densify → 层层回锁 BATCH",
+  "formal": "SHQ_DISCRETE5_XIAN_CENG_BATCH_V1",
+  "protocol": [
+    "1 离散分区每轮选5物",
+    "2 先存座洞锁(MARK/peep/bbox@L0)",
+    "3 从 working 扣移(inpaint) 那5物",
+    "4 在移去图再离散选5…",
+    "5 存齐后 Imagine densify 升清",
+    "6 用冻座洞 层层回锁正确 BATCH"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "n": 5,
+      "ids": [
+        "R1_O1",
+        "R1_O2",
+        "R1_O3",
+        "R1_O4",
+        "R1_O5"
+      ]
+    },
+    {
+      "round": 2,
+      "n": 5,
+      "ids": [
+        "R2_O1",
+        "R2_O2",
+        "R2_O3",
+        "R2_O4",
+        "R2_O5"
+      ]
+    },
+    {
+      "round": 3,
+      "n": 5,
+      "ids": [
+        "R3_O1",
+        "R3_O2",
+        "R3_O3",
+        "R3_O4",
+        "R3_O5"
+      ]
+    },
+    {
+      "round": 4,
+      "n": 5,
+      "ids": [
+        "R4_O1",
+        "R4_O2",
+        "R4_O3",
+        "R4_O4",
+        "R4_O5"
+      ]
+    },
+    {
+      "round": 5,
+      "n": 5,
+      "ids": [
+        "R5_O1",
+        "R5_O2",
+        "R5_O3",
+        "R5_O4",
+        "R5_O5"
+      ]
+    },
+    {
+      "round": 6,
+      "n": 5,
+      "ids": [
+        "R6_O1",
+        "R6_O2",
+        "R6_O3",
+        "R6_O4",
+        "R6_O5"
+      ]
+    }
+  ],
+  "n_seats": 30,
+  "Imagine": {
+    "n": 10,
+    "ids": [
+      "R2_O1",
+      "R2_O2",
+      "R2_O3",
+      "R2_O4",
+      "R2_O5",
+      "R1_O1",
+      "R1_O2",
+      "R1_O3",
+      "R1_O4",
+      "R1_O5"
+    ]
+  },
+  "回锁": {
+    "n": 30,
+    "n_ok": 30,
+    "outside_union": 0,
+    "PASS": true
+  },
+  "PASS": true,
+  "claim": "C2_DISCRETE5_CENG_BATCH",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T08:07:29.663927+00:00"
+}

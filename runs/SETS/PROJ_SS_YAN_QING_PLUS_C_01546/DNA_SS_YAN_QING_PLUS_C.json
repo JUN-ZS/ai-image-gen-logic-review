@@ -1,0 +1,71 @@
+{
+  "write_id": "01546",
+  "call": "SS驗.清+C",
+  "call_ascii": "SS_YAN.QING_PLUS_C",
+  "aliases": [
+    "SS验.清+C",
+    "清+C",
+    "detect whole"
+  ],
+  "formal": "SHQ_SS_YAN_QING_PLUS_C_DETECT_MARK_V1",
+  "zh": "SS验.清+C · 多模态/检测外力定义 whole → bbox → MARK",
+  "stick": "STICK_SS_YAN_QING_PLUS_C",
+  "parent": {
+    "SS验.清": "01539",
+    "SS验.清+A": "01543 path A EDIT反扣",
+    "SS验.清+A众": "01545",
+    "path_C": "开放词检测 / 多模态外力（可接 API）"
+  },
+  "one_liner": "检测外力给 whole 框（开放词）→ bbox 建 MARK → peep → 清/清锁；无 API 时 boxes_json/manual 契约，禁静默冒 whole_subject",
+  "equation": "SS验.清+C ≡ Detect(L0, labels)→{bbox_i,score_i} → MARK_i=fill(bbox)[+refine] → anti(area) → peep → [清锁] F2",
+  "path_C": {
+    "name": "多模态／检测外力",
+    "steps": [
+      "1 提供 labels（tank/mecha/person…）与 provider",
+      "2 Detect → 每目标 bbox+score（归一或像素）",
+      "3 选 target（score/area/label 匹配）→ MARK from bbox",
+      "4 面积闸 + 可选 peep_ratio",
+      "5 接 SS验.清 / 清锁 densify"
+    ],
+    "providers": {
+      "http_open_vocab": "DETECTION_API_URL POST {image_b64, labels} → boxes",
+      "boxes_json": "调用方已有检测结果 JSON",
+      "manual_bbox": "人工/上游框 xyxy 归一或像素",
+      "unavailable": "无外力 → E-QC-00 不得冒 whole_subject"
+    }
+  },
+  "gates": {
+    "G_C0": "provider 非 unavailable 或显式 boxes",
+    "G_C1": "至少 1 个 box 匹配 label",
+    "G_C2": "score ≥ score_min（默认 0.25）",
+    "G_C3": "mark_frac ∈ [min,max]",
+    "G_C4": "peep 比例自洽",
+    "G_C5": "可选 outside=0 after 清"
+  },
+  "error_codes": {
+    "E-QC-00": "无检测外力且无 boxes — 禁 silent whole_subject",
+    "E-QC-01": "API 失败 / 超时",
+    "E-QC-02": "无匹配 label 的 box",
+    "E-QC-03": "score 过低",
+    "E-QC-04": "frac 出窗",
+    "E-QC-05": "bbox 非法 / 越界",
+    "E-QC-06": "多目标未指定 subject_id / label"
+  },
+  "vs_A": {
+    "A": "EDIT 除主 |L0-L1| 语义洞",
+    "C": "检测框 whole → MARK（不依赖 L1 空景）",
+    "both": "结果必须冻成 MARK 再 peep；外力 freeframe 仍须清锁"
+  },
+  "api": [
+    "detect_open_vocab(L0, labels, provider=...)",
+    "mark_from_detection_box(L0, box, ...)",
+    "ss_yan_qing_plus_c_run(L0, labels, ...)"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T23:34:22.644557+00:00",
+  "child_grid": {
+    "call": "SS驗.清+C·格框",
+    "write": "01548",
+    "formal": "SHQ_SS_YAN_QING_PLUS_C_GRID_CELLS_V1"
+  }
+}

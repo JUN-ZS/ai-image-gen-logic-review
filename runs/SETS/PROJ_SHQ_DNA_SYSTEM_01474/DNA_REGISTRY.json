@@ -1,0 +1,49 @@
+{
+  "entries": [
+    {
+      "write_id": "01486",
+      "formal": "KUANGYA_TRY_INHERIT_DNA_V1",
+      "zh": "框牙新PROJECT試跑 · DNA繼承",
+      "F8_PASS": true,
+      "asof": "2026-11-10T00:57:16.104101+00:00"
+    },
+    {
+      "write_id": "01484",
+      "formal": "KUANGYA_ANTI_TOXIN_ALGEBRA_IMAGE_DNA_V1",
+      "rank": "SUPREME_CHILD",
+      "parent": "01483",
+      "asof": "2026-11-10T00:43:01.722076+00:00"
+    },
+    {
+      "write_id": "01483",
+      "formal": "KUANGYA_SUPREME_CLAUSE_F8_WAI_LI_GROK_V1",
+      "zh": "框牙至高條款 · 四態反由外力GROK優先理解並驅動",
+      "rank": "SUPREME",
+      "precedence": 0,
+      "binding": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效",
+      "asof": "2026-11-10T00:30:14.814596+00:00"
+    },
+    {
+      "write_id": "01482",
+      "formal": "DNA_DONOR_TOXIN_FREE_V1",
+      "zh": "無毒DONOR",
+      "docs": [
+        "SHQ_DNA_DONOR_TOXIN_FREE.md",
+        "DNA_DONOR_TOXIN_FREE.json"
+      ],
+      "try": "01481",
+      "asof": "2026-11-10T00:27:19.845215+00:00"
+    },
+    {
+      "write_id": "01480",
+      "formal": "DNA_FREEFRAME_VS_WAI_LI_GROK_V1",
+      "zh": "freeframe與外力GROK",
+      "asof": "2026-11-10T00:27:19.845215+00:00"
+    }
+  ],
+  "asof": "2026-11-10T00:40:24.406185+00:00",
+  "supreme": {
+    "write_id": "01483",
+    "binding": "[(生,除,洞,扣)×(反)] ← 由 外力GROK 優先理解並驅動生效"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "write_id": "01532",
+  "zh": "命名 3D SS",
+  "call": "3D SS",
+  "formal": "SHQ_3D_SS_MICRO_PARALLAX_V1",
+  "detected": true,
+  "outside": 7,
+  "inside_p95": 33.0,
+  "edge_p95": 26.0,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T13:48:35.113339+00:00"
+}

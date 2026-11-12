@@ -1,0 +1,129 @@
+{
+  "write_id": "01490",
+  "formal": "KUANGYA_REVERSE_FLOW_TRY_V1",
+  "zh": "先試：S0→S11 反推升清全鏈",
+  "equation": "[(生,除,洞,扣)×(反)] ⊕ BOOST[認∩放大∩升質×物] ← 外力GROK",
+  "all_ok": true,
+  "boost_and": true,
+  "F8_PASS": true,
+  "outside": 0,
+  "claim_level": "C2",
+  "peep_scale_is": "S5+S6 only",
+  "stages": {
+    "S0": {
+      "name": "L0 凍",
+      "ok": true,
+      "sha": "9a0809a4",
+      "do": "same-camera freeze"
+    },
+    "S1": {
+      "name": "正除 外力GROK",
+      "ok": true,
+      "driver": "外力GROK",
+      "mean_abs_vs_L0": 8.134420394897461,
+      "max_abs_vs_L0": 252.0
+    },
+    "S2": {
+      "name": "正扣 CLIP←除背",
+      "ok": true,
+      "subj_frac": 0.8713428730867347,
+      "self_peep": false
+    },
+    "S3": {
+      "name": "正洞 MARK 凍 (F8)",
+      "ok": true,
+      "hole_frac": 0.06909511851615646,
+      "frozen": true,
+      "source": "F8 MARK_M_hole"
+    },
+    "S4": {
+      "name": "部件'認' BOOST-1",
+      "ok": true,
+      "bbox": [
+        287,
+        34,
+        802,
+        503
+      ],
+      "bb_h": 470,
+      "bb_w": 516,
+      "centroid_yx_norm": [
+        0.30075634140395097,
+        0.3046253961767867
+      ],
+      "hole_frac": 0.06909511851615646,
+      "f8_正洞_pass": true,
+      "not_band_self_peep": true,
+      "note": "認 = F8凍洞 + 左上主件域；非 band 切"
+    },
+    "S5": {
+      "name": "取域 peep@MARK",
+      "ok": true,
+      "crop_hw": [
+        561,
+        759
+      ],
+      "user_maps": "抽圖 ⊂ S5"
+    },
+    "S6": {
+      "name": "放大 BOOST-2",
+      "ok": true,
+      "scale_up": 1.5,
+      "return_scale_lock": 1.0,
+      "grow_max": 1.15,
+      "user_maps": "抽圖放大 = S5+S6 only",
+      "not_full_pipeline": true
+    },
+    "S7": {
+      "name": "升質×物 BOOST-3",
+      "ok": true,
+      "role": "elev_candidate_NOT_正生",
+      "driver": "外力GROK",
+      "black_frac": 0.19351019741089875,
+      "E-KY-ATX-01_if_labeled_正生": true,
+      "labeled_as": "elev_candidate"
+    },
+    "S8": {
+      "name": "BOOST AND 閘",
+      "ok": true,
+      "REN": true,
+      "SCALE": true,
+      "ELEV_x": true,
+      "E-KY-BOOST-04": false
+    },
+    "S9": {
+      "name": "正生 seat-born 外力",
+      "ok": true,
+      "driver": "外力GROK",
+      "F8_cell": "正生"
+    },
+    "S10": {
+      "name": "正回 hardpaste",
+      "ok": true,
+      "outside": 0,
+      "proves_only": true
+    },
+    "S11": {
+      "name": "反板 F8 八格",
+      "ok": true,
+      "F8_PASS": true,
+      "status": "PASS",
+      "cells_pass": {
+        "正除": true,
+        "反除": true,
+        "正扣": true,
+        "反扣": true,
+        "正洞": true,
+        "反洞": true,
+        "正生": true,
+        "反生": true,
+        "正回": true,
+        "反回": true
+      }
+    }
+  },
+  "f8_stdout_tail": "  \"anti_toxin\": {\n    \"role_label\": \"正生\",\n    \"elev_risk_black_bg\": false,\n    \"black_frac\": 0.17352640926162133,\n    \"E-KY-ATX-01\": false\n  },\n  \"gates\": {\n    \"no_self_peep_CLIP\": true,\n    \"CLIP_from_chu_bei\": true,\n    \"four_anti_F8_cells\": true,\n    \"return_outside_0\": true,\n    \"wai_li_grok_sheng\": true,\n    \"no_local_elev_as_sheng\": true,\n    \"MARK_frozen\": true,\n    \"algebra_F\": \"[(生,除,洞,扣)×(反)]\",\n    \"sheng_seat_born\": true,\n    \"no_freeframe_hole_return\": true\n  },\n  \"supreme\": true\n}\n",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:15:29.346107+00:00",
+  "note": "先試誠實：F8結構可過；BOOST認用F8 MARK重驗"
+}

@@ -1,0 +1,28 @@
+{
+  "write": "01657",
+  "PASS": true,
+  "out": {
+    "斜": 0,
+    "叠": 0
+  },
+  "bounces": [
+    "B0_ENV0",
+    "B1_glass",
+    "B2_metal",
+    "B3_diffuse"
+  ],
+  "meta_glass_env": {
+    "ok": true,
+    "n": 73781,
+    "bbox": [
+      389,
+      776,
+      1167,
+      1568
+    ]
+  },
+  "claim": "C2_RAY_DU_SUPPLY_REC_01657",
+  "answer": "可产生独·环境反射补给递式；是图像空间猜式光追，非真path trace",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-12T02:32:03.399944+00:00"
+}

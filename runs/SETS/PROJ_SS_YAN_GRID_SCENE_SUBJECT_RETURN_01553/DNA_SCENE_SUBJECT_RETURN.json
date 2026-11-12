@@ -1,0 +1,335 @@
+{
+  "write_id": "01553",
+  "call": "SS驗.清+C·风景主体回格",
+  "call_ascii": "SS_YAN.QING_PLUS_C_SCENE_SUBJECT_RETURN_GRID",
+  "formal": "SHQ_SS_YAN_GRID_SCENE_SUBJECT_RETURN_V1",
+  "zh": "格框+勤力DNA → 格出所有风景和主体 · 真处理合众回图",
+  "stick": "STICK_SS_YAN_SCENE_SUBJECT_RETURN",
+  "parents": [
+    "SS驗.清+C·格框",
+    "勤力DNA",
+    "SS驗.清+C·全景万物格"
+  ],
+  "勤力DNA": {
+    "stick": "STICK_QINLI_DNA",
+    "forced": true,
+    "write": "01552"
+  },
+  "invariants": [
+    "I-ID-BAN",
+    "I-PROCESS",
+    "I-GATE",
+    "I-SCOPE",
+    "I-SCENE"
+  ],
+  "equation": "∀ SCENE∪WHOLE∪…: cell_i; WHOLE: densify∧lock∧F2 (I-PROCESS); SCENE: local_densify∧F2 layer; PART: grid only; RETURN = exclusive(WHOLE > SCENE) hardpaste; 禁 peep 自贴 C2",
+  "n_cells": 17,
+  "outside": 0,
+  "C2_WHOLE_PASS": true,
+  "records": [
+    {
+      "id": "S01_sky_storm",
+      "role": "SCENE",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.200566053390503,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "SCENE"
+      },
+      "returnable": true
+    },
+    {
+      "id": "S02_horizon_mountains",
+      "role": "SCENE",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.119800329208374,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "SCENE"
+      },
+      "returnable": true
+    },
+    {
+      "id": "S03_wet_ground",
+      "role": "SCENE",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.3641774654388428,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "SCENE"
+      },
+      "returnable": true
+    },
+    {
+      "id": "S04_sunset_glow_right",
+      "role": "SCENE",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.1420607566833496,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "SCENE"
+      },
+      "returnable": true
+    },
+    {
+      "id": "S05_mist_haze",
+      "role": "ATMOS",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.1632492542266846,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "ATMOS"
+      },
+      "returnable": true
+    },
+    {
+      "id": "W01_mecha",
+      "role": "WHOLE",
+      "claim": "C2_WHOLE_RETURN",
+      "gain": 1.7770848274230957,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "densify+lock+F2",
+        "ff": true
+      },
+      "returnable": true
+    },
+    {
+      "id": "W02_soldier",
+      "role": "WHOLE",
+      "claim": "C2_WHOLE_RETURN",
+      "gain": 1.4853121042251587,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "densify+lock+F2",
+        "ff": true
+      },
+      "returnable": true
+    },
+    {
+      "id": "W03_tank",
+      "role": "WHOLE",
+      "claim": "C2_WHOLE_RETURN",
+      "gain": 2.03661847114563,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "densify+lock+F2",
+        "ff": true
+      },
+      "returnable": true
+    },
+    {
+      "id": "P01_mecha_shield",
+      "role": "PART",
+      "claim": "C0_PART_GRID_ONLY",
+      "gain": 2.4325919151306152,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "grid_only"
+      },
+      "returnable": false
+    },
+    {
+      "id": "P02_mecha_head",
+      "role": "PART",
+      "claim": "C0_PART_GRID_ONLY",
+      "gain": 2.037365436553955,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "grid_only"
+      },
+      "returnable": false
+    },
+    {
+      "id": "P03_soldier_rifle",
+      "role": "PART",
+      "claim": "C0_PART_GRID_ONLY",
+      "gain": 1.9607019424438477,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "grid_only"
+      },
+      "returnable": false
+    },
+    {
+      "id": "P04_tank_barrel",
+      "role": "PART",
+      "claim": "C0_PART_GRID_ONLY",
+      "gain": 1.7444337606430054,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "grid_only"
+      },
+      "returnable": false
+    },
+    {
+      "id": "P05_tank_turret",
+      "role": "PART",
+      "claim": "C0_PART_GRID_ONLY",
+      "gain": 1.8229707479476929,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "grid_only"
+      },
+      "returnable": false
+    },
+    {
+      "id": "P06_tank_tracks",
+      "role": "PART",
+      "claim": "C0_PART_GRID_ONLY",
+      "gain": 2.056908369064331,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "grid_only"
+      },
+      "returnable": false
+    },
+    {
+      "id": "R01_left_stage",
+      "role": "SCENE",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.4249045848846436,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "SCENE"
+      },
+      "returnable": true
+    },
+    {
+      "id": "R02_center_stage",
+      "role": "SCENE",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.303954839706421,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "SCENE"
+      },
+      "returnable": true
+    },
+    {
+      "id": "R03_right_stage",
+      "role": "SCENE",
+      "claim": "C1_SCENE_LAYER_RETURN",
+      "gain": 2.139796018600464,
+      "donor_is_peep": false,
+      "qinli": {
+        "ok": true,
+        "errs": [],
+        "processed": true
+      },
+      "meta": {
+        "path": "local_densify+F2",
+        "layer": "SCENE"
+      },
+      "returnable": true
+    }
+  ],
+  "tau": 1.15,
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T01:06:36.916979+00:00",
+  "V2_seat": {
+    "write": "01554",
+    "mandatory_C2": [
+      "MARK_seat",
+      "清锁(elev_lock+seat_hardlock)",
+      "I-ID-BAN",
+      "I-PROCESS",
+      "outside=0"
+    ],
+    "formal": "SHQ_SS_YAN_GRID_SCENE_SUBJECT_RETURN_SEAT_V2"
+  },
+  "equation_C2": "C2_WHOLE ⇔ MARK_seat ∧ 清锁 ∧ densify_donor ∧ seat_born ∧ outside=0 ∧ tex_gain≥τ ∧ ¬identity; RETURN = L0⊙(1−M) + F2(lock(densify))⊙M; 禁 bbox-only paste 冒 C2",
+  "SS验.清_required_for_C2": true,
+  "superseded_by_plus_A": {
+    "call": "SS驗.清+A·风景主体回格",
+    "write": "01555",
+    "formal": "SHQ_SS_YAN_QING_PLUS_A_SCENE_SUBJECT_RETURN_V1"
+  }
+}

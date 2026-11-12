@@ -1,0 +1,46 @@
+{
+  "role": "S9A 升清临时 · 专供 S11×S0 洞准",
+  "parent": "S9 seat-born",
+  "from": "S9 ⊕ S7A 升清 peep 同尺（S7A ephemeral）",
+  "NOT": [
+    "S9 gold",
+    "S11 RETURN endpoint",
+    "permanent asset"
+  ],
+  "ephemeral": true,
+  "destroy_after_S11": true,
+  "outside": 0,
+  "size_lock": true,
+  "PASS_align": true,
+  "bite": {
+    "law": "咬→洞→升清咬塊→同尺置中回洞",
+    "algebra": "[(生,除,洞,扣)×(反)]",
+    "bite": "peep = L0 ⊙ MARK",
+    "hole": "MARK 座位",
+    "sheng": "elev/HD → scale_lock 同 peep 大細置中",
+    "return": "hardpaste seat-born 置中對位",
+    "bbox_xyxy": [
+      33,
+      72,
+      547,
+      918
+    ],
+    "peep_hw": [
+      847,
+      515
+    ],
+    "I_sheng_hw": [
+      847,
+      515
+    ],
+    "size_lock": true,
+    "outside": 0,
+    "PASS_align": true,
+    "center_in_frame": [
+      0.507,
+      0.503
+    ]
+  },
+  "law": "S9→S9A(升清)→S11×S0 用 S9A fill；用完可销毁 S9A",
+  "algebra": "[(生,除,洞,扣)×(反)] · 生@S9A temporary"
+}

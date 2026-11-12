@@ -1,0 +1,54 @@
+{
+  "write_id": "01580",
+  "call": "SS验.清锁·件",
+  "formal": "SHQ_SS_QING_LOCK_PART_STRUCTURE_DRIVER_V1",
+  "stick": "STICK_SS_QING_LOCK_PART",
+  "structure": "SETS/PROJ_SS_QING_LOCK_DRIVER_ROBOT_01580/PART_STRUCTURE.json",
+  "profile": "vehicle",
+  "parts": [
+    {
+      "id": "SENSOR",
+      "zh": "传感/顶",
+      "outside": 0,
+      "mad": 4.887,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    },
+    {
+      "id": "BODY",
+      "zh": "舱体",
+      "outside": 0,
+      "mad": 4.345,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    },
+    {
+      "id": "CHASSIS",
+      "zh": "底盘",
+      "outside": 0,
+      "mad": 5.629,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    },
+    {
+      "id": "WHEEL",
+      "zh": "轮",
+      "outside": 0,
+      "mad": 4.636,
+      "PASS": true,
+      "claim": "C2_SS_QING_LOCK_PART",
+      "elev_source": "local_USM"
+    }
+  ],
+  "outside_union": 0,
+  "n_ok": 4,
+  "n_run": 4,
+  "PASS": true,
+  "claim": "C2_SS_QING_LOCK_PART_BATCH",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T04:59:07.486514+00:00",
+  "equation": "∀p: MARK_p → peep_p → elev_p → RETURN = L0⊙(1−M_p)+elev⊙M_p · ‖·‖_out=0"
+}

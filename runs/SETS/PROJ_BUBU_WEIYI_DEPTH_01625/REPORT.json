@@ -1,0 +1,148 @@
+{
+  "write": "01625",
+  "call": "步步為一",
+  "PASS": true,
+  "outside": 0,
+  "stack_order": [
+    "O05",
+    "O07",
+    "O02",
+    "O03",
+    "O01",
+    "O06",
+    "O04"
+  ],
+  "layer_log": [
+    {
+      "name": "O01",
+      "stack_i": 4,
+      "role": "MID",
+      "cy": 668.7,
+      "scale_lock": true,
+      "mad_peep_fill": 22.16,
+      "step": "步步為一_全象補給+座洞锁(peep)"
+    },
+    {
+      "name": "O02",
+      "stack_i": 2,
+      "role": "BACK",
+      "cy": 651.1,
+      "scale_lock": true,
+      "mad_peep_fill": 25.08,
+      "step": "步步為一_全象補給+座洞锁(peep)"
+    },
+    {
+      "name": "O03",
+      "stack_i": 3,
+      "role": "MID",
+      "cy": 651.8,
+      "scale_lock": true,
+      "mad_peep_fill": 19.95,
+      "step": "步步為一_全象補給+座洞锁(peep)"
+    },
+    {
+      "name": "O04",
+      "stack_i": 6,
+      "role": "FRONT",
+      "cy": 826.4,
+      "scale_lock": true,
+      "mad_peep_fill": 25.85,
+      "step": "步步為一_全象補給+座洞锁(peep)"
+    },
+    {
+      "name": "O05",
+      "stack_i": 0,
+      "role": "BACK",
+      "cy": 507.3,
+      "scale_lock": true,
+      "mad_peep_fill": 25.34,
+      "step": "步步為一_全象補給+座洞锁(peep)"
+    },
+    {
+      "name": "O06",
+      "stack_i": 5,
+      "role": "FRONT",
+      "cy": 717.6,
+      "scale_lock": true,
+      "mad_peep_fill": 23.33,
+      "step": "步步為一_全象補給+座洞锁(peep)"
+    },
+    {
+      "name": "O07",
+      "stack_i": 1,
+      "role": "BACK",
+      "cy": 511.6,
+      "scale_lock": true,
+      "mad_peep_fill": 19.48,
+      "step": "步步為一_全象補給+座洞锁(peep)"
+    }
+  ],
+  "occlusion_log": [
+    {
+      "name": "O05",
+      "stack_i": 0,
+      "role": "BACK",
+      "pixels_written": 30422,
+      "overwrote_back_supply": 0,
+      "new_visible": 30422,
+      "note": "全量可见"
+    },
+    {
+      "name": "O07",
+      "stack_i": 1,
+      "role": "BACK",
+      "pixels_written": 24224,
+      "overwrote_back_supply": 0,
+      "new_visible": 24224,
+      "note": "全量可见"
+    },
+    {
+      "name": "O02",
+      "stack_i": 2,
+      "role": "BACK",
+      "pixels_written": 106288,
+      "overwrote_back_supply": 0,
+      "new_visible": 106288,
+      "note": "全量可见"
+    },
+    {
+      "name": "O03",
+      "stack_i": 3,
+      "role": "MID",
+      "pixels_written": 47198,
+      "overwrote_back_supply": 40,
+      "new_visible": 47158,
+      "note": "被挡补给仍完成了座洞定位; 可见层归前物"
+    },
+    {
+      "name": "O01",
+      "stack_i": 4,
+      "role": "MID",
+      "pixels_written": 110305,
+      "overwrote_back_supply": 0,
+      "new_visible": 110305,
+      "note": "全量可见"
+    },
+    {
+      "name": "O06",
+      "stack_i": 5,
+      "role": "FRONT",
+      "pixels_written": 22310,
+      "overwrote_back_supply": 0,
+      "new_visible": 22310,
+      "note": "全量可见"
+    },
+    {
+      "name": "O04",
+      "stack_i": 6,
+      "role": "FRONT",
+      "pixels_written": 37349,
+      "overwrote_back_supply": 0,
+      "new_visible": 37349,
+      "note": "全量可见"
+    }
+  ],
+  "claim": "C2_BU_BU_WEI_YI_01625",
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-11T22:40:42.918722+00:00"
+}

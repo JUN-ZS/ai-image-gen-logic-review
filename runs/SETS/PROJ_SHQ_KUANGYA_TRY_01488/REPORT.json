@@ -1,0 +1,61 @@
+{
+  "write_id": "01488",
+  "formal": "KUANGYA_TRY_INHERIT_DNA_BOOST_V1",
+  "zh": "框牙新PROJECT試跑 · 繼承至高+強心針",
+  "inherits": [
+    "01483",
+    "01487",
+    "01484",
+    "01482",
+    "01477",
+    "01476"
+  ],
+  "binding": "[(生,除,洞,扣)×(反)] ← 外力GROK ⊕ 強心針[部件'認'∩放大∩升質×物]",
+  "assets": {
+    "L0": "84a5a541-401d-4d9b-b03a-9060ef16017d",
+    "正除": "2cac8689-9000-4216-8591-93d81b70c669",
+    "除背": "80c8c0bc-0d26-4876-8a3e-0f71b8ba454a",
+    "正生_seat": "92ddaf8c-2bdf-4449-884f-be132cde1dea",
+    "elev_candidate_NOT_正生": "87b3dd9b-0cca-4b00-af5a-263593dc28d5"
+  },
+  "F8": {
+    "PASS": true,
+    "status": "PASS",
+    "outside": 0,
+    "claim": "C2",
+    "gates": {
+      "no_self_peep_CLIP": true,
+      "CLIP_from_chu_bei": true,
+      "four_anti_F8_cells": true,
+      "return_outside_0": true,
+      "wai_li_grok_sheng": true,
+      "no_local_elev_as_sheng": true,
+      "MARK_frozen": true,
+      "algebra_F": "[(生,除,洞,扣)×(反)]",
+      "sheng_seat_born": true,
+      "no_freeframe_hole_return": true
+    }
+  },
+  "boost": {
+    "needle": "[部件'認' ∩ '放大' ∩ '升質×物']",
+    "PART_RECOG": {
+      "ok": true,
+      "note": "left head as whole peep via kou MARK + 除; not band self_peep"
+    },
+    "SCALE_DENSIFY": {
+      "ok": true,
+      "note": "hardpaste same-frame scale=1.0 ≤ grow_max; elev densify plate separate"
+    },
+    "ELEV_X_MAT": {
+      "ok": true,
+      "role": "elev_candidate_NOT_正生",
+      "asset": "ELEV_CANDIDATE_NOT_ZHENG_SHENG.jpg",
+      "note": "01484: elev plate ≠ 正生; used only as 升質×物 candidate"
+    },
+    "boost_all_three_and": true,
+    "E-KY-BOOST-04": false
+  },
+  "ACCEPT_FULL_HD": false,
+  "claim_level": "C2",
+  "asof": "2026-11-10T01:06:00.468073+00:00"
+}

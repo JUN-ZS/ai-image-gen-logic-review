@@ -1,0 +1,17 @@
+{
+  "project_id": "PROJ_SHQ_KUANGYA_REVERSE_TRY_01490",
+  "write_id": "01490",
+  "formal": "KUANGYA_REVERSE_FLOW_TRY_V1",
+  "zh": "先試：S0→S11 反推升清全鏈實跑",
+  "equation": "[(生,除,洞,扣)×(反)] ⊕ BOOST[認∩放大∩升質×物] ← 外力GROK",
+  "peep_scale_only": "S5+S6",
+  "inherits": [
+    "01489",
+    "01487",
+    "01483",
+    "01484",
+    "01488"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T01:13:40.574178+00:00"
+}

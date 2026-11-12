@@ -1,0 +1,11 @@
+{
+  "write": "01671",
+  "call": "禁框死贴",
+  "code": "E-BOX-01",
+  "PASS": false,
+  "seam_frac_bad": 0.5750129600829446,
+  "seam_frac_good": 0.5082426127527216,
+  "claim": "C2_DNA_BAN_BOX",
+  "asof": "2026-11-12T04:39:11.621624+00:00",
+  "ACCEPT_FULL_HD": false
+}

@@ -1,0 +1,15 @@
+{
+  "write_id": "01500",
+  "tech": "正頭",
+  "problem": "升清鏈沒有回到各 (S) 層（NO_S_RELOCK）",
+  "sx": true,
+  "possibilities": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T02:19:14.140703+00:00"
+}

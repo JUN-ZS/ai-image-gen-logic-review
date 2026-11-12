@@ -1,0 +1,16 @@
+{
+  "write_id": "01644",
+  "call": "应变绿座洞",
+  "formal": "SHQ_DNA_ADAPT_WAI_LI_GREEN_SEAT_V1",
+  "至高无上": "[(生,除,洞,扣)×(反)] ← 外力GROK",
+  "DEAD_enforced": [
+    "E-SCAN-DIFF-CC-01",
+    "E-SEM-KUANG-01",
+    "E-SEM-YING-01",
+    "E-OUTSIDE-ALONE-01"
+  ],
+  "hole_method": "外力EDIT 物→neon green 语义座 + chroma key（非 absdiff+CC）",
+  "supply": "VIRTUAL_DIR 全相独立",
+  "描图": "contours(外力洞)",
+  "asof": "2026-11-12T00:26:34.432132+00:00"
+}

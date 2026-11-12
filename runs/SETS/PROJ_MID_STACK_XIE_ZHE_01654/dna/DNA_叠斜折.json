@@ -1,0 +1,24 @@
+{
+  "write_id": "01654",
+  "call": "叠斜折·中景验",
+  "formal": "SHQ_STACK_XIE_ZHE_MID_VERIFY_V1",
+  "methods": {
+    "叠": {
+      "def": "散散深度座 densify 后→前 hardpaste",
+      "parent": "01652",
+      "out": 0
+    },
+    "斜": {
+      "def": "移轴FOV NEAR>MID>FAR",
+      "parent": "01653",
+      "out": 0
+    },
+    "折": {
+      "def": "对角折面 shear+crease 再独贴",
+      "new": true,
+      "out": 0
+    }
+  },
+  "scene": "workshop mid-shot mecha/woman/orb",
+  "asof": "2026-11-12T02:07:10.275178+00:00"
+}

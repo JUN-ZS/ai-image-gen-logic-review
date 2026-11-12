@@ -1,0 +1,30 @@
+{
+  "write_id": "01475",
+  "formal": "KUANGYA_WLF_V21_CONTINUE_CLIP_SCALELOCK",
+  "codename": "框牙",
+  "STICK": "STICK_WAI_LI_FAN_V2",
+  "phase": "v21_continue",
+  "status": "PASS",
+  "outside_max": 0,
+  "gates": {
+    "Imagine_除件": true,
+    "Imagine_除背_CLIP": true,
+    "Imagine_生": true,
+    "MARK_frozen": true,
+    "true_hole": true,
+    "outside_0": true,
+    "no_self_peep_as_CLIP": true,
+    "CLIP_from_chu_bei": true,
+    "CLIP_formula_L0_odot_M": true,
+    "scale_lock": true,
+    "grow_ok": true,
+    "anti_numeric": true,
+    "tune_pack": true,
+    "any_object": true,
+    "V21_6_done": true,
+    "V21_1_strict_CLIP": true
+  },
+  "ACCEPT_FULL_HD": false,
+  "complete_v21_core": true,
+  "stack_optional": false
+}

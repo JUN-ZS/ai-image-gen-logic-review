@@ -1,0 +1,20 @@
+{
+  "call": "SS驗.清+C·全景万物格",
+  "do": [
+    "认风景层",
+    "认整件",
+    "认部件",
+    "分层入格",
+    "WHOLE 回洞",
+    "WHOLE densify+清锁+F2 再回",
+    "验 tex_gain≥1.15",
+    "验 I-ID-BAN"
+  ],
+  "dont": [
+    "把 SCENE 整层当 WHOLE 回洞冒 claim",
+    "漏标 role",
+    "peep 自贴冒 C2_WHOLE_RETURN",
+    "outside=0 单独报完成"
+  ],
+  "勤力DNA": true
+}
