@@ -1,0 +1,39 @@
+{
+  "write_id": "01545",
+  "call": "SS驗.清+A眾",
+  "call_ascii": "SS_YAN.QING_PLUS_A_HEZHONG",
+  "aliases": [
+    "SS验.清+A众",
+    "清+A众",
+    "SS驗.清+A·合众"
+  ],
+  "formal": "SHQ_SS_YAN_QING_PLUS_A_HEZHONG_V1",
+  "zh": "SS验.清+A众 · 独立清+A 互斥合众一图",
+  "stick": "STICK_SS_YAN_QING_PLUS_A_HEZHONG",
+  "parent": {
+    "SS验.清+A": "STICK_SS_YAN_QING_PLUS_A / 01543",
+    "SS验.清": "01539",
+    "合众": "MULTI_RETURN exclusive hardpaste"
+  },
+  "one_liner": "N×(清+A 独立咬) → 面积优先 exclusive MARK → hardpaste 回同一 L0 → outside_union=0",
+  "equation": "FINAL = L0⊙(1−M_∪^excl) + Σ I*_i⊙M_i^excl; M_i from path A; owner=area-priority",
+  "invariants": [
+    "每叶独立 EDIT 除主 → MARK_sem → peep → F2",
+    "合众前互斥：像素只属一个部件",
+    "洞外 bitexact vs L0（金标 PNG）",
+    "JPEG 重载可假 outside → 不以 jpg 冒金"
+  ],
+  "proof_01545": {
+    "PASS_HEZHONG": true,
+    "claim": "C2_SS_YAN_QING_PLUS_A_HEZHONG",
+    "subjects": [
+      "tank",
+      "mecha",
+      "soldier"
+    ],
+    "outside_union": 0,
+    "L0": "a519ea09-1c96-4b7b-8fa8-487678473799"
+  },
+  "ACCEPT_FULL_HD": false,
+  "asof": "2026-11-10T23:08:16.883346+00:00"
+}
